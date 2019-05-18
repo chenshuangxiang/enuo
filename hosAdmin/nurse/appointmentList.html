@@ -1,0 +1,209 @@
+
+	<link rel="stylesheet" href="../css/news.css" media="all" />
+<body class="childrenBody">
+	<blockquote class="layui-elem-quote news_search">
+		<form class="layui-form">
+			<div class="layui-form-item">
+				<div class="layui-inline">
+					<label class="layui-form-label">关键字</label>
+					<div class="layui-input-inline">
+						<input type="text" value="" placeholder="搜索患者姓名/手机号" class="layui-input search_input newsName">
+					</div>
+				</div>
+				<!--<div class="layui-inline">
+					<label class="layui-form-label">项目来源</label>
+					<div class="layui-input-inline">
+						<select name="projSelect" class="projSelect" lay-filter="projSelect">
+							<option value="discount">项目来源</option>
+							&lt;!&ndash;<option value="doctor">医生</option>&ndash;&gt;
+							<option value="product">线上平台</option>
+							<option value="coupon">线下体验券</option>
+						</select>
+					</div>
+				</div>
+				<div class="layui-inline">
+					<label class="layui-form-label">预约状态</label>
+					<div class="layui-input-inline">
+						<select name="statusjSelect" class="statusjSelect" lay-filter="statusjSelect">
+							<option value="">预约状态</option>
+							<option value="success">已预约</option>
+							<option value="complete">已完成</option>
+							<option value="cancel">已取消</option>
+						</select>
+					</div>
+				</div>-->
+			<!--	<i class="layui-icon help" style="border: 1px solid #777;border-radius: 50px">&#xe607;</i>-->
+				<div class="layui-inline">
+					<label class="layui-form-label">时间</label>
+					<div class="layui-input-inline">
+						<!--<input type="text" class="layui-input newsTime" onclick="layui.laydate({elem:this})" placeholder="请选择开始日期">-->
+						<input type="text" class="layui-input newsTime" id="newsTime" placeholder="请选择开始日期">
+					</div>
+					<label class="layui-form-label" style="width: inherit;padding: 9px 10px 9px 1px;">至</label>
+					<div class="layui-input-inline">
+						<!--<input type="text" class="layui-input newsTimeEnd" onclick="layui.laydate({elem:this})" placeholder="请选择结束日期">-->
+						<input type="text" class="layui-input newsTimeEnd" id="newsTimeEnd" placeholder="请选择结束日期">
+					</div>
+				</div>
+				<!--<div class="layui-btn-group">
+					<input type="button" class="layui-btn thatTimeChoose" onclick="searchBtnTime('day')" style="background-color: white;color: #222;border: 1px solid #e7e7e7" value="今日"/>
+					<input type="button" class="layui-btn thatTimeChoose" onclick="searchBtnTime('tomorrow')" style="background-color: white;color: #222;border: 1px solid #e7e7e7" value="明日"/>
+					<input type="button" class="layui-btn thatTimeChoose" onclick="searchBtnTime('month')" style="background-color: white;color: #222;border: 1px solid #e7e7e7" value="本月"/>
+				</div>-->
+				<div class="layui-inline" style="margin-left: 42px">
+					<a class="layui-btn search_btn">查询</a>
+				</div>
+
+			</div>
+			<div class="writeFenOpen" style="display: none;    margin-top: 20px;">
+				<div class="layui-form-item">
+					<!--<div class="layui-inline">
+						<label class="layui-form-label">分诊去向</label>
+						<div class="layui-input-inline">
+							<select name="fenTo" class="fenTo" lay-filter="fenTo">
+								<option value="">请选择分诊去向</option>
+								<option title="advisory">分诊到咨询</option>
+								<option title="doctor">分诊到医生</option>
+							</select>
+						</div>
+					</div>
+					<div class="layui-inline">
+						<label class="layui-form-label">分诊人员</label>
+						<div class="layui-input-inline">
+							<select name="fenToName" class="fenToName" lay-filter="fenToName">
+								<option value="">请选择分诊人员</option>
+							</select>
+						</div>
+					</div>-->
+					<!--<div class="layui-inline">
+						<label class="layui-form-label">预约医生</label>
+						<div class="layui-input-inline">
+							<select name="fenToDoctor" class="fenToDoctor" lay-filter="fenToDoctor" lay-search="">
+								<option value="">请选择医生</option>
+							</select>
+							&lt;!&ndash;<input type="text" class="layui-input intentOperator" placeholder="">&ndash;&gt;
+						</div>
+					</div>-->
+					<div class="layui-inline">
+						<label class="layui-form-label">分诊</label>
+						<div class="layui-input-inline">
+							<select name="fenTo" class="fenTo" lay-filter="fenTo" lay-search="">
+								<option value="">请选择分诊人员</option>
+							</select>
+							<span class="longtime" style="display: none" longtime='false'></span>
+							<!--<input type="text" class="layui-input intentOperatorZhuli" placeholder="">-->
+						</div>
+					</div>
+				</div>
+
+				<!--	<div class="layui-form-item">
+                        <div class="layui-inline">
+                            <label class="layui-form-label">分诊时间</label>
+                            <div class="layui-input-inline">
+                                <input type="text" class="layui-input newsTimeFen"
+                                       onclick="layui.laydate({elem:this,istime: true,istoday: true, format: 'YYYY-MM-DD hh:mm:ss'})"
+                                       placeholder="请选择分诊时间">
+                            </div>
+                        </div>
+                    </div>-->
+				<input type="button" class="layui-btn layui-btn-lg sureFenToAppiontmentList" style="margin: 15px 0 0 120px;width: 107px" value="确 定"/>
+			</div>
+			<div class="examineOpen" style="display: none;    margin-top: 20px;">
+			<div class="layui-form-item">
+				<div class="layui-inline">
+					<label class="layui-form-label">主诉</label>
+					<div class="layui-input-inline">
+						<input type="text" value="" placeholder="" class="layui-input search_input mainStatement">
+					</div>
+				</div>
+				<div class="layui-inline">
+					<label class="layui-form-label">现病史</label>
+					<div class="layui-input-inline">
+						<input type="text" value="" placeholder="" class="layui-input search_input currentDiseaseHistory">
+					</div>
+				</div>
+			</div>
+				<div class="layui-form-item" style="margin-left: 66px;">实验室检查/辅助检查 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;例：B超-检查是否有肿瘤等</div>
+				<div class="addCensorItems">
+					<div class="layui-form-item" style="margin-bottom: 1px;">
+						<div class="layui-inline">
+							<label class="layui-form-label"></label>
+							<div class="layui-input-inline">
+								<input type="text" value="" placeholder="检查项目" class="layui-input search_input appoint_result appoint_result_name">
+							</div>
+						</div>
+						<div class="layui-inline">
+							<div class="layui-input-inline">
+								<input type="text" value="" placeholder="检查结果" class="layui-input search_input appoint_result appoint_result_detail">
+							</div>
+						</div>
+						<input type="button" class="layui-btn" onclick="special_addTag.addResult(this)" value="增加">
+					</div>
+				</div>
+			<div class="layui-form-item">
+				<blockquote class="layui-elem-quote title" style="padding: 6px 15px;margin-bottom: 0">合计</blockquote>
+				<div class="layui-inline">
+					<label class="layui-form-label">预交总费用</label>
+					<div class="layui-input-inline">
+						<input type="text" value="" placeholder="请填写预交总费用" class="layui-input search_input amount">
+					</div>
+				</div>
+				<div class="layui-inline">
+					<label class="layui-form-label">医保费用</label>
+					<div class="layui-input-inline">
+						<input type="text" value="" placeholder="" class="layui-input search_input medicareAmount">
+					</div>
+				</div>
+			</div>
+				<input type="button" class="layui-btn layui-btn-lg sureExamine" style="margin: 15px 0 26px 120px;width: 107px" value="确 定"/>
+
+			</div>
+
+		</form>
+
+
+
+
+	<!--	<div class="layui-inline">
+			<a class="layui-btn recommend" style="background-color:#5FB878">推荐文章</a>
+		</div>
+		<div class="layui-inline">
+			<a class="layui-btn audit_btn">审核文章</a>
+		</div>
+		<div class="layui-inline">
+			<a class="layui-btn layui-btn-danger batchDel">批量删除</a>
+		</div>-->
+	<!--	<div class="layui-inline">
+			<div class="layui-form-mid layui-word-aux">本页面刷新后除新添加的文章外所有操作无效，关闭页面所有数据重置</div>
+		</div>-->
+	</blockquote>
+	<div class="layui-form news_list">
+	  	<table class="layui-table">
+		    <colgroup>
+
+		    </colgroup>
+		    <thead>
+				<tr>
+					<!--<th><input type="checkbox" name="" lay-skin="primary" lay-filter="allChoose" id="allChoose"></th>-->
+					<th>编号</th>
+					<th>预约时间</th>
+					<th>患者姓名</th>
+					<th>联系方式</th>
+					<!--<th>来源</th>-->
+					<th>项目分类</th>
+					<th>项目</th>
+					<th>渠道来源</th>
+					<th>预约医生</th>
+					<th>现场咨询</th>
+					<th>客服</th>
+
+					<!--<th>预约状态</th>-->
+					<th>操作</th>
+				</tr> 
+		    </thead>
+		    <tbody class="news_content"></tbody>
+		</table>
+	</div>
+	<div id="page"></div>
+	<script type="text/javascript" src="js/common.js?v=1134"></script>
+	<script type="text/javascript" src="js/appointmentList.js"></script>

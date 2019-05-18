@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>文章列表--e诺分诊后台管理</title>
+	<meta name="renderer" content="webkit">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="format-detection" content="telephone=no">
+	<link rel="stylesheet" href="layui/css/layui.css" media="all" />
+	<link rel="stylesheet" href="css/font_eolqem241z66flxr.css" media="all" />
+	<link rel="stylesheet" href="css/news.css" media="all" />
+</head>
+<style>
+	@media screen and (max-width: 988px){
+		.userBaseInfo {
+
+		}
+	}
+	@media screen and (min-width: 988px){
+		.userBaseInfo {
+
+		}
+	}
+
+	.col {
+		padding: 0 1% 7px 1.5%;
+	}
+    .userName{
+        margin: 10px 0 6px 6px;
+        font-size: 19px
+    }
+    .userBaseInfoP{
+        line-height: 36px;
+        height: 36px;
+        font-size: 14px;
+        color: #666;
+        border-bottom: 1px solid #e2e2e2;
+    }
+	.news_content tr td,.news_content_family  tr td{
+		text-align: left;
+	}
+	.userVisitRocordData td,.userOrderPlatformData td{
+		padding: 3px 6px;
+	}
+</style>
+<body class="childrenBody">
+		<div class="row" style="clear: both;">
+			<div class="col">
+
+							<div class="layui-layer-title" style="cursor: move;;background-color: #dedede;margin-top: 13px">咨询信息</div>
+							<table class="layui-table" style="margin-top: 0">
+								<thead>
+								<tr>
+									<th>咨询时间</th>
+									<th>咨询医院</th>
+									<th>咨询病种</th>
+									<th>来源</th>
+									<th>诉求</th>
+									<th>咨询员</th>
+									<th>分诊状态</th>
+									<th>回访状态</th>
+									<th>下次回访时间</th>
+									<!--操作-->
+								</tr>
+								</thead>
+								<tbody class="userAdviosyInfoData"></tbody>
+							</table>
+						</div>
+			</div>
+<script type="text/javascript" src="js/jquery-1.11.3.js"></script>
+<script type="text/javascript" src="js/common.js?v=1134"></script>
+<script type="text/javascript" src="layui/layui.js"></script>
+<script type="text/javascript" src="js/staticFunc.js"></script>
+<script type="text/javascript" src="js/adviosyOne.js"></script>
+</body>
+</html>

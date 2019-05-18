@@ -1,0 +1,149 @@
+
+	<link rel="stylesheet" href="css/news.css" media="all" />
+<body class="childrenBody">
+<div class="layui-card-header">
+		<span class="layui-breadcrumb" style="visibility: visible;">
+			<span>您的位置：</span>
+  			<a onclick="toIndexPage()" href="#allSize.html?v=1134">首页</a><span lay-separator="">/</span>
+  			<a onclick="toAbsolutPage('.shenheLi','.docDD')" href="#allDoc.html?v=1134">部门管理</a><span lay-separator="">/</span>
+  			<a href=""><cite>审核列表</cite></a>
+		</span>
+</div>
+	<blockquote class="layui-elem-quote news_search" style="border: 1px solid #cccccc;background-color: white;padding: 0;width: 94%;margin: 15px 0 40px 3%">
+		<div class="layui-layer-title" style="cursor: move;background-color: #dedede">筛选查询</div>
+		<form class="layui-form">
+			<div class="layui-form-item">
+				<div class="layui-inline">
+					<label class="layui-form-label">关键字</label>
+					<div class="layui-input-inline">
+						<input type="text" value="" placeholder="搜索患者姓名/手机号" class="layui-input search_input newsName">
+					</div>
+				</div>
+				<!--<div class="layui-inline">
+					<label class="layui-form-label">项目来源</label>
+					<div class="layui-input-inline">
+						<select name="projSelect" class="projSelect" lay-filter="projSelect">
+							<option value="discount">项目来源</option>
+							&lt;!&ndash;<option value="doctor">医生</option>&ndash;&gt;
+							<option value="product">线上平台</option>
+							<option value="coupon">线下体验券</option>
+						</select>
+					</div>
+				</div>
+				<div class="layui-inline">
+					<label class="layui-form-label">预约状态</label>
+					<div class="layui-input-inline">
+						<select name="statusjSelect" class="statusjSelect" lay-filter="statusjSelect">
+							<option value="">预约状态</option>
+							<option value="success">已预约</option>
+							<option value="complete">已完成</option>
+							<option value="cancel">已取消</option>
+						</select>
+					</div>
+				</div>-->
+				<!--<i class="layui-icon help" style="border: 1px solid #777;border-radius: 50px">&#xe607;</i>-->
+
+				<div class="layui-inline" style="margin-left: 42px">
+					<a class="layui-btn search_btn">查询</a>
+				</div>
+				<div class="layui-inline" style="margin-left: 70px">
+					<a class="layui-btn layui-btn-normal" href="#checkVisitRecord.html?v=1134" style="margin-left: -5px;height: 35px;line-height: 35px;border: 1px solid #1E9FFF;background-color: white;color: #1E9FFF">入诊审核</a>
+					<a class="layui-btn layui-btn-normal" href="#checkUserOfflineProject.html?v=1134" style="margin-left: -5px;height: 35px;line-height: 35px;border: 1px solid #1E9FFF;background-color: white;color: #1E9FFF">退单审核</a>
+					<a class="layui-btn layui-btn-normal" style="margin-left: -5px;height: 35px;line-height: 35px;border: 1px solid #1E9FFF;background-color: #1E9FFF;color: white">退款审核</a>
+				</div>
+
+			</div>
+			<div class="examineOpen" style="display: none;    margin-top: 20px;">
+			<div class="layui-form-item">
+				<div class="layui-inline">
+					<label class="layui-form-label">主诉</label>
+					<div class="layui-input-inline">
+						<input type="text" value="" placeholder="" class="layui-input search_input mainStatement">
+					</div>
+				</div>
+				<div class="layui-inline">
+					<label class="layui-form-label">现病史</label>
+					<div class="layui-input-inline">
+						<input type="text" value="" placeholder="" class="layui-input search_input currentDiseaseHistory">
+					</div>
+				</div>
+			</div>
+				<div class="layui-form-item" style="margin-left: 66px;">实验室检查/辅助检查 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;例：B超-检查是否有肿瘤等</div>
+				<div class="addCensorItems">
+					<div class="layui-form-item" style="margin-bottom: 1px;">
+						<div class="layui-inline">
+							<label class="layui-form-label"></label>
+							<div class="layui-input-inline">
+								<input type="text" value="" placeholder="检查项目" class="layui-input search_input appoint_result appoint_result_name">
+							</div>
+						</div>
+						<div class="layui-inline">
+							<div class="layui-input-inline">
+								<input type="text" value="" placeholder="检查结果" class="layui-input search_input appoint_result appoint_result_detail">
+							</div>
+						</div>
+						<input type="button" class="layui-btn" onclick="special_addTag.addResult(this)" value="增加">
+					</div>
+				</div>
+			<div class="layui-form-item">
+				<blockquote class="layui-elem-quote title" style="padding: 6px 15px;margin-bottom: 0">合计</blockquote>
+				<div class="layui-inline">
+					<label class="layui-form-label">预交总费用</label>
+					<div class="layui-input-inline">
+						<input type="text" value="" placeholder="请填写预交总费用" class="layui-input search_input amount">
+					</div>
+				</div>
+				<div class="layui-inline">
+					<label class="layui-form-label">医保费用</label>
+					<div class="layui-input-inline">
+						<input type="text" value="" placeholder="" class="layui-input search_input medicareAmount">
+					</div>
+				</div>
+			</div>
+				<input type="button" class="layui-btn layui-btn-lg sureExamine" style="margin: 15px 0 26px 120px;width: 107px" value="确 定"/>
+
+			</div>
+
+		</form>
+
+
+
+
+	<!--	<div class="layui-inline">
+			<a class="layui-btn recommend" style="background-color:#5FB878">推荐文章</a>
+		</div>
+		<div class="layui-inline">
+			<a class="layui-btn audit_btn">审核文章</a>
+		</div>
+		<div class="layui-inline">
+			<a class="layui-btn layui-btn-danger batchDel">批量删除</a>
+		</div>-->
+	<!--	<div class="layui-inline">
+			<div class="layui-form-mid layui-word-aux">本页面刷新后除新添加的文章外所有操作无效，关闭页面所有数据重置</div>
+		</div>-->
+	</blockquote>
+	<div class="layui-form news_list" style="border: 1px solid #cccccc;width: 94%;margin-left: 3%">
+		<div class="layui-layer-title" style="cursor: move;;background-color: #dedede">数据列表</div>
+	  	<table class="layui-table">
+		    <colgroup>
+
+		    </colgroup>
+		    <thead>
+				<tr>
+					<!--<th><input type="checkbox" name="" lay-skin="primary" lay-filter="allChoose" id="allChoose"></th>-->
+					<!--<th>预约编号</th>-->
+					<th>申请时间</th>
+					<th>患者姓名</th>
+					<th>联系方式</th>
+					<th>病种</th>
+					<th>已支付金额/总金额</th>
+					<th style="font-weight: 600">申请退款金额</th>
+					<th>退款备注</th>
+					<th>操作</th>
+				</tr> 
+		    </thead>
+		    <tbody class="news_content"></tbody>
+		</table>
+	</div>
+	<div id="page"></div>
+	<script type="text/javascript" src="js/checkTuiMoney.js?v=1134"></script>

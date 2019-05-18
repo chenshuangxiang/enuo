@@ -1,0 +1,276 @@
+
+	<link rel="stylesheet" href="../css/news.css" media="all" />
+	<link rel="stylesheet" href="../css/signUpReservation.css" media="all" />
+<body class="childrenBody">
+	<blockquote class="layui-elem-quote news_search" style="margin-bottom: 0">
+		<form class="layui-form">
+			<div class="layui-form-item" style="margin-bottom: 0">
+				<div class="layui-inline">
+					<label class="layui-form-label" style="width: 65px;">关键字</label>
+					<div class="layui-input-inline">
+						<input type="text" value="" placeholder="搜索患者姓名/手机号" class="layui-input search_input newsName">
+					</div>
+				</div>
+				<div class="layui-inline">
+					<label class="layui-form-label">预约医生</label>
+					<div class="layui-input-inline">
+						<select name="fenTo" lay-verify="required" class="fenTo" lay-filter="fenTo">
+							<option value="">请选择医生</option>
+						</select>
+						<!--<input type="text" class="layui-input intentOperator" placeholder="">-->
+					</div>
+				</div>
+				<!--<div class="layui-inline">
+					<label class="layui-form-label">项目来源</label>
+					<div class="layui-input-inline">
+						<select name="projSelect" class="projSelect" lay-filter="projSelect">
+							<option value="discount">项目来源</option>
+							&lt;!&ndash;<option value="doctor">医生</option>&ndash;&gt;
+							<option value="product">线上平台</option>
+							<option value="coupon">线下体验券</option>
+						</select>
+					</div>
+				</div>
+				<div class="layui-inline">
+					<label class="layui-form-label">预约状态</label>
+					<div class="layui-input-inline">
+						<select name="statusjSelect" class="statusjSelect" lay-filter="statusjSelect">
+							<option value="">预约状态</option>
+							<option value="success">已预约</option>
+							<option value="complete">已完成</option>
+							<option value="cancel">已取消</option>
+						</select>
+					</div>
+				</div>-->
+			<!--	<i class="layui-icon help" style="border: 1px solid #777;border-radius: 50px">&#xe607;</i>-->
+				<!--<div class="layui-btn-group">
+					<input type="button" class="layui-btn thatTimeChoose" onclick="searchBtn(1,'day')" style="background-color: white;color: #222;border: 1px solid #e7e7e7" value="今日"/>
+					<input type="button" class="layui-btn thatTimeChoose" onclick="searchBtn(1,'week')" style="background-color: white;color: #222;border: 1px solid #e7e7e7" value="本周"/>
+					<input type="button" class="layui-btn thatTimeChoose" onclick="searchBtn(1,'month')" style="background-color: white;color: #222;border: 1px solid #e7e7e7" value="本月"/>
+				</div>-->
+				<div class="layui-inline">
+					<label class="layui-form-label" style="width: 65px;">时间</label>
+					<div class="layui-input-inline" style="    width: 95px;">
+						<!--<input type="text" class="layui-input newsTime" onclick="layui.laydate({elem:this})" placeholder="请选择开始日期">-->
+						<input type="text" class="layui-input newsTime" id="newsTime" placeholder="请选择开始日期">
+					</div>
+					<label class="layui-form-label" style="width: inherit;padding: 9px 10px 9px 1px;">至</label>
+					<div class="layui-input-inline" style="    width: 95px;">
+						<!--<input type="text" class="layui-input newsTimeEnd" onclick="layui.laydate({elem:this})" placeholder="请选择结束日期">-->
+						<input type="text" class="layui-input newsTimeEnd" id="newsTimeEnd" placeholder="请选择结束日期">
+					</div>
+				</div>
+
+				<div class="layui-inline" style="">
+					<a class="layui-btn search_btn">查询</a>
+				</div>
+				<div class="layui-inline" style="">
+					<a style="margin-left: 15px" class="layui-btn layui-btn-normal" onclick="addSignUp(this)">添加预约</a>
+				</div>
+				<!--<div class="layui-inline" style="margin-left: 42px">
+					<a class="layui-btn layui-btn-normal" onclick="searchBtnOutExcel($('#timeInputOpen').val())">导出表格</a>
+				</div>
+				<div class="layui-input-block" style="    float: right;margin: 19px 30px 0 0">
+					<strong>总计收款：￥</strong><span class="totalPrice">0</span>
+				</div>
+				<div class="layui-input-block" style="    float: right;margin: 19px 30px 0 0">
+					<strong>医院收款：￥</strong><span class="totalHospitalPrice">0</span>
+				</div>
+				<div class="layui-input-block" style="    float: right;margin: 19px 30px 0 0">
+					<strong>平台收款：￥</strong><span class="totalPlatformPrice">0</span>
+				</div>
+				<div class="layui-input-block" style="    float: right;margin: 19px 30px 0 0">
+					<strong>医保收款：￥</strong><span class="totalmedicalInsurancePrice">0</span>
+				</div>-->
+
+			</div>
+
+			<div class="orderDetailOpen" style="display: none;    margin-top: 20px;">
+				<div class="row" style="clear: both;">
+					<div class="col">
+						<!--<blockquote class="layui-elem-quote title" style="padding: 16px 15px;margin-bottom: 0">历史回访<i class="iconfont icon-new1"></i>
+                            <input type="button" class="layui-btn layui-btn-normal news_record_add" style="float: right;width: 107px;    margin-top: -8px;" value="添加回访"/>
+                        </blockquote>-->
+						<table class="layui-table" style="margin-top: 0">
+							<colgroup>
+								<!--<col width="50"><col>-->
+								<!--<col width="19%"><col>
+                                <col width="9%"><col>
+                                <col width="9%"><col>
+                                &lt;!&ndash;<col width="9%">&ndash;&gt;
+                                &lt;!&ndash;<col width="9%">
+                                <col width="9%">&ndash;&gt;
+                                <col width="9%"><col>-->
+							</colgroup>
+							<thead>
+							<tr>
+								<!--<th></th>-->
+								<th>项目名称</th>
+								<th>产地</th>
+								<th>品名</th>
+								<th>单位</th>
+								<th>数量</th>
+								<th>原价</th>
+								<th>折后价</th>
+								<!--	<th>数量</th>-->
+
+								<th>合计</th>
+								<th>操作</th>
+								<!--	<th>咨询</th>-->
+							</tr>
+							</thead>
+							<tbody class="orderDetailContent"></tbody>
+						</table>
+					</div>
+					<div class="layui-input-block" style="    float: right;margin: 19px 30px 0 0">
+						<strong>总计：￥</strong><span class="totalUserPrice">0</span>
+					</div>
+					<div class="layui-form-item" style="text-align: center;margin-top: 50px">
+						<div class="layui-input-block" style="margin-left: 0">
+							<button class="layui-btn layui-btn-normal addProjectPost" style="min-width: 216px" lay-submit="" lay-filter="addProjectPost">提交</button>
+							<!--<button type="reset" class="layui-btn layui-btn-primary">重置</button>-->
+						</div>
+					</div>
+				</div>
+			</div>
+
+		</form>
+	</blockquote>
+	<div class="layui-form news_list" style="display: none">
+		<table class="layui-table">
+			<colgroup>
+				<!--<col><col>
+				<col width="10%">
+				<col width="9%">
+				<col width="10%">
+				<col width="10%">
+				<col width="11%">
+				<col width="8%">-->
+			</colgroup>
+			<thead>
+			<tr>
+				<th>序号</th>
+				<th>操作时间</th>
+				<th>操作人</th>
+				<th width="60%">操作记录</th>
+			</tr>
+			</thead>
+			<tbody class="news_content">
+
+			</tbody>
+		</table>
+	</div>
+	<form class="layui-form">
+		<div class="writeFenOpen" style="display: none;    margin-top: 20px;">
+			<div class="layui-form-item">
+				<div class="layui-inline">
+					<label class="layui-form-label">姓名</label>
+					<div class="layui-input-inline">
+						<input type="text" value="" lay-verify="required" placeholder="请输入患者姓名" class="layui-input search_input signUpName">
+					</div>
+				</div>
+				<div class="layui-inline">
+					<label class="layui-form-label">联系方式</label>
+					<div class="layui-input-inline">
+						<input type="text" value="" lay-verify="required" placeholder="请输入患者联系方式" class="layui-input search_input signUpMobile">
+					</div>
+				</div>
+				<div class="layui-inline">
+					<label class="layui-form-label">预约时间</label>
+					<div class="layui-input-inline">
+						<!--<input type="text" class="layui-input newsTime" onclick="layui.laydate({elem:this})" placeholder="请选择开始日期">-->
+						<input type="text" style="width: 48.8%;display: inline-block" class="layui-input signUpTime" lay-verify="required" id="signUpTime" placeholder="预约日期">
+						<input type="text" style="width: 48.8%;display: inline-block" class="layui-input signUpTime" lay-verify="required" id="signUpTimeTime" placeholder="预约时间">
+					</div>
+				</div>
+				<div class="layui-inline">
+					<label class="layui-form-label" style="width: 84px;padding: 9px 13px;">预约结束时间</label>
+					<div class="layui-input-inline">
+						<!--<input type="text" class="layui-input newsTime" o8.6nclick="layui.laydate({elem:this})" placeholder="请选择开始日期">-->
+						<input type="text" style="width: 48.8%;display: inline-block" class="layui-input signUpTime" lay-verify="required" id="signUpTimeEnd" placeholder="结束日期">
+						<input type="text" style="width: 48.8%;display: inline-block" class="layui-input signUpTime" lay-verify="required" id="signUpTimeTimeEnd" placeholder="结束时间">
+					</div>
+				</div>
+				<div class="layui-inline">
+					<label class="layui-form-label">预约医生</label>
+					<div class="layui-input-inline">
+						<select name="fenTo" lay-verify="required" class="fenTo fenToAdd" lay-filter="fenTo">
+							<option value="">请选择医生</option>
+						</select>
+						<!--<input type="text" class="layui-input intentOperator" placeholder="">-->
+					</div>
+				</div>
+				<div class="layui-form-item" style="    margin-top: 5px;">
+					<label class="layui-form-label">预约详情</label>
+					<div class="layui-input-block layui-form" lay-filter="signUpDetail" style="width: 509px">
+						<textarea class="layui-textarea signUpDetail" lay-verify="required" style=""></textarea>
+					</div>
+				</div>
+			</div>
+
+			<!--	<div class="layui-form-item">
+                    <div class="layui-inline">
+                        <label class="layui-form-label">分诊时间</label>
+                        <div class="layui-input-inline">
+                            <input type="text" class="layui-input newsTimeFen"
+                                   onclick="layui.laydate({elem:this,istime: true,istoday: true, format: 'YYYY-MM-DD hh:mm:ss'})"
+                                   placeholder="请选择分诊时间">
+                        </div>
+                    </div>
+                </div>-->
+			<div class="layui-form-item" style="text-align: center">
+				<!--<input type="button" class="layui-btn layui-btn-lg sureSignUp" style="margin: 15px 0 0 0;width: 200px" value="确 定"/>-->
+				<button class="layui-btn layui-btn-lg sureSignUp" style="min-width: 216px;margin: 15px 0 0 0;" lay-submit="" lay-filter="sureSignUp">确 定</button>
+			</div>
+		</div>
+	</form>
+	<div style="width: 100%;height: 15px;background-color: white"></div>
+	<div class="box">
+		<ul class="event_year">
+			<!--<li class="current"><label for="2013-12-18">2013-12-18</label></li>
+			<li><label for="2012-12-19">2012-12-19</label></li>
+			<li><label for="2011-11-18">2011-11-18</label></li>
+			<li><label for="2010-10-18">2010-10-18</label></li>-->
+		</ul>
+		<ul class="event_list">
+			<!--<div>
+				<h3 id="2013-12-18">2013-12-18</h3>
+				<li><span>13:30:00</span><p><span>陈双祥 15058370623 预约医生：张媛媛 预约详情：种植牙第三期</span></p></li>
+				<li><span>20:30:00</span><p><span>站长工具旗下产品，超级监控上线</span></p></li>
+				<li><span>22:30:00</span><p><span>站长之家创业栏目上线</span></p></li>
+
+			</div>
+			<div>
+				<h3 id="2012-12-19">2012-12-19</h3>
+				<li><span>22:30:00</span><p><span>站长之家北京分公司成立</span></p></li>
+			</div>
+			<div>
+				<h3 id="2011-11-18">2011-11-18</h3>
+				<li><span>10:30:00</span><p><span><a href="http://www.313.com/" target="_blank">建站大师（www.313.com）上线</a></span></p></li>
+				<li><span>13:30:00</span><p><span>站长论坛荣获<a href="http://bbs.ifeng.com/special/bbs100/" target="_blank">2010年第二届中文论坛100强称号（名列第50位）</a></span></p></li>
+				<li><span>14:30:00</span><p><span>4月-11月 站长之家<a href="http://9th.chinaz.com/" target="_blank">九周年全国交流会启动（厦门、南京、杭州、广州、合肥、武汉、西安、重庆、上海等地）</a>，同时宣布与新浪微博达成<a href="http://9th.chinaz.com/tianshijijin.aspx" target="_blank">微博创新基金合作，启动中小站长专项投资</a></span></p></li>
+				<li><span>15:30:00</span><p><span><a href="http://open.313.com" target="_blank">推出建站大师开放平台open.313.com</a></span></p></li>
+				<li><span>17:30:00</span><p><span>站长之家北京分公司成立</span></p></li>
+			</div>
+
+			<div>
+				<h3 id="2010-10-18">2010-10-18</h3>
+				<li><span>10:30:00</span><p><span><a href="http://my.chinaz.com/" target="_blank">全站用户中心上线</a></span></p></li>
+				<li><span>13:30:00</span><p><span>C2C交易平台<a href="http://jy.chinaz.com/" target="_blank">站长交易上线</a></span></p></li>
+				<li><span>14:30:00</span><p><span><a href="http://bbs.chinaz.com/" target="_blank">站长论坛新版上线</a></span></p></li>
+				<li><span>15:30:00</span><p><span><a href="http://bbs.chinaz.com/" target="_blank">站长论坛发帖超过千万</a></span></p></li>
+				<li><span>17:30:00</span><p><span><a href="http://mytool.chinaz.com" target="_blank">我的工具(Mytool.chinaz.com)新版上线</a></span></p></li>
+				<li><span>19:30:00</span><p><span><a href="http://down.chinaz.com" target="_blank">站长下载第三次改版完成</a></span></p></li>
+				<li><span>21:30:00</span><p><span><a href="http://www.bbsmax.com/" target="_blank">全资收购社区开发商BBSMAX</a>，<a href="http://www.microsoft.com/web/gallery/bbsmax.aspx" target="_blank">并与微软Web应用平台达成合作</a></span></p></li>
+				<li><span>22:30:00</span><p><span>在阿里巴巴主办的“第二届中国地方与行业网站峰会”上获</a><a href="http://www.chinaz.com/news/2010/1204/147210_3.shtml" target="_blank">最受欢迎的站长服务商</a></span></p></li>
+			</div>-->
+		</ul>
+
+		<div class="clearfix"></div>
+
+	</div>
+
+
+	<script type="text/javascript" src="js/common.js?v=1134"></script>
+	<script type="text/javascript" src="../js/staticFunc.js"></script>
+	<script type="text/javascript" src="../front/js/signUpReservation.js"></script>

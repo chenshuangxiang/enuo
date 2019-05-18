@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta http-equiv="Access-Control-Allow-Origin" content="*">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <link rel="icon" href="favicon.ico">
+    <title>e诺平台医院系统</title>
+
+    <link rel="stylesheet" href="layui/css/layui.css" media="all">
+    <link rel="stylesheet" href="css/font_eolqem241z66flxr.css" media="all" />
+    <link rel="stylesheet" href="css/main.css" media="all" />
+</head>
+<style>
+    .larry-side-menu {
+        position: absolute;
+        cursor: pointer;
+        z-index: 19940201;
+        left: 200px;
+        margin-top: 2px;
+        color: white;
+        text-align: center;
+        width: 30px;
+        height: 30px;
+        background-color: #2299ee;
+        line-height: 30px;
+        top: 23%;
+    }
+    .layui-btn-sm {
+        height: 30px;
+        line-height: 30px;
+        padding: 0 10px;
+        font-size: 12px;
+    }
+
+    .layui-tab-title li {
+        border: 1px solid #C9C9C9;
+        background-color: #fff;
+        color: #555;
+        line-height: 29px;
+        padding: 0 4px;
+        height: 28px;
+        font-size: 12px;
+        margin-right: 14px;
+        border-radius: 2px;
+    }
+    .layui-tab-title .layui-this:after {
+        position: absolute;
+        left: 0;
+        top: 0;
+        content: '';
+        width: 100%;
+        height: 0;
+        border: 1px solid #e2e2e2;
+        border-bottom-color: #fff;
+        border-radius: 2px 2px 0 0;
+        box-sizing: border-box;
+        pointer-events: none;
+        border-bottom: none;
+
+    }
+    .layui-tab-brief>.layui-tab-title .layui-this{
+        background-color: #009688;
+        color: white;
+        padding: 2px 6px;
+    }
+    .layui-tab-brief>.layui-tab-more li.layui-this:after, .layui-tab-brief>.layui-tab-title .layui-this:after{
+        border-bottom: none;
+    }
+</style>
+<body class="layui-layout-body">
+<div class="layui-layout layui-layout-admin">
+    <div class="layui-header">
+        <div class="layui-logo">e诺平台医院系统</div>
+        <div class="larry-side-menu" pc="">
+            <i class="fa fa-bars" aria-hidden="true" style="font-style: inherit;">三</i>
+        </div>
+        <!-- 头部区域（可配合layui已有的水平导航） -->
+        <ul class="layui-nav layui-layout-right">
+            <li class="layui-nav-item">
+                <a href="javascript:;">
+                    <img src="img/face.jpg" class="layui-nav-img">
+                    <span style="color: #58acea" class="usertype"></span>
+                    <span class="userName"></span>
+                </a>
+                <dl class="layui-nav-child">
+                    <!--<dd><a href="#top">基本资料</a></dd>
+                    <dd><a href="javascript:;">安全设置</a></dd>-->
+                    <dd><a href="#hosInfoParent.html"><i class="iconfont icon-zhanghu" data-icon="icon-zhanghu"></i><cite>医院信息</cite></a></dd>
+                    <dd><a href="#linkPeople.html"><i class="layui-icon" data-icon="&#xe612;">&#xe612;</i><cite>商务对接人</cite></a></dd>
+                    <dd><a href="#changePwd.html"><i class="iconfont icon-shezhi1" data-icon="icon-shezhi1"></i><cite>修改密码</cite></a></dd>
+                    <dd class="layout"><a href="javascript:;"><i class="iconfont icon-loginout"></i><cite>退出</cite></a></dd>
+                </dl>
+            </li>
+            <!--<li class="layui-nav-item"><a href="javascript:;">注销</a></li>-->
+        </ul>
+    </div>
+    <form class="layui-form">
+    <ul class="layui-nav daohangTop" style="padding-left: 200px;height: 40px;border-radius: 0;line-height: 39px;background-color: #32343a;">
+        <div class="layui-logo" style="    line-height: 40px;font-weight: 600">导航栏</div>
+        <div class="layui-tab layui-tab-brief" lay-filter="docDemoTabBrief" style="margin: 0">
+            <ul class="layui-tab-title topTabUl" style="    background-color: #32343a;z-index: 999;border-bottom: 0">
+                <li onclick="toIndexTopTab();window.location.href = window.location.origin + window.location.pathname + '#allSize.html?v=1134'" class="toIndexBtn" style="min-width: 40px;">首页</li>
+                <li onclick="toAllTopTab('.toReservationBtn','.yuyueDD','.yuyueLi','#appointmentList.html?v=1134');" class="toReservationBtn">预约管理</li>
+                <li onclick="toAllTopTab('.toProjectBtn','.projectDD','.projectLi','#allProject.html?v=1134');" class="toProjectBtn">项目管理</li>
+                <li onclick="toAllTopTab('.toAnliBtn','.docAnliDD','.anliLi','#DocAnli.html?v=1134');" class="toAnliBtn">案例管理</li>
+                <li onclick="toAllTopTab('.toTemplateBtn','.templateDD','.templateLi','#allTemplate.html?v=1134');" class="toTemplateBtn">模板管理</li>
+                <li onclick="toAllTopTab('.toHospitalBtn','.docDD','.shenheLi','#allDoc.html?v=1134');" class="toHospitalBtn">医院管理</li>
+                <li onclick="toAllTopTab('.toOrderBtn','.orderDD','.orderLi','#allOrder.html?v=1134');" class="toOrderBtn">就诊管理</li>
+                <li onclick="toAllTopTab('.toPeopleBtn','.userDD','.userLi','#allAllot.html?v=1134');" class="toPeopleBtn">客户管理</li>
+                <li onclick="toAllTopTab('.toRecordBtn','.platfromRecordDD','.allRecordLi','#platfromRecord.html?v=1134');" class="toRecordBtn">回访管理</li>
+                <li onclick="toAllTopTab('.toNewsBtn','.infoDD','.infoLi','#allChat.html?v=1134');" class="toNewsBtn">消息管理</li>
+            </ul>
+            <div class="layui-tab-content"></div>
+        </div>
+        <!--<a style="padding: 0 10px;"  href="#allSize.html?v=333"><button onclick="toIndexTopTab();" class="layui-btn layui-btn-primary layui-btn-sm toIndexBtn toHrefBtn">首页</button></a>
+        <a style="padding: 0 10px;"  href="#staffList.html?v=333"><button onclick="toAdviosy();" class="layui-btn layui-btn-primary layui-btn-sm toAdvisyBtn toHrefBtn">预约管理</button></a>
+        <a style="padding: 0 10px;" href="#allAdvisory.html?type=advisory&v=333"><button onclick="toHuiZong();" class="layui-btn  layui-btn-primary layui-btn-sm toHuiZongBtn toHrefBtn">项目管理</button></a>
+        <a style="padding: 0 10px;" href="#allAdvisory.html?type=advisory&v=333"><button onclick="toHuiZong();" class="layui-btn  layui-btn-primary layui-btn-sm toHuiZongBtn toHrefBtn">案例管理</button></a>
+        <a style="padding: 0 10px;" href="#allAdvisory.html?type=advisory&v=333"><button onclick="toHuiZong();" class="layui-btn  layui-btn-primary layui-btn-sm toHuiZongBtn toHrefBtn">模板管理</button></a>
+        <a style="padding: 0 10px;" href="#allAdvisory.html?type=advisory&v=333"><button onclick="toHuiZong();" class="layui-btn  layui-btn-primary layui-btn-sm toHuiZongBtn toHrefBtn">医院管理</button></a>
+        <a style="padding: 0 10px;" href="#allAdvisory.html?type=advisory&v=333"><button onclick="toHuiZong();" class="layui-btn  layui-btn-primary layui-btn-sm toHuiZongBtn toHrefBtn">订单管理</button></a>
+        <a style="padding: 0 10px;" href="#allAdvisory.html?type=advisory&v=333"><button onclick="toHuiZong();" class="layui-btn  layui-btn-primary layui-btn-sm toHuiZongBtn toHrefBtn">客户管理</button></a>
+        <a style="padding: 0 10px;" href="#allAdvisory.html?type=advisory&v=333"><button onclick="toHuiZong();" class="layui-btn  layui-btn-primary layui-btn-sm toHuiZongBtn toHrefBtn">消息管理</button></a>
+-->    </ul>
+    </form>
+    <div class="layui-side layui-bg-black">
+        <div class="layui-side-scroll">
+            <!-- 左侧导航区域（可配合layui已有的垂直导航） -->
+            <ul class="layui-nav layui-nav-tree" lay-filter="test">
+                <!--<li class="layui-nav-item layui-nav-itemed">
+                    <a class="" href="javascript:;">文章管理</a>
+                    <dl class="layui-nav-child">
+                        <dd><a href="#type-list">文章类型</a></dd>
+                        <dd><a href="#article-list">文章列表</a></dd>
+                    </dl>
+                </li>-->
+                <li class="layui-nav-item indexLi"><a onclick="toIndexPage()" href="#allSize.html?v=1134"><i class="layui-icon">&#xe68e;</i><cite>首页</cite></a></li>
+                <li class="layui-nav-item yuyueLi">
+                    <a class="" href="javascript:;"><i class="layui-icon">&#xe609;</i><cite>预约管理</cite></a>
+                    <dl class="layui-nav-child">
+                        <dd onclick="toAddShowTopTab('.toReservationBtn')" class="yuyueDD"><a href="#appointmentList.html?v=1134">预约项目</a></dd>
+                        <dd onclick="toAddShowTopTab('.toReservationBtn')" class="yuyueHulicardDD"><a href="#appointmentHuliCardList.html?v=1134">护理卡预约项目</a></dd>
+                        <dd onclick="toAddShowTopTab('.toReservationBtn')"><a href="#appointmentDoctorList.html?v=1134">预约医生</a></dd>
+                    </dl>
+                </li>
+                <li class="layui-nav-item projectLi">
+                    <a class="" href="javascript:;"><i class="layui-icon">&#xe63c;</i><cite>院内项目管理</cite></a>
+                    <dl class="layui-nav-child">
+                        <dd onclick="toAddShowTopTab('.toProjectBtn')" class="projectDD"><a href="#allProject.html?v=1134">发布项目</a></dd>
+                        <dd onclick="toAddShowTopTab('.toProjectBtn')"><a href="#tyq.html">体验券</a></dd>
+                    </dl>
+                </li>
+                <li class="layui-nav-item anliLi">
+                    <a class="" href="javascript:;"><i class="layui-icon">&#xe64a;</i><cite>案例管理</cite></a>
+                    <dl class="layui-nav-child">
+                        <dd onclick="toAddShowTopTab('.toAnliBtn')" class="docAnliDD"><a href="#DocAnli.html?v=1134">医生案例</a></dd>
+                        <dd onclick="toAddShowTopTab('.toAnliBtn')"><a href="#productAnli.html?v=1134">项目案例</a></dd>
+                    </dl>
+                </li>
+                <li class="layui-nav-item templateLi">
+                    <a class="" href="javascript:;"><i class="layui-icon">&#xe857;</i><cite>模板管理</cite></a>
+                    <dl class="layui-nav-child">
+                        <dd onclick="toAddShowTopTab('.toTemplateBtn')" class="templateDD"><a href="#allTemplate.html">约定病种模板</a></dd>
+                        <dd onclick="toAddShowTopTab('.toTemplateBtn')"><a href="#allMateTemplate.html">非医保品名模板</a></dd>
+                        <dd onclick="toAddShowTopTab('.toTemplateBtn')"><a href="#allMateTemplate.html?type=medicalcare">医保品名模板</a></dd>
+                        <dd onclick="toAddShowTopTab('.toTemplateBtn')"><a href="#staticPatientTemplate.html">病历模板</a></dd>
+                        <dd onclick="toAddShowTopTab('.toTemplateBtn')"><a href="#maintellTemplate.html">主诉模板</a></dd>
+                        <dd onclick="toAddShowTopTab('.toTemplateBtn')"><a href="#nowIllTemplate.html">现病史模板</a></dd>
+                    </dl>
+                </li>
+                <li class="layui-nav-item shenheLi">
+                    <a class="" href="javascript:;"><i class="layui-icon">&#xe655;</i><cite>医院管理</cite></a>
+                    <dl class="layui-nav-child">
+                        <dd onclick="toAddShowTopTab('.toHospitalBtn')" class="docDD"><a href="#allDoc.html">医生列表</a></dd>
+                        <dd onclick="toAddShowTopTab('.toHospitalBtn')"><a href="#allSection.html?v=1134">员工列表</a></dd>
+                        <dd onclick="toAddShowTopTab('.toHospitalBtn')" class="shenheDD"><a href="#checkVisitRecord.html?v=1134">审核列表</a></dd>
+                    </dl>
+                </li>
+                <!--<li class="layui-nav-item"><a href="#allDoc.html"><i class="layui-icon">&#xe612;</i><cite>医生管理</cite></a></li>-->
+
+
+                <li class="layui-nav-item orderLi">
+                    <a class="" href="javascript:;"><i class="layui-icon">&#xe60a;</i><cite>就诊管理</cite></a>
+                    <dl class="layui-nav-child">
+                        <dd onclick="toAddShowTopTab('.toOrderBtn')" class="orderDD"><a href="#allOrder.html">订单列表</a></dd>
+                        <dd onclick="toAddShowTopTab('.toOrderBtn')" class="jiuzhenDD"><a href="#allJiuzhen.html">就诊记录</a></dd>
+                        <dd onclick="toAddShowTopTab('.toOrderBtn')" class="jiezhenDD"><a href="#jiezhenList.html">收费记录</a></dd>
+                    </dl>
+                </li>
+                <!--<li class="layui-nav-item"><a href="#allOrder.html"><i class="layui-icon">&#xe60a;</i><cite>订单管理</cite></a></li>-->
+               <!-- <li class="layui-nav-item allWrite"><a href="#allWrite.html"><i class="layui-icon">&#xe6b2;</i><cite>入诊管理</cite></a></li>
+                <li class="layui-nav-item">
+                    <a class="" href="javascript:;"><i class="layui-icon">&#xe6af;</i><cite>咨询管理</cite></a>
+                    <dl class="layui-nav-child">
+                        <dd class="allZixun"><a href="#allZixun.html">咨询列表</a></dd>
+                        <dd class="zixunNow">&lt;!&ndash;<a href="#allZixunNow.html">&ndash;&gt;<a>当前咨询情况</a></dd>
+                        <dd class="zixunHis"><a href="#allZixunHis.html">过往记录</a></dd>
+                    </dl>
+                </li>
+                   <li class="layui-nav-item allFinance"><a href="#allFinance.html"><i class="layui-icon">&#xe65e;</i><cite>财务管理</cite></a></li>-->
+                <li class="layui-nav-item userLi">
+                    <a class="" href="javascript:;"><i class="layui-icon">&#xe630;</i><cite>客户管理</cite></a>
+                    <dl class="layui-nav-child">
+                        <dd onclick="toAddShowTopTab('.toPeopleBtn')" class="userDD"><a href="#allAllot.html?v=1134">平台客户</a></dd>
+                        <dd onclick="toAddShowTopTab('.toPeopleBtn')"><a href="#allUser.html?v=1134">本院客户</a></dd>
+                        <dd onclick="toAddShowTopTab('.toPeopleBtn')"><a href="#todayAllotRecord.html?v=1134">近日回访</a></dd>
+                    </dl>
+                </li>
+                <li class="layui-nav-item allRecordLi"><!--<a href="#allCount.html?v=333"><i class="layui-icon">&#xe60e;</i><cite>汇总统计</cite>-->
+                    <a class="" href="javascript:;"><i class="layui-icon">&#xe63b;</i><cite>回访记录</cite></a>
+                    <dl class="layui-nav-child">
+                        <dd onclick="toAddShowTopTab('.toRecordBtn')" class="platfromRecordDD"><a href="#platfromRecord.html?v=1134">平台客户回访</a></dd>
+                        <dd onclick="toAddShowTopTab('.toRecordBtn')" class="hospitalRecordDD"><a href="#hospitalRecord.html?v=1134">医院客户回访</a></dd>
+                    </dl>
+                </li>
+                <li class="layui-nav-item infoLi">
+                    <a class="" href="javascript:;"><i class="layui-icon">&#xe63a;</i><cite>消息管理</cite><span class="layui-badge newsCount" style="border-radius: 3px;display: none">0</span></a>
+                    <dl class="layui-nav-child">
+                        <dd onclick="toAddShowTopTab('.toNewsBtn')" class="infoDD"><a href="#allChat.html">医院消息 <span class="layui-badge newsCount" style="border-radius: 3px;display: none">0</span></a></dd>
+                        <dd onclick="toAddShowTopTab('.toNewsBtn')"><a href="#allCommont.html">用户评价</a></dd>
+                    </dl>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="layui-body">
+        <!-- 内容主体区域 -->
+        <div id="layui-body" style="padding: 3px 3px">
+
+        </div>
+    </div>
+
+    <!--<div class="layui-footer">
+        &lt;!&ndash; 底部固定区域 &ndash;&gt;
+        ©ulcodes.com
+    </div>-->
+</div>
+<!-- 移动导航 -->
+<div class="site-tree-mobile layui-hide"><i class="layui-icon">&#xe602;</i></div>
+<div class="site-mobile-shade"></div>
+<script src="layui/layui.js" charset="utf-8"></script>
+<script type="text/javascript" src="js/common.js?v=1134"></script>
+<script type="text/javascript" src="js/index.js"></script>
+<script type="text/javascript" src="js/checkPeople.js"></script>
+</body>
+</html>

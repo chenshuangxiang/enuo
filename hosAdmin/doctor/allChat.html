@@ -1,0 +1,43 @@
+
+	<link rel="stylesheet" href="../css/news.css" media="all" />
+	<style>
+		.new{
+			display: inline-block;
+			width: 8px;
+			height: 8px;
+			border-radius: 50%;
+			background-color: #ff9900;
+			position: absolute;
+			top: 10px;
+			right: 6px;
+		}
+	</style>
+<body class="childrenBody">
+<div class="big">
+
+	<div class="layui-form news_list">
+
+	  	<table class="layui-table">
+		    <!--<colgroup>
+				<col>
+				<col>
+				<col>
+				<col>
+				<col>
+				<col>
+		    </colgroup>-->
+		    <thead>
+				<tr>
+					<th>姓名</th>
+					<th  width="50%">消息</th>
+					<th>最后消息时间</th>
+					<th>操作</th>
+				</tr> 
+		    </thead>
+		    <tbody class="news_content"></tbody>
+		</table>
+	</div>
+	<div id="page"></div>
+</div>
+
+	<script type="text/javascript" src="js/allChat.js"></script>

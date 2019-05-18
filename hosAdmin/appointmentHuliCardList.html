@@ -1,0 +1,96 @@
+
+	<link rel="stylesheet" href="css/news.css" media="all" />
+<body class="childrenBody">
+<div class="layui-card-header">
+		<span class="layui-breadcrumb" style="visibility: visible;">
+			<span>您的位置：</span>
+  			<a onclick="toIndexPage()" href="#allSize.html?v=1134">首页</a><span lay-separator="">/</span>
+  			<a onclick="toAbsolutPage('.yuyueLi','.yuyueDD')" href="#allDoc.html?v=1134">预约管理</a><span lay-separator="">/</span>
+  			<a href=""><cite>护理卡预约项目</cite></a>
+		</span>
+</div>
+	<blockquote class="layui-elem-quote news_search"  style="border: 1px solid #cccccc;background-color: white;padding: 0;width: 94%;margin: 15px 0 40px 3%">
+		<div class="layui-layer-title" style="cursor: move;background-color: #dedede">筛选查询</div>
+		<form class="layui-form">
+			<div class="layui-form-item">
+				<div class="layui-inline">
+					<label class="layui-form-label">关键字</label>
+					<div class="layui-input-inline">
+						<input type="text" value="" placeholder="搜索患者姓名/手机号" class="layui-input search_input newsName">
+					</div>
+				</div>
+				<!--<div class="layui-inline">
+					<label class="layui-form-label">项目来源</label>
+					<div class="layui-input-inline">
+						<select name="projSelect" class="projSelect" lay-filter="projSelect">
+							<option value="discount">项目来源</option>
+							&lt;!&ndash;<option value="doctor">医生</option>&ndash;&gt;
+							<option value="product">线上平台</option>
+							<option value="coupon">线下体验券</option>
+						</select>
+					</div>
+				</div>-->
+				<div class="layui-inline">
+					<label class="layui-form-label">预约状态</label>
+					<div class="layui-input-inline">
+						<select name="statusjSelect" class="statusjSelect" lay-filter="statusjSelect">
+							<option value="">预约状态</option>
+							<option value="success">已预约</option>
+							<option value="complete">已完成</option>
+							<option value="cancel">已取消</option>
+						</select>
+					</div>
+				</div>
+				<i class="layui-icon help" style="border: 1px solid #777;border-radius: 50px">&#xe607;</i>
+
+				<div class="layui-inline" style="margin-left: 42px">
+					<a class="layui-btn search_btn">查询</a>
+				</div>
+
+			</div>
+		</form>
+
+
+
+
+	<!--	<div class="layui-inline">
+			<a class="layui-btn recommend" style="background-color:#5FB878">推荐文章</a>
+		</div>
+		<div class="layui-inline">
+			<a class="layui-btn audit_btn">审核文章</a>
+		</div>
+		<div class="layui-inline">
+			<a class="layui-btn layui-btn-danger batchDel">批量删除</a>
+		</div>-->
+	<!--	<div class="layui-inline">
+			<div class="layui-form-mid layui-word-aux">本页面刷新后除新添加的文章外所有操作无效，关闭页面所有数据重置</div>
+		</div>-->
+	</blockquote>
+	<div class="layui-form news_list" style="border: 1px solid #cccccc;width: 94%;margin-left: 3%">
+		<div class="layui-layer-title" style="cursor: move;;background-color: #dedede">数据列表</div>
+	  	<table class="layui-table">
+		    <colgroup>
+
+		    </colgroup>
+		    <thead>
+				<tr>
+					<!--<th><input type="checkbox" name="" lay-skin="primary" lay-filter="allChoose" id="allChoose"></th>-->
+					<!--<th>预约编号</th>-->
+					<th>患者姓名</th>
+					<th>联系方式</th>
+					<!--<th>来源</th>-->
+
+					<th>项目名称</th>
+					<th>项目来源</th>
+					<th>项目类型</th>
+					<th>项目分类</th>
+					<th>预约时间</th>
+					<th>预约状态</th>
+					<th>操作</th>
+				</tr> 
+		    </thead>
+		    <tbody class="news_content"></tbody>
+		</table>
+	</div>
+	<div id="page"></div>
+	<script type="text/javascript" src="js/appointmentHuliCardList.js?v=1134"></script>

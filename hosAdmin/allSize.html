@@ -1,0 +1,318 @@
+
+	<link rel="stylesheet" href="css/news.css" media="all" />
+	<link rel="stylesheet" href="css/admin.css" media="all" />
+	<style>
+		.layui-card-header{
+			padding: 0 5%;
+			width: 90%;
+		}
+        .projectCount{
+            font-size: 24px;
+            margin: 7px 0 1px 0
+        }
+        .cursor{
+            color: #1E9FFF;
+            cursor: pointer
+        }
+        .layui-table th{
+            border: none;
+        }
+	</style>
+<body class="childrenBody">
+<div class="big" style="background-color: #f2f2f2;">
+	<div class="layui-card-header" style="background-color: white;padding: 0;
+			width: 100%;">
+		<span class="layui-breadcrumb" style="visibility: visible;">
+			<span style="margin-left: 26px;">您的位置：首页</span>
+		</span>
+	</div>
+	<blockquote class="layui-elem-quote news_search" style="    height: 48px;    margin-bottom: 2px;border-left: none;width: 96%;margin-left: 2%">
+		<span style="font-size: 20px;line-height: 48px;">医院主管端</span>
+	<div style="float: right;margin-right: 10px">
+		<div class="layui-btn-group" style="margin:10px 20px 10px 43px;">
+			<button class="layui-btn layui-btn-primary layui-btn-xs tochoosedaybtn tonowDay" onclick="tonowDay(this)">今日</button>
+			<button class="layui-btn layui-btn-primary layui-btn-xs tochoosedaybtn tonowWeek" onclick="tonowWeek(this)">本周</button>
+			<button class="layui-btn layui-btn-primary layui-btn-xs tochoosedaybtn tonowMonth" onclick="tonowMonth(this)">本月</button>
+			<button class="layui-btn layui-btn-primary layui-btn-xs tochoosedaybtn tonowAll" onclick="tonowAll(this)">全部</button>
+		</div>
+		<div class="layui-inline" style="margin-right: 16px">
+			<a class="layui-btn layui-btn-normal search_btn" onclick="openTimeChoose()">修改日期</a>
+		</div>
+		<button class="layui-btn layui-btn-sm layui-btn-radius shuaxin">刷新</button>
+	</div>
+	</blockquote>
+	<div class="chooseTimeOpen" style="display: none;    margin-top: 20px;">
+		<form class="layui-form">
+			<div class="layui-inline" style="margin-bottom: 15px;">
+				<label class="layui-form-label">开始时间</label>
+				<div class="layui-input-inline">
+					<input type="text" class="layui-input newsTime" id="newsTime" placeholder="请选择开始时间">
+				</div>
+			</div>
+			<div class="layui-inline" style="margin-bottom: 15px;">
+				<label class="layui-form-label">结束时间</label>
+				<div class="layui-input-inline">
+					<input type="text" class="layui-input newsEndTime" id="newsEndTime" placeholder="请选择结束时间">
+				</div>
+			</div>
+		</form>
+		<input type="button" class="layui-btn layui-btn-lg" onclick="sureFen()" style="margin: 15px 0 0 120px;width: 107px" value="确 定"/>
+	</div>
+	<!--日：layui-bg-blue  周：layui-bg-cyan   月：layui-bg-green   全部：layui-bg-orange-->
+	<div class="layui-fluid" style="padding: 11px;padding-top: 22px;width: 94%;margin-left: 2%">
+		<div class="layui-row layui-col-space15">
+			<div class="layui-col-sm3 layui-col-md3" onclick="toAbsolutPage('.orderLi','.orderDD');window.location.href = '#allOrder.html?v=1134'">
+				<div class="layui-card">
+					<div class="layui-card-header">
+						开单数
+						<span class="layui-badge layui-bg-green layuiadmin-badge dateIcon">月</span>
+					</div>
+					<div class="layui-card-body layuiadmin-card-list">
+						<p class="layuiadmin-big-font userOffLineProjectsCount"></p>
+						<p>
+							<span class="choosetime"></span>
+							<span class="layuiadmin-span-color"><i class="layui-icon">&#xe63c;</i></span>
+							<!--<span class="layuiadmin-span-color"><i class="layui-icon"></i></span>-->
+						</p>
+					</div>
+				</div>
+			</div>
+			<div class="layui-col-sm3 layui-col-md3" onclick="toAbsolutPage('.orderLi','.jiuzhenDD');window.location.href = '#allJiuzhen.html?v=1134'">
+				<div class="layui-card">
+					<div class="layui-card-header">
+						就诊数
+						<span class="layui-badge layui-bg-green layuiadmin-badge dateIcon">月</span>
+					</div>
+					<div class="layui-card-body layuiadmin-card-list">
+						<p class="layuiadmin-big-font visitRecordsCount"></p>
+						<p>
+							<span class="choosetime"></span>
+
+                            <span class="layuiadmin-span-color"><i class="layui-icon"></i></span>
+						</p>
+					</div>
+				</div>
+			</div>
+			<div class="layui-col-sm3 layui-col-md3" onclick="toAbsolutPage('.orderLi','.jiuzhenDD');window.location.href = '#allJiuzhen.html?v=1134'">
+				<div class="layui-card">
+					<div class="layui-card-header">
+						初诊数
+						<span class="layui-badge layui-bg-green layuiadmin-badge dateIcon">月</span>
+					</div>
+					<div class="layui-card-body layuiadmin-card-list">
+
+						<p class="layuiadmin-big-font firstVisitRecordsCount"></p>
+						<p>
+							<span class="choosetime"></span>
+							<span class="layuiadmin-span-color"><i class="layui-icon"></i></span>
+						</p>
+					</div>
+				</div>
+			</div>
+			<div class="layui-col-sm3 layui-col-md3" onclick="toAbsolutPage('.orderLi','.jiuzhenDD');window.location.href = '#allJiuzhen.html?v=1134'">
+				<div class="layui-card">
+					<div class="layui-card-header">
+						复诊数
+						<span class="layui-badge layui-bg-green layuiadmin-badge dateIcon">月</span>
+					</div>
+					<div class="layui-card-body layuiadmin-card-list">
+
+						<p class="layuiadmin-big-font repeatVisitRecordsCount"></p>
+						<p>
+							<span class="choosetime"></span>
+                            <span class="layuiadmin-span-color"><i class="layui-icon"></i></span>
+						</p>
+					</div>
+				</div>
+			</div>
+			<div class="layui-col-sm3 layui-col-md3" onclick="toAbsolutPage('.orderLi','.jiuzhenDD');window.location.href = '#allJiuzhen.html?v=1134'">
+				<div class="layui-card">
+					<div class="layui-card-header">
+						到诊未成交数
+						<span class="layui-badge layui-bg-green layuiadmin-badge dateIcon">月</span>
+					</div>
+					<div class="layui-card-body layuiadmin-card-list">
+
+						<p class="layuiadmin-big-font"><span class="noDealVisitRecordsCount"></span><span style="float: right;font-size: 17px;margin-right: 3px" class="noDealVisitRecordsPercentCount"></span></p>
+						<p>
+							<span class="choosetime"></span>
+							<span class="layuiadmin-span-color"><i class="layui-icon">&#xe69c;</i></span>
+						</p>
+					</div>
+				</div>
+			</div>
+			<div class="layui-col-sm3 layui-col-md3" onclick="toAbsolutPage('.yuyueLi','.yuyueDD');window.location.href = '#appointmentList.html?v=1134'">
+				<div class="layui-card">
+					<div class="layui-card-header">
+						预约数
+						<span class="layui-badge layui-bg-green layuiadmin-badge dateIcon">月</span>
+					</div>
+					<div class="layui-card-body layuiadmin-card-list">
+
+						<p class="layuiadmin-big-font experienceReservationsCount"></p>
+						<p>
+							<span class="choosetime"></span>
+							<span class="layuiadmin-span-color"><i class="layui-icon">&#xe609;</i></span>
+						</p>
+					</div>
+				</div>
+			</div>
+			<div class="layui-col-sm3 layui-col-md3" onclick="toAbsolutPage('.orderLi','.jiezhenDD');window.location.href = '#jiezhenList.html?v=1134'">
+				<div class="layui-card">
+					<div class="layui-card-header">
+						总收入
+						<span class="layui-badge layui-bg-green layuiadmin-badge dateIcon">月</span>
+					</div>
+					<div class="layui-card-body layuiadmin-card-list">
+						<p class="layuiadmin-big-font totalAmountCount" style="font-size: 27px;"></p>
+						<p>
+							<span class="choosetime"></span>
+							<span class="layuiadmin-span-color"><i class="layui-icon">&#xe65e;</i></span>
+						</p>
+					</div>
+				</div>
+			</div>
+			<div class="layui-col-sm3 layui-col-md3" onclick="toAbsolutPage('.allRecordLi','.platfromRecordDD');window.location.href = '#platfromRecord.html?v=1134'">
+				<div class="layui-card">
+					<div class="layui-card-header">
+						客服回访量
+						<span class="layui-badge layui-bg-green layuiadmin-badge dateIcon">月</span>
+					</div>
+					<div class="layui-card-body layuiadmin-card-list">
+						<p class="layuiadmin-big-font">
+							<span class="accessCount"></span>
+							<!--<span style="float: right;margin-top: -9.2px;">
+							<span style="font-size: 13px;margin-right: 3px;line-height: 23px;display: block"
+								  class="advisoryNotPassPercentSpan">打回数：
+								<span class="advisoryNotPassCount"></span>
+							</span>
+							<span style="font-size: 13px;margin-right: 3px;line-height: 23px;display: block"
+								  class="advisoryNotPassPercentSpan">打回率：
+								<span class="advisoryNotPassPercent"></span></span>
+							</span>-->
+						</p>
+						<p>
+							<span class="choosetime"></span>
+
+							<span class="layuiadmin-span-color"><i class="layui-icon">&#xe606;</i></span>
+							<!--<span class="layuiadmin-span-color"><i class="layui-icon"></i></span>-->
+						</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+    <div style="border: 1px solid #cccccc;    margin-top: 15px;width: 94%;margin-left: 3%">
+        <blockquote class="layui-elem-quote news_search" style="    height: 40px;    margin-bottom: 0;;border-left: none">
+            <span style="font-size: 15px;line-height: 40px;">待处理事务</span>
+        </blockquote>
+        <table class="layui-table">
+            <thead>
+            <tr style="background-color: white">
+                <th style="min-height: 35px;line-height: 35px;">待处理预约项目（预约管理）（<span class="successLists" onclick="toAbsolutPage('.yuyueLi','.yuyueDD');window.location.href = '#appointmentList.html?v=1134'">10</span>）</th>
+                <th style="min-height: 35px;line-height: 35px;">待审核入诊（审核管理）（<span class="visitRecordLists" onclick="toAbsolutPage('.shenheLi','.shenheDD');window.location.href = '#checkVisitRecord.html?v=1134'">10</span>）</th>
+                <th style="min-height: 35px;line-height: 35px;">待分配数据（平台客户管理）（<span class="noGuestServiceLists" onclick="toAbsolutPage('.userLi','.userDD');window.location.href = '#allAllot.html?v=1134'">10</span>）</th>
+            </tr>
+            </thead>
+        </table>
+    </div>
+
+        <div class="layui-row layui-col-space15" style="width: 95.5%;margin-left: 2.4%;    margin-top: -2px;margin-bottom: 1px">
+            <div class="layui-col-sm6 layui-col-md6">
+                <div style="border: 1px solid #cccccc;    margin-top: 20px;">
+                    <blockquote class="layui-elem-quote news_search" style="    height: 40px;    margin-bottom: 0;;border-left: none">
+                        <span style="font-size: 15px;line-height: 40px;">快捷入口</span>
+                    </blockquote>
+                    <table class="layui-table">
+                        <thead>
+                        <tr style="background-color: white">
+                            <th style="min-height: 28px;line-height: 28px;"><a onclick="toAbsolutPage('.yuyueLi','.yuyueDD')" href="#appointmentList.html?v=1134"><p style="margin: 6px 0 -2px 0"><i style="font-size: 26px;" class="layui-icon">&#xe609;</i></p><p>预约项目</p></a></th>
+                            <th style="min-height: 28px;line-height: 28px;"><a onclick="toAbsolutPage('.orderLi','.orderDD')"  href="#allOrder.html?v=1134"><p style="margin: 6px 0 -2px 0"><i style="font-size: 26px;" class="layui-icon">&#xe63c;</i></p><p>订单列表</p></a></th>
+                            <th style="min-height: 28px;line-height: 28px;"><a onclick="toAbsolutPage('.jiuzhenLi','.jiuzhenDD')" href="#allJiuzhen.html?v=1134"><p style="margin: 6px 0 -2px 0"><i style="font-size: 26px;" class="layui-icon">&#xe705;</i></p><p>就诊记录</p></a></th>
+                            <th style="min-height: 28px;line-height: 28px;"><a onclick="toAbsolutPage('.projectLi','.projectDD')" href="#allProject.html?v=1134"><p style="margin: 6px 0 -2px 0"><i style="font-size: 26px;" class="layui-icon">&#xe654;</i></p><p>添加项目</p></a></th>
+                        </tr>
+                        </thead>
+                    </table>
+                </div>
+            </div>
+            <div class="layui-col-sm6 layui-col-md6">
+                <div style="border: 1px solid #cccccc;    margin-top: 20px;">
+                    <blockquote class="layui-elem-quote news_search" style="    height: 40px;    margin-bottom: 0;border-left: none">
+                        <span style="font-size: 15px;line-height: 40px;">项目总览</span>
+                    </blockquote>
+                    <table class="layui-table">
+                        <thead>
+                        <tr style="background-color: white">
+                            <th style="min-height: 28px;line-height: 28px;cursor: pointer" onclick="toAbsolutPage('.projectLi','.projectDD');window.location.href = '#allProject.html?v=1134'"><p class="projectCount pass">0</p><p>已上架</p></th>
+                            <th style="min-height: 28px;line-height: 28px;cursor: pointer" onclick="toAbsolutPage('.projectLi','.projectDD');window.location.href = '#allProject.html?v=1134'"><p class="projectCount notpass">0</p><p>已下架</p></th>
+                            <th style="min-height: 28px;line-height: 28px;cursor: pointer" onclick="toAbsolutPage('.projectLi','.projectDD');window.location.href = '#allProject.html?v=1134'"><p class="projectCount unchecked">0</p><p>待审核</p></th>
+                            <th style="min-height: 28px;line-height: 28px;cursor: pointer" onclick="toAbsolutPage('.projectLi','.projectDD');window.location.href = '#allProject.html?v=1134'"><p class="projectCount allSpecialProduct">0</p><p>全部商品</p></th>
+                        </tr>
+                        </thead>
+                    </table>
+                </div>
+            </div>
+        </div>
+	<div style="width: 96%;margin-left: 2.1%;height: 930px">
+		<div class="layui-fluid" style="padding: 11px;padding-top: 2px">
+			<div class="layui-col-sm12" style="margin-top: 13px;">
+				<blockquote class="layui-elem-quote news_search" style="    height: 40px;    margin-bottom: 0;    border: 1px solid #cccccc;border-bottom: 0">
+					<span style="font-size: 15px;line-height: 40px;">订单统计</span>
+				</blockquote>
+				<div class="layui-card" style="border: 1px solid #cccccc;margin-bottom: 25px">
+					<div class="layui-card-body">
+						<div class="layui-row">
+							<div class="layui-col-sm12 layui-col-md12" style="padding: 3px;">
+								<!--<div class="layui-carousel layadmin-carousel layadmin-dataview" style="width: 100%; height: 280px;">
+									<div id="LAY-index-pagetwo">
+
+									</div>
+								</div>-->
+								<div class="layui-card">
+									<div class="layui-card-header">
+										<span class="dateAfterSevenAdvoisy"></span>
+										<span class="layui-badge layui-bg-cyan layuiadmin-badge">周</span>
+									</div>
+									<div class="layui-card-body layuiadmin-card-list" style="padding: 5px;">
+
+										<div id="adviosyEcharts" style="height: 300px;width: 100%">
+
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<blockquote class="layui-elem-quote news_search" style="    height: 40px;    margin-bottom: 0;    border: 1px solid #cccccc;border-bottom: 0">
+					<span style="font-size: 15px;line-height: 40px;">就诊统计</span>
+				</blockquote>
+				<div class="layui-card" style="border: 1px solid #cccccc;">
+					<div class="layui-card-body">
+						<div class="layui-row">
+							<div class="layui-col-sm12 layui-col-md12" style="padding: 3px;">
+								<div class="layui-card">
+									<div class="layui-card-header">
+										<span class="dateAfterSevenAccess"></span>
+										<span class="layui-badge layui-bg-cyan layuiadmin-badge">周</span>
+									</div>
+									<div class="layui-card-body layuiadmin-card-list" style="padding: 5px;">
+
+										<div id="accessEcharts" style="height: 300px;width: 100%">
+
+										</div>
+									</div>
+								</div>
+							</div>
+
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+</div>
+<script type="text/javascript" src="js/qrcode/echarts.common.min.js"></script>
+	<script type="text/javascript" src="js/allSize.js?v=222"></script>

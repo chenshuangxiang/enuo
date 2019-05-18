@@ -1,0 +1,104 @@
+
+	<link rel="stylesheet" href="css/news.css" media="all" />
+<body class="childrenBody">
+<div class="big">
+	<div class="layui-card-header">
+		<span class="layui-breadcrumb" style="visibility: visible;">
+			<span>您的位置：</span>
+  			<a onclick="toIndexPage()" href="#allSize.html?v=1134">首页</a><span lay-separator="">/</span>
+  			<a onclick="toAbsolutPage('.templateLi','.templateDD')" href="#allMateTemplate.html?v=1134">模板管理</a><span lay-separator="">/</span>
+  			<a href=""><cite>约定病种模板</cite></a>
+		</span>
+	</div>
+	<blockquote class="layui-elem-quote news_search" style="border: 1px solid #cccccc;background-color: white;padding: 0;width: 94%;margin: 15px 0 40px 3%">
+		<div class="layui-layer-title" style="cursor: move;background-color: #dedede">筛选查询</div>
+		<form class="layui-form">
+			<div class="layui-form-item">
+				<div class="layui-inline">
+					<label class="layui-form-label">关键字</label>
+					<div class="layui-input-inline">
+						<input type="text" value="" placeholder="搜索模板关键字" class="layui-input search_input newsName">
+					</div>
+				</div>
+				<!--<div class="layui-inline">
+					<label class="layui-form-label">联系方式</label>
+					<div class="layui-input-inline">
+						<input type="number" name="phone" lay-verify="required|phone" autocomplete="off" class="layui-input mobile" placeholder="根据联系方式筛选">
+					</div>
+				</div>-->
+				<!--<div class="layui-inline">
+					<label class="layui-form-label">专业职称</label>
+					<div class="layui-input-inline">
+						<select name="docLevel" class="docLevel" lay-filter="docLevel" lay-search="">
+							<option value="">根据专业职称筛选</option>
+						</select>
+					</div>
+				</div>-->
+
+
+				<div class="layui-inline" style="margin-left: 42px">
+					<a class="layui-btn search_btn">查询</a>
+				</div>
+				<div class="layui-inline" style="margin-left: 42px">
+					<a class="layui-btn layui-btn-normal addTemplateOne">添加模板</a>
+				</div>
+				<div class="layui-inline" style="margin-left: 42px" onclick="window.open(SERVER_ADDR + '/hosAdmin/allTemplate.xlsx')">
+					<a class="layui-btn layui-btn-normal" id="loadTemplate">下载规范模板</a>
+				</div>
+				<div class="layui-inline" style="margin-left: 42px">
+					<a class="layui-btn layui-btn-normal" id="addTemplate"><i class="layui-icon"></i>上传模板</a>
+				</div>
+			</div>
+		</form>
+
+
+
+
+	<!--	<div class="layui-inline">
+			<a class="layui-btn recommend" style="background-color:#5FB878">推荐文章</a>
+		</div>
+		<div class="layui-inline">
+			<a class="layui-btn audit_btn">审核文章</a>
+		</div>
+		<div class="layui-inline">
+			<a class="layui-btn layui-btn-danger batchDel">批量删除</a>
+		</div>-->
+	<!--	<div class="layui-inline">
+			<div class="layui-form-mid layui-word-aux">本页面刷新后除新添加的文章外所有操作无效，关闭页面所有数据重置</div>
+		</div>-->
+	</blockquote>
+
+	<div class="layui-form news_list" style="border: 1px solid #cccccc;width: 94%;margin-left: 3%">
+		<div class="layui-layer-title" style="cursor: move;;background-color: #dedede">数据列表</div>
+	  	<table class="layui-table">
+		    <!--<colgroup>
+				<col>
+				<col>
+				<col>
+				<col>
+				<col>
+				<col>
+		    </colgroup>-->
+		    <thead>
+				<tr>
+					<!--<th><input type="checkbox" name="" lay-skin="primary" lay-filter="allChoose" id="allChoose"></th>-->
+					<th width="20%">项目名称</th>
+					<!--<th>费用类别</th>
+					<th>品名</th>
+					<th>规格</th>
+					<th>单位</th>
+					<th>原价</th>
+					<th>约定价格</th>
+					<th>数量</th>-->
+					<th width="9%">约定天数</th>
+					<th width="56%">约定疗效</th>
+					<th width="15%">操作</th>
+				</tr> 
+		    </thead>
+		    <tbody class="news_content"></tbody>
+		</table>
+	</div>
+	<div id="page"></div>
+</div>
+
+	<script type="text/javascript" src="js/allTemplate.js"></script>

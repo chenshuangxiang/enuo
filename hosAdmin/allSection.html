@@ -1,0 +1,209 @@
+
+	<link rel="stylesheet" href="css/news.css" media="all" />
+	<style>
+		.csx{
+			margin-bottom: 10px;
+		}
+		.renwu_mainmenu {
+			position: relative;
+			width: 97%;
+			margin-left: 12px;
+		}
+		.renwu_mainmenu > li {
+			background-position: 51% 0%;
+			background-size: 88% 100%;
+			height: 40px;
+			clear: both;
+margin-bottom: 1px;
+			line-height: 40px;
+			text-align: left;
+			padding-left: 20px;
+			background-color: #f3f3f3;
+			box-sizing: border-box;
+			position: relative;
+			border-top: 0;
+			border-top: 1px solid white;
+			font-size: 12px;
+			color: #222;
+		}
+		.zhankai {
+			float: right;
+			/* margin-right: 49px; */
+			cursor: pointer;
+			margin-right: 3px;
+			color: #939393
+		}
+		.submenu2 {
+			margin-bottom: 10px;
+
+			display: none;
+		}
+		.submenu2 li {
+			width: 800px;
+			margin-left: 32px;
+			color: #3e3e3e;
+			line-height: 40px;
+			height: 40px;
+			position: relative;
+		}
+		.staffname{
+			margin-left: 8px;margin-right: 20px;color:#6f6f6f;font-size: 13.5px
+		}
+		.bianji span{
+			color: #1E9FFF;
+			cursor: pointer;
+		}
+	</style>
+<body class="childrenBody">
+<div class="big">
+	<div class="layui-card-header">
+		<span class="layui-breadcrumb" style="visibility: visible;">
+			<span>您的位置：</span>
+  			<a onclick="toIndexPage()" href="#allSize.html?v=1134">首页</a><span lay-separator="">/</span>
+  			<a onclick="toAbsolutPage('.shenheLi','.docDD')" href="#allDoc.html?v=1134">部门管理</a><span lay-separator="">/</span>
+  			<a href=""><cite>员工列表</cite></a>
+		</span>
+	</div>
+	<blockquote class="layui-elem-quote news_search"  style="border: 1px solid #cccccc;background-color: white;padding: 0;width: 94%;margin: 15px 0 40px 3%">
+		<div class="layui-layer-title" style="cursor: move;background-color: #dedede">筛选查询</div>
+		<form class="layui-form">
+			<div class="layui-form-item">
+				<div class="layui-inline">
+					<label class="layui-form-label">关键词</label>
+					<div class="layui-input-inline">
+						<input type="text" value="" placeholder="请输入姓名/手机号" class="layui-input search_input newsName">
+					</div>
+				</div>
+				<!--<div class="layui-inline">
+					<label class="layui-form-label">联系方式</label>
+					<div class="layui-input-inline">
+						<input type="number" name="phone" lay-verify="required|phone" autocomplete="off" class="layui-input mobile" placeholder="根据联系方式筛选">
+					</div>
+				</div>-->
+				<!--<div class="layui-inline">
+					<label class="layui-form-label">咨询时间</label>
+					<div class="layui-input-inline">
+						<input type="text" class="layui-input newsTime" id="newsTime" placeholder="根据咨询时间筛选">
+					</div>
+
+				</div>-->
+				<!--<div class="layui-inline" style="margin-left: 42px">
+					<a class="layui-btn addSection">添加部门</a>
+				</div>-->
+				<div class="layui-inline" style="margin-left: 15px">
+					<a class="layui-btn search_btn">查询</a>
+				</div>
+				<div class="layui-inline" style="margin-left: 25px">
+					<a class="layui-btn layui-btn-normal addPeople">添加员工</a>
+				</div>
+				<div class="layui-inline" style="margin-left: 70px">
+					<a class="layui-btn layui-btn-normal" style="height: 35px;line-height: 35px;" href="#allSection.html?v=1134">已启用账户</a>
+				</div>
+				<div class="layui-inline" style="margin-left: 10px">
+					<a class="layui-btn layui-btn-normal" href="#allSectionStop.html?v=1134" style="height: 35px;line-height: 35px;border: 1px solid #1E9FFF;background-color: white;color: #1E9FFF">已停用账户</a>
+				</div>
+			</div>
+			<div class="sectionOpen" style="display: none;    margin-top: 20px;">
+			<div class="layui-form-item">
+				<div class="layui-inline">
+					<label class="layui-form-label">部门名称</label>
+					<div class="layui-input-inline">
+						<input type="text" value="" placeholder="请输入新增部门名称" class="layui-input search_input addSctionInput">
+					</div>
+				</div>
+			</div>
+				<input type="button" class="layui-btn layui-btn-lg" onclick="addSctionOpenBtn()" style="margin: 15px 0 0 120px;width: 107px" value="确 定"/>
+			</div>
+			<div class="resetPsdOpen" style="display: none;    margin-top: 20px;">
+				<div class="layui-form-item">
+					<label class="layui-form-label">员工密码</label>
+					<div class="layui-input-inline">
+						<input type="text" value="123456" style="background-color: #efefef" disabled  placeholder="" class="layui-input search_input resetPsdOpenInput">
+					</div>
+					<input type="button" class="layui-btn layui-btn-lg resetPsdOpenBtn" onclick="resetPsdOpenBtn()" style="margin: 15px 0 0 120px;width: 107px" value="确 定"/>
+				</div>
+			</div>
+			<div class="resetSyPsdOpen" style="display: none;    margin-top: 20px;">
+				<div class="layui-form-item">
+					<label class="layui-form-label">收银密码</label>
+					<div class="layui-input-inline">
+						<input type="text" value="654321" style="background-color: #efefef" disabled  placeholder="" class="layui-input search_input resetSyPsdOpenInput">
+					</div>
+					<input type="button" class="layui-btn layui-btn-lg resetSyPsdOpenBtn" onclick="resetSyPsdOpenBtn()" style="margin: 15px 0 0 120px;width: 107px" value="确 定"/>
+				</div>
+			</div>
+		</form>
+
+
+
+
+	<!--	<div class="layui-inline">
+			<a class="layui-btn recommend" style="background-color:#5FB878">推荐文章</a>
+		</div>
+		<div class="layui-inline">
+			<a class="layui-btn audit_btn">审核文章</a>
+		</div>
+		<div class="layui-inline">
+			<a class="layui-btn layui-btn-danger batchDel">批量删除</a>
+		</div>-->
+	<!--	<div class="layui-inline">
+			<div class="layui-form-mid layui-word-aux">本页面刷新后除新添加的文章外所有操作无效，关闭页面所有数据重置</div>
+		</div>-->
+	</blockquote>
+	<!--<div class="layui-collapse" lay-filter="fadeIn" style="margin-left: 7px;    margin-bottom: 10px;">
+
+		<div class="layui-colla-item">
+			<h2 class="layui-colla-title"><span class="span"></span>
+				&lt;!&ndash;<label style="float: right"><span>首诊咨询：<span class="firstAdvisory"></span></span><span class="changeConsult">咨询变更信息</span></label>&ndash;&gt;</h2>
+			<div class="layui-colla-content layui-show">
+				<p></p>
+			</div>
+		</div>
+	</div>-->
+	<form class="layui-form">
+	<div class="layui-form news_list" style="border: 1px solid #cccccc;width: 94%;margin-left: 3%">
+		<div class="layui-layer-title" style="cursor: move;;background-color: #dedede">数据列表</div>
+		<div class="tbody"></div>
+	  <!--	<table class="layui-table">
+		    <colgroup>
+				&lt;!&ndash;<col><col>
+				<col width="10%">
+				<col width="9%">
+				<col width="10%">
+				<col width="10%">
+				<col width="11%">
+				<col width="8%">&ndash;&gt;
+		    </colgroup>
+		    <thead>
+				<tr>
+					&lt;!&ndash;<th><input type="checkbox" name="" lay-skin="primary" lay-filter="allChoose" id="allChoose"></th>&ndash;&gt;
+					<th>患者姓名</th>
+					<th>联系方式</th>
+					<th>疾病</th>
+					<th>分诊时间</th>
+					<th>操作</th>
+				</tr> 
+		    </thead>
+		    <tbody class="news_content"></tbody>
+		</table>-->
+		<table class="layui-table">
+		<thead>
+		<tr>
+			<td>成员账号</td>
+			<td>姓名</td>
+			<td>联系方式</td>
+			<td>所属部门</td>
+			<td>是否启用</td>
+			<td>操作</td>
+			</tr>
+		</thead>
+		<tbody class="tbodytable">
+
+		</tbody>
+		</table>
+	</div>
+	</form>
+	<div id="page"></div>
+</div>
+
+	<script type="text/javascript" src="js/allSection.js?v=1134"></script>

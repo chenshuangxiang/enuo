@@ -1,0 +1,38 @@
+.layui-card-body {
+    position: relative;
+    padding: 10px 15px;
+    line-height: 24px;
+}
+.layuiadmin-card-list {
+    padding: 12px;
+}
+.layui-card:last-child {
+    margin-bottom: 0;
+}
+.layui-card {
+    margin-bottom: 15px;
+    border-radius: 2px;
+    background-color: #fff;
+    box-shadow: 0 1px 2px 0 rgba(0,0,0,.05);
+}
+.layuiadmin-card-list p.layuiadmin-big-font {
+    font-size: 30px;
+    color: #666;
+    line-height: 36px;
+    padding: 5px 0 5px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    word-break: break-all;
+    white-space: nowrap;
+}
+.layuiadmin-span-color {
+    font-size: 14px;
+}
+.layuiadmin-badge, .layuiadmin-btn-group, .layuiadmin-span-color {
+    position: absolute;
+    right: 15px;
+}
+.layuiadmin-badge{
+    border-radius: 2px;
+    top: 20%;
+}

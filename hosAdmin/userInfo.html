@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>文章列表--e诺分诊后台管理</title>
+	<meta name="renderer" content="webkit">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="format-detection" content="telephone=no">
+	<link rel="stylesheet" href="layui/css/layui.css" media="all" />
+	<link rel="stylesheet" href="css/font_eolqem241z66flxr.css" media="all" />
+	<link rel="stylesheet" href="css/news.css" media="all" />
+</head>
+<style>
+	@media screen and (max-width: 988px){
+		.userBaseInfo {
+
+		}
+	}
+	@media screen and (min-width: 988px){
+		.userBaseInfo {
+
+		}
+	}
+
+	.col {
+		padding: 0 1% 7px 1.5%;
+	}
+    .userName{
+        margin: 10px 0 6px 6px;
+        font-size: 19px
+    }
+    .userBaseInfoP{
+        line-height: 36px;
+        height: 36px;
+        font-size: 14px;
+        color: #666;
+        border-bottom: 1px solid #e2e2e2;
+    }
+	.news_content tr td,.news_content_family  tr td{
+		text-align: left;
+	}
+	.userVisitRocordData td,.userOrderPlatformData td{
+		padding: 3px 6px;
+	}
+</style>
+<body class="childrenBody">
+<div class="layui-fluid" style="margin-top: 13px">
+
+
+	<div class="layui-col-md2" style="margin-bottom: 20px">
+			<div class="layui-colla-item" style="border: 1px solid #e2e2e2;    max-width: 168px;">
+					<img class="headImgUrl" style="width: 80%;margin: 10%" src="https://www.enuo120.com/upload/image/201712/21/hJiK53iGrvPoaZuhCHu.png">
+			</div>
+            <p class="userName"></p>
+            <div class="userBaseInfo" style="margin: 0 1px 0 5px;">
+				<!--<p class="userBaseInfoP">姓名：<span class="userName"></span></p>-->
+                <p class="userBaseInfoP">联系方式：<span class="userMobile"></span></p>
+                <p class="userBaseInfoP">性别：<span class="userSex"></span></p>
+                <p class="userBaseInfoP">年龄：<span class="userAge"></span></p>
+                <p class="userBaseInfoP">地址：<span class="userAddress"></span></p>
+            </div>
+	</div>
+	<div class="layui-col-md10">
+		<div class="row" style="clear: both;">
+			<div class="col">
+				<!--<blockquote class="layui-elem-quote title" style="margin-bottom: 0;padding: 16px 15px;background: none;border: none;">
+                    &lt;!&ndash;<input type="button" class="layui-btn layui-btn-normal news_record_add" style="float: right;width: 107px;    margin-top: -8px;"
+    value="添加回访"/>&ndash;&gt;
+                </blockquote>-->
+				<div class="layui-tab" style="margin-top: 0">
+					<ul class="layui-tab-title">
+						<li class="baseInfo layui-this">基本信息</li>
+						<li class="userAdviosyInfo" onclick="Get.adviosyInfo()">咨询信息</li>
+						<li class="userAccessInfo" onclick="Get.accessInfo();Get.accessHosInfo()">回访信息</li>
+						<li class="userReservationInfo" onclick="Get.reservationInfo()">预约信息</li>
+                        <li class="userVisitRocordInfo" onclick="Get.visitRecordInfo()">就诊信息</li>
+                        <li class="userOrderInfo" onclick="Get.orderInfo()">订单信息</li>
+                        <li class="userMoneyInfo" onclick="Get.moneyPayInfo();Get.moneyInfo()">收费信息</li>
+						<li class="userDiseaseCourseRecordInfo" onclick="Get.DiseaseDoctorHelpmateCourseRecord();Get.DiseaseCourseRecord()">病程记录</li>
+					</ul>
+					<div class="layui-tab-content" style="padding: 5px 0 0 0;">
+						<div class="layui-tab-item layui-show">
+                            <div class="layui-layer-title" style="cursor: move;;background-color: #dedede;margin-top: 13px">基本信息</div>
+							<table class="layui-table" style="margin-top: 0">
+								<tbody class="news_content"></tbody>
+							</table>
+                            <div class="layui-layer-title" style="cursor: move;;background-color: #dedede;margin-top: 23px">家庭成员</div>
+                            <table class="layui-table" style="margin-top: 0">
+                                <tbody class="news_content_family"></tbody>
+                            </table>
+						</div>
+						<div class="layui-tab-item">
+							<div class="layui-layer-title" style="cursor: move;;background-color: #dedede;margin-top: 13px">咨询信息</div>
+							<table class="layui-table" style="margin-top: 0">
+								<thead>
+								<tr>
+									<th>咨询时间</th>
+									<th>咨询医院</th>
+									<th>咨询病种</th>
+									<th>来源</th>
+									<th>诉求</th>
+									<th>咨询员</th>
+									<th>分诊状态</th>
+									<th>回访状态</th>
+									<th>下次回访时间</th>
+									<!--操作-->
+								</tr>
+								</thead>
+								<tbody class="userAdviosyInfoData"></tbody>
+							</table>
+						</div>
+						<div class="layui-tab-item">
+							<div class="layui-layer-title" style="cursor: move;;background-color: #dedede;margin-top: 13px">回访信息</div>
+							<div class="layui-tab layui-tab-card" style="margin-top: 0">
+								<ul class="layui-tab-title" style="width: 280px;margin: -42px 0 -4px 110px;">
+									<li class="layui-this">全部</li>
+									<li class="platformAccess" onclick="Get.accessInfo('platform')">平台</li>
+									<li class="hospitalAccess" onclick="Get.accessInfo('hospital')">医院</li>
+								</ul>
+								<div class="layui-tab-content" style="padding: 5px 0 0 0;">
+									<div class="layui-tab-item layui-show">
+										<table class="layui-table"  style="margin-top: 0">
+											<thead>
+											<tr>
+												<th>回访时间</th>
+												<th>回访客服</th>
+												<th>医院状态</th>
+												<th>客服状态</th>
+												<th>下次回访时间</th>
+												<th width="30%">回访内容</th>
+												<th>咨询病种</th>
+												<th>咨询时间</th>
+											</tr>
+											</thead>
+											<tbody class="userAccessInfoData"></tbody>
+										</table>
+									</div>
+									<div class="layui-tab-item">
+										<table class="layui-table" style="margin-top: 0">
+											<thead>
+											<tr>
+												<th>回访时间</th>
+												<th>平台回访客服</th>
+												<th>平台客服回访状态</th>
+												<th>下次回访时间</th>
+												<th width="30%">平台回访内容</th>
+												<th>咨询病种</th>
+												<th>咨询时间</th>
+											</tr>
+											</thead>
+											<tbody class="userAccessPlatfromInfoData"></tbody>
+										</table>
+									</div>
+									<div class="layui-tab-item"><table class="layui-table"  style="margin-top: 0">
+										<thead>
+										<tr>
+											<th>回访时间</th>
+											<th>医院回访客服</th>
+											<th>医院客服回访状态</th>
+											<th>下次回访时间</th>
+											<th width="30%">医院回访内容</th>
+											<th>咨询病种</th>
+											<th>咨询时间</th>
+										</tr>
+										</thead>
+										<tbody class="userAccessHospitalInfoData"></tbody>
+									</table></div>
+								</div>
+							</div>
+						</div>
+						<div class="layui-tab-item">
+							<div class="layui-layer-title" style="cursor: move;;background-color: #dedede;margin-top: 13px">体验券预约信息</div>
+							<table class="layui-table" style="margin-top: 0">
+								<thead>
+								<tr>
+									<th>项目名称</th>
+									<th>项目来源</th>
+									<th>项目分类</th>
+									<th>预约时间</th>
+									<th>医院</th>
+									<th>预约状态</th>
+									<!--操作-->
+								</tr>
+								</thead>
+								<tbody class="userReservationInfoCouponData"></tbody>
+							</table>
+							<div class="layui-layer-title" style="cursor: move;;background-color: #dedede;margin-top: 23px">项目预约信息</div>
+							<table class="layui-table" style="margin-top: 0">
+								<thead>
+								<tr>
+									<th>项目名称</th>
+									<th>项目来源</th>
+									<th>项目类型</th>
+									<th>项目分类</th>
+									<th>预约时间</th>
+									<th>医院</th>
+									<th>预约状态</th>
+									<!--操作-->
+								</tr>
+								</thead>
+								<tbody class="userReservationInfoProjectData"></tbody>
+							</table>
+							<div class="layui-layer-title" style="cursor: move;;background-color: #dedede;margin-top: 23px">护理卡预约信息</div>
+							<table class="layui-table" style="margin-top: 0">
+								<thead>
+								<tr>
+									<th>项目名称</th>
+									<th>项目来源</th>
+									<th>项目类型</th>
+									<th>项目分类</th>
+									<th>预约时间</th>
+									<th>医院</th>
+									<th>预约状态</th>
+									<!--操作-->
+								</tr>
+								</thead>
+								<tbody class="userReservationInfoNursingCardData"></tbody>
+							</table>
+							<div class="layui-layer-title" style="cursor: move;;background-color: #dedede;margin-top: 23px">医生预约信息</div>
+							<table class="layui-table" style="margin-top: 0">
+								<thead>
+								<tr>
+									<th>预约医生</th>
+									<th>预约科室</th>
+									<th>职称</th>
+									<th>预约时间</th>
+									<th>医院</th>
+									<th>预约状态</th>
+									<!--操作-->
+								</tr>
+								</thead>
+								<tbody class="userReservationInfoDoctorData"></tbody>
+							</table>
+						</div>
+						<div class="layui-tab-item">
+							<div class="layui-layer-title" style="cursor: move;;background-color: #dedede;margin-top: 13px">就诊信息</div>
+							<table class="layui-table" style="margin-top: 0">
+								<thead>
+								<tr>
+									<th>就诊时间</th>
+									<th>项目分类</th>
+									<th>项目名称</th>
+									<th>病种</th>
+									<th>就诊号</th>
+									<th>就诊状态</th>
+									<th>就诊清单</th>
+									<th>备注内容</th>
+									<th>渠道来源</th>
+									<th>医院</th>
+									<th>预约医生</th>
+									<th>现场咨询</th>
+									<th>价钱费用</th>
+									<th>护理</th>
+									<th>客服</th>
+									<th>入诊</th>
+									<th>初复诊</th>
+									<th>诊断</th>
+									<!--操作-->
+								</tr>
+								</thead>
+								<tbody class="userVisitRocordData"></tbody>
+							</table>
+						</div>
+
+						<div class="layui-tab-item">
+							<div class="layui-layer-title" style="cursor: move;;background-color: #dedede;margin-top: 13px">平台订单</div>
+							<table class="layui-table" style="margin-top: 0;">
+								<thead>
+								<tr>
+									<th>订单编号</th>
+									<th width="15%">下单时间</th>
+									<th width="14%">项目名称</th>
+									<th>项目类别</th>
+									<th>项目类型</th>
+									<th>项目分类</th>
+									<!--<th>约定病种</th>-->
+									<th>已支付金额 / 总金额</th>
+									<th>订单状态</th>
+								</tr>
+								</thead>
+								<tbody class="userOrderPlatformData"></tbody>
+							</table>
+							<div class="layui-layer-title" style="cursor: move;;background-color: #dedede;margin-top: 23px">医院订单</div>
+							<table class="layui-table" style="margin-top: 0;">
+								<thead>
+								<tr>
+									<th>订单编号</th>
+									<th>下单时间</th>
+									<th>约定病种</th>
+									<th>已支付金额 / 总金额</th>
+									<th>订单状态</th>
+								</tr>
+								</thead>
+								<tbody class="userOrderHospitalData"></tbody>
+							</table>
+						</div>
+						<div class="layui-tab-item">
+							<div class="layui-layer-title" style="cursor: move;;background-color: #dedede;margin-top: 13px">缴费记录</div>
+							<table class="layui-table" style="margin-top: 0;">
+								<thead>
+								<tr>
+									<th>支付时间</th>
+									<th>病种</th>
+									<th>就诊号</th>
+									<th>来源</th>
+									<!--<th>初复诊</th>-->
+									<th>前台</th>
+									<th>现场咨询</th>
+									<th>医生</th>
+									<th>护理</th>
+									<!--<th>状态</th>-->
+									<th>支付方式</th>
+									<th>支付金额</th>
+									<th>支付备注</th>
+								</tr>
+								</thead>
+								<tbody class="userMoneyUserofflinePayData"></tbody>
+							</table>
+							<div class="layui-layer-title" style="cursor: move;;background-color: #dedede;margin-top: 13px">治疗费用</div>
+							<table class="layui-table" style="margin-top: 0;">
+								<thead>
+								<tr>
+									<th>就诊时间</th>
+									<th>病种</th>
+									<th>就诊号</th>
+									<th>总费用</th>
+									<th>欠款</th>
+								</tr>
+								</thead>
+								<tbody class="userMoneyUserofflineData"></tbody>
+							</table>
+							<div class="layui-layer-title" style="cursor: move;;background-color: #dedede;margin-top: 23px">挂号费用</div>
+							<table class="layui-table" style="margin-top: 0;">
+								<thead>
+								<tr>
+									<th>就诊时间</th>
+									<th>挂号科室</th>
+									<th>就诊号</th>
+									<th>总费用</th>
+									<th>欠款</th>
+								</tr>
+								</thead>
+								<tbody class="userOrderGuahaoData"></tbody>
+							</table>
+						</div>
+						<div class="layui-tab-item">
+							<div class="layui-layer-title" style="cursor: move;;background-color: #dedede;margin-top: 13px">现场咨询记录信息</div>
+							<table class="layui-table" style="margin-top: 0">
+								<thead>
+								<tr>
+									<th width="33%">添加时间</th>
+									<th>病程记录内容</th>
+									<!--<th>添加人</th>-->
+									<!--操作-->
+								</tr>
+								</thead>
+								<tbody class="userDiseaseCourseDoctorHelpmateRecordData"></tbody>
+							</table>
+							<div class="layui-layer-title" style="cursor: move;;background-color: #dedede;margin-top: 13px">病程记录信息</div>
+							<table class="layui-table" style="margin-top: 0">
+								<thead>
+								<tr>
+									<th>添加时间</th>
+									<th>记录类型</th>
+									<th>病程记录内容</th>
+									<!--操作-->
+								</tr>
+								</thead>
+								<tbody class="userDiseaseCourseRecordData"></tbody>
+							</table>
+						</div>
+					</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+<div class="changeOpen" style="display: none;">
+	<table class="layui-table" style="margin-top: 0;">
+		<colgroup>
+			<!--<col width="50"><col>-->
+			<!--<col width="19%"><col>
+            <col width="9%"><col>
+            <col width="9%"><col>
+            &lt;!&ndash;<col width="9%">&ndash;&gt;
+            &lt;!&ndash;<col width="9%">
+            <col width="9%">&ndash;&gt;
+            <col width="9%"><col>-->
+		</colgroup>
+		<thead>
+		<tr>
+			<!--<th></th>-->
+			<th>咨询时间</th>
+			<th>咨询客服</th>
+			<!--<th>疾病</th>-->
+			<!--<th>来源</th>-->
+			<!--<th>客服</th>
+            <th>病种</th>
+            <th>分诊医院</th>-->
+			<!--<th>回访内容</th>-->
+			<!--<th>操作</th>-->
+		</tr>
+		</thead>
+		<tbody class="news_contentAdvisoryChange"></tbody>
+	</table>
+</div>
+<!--	<div id="page"></div>-->
+<script type="text/javascript" src="js/jquery-1.11.3.js"></script>
+<script type="text/javascript" src="js/common.js?v=1134"></script>
+<script type="text/javascript" src="layui/layui.js"></script>
+<script type="text/javascript" src="js/staticFunc.js"></script>
+<script type="text/javascript" src="js/userInfo.js"></script>
+</body>
+</html>

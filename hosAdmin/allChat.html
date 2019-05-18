@@ -1,0 +1,51 @@
+
+	<link rel="stylesheet" href="css/news.css" media="all" />
+	<style>
+		.new{
+			display: inline-block;
+			width: 8px;
+			height: 8px;
+			border-radius: 50%;
+			background-color: #ff9900;
+			position: absolute;
+			top: 10px;
+			right: 6px;
+		}
+	</style>
+<body class="childrenBody">
+<div class="big">
+	<div class="layui-card-header">
+		<span class="layui-breadcrumb" style="visibility: visible;">
+			<span>您的位置：</span>
+  			<a onclick="toIndexPage()" href="#allSize.html?v=1134">首页</a><span lay-separator="">/</span>
+  			<a onclick="toAbsolutPage('.infoLi','.infoDD')" href="#allChat.html?v=1134">消息管理</a><span lay-separator="">/</span>
+  			<a href=""><cite>医院消息</cite></a>
+		</span>
+	</div>
+	<div class="layui-form news_list" style="border: 1px solid #cccccc;width: 94%;margin: 15px 0 40px 3%;">
+		<div class="layui-layer-title" style="cursor: move;;background-color: #dedede">数据列表</div>
+	  	<table class="layui-table">
+		    <!--<colgroup>
+				<col>
+				<col>
+				<col>
+				<col>
+				<col>
+				<col>
+		    </colgroup>-->
+		    <thead>
+				<tr>
+					<th>姓名</th>
+					<th  width="50%">消息</th>
+					<!--<th>接收人</th>-->
+					<th>最后消息时间</th>
+					<th>操作</th>
+				</tr> 
+		    </thead>
+		    <tbody class="news_content"></tbody>
+		</table>
+	</div>
+	<div id="page"></div>
+</div>
+
+	<script type="text/javascript" src="js/allChat.js"></script>

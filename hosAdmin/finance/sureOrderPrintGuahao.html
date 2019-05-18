@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>财务项目打印单</title>
+	<meta name="renderer" content="webkit">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="format-detection" content="telephone=no">
+	<link rel="stylesheet" href="../layui/css/layui.css" media="all" />
+	<link rel="stylesheet" href="../css/font_eolqem241z66flxr.css" media="all" />
+	<link rel="stylesheet" href="../css/photoTable.css" media="all" />
+	<link rel="stylesheet" href="../css/news.css" media="all" />
+</head>
+<style>
+	.childrenBody .layui-inline{ margin:5px 5px 5px 0; }
+	.layui-table-view .layui-table{
+		width: 100%;
+	}
+	.layui-form-label{
+		padding:0 5px;
+	}
+	.childrenBody .layui-inline{
+		margin: 2px 5px 2px 0;
+	}
+	.layui-form-item .layui-input-inline{
+		width: 120px;
+	}
+	.shijiaoDiv div{
+		float: right;margin: 0 15px 0 0;display: none
+	}
+</style>
+<body class="childrenBody">
+	<div class="row" style="clear: both;">
+		<!--startprint-->
+		<div class="col">
+			<form class="layui-form">
+				<div class="layui-form-item" style="    margin-top: 10px;">
+					<div class="layui-inline">
+						<label class="layui-form-label">姓名：</label>
+						<div class="layui-input-inline userName" style="width: 60px;margin-right: 0;"></div>
+					</div>
+					<div class="layui-inline">
+						<label class="layui-form-label">联系方式：</label>
+						<div class="layui-input-inline mobile" style="width: 90px;    margin-right: 0;"></div>
+					</div>
+					<div class="layui-inline">
+						<label class="layui-form-label" style="    width: 50px;">病种：</label>
+						<div class="layui-input-inline diseases" style="width: inherit;
+    margin-right: 15px;"></div>
+					</div>
+					<!--<div class="layui-inline">
+						<label class="layui-form-label">项目：</label>
+						<div class="layui-input-inline projectName"></div>
+					</div>-->
+					<div class="layui-inline">
+						<label class="layui-form-label" style="width: 60px">就诊号：</label>
+						<div class="layui-input-inline number" style="width: 118px;    margin-right: 0;"></div>
+					</div>
+					<!--<div class="layui-inline">
+						<label class="layui-form-label">支付方式：</label>
+						<div class="layui-input-inline payMethod"></div>
+					</div>-->
+
+				</div>
+			</form>
+			<table class="layui-table"  style="margin-top: 0">
+				<colgroup>
+					<!--<col width="50"><col>-->
+					<!--<col width="19%"><col>
+                    <col width="9%"><col>
+                    <col width="9%"><col>
+                    &lt;!&ndash;<col width="9%">&ndash;&gt;
+                    &lt;!&ndash;<col width="9%">
+                    <col width="9%">&ndash;&gt;
+                    <col width="9%"><col>-->
+				</colgroup>
+				<thead>
+				<tr>
+					<!--<th></th>-->
+					<th>挂号日期</th>
+					<th>科室</th>
+					<th>挂号费</th>
+					<th>缴费类型</th>
+					<th>合计</th>
+				</tr>
+				</thead>
+				<tbody class="news_content"></tbody>
+			</table>
+		</div>
+
+		<div class="layui-input-block" style="    float: right;margin: 19px 30px 0 0;min-height: 25px;">
+			<strong>应付金额：￥</strong><span class="shouldUserPrice">0</span>
+		</div>
+		<div class="layui-input-block" style="    float: right;margin: 19px 30px 0 0;min-height: 25px;">
+			<span>实缴金额：￥</span><span class="factPrice">0</span>
+		</div>
+		<div class="layui-input-block" style="    float: right;margin: 19px 30px 0 0;min-height: 25px;">
+			<span>总计：￥</span><span class="totalUserPrice">0</span>
+		</div>
+		<div class="layui-input-block shijiaoziDiv" style="    float: left;
+    margin-left: 23px;
+    margin-top: 8px;
+    line-height: 43px;">
+			<strong>实缴明细：</strong>
+		</div>
+		<!--<div class="layui-input-block platformDiv" style="">
+			<span>平台支付:￥</span><span class="money">0</span>
+		</div>
+		<div class="layui-input-block medicalInsuranceDiv" style="">
+			<span>医保支付:￥</span><span class="money">0</span>
+		</div>
+		<div class="layui-input-block cardDiv" style="">
+			<span>医院收款:￥</span><span class="money">0</span>
+		</div>
+		<div class="layui-input-block cashDiv" style="">
+			<span>现金支付:￥</span><span class="money">0</span>
+		</div>
+		<div class="layui-input-block yujiaoDiv" style="">
+			<span>预缴:￥</span><span class="money">0</span>
+		</div>
+		<div class="layui-input-block shijiaoziDiv" style="">
+			<span>实缴明细：</span>
+		</div>-->
+		<div style="clear: both"></div>
+		<div class="shijiaoDiv" style="">
+			<table class="layui-table" style="margin-top: 0">
+				<colgroup>
+					<!--<col width="50"><col>-->
+					<!--<col width="19%"><col>
+                    <col width="9%"><col>
+                    <col width="9%"><col>
+                    &lt;!&ndash;<col width="9%">&ndash;&gt;
+                    &lt;!&ndash;<col width="9%">
+                    <col width="9%">&ndash;&gt;
+                    <col width="9%"><col>-->
+				</colgroup>
+				<thead>
+				<tr>
+					<!--<th></th>-->
+					<th>支付时间</th>
+					<th>支付方式</th>
+					<th>支付金额</th>
+					<th>支付备注</th>
+					<th>医保号</th>
+					<th>收银</th>
+				</tr>
+				</thead>
+				<tbody class="price_content">
+
+				</tbody>
+			</table>
+
+		</div>
+
+		<div class="layui-form-item" style="    margin-top: 10px;">
+			<div class="layui-inline">
+				<label class="layui-form-label">入诊：</label>
+				<div class="layui-input-inline doctor"></div>
+			</div>
+			<!--<div class="layui-inline">
+				<label class="layui-form-label">咨询：</label>
+				<div class="layui-input-inline doctorHelpmate"></div>
+			</div>-->
+			<!--<div class="layui-inline">
+				<label class="layui-form-label">收银：</label>
+				<div class="layui-input-inline cashier"></div>
+			</div>-->
+		</div>
+
+			<!--endprint-->
+			<!--<div class="layui-form-item" style="    margin-top: 10px;">
+				<div class="layui-input-block">
+					<input type="button" style="min-width: 200px;margin-left: 156px;
+    margin-top: 20px;" class="layui-btn printOrder" onclick="printFunc()" value="确定打印" />
+					&lt;!&ndash;<button type="reset" class="layui-btn layui-btn-primary">重置</button>&ndash;&gt;
+				</div>
+			</div>-->
+
+	</div>
+	<script type="text/javascript" src="../js/jquery-1.11.3.js"></script>
+	<script type="text/javascript" src="js/common.js?v=1134"></script>
+	<script type="text/javascript" src="../layui/layui.js"></script>
+	<script type="text/javascript" src="js/sureOrderPrintGuahao.js?v=1134"></script>
+
+</body>
+</html>

@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>添加模板项目--e诺分诊后台管理</title>
+	<meta name="renderer" content="webkit">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="format-detection" content="telephone=no">
+	<link rel="stylesheet" href="layui/css/layui.css" media="all" />
+	<link rel="stylesheet" href="css/font_eolqem241z66flxr.css" media="all" />
+	<link rel="stylesheet" href="css/photoTable.css" media="all" />
+	<link rel="stylesheet" href="css/fsgallery.css" />
+	<link rel="stylesheet" href="css/news.css" media="all" />
+</head>
+<style>
+	.childrenBody .layui-inline{ margin:5px 5px 5px 0; }
+	.layui-table-view .layui-table{
+		width: 100%;
+	}
+	.layui-form-item{
+		margin-bottom: 0;
+	}
+</style>
+<body class="childrenBody">
+<div class="layui-collapse" lay-accordion style="margin-bottom: 10px;"> <!--lay-filter="fadeIn"-->
+
+	<div class="layui-colla-item">
+		<h2 class="layui-colla-title"><span class="span">诊断依据</span></h2>
+		<div class="layui-colla-content  layui-show" style="padding-top: 0">
+			<div class="layui-form-item">
+				<div class="layui-form-item">
+					<label class="layui-form-label" style="padding: 9px 1px 9px 0">主诉：</label>
+					<div class="layui-input-block" style="position: relative;">
+						<input type="text" name="identity" disabled class="layui-input maintell"style="width: 75%;display: inline-block;margin-right: 15px;border: none">
+					</div>
+				</div>
+				<div class="layui-form-item">
+					<label class="layui-form-label" style="padding: 9px 1px 9px 0">现病史：</label>
+					<div class="layui-input-block layui-form" lay-filter="nowIll" style="width: 66.2%">
+						<textarea class="layui-textarea nowIll" disabled style="display: inline-block;margin-right: 15px;border: none;min-height: 30px"></textarea>
+					</div>
+				</div>
+				<div class="layui-form-item" id="gallery">
+					<label class="layui-form-label" style="padding: 9px 1px 9px 0">辅助检查：</label>
+					<div class="layui-input-block fuzhuGetDiv">
+						<!--<input type="text" name="" autocomplete="off" disabled class="layui-input tutorshipCheck" style="width: 75%;display: inline-block;margin-right: 15px;border: none">-->
+					</div>
+				</div>
+				<!--<div class="layui-form-item">
+					<label class="layui-form-label" style="padding: 9px 1px 9px 0">辅助检查照片：</label>
+					<div class="layui-input-block">
+						<div id="projectImg" style="width: 67.4%;">
+							<div class="imgList"></div>
+						</div><input class="layui-upload-file" type="file" name="file">
+					</div>
+				</div>-->
+				<div class="layui-form-item">
+					<label class="layui-form-label" style="padding: 9px 1px 9px 0">诊断：</label>
+					<div class="layui-input-block">
+						<input type="text" name=""  autocomplete="off" disabled class="layui-input firstDiagnosis" style="width: 75%;display: inline-block;margin-right: 15px;border: none">
+					</div>
+				</div>
+				<div class="layui-form-item">
+					<label class="layui-form-label" style="padding: 9px 1px 9px 0">治疗意见：</label>
+					<div class="layui-input-block">
+						<input type="text" name=""   autocomplete="off" disabled class="layui-input treatmentAdvice" style="width: 75%;display: inline-block;margin-right: 15px;border: none">
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+	<div class="row" style="clear: both;">
+		<div class="col">
+			<table class="layui-table layui-table-yuyue"  style="margin-top: 0;display: none">
+				<colgroup>
+
+				</colgroup>
+				<thead>
+				<tr>
+					<th width="33%">预约时间</th>
+					<th width="33%">项目分类</th>
+					<th width="33%">项目</th>
+				</tr>
+				</thead>
+				<tbody class="news_content_yuyue"></tbody>
+			</table>
+			<!--<blockquote class="layui-elem-quote title" style="padding: 16px 15px;margin-bottom: 0">历史回访<i class="iconfont icon-new1"></i>
+                <input type="button" class="layui-btn layui-btn-normal news_record_add" style="float: right;width: 107px;    margin-top: -8px;" value="添加回访"/>
+            </blockquote>-->
+			<table class="layui-table"  style="margin-top: 0">
+				<colgroup>
+					<!--<col width="50"><col>-->
+					<!--<col width="19%"><col>
+                    <col width="9%"><col>
+                    <col width="9%"><col>
+                    &lt;!&ndash;<col width="9%">&ndash;&gt;
+                    &lt;!&ndash;<col width="9%">
+                    <col width="9%">&ndash;&gt;
+                    <col width="9%"><col>-->
+				</colgroup>
+				<thead>
+				<tr>
+					<!--<th></th>-->
+					<th>约定病种</th>
+					<th>品名</th>
+					<th>
+						<select style="height: 22px;" class="typeSelect">
+							<option>类型</option>
+							<option value="医疗类">医疗类</option>
+							<option value="材料类">材料类</option>
+							<option value="药品类">药品类</option>
+							<option value="检查类">检查类</option>
+							<option value="保健类">保健类</option>
+						</select>
+					</th>
+					<th>产地</th>
+					<th>单位</th>
+					<th>数量</th>
+					<th>原价</th>
+					<th>折后价</th>
+					<th>
+						<select style="height: 22px;" class="medicareSelect">
+							<option>医保</option>
+							<option value="是">是</option>
+							<option value="否">否</option>
+						</select>
+					</th>
+				<!--	<th>数量</th>-->
+
+					<th>合计</th>
+					<th>操作</th>
+				<!--	<th>咨询</th>-->
+				</tr>
+				</thead>
+				<tbody class="news_content"></tbody>
+			</table>
+		</div>
+		<div class="layui-input-block" style="    float: left;margin: 19px 30px 0 20px;    max-width: 500px;">
+			<strong>备注内容：</strong><span class="remarks"></span>
+		</div>
+		<div class="layui-input-block" style="    float: right;margin: 19px 30px 0 0">
+			<strong>总计：￥</strong><span class="totalUserPrice">0</span>
+		</div>
+		<!--<div class="layui-input-block" style="    float: right;margin: 19px 30px 0 0">
+			<span>预缴金额：￥</span><span class="subsistPrice">0</span>
+		</div>-->
+		<div style="clear: both"></div>
+		<!--<div class="layui-input-block" style="margin-left: 0;text-align: center;margin-bottom: 30px;">
+			<button class="layui-btn addTemplateProject" style="min-width: 216px" lay-submit="" onclick="addVisitProject()" lay-filter="addTemplateProject">添加项目</button>
+		</div>-->
+
+	</div>
+	<div class="sysNoticeTwo col" style="display: none">
+		<blockquote class="layui-elem-quote title" style="padding: 6px 15px;margin-bottom: 0">退单记录</blockquote>
+		<table class="layui-table"  style="margin-top: 0">
+
+			<thead>
+			<tr>
+				<th>约定病种</th>
+				<th>品名</th>
+				<th>类型</th>
+				<th>产地</th>
+				<th>单位</th>
+				<th>数量</th>
+				<th>原价</th>
+				<th>折后价</th>
+				<th>医保</th>
+				<!--	<th>数量</th>-->
+				<th>合计</th>
+				<th>操作</th>
+			</tr>
+			</thead>
+			<tbody class="news_content_tui"></tbody>
+		</table>
+	</div>
+	<script type="text/html" id="delMateTable">
+		<a style="    height: 26px;
+    line-height: 26px;
+    padding: 0 8px;" class="layui-btn layui-btn-danger  layui-btn-xs" lay-event="del">删除</a>
+	</script>
+	<script type="text/javascript" src="js/jquery-1.11.3.js"></script>
+	<script type="text/javascript" src="js/common.js?v=1134"></script>
+	<script type="text/javascript" src="layui/layui.js"></script>
+	<script type="text/javascript" src="js/fs_forse.js" ></script>
+	<script type="text/javascript" src="js/diagnose.js"></script>
+
+</body>
+</html>

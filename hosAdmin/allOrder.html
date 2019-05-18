@@ -1,0 +1,165 @@
+
+	<link rel="stylesheet" href="css/news.css" media="all" />
+	<style>
+		.hoverUnderline:hover{
+			text-decoration: underline;
+			cursor: pointer;
+		}
+	</style>
+<body class="childrenBody">
+<div class="big">
+	<div class="layui-card-header">
+		<span class="layui-breadcrumb" style="visibility: visible;">
+			<span>您的位置：</span>
+  			<a onclick="toIndexPage()" href="#allSize.html?v=1134">首页</a><span lay-separator="">/</span>
+  			<a onclick="toAbsolutPage('.orderLi','.orderDD')" href="#allOrder.html?v=1134">就诊管理</a><span lay-separator="">/</span>
+  			<a href=""><cite>订单列表</cite></a>
+		</span>
+	</div>
+	<!--<div style="width: 94%;margin: 15px 0 20px 3%">
+		<a class="layui-btn searchBtnTop" valuestatus="">全部订单(<span class="allOrderCount"></span>)</a>
+		<a class="layui-btn searchBtnTop" valuestatus="waitPaid" >待支付(<span class="waitpaidOrderCount"></span>)</a>
+		<a class="layui-btn searchBtnTop" valuestatus="waitConfirm">已支付(<span class="waitConfirmOrderCount"></span>)</a>
+		<a class="layui-btn searchBtnTop" valuestatus="completed">待结算(<span class="completedOrderCount"></span>)</a>
+		<a class="layui-btn searchBtnTop" valuestatus="handle">已完成(<span class="handleOrderCount"></span>)</a>
+	</div>-->
+	<blockquote class="layui-elem-quote news_search" style="border: 1px solid #cccccc;background-color: white;padding: 0;width: 94%;margin: 15px 0 40px 3%">
+		<div class="layui-layer-title" style="cursor: move;background-color: #dedede">筛选查询</div>
+		<form class="layui-form">
+			<div class="layui-form-item">
+				<div class="layui-inline">
+					<label class="layui-form-label">关键字</label>
+					<div class="layui-input-inline">
+						<input type="text" value="" placeholder="请输入姓名/手机号" class="layui-input search_input newsName">
+					</div>
+				</div>
+				<div class="layui-inline">
+					<label class="layui-form-label">项目名称</label>
+					<div class="layui-input-inline">
+						<input type="text" value="" placeholder="请输入项目名称" class="layui-input search_input projName">
+					</div>
+				</div>
+				<!--<div class="layui-inline">
+					<label class="layui-form-label">联系方式</label>
+					<div class="layui-input-inline">
+						<input type="number" name="phone" lay-verify="required|phone" autocomplete="off" class="layui-input mobile" placeholder="根据联系方式筛选">
+					</div>
+				</div>-->
+				<!--<div class="layui-inline">
+					<label class="layui-form-label">项目分类</label>
+					<div class="layui-input-inline">
+						<select name="type" class="type" lay-filter="type">
+							<option value="">根据项目分类筛选</option>
+							<option title="doctor" value="doctor">医生</option>
+							<option title="product" value="product">项目</option>
+						</select>
+					</div>
+				</div>-->
+				<div class="layui-inline">
+					<label class="layui-form-label">订单状态</label>
+					<div class="layui-input-inline">
+						<select name="status" class="status" lay-filter="status">
+							<option value="">根据订单状态筛选</option>
+							<option value="waitPaid">待支付</option>
+							<option value="completed">待结算</option>
+							<!--<option value="waitConfirm">已支付</option>已支付就是待结算-->
+							<option value="handle">已完成</option>
+							<!--<option value="cancelled">已取消</option>>-->
+						</select>
+					</div>
+				</div>
+
+
+				<div class="layui-inline" style="margin-left: 42px">
+					<a class="layui-btn search_btn">查询</a>
+				</div>
+				<!--<div class="layui-inline" style="margin-left: 42px">
+					<a class="layui-btn layui-btn-normal addProject">添加项目</a>
+				</div>-->
+			</div>
+			<div class="fenOpen" style="display: none;    margin-top: 20px;">
+			<div class="layui-form-item">
+				<div class="layui-inline">
+					<label class="layui-form-label">分诊医院</label>
+					<div class="layui-input-inline">
+						<select name="newsNoResultHos" class="newsNoResultHos newsHosFen" lay-filter="newsNoResultHos" lay-search="">
+							<option value="">请选择分诊医院</option>
+						</select>
+					</div>
+				</div>
+			</div>
+
+		<!--	<div class="layui-form-item">
+				<div class="layui-inline">
+					<label class="layui-form-label">分诊时间</label>
+					<div class="layui-input-inline">
+						<input type="text" class="layui-input newsTimeFen"
+							   onclick="layui.laydate({elem:this,istime: true,istoday: true, format: 'YYYY-MM-DD hh:mm:ss'})"
+							   placeholder="请选择分诊时间">
+					</div>
+				</div>
+			</div>-->
+				<input type="button" class="layui-btn layui-btn-lg sureFen" style="margin: 15px 0 0 120px;width: 107px" value="确 定"/>
+			</div>
+			<div class="caozuoOpen" style="display: none;    margin-top: 20px;">
+				<div class="layui-form-item">
+					<div class="layui-inline">
+						<input type="button" class="layui-btn layui-btn-lg consultFen" style="display:none;margin: 15px 0 0 85px;width: 107px" value=" 分 诊"/>
+						<input type="button" class="layui-btn layui-btn-lg news_reset" style="display:none;margin: 15px 0 0 85px;width: 107px" value=" 编 辑"/>
+						<!--<input type="button" class="layui-btn layui-btn-lg news_record_add" style="margin: 15px 0 0 85px;width: 107px" value=" 回 访"/>-->
+					</div>
+				</div>
+			</div>
+		</form>
+
+
+
+
+	<!--	<div class="layui-inline">
+			<a class="layui-btn recommend" style="background-color:#5FB878">推荐文章</a>
+		</div>
+		<div class="layui-inline">
+			<a class="layui-btn audit_btn">审核文章</a>
+		</div>
+		<div class="layui-inline">
+			<a class="layui-btn layui-btn-danger batchDel">批量删除</a>
+		</div>-->
+	<!--	<div class="layui-inline">
+			<div class="layui-form-mid layui-word-aux">本页面刷新后除新添加的文章外所有操作无效，关闭页面所有数据重置</div>
+		</div>-->
+	</blockquote>
+
+	<div class="layui-form news_list" style="border: 1px solid #cccccc;width: 94%;margin-left: 3%">
+		<div class="layui-layer-title" style="cursor: move;;background-color: #dedede">数据列表</div>
+	  	<table class="layui-table">
+		    <!--<colgroup>
+				<col>
+				<col>
+				<col>
+				<col>
+				<col>
+				<col>
+		    </colgroup>-->
+		    <thead>
+				<tr>
+					<!--<th><input type="checkbox" name="" lay-skin="primary" lay-filter="allChoose" id="allChoose"></th>-->
+					<!--<th>咨询时间</th>-->
+					<th>订单号</th>
+					<th>患者姓名</th>
+					<!--<th>原价</th>-->
+					<th>联系方式</th>
+					<!--<th>项目分类</th>-->
+					<th>约定病种</th>
+					<!--<th>是否优惠</th>-->
+					<th width="15%">已支付金额/总金额</th>
+					<th>下单时间</th>
+					<th>订单状态</th>
+				</tr> 
+		    </thead>
+		    <tbody class="news_content"></tbody>
+		</table>
+	</div>
+	<div id="page"></div>
+</div>
+
+	<script type="text/javascript" src="js/allOrder.js"></script>

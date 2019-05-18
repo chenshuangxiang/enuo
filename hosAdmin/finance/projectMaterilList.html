@@ -1,0 +1,63 @@
+
+	<link rel="stylesheet" href="../css/news.css" media="all" />
+<body class="childrenBody">
+	<blockquote class="layui-elem-quote news_search">
+		<form class="layui-form">
+			<div class="layui-form-item">
+				<div class="layui-inline">
+					<label class="layui-form-label" style="width: 65px;">关键字</label>
+					<div class="layui-input-inline">
+						<input type="text" value="" placeholder="搜索患者姓名/手机号" class="layui-input search_input newsName">
+					</div>
+				</div>
+
+				<div class="layui-inline">
+					<label class="layui-form-label" style="width: 65px;">时间</label>
+					<div class="layui-input-inline" style="    width: 95px;">
+						<!--<input type="text" class="layui-input newsTime" onclick="layui.laydate({elem:this})" placeholder="请选择开始日期">-->
+						<input type="text" class="layui-input newsTime" id="newsTime" placeholder="请选择开始日期">
+					</div>
+					<label class="layui-form-label" style="width: inherit;padding: 9px 10px 9px 1px;">至</label>
+					<div class="layui-input-inline" style="    width: 95px;">
+						<!--<input type="text" class="layui-input newsTimeEnd" onclick="layui.laydate({elem:this})" placeholder="请选择结束日期">-->
+						<input type="text" class="layui-input newsTimeEnd" id="newsTimeEnd" placeholder="请选择结束日期">
+					</div>
+				</div>
+
+				<div class="layui-inline" style="">
+					<a class="layui-btn search_btn">查询</a>
+				</div>
+				<div class="layui-inline" style="margin-left: 42px">
+					<a class="layui-btn layui-btn-normal" onclick="searchBtnOutExcel($('#timeInputOpen').val())">导出表格</a>
+				</div>
+			</div>
+		</form>
+	</blockquote>
+	<div class="layui-form news_list">
+	  	<table class="layui-table">
+		    <colgroup>
+
+		    </colgroup>
+		    <thead>
+				<tr>
+					<!--<th><input type="checkbox" name="" lay-skin="primary" lay-filter="allChoose" id="allChoose"></th>-->
+					<th>编号</th>
+					<th>姓名</th>
+					<th>联系方式</th>
+					<!--<th>来源</th>-->
+					<th>医生</th>
+					<th>护士</th>
+					<th width="15%">病种</th>
+					<th>耗材</th>
+					<th>数量</th>
+					<th>总金额</th>
+
+				</tr> 
+		    </thead>
+		    <tbody class="news_content"></tbody>
+		</table>
+	</div>
+	<div id="page"></div>
+	<script type="text/javascript" src="js/common.js?v=1134"></script>
+	<script type="text/javascript" src="../js/staticFunc.js"></script>
+	<script type="text/javascript" src="js/projectMaterilList.js"></script>

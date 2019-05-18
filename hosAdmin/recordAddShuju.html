@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>文章添加--e诺分诊后台管理</title>
+	<meta name="renderer" content="webkit">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="format-detection" content="telephone=no">
+	<link rel="stylesheet" href="layui/css/layui.css" media="all" />
+	<link rel="stylesheet" href="css/font_eolqem241z66flxr.css" media="all" />
+</head>
+<style>
+	.childrenBody .layui-inline{ margin:5px 5px 5px 0; }
+</style>
+<body class="childrenBody">
+	<form class="layui-form">
+		<!--<div class="layui-form-item">
+			<label class="layui-form-label">文章标题</label>
+			<div class="layui-input-block">
+				<input type="text" class="layui-input newsName" lay-verify="required" placeholder="请输入文章标题">
+			</div>
+		</div>-->
+
+		<div class="layui-form-item">
+			<div class="layui-inline">
+				<label class="layui-form-label" style="width: 85px;">客服回访状态</label>
+				<div class="layui-input-inline">
+					<select name="allotStatus" class="allotStatus" lay-verify="required"  lay-filter="allotStatus">
+						<option value="">请选择状态</option>
+						<option value="unConnect" title="unConnect">未接通</option>
+						<option value="refuse" title="refuse">拒接</option>
+						<option value="repeat" title="repeat">重单</option>
+						<option value="emptyNum" title="emptyNum">空号/停机</option>
+						<option value="infoError" title="infoError">信息不符</option>
+						<option value="hasAccess" title="hasAccess">跟踪复访</option>
+						<option value="recontact" title="recontact">需再次联系</option>
+						<option value="pauseAccess" title="pauseAccess">暂停回访</option>
+						<option value="platformUnAccess" title="platformUnAccess">平台未回访</option>
+						<option value="INTENTIONALMISSVISIT_NOBOOKED" title="INTENTIONALMISSVISIT_NOBOOKED">有意向未到诊(未预约)</option>
+						<option value="INTENTIONALMISSVISIT_BOOKED" title="INTENTIONALMISSVISIT_BOOKED">有意向未到诊(已预约)</option>
+						<option value="INTENTIONALVISITED" title="INTENTIONALVISITED">有意向已到诊</option>
+						<option value="faild" title="faild">到诊未成交</option>
+						<option value="VISITPAID_BE_UNDER_TREATMENT" title="VISITPAID_BE_UNDER_TREATMENT">到诊已成交(治疗中)</option>
+						<option value="VISITPAID_ALREADY_TREATED" title="VISITPAID_ALREADY_TREATED">到诊已成交(已治疗)</option>
+					</select>
+				</div>
+			</div>
+		</div>
+		<div class="layui-form-item nextRecordTimeDiv" style="display: none">
+			<label class="layui-form-label recordFont" style="width: 85px;">下次回访时间</label>
+			<div class="layui-input-inline">
+				<input type="text" class="layui-input nextRecordTime" id="nextRecordTime" placeholder="请选择下次回访时间">
+			</div>
+		</div>
+		<div class="layui-form-item" style="    margin-top: 14px;">
+			<label class="layui-form-label" style="width: 85px;">回访内容</label>
+			<div class="layui-input-block">
+				<textarea placeholder="请输入回访内容" lay-verify="required" class="layui-textarea brief"  style="width: 80%"></textarea>
+			</div>
+		</div>
+
+		<!--<div class="layui-form-item">
+			<label class="layui-form-label">文章内容</label>
+			<div class="layui-input-block">
+				<textarea class="layui-textarea layui-hide" name="content" lay-verify="content" id="news_content"></textarea>
+			</div>
+		</div>-->
+		<div class="layui-form-item">
+			<div class="layui-input-block">
+				<button class="layui-btn add" lay-submit="" lay-filter="addNews">立即添加</button>
+				<!--<button type="reset" class="layui-btn layui-btn-primary">重置</button>-->
+		    </div>
+		</div>
+	</form>
+	<script type="text/javascript" src="js/jquery-1.11.3.js"></script>
+	<script type="text/javascript" src="js/common.js?v=1134"></script>
+	<script type="text/javascript" src="layui/layui.js"></script>
+	<script type="text/javascript" src="js/recordAddShuju.js?v=1134"></script>
+
+</body>
+</html>

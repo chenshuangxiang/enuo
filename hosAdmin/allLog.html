@@ -1,0 +1,140 @@
+
+<link rel="stylesheet" href="css/news.css" media="all" />
+	<!--<blockquote class="layui-elem-quote news_search">
+		<form class="layui-form">
+			&lt;!&ndash;<div class="layui-form-item">
+				&lt;!&ndash;<div class="layui-inline">
+					<label class="layui-form-label">姓名</label>
+					<div class="layui-input-inline">
+						<input type="text" value="" placeholder="请输入姓名" class="layui-input search_input newsName">
+					</div>
+				</div>
+				<div class="layui-inline">
+					<label class="layui-form-label">联系方式</label>
+					<div class="layui-input-inline">
+						<input type="number" name="phone" lay-verify="required|phone" autocomplete="off" class="layui-input mobile" placeholder="根据联系方式筛选">
+					</div>
+				</div>&ndash;&gt;
+				&lt;!&ndash;<div class="layui-inline">
+					<label class="layui-form-label">来源</label>
+					<div class="layui-input-inline">
+						<select name="from" class="from" lay-filter="from" lay-search="">
+							<option value="">根据来源筛选</option>
+						</select>
+					</div>
+				</div>&ndash;&gt;
+
+				&lt;!&ndash;<div class="layui-inline">
+					<label class="layui-form-label">咨询时间</label>
+					<div class="layui-input-inline">
+						<input type="text" class="layui-input newsTime" onclick="layui.laydate({elem:this})" placeholder="请选择开始日期">
+					</div>
+					<label class="layui-form-label" style="width: inherit;padding: 9px 10px 9px 1px;">至</label>
+					<div class="layui-input-inline">
+						<input type="text" class="layui-input newsTimeEnd" onclick="layui.laydate({elem:this})" placeholder="请选择结束日期">
+					</div>
+				</div>
+				<div class="layui-inline">
+					<label class="layui-form-label">咨询客服</label>
+					<div class="layui-input-inline">
+						<select name="kefuSelect" class="kefuSelect" lay-filter="kefuSelect" lay-search="">
+							<option value="">根据客服筛选</option>
+						</select>
+					</div>
+				</div>&ndash;&gt;
+
+				<div class="layui-inline" style="margin-left: 20px">
+					<a class="layui-btn layui-btn-danger batchDel">批量删除</a>
+				</div>
+				<div class="layui-inline" style="margin-left: 20px">
+					<a class="layui-btn layui-btn-warm getexcel">导出</a>
+				</div>
+			</div>&ndash;&gt;
+		&lt;!&ndash;	<div class="fenOpen" style="display: none;    margin-top: 20px;">
+			<div class="layui-form-item">
+				<div class="layui-inline">
+					<label class="layui-form-label">分诊医院</label>
+					<div class="layui-input-inline">
+						<select name="newsHos" class="newsHos newsHosFen" lay-filter="newsHos" lay-search="">
+							<option value="">请选择分诊医院</option>
+						</select>
+					</div>
+				</div>
+			</div>
+			<div class="layui-form-item">
+				<div class="layui-inline">
+					<label class="layui-form-label">分诊时间</label>
+					<div class="layui-input-inline">
+						<input type="text" class="layui-input newsTimeFen"
+							   onclick="layui.laydate({elem:this})"
+							   placeholder="请选择分诊时间">
+					</div>
+				</div>
+			</div>
+				<button class="layui-btn layui-btn-lg sureFen" style="margin: 15px 0 0 120px;width: 107px">确 定</button>
+
+			</div>&ndash;&gt;
+
+		</form>
+
+
+
+
+	&lt;!&ndash;	<div class="layui-inline">
+			<a class="layui-btn recommend" style="background-color:#5FB878">推荐文章</a>
+		</div>
+		<div class="layui-inline">
+			<a class="layui-btn audit_btn">审核文章</a>
+		</div>
+		<div class="layui-inline">
+			<a class="layui-btn layui-btn-danger batchDel">批量删除</a>
+		</div>&ndash;&gt;
+	&lt;!&ndash;	<div class="layui-inline">
+			<div class="layui-form-mid layui-word-aux">本页面刷新后除新添加的文章外所有操作无效，关闭页面所有数据重置</div>
+		</div>&ndash;&gt;
+	</blockquote>-->
+	<div class="big" style=" -webkit-overflow-scrolling: touch; overflow-y: auto;overflow-x: auto">
+	<div class="layui-form news_list">
+	  	<table class="layui-table">
+		    <colgroup>
+				<!--<col width="50"><col>-->
+				<col width="30%"><col>
+				<col width="46%"><col>
+				<col width="23%"><col>
+				<!--<col width="20%">-->
+				<!--<col width="9%">
+				<col width="9%">
+
+				<col width="9%">
+				<col width="8%">-->
+		    </colgroup>
+		    <thead>
+				<tr>
+					<!--<th><input type="checkbox" name="" lay-skin="primary" lay-filter="allChoose" id="allChoose"></th>-->
+					<th>操作时间</th>
+					<!--<th>操作人</th>-->
+					<th>操作记录</th>
+					<!--<th>来源</th>-->
+				<!--	<th>咨询客服</th>-->
+					<!--<th>病种</th>
+					<th>分诊医院</th>
+					<th>回访内容</th>
+					<th>操作</th>-->
+				</tr> 
+		    </thead>
+		    <tbody class="news_content"></tbody>
+		</table>
+	</div>
+	<div id="page"></div>
+	</div>
+	<script type="text/javascript" src="js/allLog.js"></script>
+	<script>
+      /*  $('.big').css('min-height',$(window).height() - 10);
+        var u = navigator.userAgent, app = navigator.appVersion;
+        var isIOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/); //ios终端
+        if(isIOS){
+            //alert(window.screen.availHeight)
+            $('.big').height(window.screen.availHeight - 250);
+        }*/
+
+	</script>

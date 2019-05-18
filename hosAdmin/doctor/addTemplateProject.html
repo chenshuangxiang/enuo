@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>添加模板项目--e诺分诊后台管理</title>
+	<meta name="renderer" content="webkit">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="format-detection" content="telephone=no">
+	<link rel="stylesheet" href="../layui/css/layui.css" media="all" />
+	<link rel="stylesheet" href="../css/font_eolqem241z66flxr.css" media="all" />
+	<link rel="stylesheet" href="../css/photoTable.css" media="all" />
+	<link rel="stylesheet" href="../css/news.css" media="all" />
+	<link rel="stylesheet" href="../css/combo.select.css" media="all" />
+	<link rel="stylesheet" href="../css/fsgallery.css" />
+</head>
+<style>
+	.childrenBody .layui-inline{ margin:5px 5px 5px 0; }
+	.layui-table-view .layui-table{
+		width: 100%;
+	}
+	.layui-form-item{
+		margin-bottom: 5px;
+	}
+	.combo-input{
+		height: 38px;
+		padding-left: 10px;
+	}
+	.layadmin-homepage-list-inline{
+		/*position: absolute;
+		top: 41px;*/
+		/*background-color: white;
+		z-index: 99;*/
+		border: 1px solid #cccccc;
+		padding: 11px 2px 5px 10px;
+		display: none;
+		position: relative;
+	}
+	.layadmin-homepage-list-inline .layui-btn {
+		font-size: .9em;
+		line-height: 1.42857;
+		vertical-align: middle;
+		height: auto;
+		padding: 3px 6px;
+		margin: 0 4px 7px 0;
+		color:#009688;
+		border: 1px solid #009688;
+	}
+	.layadmin-homepage-list-inline .btn {
+		font-size: .9em;
+		line-height: 1.42857;
+		vertical-align: middle;
+		height: auto;
+		padding: 3px 6px;
+		margin: 0 4px 7px 0;
+		color:#009688;
+		border: 1px solid #009688;
+		border-radius: 2px;
+		cursor: pointer;
+		display: inline-block;
+	}
+	.layui-upload-drag{
+		padding: 14px 26px;
+		border-top: none;
+	}
+	.layui-upload-drag .layui-icon {
+		 font-size: 37px;
+	 }
+	.initImg img {
+		 height: 50px;
+	}
+	.imgList {
+		border-left: 1px dashed #e6e6e6;
+		border-right: 1px dashed #e6e6e6;
+		width: 99%;
+	/*	min-height: 52px;*/
+	}
+</style>
+<body class="childrenBody">
+	<form class="layui-form">
+		<blockquote class="layui-elem-quote title" style="padding: 6px 15px;margin-bottom: 0;    line-height: 39px;">诊断依据
+			<div style="float: right">
+				<input type="button" style="float: right;padding: 0 10px;height: 34px;line-height: 34px;margin-top: 2px;
+    margin-left: 11px;" class="layui-btn addDiagnosesMuban" onclick="addDiagnosesMuban()" value="存为模板"/>
+			<div class="layui-input-inline" style="width: 60%;float: right">
+				<select name="diagnosesMuban" style="width: 50%" class="diagnosesMuban" lay-filter="diagnosesMuban" lay-search="">
+					<option value="">选择病历模板</option>
+				</select>
+			</div>
+			</div>
+		</blockquote>
+		<div class="layui-form-item">
+			<div class="layui-form-item" style="margin-top: 10px">
+				<label class="layui-form-label">主诉</label>
+				<div class="layui-input-block" style="position: relative;">
+					<input type="text" name="identity" placeholder="您可以输入主诉"  autocomplete="off" class="layui-input maintell" onkeyup="getMaintellInfo($('.maintell').val(),true)" onclick="getMaintellInfo('',true)" style="width: 75%;display: inline-block;margin-right: 15px;">
+					<ul class="layadmin-homepage-list-inline maintellUl" style="width: 73.3%;">
+						<p>
+							<!--<a onclick="$('.maintell').val($('.maintellmaintell').val() + ','+$(this).text())" class="layui-btn layui-btn-primary">发热</a>-->
+						</p>
+						<span style="    position: absolute;right: 3px; bottom: 0;color: #777;cursor: pointer" onclick="$('.maintellUl').fadeOut()">关闭</span>
+					</ul>
+				</div>
+			</div>
+			<div class="layui-form-item">
+				<label class="layui-form-label">现病史</label>
+				<div class="layui-input-block layui-form" lay-filter="nowIll" style="width: 66.2%">
+					<textarea placeholder="您可以输入现病史"  class="layui-textarea nowIll" onkeyup="getNowIllInfo($('.nowIll').val(),true)" onclick="getNowIllInfo('',true)" style="min-height: 80px;"></textarea>
+					<ul class="layadmin-homepage-list-inline nowillUl" style="padding-bottom: 14px">
+						<p>
+							<!--<a onclick="$('.maintell').val($('.maintellmaintell').val() + ','+$(this).text())" class="layui-btn layui-btn-primary">发热</a>-->
+						</p>
+						<span style="    position: absolute;right: 3px; bottom: 0;color: #777;cursor: pointer" onclick="$('.nowillUl').fadeOut()">关闭</span>
+					</ul>
+					<!--<select name="type" class="nowIll"  lay-search="">
+						<option value="">请选择或输入现病史</option>
+					</select>-->
+				</div>
+			</div>
+			<div class="layui-form-item" style="margin-bottom: 1px;">
+				<label class="layui-form-label">辅助检查</label>
+				<div class="layui-input-block" id="gallery">
+				<!--<div class="layui-inline photoDiv" style="width: 30.5%;">
+					<input type="text" name="" placeholder="您可以输入辅助检查" autocomplete="off" class="layui-input tutorshipCheck" style="display: inline-block;margin-right: 15px;">
+					<input type="button" class="layui-btn layui-btn-danger" onclick="photos.delResult(this)" value="X" style="font-weight: 600;font-size: 12px;padding: 0 6px;height: 19px;line-height: 20px;position: absolute;top: 10px;right: 6px;">
+					<div class="imgList imgList1"></div>
+					<div class="layui-upload-drag projectImg1">
+						<i class="layui-icon"></i>
+						<p>点击上传，或将文件拖拽到此处</p>
+					</div><input class="layui-upload-file" type="file" name="file">
+				</div>-->
+				<input type="button" class="layui-btn layui-btn-sm addPhoto" onclick="photos.addResult(this)" style="padding: 0 10px;height: 34px;line-height: 34px;font-size: 28px;" value="+">
+				</div>
+				</div>
+			<!--<div class="layui-form-item">
+				<div class="layui-input-block">
+					<div class="layui-upload-drag" id="projectImg" style="width: 67.4%;">
+						<div class="imgList"></div>
+						<i class="layui-icon"></i>
+						<p>点击上传，或将文件拖拽到此处</p>
+					</div><input class="layui-upload-file" type="file" name="file">
+				</div>
+			</div>-->
+			<div class="layui-form-item" style="margin-bottom: 1px;">
+				<label class="layui-form-label">诊断</label>
+				<div class="layui-input-block">
+					<input type="text" name="" placeholder="您可以输入诊断" autocomplete="off" class="layui-input firstDiagnosis" style="width: 75%;display: inline-block;margin-right: 15px;    margin-bottom: 10px;">
+				</div>
+			</div>
+			<div class="layui-form-item" style="margin-bottom: 1px;">
+				<label class="layui-form-label">治疗意见</label>
+				<div class="layui-input-block">
+					<input type="text" name="" placeholder="您可以输入治疗意见" autocomplete="off" class="layui-input treatmentAdvice" style="width: 75%;display: inline-block;margin-right: 15px;    margin-bottom: 10px;">
+				</div>
+			</div>
+		</div>
+		<blockquote class="layui-elem-quote title" style="padding: 6px 15px;margin-bottom: 0">治疗</blockquote>
+		<div class="layui-form-item" style="    margin-top: 5px;">
+			<!--<div class="layui-inline">
+				<label class="layui-form-label">自定义属性</label>
+				<div class="layui-input-block">
+					<input type="checkbox" name="tuijian" class="tuijian" title="推荐">
+					<input type="checkbox" name="shenhe" class="newsStatus" title="审核">
+					<input type="checkbox" name="show" class="isShow" title="展示">
+				</div>
+			</div>-->
+			<div class="layui-inline">
+				<label class="layui-form-label">约定病种</label>
+				<div class="layui-input-inline">
+					<!--<select name="projectName" class="projectName" lay-filter="projectName" lay-search="">
+						<option value="">请选择约定病种</option>
+					</select>-->
+					<select class="projectName">
+
+					</select>
+					<!--<input type="text" class="layui-input bingzhong" lay-verify="required" placeholder="约定病种">-->
+					<!--<input type="text" class="layui-input newsName" lay-verify="required" placeholder="请输入项目名称(必填)">-->
+				</div>
+			</div>
+			<div class="layui-inline">
+				<label class="layui-form-label" style="padding: 9px 11px;
+    width: 88px;">治疗医生</label>
+				<div class="layui-input-inline">
+					<select name="fenToDoctor" class="fenToDoctor" lay-filter="fenToDoctor">
+						<option value="">请选择治疗医生</option>
+					</select>
+				</div>
+			</div>
+			<div class="layui-inline">
+				<label class="layui-form-label">约定天数</label>
+				<div class="layui-input-inline">
+					<input type="number" class="layui-input day" placeholder="请输入约定天数">
+				</div>
+			</div>
+			<div class="layui-inline">
+				<label class="layui-form-label">护士</label>
+				<div class="layui-input-inline">
+					<select name="nurse" class="nurse"  lay-filter="nurse">
+						<option value="">请选择护士</option>
+					</select>
+				</div>
+			</div>
+			<div class="addCensorItems">
+				<div class="layui-form-item" style="margin-bottom: 1px;">
+					<label class="layui-form-label">约定效果</label>
+					<div class="layui-input-block">
+						<input type="text" name="identity" placeholder="请输入约定效果" autocomplete="off" class="layui-input appoint_result" style="width: 75%;display: inline-block;margin-right: 15px;    margin-bottom: 10px;">
+						<!--<input type="button" class="layui-btn" onclick="special_addTag.addResult(this)" value="增加">-->
+						<button class="layui-btn layui-btn-sm" style="padding: 0 8px;height: 34px;line-height: 34px;" onclick="special_addTag.addResult(this);return false">
+							<i class="layui-icon">&#xe654;</i>
+						</button>
+					</div>
+				</div>
+			</div>
+			<div class="layui-form-item" style="margin-bottom: 1px;">
+				<label class="layui-form-label">备注</label>
+				<div class="layui-input-block">
+					<input type="text" name="identity" placeholder="您可以输入备注" autocomplete="off" class="layui-input remarks" style="width: 75%;display: inline-block;margin-right: 15px;    margin-bottom: 10px;">
+				</div>
+			</div>
+			<!--<div class="layui-inline">
+				<label class="layui-form-label">预缴金额</label>
+				<div class="layui-input-inline">
+					<input style="width: 40%;display: inline-block;" type="number" class="layui-input subsist" placeholder="" value="0">
+					<span>元</span>
+				</div>
+			</div>-->
+
+
+
+			<!--<div class="layui-inline">
+				<label class="layui-form-label">联系电话</label>
+				<div class="layui-input-inline">
+					<input type="number" name="phone" lay-verify="required|phone" autocomplete="off" class="layui-input mobile" placeholder="请填写联系电话">
+				</div>
+			</div>
+			<div class="layui-inline">
+				<label class="layui-form-label">专业职称</label>
+				<div class="layui-input-inline">
+					<select name="docLevel" class="docLevel" lay-filter="docLevel" lay-search="">
+						<option value="">根据专业职称筛选</option>
+					</select>
+				</div>
+			</div>
+			<div class="layui-inline">
+				<label class="layui-form-label">科室</label>
+				<div class="layui-input-inline">
+					<select name="ks" class="ks" lay-verify="required" lay-filter="ks" lay-search="">
+						<option value="">请选择科室</option>
+					</select>
+				</div>
+			</div>
+			<div class="layui-inline">
+				<label class="layui-form-label">子科室</label>
+				<div class="layui-input-inline">
+					<select name="ksChild" class="ksChild" lay-verify="required" lay-filter="ksChild" lay-search="">
+						<option value="">请选择子科室</option>
+					</select>
+				</div>
+			</div>
+			<div class="layui-form-item">
+				<label class="layui-form-label">医生简介</label>
+				<div class="layui-input-block">
+					<textarea placeholder="请输入医生简介"  lay-verify="required" class="layui-textarea brief"  style="width: 80%"></textarea>
+				</div>
+			</div>
+			<div class="layui-form-item">
+				<label class="layui-form-label">擅长领域</label>
+				<div class="layui-input-block">
+					<textarea placeholder="请输入医生擅长领域"  lay-verify="required" class="layui-textarea specialty"  style="width: 80%"></textarea>
+				</div>
+			</div>
+			<div class="layui-form-item">
+				<label class="layui-form-label">医生照片</label>
+				<div class="layui-input-block">
+					<div class="layui-upload-drag" id="docImg">
+						<div class="imgList"></div>
+						<i class="layui-icon"></i>
+						<p>点击上传，或将文件拖拽到此处</p>
+					</div>
+				</div>
+			</div>-->
+
+			<!--<fieldset class="layui-elem-field" style="    padding-bottom: 29px;">
+				<legend>预约人数设置 （请在下列表格中填写相应的最高预约量）</legend>
+				<div class="layui-field-box">
+					&lt;!&ndash;出诊时间&ndash;&gt;
+					<div class="heal_time_container clearfix">
+						&lt;!&ndash;<div class="">
+                            <p class=""></p>
+                            <p class=""><img src="img/left.png"/></p>
+                            <p class=""></p>
+                        </div>&ndash;&gt;
+						<div class="">
+							<p class="flex_all_center">排班</p>
+							<p class="flex_all_center">上午</p>
+							<p class="flex_all_center" style="    border-bottom: 1px solid #DCDCDC;">下午</p>
+						</div>
+						<div class="week">
+							<p class="day">
+								<span class="">星期天</span>
+							</p>
+							<input type="text" value="5" style="border-bottom: 0" data_week="sunday" data_morning="true"/>
+							<input type="text" value="5" data_week="sunday" data_morning="false"/>
+							&lt;!&ndash;<p class="am" data_val="休息"></p>
+                            <p class="pm" data_val="休息"></p>&ndash;&gt;
+						</div>
+						<div class="week">
+							<p class="day">
+								<span class="">星期一</span>
+							</p>
+							<input type="text" value="5" style="border-bottom: 0" data_week="monday" data_morning="true"/>
+							<input type="text" value="5" data_week="monday" data_morning="false"/>
+						</div>
+						<div class="week">
+							<p class="day">
+								<span class="">星期二</span>
+							</p>
+							<input type="text" value="5" style="border-bottom: 0" data_week="tuesday" data_morning="true"/>
+							<input type="text" value="5" data_week="tuesday" data_morning="false"/>
+						</div>
+						<div class="week">
+							<p class="day">
+								<span class="">星期三</span>
+							</p>
+							<input type="text" value="5" style="border-bottom: 0" data_week="wednesday" data_morning="true"/>
+							<input type="text" value="5" data_week="wednesday" data_morning="false"/>
+						</div>
+						<div class="week">
+							<p class="day">
+								<span class="">星期四</span>
+							</p>
+							<input type="text" value="5" style="border-bottom: 0" data_week="thursday" data_morning="true"/>
+							<input type="text" value="5" data_week="thursday" data_morning="false"/>
+						</div>
+						<div class="week">
+							<p class="day">
+								<span class="">星期五</span>
+							</p>
+							<input type="text" value="5" style="border-bottom: 0" data_week="friday" data_morning="true"/>
+							<input type="text" value="5" data_week="friday" data_morning="false"/>
+						</div>
+						<div class="week">
+							<p class="day" style="    border-right: 1px solid #DCDCDC;    width: 61px;">
+								<span class="">星期六</span>
+							</p>
+							<input type="text" value="5" style="border-bottom: 0" data_week="saturday" data_morning="true"/>
+							<input type="text" value="5" data_week="saturday" data_morning="false"/>
+						</div>
+						&lt;!&ndash;<div class="">
+                            <p class="flex_all_center"></p>
+                            <p class=""><img src="img/right.png"/></p>
+                            <p class=""></p>
+                        </div>&ndash;&gt;
+					</div>
+				</div>
+			</fieldset>-->
+		</div>
+
+	<!--	<div class="layui-form-item">
+			<label class="layui-form-label">关键字</label>
+			<div class="layui-input-block">
+				<input type="text" class="layui-input" placeholder="请输入文章关键字">
+			</div>
+		</div>-->
+
+		<!--<div class="layui-form-item">
+			<label class="layui-form-label">文章内容</label>
+			<div class="layui-input-block">
+				<textarea class="layui-textarea layui-hide" name="content" lay-verify="content" id="news_content"></textarea>
+			</div>
+		</div>-->
+		<div class="layui-form-item" style="text-align: center;">
+			<div class="layui-input-block" style="margin-left: 0">
+			<!--	<input type="checkbox" class="saveTemplate" name="saveTemplate" title="存为模板" lay-skin="primary">-->
+				<button class="layui-btn addTemplateProject" style="min-width: 216px" lay-submit="" lay-filter="addTemplateProject">添加项目</button>
+				<!--<button type="reset" class="layui-btn layui-btn-primary">重置</button>-->
+		    </div>
+		</div>
+		<div class="treeOpen" style="display: none;    margin-top: 14px;">
+			<div class="layui-inline">
+				<label class="layui-form-label">品名</label>
+				<div class="layui-input-inline">
+					<select name="cailiaoName" class="cailiaoName" lay-filter="cailiaoName" lay-search="">
+						<option value="">请选择品名(选择添加)</option>
+					</select>
+					<!--<input type="text" class="layui-input newsName" lay-verify="required" placeholder="请输入项目名称(必填)">-->
+				</div>
+				<div style="margin-left: 31px;" class="layui-btn-group">
+					<input type="button" class="layui-btn thatTimeChoose model sureTime" onclick="thatTimeChoose(this)" valuezi="model" value="非医保"/>
+					<input type="button" class="layui-btn thatTimeChoose medicalmodel" onclick="thatTimeChoose(this)" valuezi="medicalmodel" style="background-color: white;color: #222;border: 1px solid #e7e7e7" value="医保"/>
+				</div>
+				<!--<span class="csxbtn" style="padding: 0 14px;font-size: 24px;" >+</span>-->
+				<table class="layui-hide" id="addMateTable" lay-filter="addMateTable"></table>
+				<div class="layui-input-block" style="    float: right;margin: 0 12px 0 0;">
+					<strong>合计：￥</strong><span class="addMatePrice">0</span>
+				</div>
+				<div class="layui-input-inline">
+				<input type="button" class="layui-btn layui-btn-lg sureCailiao" style="margin: 15px 0 0 340px;width: 207px" value="确 定"/>
+				</div>
+			</div>
+		</div>
+		<div class="row" style="clear: both;">
+			<div class="col">
+				<!--<blockquote class="layui-elem-quote title" style="padding: 16px 15px;margin-bottom: 0">历史回访<i class="iconfont icon-new1"></i>
+                    <input type="button" class="layui-btn layui-btn-normal news_record_add" style="float: right;width: 107px;    margin-top: -8px;" value="添加回访"/>
+                </blockquote>-->
+				<table class="layui-table"  style="margin-top: 0">
+					<colgroup>
+						<!--<col width="50"><col>-->
+						<!--<col width="19%"><col>
+                        <col width="9%"><col>
+                        <col width="9%"><col>
+                        &lt;!&ndash;<col width="9%">&ndash;&gt;
+                        &lt;!&ndash;<col width="9%">
+                        <col width="9%">&ndash;&gt;
+                        <col width="9%"><col>-->
+					</colgroup>
+					<thead>
+					<tr>
+						<!--<th></th>-->
+						<!--<th>约定病种</th>-->
+						<th>品名</th>
+						<th>类型</th>
+						<th>产地</th>
+						<th>单位</th>
+						<th>数量</th>
+						<th>原价</th>
+						<th>折后价</th>
+						<th>医保</th>
+						<th>合计</th>
+						<th>操作</th>
+						<!--	<th>咨询</th>-->
+					</tr>
+					</thead>
+					<tbody class="news_content"></tbody>
+				</table>
+			</div>
+			<!--<div class="layui-input-block" style="    float: right;margin: 19px 30px 0 0">
+				<strong>应付金额：￥</strong><span class="shouldUserPrice">0</span>
+			</div>
+			<div class="layui-input-block" style="    float: right;margin: 19px 30px 0 0">
+				<span>实缴金额：￥</span><span class="factPrice">0</span>
+			</div>-->
+			<div class="layui-input-block" style="    float: right;margin: 19px 30px 0 0">
+				<span>约定价格：￥</span><span class="totalUserPrice">0</span>
+			</div>
+
+
+			<div class="layui-form-item" style="text-align: center;margin-top: 50px;margin-bottom: 50px;">
+				<div class="layui-input-block" style="margin-left: 0">
+					<button class="layui-btn layui-btn-normal addProjectPost" style="min-width: 216px" lay-submit="" lay-filter="addProjectPost">提交</button>
+					<!--<button type="reset" class="layui-btn layui-btn-primary">重置</button>-->
+				</div>
+			</div>
+		</div>
+	</form>
+
+	<script type="text/html" id="delMateTable">
+		<a style="    height: 26px;
+    line-height: 26px;
+    padding: 0 8px;" class="layui-btn layui-btn-danger  layui-btn-xs" lay-event="del">删除</a>
+	</script>
+	<script type="text/javascript" src="../js/jquery-1.11.3.js"></script>
+	<script type="text/javascript" src="js/common.js?v=1134"></script>
+	<script type="text/javascript" src="../js/qrcode/jquery.combo.select.js"></script>
+	<script type="text/javascript" src="../layui/lay/modules/pinyin.js"></script>
+	<script type="text/javascript" src="../layui/layui.js"></script>
+	<script type="text/javascript" src="../js/fs_forse.js" ></script>
+	<script type="text/javascript" src="js/addTemplateProject.js?v=1134"></script>
+
+</body>
+</html>
