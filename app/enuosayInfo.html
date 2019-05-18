@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,minimum-scale=1,maximum-scale=1,user-scalable=no,minimal-ui">
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/util.css">
+    <link rel="stylesheet" href="css/enuosayInfo.css">
+    <script type="text/javascript" src="plug/jquery-1.11.3.js"></script>
+    <script src="js/common.js"></script>
+    <script src="js/enuosayInfo.js"></script>
+    <script src="js/lib/jweixin-1.1.0.js"> </script>
+    <script src="js/getShare.js"> </script>
+    <title>e诺说</title></head>
+<style>
+    .articleTitle{
+        color: black;
+        font-size: 1.15rem;
+        /* height: 2.8rem; */
+        /* line-height: 2.3rem; */
+        text-align: center;
+        padding-top: .8rem;
+        background-color: white;
+        font-weight: 600;
+        min-height: 2.8rem;
+        line-height: 1.5rem;
+    }
+    .enuoinfo img{
+        width: 100%;
+    }
+    .articleTime{
+        color: #666;
+        font-size: .8rem;
+        height: 1.8rem;
+        text-align: center;
+        line-height: 1.3rem;
+        background-color: white;
+    }
+</style>
+<body>
+<!--<div class="modelOpen" style="display: none;">
+    <div class="mubu"></div>
+    <div class="modelOpenback">
+        <img class="activityFu" src="img/shareImg.png">
+        <img class="activityClose" onclick="closeopen()" src="img/know.png">
+    </div>
+</div>-->
+<div class="content xywz">
+    <div class="headerimg flex_vertical justify_content_equal">
+        <img class="headerimgTop" src="img/backlogo.jpg"/>
+        <img class="up_page pub_hearder_left" src="img/header/header_leftHui.png" onclick="if(document.referrer == ''){window.location.href = 'enuosay.html'}else{window.history.go(-1)}">
+    </div>
+    <div class="articleTitle">蜂蜜的神奇作用只有这一个</div>
+    <div class="articleTime">2017-05-06</div>
+    <div class="enuoinfo">
+
+    </div>
+    <!--<div class="bottominfo">
+        <span class="famousFloat"><img src="img/zanblack.png"><span>888</span></span>
+        <span class="famousFloat"  style="    margin-right: 1.1rem;">阅读<span style="margin-left: .4rem">888</span>+</span>
+    </div>-->
+</div>
+</body>
+<script>
+    $(document).ready(function () {
+        init();
+    })
+</script>
+
+</html>

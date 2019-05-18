@@ -1,0 +1,273 @@
+
+.hos_doc_list .hos_doc_child {
+	padding: .4rem 2% .4rem 3.5%;
+	margin-left: -0.5%;
+	/*border-bottom: 1px solid #dcdcdc;*/
+	background-color: white;
+	width: 101%;
+	border-radius: 5px;
+	display: flex;
+	margin-top: .7rem;
+	box-shadow: 1px 1px 5px #cccccc;
+}
+.hos_doc_list .hos_doc_child div {
+	margin: 0.9% 0 0 -0.8%;
+}
+.hos_doc_list .doc_child_left {
+	width: 20%;
+}
+.doc_child_right{
+	width: 75%;
+}
+.all_doc{
+	width: 100%;
+	height: 2.8rem;
+	line-height: 2.8rem;
+	text-align: center;
+	color: #000000;
+	font-size: .85rem;
+}
+.hot{
+	color: #f81f7b;
+	border-radius: 3px;
+	padding: .05rem .15rem;;
+	border: 1px solid #f81f7b;
+	font-size: .75rem;
+	margin-right: .3rem;
+}
+.huliImg{
+	width: 40%;
+	margin-left: -.2rem;
+}
+.name{
+	margin-top: .3rem;
+}
+
+.goodsName{
+	color: #808080;
+	line-height: 1.5rem;
+	font-size: .85rem;
+}
+.address{
+	color: #00afa1;
+	margin: .14rem 0 .14rem 0;
+	/*color: #707070;*/
+	font-size: .75rem;
+}
+.price{
+	color: #f81f7b;
+	border-radius: 5px;
+	display: inline-block;
+	margin-right: .3rem;
+	font-size: 1.1rem;
+}
+.oldprice{
+	color: #999;
+	font-size: .75rem;
+}
+.yuyue{
+	color: #707070;
+	font-size: .8rem;
+	/* float: right; */
+	margin-right: -.3rem;
+	margin-top: 0.24rem;
+	float: right;
+}
+.adverlist li {
+	position: relative;
+	/* padding: 10px 8px 10px 120px; */
+	/*border-bottom: 1px solid #eee;*/
+	width: 22%;
+	margin-left: 2.4%;
+	float: left;
+}
+.hos_list_top .left {
+	width: 100%;
+	/* margin: -.2rem .2rem 0 -.2rem; */
+}
+.hos_list_top div {
+	float: left;
+}
+.hos_list_top .right {
+	padding-left: .2rem;
+	margin-top: .5em;
+	width: 94%;
+	margin-left: 5%;
+}
+.right p {
+	margin-bottom: .2rem;
+	height: 1.4em;
+	line-height: 1.4em;
+}
+
+
+/*open*/
+.shareRotorNineBeforeOpen,.modelOpen,.modelOpenSuccess {
+	position: fixed;
+	width: 100%;
+	height: 100%;
+	z-index: 999;
+	top: 0;
+	display: none;
+}
+.activityFu,.activityFuDetail{
+	width: 100%;
+}
+.paySuccess{
+	width: 19%;
+	margin: 12% 0 4.5% 41%;
+}
+.paySuccessZi{
+	font-size: .9rem;
+	line-height: 1.3rem;
+	text-align: center;
+	/* height: 1.5rem; */
+	width: 80%;
+
+	margin-left: 10%;
+}
+.activityFuDetailZhi{
+	width: 20%;
+	float: right;
+	clear: both;
+}
+.activityFuDetailToShare{
+	width: 33%;
+	float: right;
+	clear: both;
+	margin: 1rem 6% .5rem 0;
+}
+.mubu {
+	position: fixed;
+	width: 100%;
+	height: 100%;
+	background-color: #000000;
+	opacity: 0.2;
+}
+.modelOpenback {
+	width: 80%;
+	position: fixed;
+	top: 26%;
+	left: 10%;
+	z-index: 99999;
+	border-radius: 5px;
+	background-color: white;
+}
+.payclose, .paybackclose {
+	width: 1.25rem;
+	float: right;
+	margin: .85rem;
+}
+.modelOpenback input{
+	width: 78%;
+	padding-left: 2%;
+	margin-left: 10%;
+	height: 2.5rem;
+	margin-top: 1rem;
+	margin-bottom: 1rem;
+	font-size: 1rem;
+	border: 1px solid #cccccc;
+}
+.toYuyue, .toYuyueno,.toDuihuan {
+	width: 40%;
+	height: 2.2rem;
+	background-color: #00afa1;
+	border: none;
+	outline: none;
+	/* position: absolute; */
+	border-radius: 5px;
+	color: white;
+	font-size: .85rem;
+	margin: 6% 0 9% 2%;
+}
+.toYuyueno {
+	background-color: white;
+	color: #707070;
+	border: 1px solid #707070;
+	margin-left: 7.5%;
+}
+.paySuccessBackZi {
+	font-size: 1rem;
+	text-align: center;
+	line-height: 3.7rem;
+	height: 3.7rem;
+}
+
+.familyList {
+	text-align: center;
+	height: 6rem;
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: -webkit-flex;
+	display: flex;
+	-webkit-box-pack: center;
+	-ms-flex-pack: center;
+	-webkit-justify-content: center;
+	justify-content: center;
+	-webkit-box-align: center;
+	-ms-flex-align: center;
+	-webkit-align-items: center;
+	align-items: center;
+	position: relative;
+}
+.familyList ul {
+	width: 100%;
+	margin-top: -1.5rem;
+	margin-left: 4.2%;
+}
+.familyList ul li {
+	width: 26.3%;
+	margin-left: 4%;
+	margin-top: .9rem;
+	float: left;
+	font-size: .88rem;
+	border-radius: 5px;
+	height: 2.2rem;
+	line-height: 2.2rem;
+}
+.border{
+	border: 1px solid #cccccc;
+	color: #444;
+	background-color: white;
+}
+.borderActive {
+	border: 1px solid #00afa1;
+	background-color: #00afa1;
+	color: white;
+}
+
+.mescroll-empty {
+	width: 100%;
+	padding-top: 20px;
+	text-align: center;
+}
+.mescroll-empty .empty-icon {
+	width: 45%;
+}
+.mescroll-empty .empty-tip {
+	margin-top: 6px;
+	font-size: 14px;
+	color: gray;
+}
+.toBuy{
+	width: 8rem;
+	border-radius: 50px;
+	height: 3rem;
+	line-height: 3rem;
+	color: white;
+	font-size: 1.1rem;
+	margin-top: 8%;
+	text-align: center;
+	/* position: fixed; */
+	bottom: 0;
+	background-color: #38b69a;
+}
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no,minimal-ui">
+    <link rel="stylesheet" href="css/util.css" />
+    <link href="css/chat.css" rel="stylesheet" />
+    <script src="js/jquery-1.11.3.js"></script>
+    <script src="js/common.js"></script>
+    <script src="js/chat.js"></script>
+    <title></title>
+</head>
+<script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? "https://" : "http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1276607991'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s5.cnzz.com/z_stat.php%3Fid%3D1276607991' type='text/javascript'%3E%3C/script%3E"));</script>
+<body>
+<div class="pub_hearder flex_vertical justify_content_equal"  style="    position: fixed;top: 0;z-index: 9;">
+    <img class="up_page pub_hearder_left" src="img/header/header_left.png" onclick="window.history.go(-1)"/>
+    <div class="head_center" style="    width: 100%;">
+        <span class="set_head_dot" style="width: .15rem;height: .15rem;border-radius: 50%;"></span>
+        <span class="set_head_dot" style="width: .25rem;height: .27rem;border-radius: 50%;"></span>
+        <span class="set_head_dot"></span>
+        <span class="head_title"></span>
+        <span class="set_head_dot"></span>
+        <span class="set_head_dot" style="width: .25rem;height: .27rem;;border-radius: 50%;"></span>
+        <span class="set_head_dot" style="width: .15rem;height: .15rem;border-radius: 50%;"></span>
+    </div>
+    <!--<img class="search pub_hearder_right" onclick="window.location.href = 'search.html?type=special'" style="position: absolute;
+    top: .8rem;
+    right: 3%;" src="img/search.png"/>-->
+</div>
+<div class="main">
+    <div class="sendBody">
+        <div class="hos_doc_child clearfix" style="position: relative" specialid="20" ispreferential="true"
+             onclick="href(this)">
+            <div class="doc_child_left" style=" margin-right: 5%;"><img class="sendBodyImg readySendBodyImg"
+                                             style="max-height: 3.5rem;;border-radius: 5px;overflow: hidden;"
+                                             src="https://www.enuo120.com/upload/image/201801/25/DZCaR1S66HnqrPlT78Q.jpg">
+            </div>
+            <div class="doc_child_right" style="margin: 0 0 0 0;">
+                <div class="id"><p class="name" style="font-size: .9rem;"><span class="goodsName readySgoodsName">无针水光针</span></p>
+                    <p style="margin-top: .8rem;"><span style="color: #f81f7b;font-size: .9rem;">￥</span><span
+                            class="price readySprice">18.00</span></p>
+                </div>
+            </div>
+        </div>
+        <p class="sendBtnDiv"><input class="sendBtn" onclick="Get.sendBtn()" type="button" value="发送链接"/></p>
+    </div>
+    <div class="main_inner clearfix">
+        <div class="panel"></div>
+        <div id="chatArea" class="box chat">
+            <div class="box_hd"></div>
+            <div class="box_bd" id="messageList" style="margin-bottom: 3rem">
+                <!-- <div class="message me">
+                     <img class="avatar" src="img/myLogo.png" />
+                     <div class="content">
+                         <div class="nickname"><span class="time">10:10:08</span></div>
+                         <div class="bubble bubble_primary right">
+                             <div class="bubble_cont">
+                                 <div class="plain">
+                                     <pre>你欠我一顿大餐你欠我一顿大餐你欠我一顿大餐你欠我一顿大餐你欠我一顿大餐你欠我一顿大餐你欠我一顿大餐你欠我一顿大餐你欠我一顿大餐你欠我一顿大餐你欠我一顿大餐</pre>
+                                 </div>
+                             </div>
+                         </div>
+                     </div>
+                 </div>
+                 <div class="message">
+                     <img class="avatar" src="img/hosLogo.png" />
+                     <div class="content">
+                         <div class="nickname">医院<span class="time">10:12:20</span></div>
+                         <div class="bubble bubble_default left">
+                             <div class="bubble_cont">
+                                 <div class="plain">
+                                     <pre>(⊙o⊙)…好吧</pre>
+                                 </div>
+                             </div>
+                         </div>
+                     </div>
+                 </div>
+                 <div class="message me">
+                     <img class="avatar" src="img/myLogo.png" />
+                     <div class="content">
+                         <div class="nickname"><span class="time">10:10:08</span></div>
+                         <div class="bubble bubble_primary right">
+                             <div class="bubble_cont">
+                                 <div  class="plain">
+                                     <pre>(⊙o⊙)…好吧佛挡杀佛地方个梵蒂冈电饭锅电饭锅电饭锅</pre>
+                                 </div>
+                             </div>
+                         </div>
+                     </div>
+                 </div>
+                 <div class="message">
+                     <img class="avatar" src="img/hosLogo.png" />
+                     <div class="content">
+                         <div class="nickname">医院<span class="time">10:12:20</span></div>
+                         <div class="bubble bubble_default left">
+                             <div class="bubble_cont">
+                                 <div class="plain">
+                                     <pre>请你吃一个月大餐！</pre>
+                                 </div>
+                             </div>
+                         </div>
+                     </div>
+                 </div>
+                 <div class="message me">
+                     <img class="avatar" src="img/myLogo.png" />
+                     <div class="content">
+                         <div class="nickname"><span class="time">10:10:08</span></div>
+                         <div class="bubble bubble_primary right">
+                             <div class="bubble_cont">
+                                 <div class="plain">
+                                     <pre>你欠我一顿大餐你欠我一顿大餐你欠我一顿大餐你欠我一顿大餐你欠我一顿大餐你欠我一顿大餐你欠我一顿大餐你欠我一顿大餐你欠我一顿大餐你欠我一顿大餐你欠我一顿大餐</pre>
+                                 </div>
+                             </div>
+                         </div>
+                     </div>
+                 </div>
+                 <div class="message me">
+                     <img class="avatar" src="img/myLogo.png" />
+                     <div class="content">
+                         <div class="nickname"><span class="time">10:10:08</span></div>
+                         <div class="bubble bubble_primary right">
+                             <div class="bubble_cont">
+                                 <div class="plain">
+                                     <pre>你欠我一顿大餐你欠我一顿大餐你欠我一顿大餐你欠我一顿大餐你欠我一顿大餐你欠我一顿大餐你欠我一顿大餐你欠我一顿大餐你欠我一顿大餐你欠我一顿大餐你欠我一顿大餐</pre>
+                                 </div>
+                             </div>
+                         </div>
+                     </div>
+                 </div>
+                 <div class="message">
+                     <img class="avatar" src="img/hosLogo.png" />
+                     <div class="content">
+                         <div class="nickname">医院<span class="time">10:12:20</span></div>
+                         <div class="bubble bubble_default left">
+                             <div class="bubble_cont">
+                                 <div class="plain">
+                                     <pre>请你吃一个月大餐！</pre>
+                                 </div>
+                             </div>
+                         </div>
+                     </div>
+                 </div>
+                 <div class="message">
+                     <img class="avatar" src="img/hosLogo.png" />
+                     <div class="content">
+                         <div class="nickname">医院<span class="time">10:12:20</span></div>
+                         <div class="bubble bubble_default left">
+                             <div class="bubble_cont">
+                                 <div class="plain">
+                                     <pre>请你吃一个月大餐！</pre>
+                                 </div>
+                             </div>
+                         </div>
+                     </div>
+                 </div>
+                 <div class="message">
+                 <img class="avatar" src="img/hosLogo.png" />
+                 <div class="content">
+                     <div class="nickname">医院<span class="time">10:12:20</span></div>
+                     <div class="bubble bubble_default left">
+                         <div class="bubble_cont">
+                             <div class="plain">
+                                 <pre>请你吃一个月大餐！</pre>
+                             </div>
+                         </div>
+                     </div>
+                 </div>
+             </div>-->
+            </div>
+        </div>
+    </div>
+    <div class="box_ft">
+        <div class="box_ft_hd">
+            <div class="eaitWrap">
+                <!--<pre id="editArea" class="editArea" contenteditable="true"></pre>-->
+                <input type="text" id="editArea" class="editArea"/>
+            </div>
+            <a href="javascript:;" style="display: inline-block" class="btn btn_send" id="btn_send" onclick="To.send()">发送</a>
+        </div>
+        <div class="box_ft_bd hide">
+            <div class="emoji_panel">
+                <!-- <ul class="exp_hd">
+                     <li class="exp_hd_item active" data-i="0">df
+                         <a href="javascript:;">QQ表情</a>
+                     </li>
+                 </ul>-->
+                <div class="exp_bd">
+                    <div class="exp_cont active">
+
+                    </div>
+                    <div class="exp_cont emoji_face"></div>
+                    <div class="exp_cont tuzki_face"></div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+</body>
+<script>
+    $(function () {
+        var _editArea = $('#editArea');
+
+        //显示隐藏发送按钮
+        /*var _editAreaInterval;
+        $('#editArea').focus(function () {
+            var _this = $(this), html;
+            _editAreaInterval = setInterval(function () {
+                html = _this.html();
+                if (html.length > 0) {
+                    $('#web_wechat_pic').hide();
+                    $('#btn_send').show();
+                } else {
+                    $('#web_wechat_pic').show();
+                    $('#btn_send').hide();
+                }
+            }, 200);
+        });
+
+        $('#editArea').blur(function () {
+            clearInterval(_editAreaInterval);
+        });*/
+
+
+        //切换表情主题
+        $('.exp_hd_item').click(function () {
+            var _this = $(this), i = _this.data('i');
+            $('.exp_hd_item,.exp_cont').removeClass('active');
+            _this.addClass('active');
+            $('.exp_cont').eq(i).addClass('active');
+            resetMessageArea();
+        });
+
+        //选中表情
+        $('.exp_cont a').click(function () {
+            var _this = $(this);
+            var html = '<img class="' + _this[0].className + '" title="' + _this.html() + '">';
+            _editArea.html(_editArea.html() + html);
+            $('#web_wechat_pic').hide();
+            $('#btn_send').show();
+        });
+
+        resetMessageArea();
+
+
+        function sendMsg(str) {
+        }
+
+        function resetMessageArea() {
+            $('#messageList').animate({ 'scrollTop': 999 }, 500);
+        }
+    });
+</script>
+</html>

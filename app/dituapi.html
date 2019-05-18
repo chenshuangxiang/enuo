@@ -1,0 +1,116 @@
+<!--
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+    <style type="text/css">
+        body, html{width: 100%;height: 100%;margin:0;font-family:"微软雅黑";}
+        #allmap{height:500px;width:100%;}
+        #r-result{width:100%; font-size:14px;}
+    </style>
+    <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=AEKrrtZejAfxZmAsbDxDbjrHDFxkcNo7"></script>
+    <!--<title>城市名定位</title>--><title>e诺</title><!---->
+</head>
+<body>
+<a style="margin: 5rem 5rem" href="http://api.map.baidu.com/geocoder?location=30.289567,120.146713&title=我的位置&content=百度奎科大厦&output=html">地图标点</a>
+<!--<a style="margin: 5rem 5rem" href="http://api.map.baidu.com/geocoder?address=浙江省杭州市西湖区文二路122-2号&title=我的位置&content=百度奎科大厦&output=html">地图标点</a>-->
+<div id="allmap"></div>
+&lt;!&ndash;<div id="r-result">
+    经度: <input id="longitude" type="text" style="width:100px; margin-right:10px;" />
+    纬度: <input id="latitude" type="text" style="width:100px; margin-right:10px;" />
+    <input type="button" value="查询" onclick="theLocation()" />
+</div>&ndash;&gt;
+</body>
+</html>
+<script type="text/javascript">
+    // 百度地图API功能
+    var map = new BMap.Map("allmap");
+    var point = new BMap.Point(116.331398,39.897445);
+    map.centerAndZoom(point,12);
+
+    var geolocation = new BMap.Geolocation();
+    geolocation.getCurrentPosition(function(r){
+        if(this.getStatus() == BMAP_STATUS_SUCCESS){
+           /* var mk = new BMap.Marker(r.point);
+            map.addOverlay(mk);  画点
+            map.panTo(r.point);*/
+           // alert('您的位置：'+r.point.lng+','+r.point.lat);
+            var p1 = new BMap.Point(r.point.lng,r.point.lat); //本地定位
+            var p2 = new BMap.Point(109.140,21.475);  //目标定位
+
+            var driving = new BMap.DrivingRoute(map, {renderOptions:{map: map, autoViewport: true}});
+            driving.search(p1, p2);  //两地路线
+        }
+        else {
+            alert('failed'+this.getStatus());
+        }
+    },{enableHighAccuracy: true})
+
+//目标定位标注
+/*    var map = new BMap.Map("allmap");
+    map.centerAndZoom(new BMap.Point(116.331398,39.897445),11);
+    map.enableScrollWheelZoom(true);
+
+    map.clearOverlays();
+    var new_point = new BMap.Point('109.140','21.475');
+    var marker = new BMap.Marker(new_point);  // 创建标注
+    map.addOverlay(marker);              // 将标注添加到地图中
+    map.panTo(new_point);*/
+    // 用经纬度设置地图中心点
+    function theLocation(){
+
+    }
+    document.getElementById("allmap").style.height="100%"
+</script>-->
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+    <style type="text/css">
+        body, html {width: 100%;height: 100%;margin:0;font-family:"微软雅黑";}
+        #allmap{width:100%;height:500px;}
+        p{margin-left:5px; font-size:14px;}
+    </style>
+    <script type="text/javascript" src="https://api.map.baidu.com/api?v=2.0&ak=AEKrrtZejAfxZmAsbDxDbjrHDFxkcNo7"></script>
+    <script src="https://libs.baidu.com/jquery/1.9.0/jquery.js"></script>
+    <!--<title>给多个点添加信息窗口</title>--><title>e诺</title>
+</head>
+<body>
+<div id="allmap"></div>
+<p>点击标注点，可查看由纯文本构成的简单型信息窗口</p>
+</body>
+</html>
+<script type="text/javascript">
+    // 百度地图API功能
+    map = new BMap.Map("allmap");
+    map.centerAndZoom(new BMap.Point(116.417854,39.921988), 15);
+    var data_info = [[116.417854,39.921988,"地址：北京市东城区王府井大街88号乐天银泰百货八层"],
+        [116.406605,39.921585,"地址：北京市东城区东华门大街"],
+        [116.412222,39.912345,"地址：北京市东城区正义路甲5号"]
+    ];
+    var opts = {
+        width : 250,     // 信息窗口宽度
+        height: 80,     // 信息窗口高度
+        title : "信息窗口" , // 信息窗口标题
+        enableMessage:true,//设置允许信息窗发送短息
+        enableAutoPan : true,     //自动平移
+    };
+    for(var i=0;i<data_info.length;i++){
+        var marker = new BMap.Marker(new BMap.Point(data_info[i][0],data_info[i][1]));  // 创建标注
+        var content = data_info[i][2];
+        map.addOverlay(marker);               // 将标注添加到地图中
+        addClickHandler(content,marker);
+    }
+    function addClickHandler(content,marker){
+        marker.addEventListener("click",function(e){
+            openInfo(content,e)}
+        );
+    }
+    function openInfo(content,e){
+        var p = e.target;
+        var point = new BMap.Point(p.getPosition().lng, p.getPosition().lat);
+        var infoWindow = new BMap.InfoWindow(content,opts);  // 创建信息窗口对象
+        map.openInfoWindow(infoWindow,point); //开启信息窗口
+    }
+</script>

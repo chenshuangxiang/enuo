@@ -1,0 +1,165 @@
+/*医院列表*/
+.hos_child{
+	/*height: 8rem;*/
+	padding-top: .2rem;
+	padding-bottom: 0.2em;
+}
+.hos_child .hos_list_top{
+	height: 2.9rem;
+	/*border: 1px solid red;*/
+	font-size: 1rem;
+	line-height:2.5rem;
+	display: flex;
+	width: 95%;
+	margin-left: 2.8%;
+	border-bottom: 1px solid #e5e5e5
+}
+/*.hos_list_top div{
+	float: left;
+}*/
+.hos_list_top .left{
+	width: 33%;
+	margin: -.2rem 0 0 -.2rem;
+	line-height: 3.3rem;
+	padding-left: 2%;
+	color: #555;
+}
+.hos_list_top .left img{
+	height: 9em;
+}
+.hos_list_top .right{
+	padding-left:.2rem;
+	margin-top: .2em;
+	width: 79%;
+}
+.leftZi{
+	height: 2.5rem;
+	font-size: 1rem;
+	line-height: 2.5rem;
+	width: 95%;
+	margin-left: 4%;
+}
+.bottomZi{
+	height: 2rem;
+	font-size: .8rem;
+	line-height: 2rem;
+	width: 95%;
+	color: #a3a3a3;
+	margin-left: 4%;
+	border-top: 1px solid #dbdbdb;
+}
+.allTi{
+	font-size: .9rem;
+	float: right;
+	margin-right: 0;
+	color: #00ad9f;
+}
+.right input[type="text"]{
+	width: 90%;
+	height: 1.8em;
+	line-height: 1.8em;
+	border: none;
+	outline: none;
+	font-size: .85rem;
+}
+.right button{
+	/*width: 10%;*/
+	height: 2.3em;
+	line-height: 2.3em;
+	border: none;
+	outline: none;
+	background-color: #00afa1;
+	border-radius: 5px;
+	color: white;
+	font-size: 0.8em;
+	padding: 0 3%;
+	float: right;
+	margin-top: .3em;
+}
+.sex:checked {
+	background: url(../img/raido.png);
+	background-size: 100% 100%;
+	color: white;
+	border: 0px;
+}
+.sex {
+	float: left;
+	width: 15px;
+	margin-left: 12px;
+	height: 15px;
+	margin-top: .85em;
+	outline: none;
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	-ms-appearance: none;
+	-o-appearance: none;
+	appearance: none;
+	background: #fff;
+	border-radius: 50%;
+	border: 1px solid #c0c0c0;
+	color: #fff;
+	display: block;
+}
+.sexname{
+	float: left;
+	margin: 0 2em 0 5px;
+}
+.bindBtn{
+	width: 50%;
+	margin-left: 25%;
+	border-radius: 5px;
+	height: 2.5rem;
+	line-height: 2.5rem;
+	color: white;
+	font-size: 1rem;
+	margin-top: 6%;
+	text-align: center;
+	/* position: fixed; */
+	bottom: 0;
+	background-color: #00afa1;
+}
+
+.nav .active {
+	border-bottom: 2px solid #00ad9f;
+	color: #00ad9f;
+}
+.nav p {
+	display: inline-block;
+	width: 30%;
+	padding: .6rem 0;
+	text-align: center;
+	margin: 0 6% 0 35%;
+}
+.nav {
+	/* text-align: center; */
+	border-bottom: 1px solid #ddd;
+	background-color: white;
+	height: 2.7rem;
+}
+.msg{
+	width: 100%;
+	color: #fff;
+	position: fixed;
+	margin-top: 70%;
+	z-index: 20;
+	text-align: center;
+	display: none;
+}
+.msgText{
+	padding: 6px 14px;
+	text-align: center;
+	line-height: 1rem;
+	word-break: break-all;
+	overflow: hidden;
+	font-size: 1rem;
+	border-radius: 4px;
+	background-color: rgba(0,0,0,.85);
+}
+
+
+
+
+
+
+
+

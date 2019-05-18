@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit:contain">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<link rel="stylesheet" href="css/base.css" />
+	<link rel="stylesheet" href="css/util.css" />
+	<link rel="stylesheet" href="css/user_center.css" />
+	<link rel="stylesheet" href="css/lib/xiala.css" />
+	<script type="text/javascript" src="plug/jquery-1.11.3.js" ></script>
+	<script src="js/common.js"></script>
+	<!--<title>个人中心</title>--><title>个人中心</title>
+</head>
+<style>
+	.singBtn{
+		float: right;
+		padding: .2rem .4rem;
+		border: 1px solid #00afa1;
+		border-radius: 4px;
+		margin-right: 2%;
+		color: #00afa1;
+		font-size: .85rem
+	}
+</style>
+<body style="background-color: #ebebeb">
+<!--<div class="modelOpen">
+	<div class="mubu"></div>
+	<div class="modelOpenback">
+		<img class="closeopen" src="img/close.png">
+
+		&lt;!&ndash;<img src="../img/yuyueback.png">&ndash;&gt;
+		<p class="chooseqin">请选择预约记录项</p>
+			<div class="hosDivOpen">
+                <input class="sex nan" type="radio" name="sex" value="myYuyue" checked="">
+                <span class="sexname">我的预约</span>
+            </div>
+            <div class="hosDivOpen">
+                <input class="sex nan" type="radio" name="sex" value="huliCard">
+                <span class="sexname">护理卡预约</span>
+            </div>
+		<div class="hosDivOpen">
+			<button class="toHref" onclick="Go.toHrefYuyueHtml()">确定</button>
+		</div>
+	</div>
+</div>-->
+<div class="modelOpen" style="position: absolute">
+	<div class="mubu"></div>
+	<div class="modelOpenback" style="position: absolute">
+		<img class="payclose" onclick="$('.modelOpen').hide()" src="img/payclose.png">
+
+		<!--<img src="../img/yuyueback.png">-->
+		<p class="paySuccessZi" style=" margin-top:3rem;">充值卡充值</p>
+		<p class="paySuccessZi" style=" margin-top: 1rem;"><input type="text" class="cardnum" placeholder="请输入充值卡编号"></p>
+		<p class="paySuccessZi"><input type="password" class="cardpsd" placeholder="请输入充值卡密码"></p>
+		<button class="sureCoupon" onclick="User.rechargeCard()">确定</button>
+	</div>
+</div>
+<div class="msg">
+	<span class="msgText"></span>
+</div>
+<div class="content" style="margin-bottom: 5rem;background-color: #ebebeb">
+	<!--标题-->
+	<!--<a href="../index.html"><div class="header"></div></a>-->
+<!--	<div class="pub_hearder flex_vertical justify_content_equal" style="z-index: 99;">
+	&lt;!&ndash;	<img class="up_page pub_hearder_left" src="img/header/header_left.png" onclick="window.history.go(-1)" />&ndash;&gt;
+		<div class="head_center head_centerZi" style="margin-left: 0%;">
+			&lt;!&ndash;	<div class="search_publish">
+                    <div style="position: relative;">
+                        <input class="toggleSou" type="text" style="color: black;height: .5rem; margin-bottom: .15em;" placeholder="搜索医生"/>
+                    </div>
+                </div>&ndash;&gt;
+			<span class="set_head_dot" style="width: .15rem;height: .15rem;border-radius: 50%;"></span>
+			<span class="set_head_dot" style="width: .25rem;height: .27rem;border-radius: 50%;"></span>
+			<span class="set_head_dot"></span>
+			<span class="head_title">个人中心</span>
+			<span class="set_head_dot"></span>
+			<span class="set_head_dot" style="width: .25rem;height: .27rem;;border-radius: 50%;"></span>
+			<span class="set_head_dot" style="width: .15rem;height: .15rem;border-radius: 50%;"></span>
+		</div>
+		&lt;!&ndash;<img class="search pub_hearder_right" onclick="Wx.scanQRCode()" style="	width: 1.3rem;height: 1.3rem;position: absolute;top: .8rem;;
+    right: 3%;" src="img/header/sao.png"/>&ndash;&gt;
+	&lt;!&ndash;	<img class="search pub_hearder_right" src="img/forward.png" />&ndash;&gt;
+		&lt;!&ndash;	<img class="search pub_hearder_right" onclick="Show.Sou()" src="img/search.png"/>&ndash;&gt;
+	</div>-->
+	<div class="hospitail_detail set_box_shadow doctor_detail" style="border-radius: 0;width: 100%;margin-left:0;overflow:hidden;    margin-top: 0;    padding-bottom: 2rem;background: url('img/user_center/usercenterBackNew.png') no-repeat;    background-size: 100% 100%;    background-color: white;">
+
+		<div class="hos_doc_child clearfix" style="position: relative"><img onclick="window.location.href = 'bind_name.html'" class="huiImg" src="img/nextWrite.png">
+			<div class="doc_child_left"><img class="userHeadimg" src="img/enuoFang.jpg">
+			</div>
+			<div class="doc_child_right" style="margin: 0 0 0 0;">
+				<div class="id"><p class="name" style="font-size: 1.1rem;    margin: .8rem 0 .9rem .7rem;"><span class="loginStatus"></span><img class="realStatus" onclick="window.location.href = 'realCertify.html'" src=""><span class="shenpi"></span></p>
+
+					<p class="name" style="font-size: .9rem;	color: #333;margin: 0 0 .4rem .7rem;">余额：<span class="yue"></span>元</p>
+					<p style="margin: 0 0 .4rem 3.4rem;"><span style="color: #f81f7b;font-size: .7rem;"></span><span onclick="$('.modelOpen').show()" class="price">充值></span>
+						<span class="oldprice" onclick="window.location.href = 'getMoneyApplication.html'">提现></span></p>
+					</div>
+			</div>
+		</div>
+
+
+		<!--<img class="righthref" onclick="window.location.href = 'bind_name.html'" src="img/user_center/writeright.png"/>-->
+		<!--头像-->
+		<!--<div class="doc_pic hos_pic clearfix">
+			<img class="docImg" src="img/user_center/usercenterYue.png" />
+			<span class="yue"></span>
+			<p style="height: 1.2rem;position: absolute;width: 3rem;left: 21%;text-decoration: underline;" class="lefthref" onclick="$('.modelOpen').show()">充值></p>
+		</div>-->
+		<!--成功预约-->
+		<!--<div class="make">
+			<span class="loginStatus">未登录</span>
+			&lt;!&ndash;<span class="newyearImgDiv"><img class="newyearImg" src="img/user_center/newYearHui.png">新年福利</span>&ndash;&gt;
+			&lt;!&ndash;<input type="button" value="收藏" class="shoucang" onclick="To.favorite()"/>&ndash;&gt;
+		</div>-->
+		<!--<div class="make" onclick='window.location.href = "sanbaIndex.html"' style="margin-top: -1.3rem;">
+		&lt;!&ndash;	<span class="loginStatus">未登录</span>&ndash;&gt;
+			<span class="newyearImgDiv"><img class="newyearImg" src="img/user_center/newYearHui.png">1000万整形基金</span>
+			&lt;!&ndash;<input type="button" value="收藏" class="shoucang" onclick="To.favorite()"/>&ndash;&gt;
+		</div>-->
+		<!--<div class=" make score" style="	height: 3.5rem;">
+			<ul class="scoreUl">
+				<li style="margin-left: 2.3%">
+					<p><span class="scorescore shouscore">268</span></p>
+					<p class="screzi">优惠券(张)</p>
+				</li>
+				<li>
+					<p><span class="scorescore pingscore">268</span></p>
+					<p class="screzi">陪诊卡(张)</p>
+				</li>
+				<li style="margin-right: 0">
+					<p><span class="scorescore lunscore">268</span></p>
+					<p class="screzi">充值卡(张)</p>
+				</li>
+			</ul>
+		</div>-->
+	</div>
+	<div class="dai">
+
+		<div id="myOrder" class="dai_detail" onclick="window.location.href = 'myHealthFile.html'">
+			<div class="dai_img" style="border-right: 1px solid #e9e9e9;"><img src="img/user_center/healthFile.png"></div>
+			<div class="dai_zi" style="border-right: 1px solid #e9e9e9;">健康档案</div>
+		</div>
+		<div id="ShouHuoDiv" class="dai_detail" style="border-right: none;" onclick="window.location.href = 'familyAll.html'">
+			<div class="dai_img"><img src="img/user_center/bindFimily.png"></div>
+			<div class="dai_zi">家庭管理</div>
+		</div>
+	</div>
+	<div style="clear: both"></div>
+	<div class="dai hospitail_detail" style="    margin-top: .9rem;    padding: 0 0 0.8rem 0;">
+		<p class="hos_data" style="border-top: 0;clear: both;border-bottom: 1px solid #e6e6e6">
+			<img class="left" src="img/user_center/healthList.png">
+			<span class="">健康管家</span>
+		</p>
+		<div>
+			<div class="dingdan2_1 dingdan2">
+				<div class="my_dingdan_detail" onclick="">
+					<div class="dingdan2_img toHealthmanInfo" onclick="Go.toHealthmanInfo()"><img style="height: 1.7rem;width: auto;" src="img/user_center/myHealth.png"><div class="dingdan2_zi">我的健康助理</div></div>
+
+					<div class="mobile_zi"><a class="myHealthmanA" style="text-decoration: none;" href="tel:4000696120"><img style="height: 1.1rem;width: auto;margin-right: .1rem;" src="img/user_center/userMobile.png"><span class="myHealthName myHealthman"></span></a></div>
+				</div>
+			</div>
+			<div class="dingdan2_1 dingdan2">
+				<div class="my_dingdan_detail">
+					<div class="dingdan2_img toDoctorInfo" onclick="Go.toDoctorInfo()"><img style="height: 1.7rem;width: auto;" src="img/user_center/myDoctor.png">
+						<div class="dingdan2_zi">我的医生</div>
+					</div>
+					<div class="mobile_zi"><a class="myDoctorA" style="text-decoration: none;" href="tel:4000696120"><img style="height: 1.1rem;width: auto;margin-right: .1rem;" src="img/user_center/userMobile.png"><span class="myHealthName myDoctor"></span></a></div>
+				</div>
+			</div>
+			<div class="dingdan2_1 dingdan2">
+				<div class="my_dingdan_detail">
+					<div class="dingdan2_img toNurseInfo" onclick="Go.toNurseInfo()">
+						<img style="height: 1.7rem;width: auto;" src="img/user_center/myNurse.png">
+						<div class="dingdan2_zi">我的护士</div>
+					</div>
+					<div class="mobile_zi"><a class="myNurseA" style="text-decoration: none;" href="tel:4000696120"><img style="height: 1.1rem;width: auto;margin-right: .1rem;" src="img/user_center/userMobile.png"><span class="myHealthName myNurse"></span></a></div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div style="clear: both"></div>
+	<div class="dai hospitail_detail" style="    margin-top: .9rem;    padding: 0 0 0.8rem 0;">
+		<p class="hos_data" style="border-top: 0;clear: both;border-bottom: 1px solid #e6e6e6">
+			<img class="left" src="img/user_center/activityLog.png">
+			<span class="">我的购物单</span>
+		</p>
+		<div>
+		<div class="dingdan2_1 dingdan2">
+			<div class="my_dingdan_detail" onclick="window.location.href = 'my_experience.html'">
+				<div class="dingdan2_img"><img src="img/user_center/quan.png"></div>
+				<div class="dingdan2_zi" style="margin-bottom: 1rem;">特价体验券</div>
+			</div>
+		</div>
+		<div class="dingdan2_1 dingdan2">
+			<div class="my_dingdan_detail" onclick="window.location.href = 'order.html'">
+				<div class="dingdan2_img"><img src="img/user_center/dindan.png"></div>
+				<div class="dingdan2_zi" style="margin-bottom: 1rem;">我的订单</div>
+			</div>
+		</div>
+		<div class="dingdan2_1 dingdan2">
+			<div class="my_dingdan_detail" onclick="window.location.href = 'myCard.html'">
+				<div class="dingdan2_img"><img src="img/user_center/hulicard.png"></div>
+				<div class="dingdan2_zi" style="margin-bottom: 1rem;">我的卡券</div>
+			</div>
+		</div>
+		</div>
+	</div>
+	<div style="clear: both"></div>
+	<div class="hospitail_detail set_box_shadow doctor_detail" style="overflow:hidden;    margin-top: .9rem;    width: 100%;
+    margin-left: 0;
+    padding: 0;">
+		<!--延伸-->
+		<!--<span class="singBtn" onclick="window.location.href = 'singRecharge.html'">演唱会门票抵金充值</span>-->
+		<p class="hos_data hosDiv activityInfoDiv" style="display: none;border-top: none;border-bottom: 1px solid #eeeeee;" onclick="window.location.href = 'activityInfo.html'">
+			<img class="left" style="height: 1.3rem;top: .45rem" src="img/user_center/yue.png" />
+			<span class="hosName activityAmount">我的专项余额</span>
+			<img class="next" src="img/next.png" />
+		</p>
+		<p class="hos_data" style="border-top: 0;clear: both;" onclick=" window.location.href = 'my_yuyue.html'">
+			<img class="left" src="img/user_center/yuyue.png" />
+			<span class="">预约记录</span>
+			<img class="next" src="img/next.png" />
+		</p>
+		<!--<p class="hos_data hosDiv" onclick="window.location.href = 'order.html'">
+			<img class="left" src="img/user_center/yuyue.png" />
+			<span class="hosName">我的订单</span>
+			<img class="next" src="img/next.png" />
+		</p>
+		<p class="hos_data hosDiv" onclick="window.location.href = 'my_experience.html'">
+			<img class="left" style="height: .95rem;top: .9rem;" src="img/user_center/quan.png" />
+			<span class="hosName">我的特价体验券</span>
+			<img class="next" src="img/next.png" />
+		</p>-->
+		<!--<p class="hos_data hosDiv" onclick="window.location.href = 'myBrow.html'">
+			<img class="left" style="height: .95rem;top: .8rem;" src="img/user_center/borw.jpg" />
+			<span class="hosName">我的绣眉活动</span>
+			<img class="next" src="img/next.png" />
+		</p>-->
+	<!--	<p class="hos_data hosDiv huliCard" onclick="window.location.href = 'myCard.html'">
+			<img class="left" style="height: .95rem;top: .8rem;" src="img/user_center/hulicard.png" />
+			<span class="hosName">我的卡券</span>
+			<img class="next" src="img/next.png" />
+		</p>-->
+	<!--	<p class="hos_data hosDiv" onclick="window.location.href = 'scratch.html'">
+			<img class="left" style="height: 1.2rem;top: .8rem;" src="img/user_center/duihuan.png" />
+			<span class="hosName">我的激活码兑换</span>
+			<img class="next" src="img/next.png" />
+		</p>-->
+		<p class="hos_data hosDiv" onclick="window.location.href = 'chat_list.html'">
+			<img class="left" style="height: .95rem;top: .65rem;" src="img/user_center/news.png" />
+			<span class="hosName">我的消息</span>
+			<label class="newsCount">0</label>
+			<img class="next" src="img/next.png" />
+		</p>
+		<p class="hos_data hosDiv" onclick="window.location.href = 'my_collect.html'">
+			<img class="left" src="img/user_center/favourite.png" />
+			<span class="hosName">我的收藏</span>
+			<img class="next" src="img/next.png" />
+		</p>
+		<!--<p class="hos_data hosDiv" onclick="window.location.href = 'getMoneyApplication.html'">
+			<img class="left" src="img/user_center/tixian.png" />
+			<span class="hosName">申请提现</span>
+			<img class="next" src="img/next.png" />
+		</p>-->
+		<!--<p class="hos_data hosDiv" onclick="">
+			<img class="left" style="    top: .77rem;" src="img/user_center/feedback.png" />
+			<span class="hosName">我的评论</span>
+			<img class="next" src="img/next.png" />
+		</p>-->
+
+		<p class="hos_data hosDiv" onclick="window.location.href = 'change_tel.html'">
+			<img class="left" style="left: 6%" src="img/user_center/write.png" />
+			<span class="hosName">更改绑定手机号</span>
+			<img class="next" src="img/next.png" />
+		</p>
+		<p class="hos_data hosDiv" onclick="window.location.href = 'follow.html'">
+			<img class="left" style="height: .95rem;top: .65rem;" src="img/user_center/wecatTo.png" />
+			<span class="hosName">官方微信公众号</span>
+			<label class="wecatName" style="display: inline;">e诺健康</label>
+			<img class="next" src="img/next.png" />
+		</p>
+		<p class="hos_data hosDiv" onclick="Go.topanimate()">
+			<img class="left" src="img/user_center/jinli.png" />
+			<span class="hosName">e诺平台客服</span>
+			<!--<img class="next" src="img/next.png" />-->
+		</p>
+		<!--<p class="hos_data hosDiv" onclick="window.location.href = 'more.html'">
+			<img class="left" style="height: .7rem;    top: .78rem;" src="img/user_center/dial.png" />
+			<span class="hosName">更多</span>
+			<img class="next" src="img/next.png" />
+		</p>-->
+	</div>
+	<!--下滑弹出-->
+	<div class="share first-active">
+		<div class="mainTop">
+			<a href="tel:4000696120"><img src="img/call-out.png"><span style="vertical-align: top;">4000696120</span></a>
+		</div>
+		<div class="split"></div>
+		<div class="cancel" onclick="Go.closetopanimate()">取消</div>
+	</div>
+	<!--滑动区域-->
+	<div id="mescroll" class="mescroll" style="display: none">
+		<!--模拟的轮播-->
+		<!--	<img class="swiper" src="../res/img/swiper.jpg"/>-->
+		<!--筛选条件; 模拟列表的重置和演示空布局的使用-->
+		<!--<div class="nav">
+            <p class="active" i="0">全部</p>
+            &lt;!&ndash;<p i="1">奶粉</p>
+            <p i="2">图书</p>&ndash;&gt;
+        </div>-->
+		<!--展示上拉加载的数据列表-->
+		<ul id="dataList" class="data-list" style="margin-top: .8em;">
+			<!--<li>
+                <img class="pd-img" src="../res/img/pd1.jpg"/>
+                <p class="pd-name">商品标题商品标题商品标题商品标题商品标题商品</p>
+                <p class="pd-price">200.00 元</p>
+                <p class="pd-sold">已售50件</p>
+            </li>-->
+		</ul>
+	</div>
+	<div class="footer" id="nav" style="height: 3.8rem;">
+		<ul>
+			<li onclick="window.location.href = 'xywz.html'"><strong class="newsBiaoXywz"></strong><img src="img/banner/homeHui.png"><p style="">首页</p></li>
+			<!--<li class="chooseHref"><img src="img/banner/te.png"><p style="">活动专区</p>
+				<span><img style="width: 100%;height: auto;margin: 0" src="img/navbg.png">
+				<div style="position:absolute;top:0;left:0;width: 100%">
+					<a href="/app/activityAll.html">焕颜健康大行动</a>
+                    <a href="/app/special_more.html">特价专区</a>
+				</div>
+				</span>
+			</li>-->
+			<li onclick="window.location.href = 'special_more.html'"><strong class="newsBiaoSpecialProduct"></strong><img src="img/banner/te.png"><p style="">特价专区</p></li>
+			<li onclick="window.location.href = 'user_center.html'"><strong class="newsBiaoUserCenter"></strong><img src="img/banner/my.png"><p style="color: #00afa1;font-weight: 600;">我的</p></li>
+		</ul>
+	</div>
+</div>
+</body>
+
+<!--mescroll本身不依赖jq,这里为了模拟发送ajax请求,获取模拟数据-->
+<script src="js/user_center.js"></script>
+<!--	<script src="../res/pdlist1.js" type="text/javascript" charset="utf-8"></script>-->
+<script type="text/javascript" charset="utf-8">
+	$(document).ready(function () {
+		init();
+
+    })
+</script>
+</html>

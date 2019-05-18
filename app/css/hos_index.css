@@ -1,0 +1,489 @@
+.headerimg {
+	width: 100%;
+	/*height: 4.8rem;*/
+	/*background: url(../img/specialImg.png) no-repeat;
+	background-size: 100%;
+	background-position: 0%;*/
+	position: relative;
+	margin-bottom: -1px;
+}
+.hosdetailBack{
+	width: 100%;
+	height: 6rem;
+	background-color: black;
+	opacity: 0.3;
+	position: absolute;
+	bottom: 0;
+}
+/*医院列表*/
+.hos_child{
+	height: 8rem;
+	padding-top: .2rem;
+}
+.hos_child .hos_list_top{
+	height: 7.7rem;
+	/*border: 1px solid red;*/
+	font-size: .2rem;
+	line-height: .35rem;
+}
+.hos_list_top div{
+	float: left;
+}
+.hos_list_top .left{
+	width: 28%;
+	margin: -.2rem .2rem 0 -.2rem;
+
+}
+.hos_list_top .left img{
+	height: 9em;
+}
+.hos_list_top .right{
+	padding-left:.2rem;
+	margin-top: .2em;
+	width: 70%;
+}
+ul li{
+	list-style: none;
+}
+.detail .name{
+	font-size: .9rem;
+	letter-spacing: 1px;
+	color: black;
+	font-weight: 600;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	display: block;
+}
+#input-test::-webkit-input-placeholder{
+	color: #ADD8E6;
+}
+.search_publish {
+	/* height: 1rem; */
+	background: linear-gradient(to right,#00afa1, #00c59e);
+	border: 0;
+	position: relative;
+	/*top: -4px;*/
+	left: -.35rem;
+	/*display: none;*/
+}
+.search_publish div {
+	width: 65%;
+}
+.search_publish img {
+	width: 1.1rem;
+	position: absolute;
+	top: .4rem;
+	right: .5rem;
+}
+.toggleSou{
+	background-color: transparent;
+	border: 1.4px solid white;
+	width: 100%;
+	height: .6rem;
+	border-radius: .3rem;
+	font-size: .24rem;
+	letter-spacing: 0.5px;
+	color: black;
+	text-indent: .2rem;
+	outline: none;
+}
+.docLevel{
+	color: #00aea0;
+	font-size: .2rem;
+	margin-left: 3%;
+}
+.right p{
+	margin-bottom: .1rem;
+	height: 1.4em;
+	line-height: 1.4em;
+}
+.peopelCount{
+	color: #feb62a;
+}
+.red{
+	color: #f93688;
+}
+.flex_all_center{
+	position: relative;
+}
+/*.subjectLong,subsubjectLong{
+	width: 2.5rem;
+	height: auto;
+	position: absolute;
+	top: 1.9rem;
+!*	left: 2.5rem;*!
+	background-color: white;
+	z-index: 9;
+	padding: .4em 0;
+	border: 1px solid #cccccc;
+	border-top: none;
+	display: none;
+}*/
+.subP{
+	height: 2em;
+	line-height: 2em;
+	text-align: center;
+}
+.goodPlace{
+	border-top: 1px dashed #cccccc;
+	padding: .5em 0 0 0;
+	margin: .4em 0 0 0;
+	overflow: hidden;
+	text-overflow:ellipsis;
+	white-space: nowrap;
+}
+.hos_child .hos_list_btm{
+	border-top: 1px dashed #DCDCDC;
+	padding: .2rem 0;
+	margin-top: .2rem;
+}
+.hos_child .hos_list_btm p{
+	float: left;
+	border-right: 1px dashed #DCDCDC;
+	height: .6rem;
+	padding: 0 .2rem;
+	width: 33%;
+}
+.hos_child .hos_list_btm p:last-child{
+	border: 0;
+}
+.hos_list_btm p img{
+	margin-right: .2rem;
+}
+.hos_list_btm p span{
+	font-size: .2rem;
+	color: #00AFA1;
+	margin-left: .1rem;
+}
+
+
+
+
+
+/*主页css*/
+.hospitail_detail .hos_pic {
+	height: 4.5rem;
+	text-align: center;
+}
+.hosdetailInfo .doc_pic {
+	width: 3rem;
+	height: 3rem;
+	margin: 0 auto;
+	margin-top: -1.5rem;
+	margin-bottom: 0.7rem;
+	border-radius: 50%;
+	border: solid 1.2px #00afa1;
+	overflow: hidden;
+}
+.hosdetailInfo .doctor2 {
+	text-align: center;
+	font-size: .95rem;
+	margin-top: 1.3rem;
+}
+.hosdetailInfo .hos2 .big {
+	letter-spacing: .08rem;
+	height: 1.5rem;
+	font-weight: bold;
+	line-height: 1.2rem;
+	color: white;
+}
+.hosdetailInfo .hos2 span {
+	display: inline-block;
+	height: 1.7rem;
+	line-height: .4rem;
+}
+.doctor_detail .make {
+	font-size: .8rem;
+	font-weight: bold;
+	text-align: center;
+	height: 1.6rem;
+	line-height: .5rem;
+	color: #555;
+}
+.doctor_detail .make span {
+	font-weight: bold;
+	color: #feaa2c;
+}
+.hos_detail_pic img {
+	width: 23%;
+	margin-left: 1.65%;
+}
+.hosdetailInfo .hos_data {
+	/*border-top: 1px dashed #dcdcdc;
+	border-bottom: 1px solid #f3f3f3;*/
+	margin-top: -.45rem;
+	width: 94%;
+	margin-left: 3%;
+	text-align: center;
+}
+
+.hosdetailInfo p {
+	/* height: .84rem; */
+	position: relative;
+}
+.descinfo{
+	margin: 0 4% 5% 4%;
+	font-size: .8rem;
+	color: #555;
+}
+
+.hosdetailInfo .hos_data .left {
+	height: 1.3rem;
+	/*position: absolute;
+	top: .72rem;
+	left: 0;*/
+	margin-top: 0.55rem;
+	line-height: 0.3rem;
+	display: inline-block;
+	vertical-align: top;
+	width: initial;
+}
+
+.hosdetailInfo .hos_data span {
+	display: inline-block;
+	/*width: 80%;*/
+	height: 2.4rem;
+	line-height: 2.5rem;
+	font-size: .8rem;
+	color: white;
+	/*margin-left: 10%;*/
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	text-align: center;
+}
+.hosdetailInfo .hos_data .next {
+	height: .8rem;
+	position: absolute;
+	top: .77rem;
+	right: 0;
+}
+.hosdetailInfo .hos_detail_pic {
+	padding: .9rem 0;
+	/* border: 1px solid red; */
+}
+.hosdetailInfo .all_content {
+	height: 2.3rem;
+	border-top: 1px dashed #eeeeee;
+	font-size: .85rem;
+}
+.all_content img {
+	width: .45rem;
+	transform: rotate(90deg);
+}
+/*医生团队*/
+.hos_homepage .hos_doc_team {
+	width: 7.02rem;
+	padding: 0 .3rem;
+	border: 1px solid transparent;
+}
+.hos_doc_team .hos_doc_list {
+	/* border: 1px solid red; */
+	/*margin-top: .7rem;*/
+}
+.hos_doc_list .hos_doc_child {
+	padding: .25rem 0 .8rem 0;
+	border-bottom: 1px solid #dcdcdc;
+	width: 96%;
+	margin-left: 2%;
+}
+.hos_doc_list .hos_doc_child div {
+	float: left;
+}
+.hos_doc_list .doc_child_left {
+	width: 4.2rem;
+	height: 4.2rem;
+	overflow: hidden;
+	text-align: center;
+	border-radius: 50%;
+}
+
+.hos_doc_list .hos_doc_child div {
+	float: left;
+}
+.hos_doc_list .doc_child_right {
+	/* border: 1px solid black; */
+	width: 68%;
+	color: #333333;
+	padding-left: 0;
+}
+.hos_doc_list .hos_doc_child div {
+	float: left;
+	margin: 2% 4% 0 4%;
+}
+.name{
+	color: black;
+}
+.doc_child_right .id {
+	height: .7rem;
+	font-size: .24rem;
+	color: #333333;
+	position: relative;
+	width: 97%;
+}
+.doc_child_right .id .name {
+	font-size: 1rem;
+	height: 1.4rem;
+	line-height: .4rem;
+	font-weight: 500;
+}
+
+.doc_child_right .id span {
+	display: inline-block;
+	height: 1.5rem;
+	font-size: .8rem;
+}
+.doc_child_right .id span {
+	display: inline-block;
+	height: 1.5rem;
+	font-size: .8rem;
+}
+.hosLevel{
+	color: #00aea0;
+	font-size: .2rem;
+	margin-left: 3%;
+}
+.hot_make .look_more img {
+	height: .3rem;
+	vertical-align: middle;
+}
+.hos_doc_team .all_doc,.hos_doc_team_ym .all_doc {
+	height: 2.55rem;
+	line-height: 2.55rem;
+	border-top: 1px dashed #eeeeee;
+	text-align: center;
+	color: #00afa1;
+	font-size: .85rem;
+	clear: both;
+	width: 100%;
+}
+
+/*医美下面*/
+.data-list li {
+
+}
+
+.hos_child {
+	position: relative;
+	/* padding: 10px 8px 10px 120px; */
+	border-bottom: 1px solid #eee;
+	height: 7.3rem;
+	padding-top: .2rem;
+}
+.hos_child .hos_list_top {
+	height: 6.7rem;
+	/* border: 1px solid red; */
+	font-size: .2rem;
+	line-height: .35rem;
+}
+.hos_list_top .left {
+	width: 25%;
+	margin: .4rem 3% 0 3%;
+	border-radius: 5px;
+	max-height: 5.7rem;
+	overflow: hidden;
+}
+.hos_list_top .left img {
+	/*width: 100%;*/
+	max-height: 5.7rem;
+	overflow: hidden;
+}
+.hos_list_top .right {
+	padding-left: .2rem;
+	margin-top: .2rem;
+	width: 67%;
+}
+.right p {
+	margin-bottom: .4rem;
+	height: 1.4em;
+	line-height: 1.4em;
+	font-size: .8rem;
+}
+
+/*特价*/
+.hos_doc_list .hos_doc_child,.hos_doc_listJiancha .hos_doc_child {
+	padding: .6rem 0 .6rem 0;
+	border-bottom: 1px solid #dcdcdc;
+	width: 96%;
+	display: flex;
+	margin-left: 2%;
+}
+.hos_doc_list .hos_doc_child div,.hos_doc_listJiancha .hos_doc_child div {
+	margin: 2% 2.5% 0 -0.8%;
+}
+.hos_doc_list .doc_child_left,.hos_doc_listJiancha .doc_child_left {
+	width: 27%;
+	border-radius: 5px;
+	overflow: hidden;
+}
+.doc_child_right{
+	width: 70%;
+}
+.avtivityactive{
+	border-bottom: 3px solid #00afa1;
+}
+.avtivitySpan{
+	width: 62%;
+	/* text-align: center; */
+	margin-left: 19%;
+}
+.all_doc{
+	width: 100%;
+	height: 2.8rem;
+	line-height: 2.8rem;
+	text-align: center;
+	color: #707070;
+	font-size: .85rem;
+}
+.hot{
+	color: #f81f7b;
+	border-radius: 3px;
+	padding: .05rem .15rem;;
+	border: 1px solid #f81f7b;
+	font-size: .75rem;
+	margin-right: .3rem;
+}
+.goodsName{
+	color: #333333;
+	line-height: 1.5rem;
+	font-size: .85rem;
+}
+.address{
+	color: #00afa1;
+	font-size: .8rem;
+	margin: .4rem 0 .4rem 0
+}
+.price{
+	color: #f81f7b;
+	border-radius: 5px;
+	display: inline-block;
+	margin-right: .3rem;
+	font-size: 1.1rem;
+}
+.oldprice{
+	color: #999;
+	font-size: .75rem;
+}
+.yuyue{
+	color: #999;
+	font-size: .8rem;
+	float: right;
+	margin-right: -.3rem;
+	margin-top: .06rem;
+}
+.jianbiecenter{
+	position: absolute;
+	top: 28%;
+	left: 1.3rem;
+}
+.jianZiblue{
+	font-size: 1.05rem;
+	color: black;
+	height: 1.83rem;
+	letter-spacing: .12rem;
+}
+.jianZisamll{
+	font-size: .71rem;
+	color: #444444;
+}

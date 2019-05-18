@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<link rel="stylesheet" href="css/base.css" />
+		<link rel="stylesheet" href="css/util.css" />
+		<link rel="stylesheet" href="css/bind_tel.css" />
+		<script type="text/javascript" src="plug/jquery-1.11.3.js" ></script>
+		<script src="js/common.js"></script>
+		<script type="text/javascript" src="js/lib/gt.js" ></script>
+		<!--<title>绑定手机号</title>--><title>绑定手机号</title>
+	</head>
+	<script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1275229104'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s23.cnzz.com/z_stat.php%3Fid%3D1275229104%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));</script>
+	<body style="background-color: #f1f1f1;">
+	<div class="content" style="    position: absolute;top: 0;">
+		<!--标题-->
+		<div class="pub_hearder flex_vertical justify_content_equal" style="z-index: 99">
+			<img class="up_page pub_hearder_left" src="img/header/header_left.png" onclick="window.history.go(-1)" />
+			<div class="head_center" style="">
+				<span class="set_head_dot" style="width: .15rem;height: .15rem;border-radius: 50%;"></span>
+				<span class="set_head_dot" style="width: .25rem;height: .27rem;border-radius: 50%;"></span>
+				<span class="set_head_dot"></span>
+				<span class="head_title">绑定手机号</span>
+				<span class="set_head_dot"></span>
+				<span class="set_head_dot" style="width: .25rem;height: .27rem;;border-radius: 50%;"></span>
+				<span class="set_head_dot" style="width: .15rem;height: .15rem;border-radius: 50%;"></span>
+			</div>
+		</div>
+		<div class="hos_child set_box_shadow">
+			<!--<div class="hos_list_top clearfix">
+				<div class="left">姓名</div>
+				<div class="right"><input class="userName" placeholder="请输入姓名" type="text"/></div>
+			</div>
+			<div class="hos_list_top clearfix">
+				<div class="left">性别</div>
+				<div class="right">
+					<input class="sex nan" type="radio" name="sex" value="man" checked>
+					<span class="sexname">男</span>
+					<input class="sex nv" type="radio" name="sex" value="woman">
+					<span class="sexname">女</span>
+				</div>
+			</div>-->
+			<div class="hos_list_top clearfix">
+				<div class="left">手机号</div>
+				<div class="right"><input class="telNum" placeholder="请输入手机号" style="width: 53%;" type="text"/>
+					<button style="max-width: 47%;" id="bindTel">获取验证码</button>
+				<!--	<input type="button" value=""/></div>-->
+			</div>
+			</div>
+			<div class="hos_list_top clearfix" style="border-bottom: none">
+				<div class="left">验证码</div>
+				<div class="right"><input class="telCode" placeholder="请输入手机验证码" type="text"/></div>
+			</div>
+
+		</div>
+		<div class="clearfix"></div>
+		<div class="bindBtn" onclick="Go.bind()">绑定</div>
+	</div>
+	</body>
+	<script type="text/javascript" charset="utf-8"></script>
+	<script src="js/footer.js"></script>
+	<script src="js/bind_tel.js"></script>
+</html>

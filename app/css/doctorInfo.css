@@ -1,0 +1,100 @@
+.hos_child{
+	/*height: 8rem;*/
+	padding-top: .2rem;
+	padding-bottom: 0.2em;
+	margin-top: 0;
+	float: left;
+	background-color: white;
+	width: 100%;
+}
+.hos_child .hos_list_top{
+	height: 2.9rem;
+	/*border: 1px solid red;*/
+	font-size: .9rem;
+	line-height:2.5rem;
+	/*display: flex;*/
+	float: left;
+	width: 100%;
+	color:#333333;
+	padding-left: 2.8%;
+	border-bottom: 1px solid #e5e5e5
+}
+/*.hos_list_top div{
+	float: left;
+}*/
+.hos_list_top .left{
+	width: 24%;
+	margin: -.2rem 0 0 -0.5%;
+	line-height: 3.3rem;
+	padding-left: 3%;
+	color: #222;
+	float: left;
+}
+.hos_list_top .left img{
+	height: 9em;
+}
+.hos_list_top2 .left{
+	width: 33%
+ }
+.hos_list_top .right{
+	padding-left:.2rem;
+	margin-top: .2em;
+	width: 74%;
+	float: left;
+}
+.hos_list_top2 .right{
+	width: 64%;
+}
+.right input[type="text"],.right input[type="tel"]{
+	width: 90%;
+	height: 2rem;
+	line-height: 2rem;
+	border: none;
+	outline: none;
+	font-size: .9rem;
+	padding-left: .3rem;
+	background: white;
+	color: #888;
+}
+.right select{
+	width: 70%;
+	height: 1.7rem;
+	line-height: 1.7rem;
+	border: 1px solid #c5c5c5;
+	background-color: white;font-size:.85rem;
+}
+.right textarea{
+	width: 97%;
+	min-height: 5rem;
+	border:none;
+	color: #888;
+	margin-top: .2rem;
+	padding: .5rem .5rem .5rem 0;font-size: .85rem;
+}
+.head {
+	width: 5.3rem;
+	margin: 0 auto;
+	text-align: center;
+	position: relative;
+	padding-top: 3px;
+	margin-bottom: .5rem;
+	margin-top: .7rem;
+}
+.head img {
+	width: 100%;
+	margin-bottom: .55rem;
+	border-radius: 50%;
+}
+.renzhen {
+	margin-top: .6rem;
+	width: 4rem;
+	float: right;
+}
+.healthSexImg{
+	width: 1.4rem;
+	vertical-align: top;
+	margin-top: .5rem;
+}
+.renzhenZi,.sexname{
+	color: #888;
+}

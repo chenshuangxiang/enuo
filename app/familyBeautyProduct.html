@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no,minimal-ui">
+<!--<link rel="stylesheet" href="plug/swiper/css/swiper.css"/>-->
+<link rel="stylesheet" href="css/base.css" />
+<link rel="stylesheet" href="css/util.css" />
+<link rel="stylesheet" href="css/familyBeautyProduct.css" />
+	<script type="text/javascript" src="plug/jquery-1.11.3.js" ></script>
+	<script src="js/common.js"></script>
+	<script src="js/familyBeautyProduct.js"></script>
+	<script src="js/lib/jweixin-1.1.0.js"> </script>
+	<script src="js/getShare.js"> </script>
+	<title>美丽全家卡</title>
+</head>
+<style>
+	.huiImg{
+		position: absolute;
+		right: 2%;
+		bottom: .4rem;
+		width: 4.4rem;
+		border-radius: 5px;
+		height: 1.8rem;
+		line-height: 1.8rem;
+		color: white;
+		font-size: .9rem;
+		text-align: center;
+		/* position: fixed; */
+		background-color: #00aea2;
+	}
+</style>
+<body style="background-color: #f1f1f1;">
+<div class="shareRotorNineBeforeOpen">
+	<div class="mubu"  style="opacity: .8;z-index: 999" onclick="Show.showOen()"></div>
+	<div class="modelOpenback" style="background-color: rgba(255,255,255,0);top: 2%;
+    width: 90%;
+    left: 5%;">
+		<img class="activityFuDetailZhi" onclick="Show.showOen()" style="display: none" src="img/browActive/browToZhi.png">
+		<img class="activityFuDetailToShare" onclick="callback()" src="img/know.png">
+		<img class="activityFuDetail" onclick="Show.showOen()" style="width: 90%;margin-left: 10%" src="img/rotor/rotor.png">
+		<img class="activityFuDetail" onclick="Show.showOen()" src="img/browActive/browShareDetial.png">
+		<!-- <img class="activityClose" onclick="$('.shareOpenBefore').hide();$('.search').show()" src="img/know.png">-->
+	</div>
+</div>
+<div class="modelOpen" style="z-index: 99;">
+	<div class="mubu"></div>
+	<div class="modelOpenback">
+		<img class="payclose" onclick="$('.modelOpen').hide()" src="img/payclose.png">
+		<!--<img src="../img/yuyueback.png">-->
+		<img class="paySuccess" src="img/browActive/browWarn.png">
+		<p class="paySuccessZi">小提示：项目只能五选一哦，<br>确认领取吗？</p>
+		<button class="toYuyue lingJiangBtn" style="margin-left: 8%;" onclick="Get.getJiangClick(this)">领取</button>
+		<button class="toYuyueno" style="margin-left:3%;" onclick="$('.modelOpen').hide()">取消</button>
+	</div>
+</div>
+<div class="msg">
+	<span class="msgText">领取成功</span>
+</div>
+<!--<div class="modelOpenSuccess" style="z-index: 99;">
+	<div class="mubu"></div>
+	<div class="modelOpenback">
+		<img class="payclose" onclick="$('.modelOpenSuccess').hide()" src="img/payclose.png">
+		<img class="paySuccess" src="img/browActive/browWarn.png">
+		<p class="paySuccessZi">奖品已发放，请到我的订单查看</p>
+		<button class="toYuyue" style="margin-left: 30%;" onclick="window.location.href = 'order.html'">去看看</button>
+	</div>
+</div>-->
+<div class="content xywz">
+	
+<!--头部-->
+<div class="pub_hearder flex_vertical justify_content_equal">
+	<!--<img class="up_page pub_hearder_left" src="img/header/header_left.png" />-->
+	<!--<div class="head_center" style="    width: 69%;">
+		<div class="search_publish" style="left: .34rem;   height: 1rem;">
+			<div style="position: relative;    margin-top: .9em;    width: 4.5rem;">
+				<input style="background-color: transparent;border: 1.4px solid white;height: .55rem;" type="text" placeholder="搜索您感兴趣的项目"/><img style="    top: .55rem;" src="img/search.png" />
+			</div>
+		</div>
+	</div>-->
+	<img class="up_page pub_hearder_left" src="img/header/header_left.png" style="z-index: 9" onclick="window.history.go(-1)" />
+	<div class="head_center head_centerZi">
+		<!--	<div class="search_publish">
+                <div style="position: relative;">
+                    <input class="toggleSou" type="text" style="color: black;height: .5rem; margin-bottom: .15em;" placeholder="搜索医生"/>
+                </div>
+            </div>-->
+		<span class="set_head_dot" style="width: .15rem;height: .15rem;border-radius: 50%;"></span>
+		<span class="set_head_dot" style="width: .25rem;height: .27rem;border-radius: 50%;"></span>
+		<span class="set_head_dot"></span>
+		<span class="head_title">美丽全家卡</span>
+		<span class="set_head_dot"></span>
+		<span class="set_head_dot" style="width: .25rem;height: .27rem;;border-radius: 50%;"></span>
+		<span class="set_head_dot" style="width: .15rem;height: .15rem;border-radius: 50%;"></span>
+	</div>
+	<!--<img class="add pub_hearder_right" src="img/add.png"/>-->
+</div>
+	<div style="width: 100%;padding: 3% 6% 0% 6%;"><img style="margin-bottom: .2rem;" src="img/card/familyBeauty.png">
+		<img style="width: 94%;margin-left: 3%;" src="img/familyBeautyChoose.png"></div>
+	<div class="haveHuliCard">
+
+	<div class="hos_doc_team set_box_shadow" style="margin-bottom: 1.3rem;    margin-top: .8rem;background: rgba(199,237,204,0);">
+		<!--医生列表-->
+		<div class="hos_doc_list">
+
+		</div>
+	</div>
+</div>
+</div>
+
+</body>
+<script>
+    $(document).ready(function () {
+        //follow.wecat();
+        init()
+    })
+</script>
+</html>

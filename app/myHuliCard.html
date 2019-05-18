@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no,minimal-ui">
+<!--<link rel="stylesheet" href="plug/swiper/css/swiper.css"/>-->
+<link rel="stylesheet" href="css/base.css" />
+<link rel="stylesheet" href="css/util.css" />
+<link rel="stylesheet" href="css/myHuliCard.css" />
+	<script type="text/javascript" src="plug/jquery-1.11.3.js" ></script>
+	<title>我的护理卡</title>
+</head>
+<style>
+	.huiImg{
+		position: absolute;
+		right: 2%;
+		top: 1.1rem;
+		width: 4.7rem;
+		border-radius: 50px;
+		height: 1.9rem;
+		line-height: 1.9rem;
+		color: white;
+		font-size: .95rem;
+		margin-top: 6%;
+		text-align: center;
+		/* position: fixed; */
+		bottom: 0;
+		background-color: #38b69a;
+	}
+</style>
+<body style="background-color: #f1f1f1;">
+<div class="modelOpen">
+	<div class="mubu"></div>
+	<div class="modelOpenback">
+		<p class="paySuccessBackZi">请选择预约对象</p>
+		<div class="familyList">
+			<ul>
+				<!--<li class="levelClick border"><span>陈双祥</span></li>
+				<li class="levelClick border"><span>陈双祥</span></li>
+				<li class="levelClick border"><span>陈双祥</span></li>
+				<li class="levelClick border"><span>陈双祥</span></li>
+				<li class="levelClick border"><span>陈双祥</span></li>-->
+			</ul>
+		</div>
+		<button class="toYuyueno" onclick="$('.modelOpen').hide()">取消</button>
+		<button class="toYuyue" onclick="Show.chooseFamilyHref()">确定</button>
+	</div>
+</div>
+<!--<div class="paybackOpen">
+	<div class="mubu"></div>
+	<div class="modelOpenback">
+		<img class="paybackclose" src="img/payclose.png">
+		&lt;!&ndash;<img src="../img/yuyueback.png">&ndash;&gt;
+		&lt;!&ndash;<img class="paySuccess" src="../img/paySuccess.png">&ndash;&gt;
+
+		&lt;!&ndash;		<p class="paySuccessZi">PAYMENT SUCCESSFUL</p>&ndash;&gt;
+		<input type="text" class="huliCardCode" placeholder="请输入兑换码"/>
+		<button class="toDuihuan" onclick="Get.getHuliCardForCode()" style="margin-left: 30%;">兑换</button>
+	</div>
+</div>-->
+<div class="content xywz">
+	
+<!--头部-->
+<div class="pub_hearder flex_vertical justify_content_equal">
+	<!--<img class="up_page pub_hearder_left" src="img/header/header_left.png" />-->
+	<!--<div class="head_center" style="    width: 69%;">
+		<div class="search_publish" style="left: .34rem;   height: 1rem;">
+			<div style="position: relative;    margin-top: .9em;    width: 4.5rem;">
+				<input style="background-color: transparent;border: 1.4px solid white;height: .55rem;" type="text" placeholder="搜索您感兴趣的项目"/><img style="    top: .55rem;" src="img/search.png" />
+			</div>
+		</div>
+	</div>-->
+	<img class="up_page pub_hearder_left" src="img/header/header_left.png" onclick="window.history.go(-1)" />
+	<div class="head_center head_centerZi">
+		<!--	<div class="search_publish">
+                <div style="position: relative;">
+                    <input class="toggleSou" type="text" style="color: black;height: .5rem; margin-bottom: .15em;" placeholder="搜索医生"/>
+                </div>
+            </div>-->
+		<span class="set_head_dot" style="width: .15rem;height: .15rem;border-radius: 50%;"></span>
+		<span class="set_head_dot" style="width: .25rem;height: .27rem;border-radius: 50%;"></span>
+		<span class="set_head_dot"></span>
+		<span class="head_title">我的护理卡</span>
+		<span class="set_head_dot"></span>
+		<span class="set_head_dot" style="width: .25rem;height: .27rem;;border-radius: 50%;"></span>
+		<span class="set_head_dot" style="width: .15rem;height: .15rem;border-radius: 50%;"></span>
+	</div>
+	<img class="add pub_hearder_right" src="img/add.png"/>
+</div>
+	<div class="haveHuliCard" style="display: none">
+	<div class="set_box_shadow" style="margin-top: .8rem;overflow:hidden;
+    background-color: white;        padding-bottom: .5rem;box-shadow: 1px 1px 5px #cccccc">
+		<img class="huliImg" src="img/huliImg.png">
+		<div class="topDiv" style="">
+			<p class="chikaNameP" style="margin-top: .5rem;	font-size: 1.2rem;;font-weight: 600;"><span class="chikaNamePname">持卡人:</span><span class="chikaName chikaNameText" style="font-size: 1.2rem;"></span></p>
+			<p class="chikaNameP" style="    min-height: 6rem;">
+				<span class="chikaNamePname">绑卡人:</span>
+				<span class="bangkaSpan" style="float: left;width: 56%">
+					<!--<span class="bangkaNameSpan"><span class="chikaName bangkaName">陈双祥</span><button class="guanxi">父亲</button></span>
+					<span class="bangkaNameSpan"><span class="chikaName bangkaName">陈双祥</span><button class="guanxi">父亲</button></span>
+					<span class="bangkaNameSpan"><span class="chikaName bangkaName">陈双祥</span><button class="guanxi">父亲</button></span>-->
+					<!--<span class="bangkaNameSpan"><span class="chikaName bangkaName">陈双祥</span><button class="guanxi">父亲</button></span>-->
+				</span>
+			</p>
+			<p class="chikaNameP"><span class="chikaNamePname">卡号:</span><span class="chikaName huliCardNum"></span></p>
+			<p class="chikaNameP"><span class="chikaNamePname">卡片有效期:</span><span class="chikaName huliCardEnd"></span></p>
+			<p class="chikaNameP" style="margin-top: -.25rem"><span style="font-size: .6rem;margin-left: 38%;    color: #676767;">(温馨提示:请在有效期内使用)</span></p>
+		</div>
+
+	</div>
+
+	<div class="hos_doc_team set_box_shadow" style="margin-bottom: 1.3rem;    margin-top: .8rem;background: rgba(199,237,204,0);">
+		<!--医生列表-->
+		<div class="hos_doc_list">
+			<div class="hos_doc_child clearfix" style="position: relative" onclick="href(this)">
+				<button class="huiImg xiyaBtn" onclick="Show.chooseFamily('toothWashing',this)">预约</button>
+				<div class="doc_child_left">
+					<img style="max-height: 5.5rem;;border-radius: 5px;overflow: hidden;" src="img/xiya.png">
+				</div>
+				<div class="doc_child_right" style="margin: 0 0 0 0;">
+					<div class="id" style="margin-left: 6%;">
+						<p class="name" style="font-size: .9rem;color: #333333;margin-top: 1.2rem">超声洁牙：<span class="goodsName">10次</span></p>
+
+						<p class="name" style="font-size: .9rem;color: #333333;">剩余次数：<span class="goodsName surplusXiya"></span></p>
+						<p></p>
+					</div>
+				</div>
+			</div>
+			<div class="hos_doc_child clearfix" style="position: relative" onclick="href(this)">
+				<button class="huiImg bayaBtn" onclick="Show.chooseFamily('toothExtraction',this)">预约</button>
+				<div class="doc_child_left">
+					<img style="max-height: 5.5rem;;border-radius: 5px;overflow: hidden;" src="img/baya.png">
+				</div>
+				<div class="doc_child_right" style="margin: 0 0 0 0;">
+					<div class="id" style="margin-left: 6%;">
+						<p class="name" style="font-size: .9rem;color: #333333;    margin-top: 1.2rem;">普通拔牙：<span class="goodsName">10颗</span></p>
+
+						<p class="name" style="font-size: .9rem;color: #333333;">剩余次数：<span class="goodsName surplusBaya"></span></p>
+						<p></p>
+					</div>
+				</div>
+			</div>
+			<div class="hos_doc_child clearfix" style="position: relative" onclick="href(this)">
+				<button class="huiImg buyaBtn" onclick="Show.chooseFamily('toothFilling',this)">预约</button>
+				<div class="doc_child_left">
+					<img style="max-height: 5.5rem;;border-radius: 5px;overflow: hidden;" src="img/buya.png">
+				</div>
+				<div class="doc_child_right" style="margin: 0 0 0 0;">
+					<div class="id" style="margin-left: 6%;">
+						<p class="name" style="font-size: .9rem;color: #333333;    margin-top: 1.2rem;">玻璃离子补牙：<span class="goodsName">10颗</span></p>
+
+						<p class="name" style="font-size: .9rem;color: #333333;">剩余次数：<span class="goodsName surplusBuya"></span></p>
+						<p></p>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!--查看更多-->
+		<!--<div class="all_doc" onclick="window.location.href = 'special_more.html'">
+			查看更多商品
+		</div>-->
+	</div>
+</div>
+	<!--<div class="noHuliCard" style="display: none">
+		<div class="mescroll-empty"><img class="empty-icon" src="option/mescroll-empty.png">
+			<p class="empty-tip">亲,暂无护理卡~</p>
+			<button class="toBuy" onclick="window.location.href = 'activityHuLiCard.html'">去购买</button><br>
+			<button class="toBuy" onclick="$('.paybackOpen').show()">兑换码激活</button>
+		</div>
+	</div>-->
+</div>
+<script src="js/common.js"></script>
+<script src="js/myHuLiCard.js"></script>
+</body>
+<script>
+    $(document).ready(function () {
+        //follow.wecat();
+        init()
+    })
+</script>
+</html>

@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		
+		<!--在您实际的项目中,请留意mescroll-option.css的图片路径是否引用正确,可写成绝对路径或网络地址-->
+		<!--可把mescroll-option.css代码拷贝到mescroll.min.css中,合为一个css文件,方便引用-->
+		<link rel="stylesheet" href="css/lib/mescroll.css">
+		<link rel="stylesheet" href="option/mescroll-option.css">
+		<link rel="stylesheet" href="css/base.css" />
+		<link rel="stylesheet" href="css/util.css" />
+		<link rel="stylesheet" href="css/browList.css">
+		<link rel="stylesheet" href="css/lib/xiala.css" />
+		<script type="text/javascript" src="plug/jquery-1.11.3.js" ></script>
+		<script src="js/common.js"></script>
+		<title>拼团进行中</title>
+	</head>
+	<style>
+		.mescroll-empty{
+			padding-bottom: 40px;
+		}
+	</style>
+	<body style="background-color: #ebebeb">
+	<div class="mubuxiala"></div>
+	<div class="content" style="background-color: rgba(0,0,0,0);">
+		<!--<img class="browDetailBackImg" src="img/browActive/browDetailBack.jpg">-->
+		<!-- <div class="headerimg  flex_vertical justify_content_equal">
+             <img class="headerimgTop"  src=""/>
+             <img class="up_page pub_hearder_left" src="img/header/header_leftHui.png?v=9e72a57" onclick="window.location.href = 'vote.html'">
+         </div>-->
+		<div class="pub_hearder flex_vertical justify_content_equal"  style="position: fixed;">
+			<!--<img class="up_page pub_hearder_left" src="img/header/header_left.png" />-->
+			<!--<div class="head_center" style="    width: 69%;">
+                <div class="search_publish" style="left: .34rem;   height: 1rem;">
+                    <div style="position: relative;    margin-top: .9em;    width: 4.5rem;">
+                        <input style="background-color: transparent;border: 1.4px solid white;height: .55rem;" type="text" placeholder="搜索您感兴趣的项目"/><img style="    top: .55rem;" src="img/search.png" />
+                    </div>
+                </div>
+            </div>-->
+			<img class="up_page pub_hearder_left" src="img/header/header_left.png" onclick="window.history.go(-1)" />
+			<div class="head_center head_centerZi">
+				<!--	<div class="search_publish">
+                        <div style="position: relative;">
+                            <input class="toggleSou" type="text" style="color: black;height: .5rem; margin-bottom: .15em;" placeholder="搜索医生"/>
+                        </div>
+                    </div>-->
+				<span class="set_head_dot" style="width: .15rem;height: .15rem;border-radius: 50%;"></span>
+				<span class="set_head_dot" style="width: .25rem;height: .27rem;border-radius: 50%;"></span>
+				<span class="set_head_dot"></span>
+				<span class="head_title">拼团进行中</span>
+				<span class="set_head_dot"></span>
+				<span class="set_head_dot" style="width: .25rem;height: .27rem;;border-radius: 50%;"></span>
+				<span class="set_head_dot" style="width: .15rem;height: .15rem;border-radius: 50%;"></span>
+			</div>
+			<img class="search" onclick="window.location.href = 'browRule.html'" src="img/browActive/browRule.png"/>
+		</div>
+		<form action="javascript:return true;" class="input-kw-form" style="">
+			<input class="toggleSou" type="search" autocomplete="off" placeholder="请输入您要搜索的团号，如：1">
+		</form>
+		<img class="sou" onclick="hrefSouDetail()" src="img/souFen.png">
+		<div class="neiAbsolut" style="position: fixed;
+    top: 4.6rem;" onclick=" window.location.href = 'browDetail.html?id=' +getQueryString('id') + '&type=me'">
+			<!--<p class="docNum">编号:001</p>
+            <img class="docImg" src="img/find_doc/goods_pic.png"/>-->
+
+			<div class="rankDiv">
+				<p class="myRankNum" style="font-size: 1rem;margin: .5rem 2% .4rem 2%;;color: black"></p>
+				<div class="rankDivOwn">
+					<div class="rankDivOwnOne">
+						<!--<img style="position: absolute; width: 47.5%;top: .1rem; right: -.7rem;" src="img/browActive/browChildMe.png">-->
+						<img class="rankDivOwnImg" src="img/browActive/hu.png">
+						<img style="width: 78%; margin-top: -1rem;" src="img/pin/toothOwn.png">
+					</div>
+					<div class="pingDao">
+						<p class="dingP"><span style="color: #fc5c16;font-size: 1.1rem;">拼团中...</span></p>
+						<p class="shenP" style="font-size: .8rem;">仅剩<span class="shenNum"></span>个名额</p>
+						<p class="countDownP" style="font-size: .8rem;"><span class="timeDao"></span>后结束</p>
+					</div>
+					<!-- <img class="changeRank" src="img/browActive/changeRank.png">-->
+					<div class="rankDivChild">
+						<div class="rankDivChildOne"><img class="zhu" src="img/browActive/browChild.png"></div>
+						<div class="rankDivChildOne"><!--<img style="position: absolute;width: 87%;top: -.3rem;left: .15rem;border: none;border-radius: 0;" src="img/browActive/browChildMe.png">--><img  class="niu" src="img/browActive/browChild.png"></div>
+						<div style="clear: both"></div>
+					<!--	<div class="rankDivChildOne"><img class="hou" src="img/browActive/browChild.png"></div>
+						<div class="rankDivChildOne"><img class="long" src="img/browActive/browChild.png"></div>-->
+					</div>
+				</div>
+
+			</div>
+			<div style="clear: both"></div>
+		</div>
+		<div class="nav" style="position: fixed;top: 13.7rem;width: 100%;font-size: .95rem;">
+			<p style="width: 30%;margin-left: 12%" class="active" i="0">正在拼的团</p>
+			<p style="width: 30%;margin-left: 5%" i="1" class="">已拼成的团</p>
+		</div>
+		<!--滑动区域-->
+		<div id="mescroll0" class="mescroll">
+			<!--模拟的轮播-->
+		<!--	<img class="swiper" src="../res/img/swiper.jpg"/>-->
+			<!--筛选条件; 模拟列表的重置和演示空布局的使用-->
+			<!--<div class="nav">
+				<p class="active" i="0">全部</p>
+				&lt;!&ndash;<p i="1">奶粉</p>
+				<p i="2">图书</p>&ndash;&gt;
+			</div>-->
+			<!--展示上拉加载的数据列表-->
+			<div class="hos_doc_team set_box_shadow" style="margin-top: 0">
+			<ul id="dataList0" class="data-list">
+				<!--<li>
+					<img class="pd-img" src="../res/img/pd1.jpg"/>
+					<p class="pd-name">商品标题商品标题商品标题商品标题商品标题商品</p>
+					<p class="pd-price">200.00 元</p>
+					<p class="pd-sold">已售50件</p>
+				</li>-->
+				<!--<div class="hos_doc_child clearfix" specialid="9" onclick="href(this)">
+					<div class="doc_child_left"><img style="max-height: 4.5rem;"
+													 src="http://www.enuo120.com:7070/upload/image/201801/03/87E7pxYgWWJvMyOT8qN.jpg">
+					</div>
+					<div class="doc_child_right" style="margin: 0 0 0 0;">
+						<div class="id"><p class="name"><span class="hot">热销</span><span class="goodsName">皮秒</span></p>
+							<p class="address">美容医院</p>
+							<p><span style="color: #f81f7b;font-size: .7rem;">￥</span><span class="price">49.00</span>
+								<del class="oldprice">￥124.00</del>
+								<span class="yuyue">已预约<span class="peopelcount">1</span>人</span></p>
+						</div>
+					</div>
+				</div>-->
+			</ul>
+			</div>
+		</div>
+		<div id="mescroll1" class="mescroll hide">
+			<div class="hos_doc_team set_box_shadow" style="margin-top: 0">
+				<ul id="dataList1" class="data-list">
+				</ul>
+			</div>
+		</div>
+
+	</div>
+	<div class="scrollbtn">
+		<img onclick="Get.doOwn()" src="img/pin/myDoRank.png">
+	</div>
+	<!--<img class="shack" src="img/laba.png">
+	<div class="marquee">
+		<div class="marqueeBack"></div>
+		<ul class="line">
+
+		</ul>
+	</div>-->
+	</body>
+
+	<!--在您实际的项目中,请留意mescroll-option.js的图片路径是否引用正确,可写成绝对路径或网络地址-->
+	<!--可把mescroll-option.js代码拷贝到mescroll.min.js中,合为一个js文件,方便引用-->
+	<script src="js/lib/mescroll.js" type="text/javascript" charset="utf-8"></script>
+	<!--<script src="option/mescroll-option.js" type="text/javascript" charset="utf-8"></script>-->
+	<!--mescroll本身不依赖jq,这里为了模拟发送ajax请求,获取模拟数据-->
+	<script src="js/browList.js"></script>
+	<script src="js/lib/swiper.min.js"></script>
+	<script type="text/javascript" src="js/lib/slideup.js"></script>
+<!--	<script src="../res/pdlist1.js" type="text/javascript" charset="utf-8"></script>-->
+	<script type="text/javascript" charset="utf-8">
+		$(function() {
+            init();
+        })
+	</script>
+
+</html>

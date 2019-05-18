@@ -1,0 +1,831 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+
+	<!--在您实际的项目中,请留意mescroll-option.css的图片路径是否引用正确,可写成绝对路径或网络地址-->
+	<!--可把mescroll-option.css代码拷贝到mescroll.min.css中,合为一个css文件,方便引用-->
+	<link rel="stylesheet" href="css/lib/mescroll.css">
+	<link rel="stylesheet" href="option/mescroll-option.css">
+	<link rel="stylesheet" href="css/base.css" />
+	<link rel="stylesheet" href="css/util.css" />
+	<link rel="stylesheet" href="css/order.css" />
+	<link rel="stylesheet" href="css/lib/xiala.css" />
+<!--	<link rel="stylesheet" href="css/lib/layer.css" />-->
+	<script type="text/javascript" src="plug/jquery-1.11.3.js" ></script>
+<!--	<script type="text/javascript" src="js/lib/layer.js" ></script>-->
+	<script src="js/common.js"></script>
+	<!--<title>我的订单</title>--><title>我的订单</title>
+</head>
+<style>
+	input::-webkit-input-placeholder{
+		color: white;
+		font-size: 8px;
+	}
+</style>
+<body style="background-color: #f1f1f1;">
+<div class="shareTuiBeforeOpenBefore" onclick="$('.search').hide();$('.activityFuDetailZhi').fadeIn();$('.activityFuDetailZhi').fadeOut();$('.activityFuDetailZhi').fadeIn()">
+	<div class="mubu"  style="opacity: .8;z-index: 999"></div>
+	<div class="modelOpenback" style="background-color: rgba(255,255,255,0);top: 2%;
+    width: 90%;
+    left: 5%;">
+		<img class="activityFuDetailZhi" style="display: none" src="img/browActive/browToZhi.png">
+		<img class="activityFuDetailToShare" src="img/browActive/browToShare.png">
+		<img class="activityFuDetail" style="width: 80%;margin-left: 10%" src="img/browActive/browTuizi.png">
+		<img class="activityFuDetail" src="img/browActive/browShareDetial.png">
+		<!-- <img class="activityClose" onclick="$('.shareOpenBefore').hide();$('.search').show()" src="img/know.png">-->
+	</div>
+</div>
+<div class="content">
+	<!--标题-->
+	<!--<a href="../index.html"><div class="header"></div></a>-->
+	<div class="pub_hearder flex_vertical justify_content_equal" style="z-index: 99; position: fixed;
+    top: 0;">
+		<img class="up_page pub_hearder_left" src="img/header/header_left.png" onclick="window.location.href = 'user_center.html'" />
+		<div class="head_center head_centerZi">
+			<!--	<div class="search_publish">
+                    <div style="position: relative;">
+                        <input class="toggleSou" type="text" style="color: black;height: .5rem; margin-bottom: .15em;" placeholder="搜索医生"/>
+                    </div>
+                </div>-->
+			<span class="set_head_dot" style="width: .15rem;height: .15rem;border-radius: 50%;"></span>
+			<span class="set_head_dot" style="width: .25rem;height: .27rem;border-radius: 50%;"></span>
+			<span class="set_head_dot"></span>
+			<span class="head_title">我的订单</span>
+			<span class="set_head_dot"></span>
+			<span class="set_head_dot" style="width: .25rem;height: .27rem;;border-radius: 50%;"></span>
+			<span class="set_head_dot" style="width: .15rem;height: .15rem;border-radius: 50%;"></span>
+		</div>
+		<!--<img class="search pub_hearder_right" src="img/forward.png" />-->
+		<span class="search pub_hearder_right" style="width: auto;color: white;font-size: 1rem;" onclick="window.location.href = 'getOrder.html'">兑换</span>
+			<!--<img class="search pub_hearder_right" onclick="window.location.href = ''" src="img/search.png"/>-->
+	</div>
+	<!--<div class="famous_doc_layer">
+		<div class="yuyueTop">预约单号：<span class="famousName">4545454102536</span><span class="yuyueStatus">预约中</span></div>
+		<div class="split"></div>
+		<div class="btm">
+			<p><span class="famousName">预约医院：</span><span class="hosName">杭州复旦医院</span></p>
+			<p><span class="famousName">预约科室：</span><span class="docName">李华</span></p>
+			<p><span class="famousName">预约医生：</span><span class="docLevel">主任医师</span></p>
+			<p><span class="famousName">预约时间：</span><span class="docSub">五官科</span> &#45;&#45; <span class="docSubSub">五官科</span></p>
+		</div>
+	</div>-->
+	<!--滑动区域-->
+	<div class="nav" style="position: fixed;
+    top: 2.7rem;    width: 100%;    font-size: .95rem;">
+		<p style="margin: 0 0% 0 5.5%;" class="active" i="0">全部</p>
+		<p style="margin: 0 0% 0 5.5%;" i="1" class="">待付款</p>
+		<p style="margin: 0 0% 0 5.5%;" i="2" class="">待确认</p>
+		<p style="margin: 0 0% 0 5.5%;" i="3" class="">待评价</p>
+	</div>
+	<!--商品-->
+	<div id="mescroll0" class="mescroll" style="background-color: #f1f1f1;top: 5.4rem;">
+		<!--模拟的轮播-->
+		<!--	<img class="swiper" src="../res/img/swiper.jpg"/>-->
+		<!--筛选条件; 模拟列表的重置和演示空布局的使用-->
+		<!--<div class="nav">
+            <p class="active" i="0">全部</p>
+            &lt;!&ndash;<p i="1">奶粉</p>
+            <p i="2">图书</p>&ndash;&gt;
+        </div>-->
+		<!--展示上拉加载的数据列表-->
+		<ul id="dataList0" class="data-list" style="margin-top: .8em;">
+			<!--<li class="hos_child set_box_shadow">
+				<div class="hos_list_top clearfix">
+				<div class="yuyueTop"><span class="famousName hosName">杭州时光口腔医院</span><span class="yuyueStatus orderStatus">交易成功</span></div>
+				<div class="orderContent">
+				<div class="left"><img src="img/find_doc/hos1.png"/></div>
+				<div class="right">
+					<p class="detail">
+						<span class="name">【水漾活跃】水漾活跃水漾活跃水漾活跃水漾活跃水漾活跃</span>
+						</p>
+					<p class="orderdetailchoose">
+						<span>已选择：</span><span class="orderdetailchooseName">水漾活跃</span> <span class="orderdetailchooseCount">x2</span>
+						</p>
+					<p class="orderzong">
+						<span>合计：</span><span class="orderzongfu">￥</span><span class="orderzongPrice">1208</span>
+						</p>
+					</div>
+				</div>
+				<div class="orderBottom">定单号：<span class="famousName orderNum">20171226506</span><button class="orderDel">删除订单</button></div>
+			</div>
+			</li>-->
+		</ul>
+	</div>
+	<!--医生-->
+	<div id="mescroll1" class="mescroll hide" style="background-color: #f1f1f1;top: 5.4rem;">
+		<ul id="dataList1" class="data-list">
+		</ul>
+	</div>
+
+	<!--医院-->
+	<div id="mescroll2" class="mescroll hide" style="background-color: #f1f1f1;top: 5.4rem;">
+		<ul id="dataList2" class="data-list">
+		</ul>
+	</div>
+	<div id="mescroll3" class="mescroll hide" style="background-color: #f1f1f1;top: 5.4rem;">
+		<ul id="dataList3" class="data-list">
+		</ul>
+	</div>
+</div>
+<div class="shareCall call-active">
+	<div class="mainCall">
+		<a href="tel:4000696120"><img src="img/call-out.png"><span style="vertical-align: top;">4000696120</span></a>
+	</div>
+	<div class="split"></div>
+	<div class="cancel" onclick="To.closetopanimate()">取消</div>
+</div>
+</body>
+
+<!--在您实际的项目中,请留意mescroll-option.js的图片路径是否引用正确,可写成绝对路径或网络地址-->
+<!--可把mescroll-option.js代码拷贝到mescroll.min.js中,合为一个js文件,方便引用-->
+<script src="js/lib/mescroll.js" type="text/javascript" charset="utf-8"></script>
+<!--<script src="option/mescroll-option.js" type="text/javascript" charset="utf-8"></script>-->
+<!--mescroll本身不依赖jq,这里为了模拟发送ajax请求,获取模拟数据-->
+<!--<script type="text/javascript" src="js/viewport.js" ></script>-->
+<script type="text/javascript" src="js/util.js"></script>
+<script src="js/lib/jweixin-1.1.0.js"> </script>
+<script src="js/getShare.js"> </script>
+<!--<script src="js/dos_yuyue.js"></script>-->
+<!--	<script src="../res/pdlist1.js" type="text/javascript" charset="utf-8"></script>-->
+
+<script type="text/javascript" charset="utf-8">
+    var title = '我的订单';
+    var link = 'https://www.enuo120.com/app/order.html';
+    var imgUrl = 'https://www.enuo120.com/app/img/enuoFang.jpg';  //分享的信息
+    var desc = '这里有你的全部订单';
+	$(document).ready(function () {
+		/*init();*/
+		getSign();
+    });
+    var mescroll;
+    var curNavIndex=0;//首页0; 奶粉1; 面膜2; 图书3;
+    var mescrollArr=new Array(4);//4个菜单所对应的4个mescroll对象
+    //初始化首页
+    mescrollArr[0]=initMescroll("mescroll0", "dataList0");
+    $(function(){
+     /*   init();*/
+        /*	$('.levelClick').click(function () {
+                console.log(555)
+                $('.levelText').text($(this).text()).attr('levelId',$(this).attr('levelId'));
+                $('#dataList').empty();
+                var page = {num: 1, size: 5, doctorTypeId: $(this).attr('levelId')}
+               // mescroll.resetUpScroll();
+                mescroll.setPageNum(1)
+                getListData(page)
+            })
+            $('.subsubjectClick').click(function () {
+                $('.subText').text($(this).text()).attr('subsubId',$(this).attr('subsubId'));
+                $('#dataList').empty();
+                var page = {num: 1, size: 5, subSubjectId: $(this).attr('subsubId')}
+                // mescroll.resetUpScroll();
+                mescroll.setPageNum(1)
+                getListData(page)
+            })*/
+
+        //创建MeScroll对象
+      /*  mescroll = initMeScroll("mescroll", {
+            up: {
+                clearEmptyId:"dataList",
+                isBoth: true, //上拉加载时,如果滑动到列表顶部是否可以同时触发下拉刷新;默认false,两者不可同时触发; 这里为了演示改为true,不必等列表加载完毕才可下拉;
+                callback: getListData, //上拉加载的回调
+            }
+        });*/
+
+        /*初始化菜单*/
+        $(".nav p").click(function(){
+            var i=Number($(this).attr("i"));
+            if(curNavIndex!=i) {
+                //更改列表条件
+                $(".nav .active").removeClass("active");
+                $(this).addClass("active");
+                //隐藏当前列表
+                $("#mescroll"+curNavIndex).hide();
+                //显示对应的列表
+                curNavIndex=i;
+                $("#mescroll"+curNavIndex).show();
+                //取出菜单所对应的mescroll对象,如果未初始化则初始化
+                if(mescrollArr[i]==null) mescrollArr[i]=initMescroll("mescroll"+i, "dataList"+i);
+            }
+        })
+    });
+    /*创建MeScroll对象*/
+    function initMescroll(mescrollId,clearEmptyId){
+        //创建MeScroll对象,内部已默认开启下拉刷新,自动执行up.callback,刷新列表数据;
+        var mescroll = new MeScroll(mescrollId, {
+            //上拉加载的配置项
+            up: {
+                callback: getListData, //上拉回调,此处可简写; 相当于 callback: function (page) { getListData(page); }
+                noMoreSize: 4, //如果列表已无数据,可设置列表的总数量要大于半页才显示无更多数据;避免列表数据过少(比如只有一条数据),显示无更多数据会不好看; 默认5
+                empty: {
+                    icon: "option/mescroll-empty.png", //图标,默认null
+                    tip: "亲,暂无结果~", //提示
+                    //btntext: "去逛逛 >", //按钮,默认""
+                   /* btnClick: function(){//点击按钮的回调,默认null
+                        alert("点击了按钮,具体逻辑自行实现");
+                    }*/
+                },
+                toTop: {
+                    src: "option/mescroll-totop.png" //回到顶部按钮的图片路径
+                },
+                clearEmptyId: clearEmptyId //相当于同时设置了clearId和empty.warpId; 简化写法;默认null
+            }
+        });
+        return mescroll;
+    }
+    /*联网加载列表数据  page = {num:1, size:10}; num:当前页 从1开始, size:每页数据条数 */
+    function getListData(page){
+        console.log(page)
+        page.size = 10;
+        //联网加载数据
+        console.log("curNavIndex="+curNavIndex+", page.num="+page.num);
+        getListDataFromNet(curNavIndex, page.num, page.size,function(data){
+            //联网成功的回调,隐藏上拉加载的状态
+            console.log("data.length="+data.length);
+            mescrollArr[curNavIndex].endSuccess(data.length);//传参:数据的总数; mescroll会自动判断列表如果无任何数据,则提示空;列表无下一页数据,则提示无更多数据;
+            //设置列表数据
+            setListData(data);
+        }, function(){
+            //联网失败的回调,隐藏上拉加载的状态
+            mescrollArr[curNavIndex].endErr();
+        });
+    }
+
+    /*设置列表数据*/
+    function setListData(data){
+        var listDom=$("#dataList" + curNavIndex);
+        for (var i = 0; i < data.length; i++) {
+            var pd=data[i];
+
+            if(curNavIndex == 0){
+                setDataIndex(pd,listDom);
+               /* str += '<li class="hos_child set_box_shadow"> ' +
+					'<div class="hos_list_top clearfix"> ' +
+					'<div class="yuyueTop"><span class="famousName hosName">'+pd.hospitalName+'</span><span class="yuyueStatus orderStatus">'+status+'</span></div> ' +
+					'<div class="orderContent"> ' +
+					'<div class="left"><img src="img/find_doc/hos1.png"/></div> ' +
+					'<div class="right"> ' +
+					'<p class="detail"> ' +
+					'<span class="name">【水漾活跃】水漾活跃水漾活跃水漾活跃水漾活跃水漾活跃</span> ' +
+					'</p> ' +
+					'<p class="orderdetailchoose"> ' +
+					'<span>已选择：</span><span class="orderdetailchooseName">水漾活跃</span> <span class="orderdetailchooseCount">x2</span> ' +
+					'</p> ' +
+					'<p class="orderzong"> ' +
+					'<span>合计：</span><span class="orderzongfu">￥</span><span class="orderzongPrice">'+pd.amount+'</span> ' +
+					'</p> ' +
+					'</div> ' +
+					'</div> ' +
+					'<div class="orderBottom">订单号：<span class="famousName orderNum">'+pd.sn+'</span>' +
+					'<button class="orderDel">删除订单</button></div> ' +
+					'</div> ' +
+					'</li>';*/
+			}
+            else if(curNavIndex == 1){
+                setDataIndex(pd,listDom);
+                /*str += '<li class="hos_child set_box_shadow"> ' +
+                    '<div class="hos_list_top clearfix"> ' +
+                    '<div class="yuyueTop"><span class="famousName hosName">'+pd.hospitalName+'</span><span class="yuyueStatus orderStatus">'+status+'</span></div> ' +
+                    '<div class="orderContent"> ' +
+                    '<div class="left"><img src="img/find_doc/hos1.png"/></div> ' +
+                    '<div class="right"> ' +
+                    '<p class="detail"> ' +
+                    '<span class="name">【水漾活跃】水漾活跃水漾活跃水漾活跃水漾活跃水漾活跃</span> ' +
+                    '</p> ' +
+                    '<p class="orderdetailchoose"> ' +
+                    '<span>已选择：</span><span class="orderdetailchooseName">水漾活跃</span> <span class="orderdetailchooseCount">x2</span> ' +
+                    '</p> ' +
+                    '<p class="orderzong"> ' +
+                    '<span>合计：</span><span class="orderzongfu">￥</span><span class="orderzongPrice">'+pd.amount+'</span> ' +
+                    '</p> ' +
+                    '</div> ' +
+                    '</div> ' +
+                    '<div class="orderBottom">订单号：<span class="famousName orderNum">'+pd.sn+'</span>' +
+                    '<button class="orderPay" onclick="toPay(this)" payId="'+pd.id+'" paySn="'+pd.sn+'" payAmount="'+pd.amount+'">支付</button></div> ' +
+                    '</div> ' +
+                    '</li>';*/
+            }else if(curNavIndex == 2){
+                setDataIndex(pd,listDom);
+			}else if(curNavIndex == 3){
+                setDataIndex(pd,listDom);
+            }
+           /* listDom.append(str);*/
+        }
+    }
+    function setDataIndex(pd,listDom) {
+        var status;
+        switch (pd.orderStatus) {
+            case 'waitPaid':
+                status = '待支付';
+                break;
+            case 'waitConfirm':
+                status = '待确认';
+                break;
+            case 'cancelled':
+                status = '交易取消';
+                break;
+        }
+        if (pd.orderStatus == 'completed') {
+            if (pd.isEvaluation == false) {
+                status = '待评价';
+            } else {
+                status = '交易成功';
+            }
+        }
+        if (pd.orderStatus == 'waitPaid') {
+            if (pd.type == 'censor') {
+                status = '检查待付款';
+            }
+        }
+        if (pd.orderStatus == 'waitConfirm') {  //如果待确认，如果是特价。则不确认
+            if (pd.type == 'product') {
+                if(pd.groupShoppingTeamState == 'full'){ //超声洁牙拼团状态 已拼成
+                    if (pd.isReservation == false) {
+						status = '待预约';
+                    } else {
+                        status = '已预约';
+                    }
+				}else if(pd.groupShoppingTeamState == 'wait'){ //超声洁牙拼团状态 待拼成
+                    if (pd.teamEndDatetime > new Date().getTime()) {  //拼团结束时间大于当前时间，还没超时
+                        status = '已支付';
+                    } else {
+                        status = '拼团超时';
+                    }
+                }else if(pd.groupShoppingTeamState == 'none'){ //超声洁牙拼团状态 还没入团
+					status = '已支付';
+                }else if(pd.isActivity && pd.isActivity == true){
+                    if(pd.isReservation == true){
+                        status = '已预约';
+					}else if(pd.isReservation == false){
+                        if(pd.hasBeenGiveUseEffectiveDateStr < new Date().Format('yyyy-MM-dd hh:mm:ss')){
+                            status = '已失效(活动商品)';
+                        }else{
+                            status = '待预约';
+						}
+					}
+				}else{
+                    if (pd.isReservation == false) {
+                        if (pd.specialProductId == huliCardId) {
+                            status = '已支付';
+                        }else if (pd.specialProductId == rotorBuy) {
+                            status = '已支付';
+                        }else{
+                            status = '待预约';
+                        }
+                    } else {
+                        status = '已预约';
+                    }
+				}
+            } else if (pd.type == 'LINE_BROWS_CITIC' || pd.type == 'FIVE_LINE_BROWS' || pd.type == 'PERSONAL_EMBROIDERY_EYEBROW_FESTIVAL_20181011' || pd.type == 'embroidery_eyebrow_festival_20181011') {//个人纹眉
+                if(pd.browEndTimeIs == true){
+                    status = '拼团超时';
+				}else{
+                    status = '已支付';
+				}
+            } else if (pd.type == 'PRIZE') {//抽奖获得的
+                if (pd.isReservation == false) {
+                    if (pd.prizeInvalid == true) {
+                        status = '已失效(活动奖品)';
+                    }else{
+                        status = '活动奖品';
+                    }
+                } else {
+                    status = '已预约';
+                }
+            } else if (pd.type == 'CITIC_BANK_ACTIVATION_CODE') {//中信兑奖获得的
+                status = '中信银行专属';
+            }
+        }
+        if(pd.orderStatus == 'cancelled') {
+            if (pd.isActivity && pd.isActivity == true) {
+                    status = '已失效';
+            }
+        }
+        if(pd.orderStatus == 'USED') {  //绣眉已使用
+			status = '已使用';
+        }
+
+        var str='';
+
+            str += '<li class="hos_child set_box_shadow"> ' +
+                '<div class="hos_list_top clearfix"> ' ;
+            if(pd.type == 'LINE_BROWS_CITIC' || pd.type == 'FIVE_LINE_BROWS' || pd.type == 'PERSONAL_EMBROIDERY_EYEBROW_FESTIVAL_20181011' || pd.type == 'embroidery_eyebrow_festival_20181011'){
+                str += '<div class="yuyueTop">'
+            }else{
+                str += '<div class="yuyueTop"  itemId="'+pd.id+'" onclick="href(this)">'
+            }
+
+        str += '<span class="famousName hosName">'+pd.hospitalName+'</span><span class="yuyueStatus orderStatus">'+status+'</span></div> ' ;
+        if(pd.type == 'LINE_BROWS_CITIC' || pd.type == 'FIVE_LINE_BROWS' || pd.type == 'PERSONAL_EMBROIDERY_EYEBROW_FESTIVAL_20181011' || pd.type == 'embroidery_eyebrow_festival_20181011'){
+            str +=  '<div class="orderContent"> ' ;
+        }else{
+            str +=  '<div class="orderContent"  itemId="'+pd.id+'" onclick="href(this)"> ' ;
+        }
+        if(pd.type == 'LINE_BROWS_CITIC' || pd.type == 'FIVE_LINE_BROWS' || pd.type == 'PERSONAL_EMBROIDERY_EYEBROW_FESTIVAL_20181011' || pd.type == 'embroidery_eyebrow_festival_20181011') {
+            str += '<div class="left"><img src="img/browActive/browOrder.jpg"/></div> ' ;
+        }else{
+            str += '<div class="left"><img src="'+pd.headImgUrl+'"/></div> ';
+		}
+            if(pd.type == 'doctor') { //医生
+                str += '<div class="right"> ' +
+                '<p class="detail"> ' +
+                '<span class="spanFloat"><span>科室：</span><span>' + pd.subjectName + '</span></span> ' +
+				'<span class="spanFloat" style="width:45%;margin-left: 5%"><span>医生：</span><span>' + pd.doctorName + '</span></span> ' +
+                '</p> ' +
+                '<p class="orderdetailchoose"> ' +
+                '<span>疾病：</span><span class="orderdetailchooseName">' + pd.projectName + '</span>' +
+                '</p> ' +
+                '<p class="orderzong"> ' +
+                '<span>约定费用：</span><span class="orderzongfu">￥</span><span class="orderzongPrice">' + pd.amount + '</span> ' +
+                '</p> ' +
+                '</div> '
+            }else if(pd.type == 'project') { //医美
+                str += '<div class="right"> ' +
+                    '<p class="detail"> ' +
+                    '<span class="spanFloat"><span>科室：</span><span>' + pd.subjectName + '</span></span> ' +
+                    '</p> ' +
+                    '<p class="orderdetailchoose"> ' +
+                    '<span>项目：</span><span class="orderdetailchooseName">' + pd.projectName + '</span>' +
+                    '</p> ' +
+                    '<p class="orderzong"> ' +
+                    '<span>约定费用：</span><span class="orderzongfu">￥</span><span class="orderzongPrice">' + pd.amount + '</span> ' +
+                    '</p> ' +
+                    '</div> '
+            }else if(pd.type == 'product') { //特价
+                str +=    '<div class="right"> ' +
+                    '<p class="detail"> ' +
+                    '<span class="name">' + pd.projectName + '</span> ' +
+                    '</p> ' +
+                    /*'<p class="orderdetailchoose"> ' +
+                    '<span>已选择：</span><span class="orderdetailchooseName">' + pd.projectName + '</span> <span class="orderdetailchooseCount">×' + pd.quantity + '</span> ' +
+                    '</p> ' +*/
+                    '<p class="orderzong"> ' +
+                    '<span>合计：</span><span class="orderzongfu">￥</span><span class="orderzongPrice">' + pd.amount + '</span> ' +
+                    '</p> ' +
+                    '<p class="orderdetailchoose"> '
+				if(pd.isActivity && pd.isActivity == true){
+                    str += '<span>失效日期：</span><span class="orderdetailchooseName">' + pd.hasBeenGiveUseEffectiveDateStr + '</span> '
+				}else{
+                    str += '<span>购买日期：</span><span class="orderdetailchooseName">' + pd.createDate + '</span> '
+				}
+                str +='</p> ' +
+                    '</div> '
+            }else if(pd.type == 'censor') { //检查项
+                str +=    '<div class="right"> ' +
+                    '<p class="detail"> ' +
+                    '<span class="name">检查：' + pd.projectName + '</span> ' +
+                    '</p> ' +
+                  /*  '<p class="orderdetailchoose"> ' +
+                    '<span>已选择：</span><span class="orderdetailchooseName">' + pd.projectName + '</span> <span class="orderdetailchooseCount">×' + pd.quantity + '</span> ' +
+                    '</p> ' +*/
+                    '<p class="orderzong"> ' +
+                    '<span>合计：</span><span class="orderzongfu">￥</span><span class="orderzongPrice">' + pd.amount + '</span> ' +
+                    '</p> ' +
+                    '</div> '
+            }else if(pd.type == 'offline') { //线下开单
+                str +=    '<div class="right"> ' +
+                    '<p class="detail"> ' +
+                    '<span class="name">' + pd.projectName + '</span> ' +
+                    '</p> ' +
+                    /*'<p class="orderdetailchoose"> ' +
+                    '<span>已选择：</span><span class="orderdetailchooseName">' + pd.projectName + '</span> <span class="orderdetailchooseCount">×' + pd.quantity + '</span> ' +
+                    '</p> ' +*/
+                    '<p class="orderzong"> ' +
+                    '<span>合计：</span><span class="orderzongfu">￥</span><span class="orderzongPrice">' + pd.amount + '</span> ' +
+                    '</p> ' +
+                    '<p class="orderdetailchoose"> ' +
+                    '<span>购买日期：</span><span class="orderdetailchooseName">' + pd.createDate + '</span> ' +
+                    '</p> ' +
+                    '</div> '
+            }else if(pd.type == 'registration_fee') { //线下挂号费
+                str +=    '<div class="right"> ' +
+                    '<p class="detail"> ' +
+                    '<span class="name">' + pd.projectName + '</span> ' +
+                    '</p> ' +
+                    /*'<p class="orderdetailchoose"> ' +
+                    '<span>已选择：</span><span class="orderdetailchooseName">' + pd.projectName + '</span> <span class="orderdetailchooseCount">×' + pd.quantity + '</span> ' +
+                    '</p> ' +*/
+                    '<p class="orderzong"> ' +
+                    '<span>合计：</span><span class="orderzongfu">￥</span><span class="orderzongPrice">' + pd.amount + '</span> ' +
+                    '</p> ' +
+                    '<p class="orderdetailchoose"> ' +
+                    '<span>购买日期：</span><span class="orderdetailchooseName">' + pd.createDate + '</span> ' +
+                    '</p> ' +
+                    '</div> '
+            }else if(pd.type == 'LINE_BROWS_CITIC' || pd.type == 'FIVE_LINE_BROWS' || pd.type == 'PERSONAL_EMBROIDERY_EYEBROW_FESTIVAL_20181011' || pd.type == 'embroidery_eyebrow_festival_20181011') { //纹眉个人购买
+                str +=    '<div class="right"> ' +
+                    '<p class="detail"> ' +
+                    '<span class="name">' + pd.projectName + '</span> ' +
+                    '</p> ' +
+                    /*'<p class="orderdetailchoose"> ' +
+                    '<span>已选择：</span><span class="orderdetailchooseName">' + pd.projectName + '</span> <span class="orderdetailchooseCount">×' + pd.quantity + '</span> ' +
+                    '</p> ' +*/
+                    '<p class="orderzong"> ' +
+                    '<span>合计：</span><span class="orderzongfu">￥</span><span class="orderzongPrice">' + pd.amount + '</span> ' +
+                    '</p> ' +
+                    '<p class="orderdetailchoose"> ' +
+                    '<span>购买日期：</span><span class="orderdetailchooseName">' + pd.createDate + '</span> ' +
+                    '</p> ' +
+                    '</div> '
+            }else if(pd.type == 'PRIZE') { //特价
+            str +=    '<div class="right"> ' +
+                '<p class="detail"> ' +
+                '<span class="name">' + pd.projectName + '</span> ' +
+                '</p> ' +
+                /*'<p class="orderdetailchoose"> ' +
+                '<span>已选择：</span><span class="orderdetailchooseName">' + pd.projectName + '</span> <span class="orderdetailchooseCount">×' + pd.quantity + '</span> ' +
+                '</p> ' +*/
+                '<p class="orderzong"> ' +
+               /* '<span>合计：</span><span class="orderzongfu">￥</span><span class="orderzongPrice">' + pd.amount + '</span> ' +*/
+                '</p> ' +
+                '<p class="orderdetailchoose"> '
+					if(!pd.hasBeenGiveUseEffectiveDateStr){
+
+					}else{
+                        str += '<span>失效日期：</span><span class="orderdetailchooseName">' + pd.hasBeenGiveUseEffectiveDateStr + '</span> '
+					}
+                str +='</p> ' +
+                '</div> '
+        }else if(pd.type == 'CITIC_BANK_ACTIVATION_CODE') { //中信
+                str +=    '<div class="right"> ' +
+                    '<p class="detail"> ' +
+                    '<span class="name">' + pd.projectName + '</span> ' +
+                    '</p> ' +
+                    /*'<p class="orderdetailchoose"> ' +
+                    '<span>已选择：</span><span class="orderdetailchooseName">' + pd.projectName + '</span> <span class="orderdetailchooseCount">×' + pd.quantity + '</span> ' +
+                    '</p> ' +*/
+                    '<p class="orderzong"> ' +
+                    /* '<span>合计：</span><span class="orderzongfu">￥</span><span class="orderzongPrice">' + pd.amount + '</span> ' +*/
+                    '</p> ' +
+                    '<p class="orderdetailchoose"> ' +
+                    '<span>兑换日期：</span><span class="orderdetailchooseName">' + pd.createDate + '</span> ' +
+                    '</p> ' +
+                    '</div> '
+            }
+            str += '</div> ' ;
+
+            if (status == '待支付' && pd.amount == pd.lastAmount) {  //如果未付款的
+                str += '<div class="orderBottom" style="height: 4.2rem;">订单号：<span class="famousName orderNum">' + pd.sn + '</span>' +
+                    '<span style="float: right;margin-right: 1.5%;">待支付：<span class="orderzongfu">￥</span><span class="orderzongPrice">' + pd.lastAmount + '</span></span>' +
+                    '<p class="payBottom"><button class="orderPay" onclick="Order.toPay(this)" payId="' + pd.id + '" paySn="' + pd.sn + '" payAmount="' + pd.amount + '">支付</button>' +
+					'<button class="ordercancel" payId="' + pd.id + '" onclick="Order.cancel(this)">取消订单</button></p></div> ';
+            } else if (status == '待支付' && Number(pd.amount) > Number(pd.lastAmount) && Number(pd.lastAmount) > 0) {  //如果付款过一些的
+                str += '<div class="orderBottom" style="height: 4.2rem;">订单号：<span class="famousName orderNum">' + pd.sn + '</span>' +
+                    '<span style="float: right;margin-right: 1.5%;">待支付：<span class="orderzongfu">￥</span><span class="orderzongPrice">' + pd.lastAmount + '</span></span>' +
+                    '<button style="position: absolute;bottom: .7rem;right: 1.5%;" class="orderPay" onclick="Order.toPay(this)" payId="' + pd.id + '" paySn="' + pd.sn + '" payAmount="' + pd.lastAmount + '">继续支付</button></div> ';
+            } else if (status == '待确认') {  //如果待确认治疗
+                str += '<div class="orderBottom">订单号：<span class="famousName orderNum">' + pd.sn + '</span>' +
+                    '<button class="ordercanceljiancha" style="bottom: .4rem;" onclick="To.topanimate()">申诉</button><button class="ordersure" payId="' + pd.id + '" onclick="Order.sure(this)">确认治疗</button></div> ';
+            }else if (status == '待评价') {  //如果待评价
+                str += '<div class="orderBottom">订单号：<span class="famousName orderNum">' + pd.sn + '</span>' +
+                    '<button class="ordercommont"	 payId="' + pd.id + '"  payAmount="' + pd.amount + '"  payName="' + pd.projectName + '" onclick="Order.commont(this)">评价</button></div> ';
+            }else if (status == '交易成功') {  //如果交易完成
+                str += '<div class="orderBottom">订单号：<span class="famousName orderNum">' + pd.sn + '</span>' +
+                    '</div> ';
+            } else if(status == '交易取消' || status == '已失效'){	//如果交易取消 或特价失效了
+                str += '<div class="orderBottom">订单号：<span class="famousName orderNum">' + pd.sn + '</span>' +
+                    '<button class="orderDel" payId="' + pd.id + '" onclick="Order.del(this)">删除订单</button></div> ';
+            }else if (status == '待预约' || status == '活动奖品' || status == '中信银行专属') {  //如果待预约
+                str += '<div class="orderBottom">订单号：<span class="famousName orderNum">' + pd.sn + '</span>' +
+                    '<button class="ordercommont" payId="' + pd.id + '" onclick="Order.Yuyue(this)">预约</button></div> ';
+            }else if (status == '已失效(活动奖品)' || status == '已失效(活动商品)') {  //如果活动奖品商品(已失效)
+                str += '<div class="orderBottom">订单号：<span class="famousName orderNum">' + pd.sn + '</span>' +
+                    '</div> ';
+            }else if (status == '已预约') {  //如果已预约
+                str += '<div class="orderBottom">订单号：<span class="famousName orderNum">' + pd.sn + '</span>' +
+                    '</div> ';
+            } else if (status == '已支付') {  //如果护理卡和9.9新年大礼包已支付
+                if (pd.specialProductId == rotorBuy) {
+                    str += '<div class="orderBottom">订单号：<span class="famousName orderNum">' + pd.sn + '</span>' +
+                        '<button class="ordercommont" onclick="window.location.href = '+"'/app/rotorNine.html'"+'">去抽奖</button></div> ';
+                }else if (pd.specialProductId == huliCardId) {
+                    str += '<div class="orderBottom">订单号：<span class="famousName orderNum">' + pd.sn + '</span>' +
+                        '<button class="ordercommont" payId="' + pd.id + '" valuetype="'+pd.type+'" onclick="Order.toHuliCard(this)">查看详情</button></div> ';
+                }else if (pd.groupShoppingTeamState == 'none') {
+                    str += '<div class="orderBottom">订单号：<span class="famousName orderNum">' + pd.sn + '</span>' +
+                        '<button class="ordercommont" payId="' + pd.id + '" valuetype="'+pd.type+'" onclick="Order.toTeam(this)">入团</button></div> ';
+                }else{
+                    str += '<div class="orderBottom">订单号：<span class="famousName orderNum">' + pd.sn + '</span></div>'
+				}
+            }else if (status == '检查待付款') {  //检查待付款
+                str += '<div class="orderBottom" style="height: 4.2rem;">订单号：<span class="famousName orderNum">' + pd.sn + '</span>' +
+                    '<span style="float: right;margin-right: 1.5%;">待支付：<span class="orderzongfu">￥</span><span class="orderzongPrice">' + pd.lastAmount + '</span></span>' +
+                    '<p><button style="position: absolute;bottom: .7rem;right: 1.5%;" class="orderPay" onclick="Order.toPay(this)" payId="' + pd.id + '" paySn="' + pd.sn + '" payAmount="' + pd.amount + '">确认检查</button>' +
+					'<button class="ordercanceljiancha" payId="' + pd.id + '" onclick="Order.cancel(this)">取消检查</button></p></div> ';
+            } else if (status == '拼团超时') {  //如果护理卡已支付
+                str += '<div class="orderBottom">订单号：<span class="famousName orderNum">' + pd.sn + '</span>' +
+                    '<button class="ordercommont" style="color: #333;background-color: white;border: 1px solid #c2bdbd;" payId="' + pd.id + '" valuetype="'+pd.type+'" onclick="Order.refund(this)">退款</button></div> ';
+            } else if (status == '已使用') {  //如果绣眉已支付
+                str += '<div class="orderBottom">订单号：<span class="famousName orderNum">' + pd.sn + '</span>'
+            }
+            str +='</div></li>'
+
+        listDom.append(str);
+    }
+
+    /*联网加载列表数据*/
+    function getListDataFromNet(curNavIndex,pageNum,pageSize,successCallback,errorCallback) {
+        /*  var url;
+          if(subjectId == '' || subjectId == undefined){
+              url = SERVER_ADDR + '/app/topthree/doctor/getList.json?pageNumber='+pageNum+'&pageSize='+pageSize;
+          }else{
+              url = SERVER_ADDR + '/app/topthree/doctor/getList.json?pageNumber='+pageNum+'&pageSize='+pageSize+'&subjectId='+subjectId;
+          }*/
+        var data = {};
+        data.pageNumber = pageNum;
+        data.pageSize = pageSize;
+        switch (curNavIndex){
+            case 1:
+                data.status = 'waitPaid';
+                break;
+            case 2:
+                data.status = 'waitConfirm';
+                break;
+            case 3:
+                data.status = 'completed';
+                break;
+        }
+        //延时一秒,模拟联网
+        $.ajax({
+            type: 'GET',
+            url: SERVER_ADDR + '/app/user/order/getList.json',
+            data:data,
+            dataType: 'json',
+            statusCode:{
+                403:function (data) {
+                    if(data.getResponseHeader('isAuthorization') == 'true'){
+                        var str = data.getResponseHeader('userAuthUrl');
+                        str = str.replace(/REDIRECT_URI/, encodeURI(window.location.href));
+                        sessionStorage.setItem("codeValue", 'true');
+                        window.location.href = str;
+                    }else{
+                        window.location.href = 'bind_tel.html';
+                    }
+                }
+            },
+            success: function(data){
+                if(data.success == true){
+                    var data=data.data; // 模拟数据: ../res/pdlist1.js
+                    var listData=[];
+                    //根据type  加入不同的数组
+
+                    if(curNavIndex==0){  //全部
+                        for (var i = 0; i < data.length; i++) {
+                            listData.push(data[i]);
+                        }
+                    }else if(curNavIndex==1){ // 待付款
+                        for (var i = 0; i < data.length; i++) {
+                            listData.push(data[i]);
+                        }
+                    }else if(curNavIndex==2){  //待确认
+                        for (var i = 0; i < data.length; i++) {
+                            listData.push(data[i]);
+                        }
+                    } else if(curNavIndex==3){  //待评价
+                        for (var i = 0; i < data.length; i++) {
+                            listData.push(data[i]);
+                        }
+                    }
+                    //回调
+                    successCallback(listData);
+                }else{
+                    alert(data.data);
+				}
+            },
+            error: errorCallback
+        });
+    }
+    var Order = {
+        del:function (obj) { //删除订单
+            layer.open({
+                content: '确定要删除订单？'
+                ,btn: ['取消', '确定']
+                ,no: function(index){
+                    var url = SERVER_ADDR + '/app/user/order/delete';
+                    var Data = {};
+                    Data.id = $(obj).attr('payId');
+                    ajaxGetRetInfo(url, Data, Order.delSuccess, '请求失败', 'POST', true, undefined);
+                    layer.close(index);
+                }
+            });
+        },
+        delSuccess:function (res) {
+            if(res.success == true){
+				window.location.reload();
+            }else {
+                alert(res.data);
+            }
+        },
+        sure:function (obj) { //确认治疗
+            var url = SERVER_ADDR + '/app/user/order/confirm';
+            var Data = {};
+            Data.id = $(obj).attr('payId');
+            ajaxGetRetInfo(url, Data, Order.sureSuccess, '请求失败', 'POST', true, undefined);
+        },
+        sureSuccess:function (res) {
+            if(res.success == true){
+                window.location.reload();
+            }else {
+                alert(res.data);
+            }
+        },
+        refund:function (obj) { //退款
+            var elThis = $(obj);
+           /* if(localStorage.getItem('shareTuiBeforeOpenBefore') != 1) {
+                $('.shareTuiBeforeOpenBefore').show();
+                return;
+            }else{*/
+                layer.open({
+                    content: '确定要退款吗？'
+                    ,btn: ['取消', '确定']
+                    ,no: function(index){
+                        var url = SERVER_ADDR + '/app/user/activityProductOrder/refund/record';
+                        var Data = {};
+                        Data.activityProductId = toothActivityProductId;
+                        ajaxGetRetInfo(url, Data, Order.refundSuccess, '请求失败', 'POST', true, undefined);
+                        layer.close(index);
+                    }
+                });
+            //}
+        },
+        refundSuccess:function (res) {
+            if(res.success == true){
+                //localStorage.setItem('shareTuiBeforeOpenBefore','0');
+                alert('退款成功，已退至您的e诺账户余额');
+                window.location.reload();
+            }else {
+                alert(res.data);
+            }
+        },
+		cancel:function (obj) { //取消订单
+            layer.open({
+                content: '确定要取消订单？'
+                ,btn: ['取消', '确定']
+                ,no: function(index){
+                    var url = SERVER_ADDR + '/app/user/order/cancel';
+                    var Data = {};
+                    Data.id = $(obj).attr('payId');
+                    ajaxGetRetInfo(url, Data, Order.cancelSuccess, '请求失败', 'POST', true, undefined);
+                    layer.close(index);
+                }
+            });
+        },
+        cancelSuccess:function (res) {
+                if(res.success == true){
+                    window.location.reload();
+                }else {
+                    alert(res.data);
+                }
+        },
+        toPay:function (obj) {
+            window.location.href = 'pay/order_pay.html?payId=' + $(obj).attr('payId') + '&paySn=' + $(obj).attr('paySn') + '&payAmount=' + $(obj).attr('payAmount')
+        },
+        commont:function (obj) {
+            window.location.href = 'order_commont.html?itemId=' + $(obj).attr('payId')+ '&payName=' + $(obj).attr('payName') + '&payAmount=' + $(obj).attr('payAmount');
+        },
+        Yuyue:function (obj) {
+            window.location.href = 'pay/dos_yuyue.html?docId=' + $(obj).attr('payId')+ '&type=product';
+        },
+        toTeam:function () {
+            window.location.href = 'browList.html'
+        },
+        toHuliCard:function (obj) {
+            if($(obj).attr('valuetype') == 'LINE_BROWS_CITIC' || $(obj).attr('valuetype') == 'FIVE_LINE_BROWS' || $(obj).attr('valuetype') == 'PERSONAL_EMBROIDERY_EYEBROW_FESTIVAL_20181011' || $(obj).attr('valuetype') == 'embroidery_eyebrow_festival_20181011'){
+                window.location.href = 'myBrow.html';
+			}else{
+                window.location.href = 'myHuliCard.html';
+			}
+        }
+	}
+    function href(obj) {
+        window.location.href = "order_detail.html?itemId="+$(obj).attr('itemId');
+    }
+    function callback() {
+        localStorage.setItem('shareTuiBeforeOpenBefore','1');
+        $('.shareTuiBeforeOpenBefore').hide();
+    }
+    var To = {
+        topanimate: function () {
+            $(".shareCall").removeClass("call-active").addClass("am-modal-active");//向上弹出取消
+            if ($(".sharebg").length > 0) {
+                $(".sharebg").addClass("sharebg-active");//背景颜色变化并增加透明度
+            } else {
+                $("body").append('<div class="sharebg"></div>');
+                $(".sharebg").addClass("sharebg-active");
+            }
+        },
+        closetopanimate:function () {
+            $(".shareCall").removeClass("am-modal-active").addClass("call-active");//向上弹出取消
+            setTimeout(function () {
+                $(".sharebg-active").removeClass("sharebg-active");//背景颜色恢复
+                $(".sharebg").remove();
+
+            }, 200);
+        }
+    }
+</script>
+
+</html>

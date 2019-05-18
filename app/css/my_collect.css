@@ -1,0 +1,65 @@
+/*医院列表*/
+.hos_child{
+	height: 8rem;
+	padding-top: .2rem;
+}
+.hos_child .hos_list_top{
+	height: 7.7rem;
+	/*border: 1px solid red;*/
+	font-size: .8rem;
+	line-height: .35rem;
+}
+.hos_list_top div{
+	float: left;
+}
+.hos_list_top .left{
+	width: 28%;
+	margin: -.2rem .2rem 0 -.2rem;
+	text-align: center;
+}
+.hos_list_top .left img{
+	max-height: 7.9rem;
+	overflow: hidden;
+}
+.hos_list_top .right{
+	padding-left:.2rem;
+	margin-top: .3em;
+	width: 70%;
+}
+.right p {
+	margin-bottom: .2rem;
+	height: 1.4em;
+	line-height: 1.4em;
+}
+.detail .name {
+	font-size: .9rem;
+	letter-spacing: 1px;
+	color: black;
+	font-weight: 600;
+}
+.docLevel {
+	color: #00aea0;
+	font-size: .8rem;
+	margin-left: 3%;
+}
+.peopelCount {
+	color: #feb62a;
+}
+.goodPlace {
+	border-top: 1px dashed #cccccc;
+	padding: .5em 0 0 0;
+	margin: .4em 0 0 0;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+ul li{
+	list-style: none;
+}
+.split{
+	width: 96%;
+	height: 1px;
+	margin-left: 2%;
+	border-top: 1px dashed #e5e5e5;
+}
+

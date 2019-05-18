@@ -1,0 +1,186 @@
+/*医院列表*/
+.hos_child{
+	/*height: 12rem;*/
+	padding-top: .2rem;
+}
+.hos_child .hos_list_top{
+	/*height: 7.7rem;*/
+	/*border: 1px solid red;*/
+	font-size: .2rem;
+	/*line-height: .35rem;*/
+}
+.hos_list_top div{
+	float: left;
+}
+.hos_list_top .left{
+	/*width: 100%;*/
+	/*margin: -.2rem .2rem 0 -.2rem;*/
+	/*height: 7.7rem;
+	text-align: center;*/
+	width: 22%;
+	margin: 0.6rem 3% 0 3%;
+	text-align: center;
+}
+.hos_list_top .left img{
+	/*height: 7.5rem;*/
+	max-height: 5.4rem;
+	overflow: hidden;
+	border-radius: 50%;
+	/*width: 100%;*/
+}
+.hosscore{
+	color: #00afa1;
+	font-size: .95rem;
+	margin-top: .2rem;
+}
+.hos_list_top .right{
+	padding-left:.2rem;
+	margin-top: 1.8em;
+	width: 70%;
+	/*margin-left: 5%;*/
+}
+ul li{
+	list-style: none;
+}
+.detail .name{
+	font-size: .95rem;
+	letter-spacing: 1px;
+	color: #00afa1;
+	font-weight: 600;
+
+	overflow: hidden;
+	text-overflow: ellipsis;
+	/* white-space: nowrap; */
+	width: 75%;
+	display: inline-block;
+	height: 1rem;
+}
+.diatance{
+	float: right;
+	font-size: .85rem;
+	color: #00afa1;
+}
+#input-test::-webkit-input-placeholder{
+	color: #ADD8E6;
+}
+.search_publish {
+	/* height: 1rem; */
+	background: linear-gradient(to right,#00afa1, #00c59e);
+	border: 0;
+	position: relative;
+	/*top: -4px;*/
+	left: -.35rem;
+	/*display: none;*/
+}
+.search_publish div {
+	width: 65%;
+}
+.search_publish img {
+	width: 1.1rem;
+	position: absolute;
+	top: .4rem;
+	right: .5rem;
+}
+.toggleSou{
+	background-color: transparent;
+	border: 1.4px solid white;
+	width: 100%;
+	height: .6rem;
+	border-radius: .3rem;
+	font-size: .24rem;
+	letter-spacing: 0.5px;
+	color: black;
+	text-indent: .2rem;
+	outline: none;
+}
+.ulli{
+	width:94%;
+	padding: 0;
+	/*display: inline-table;*/
+	border-top-left-radius: .4rem;
+	border-top-right-radius: .4rem;
+	overflow: hidden;
+	margin-top: .7rem;
+}
+.docLevel{
+	color: #00aea0;
+	font-size: .75rem;
+	/*margin-left: 3%;*/
+	float: right;
+	margin-right: 3%;
+}
+.right p{
+	margin-bottom: .6rem;
+	/*height: 1.4em;*/
+	line-height: 1.4em;
+	font-size: .8rem;
+	color: #333333;
+}
+.peopelCount{
+	color: #feb62a;
+}
+.flex_all_center{
+	position: relative;
+	font-size: 1rem;
+	color: #333333;
+}
+/*.subjectLong,subsubjectLong{
+	width: 2.5rem;
+	height: auto;
+	position: absolute;
+	top: 1.9rem;
+!*	left: 2.5rem;*!
+	background-color: white;
+	z-index: 9;
+	padding: .4em 0;
+	border: 1px solid #cccccc;
+	border-top: none;
+	display: none;
+}*/
+.subP{
+	height: 2em;
+	line-height: 2em;
+	text-align: center;
+}
+.goodPlace{
+	border-top: 1px dashed #cccccc;
+	padding: .5em 0 0 0;
+	margin: .4em 0 0 0;
+	overflow: hidden;
+	text-overflow:ellipsis;
+	white-space: nowrap;
+}
+.hos_child .hos_list_btm{
+	border-top: 1px dashed #DCDCDC;
+	padding: .2rem 0;
+	margin-top: .2rem;
+}
+.hos_child .hos_list_btm p{
+	float: left;
+	border-right: 1px dashed #DCDCDC;
+	height: .6rem;
+	padding: 0 .2rem;
+	width: 33%;
+}
+.hos_child .hos_list_btm p:last-child{
+	border: 0;
+}
+.hos_list_btm p img{
+	margin-right: .2rem;
+}
+.hos_list_btm p span{
+	font-size: .2rem;
+	color: #00AFA1;
+	margin-left: .1rem;
+}
+
+
+
+
+
+
+
+
+
+
+

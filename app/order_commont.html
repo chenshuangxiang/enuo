@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<link rel="stylesheet" href="css/base.css" />
+	<link rel="stylesheet" href="css/util.css" />
+	<link rel="stylesheet" href="css/order_commont.css" />
+	<link rel="stylesheet" href="css/lib/xiala.css" />
+	<script type="text/javascript" src="plug/jquery-1.11.3.js" ></script>
+	<script src="js/common.js"></script>
+	<!--<title>发表评价</title>--><title>发表评价</title>
+</head>
+<style>
+	input::-webkit-input-placeholder{
+		color: white;
+		font-size: 8px;
+	}
+</style>
+<body style="background-color: #f1f1f1;">
+<div class="content">
+	<!--标题-->
+	<!--<a href="../index.html"><div class="header"></div></a>-->
+	<div class="pub_hearder flex_vertical justify_content_equal" style="z-index: 99;">
+		<img class="up_page pub_hearder_left" src="img/header/header_left.png" onclick="window.history.go(-1)" />
+		<div class="head_center head_centerZi">
+			<!--	<div class="search_publish">
+                    <div style="position: relative;">
+                        <input class="toggleSou" type="text" style="color: black;height: .5rem; margin-bottom: .15em;" placeholder="搜索医生"/>
+                    </div>
+                </div>-->
+			<span class="set_head_dot" style="width: .15rem;height: .15rem;border-radius: 50%;"></span>
+			<span class="set_head_dot" style="width: .25rem;height: .27rem;border-radius: 50%;"></span>
+			<span class="set_head_dot"></span>
+			<span class="head_title">发表评价</span>
+			<span class="set_head_dot"></span>
+			<span class="set_head_dot" style="width: .25rem;height: .27rem;;border-radius: 50%;"></span>
+			<span class="set_head_dot" style="width: .15rem;height: .15rem;border-radius: 50%;"></span>
+		</div>
+		<!--<img class="search pub_hearder_right" src="img/forward.png" />-->
+		<!--	<img class="search pub_hearder_right" onclick="Show.Sou()" src="img/search.png"/>-->
+	</div>
+
+	<!--商品-->
+
+		<div class="data-list" style="">
+			<div class="hos_child set_box_shadow">
+				<div class="hos_list_top clearfix">
+				<!--<div class="yuyueTop"><span class="famousName hosName">杭州时光口腔医院</span><span class="yuyueStatus orderStatus">交易成功</span></div>-->
+				<div class="orderContent">
+				<div class="left"><img src="img/find_doc/hos1.png"/></div>
+				<div class="right">
+					<p class="detail">
+						<span class="name">【水漾活跃】水漾活跃水漾活跃水漾活跃水漾活跃水漾活跃</span>
+						</p>
+					<p class="orderzong">
+						<span class="orderzongfu">￥</span><span class="orderzongPrice">1208</span>
+						</p>
+					</div>
+				</div>
+					<div class="orderBottom" style="    height: inherit;"><textarea placeholder="效果满足你的期待吗？说说你的体验，分享一下你的故事吧"></textarea></div>
+				<div class="orderBottom" style="height: inherit;padding-bottom: 1rem;    margin-top: -.5rem;">
+					<span class="famousName orderNum inputImg">
+						<span class="addPhontBtn"><input type="file" class="hidden" id="file" multiple="multiple"/>
+							<img src="img/camera.png"><span><span>添加图片</span></span>
+						</span>
+					</span>
+
+				</div>
+			</div>
+			</div>
+		</div>
+	<div class="data-list" style="    margin-bottom: 3rem;">
+		<div class="hos_child set_box_shadow">
+			<div class="hos_list_top clearfix">
+				<div class="left_tittle ill_office_pg" style="width: 95%;height: 2rem;    position: relative;
+    left: .5rem;top: .8rem;border-bottom: 1px solid #cccccc;    margin-bottom: 1.2rem;">
+			<span class="green_long" style="    width: .2rem;
+    height: .8rem;
+    border-radius: .3rem;"></span><span style="color: #00afa1;    margin-left: .7rem;    font-size: .85rem;">综合评分</span>
+				</div>
+				<div class="yuyueTop" style="height: 4rem"><span class="famousName hosName">等待就诊时间</span>
+					<p class="right" style="width: 99%">
+						<input class="sex nan" type="radio" name="sex" value="0-15分钟" checked="">
+						<span class="sexname">0-15分钟</span>
+						<input class="sex nv" type="radio" name="sex" value="15-30分钟">
+						<span class="sexname">15-30分钟</span>
+						<input class="sex nan" type="radio" name="sex" value="30-60分钟">
+						<span class="sexname">30-60分钟</span>
+						<input class="sex nv" type="radio" name="sex" value="1-3小时">
+						<span class="sexname">1-3小时</span>
+					</p>
+				</div>
+
+				<div class="orderBottom" style="height: 7rem;    font-size: .8rem;">
+					<p class="star xiaoguo">治疗效果 <span></span><span></span><span></span><span></span><span></span></p>
+					<p class="star huanjin">就医环境 <span></span><span></span><span></span><span></span><span></span></p>
+					<p class="star fuwu">服务态度 <span></span><span></span><span></span><span></span><span></span></p>
+					<!--<p>就医环境：<span class="famousName orderNum">20171226506</span></p>
+					<p>服务态度：<span class="famousName orderNum">20171226506</span></p>-->
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="make" onclick=" To.commont();">发布</div>
+</div>
+</body>
+<!--mescroll本身不依赖jq,这里为了模拟发送ajax请求,获取模拟数据-->
+<!--<script type="text/javascript" src="js/viewport.js" ></script>-->
+<script type="text/javascript" src="js/util.js"></script>
+<script src="js/order_commont.js"></script>
+<!--	<script src="../res/pdlist1.js" type="text/javascript" charset="utf-8"></script>-->
+
+<script type="text/javascript" charset="utf-8">
+	$(document).ready(function () {
+		init();
+    })
+</script>
+
+</html>

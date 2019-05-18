@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,minimum-scale=1,maximum-scale=1,user-scalable=no,minimal-ui">
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/util.css">
+    <script type="text/javascript" src="plug/jquery-1.11.3.js"></script>
+    <script src="js/common.js"></script>
+    <title>拼团购买</title>
+</head>
+<style>
+    .neiAbsolut{
+        width: 95%;
+        margin-left: 2.5%;
+        background-color: white;
+        border-radius: 4px;
+        padding: 0 2%;
+        font-size: .85rem;
+        margin-top: .7rem;
+        padding-bottom: .6rem;
+        box-shadow: 0 1px 1px 0.5px rgba(0, 0, 0, 0.35)
+    }
+    .neiAbsolut p{
+        line-height: 1.4rem;
+    }
+    .browcouponImg{
+        width: 95%;
+        margin-left: 2.5%;
+        margin-top: .5rem;
+    }
+    .browPay{
+        width: 38%;
+        margin-left: 31%;
+        margin-top: 1rem;
+    }
+</style>
+<body style="background-color: #e5fffc">
+<div class="content xywz" style="    background: none;">
+    <div class="pub_hearder flex_vertical justify_content_equal">
+        <img class="up_page pub_hearder_left" src="img/header/header_left.png" onclick="window.history.go(-1)" />
+        <div class="head_center head_centerZi">
+            <span class="set_head_dot" style="width: .15rem;height: .15rem;border-radius: 50%;"></span>
+            <span class="set_head_dot" style="width: .25rem;height: .27rem;border-radius: 50%;"></span>
+            <span class="set_head_dot"></span>
+            <span class="head_title">拼团购买</span>
+            <span class="set_head_dot"></span>
+            <span class="set_head_dot" style="width: .25rem;height: .27rem;;border-radius: 50%;"></span>
+            <span class="set_head_dot" style="width: .15rem;height: .15rem;border-radius: 50%;"></span>
+        </div>
+    </div>
+   <!-- <img style="width: 90%;margin: .8rem 0 0 5%;" src="img/browActive/browRuleTopImg.png">-->
+    <img class="browcouponImg"  src="img/browActive/browcoupon.png">
+    <img class="browPay" onclick="window.location.href = 'special_cp.html?itemId=284'"  src="img/browActive/browPay.png">
+    <div class="neiAbsolut">
+        <p  style="font-size: 1rem;text-align: center;padding: .4rem 0 .15rem 0;" >团员规则：</p>
+        <p>1、e诺健康用户在接受拼团任务之后正式成为团员，当队伍人数满5名时任务即为成功，可享受任务活动特惠价285元以及由e诺健康随机发放的专属奖品一份，奖品可在“个人中心”中的“我的纹绣活动”中查看。</p>
+        <p>2、如若队伍人数未满，用户可随意更换队伍直到任务成功。</p>
+    </div>
+
+</div>
+</body>
+<script>
+    if(getQueryString('status') == 'success'){
+        $('.browPay').attr('onclick', "window.location.href = 'browDetail.html?id=" + Number(getQueryString('id')) + "&type=me'").attr('src', "img/browActive/browPayMyRank.png");
+    }
+</script>
+</html>

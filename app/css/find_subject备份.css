@@ -1,0 +1,138 @@
+/*医院列表*/
+.hos_child{
+	height: 2.9rem;
+	padding-top: .2rem;
+}
+.hos_child .hos_list_top{
+	height: 1.4rem;
+	/*border: 1px solid red;*/
+	font-size: .2rem;
+	line-height: .35rem;
+}
+.hos_list_top div{
+	float: left;
+}
+.hos_list_top .left{
+	width: 28%;
+	margin: -.2rem .2rem 0 -.2rem;
+}
+.hos_list_top .right{
+	padding-left:.2rem;
+	width: 70%;
+}
+ul li{
+	list-style: none;
+}
+.detail .name{
+	font-size: .3rem;
+  	letter-spacing: 1px;
+	color: black;
+	font-weight: 600;
+}
+#input-test::-webkit-input-placeholder{
+	color: #ADD8E6;
+}
+.search_publish {
+	/* height: 1rem; */
+	background: linear-gradient(to right,#00afa1, #00c59e);
+	border: 0;
+	position: relative;
+	top: -4px;
+	left: -.35rem;
+	/*display: none;*/
+}
+.search_publish div {
+	width: 5.2rem;
+}
+.search_publish img {
+	width: .35rem;
+	position: absolute;
+	top: .18rem;
+	right: .2rem;
+}
+.toggleSou{
+	background-color: transparent;
+	border: 1.4px solid white;
+	width: 100%;
+	height: .6rem;
+	border-radius: .3rem;
+	font-size: .24rem;
+	letter-spacing: 0.5px;
+	color: black;
+	text-indent: .2rem;
+	outline: none;
+}
+.docLevel{
+	color: #00aea0;
+	font-size: .2rem;
+	margin-left: 3%;
+}
+.right p{
+	margin-bottom: .1rem;
+}
+.peopelCount{
+	color: #feb62a;
+}
+.flex_all_center{
+	position: relative;
+}
+.subjectLong,subsubjectLong{
+/*	width: 2.5rem;
+	height: auto;
+	position: absolute;
+	top: 1.9rem;
+	left: 2.5rem;
+	background-color: white;
+	z-index: 9;
+	padding: .4em 0;
+	border: 1px solid #cccccc;
+	border-top: none;
+	display: none;*/
+}
+.subP{
+	height: 2em;
+	line-height: 2em;
+	text-align: center;
+}
+.goodPlace{
+	border-top: 1px dashed #cccccc;
+	padding: .8em 0 0 0;
+	margin:.8em 0 0 0;
+	overflow: hidden;
+	text-overflow:ellipsis;
+	white-space: nowrap;
+}
+.hos_child .hos_list_btm{
+	border-top: 1px dashed #DCDCDC;
+	padding: .2rem 0;
+	margin-top: .2rem;
+}
+.hos_child .hos_list_btm p{
+	float: left;
+	border-right: 1px dashed #DCDCDC;
+	height: .6rem;
+	padding: 0 .2rem;
+	width: 33%;
+}
+.hos_child .hos_list_btm p:last-child{
+	border: 0;
+}
+.hos_list_btm p img{
+	margin-right: .2rem;
+}
+.hos_list_btm p span{
+	font-size: .2rem;
+	color: #00AFA1;
+	margin-left: .1rem;
+}
+
+
+
+
+
+
+
+
+
+
+

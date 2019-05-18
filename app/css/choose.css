@@ -1,0 +1,276 @@
+/*@media all and (min-width: 220px) {
+	html {
+		font-size: 10px;
+	}
+}
+@media all and (min-width: 320px) {
+	html {
+		font-size: 10px;
+	}
+}
+
+@media all and (min-width: 360px) {
+	html {
+		font-size: 13px;
+	}
+}
+
+@media all and (min-width: 480px) {
+	html {
+		font-size: 16px;
+	}
+}
+@media all and (min-width: 560px) {
+	html {
+		font-size: 16px;
+	}
+}
+
+@media all and (min-width: 640px) {
+	html {
+		font-size: 20px;
+	}
+}*/
+
+/*@media all and (min-width: 720px) {
+	html {
+		font-size: 22px;
+	}
+}*/
+
+.xywz_search{
+	height: 2.9rem;
+	border: 1px solid transparent;
+}
+.xywz_search .log{
+	width: 2.11rem;
+	margin: 0 auto;
+	margin-top: .25rem;
+}
+.xywz_search .title{
+	font-size: .24rem;
+    font-weight: 500;
+    letter-spacing: 1px;
+    color: #333333;
+    text-align: center;
+    height: .8rem;line-height: .8rem;
+}
+
+.xywz .search_publish{
+	/*background: white;*/
+}
+.xywz .search_publish div{
+	width: 5.2rem;
+}
+.hospitail_detail p {
+	/* height: .84rem; */
+	position: relative;
+	font-weight: 500;
+}
+.hospitail_detail .hos_data .left {
+	height: 1.5rem;
+	position: absolute;
+	top: .35rem;
+	left: .5rem;
+}
+.hos_data img {
+	margin-top: .3rem;
+}
+.hospitail_detail .hos_data span {
+	display: inline-block;
+	width: 60%;
+	height: 2.8rem;
+	line-height: 2.9rem;
+	margin-left: 5.75rem;
+	font-size: .85rem;
+}
+.next {
+	height: .8rem;
+	position: absolute;
+	top: .6rem;
+	right: 4.5%;
+}
+/*找医生*/
+.xywz_top {
+	/*width: 7.5rem;*/
+	border: 1px solid transparent;
+	padding: 0;
+	/*margin: 0 auto;
+	margin-top: .7em;*/
+	float: left;
+	width: 94.5%;
+}
+.xywz_top .find .find_doc,.xywz_top .find .find_hos {
+	height: 7.4rem;
+/*	background-image: url(../img/xywz/find_doc.png);
+	background-position: center;
+	background-size: 100% 100%;
+	background-repeat: no-repeat;*/
+	position: relative;
+	width: 100%;
+}
+.find_docDiv{
+	height: 3.7rem;
+	width: 97%;
+	margin-left: 2%;
+}
+.xywz_top .find .find_doc img,.xywz_top .find .find_hos img{
+/*	width: 38%;*/
+	margin: 1rem 0 0 5%;
+	max-height: 1.8rem;
+	width: initial;
+}
+.xywz_top .find .find_hos {
+	/*background-image: url(../img/xywz/find_hos.png);*/
+}
+.find div .black {
+	height: 1.2rem;
+	line-height: 1.25rem;
+	font-size: 1rem;
+	font-weight: 500;
+}
+.find .find_doc .btm,.find .find_hos .btm {
+	/*width: 84%;*/
+	height: 3rem;
+	font-size: .7rem;
+	/* border: 1px solid red; */
+	margin: 0 0 0 0;
+	line-height: 1.5rem;
+	position: absolute;
+	/*bottom:7%;
+	left: 51%;*/
+}
+/*名医专家*/
+.doc_specialist{
+	height: .79rem;
+}
+.doc_specialist .more{
+	font-size: .2rem;
+    font-weight: 500;
+    width: 4.7rem;height: .79rem;
+    margin-left: 2rem;
+    /*border: 1px solid red;*/
+}
+.doc_specialist .more img{
+	height: .3rem;
+	position: absolute;
+	top: .24rem;right: .2rem;
+}
+
+/*科室*/
+.ks{
+	border: 1px solid transparent;
+	/*height: 21.6rem;*/
+}
+.ks_list{
+	/*height: 6.7rem;*/
+	/*border: 1px solid red;*/
+	margin-top: .8rem;
+	/*border-top: 1px dashed #DCDCDC;*/
+	padding-bottom: .5rem;
+}
+.ks_list .ks_child{
+	float: left;
+	width: 25%;
+	/*height: 5.5rem;*/
+	padding-bottom: 2%;
+	/*border-bottom: 1px dashed #DCDCDC;
+	border-right: 1px dashed #DCDCDC;*/
+}
+.ks_list .ks_child p{
+	width: 1.8rem;height: 1.82rem;
+	margin: 0 auto;
+	margin-top: .65rem;
+	margin-bottom: -.3rem;
+}
+.ks_list .ks_child .img1{text-align: center;}
+.ks_list .ks_child .img1 img{
+	max-height: 2rem;
+	width: initial;
+}
+.ks_list .ks_child span{
+	display: inline-block;
+	width: 100%;height: 1.2rem;
+	text-align: center;
+	font-size: .83rem;
+}
+.addressZi{
+	color: white;
+	font-size: .9rem;
+	line-height: .7rem;
+	display: inline-block;
+	height: 1rem;
+}
+/*.topBackradius{
+	width: 100%;
+	height: 4rem;
+	background: linear-gradient(to right,#00afa1, #00c59e);
+	border-bottom-left-radius: 45%;
+	border-bottom-right-radius:45%;
+}*/
+/*增加医生*/
+.data-list li {
+	position: relative;
+	/* padding: 10px 8px 10px 120px; */
+	border-bottom: 1px solid #eee;
+	width: 99.5%;
+}
+.hos_child {
+	height: 7rem;
+	padding-top: .2rem;
+	margin-top: .6rem;
+}
+.hos_child .hos_list_top {
+	height: 7rem;
+	/* border: 1px solid red; */
+	font-size: .2rem;
+	line-height: .35rem;
+}
+.hos_list_top .left {
+	width: 22%;
+	margin: 0.8rem 2% 0 2%;
+	text-align: center;
+}
+.hos_list_top div {
+	float: left;
+}
+.hos_list_top .left img {
+	/* width: 100%; */
+	max-height: 4.8rem;
+	overflow: hidden;
+}
+.hos_list_top .right {
+	padding-left: .2rem;
+	margin-top: .8rem;
+	width: 72%;
+	margin-left: 1%;
+}
+.right p {
+	margin-bottom: .3rem;
+	height: 1.4em;
+	line-height: 1.4em;
+	font-size: .8rem;
+}
+.detail .name {
+	font-size: .9rem;
+	letter-spacing: 1px;
+	color: black;
+	font-weight: 600;
+}
+.docLevel {
+	color: #000000;
+	font-size: .75rem;
+	margin-left: 3%;
+}
+
+
+
+
+
+
+
+
+
+
+
+

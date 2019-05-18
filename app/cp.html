@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no,minimal-ui">
+<!--<link rel="stylesheet" href="plug/swiper/css/swiper.css"/>-->
+<link rel="stylesheet" href="css/base.css" />
+<link rel="stylesheet" href="css/util.css" />
+<link rel="stylesheet" href="css/cp.css" />
+	<link rel="stylesheet" href="css/lib/fsgallery.css" />
+	<script type="text/javascript" src="plug/jquery-1.11.3.js" ></script>
+	<script type="text/javascript" src="js/lib/fs_forse.js" ></script>
+	<script type="text/javascript" src="js/viewport.js" ></script>
+	<script src="js/common.js"></script>
+	<script type="text/javascript" src="js/cp.js" ></script>
+	<script src="js/lib/jweixin-1.1.0.js"> </script>
+	<script src="js/getShare.js"> </script>
+<!--<title>产品详情</title>--><title>产品详情</title>
+</head>
+<style>
+	.left_tittle span{
+		color: #00afa1;margin-left: 0;   font-size: .3rem;
+	}
+	.avtivitySpan {
+		width: 62%;
+		/* text-align: center; */
+		margin-left: 18.5%;
+	}
+	.avtivityactive {
+		border-bottom: 3px solid #00afa1;
+	}
+	.huiImg{
+		position: absolute;
+		right: 0%;
+		top: 6%;
+		width: .6rem;
+	}
+</style>
+<body style="background-color: #f1f1f1;">
+<div class="content xywz">
+	
+<!--头部-->	
+<div class="headerimg flex_vertical justify_content_equal">
+	<img class="up_page pub_hearder_left" style="    width: 1rem;
+    height: 1rem;
+   position: absolute;margin-top: 0;top: .15rem;
+    left: 1%;" src="img/header/header_leftHui.png" onclick="window.history.go(-1)"/>
+	<img class="headerimgTop"  src=""/>
+<!--	<div class="head_center" style="    width: 69%;">
+		<div class="search_publish" style="left: .34rem;   height: 1rem;">
+			<div style="position: relative;    margin-top: .9em;    width: 4.5rem;">
+				<input style="background-color: transparent;border: 1.4px solid white;height: .55rem;" type="text" placeholder="搜索医生、医院、科室"/><img style="    top: .55rem;" src="img/search.png" />
+			</div>
+		</div>
+	</div>-->
+	<img class="search pub_hearder_right" onclick="Get.favourite()" style="	width: .7rem;height: .7rem;position: absolute;margin-top: 0;top: .22rem;
+    right: 1%;" src="img/favouriteNo.png"/>
+<!--	<div class="animateImg">
+		<p class="animateP favourite"><img src="img/user_center/favourite.png"><span>收藏</span></p>
+		<p class="animateP share" style=" margin-top: 0;    padding-top: .22rem;"><img style="width: .3rem;;margin-right: .18rem" src="img/share.png"><span>分享</span></p>
+	</div>-->
+</div>
+	<div class="hos_doc_team set_box_shadow" style="margin-top: .3rem;">
+		<div class="cptitle ill_office_pg cpStatus"><span class="cptitleName"></span><p class="priceyuyue"><!--<span class="price">￥618 起</span>
+			<del class="oldprice">￥10265起</del>-->
+			<!--<span class="yuyueZi">已预约 <span class="peopelcount">236人</span></span>--></p></div>
+		<div class="hosTitle"><span style="font-size: .25rem;color: #555;">此项目由</span> <span  onclick="Go.hos()" class="hosTitleSpan" style="color: #00afa1"></span> <span style="font-size: .25rem;color: #555;"></span></div>
+		<div class="hosTitle">【约定价格】：<span class="hosPriceSpan" style="color: #f81f7b"></span></div>
+		<div class="hosTitle">【约定周期】：<span class="hosTimeSpan"></span></div>
+		<div class="hosTitle">【约定疗效】：</div>
+		<div class="hosTitle yuexiao" style="height: inherit;"><p></p>
+			<p></p>
+			<p></p></div>
+
+		<!--<div class="mainRead">
+			<input class="sex zhuren" type="radio" name="sex" value="man" checked="">
+			<span class="sexname">主任主诊</span>
+			<input class="sex yuanzhang" type="radio" name="sex" value="woman">
+			<span class="sexname">院长主诊</span>
+		</div>-->
+	</div>
+	<!--<div class="hospitail_detail set_box_shadow doctor_detail" style="overflow:hidden;    margin-top: .3rem;">
+		&lt;!&ndash;延伸&ndash;&gt;
+		<p class="hos_data" style="border-top: 0" onclick="">
+			<span class="">数量</span>
+			<img class="next" src="img/next.png">
+		</p>
+	</div>-->
+	<div class="hos_doc_team set_box_shadow" id="gallery" style="margin-top: .3rem;">
+		<div class="left_tittle ill_office_pg" style="width: 40%;height: 1rem;    position: relative;
+    left: .2rem;    display: inline;">
+			<span style="width: 45%;" class="tabjia tabjiaRight">案例<!--<span style="color: #00afa1;font-size: .3rem;margin-left: 0" class="anliCount">(0)</span>--><p class="avtivitySpan avtivityactive"></p></span>
+			<span style="width: 45%;" class="tabjia tabjiaLeft">用户评论<span style="color: #00afa1;font-size: .3rem;margin-left: 0" class="commontCount">(0)</span><p class="avtivitySpan"></p></span>
+
+		</div>
+		<!--医生列表-->
+		<div class="tejiaRight">
+			<div class="hos_doc_list hos_case_list">
+				<!--<div class="hos_doc_child clearfix">
+                    <div class="doc_child_left">
+                        <img src="img/hos_index/doc.png">
+                    </div>
+                    &lt;!&ndash;右边&ndash;&gt;
+                    <div class="doc_child_right" style="margin: -0.5% 0 0 0%;">
+                        <div class="id">
+                            <p class="name"><span class="pinlunName">贝贝</span>&nbsp;<span class="commontTime">2017-04-12</span></p>
+                            <p class="commontZi">感谢李医生，感谢李医生感谢李医生感谢李医生感谢李医生感谢李医生感谢李医生感谢李医生感谢李医生</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="hos_doc_child clearfix">
+                    <div class="doc_child_left">
+                        <img src="img/hos_index/doc.png">
+                    </div>
+                    &lt;!&ndash;右边&ndash;&gt;
+                    <div class="doc_child_right" style="margin: -0.5% 0 0 0%;">
+                        <div class="id">
+                            <p class="name">贝贝&nbsp;<span class="commontTime">2017-04-12</span></p>
+                            <p style="clear: both"><img class="commontImg" src="img/before.png"><img  class="commontImg" src="img/after.png"><img  class="commontImg" src="img/after.png"></p>
+                            <p style="clear: both;"></p>
+                            <p class="commontZi">感谢李医生，感谢李医生感谢李医生感谢李医生感谢李医生感谢李医生感谢李医生感谢李医生感谢李医生</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="hos_doc_child clearfix">
+                    <div class="doc_child_left">
+                        <img src="img/hos_index/doc.png">
+                    </div>
+                    &lt;!&ndash;右边&ndash;&gt;
+                    <div class="doc_child_right" style="margin: -0.5% 0 0 0%;">
+                        <div class="id">
+                            <p class="name">贝贝&nbsp;<span class="commontTime">2017-04-12</span></p>
+                            <p class="commontZi">感谢李医生，感谢李医生感谢李医生感谢李医生感谢李医生感谢李医生感谢李医生感谢李医生感谢李医生</p>
+                        </div>
+                    </div>
+                </div>-->
+				<!--<div class="hos_doc_child clearfix">
+                    <div class="doc_child_left"><img
+                            src="http://47.95.254.125/upload/image/201712/21/hJiK53iGrvPoaZuhCHu.png"></div>
+                    <div class="doc_child_right" style="margin: -0.5% 0 0 0%;">
+                        <div class="id"><p class="name">方锐<span class="commontTime">2017-12-21</span></p>
+                            <p></p>
+                            <p style="clear: both;"></p>
+                            <p class="commontZi">评价文字</p></div>
+                    </div>
+                </div>
+                <div class="hos_doc_child clearfix">
+                    <div class="doc_child_left"><img
+                            src="http://47.95.254.125/upload/image/201712/21/hJiK53iGrvPoaZuhCHu.png"></div>
+                    <div class="doc_child_right" style="margin: -0.5% 0 0 0%;">
+                        <div class="id"><p class="name">方锐<span class="commontTime">2017-12-21</span></p>
+                            <p><img class="commontImg" src="h"><img class="commontImg" src="t"><img class="commontImg"
+                                                                                                    src="t"><img
+                                    class="commontImg" src="p"></p>
+                            <p style="clear: both;"></p>
+                            <p class="commontZi">评价文字</p></div>
+                    </div>
+                </div>-->
+			</div>
+			<!--查看更多-->
+			<div class="all_doc all_doc_case" onclick="window.location.href = '/read_case.html?cpId='+ getQueryString('cpId')+'&type=product'">
+				查看全部案例&nbsp;<img style="    height: .3rem;
+    vertical-align: top;
+    margin-top: .32rem;    width: initial;" src="img/hos_index/next_right_green.png">
+			</div>
+		</div>
+		<!--医生列表-->
+		<div class="tejiaLeft" style="display: none">
+			<div class="hos_doc_list hos_commont_list">
+				<!--<div class="hos_doc_child clearfix">
+                    <div class="doc_child_left">
+                        <img src="img/hos_index/doc.png">
+                    </div>
+                    &lt;!&ndash;右边&ndash;&gt;
+                    <div class="doc_child_right" style="margin: -0.5% 0 0 0%;">
+                        <div class="id">
+                            <p class="name"><span class="pinlunName">贝贝</span>&nbsp;<span class="commontTime">2017-04-12</span></p>
+                            <p class="commontZi">感谢李医生，感谢李医生感谢李医生感谢李医生感谢李医生感谢李医生感谢李医生感谢李医生感谢李医生</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="hos_doc_child clearfix">
+                    <div class="doc_child_left">
+                        <img src="img/hos_index/doc.png">
+                    </div>
+                    &lt;!&ndash;右边&ndash;&gt;
+                    <div class="doc_child_right" style="margin: -0.5% 0 0 0%;">
+                        <div class="id">
+                            <p class="name">贝贝&nbsp;<span class="commontTime">2017-04-12</span></p>
+                            <p style="clear: both"><img class="commontImg" src="img/before.png"><img  class="commontImg" src="img/after.png"><img  class="commontImg" src="img/after.png"></p>
+                            <p style="clear: both;"></p>
+                            <p class="commontZi">感谢李医生，感谢李医生感谢李医生感谢李医生感谢李医生感谢李医生感谢李医生感谢李医生感谢李医生</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="hos_doc_child clearfix">
+                    <div class="doc_child_left">
+                        <img src="img/hos_index/doc.png">
+                    </div>
+                    &lt;!&ndash;右边&ndash;&gt;
+                    <div class="doc_child_right" style="margin: -0.5% 0 0 0%;">
+                        <div class="id">
+                            <p class="name">贝贝&nbsp;<span class="commontTime">2017-04-12</span></p>
+                            <p class="commontZi">感谢李医生，感谢李医生感谢李医生感谢李医生感谢李医生感谢李医生感谢李医生感谢李医生感谢李医生</p>
+                        </div>
+                    </div>
+                </div>-->
+				<!--<div class="hos_doc_child clearfix">
+                    <div class="doc_child_left"><img
+                            src="http://47.95.254.125/upload/image/201712/21/hJiK53iGrvPoaZuhCHu.png"></div>
+                    <div class="doc_child_right" style="margin: -0.5% 0 0 0%;">
+                        <div class="id"><p class="name">方锐<span class="commontTime">2017-12-21</span></p>
+                            <p></p>
+                            <p style="clear: both;"></p>
+                            <p class="commontZi">评价文字</p></div>
+                    </div>
+                </div>
+                <div class="hos_doc_child clearfix">
+                    <div class="doc_child_left"><img
+                            src="http://47.95.254.125/upload/image/201712/21/hJiK53iGrvPoaZuhCHu.png"></div>
+                    <div class="doc_child_right" style="margin: -0.5% 0 0 0%;">
+                        <div class="id"><p class="name">方锐<span class="commontTime">2017-12-21</span></p>
+                            <p><img class="commontImg" src="h"><img class="commontImg" src="t"><img class="commontImg"
+                                                                                                    src="t"><img
+                                    class="commontImg" src="p"></p>
+                            <p style="clear: both;"></p>
+                            <p class="commontZi">评价文字</p></div>
+                    </div>
+                </div>-->
+			</div>
+			<!--查看更多-->
+			<div class="all_doc all_doc_commont" onclick="window.location.href = '/read_commont.html?cpId='+ getQueryString('cpId')+'&type=product'">
+				查看全部评论&nbsp;<img style="    height: .3rem;
+    vertical-align: top;
+    margin-top: .32rem;    width: initial;" src="img/hos_index/next_right_green.png">
+			</div>
+		</div>
+
+
+	</div>
+
+
+
+<!--<div class="xywz_search set_box_shadow">
+	<div class="log">
+		<img src="img/xywz/e.png" />
+	</div>
+	<div class="title">医疗的事，我们帮您约定</div>
+	&lt;!&ndash;搜索框&ndash;&gt;
+
+</div>-->
+<!--	<div class="xywz_top">
+		<div class="find clearfix">
+			<div class="find_doc set_img_bg" onclick="window.location.href = SERVER_ADDR + '/find_doc.html'">
+				<div class="btm">
+					<p class="black">找医生</p>
+					<p>快速查询名医专家的坐诊信息</p>
+				</div>
+			</div>
+			<div class="find_hos set_img_bg" onclick="window.location.href = SERVER_ADDR + '/find_hos.html'">
+				<div class="btm">
+					<p class="black">找医院</p>
+					<p>快速查询名医专家的坐诊信息</p>
+				</div>
+			</div>
+		</div>
+	</div>-->
+
+<!--名医专家-->
+<!--<div class="doc_specialist set_box_shadow">
+	<div class="left_tittle ill_office_pg" style="width: 2rem;">
+		<span class="green_long"></span><span>名医专家</span>
+	</div>
+	<div class="more flex_vertical">
+		<span>更准确 更放心</span><img src="img/right.png" />
+	</div>
+</div>-->
+<!--<div class="ks set_box_shadow" style="    margin-top: .3rem;">
+	&lt;!&ndash;<div class="left_tittle ill_office_pg">
+		<span class="green_long"></span><span>科室</span>
+	</div>&ndash;&gt;
+	&lt;!&ndash;科室列表&ndash;&gt;
+	<div class="ks_list clearfix" style="display: block">
+		&lt;!&ndash;<div class="ks_child">
+			<p class="img1 set_img_bg"></p><br /><span>妇科</span>
+		</div>
+		<div class="ks_child">
+			<p class="img2 set_img_bg"></p><br /><span>儿科</span>
+		</div>
+		<div class="ks_child">
+			<p class="img3 set_img_bg"></p><br /><span>皮肤性病科</span>
+		</div>
+		<div class="ks_child" style="border-right:0;">
+			<p class="img4 set_img_bg"></p><br /><span>内科</span>
+		</div>
+		<div class="ks_child">
+			<p class="img5 set_img_bg"></p><br /><span>男科</span>
+		</div>&ndash;&gt;
+
+	</div>
+	<div style="clear: both"></div>
+</div>-->
+	<div class="hos_doc_team set_box_shadow" style="margin-bottom: 1.3rem;    margin-top: .4rem;">
+		<!--<div class="left_tittle ill_office_pg" style="width: 40%;height: 1rem;    position: relative;    top: .1rem;
+    left: -4%;
+    text-align: center;">
+			<span style="color: #00afa1;">一一</span><span style="font-weight: 500;color: #00afa1;">爱美的e诺人都在买</span><span style="color: #00afa1;">一一</span>
+		</div>-->
+		<div class="left_tittle ill_office_pg" style="width: 40%;height: 1rem;    position: relative;
+    left: .2rem;">
+			<span class="green_long" style="        width: .07rem;
+    height: .25rem;
+    border-radius: .3rem;    margin-left: -6%;"></span><span style="color: #00afa1;    margin-left: .2rem;    font-size: .3rem;">您可能感兴趣</span>
+		</div>
+		<!--医生列表-->
+		<div class="hos_doc_list hos_item_list">
+			<!--<div class="hos_doc_child clearfix">
+				<div class="doc_child_left">
+					<img src="img/hos_index/doc.png">
+				</div>
+				&lt;!&ndash;右边&ndash;&gt;
+				<div class="doc_child_right" style="margin: 0 0 0 0;">
+					<div class="id">
+						<p class="name" style="height: inherit;"><span class="goodsName" style="    display: inline;">【水漾活跃名字】水漾活跃名字水漾活跃漾活跃名字水漾字</span>
+						</p>
+						<p class="address">杭州东方整形们整部</p>
+						<p>&lt;!&ndash;<span class="price">￥618 起</span><del class="oldprice">￥10265起</del>&ndash;&gt;<span
+								class="yuyue">已预约<span class="peopelcount">236</span>人</span></p>
+					</div>
+				</div>
+			</div>
+			<div class="hos_doc_child clearfix">
+				<div class="doc_child_left">
+					<img src="img/hos_index/doc.png">
+				</div>
+				&lt;!&ndash;右边&ndash;&gt;
+				<div class="doc_child_right" style="margin: 0 0 0 0;">
+					<div class="id">
+						<p class="name" style="height: inherit;"><span class="goodsName" style="    display: inline;">【水漾活跃名字】水漾活跃名字水漾活跃漾活跃名字水漾字</span>
+						</p>
+						<p class="address">杭州东方整形们整部</p>
+						<p>&lt;!&ndash;<span class="price">￥618 起</span><del class="oldprice">￥10265起</del&ndash;&gt;<span
+								class="yuyue">已预约<span class="peopelcount">236</span>人</span></p>
+					</div>
+				</div>
+			</div>
+			<div class="hos_doc_child clearfix">
+				<div class="doc_child_left">
+					<img src="img/hos_index/doc.png">
+				</div>
+				&lt;!&ndash;右边&ndash;&gt;
+				<div class="doc_child_right" style="margin: 0 0 0 0;">
+					<div class="id">
+						<p class="name" style="height: inherit;"><span class="goodsName" style="    display: inline;">【水漾活跃名字】水漾活跃名字水漾活跃漾活跃名字水漾字</span>
+						</p>
+						<p class="address">杭州东方整形们整部</p>
+						<p>&lt;!&ndash;<span class="price">￥618 起</span><del class="oldprice">￥10265起</del>&ndash;&gt;<span
+								class="yuyue">已预约<span class="peopelcount">236</span>人</span></p>
+					</div>
+				</div>
+			</div>-->
+		</div>
+		<!--查看更多-->
+		<!--<div class="all_doc">
+			查看更多&nbsp;<img style="    height: .3rem;
+    vertical-align: top;
+    margin-top: .32rem;" src="img/hos_index/next_right_green.png">
+		</div>-->
+	</div>
+	<div class="doc_homepage_btm fixed clearfix">
+		<p class="tel_consult" onclick="Go.topanimate()"><img src="img/call.png"><span>电话咨询</span></p>
+		<p class="line_consult" onclick="Go.chat()"><img src="img/news.png"><span>在线咨询</span></p>
+		<div class="make" style="width: 44%" onclick="Go.pay()">立即付款</div>
+	</div>
+	<!--下滑弹出-->
+	<div class="shareCall call-active">
+		<div class="mainCall">
+			<a href="tel:4000696120"><img src="img/call-out.png"><span style="vertical-align: top;">4000696120</span></a>
+		</div>
+		<div class="split"></div>
+		<div class="cancel" onclick="Go.closetopanimate()">取消</div>
+	</div>
+</div>
+<!--<script src="js/ym_index.js"></script>-->
+<!--<script type="text/javascript" src="js/util.js"></script>
+<script type="text/javascript" src="js/method.js"></script>
+<script type="text/javascript" src="js/find_hos.js" ></script>-->
+
+
+</body>
+<script>
+    $(document).ready(function () {
+        init();
+        getSign();
+    })
+</script>
+</html>

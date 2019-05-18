@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no,minimal-ui,viewport-fit:contain">
+<!--<link rel="stylesheet" href="plug/swiper/css/swiper.css"/>-->
+<link rel="stylesheet" href="css/base.css" />
+<link rel="stylesheet" href="css/util.css" />
+<link rel="stylesheet" href="css/choose.css" />
+	<link rel="stylesheet" href="css/iponex.css" />
+	<link href="css/lib/swiper-3.3.1.min.css" rel="stylesheet">
+	<script type="text/javascript" src="plug/jquery-1.11.3.js" ></script>
+	<!--<script type="text/javascript" src="js/viewport.js" ></script>-->
+	<script src="js/common.js"></script>
+	<script src="js/choose.js"></script>
+	<script src="js/lib/swiper.min.js"></script>
+	<script src="js/lib/jweixin-1.1.0.js"> </script>
+	<script src="js/getLocation.js"></script>
+	<script type="text/javascript" src="https://api.map.baidu.com/api?v=2.0&ak=AEKrrtZejAfxZmAsbDxDbjrHDFxkcNo7"></script>
+<!--<title>治疗约定</title>--><title>治疗约定</title>
+</head>
+<style>
+/*	@media only screen and (device-width: 375px) and (device-height: 812px) and (-webkit-device-pixel-ratio: 3) {
+		!*导航操作栏上移*!
+		#nav {
+			bottom: 34px;
+		}
+	}*/
+@media all and (min-width: 220px) {
+	.ks_list .ks_child{
+		height: 4.6rem;
+	}
+	.ks_list .ks_child p {
+		width: 1.8rem;
+		height: 1.82rem;
+		margin: 0 auto;
+		margin-top: .65rem;
+		margin-bottom: -.3rem;
+	}
+}
+@media all and (min-width: 320px) {
+	.ks_list .ks_child{
+		height: 4.6rem;
+	}
+	.ks_list .ks_child p {
+		width: 1.8rem;
+		height: 1.82rem;
+		margin: 0 auto;
+		margin-top: .65rem;
+		margin-bottom: -.3rem;
+	}
+}
+
+@media all and (min-width: 360px) {
+	.ks_list .ks_child{
+		height: 5.4rem;
+	}
+	.ks_list .ks_child p {
+		width: 1.9rem;
+		height: 1.92rem;
+		margin: 0 auto;
+		margin-top: .9rem;
+		margin-bottom: -.2rem;
+	}
+}
+@media all and (min-width: 410px) {
+	.ks_list .ks_child{
+		height: 5.95rem;
+	}
+	.ks_list .ks_child p {
+		width: 2rem;
+		height: 2.02rem;
+		margin: 0 auto;
+		margin-top: 1.1rem;
+		margin-bottom: -.1rem;
+	}
+}
+@media all and (min-width: 480px) {
+	.ks_list .ks_child{
+		height: 6.9rem;
+	}
+	.ks_list .ks_child p {
+		width: 2rem;
+		height: 2.02rem;
+		margin: 0 auto;
+		margin-top: 1.3rem;
+		margin-bottom: -.1rem;
+	}
+}
+@media all and (min-width: 560px) {
+	.ks_list .ks_child{
+		height: 8rem;
+	}
+	.ks_list .ks_child p {
+		width: 2.3rem;
+		height: 2.32rem;
+		margin: 0 auto;
+		margin-top: 1.7rem;
+		margin-bottom: -.1rem;
+	}
+}
+
+@media all and (min-width: 640px) {
+	.ks_list .ks_child{
+		height: 9.2rem;
+	}
+	.ks_list .ks_child p {
+		width: 2.5rem;
+		height: 2.52rem;
+		margin: 0 auto;
+		margin-top: 2rem;
+		margin-bottom: .1rem;
+	}
+}
+
+@media all and (min-width: 720px) {
+	.ks_list .ks_child{
+		height: 10.4rem;
+	}
+	.ks_list .ks_child p {
+		width: 2.7rem;
+		height: 2.72rem;
+		margin: 0 auto;
+		margin-top: 2.5rem;
+		margin-bottom: .3rem;
+	}
+}
+</style>
+<script>
+
+</script>
+<body style="    overflow-y: scroll;    height: 100%;
+    background-color: #f1f1f1;">
+<div class="content xywz">
+
+<!--头部-->
+<div class="pub_hearder flex_vertical justify_content_equal">
+	<!--<img class="up_page pub_hearder_left" style="width: .9rem;height: initial;margin:-.3em .3rem 0 3%;" src="img/address.png" /><span class="addressZi">杭州</span>-->
+	<img class="up_page pub_hearder_left" src="img/header/header_left.png" onclick="window.location.href = 'xywz.html'"/>
+	<div class="head_center" style="width: 100%;">
+		<span class="set_head_dot" style="width: .15rem;height: .15rem;border-radius: 50%;"></span>
+		<span class="set_head_dot" style="width: .25rem;height: .27rem;border-radius: 50%;"></span>
+		<span class="set_head_dot"></span>
+		<span class="head_title">治疗约定</span>
+		<span class="set_head_dot"></span>
+		<span class="set_head_dot" style="width: .25rem;height: .27rem;;border-radius: 50%;"></span>
+		<span class="set_head_dot" style="width: .15rem;height: .15rem;border-radius: 50%;"></span>
+	</div>
+	<!--<img class="search pub_hearder_right" onclick="Wx.scanQRCode()" style="    position: absolute;
+    margin-top: -.1rem;
+    right: 3%;" src="img/search.png"/>-->
+</div>
+<!--<div class="topBackradius"></div>-->
+	<div style="width: 100%;    margin-top: .2rem;">
+	<div class="xywz_top">
+		<div class="find clearfix" style="    margin-top: -.3rem;">
+			<div  class="find_doc set_box_shadow" style=" margin-top: .8rem;height: 15rem;">
+				<div class="find_docDiv" onclick="window.location.href = 'find_doc.html'">
+					<img src="img/choose/finddocImg.png">
+					<div class="btm" style="top: .6rem;left: 22%;">
+						<p class="black">找医生</p>
+						<p>快速查询名医专家的坐诊信息</p>
+					</div>
+					<img class="next" src="img/next.png">
+				</div>
+				<div  class="find_docDiv" style="border-top: 1px solid #eeeeee" onclick="window.location.href = 'find_hos.html?hosId=1'">
+					<img src="img/choose/findhosImg.png">
+					<div class="btm" style="top: 4.4rem;left: 22%;">
+						<p class="black">找医院</p>
+						<p>快速搜索查询附近医院</p>
+					</div>
+					<img class="next" style="top: 4.3rem;" src="img/next.png">
+				</div>
+				<div  class="find_docDiv" style="border-top: 1px solid #eeeeee" onclick="window.location.href = 'find_project.html?type=cure'">
+					<img src="img/choose/findprojImg.png">
+					<div class="btm" style="top: 8.1rem;left: 22%;">
+						<p class="black">常见病种</p>
+						<p>快速查找常见病项目</p>
+					</div>
+					<img class="next" style="top: 8rem;" src="img/next.png">
+				</div>
+				<div  class="find_docDiv" style="border-top: 1px solid #eeeeee" onclick="window.location.href = 'find_subject_special.html?type=check&subjectName=检查类'">
+					<img src="img/jianchalei.png">
+					<div class="btm" style="top: 11.8rem;left: 22%;">
+						<p class="black">特价检查项目</p>
+						<p>快速查找特价检查项目</p>
+					</div>
+					<img class="next" style="top: 11.7rem;" src="img/next.png">
+				</div>
+
+			</div>
+		</div>
+
+		<div class="ks set_box_shadow" style="margin-top: .8rem;border-radius: 6px;width: 100%">
+	<div class="left_tittle ill_office_pg"  style="    width: 80%;
+    height: 1.5rem;
+    padding-left: .5rem;
+    position: relative;">
+		<span class="green_long" style="    width: .2rem;
+    height: .65rem;"></span><span style="    height: 2rem;
+    line-height: 2.7rem;
+    font-size: .9rem;
+    margin-left: .6rem;">选科室 找医生</span>
+	</div>
+	<!--科室列表-->
+	<div class="ks_list clearfix">
+		<!--<div class="ks_child">
+			<p class="img1 set_img_bg"></p><br /><span>妇科</span>
+		</div>
+		<div class="ks_child">
+			<p class="img2 set_img_bg"></p><br /><span>儿科</span>
+		</div>
+		<div class="ks_child">
+			<p class="img3 set_img_bg"></p><br /><span>皮肤性病科</span>
+		</div>
+		<div class="ks_child" style="border-right:0;">
+			<p class="img4 set_img_bg"></p><br /><span>内科</span>
+		</div>
+		<div class="ks_child">
+			<p class="img5 set_img_bg"></p><br /><span>男科</span>
+		</div>-->
+
+	</div>
+</div>
+		<ul id="dataList" class="data-list" style="margin-top: .8em;">
+			<!--<li class="hos_child set_box_shadow" docid="83" onclick="href(this)">
+				<div class="hos_list_top clearfix">
+					<div class="left"><img
+							src="http://www.enuo120.com:7070/upload/image/201801/25/W0pWc6B8XE6sVfa1Twp.png"></div>
+					<div class="right"><p class="detail"><span class="name">gfd</span> <span class="docLevel"><span
+							style="color: #00afa1;display: inline-block;margin-right: .6rem">医师</span>肛肠外科</span><span
+							style="float: right;color: #707070;display: inline-block"></span></p>
+						<p><span>杭州医博肛泰医院</span><span style="display: inline-block;margin-left: .8rem">专科</span></p>
+						<p class="goodPlace" style="height: 1.9em;border-top: 0;color: #707070">
+							<span>擅长：</span><span>肛周脓肿 </span></p></div>
+				</div>
+			</li>
+			<li class="hos_child set_box_shadow" docid="82" onclick="href(this)">
+				<div class="hos_list_top clearfix">
+					<div class="left"><img
+							src="http://www.enuo120.com:7070/upload/image/201801/19/CRawDrCtXTNBYPHTjYL.jpg"></div>
+					<div class="right"><p class="detail"><span class="name">李四</span> <span class="docLevel"><span
+							style="color: #00afa1;display: inline-block;margin-right: .6rem">医士</span>口腔科</span><span
+							style="float: right;color: #707070;display: inline-block"></span></p>
+						<p><span>杭州中洁口腔诊所有限公司</span><span style="display: inline-block;margin-left: .8rem">诊所</span>
+						</p>
+						<p class="goodPlace" style="height: 1.9em;border-top: 0;color: #707070">
+							<span>擅长：</span><span>牙髓炎 </span></p></div>
+				</div>
+			</li>
+			<li class="hos_child set_box_shadow" docid="81" onclick="href(this)">
+				<div class="hos_list_top clearfix">
+					<div class="left"><img
+							src="http://www.enuo120.com:7070/upload/image/201801/18/Pd4lWP5qEqQVA1IlKwq.jpg"></div>
+					<div class="right"><p class="detail"><span class="name">李四</span> <span class="docLevel"><span
+							style="color: #00afa1;display: inline-block;margin-right: .6rem">医师</span>口腔科</span><span
+							style="float: right;color: #707070;display: inline-block"></span></p>
+						<p><span>杭州中洁口腔诊所有限公司</span><span style="display: inline-block;margin-left: .8rem">诊所</span>
+						</p>
+						<p class="goodPlace" style="height: 1.9em;border-top: 0;color: #707070">
+							<span>擅长：</span><span>牙髓炎 </span></p></div>
+				</div>
+			</li>
+			<li class="hos_child set_box_shadow" docid="80" onclick="href(this)">
+				<div class="hos_list_top clearfix">
+					<div class="left"><img
+							src="http://www.enuo120.com:7070/upload/image/201801/19/uy2v2NNeCjyZfDAuRRS.jpg"></div>
+					<div class="right"><p class="detail"><span class="name">李四</span> <span class="docLevel"><span
+							style="color: #00afa1;display: inline-block;margin-right: .6rem">医师</span>口腔科</span><span
+							style="float: right;color: #707070;display: inline-block"></span></p>
+						<p><span>杭州中洁口腔诊所有限公司</span><span style="display: inline-block;margin-left: .8rem">诊所</span>
+						</p>
+						<p class="goodPlace" style="height: 1.9em;border-top: 0;color: #707070">
+							<span>擅长：</span><span>牙髓炎 </span></p></div>
+				</div>
+			</li>-->
+		</ul>
+	</div>
+	</div>
+	<div style="clear: both"></div>
+
+<!--<div class="xywz_search set_box_shadow">
+	<div class="log">
+		<img src="img/xywz/e.png" />
+	</div>
+	<div class="title">医疗的事，我们帮您约定</div>
+	&lt;!&ndash;搜索框&ndash;&gt;
+
+</div>-->
+<!--	<div class="xywz_top">
+		<div class="find clearfix">
+			<div style="margin-left: 0.5%" class="find_doc set_img_bg findToptwo" onclick="window.location.href = 'find_doc.html'">
+				<div class="btm">
+					<p class="black">找医生</p>
+					<p>快速查询名医专家的坐诊信息</p>
+				</div>
+			</div>
+			<div class="find_hos set_img_bg findToptwo" onclick="window.location.href = 'find_hos.html'">
+				<div class="btm">
+					<p class="black">找医院</p>
+					<p>快速搜索查询附近医院</p>
+				</div>
+			</div>
+		</div>
+	</div>-->
+
+<!--名医专家-->
+<!--<div class="doc_specialist set_box_shadow">
+	<div class="left_tittle ill_office_pg" style="width: 2rem;">
+		<span class="green_long"></span><span>名医专家</span>
+	</div>
+	<div class="more flex_vertical">
+		<span>更准确 更放心</span><img src="img/right.png" />
+	</div>
+</div>-->
+
+<!--科室-->
+<!--<div class="ks set_box_shadow" style="margin-top: .1rem;border-radius: 10px">
+	<div class="left_tittle ill_office_pg"  style="    width: 80%;
+    height: 1.5rem;
+    padding-left: .5rem;
+    position: relative;">
+		<span class="green_long" style="    width: .2rem;
+    height: .65rem;"></span><span style="    height: 2rem;
+    line-height: 2.7rem;
+    font-size: .9rem;
+    margin-left: .6rem;">科室</span>
+	</div>
+	&lt;!&ndash;科室列表&ndash;&gt;
+	<div class="ks_list clearfix">
+		&lt;!&ndash;<div class="ks_child">
+			<p class="img1 set_img_bg"></p><br /><span>妇科</span>
+		</div>
+		<div class="ks_child">
+			<p class="img2 set_img_bg"></p><br /><span>儿科</span>
+		</div>
+		<div class="ks_child">
+			<p class="img3 set_img_bg"></p><br /><span>皮肤性病科</span>
+		</div>
+		<div class="ks_child" style="border-right:0;">
+			<p class="img4 set_img_bg"></p><br /><span>内科</span>
+		</div>
+		<div class="ks_child">
+			<p class="img5 set_img_bg"></p><br /><span>男科</span>
+		</div>&ndash;&gt;
+
+	</div>
+</div>-->
+<!--<div class="footer">
+	<ul>
+		<li onclick="window.location.href = 'xywz.html'"><img src="img/banner/home.png"><p style="font-weight: 600; color: #00afa1;">首页</p></li>
+		<li onclick="window.location.href = 'ym_index.html'"><img src="img/banner/specialHui.png"><p>特价专区</p></li>
+		<li onclick="window.location.href = 'user_center.html'"><img style="height: .45rem;margin-bottom: .15rem;" src="img/banner/myHui.png"><p style="    margin-top: -.17rem;">我的</p></li>
+	</ul>
+</div>-->
+</div>
+<!--<script type="text/javascript" src="js/util.js"></script>
+<script type="text/javascript" src="js/method.js"></script>
+<script type="text/javascript" src="js/find_hos.js" ></script>-->
+
+
+</body>
+<script>
+    $(document).ready(function () {
+        follow.wecat();
+        init();
+        if(is_weixn()){
+            getSign();
+        }else{
+            baiduLocation();
+        }
+        $('.findToptwo').height($('.findToptwo').width());
+
+        var swiper = new Swiper('.swiper-container-lun', {
+            pagination: '.swiper-pagination',
+            loop: true,//轮播图循环
+            grabCursor: false,
+            paginationClickable: true,// 原点点击切换
+            autoplay: 3000, // 三秒钟自动轮播
+            speed:600,
+            autoplayDisableOnInteraction: false //手指滚过后继续轮播
+        });
+        var swiperPao = new Swiper('.swiper-container-pao', {
+           /* pagination: '.swiper-pagination',*/
+            slidesPerView: 2.5,
+            centeredSlides: false,
+            paginationClickable: true,
+            spaceBetween: 5,
+            autoplay : 2000,//自动划动
+			speed:1500,
+            loop : true,//循环
+            loopedSlides:3,
+            autoplayDisableOnInteraction : false
+        });
+       /* $('.swiper-slide').width(400)*/
+    })
+</script>
+</html>

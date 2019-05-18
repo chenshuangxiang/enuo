@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+
+	<!--在您实际的项目中,请留意mescroll-option.css的图片路径是否引用正确,可写成绝对路径或网络地址-->
+	<!--可把mescroll-option.css代码拷贝到mescroll.min.css中,合为一个css文件,方便引用-->
+	<!--<link rel="stylesheet" href="css/lib/mescroll.css">
+	<link rel="stylesheet" href="option/mescroll-option.css">-->
+	<link rel="stylesheet" href="css/base.css" />
+	<link rel="stylesheet" href="css/util.css" />
+	<link rel="stylesheet" href="css/familyAll.css" />
+	<link rel="stylesheet" href="css/lib/xiala.css" />
+	<script type="text/javascript" src="plug/jquery-1.11.3.js" ></script>
+	<script src="js/common.js"></script>
+	<script src="js/familyAll.js"></script>
+	<title>家庭管理</title>
+</head>
+<style>
+	.nav .active{
+		background-color: #00afa1;
+		color: white;
+	}
+	.nav p{
+		float: left;
+		width: 25%;
+		padding: .8rem 0 .6rem 0;
+		margin: 0;
+	}
+</style>
+<body style="background-color: #ebebeb;">
+<div class="content">
+	<!--标题-->
+	<!--<a href="../index.html"><div class="header"></div></a>-->
+	<div class="pub_hearder flex_vertical justify_content_equal" style="z-index: 99; position: fixed;top: 0;background: none;background-color: #f5f5f5;">
+		<img class="up_page pub_hearder_left_noQuan"  src="img/left.png" onclick="window.location.href = 'user_center.html'" />
+		<div class="head_center head_centerZi">
+			<span class="head_title" style="color: black">家庭管理</span>
+		</div>
+	</div>
+	<div id="mescroll1" class="mescroll" style="top:2.7rem;width: 100%;position: absolute;z-index: -1">
+		<div class="mescroll1DivList">
+			<img class="noFamily" style="margin-top: 10%;" src="img/health/noFamily.png">
+			<!--<div class="hos_child caseDiv set_box_shadow" style="width: 94%;float: none">
+				<div class="hos_list_top clearfix">
+					<div class="orderContent" style="margin: .3rem 0 0 2%;" onclick="href(this)">
+						<div class="left" style="width: 24%;line-height: inherit"><img
+								src="https://www.enuo120.com/upload/image/201806/05/HfgFPMKo1MVTEvAEkk4.png"></div>
+						<div class="right" style="margin-top: .1rem;padding-left: 2%">
+							<p class="detail"><span class="name" style="font-size: 1.05rem">就诊病状</span></p>
+							<p class="detail" style="line-height: 1rem;color: #999;    height: auto;">
+								<span class="name">病状病状病状病状病状病状病状病状病状病状病状病状。。。</span>
+							</p>
+							<p class="orderdetailchoose" style="    margin-bottom: .5rem;color: #999">
+								<span>上传时间：</span>
+								<span class="orderdetailchooseName">2019.02.26</span>
+								<button class="orderReadMore" onclick="">查看更多></button>
+							</p>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="hos_child set_box_shadow" style="width: 94%;float: none">
+				<div class="hos_list_top clearfix">
+					<div class="orderContent" style="margin: .3rem 0 0 2%;" onclick="href(this)">
+						<div class="left" style="width: 24%;line-height: inherit"><img
+								src="https://www.enuo120.com/upload/image/201806/05/HfgFPMKo1MVTEvAEkk4.png"></div>
+						<div class="right" style="margin-top: .1rem;padding-left: 2%">
+							<p class="detail"><span class="name" style="font-size: 1.05rem">就诊病状</span></p>
+							<p class="detail" style="line-height: 1rem;color: #999;    height: auto;">
+								<span class="name">病状病状病状病状病状病状病状病状病状病状病状病状。。。</span>
+							</p>
+							<p class="orderdetailchoose" style="    margin-bottom: .5rem;color: #999">
+								<span>上传时间：</span>
+								<span class="orderdetailchooseName">2019.02.26</span>
+								<button class="orderReadMore" onclick="">查看更多></button>
+							</p>
+						</div>
+					</div>
+				</div>
+			</div>-->
+		</div><!---->
+	</div>
+	<button class="bindBtn" onclick="window.location.href = 'bind_family.html'">+ 添加家人</button>
+</div>
+</body>
+<script type="text/javascript" src="js/util.js"></script>
+</html>

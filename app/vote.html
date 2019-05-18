@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		
+		<!--在您实际的项目中,请留意mescroll-option.css的图片路径是否引用正确,可写成绝对路径或网络地址-->
+		<!--可把mescroll-option.css代码拷贝到mescroll.min.css中,合为一个css文件,方便引用-->
+		<link rel="stylesheet" href="css/lib/mescroll.css">
+		<link rel="stylesheet" href="option/mescroll-option.css">
+		<link rel="stylesheet" href="css/base.css" />
+		<link rel="stylesheet" href="css/util.css" />
+		<link rel="stylesheet" href="css/vote.css" />
+		<link rel="stylesheet" href="css/lib/xiala.css" />
+		<link href="css/lib/swiper-3.3.1.min.css" rel="stylesheet">
+		<script type="text/javascript" src="plug/jquery-1.11.3.js" ></script>
+		<script src="js/common.js"></script>
+		<script src="js/vote.js?v=889"></script>
+		<script src="js/lib/jweixin-1.1.0.js"> </script>
+		<script src="js/getShare.js"> </script>
+		<title>e诺首届医德之星评选</title>
+	</head>
+	<style>
+		.mescroll-upwarp {
+			margin-bottom: 4rem;
+			height: 30px;
+		}
+		.grade-w-rollRight{
+			top: 2.7rem;
+			right: 0;
+		}
+		.mescroll-empty{
+			padding-bottom: 30px;
+		}
+		.searchVote img {
+			width: 1.3rem;
+			position: absolute;
+			top: .35rem;
+			left: 3%;
+			padding-top: .5rem;
+			margin-top: -.5rem;
+			padding-bottom: .5rem;
+			margin-bottom: -.5rem;
+		}
+		.searchVote input {
+			margin-top: 0.05rem;
+			vertical-align: top;
+			border-radius: .35rem;
+			font-size: .9rem;
+			color: black;
+			padding-left: 13%;
+			height: 1.8rem;
+			line-height: 1.8rem;
+			margin-bottom: 0;
+			background-color: transparent;
+			border: none;
+			margin-left: 0;
+			width: 100%;
+		}
+	</style>
+	<script>
+      /*  if(is_weixn()){
+            console.log(sessionStorage.getItem("codeValue"))
+            if(sessionStorage.getItem("codeValue") == 'true'){
+                sessionStorage.setItem("codeValue", 'false');
+                Get.haveCodeGet();
+            }else{
+                Get.firstCodeGet();
+            }
+        }*/
+	</script>
+
+	<body style="background-color: #f1f1f1;">
+	<div class="modelOpen">
+		<div class="mubu"></div>
+		<div class="modelOpenback">
+			<img class="payclose" src="img/vote/voteBlackClose.png">
+			<!--<img src="../img/yuyueback.png">-->
+			<img class="paySuccess" src="img/vote/voteWarn.png">
+			<p class="paySuccessZi warnZi"></p>
+		</div>
+	</div>
+	<div class="successOpen" style="z-index: 999999;">
+		<div class="mubu"></div>
+		<img class="mubuDian" src="img/vote/voteDianBack.png">
+		<img class="payclose" onclick="window.location.reload()" src="img/vote/voteClose.png">
+		<div class="modelOpenback" style="background-color: #f6554b;    padding-bottom: 3.8rem;">
+			<!--<img class="payclose" src="img/vote/voteClose.png">-->
+			<!--<img src="../img/yuyueback.png">-->
+			<img class="paySuccess" style="width: 23%;margin: 9% 0 5% 38%;" src="img/vote/voteGouBack.png">
+			<p class="paySuccessZi" style="color: white;font-size: 1.3rem;font-weight: 600">恭喜您，投票成功！</p>
+			<p class="paySuccessZi" style="color: white;    font-size: .8rem;margin-top: .5rem;">听说e诺用户能参与抽奖呢~</p>
+		</div>
+		<button class="toYuyueno" onclick="window.location.reload()">放弃大奖</button>
+		<button class="toYuyue" onclick="window.location.href = 'user_center.html'">去登录</button>
+	</div>
+	<div class="yanzhenOpen">
+		<div class="mubu"></div>
+
+		<div class="modelOpenback" style="background-color: white;    padding-bottom: 0">
+			<p class="paySuccessZi" style="font-size: 1.7rem;font-weight: 600;margin-top: 2rem;">请输入验证码</p>
+			<p class="paySuccessZi" style="margin-top: 1.7rem;">
+				<img id="codeImg" src="img/vote/yanzhenma.png" class="img-responsive"
+				onclick="Choose.repeatGetCheckCode(this)"/>
+				<input class="yanzhenVal" type="text"/>
+			</p>
+			<button class="yanzhenCancel" onclick="$('.yanzhenOpen').hide()">取消</button>
+			<button class="yanzhenSure" onclick="Choose.sureVote();">确定</button>
+		</div>
+
+	</div>
+	<div class="mubuxiala"></div>
+	<div class="content">
+		<!--标题-->
+		<!--<a href="../index.html"><div class="header"></div></a>-->
+		<div class="pub_hearder flex_vertical justify_content_equal" style="z-index: 99;position: fixed;
+    top: 0">
+			<img class="up_page pub_hearder_left" style="" src="img/header/header_left.png" onclick="window.location.href = 'xywz.html'">
+			<div class="head_center">
+				<!--	<div class="search_publish">
+                        <div style="position: relative;">
+                            <input class="toggleSou" type="text" style="color: black;height: .5rem; margin-bottom: .15em;" placeholder="搜索医生"/>
+                        </div>
+                    </div>-->
+				<span class="set_head_dot" style="width: .15rem;height: .15rem;border-radius: 50%;"></span>
+				<span class="set_head_dot" style="width: .25rem;height: .27rem;border-radius: 50%;"></span>
+				<span class="set_head_dot"></span>
+				<span class="head_title">e诺首届医德之星评选</span>
+				<span class="set_head_dot"></span>
+				<span class="set_head_dot" style="width: .25rem;height: .27rem;;border-radius: 50%;"></span>
+				<span class="set_head_dot" style="width: .15rem;height: .15rem;border-radius: 50%;"></span>
+			</div>
+				<!--<img class="search pub_hearder_right level"  src="img/shai.png"/>-->
+		</div>
+		<div class="menu_nav dov_nav clearfix" style="z-index: 99;position: fixed;
+    top: 2.7rem;display: none">
+			<!--<div class="ranking flex_all_center subChildRoom">&lt;!&ndash; onclick="Choose.subsubject()"&ndash;&gt;
+				<span class="subText">科室</span>&nbsp;<img src="img/down.png" />
+			</div>-->
+			<div class="address flex_all_center">
+				<span class="levelText">项目</span>&nbsp;<img src="img/down.png" />
+			</div>
+		</div>
+		<div class="Sort-eject Sort-height subjectLong">
+			<ul class="Sort-Sort subjectLongSort">
+			</ul>
+		</div>
+		<div class="Sort-eject Sort-height levelLong" style="right: 0">
+			<ul class="Sort-Sort levelLongSort ">
+			</ul>
+		</div>
+		<div class="chooseFen">
+			<div class="container">
+					<div class="slide">
+						<ul>
+							<li i="0" class="levelClick borderActive"><span style="display: block"><img style="width: inherit;height: 2.4rem;" src="img/vote/voteIndex.png"></span><span style="display: block;    font-size: .85rem;margin-top: .43rem;">投票首页</span></li>
+							<li i="1" class="levelClick"><span style="display: block"><img style="width: inherit;height: 2.4rem;" src="img/vote/voteRakingList.png"></span><span style="display: block;    font-size: .85rem;margin-top: .43rem;">排行榜</span></li>
+							<li i="2" class="levelClick"><span style="display: block"><img style="width: inherit;height: 2.4rem;" src="img/vote/voteIntroduce.png"></span><span style="display: block;font-size: .85rem;margin-top: .43rem;">活动介绍</span></li>
+						</ul>
+					</div>
+			</div>
+		</div>
+		<div class="searchVote">
+			<form action="javascript:return true;" class="input-kw-form">
+				<input class="voteSou" type="search" placeholder="请输入医生姓名">
+			</form>
+			<button class="searchVoteBtn">搜索</button>
+			<img class="sou" src="img/vote/voteSearch.png"></div>
+		<!--滑动区域-->
+		<div id="mescroll0" class="mescroll" style="background-color: #f1f1f1;top: 12.8rem;">
+			<!--模拟的轮播-->
+		<!--	<img class="swiper" src="../res/img/swiper.jpg"/>-->
+			<!--筛选条件; 模拟列表的重置和演示空布局的使用-->
+			<!--<div class="nav">
+				<p class="active" i="0">全部</p>
+				&lt;!&ndash;<p i="1">奶粉</p>
+				<p i="2">图书</p>&ndash;&gt;
+			</div>-->
+			<!--展示上拉加载的数据列表-->
+			<div class="hos_doc_team set_box_shadow" style="    width: 99%;
+background-color: #f1f1f1;margin-bottom: 1.3rem;margin-left: -0.5%;    margin-top: 0">
+			<ul id="dataList0" class="data-list" style="margin-top: .8em;">
+				<!--<li>
+					<img class="pd-img" src="../res/img/pd1.jpg"/>
+					<p class="pd-name">商品标题商品标题商品标题商品标题商品标题商品</p>
+					<p class="pd-price">200.00 元</p>
+					<p class="pd-sold">已售50件</p>
+				</li>-->
+				<!--<div class="hos_doc_child clearfix" specialid="9" onclick="href(this)">
+					<div class="doc_child_left"><img style="max-height: 4.5rem;"
+													 src="http://www.enuo120.com:7070/upload/image/201801/03/87E7pxYgWWJvMyOT8qN.jpg">
+					</div>
+					<div class="doc_child_right" style="margin: 0 0 0 0;">
+						<div class="id"><p class="name"><span class="hot">热销</span><span class="goodsName">皮秒</span></p>
+							<p class="address">美容医院</p>
+							<p><span style="color: #f81f7b;font-size: .7rem;">￥</span><span class="price">49.00</span>
+								<del class="oldprice">￥124.00</del>
+								<span class="yuyue">已预约<span class="peopelcount">1</span>人</span></p>
+						</div>
+					</div>
+				</div>-->
+			</ul>
+			</div>
+		</div>
+		<div id="mescroll1" class="mescroll hide" style="background-color: #f1f1f1;top: 10.6rem;">
+			<ul id="dataList1" class="rank-list">
+				
+			</ul>
+		</div>
+		<div id="mescroll2" class="mescroll hide" style="background-color: #f1f1f1;top: 10.3rem;">
+			<img src="img/vote/voteActivityImg.png">
+		</div>
+	</div>
+	<div class="scrollbtn">
+	<button class="chooseDoc" onclick="$('.warnZi').text('请勾选3个选项');$('.modelOpen').show();">请选医生</button>
+	<button class="sureVote" onclick="Choose.yanzhenOpen()">确认投票</button>
+	</div>
+	<div class="countDownDiv" style="">
+		<span class="timespan"></span>
+	</div>
+	<img class="shack" src="img/laba.png">
+	<div class="marquee">
+	<marquee scrollamount="3">e诺——一个先谈价格再看病，达到疗效再付款的第三方医疗监管平台，坚持以六大监管（1.协调医疗价格、2.监管医疗方案、3.监管病程、4.监管治疗效果、5..监管乱收费、变相收费、6.重大医疗事故先行赔付）为原则，努力解决老百姓看病难题。</marquee>
+	</div>
+	</body>
+
+	<!--在您实际的项目中,请留意mescroll-option.js的图片路径是否引用正确,可写成绝对路径或网络地址-->
+	<!--可把mescroll-option.js代码拷贝到mescroll.min.js中,合为一个js文件,方便引用-->
+	<script src="js/lib/mescroll.js" type="text/javascript" charset="utf-8"></script>
+	<!--<script src="option/mescroll-option.js" type="text/javascript" charset="utf-8"></script>-->
+	<!--mescroll本身不依赖jq,这里为了模拟发送ajax请求,获取模拟数据-->
+
+	<script src="js/lib/swiper.min.js"></script>
+<!--	<script src="../res/pdlist1.js" type="text/javascript" charset="utf-8"></script>-->
+	<script type="text/javascript" charset="utf-8">
+
+        $(function(){
+            follow.wecat();
+            init();
+		});
+    	</script>
+
+</html>

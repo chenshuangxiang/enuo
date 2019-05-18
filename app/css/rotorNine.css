@@ -1,0 +1,366 @@
+/*背景*/
+.browDetailBackImg{
+    width: 100%;
+    position: absolute;
+    z-index: -9;
+}
+.myJiang{
+    color: white;
+    font-size: .9rem;
+    text-decoration: blink;
+    background-color: #f4ab2d;
+    padding: 0.5rem 5%;
+    border-radius: 59px;
+    margin-top: .5rem;
+    display: inline-block;
+}
+/*喇叭*/
+.marquee{
+    /*position: fixed;
+    left: 0px;
+    top: 2.5rem;
+    z-index: 999;*/
+    width: 100%;
+}
+marquee{
+    font-size: 0.95rem;
+    color: red;
+    height: 1.5rem;
+    line-height: 1.7rem;
+    width: 86%;
+    margin-left: 14%;
+}
+.shack{
+    animation: shake-crazy 1.5s infinite;
+    width: 1.8rem;
+    height: 1.8rem;
+    position: absolute;
+    left: 3%;
+    top: 2.5rem;
+    z-index: 9999;
+}
+
+@keyframes shake-crazy {
+    0% {
+        transform: translate(0px, 0px) rotate(0deg);
+        opacity: 0.4
+    }
+    10% {
+        transform: translate(3px, 4px) rotate(-1deg);
+        opacity: 0.8
+    }
+    20% {
+        transform: translate(2px, 4px) rotate(-3deg);
+        opacity: 0.5
+    }
+    30% {
+        transform: translate(4px, 3px) rotate(2deg);
+        opacity: 0.6
+    }
+    40% {
+        transform: translate(-4px, 0px) rotate(1deg);
+        opacity: 0.7
+    }
+    50% {
+        transform: translate(1px, 4px) rotate(-1deg);
+        opacity: 0.7
+    }
+    60% {
+        transform: translate(4px, -4px) rotate(-1deg);
+        opacity: 0.2
+    }
+    70% {
+        transform: translate(6px, 5px) rotate(1deg);
+        opacity: 0.4
+    }
+    80% {
+        transform: translate(4px, 3px) rotate(1deg);
+        opacity: 0.2
+    }
+    90% {
+        transform: translate(0px, 2px) rotate(1deg);
+        opacity: 0.6
+    }
+}
+ul.line {
+    width: 88%;
+    margin-left: 8%;
+    height: 30px;
+    overflow: hidden;
+    position: absolute;
+    top: 2.7rem;
+    z-index: 1;
+}
+.marqueeBack{
+    position: absolute;
+    top: 2.7rem;
+    width: 100%;
+    height: 28px;
+    z-index: 0;
+    background-color: rgba(169, 167, 167,0.5);
+}
+ul.line li {
+    height:  30px;
+    font-size: .9rem;
+    line-height: 29px;
+    list-style: none;
+    color:red;
+    display: block;
+    text-align: center;
+}
+
+
+
+.browIndexName{
+    margin-top: 2.4rem;
+    width: 46%;
+    margin-left: 27%;
+    margin-bottom: .7rem;
+}
+.shareWarn{
+    width: 100%;
+    color: #666;
+    font-size: .8rem;
+    margin-bottom: 1.2rem;
+    text-align: center;
+}
+.shareBtn{
+    border:1px solid #c30f4c;
+    outline: none;
+    border-radius: 20px;
+    color: #c30f4c;
+    padding: .16rem .7rem;
+    font-size: .9rem;
+    background-color: rgba(255,255,255,0);
+}
+.browIndexOne{
+    text-align: center;
+    width: 64%;
+    margin-left: 18%;
+    margin-bottom: .7rem;
+}
+.zuRight{
+    position: absolute;
+    width: 10%;
+    top: 0.6rem;
+    margin-left: .1rem;
+}
+.search {
+    position: absolute;
+    top: .7rem;;
+    width: initial;
+    height: 1.7rem;;
+    margin-top: -.2rem;
+    right: .5rem;
+}
+/*预约弹窗*/
+.modelOpen{
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    z-index: 999;
+    top: 0;
+    display: none;
+}
+.shareOpenBefore{
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    z-index: 999;
+    top: 0;
+    display: none;
+}
+.shareOpen{
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    z-index: 999;
+    top: 0;
+    display: none;
+}
+.mubu{
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background-color: #000000;
+    opacity: 0.2;
+}
+.paySuccessZi{
+    font-size: .9rem;
+    line-height: 1.3rem;
+    text-align: center;
+    /* height: 1.5rem; */
+    width: 80%;
+
+    margin-left: 10%;
+}
+.paySuccessZiWarn{
+    text-align: center;
+    margin: -.5rem 0 1rem 0;
+    font-size: .7rem;
+    color: #FF9900;
+}
+.paySuccessBackZi{
+    font-size: 1rem;
+    text-align: center;
+    line-height: 4.2rem;
+    height: 3.8rem;
+}
+.successBackPay{
+    font-size: .9rem;
+    text-align: center;
+    line-height: 3rem;
+    height: 3rem;
+    border-top: 1px solid #dddddd;
+    border-bottom: 1px solid #dddddd;
+    color: #00afa1;
+}
+.noBackPay{
+    font-size: .9rem;
+    text-align: center;
+    line-height: 2.5rem;
+    height: 2.5rem;
+    color: #444;
+}
+.modelOpenback{
+    width: 76%;
+    position: fixed;
+    top: 26%;
+    left: 12%;
+    z-index: 99999;
+    border-radius: 5px;
+    background-color: white;
+}
+.activityClose {
+    width:33%;
+    margin-left: 57%;
+    margin-top: 13%;
+}
+.activityFu{
+    width: 100%;
+}
+.payclose,.paybackclose{
+    width: 1.25rem;
+    float: right;
+    margin: .85rem;
+}
+.paySuccess{
+    width: 19%;
+    margin: 12% 0 4.5% 41%;
+}
+.sharSuccess{
+    width: 73%;
+    margin: 3% 0 -6% 10%;
+}
+.toYuyue,.toYuyueno{
+    width: 29%;
+    height: 2.2rem;
+    background-color: #00afa1;
+    border: none;
+    outline: none;
+    /* position: absolute; */
+    border-radius: 5px;
+    color: white;
+    font-size: .85rem;
+    margin: 6% 0 9% 6%;
+}
+.toYuyueno{
+    background-color: white;
+    color: #707070;
+    border: 1px solid #707070;
+    margin-left: 17%;
+}
+.chouCiDiv{
+    font-size: 1.1rem;
+    color: black;text-align: center;
+}
+.chouCiDiv span{
+    color: red;
+    display: inline-block;
+    margin: 0 .5rem;
+    font-size: 1.4rem;
+}
+
+*, :after, :before {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+* {
+    margin: 0;
+    padding: 0;
+}
+
+table {
+    border-spacing: 0;
+    border-collapse: collapse;
+    text-align: center;
+}
+
+.draw {
+    width: 84%;
+    margin: 45% 0 0 8%;
+    max-width: 450px;
+ /*   height: 600px;*/
+    padding: 6.6% 6% 0 7.2%;
+    background-image: url(../img/rotor/bg.png);
+    background-repeat: no-repeat;
+    background-size: 100%;
+}
+.draw .itemNo {
+    width:24%;
+    /* height: 83px;*/
+   /* background-image: url(../img/rotor/bg1.png);
+    background-repeat: no-repeat;
+    background-size: 94%;
+    vertical-align: middle;*/
+}
+.draw .item {
+    width:24%;
+   /* height: 83px;*/
+    background-image: url(../img/rotor/bg1.png);
+    background-repeat: no-repeat;
+    background-size: 94%;
+    vertical-align: middle;
+}
+
+.draw .item.active {
+    background-image: url(../img/rotor/bg2.png);
+    background-repeat: no-repeat;
+    background-size: 94%;
+}
+
+.draw .img {
+    display: table-cell;
+    width: 150px;
+    height: 61px;
+    vertical-align: middle;
+    text-align: center;
+}
+
+.draw .img img {
+    vertical-align: top;
+}
+
+.draw .gap {
+    width: 3px;
+}
+
+.draw .gap-2 {
+    height: 3px;
+}
+
+.draw .name {
+    display: block;
+  /*  margin-top: 10px;*/
+    font-size: .85rem;
+    width: 93%;
+}
+
+.draw .draw-btn {
+    width: 27%;
+    position: absolute;
+    margin-left: 3.5%;
+    margin-top: 4%;
+    display: block;
+}

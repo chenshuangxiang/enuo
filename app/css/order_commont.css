@@ -1,0 +1,248 @@
+/*医院列表*/
+.hos_child{
+	/*height: 11.9rem;*/
+	padding-top: .2rem;
+}
+.hos_child .hos_list_top{
+	/*height: 11.6rem;*/
+	/*border: 1px solid red;*/
+	font-size: .8rem;
+	line-height: .35rem;
+}
+.hos_list_top div{
+	float: left;
+}
+.hos_list_top .left{
+	width: 26%;
+	margin: -.2rem .2rem 0 -.2rem;
+	clear: both;
+}
+.hos_list_top .left img{
+	max-height: 3.9rem;
+	overflow: hidden;
+}
+.hos_list_top .right{
+	padding-left:.2rem;
+	width: 73%;
+}
+.right p {
+	margin-bottom: .2rem;
+	height: 1.4rem;
+	line-height: 1.4rem;
+}
+.detail .name {
+	display: inline-block;
+	font-size: .9rem;
+	letter-spacing: 1px;
+	width: 100%;
+	color: black;
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+}
+ul li{
+	list-style: none;
+}
+.split{
+	width: 96%;
+	height: 1px;
+	margin-left: 2%;
+	border-top: 1px dashed #e5e5e5;
+}
+.yuyueTop {
+	width: 94%;
+	color: black;
+	font-size: .9rem;
+	margin: .5rem 0 0 4%;
+	height: 2.2rem;
+	line-height: 1.6rem;
+	clear: both;
+	border-bottom: solid 1px #dcdcdc;
+}
+.orderContent{
+	width: 94%;
+	color: black;
+	font-size: .2rem;
+	margin: .7rem 0 0 4%;
+	height: 4rem;
+	clear: both;
+	border-bottom: dashed 1px #dcdcdc;
+}
+.orderBottom{
+	width: 94%;
+	color: black;
+	font-size: .8rem;
+	margin: .5rem 0 0 4%;
+	height: 2.2rem;
+	line-height: 1.6rem;
+	clear: both;
+}
+.addPhontBtn{
+	display: inline-block;
+	width: 3.7rem;
+	height: 3.7rem;
+	border: 1px solid #dcdcdc;
+	text-align: center;
+	vertical-align: top;
+	margin-top: 1rem;
+	position: relative;
+}
+.addPhontBtn img{
+	width: 1.1rem;
+	margin: .6rem 0 -.2rem 0;
+}
+.postImg{
+	max-width: 3.3rem;
+	max-height: 3.3rem;
+	margin: .1rem .1rem 0 .1rem;
+}
+.closePhoto{
+	position: absolute;
+	right: -.6rem;
+	top: -.6rem;
+	width: 1.3rem;
+	background-color: white;
+}
+.addPhontBtn input[type="file"] {
+	position: absolute;
+	left: 4.3%;
+	width: 3.7rem;
+	height: 3.7rem;
+	opacity: 0;
+}
+.postImgP{
+	width: 3.7rem;
+	height: 3.7rem;
+	line-height: 3.7rem;
+	display: inline-block;
+	text-align: center;
+	border: 1px solid #e5e5e5;
+	position: relative;
+	margin-right: .7rem;
+	vertical-align: top;
+	margin-top: 1rem;
+}
+.addPhontBtn span{
+	color: #555;
+	font-size: .7rem;
+	display: block;
+}
+.famousName {
+	display: inline-block;
+}
+.yuyueStatus {
+	color: #00afa1;
+	font-weight: 500;
+	font-size: .85rem;
+	float: right;
+	margin-right: 1.5%;
+}
+.orderDel,.ordercancel {
+	color: #444;
+	font-weight: 500;
+	font-size: .8rem;
+	float: right;
+	margin-right: 1.5%;
+	border: 1px solid #dcdcdc;
+	background-color: white;
+	outline: none;
+	padding: .25rem .5rem;
+}
+.orderPay{
+	border-radius: 5px;
+	color: white;
+	font-weight: 500;
+	font-size: .8rem;
+	float: right;
+	margin-left: 1.5%;
+	margin-right: 1.5%;
+	border: none;
+	background-color: #f81f7b;
+	outline: none;
+	padding: .25rem .6rem;
+}
+.ordersure,.ordercommont{
+	border-radius: 5px;
+	color: white;
+	font-weight: 500;
+	font-size: .8rem;
+	float: right;
+	margin-left: 1.5%;
+	margin-right: 1.5%;
+	border: none;
+	background-color: #00afa1;
+	outline: none;
+	padding: .25rem .6rem;
+}
+.orderdetailchoose{
+	color: #555;
+	font-size: .7rem;
+}
+.data-list{
+	margin-top: .9rem;width: 100%;max-width: 750px
+}
+.orderzong{
+	color: #444;
+	font-size: .75rem;
+	margin-top: .7rem;
+}
+.orderzongfu{
+	color: #f81f7b;
+	font-size: .7rem;
+}
+.orderzongPrice{
+	color: #f81f7b;
+	font-size: .9rem;
+}
+textarea{
+	width: 100%;
+	border: none;
+	font-size: .9rem;
+	height: 5rem;
+	resize : none;
+	outline: none;
+}
+
+.sex:checked {
+	background: url(../img/radioHuang.png);
+	background-size: 100% 100%;
+	color: white;
+	border: 0px;
+}
+.sex {
+	float: left;
+	width: 14px;
+	/*margin-left: 12px;*/
+	height: 14px;
+	margin-top: .68rem;
+	outline: none;
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	-ms-appearance: none;
+	-o-appearance: none;
+	appearance: none;
+	background: #fff;
+	border-radius: 50%;
+	border: 1px solid #c0c0c0;
+	color: #fff;
+	display: block;
+}
+.sexname {
+	float: left;
+	margin: .4rem .5em 0 5px;
+	font-size: .75rem;
+}
+.star span{ width:.9rem; height:.9rem; background:url("../img/starHui.png") no-repeat;background-size: 100%; display:inline-block; cursor:pointer;margin-left: .5rem}
+.star span.current{ background:url("../img/star.png") no-repeat;background-size: 100%;}
+.make{
+	position: fixed;
+	bottom: 0px;
+	width: 100%;
+	height: 2.7rem;
+	line-height: 2.7rem;
+	text-align: center;
+	color: #ffffff;
+	font-size: 1rem;
+	font-weight: bold;
+	background-color: #00AFA1;
+}

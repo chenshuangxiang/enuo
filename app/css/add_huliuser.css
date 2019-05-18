@@ -1,0 +1,160 @@
+/*医院列表*/
+.hos_child{
+	/*height: 8rem;*/
+	padding-top: .2rem;
+	padding-bottom: 0.2em;
+	margin-top: .9rem;
+	float: left;
+}
+.hos_child .hos_list_top{
+	height: 3rem;
+	/*border: 1px solid red;*/
+	font-size: 1rem;
+	line-height:2.5rem;
+	/*display: flex;*/
+	float: left;
+	width: 95%;
+	color:#333333;
+	margin-left: 2.8%;
+	background-color: #f5f3f2;
+	border-radius: 8px;
+	margin-bottom: .8rem;
+}
+/*.hos_list_top div{
+	float: left;
+}*/
+.hos_list_top .left{
+	width: 22%;
+	margin: -.2rem 0 0 -0.5%;
+	line-height: 3.3rem;
+	padding-left: 3%;
+	color: #555;
+	float: left;
+}
+.hos_list_top .left img{
+	height: 9em;
+}
+.hos_list_top .right{
+	padding-left:.2rem;
+	margin-top: .2em;
+	width: 100%;
+	float: left;
+}
+.right input[type="text"],.right input[type="tel"],select{
+	width: 93%;
+	height: 2rem;
+	line-height: 2rem;
+	border: none;
+	outline: none;
+	font-size: 1rem;
+	margin-left: 2%;
+	background-color: #f5f3f2;
+}
+.right button{
+	/*width: 10%;*/
+	height: 2rem;
+	line-height: 2rem;
+	border: none;
+	outline: none;
+	background-color: #00afa1;
+	border-radius: 5px;
+	color: white;
+	font-size: 0.8rem;
+	padding: 0 3%;
+	float: right;
+	margin-top: .3em;
+}
+.sex:checked {
+	background: url(../img/raido.png);
+	background-size: 100% 100%;
+	color: white;
+	border: 0px;
+}
+.sex {
+	float: left;
+	width: 15px;
+	margin-left: 12px;
+	height: 15px;
+	margin-top: .8rem;
+	outline: none;
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	-ms-appearance: none;
+	-o-appearance: none;
+	appearance: none;
+	background: #fff;
+	border-radius: 50%;
+	border: 1px solid #c0c0c0;
+	color: #fff;
+	display: block;
+}
+.sexname{
+	float: left;
+	margin: 0 2em 0 5px;
+}
+.bindBtn{
+	width: 23%;
+	border-radius: 150px;
+	height: 1.8rem;
+	line-height: 1.8rem;
+	color: white;
+	font-size: .95rem;
+	margin-top: 6%;
+	text-align: center;
+	/* position: fixed; */
+	bottom: 0;
+	position: absolute;
+	right: 5%;
+	top: 2.2rem;
+	background-color: #38b69a;
+}
+.continueAdd,.continueBack{
+	width: 34%;
+	margin-left: 11%;
+	border-radius: 150px;
+	height: 2.6rem;
+	line-height: 2.6rem;
+	color: #38b69a;
+	font-size: 1.2rem;
+	margin-top: 8%;
+	text-align: center;
+	border:1px solid #9b9798;
+	bottom: 0;
+	background-color: white;
+}
+.continueBack{
+	color: #cccccc;
+}
+.warn{
+	color: #ef8b65;
+	font-size: .8rem;
+	line-height: 1.2rem;
+	margin-left: 13%;
+	margin-top: 1rem;
+}
+.oneUser2,.oneUser3,.oneUser4{
+	display: none;
+}
+select {
+	/*Chrome和Firefox里面的边框是不一样的，所以复写了一下*/
+	/*很关键：将默认的select选择框样式清除*/
+	appearance:none;
+	-moz-appearance:none;
+	-webkit-appearance:none;
+	/*在选择框的最右侧中间显示小箭头图片*/
+	background: url("../img/select.png") no-repeat scroll right center transparent;
+	background-size: 1.4rem;
+	/*为下拉小箭头留出一点位置，避免被文字覆盖*/
+	padding-right: 14px;
+	color: #A7A5A5;
+}
+
+
+/*清除ie的默认选择框样式清除，隐藏下拉箭头*/
+
+
+
+
+
+
+

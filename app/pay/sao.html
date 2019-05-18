@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no,minimal-ui">
+    <script type="text/javascript" src="../plug/jquery-1.11.3.js" ></script>
+    <script src="../js/lib/jweixin-1.1.0.js"> </script>
+    <script type="text/javascript" src="../js/common.js" ></script>
+    <!--<title>扫一扫</title>--><title>e诺</title>
+</head>
+<body>
+    <button id="sao" onclick="ajaxPay();">扫一扫</button>
+    <div id="content">
+        <img src="https://www.enuo120.com/pc/img/logo.png">
+        <img src="http://ng.enuo120.com/app/img/adver.png">
+        <img src="http://ubmcmm.baidustatic.com/media/v1/0f000ji2uXbS4GD5jKvIKs.jpg">
+        <img src="http://oimagec7.ydstatic.com/image?id=4482847546170317039&product=adpublish&w=640&h=480&sc=0&rm=0">
+    </div>
+    <form method="post" action="https://wap.lianlianpay.com/payment.htm">
+        <input type="hidden" name="req_data" value=""/>
+        <!--<input type="hidden" name="busi_partner" value=""/>
+        <input type="hidden" name="dt_order" value=""/>
+        <input type="hidden" name="money_order" value=""/>
+        <input type="hidden" name="name_goods" value=""/>
+        <input type="hidden" name="no_order" value=""/>
+        <input type="hidden" name="notify_url" value=""/>
+        <input type="hidden" name="oid_partner" value=""/>
+        <input type="hidden" name="risk_item" value=""/>
+        <input type="hidden" name="app_request" value=""/>
+        <input type="hidden" name="sign" value=""/>
+        <input type="hidden" name="sign_type" value=""/>
+        <input type="hidden" name="user_id" value=""/>
+        <input type="hidden" name="version" value=""/>-->
+        <input type="submit" id="lianlianPay" value="调起App支付">
+    </form>
+</body>
+<script>
+  /*  $(function () {
+            //公众号扫一扫
+            document.getElementById("sao").onclick = function () {
+                    ajaxPay();
+            }
+    });*/
+  //ajaxPay();
+  $(document).ready(function () {
+      To.appPay();
+  });
+  var To = {
+      appPay:function () {
+          var url = SERVER_ADDR +  '/wx/getSign.json';
+          var Data = {};
+          Data.orderId = getQueryString('payId');
+          ajaxGetRetInfo(url, Data, this.appPaySuccess, '请求失败', 'POST', true, undefined);
+      },
+      appPaySuccess:function (retInfo) {
+      console.log(retInfo)
+      if(retInfo.success == true){
+          $("input[name='req_data']").val(JSON.stringify(retInfo.data.param))
+      }
+    }
+  }
+    function ajaxPay() {    //https://www.enuo120.com/wx/getSign.json?url=
+
+        var url = SERVER_ADDR + '/wx/getSign.json';
+        var Data = {};
+        Data.url = window.location.href;
+        /*if(SERVER_ADDR == 'http://www.enuo120.com'){*/
+            ajaxGetRetInfo(url, Data, ajaxPaySuccess, '请求失败', 'GET', true, undefined);
+        /*}*/
+      /*  $.ajax({
+            type: 'POST',
+            url: SERVER_ADDR + '/app/user/payment/submit',
+            data: {"orderId":1, "amount": money },
+            /!*dataType: 'json',*!/
+            success: function (jsonData) {
+                console.log(jsonData)
+                alert(1)
+                return;
+                if (jsonData.status == "1") {
+                    //公众号支付
+                    payResult();
+                } else {
+                    alert(jsonData.promptInfor);
+                }
+            },
+            error: function (XMLHttpRequest, textStatus, errorThrown) {
+                alert("微信订单提交失败,请稍后重试4！");
+            }
+        });*/
+    }
+    function ajaxPaySuccess(retInfo) {
+        console.log(retInfo)
+        payResult(retInfo);
+    }
+    function payResult(jsonData) {
+        console.log(jsonData);
+        wx.config({
+            debug: true,
+            appId: jsonData.data.appId,
+            timestamp: jsonData.data.timestamp,
+            nonceStr: jsonData.data.nonceStr,
+            signature: jsonData.data.signature,
+            jsApiList: ['scanQRCode','previewImage']
+        });
+        wx.ready(function () {
+            // 在这里调用 API
+            alert(1);
+            wx.checkJsApi({
+                jsApiList: ['chooseImage'], // 需要检测的JS接口列表，所有JS接口列表见附录2,
+                success: function(res) {
+                    alert(res.errMsg);
+                    // 以键值对的形式返回，可用的api值true，不可用为false
+                    // {"checkResult":{"chooseImage":true},"errMsg":"checkJsApi:ok"}
+                }
+            });
+            wx.scanQRCode({
+                needResult: 0, // 默认为0，扫描结果由微信处理，1则直接返回扫描结果，
+                scanType: ["qrCode","barCode"], // 可以指定扫二维码还是一维码，默认二者都有
+                success: function (res) {
+
+                    var result = res.resultStr; // 当needResult 为 1 时，扫码返回的结果
+                }
+
+            });
+
+            var imgsurl=[];
+            var nowurl='';
+            var imgObj=$("#content img");
+            for(var i=0;i<imgObj.length;i++){
+                imgsurl[i]=imgObj[i].src;
+                imgObj[i].onclick=function(){
+                    nowurl=this.src;
+                    wx.previewImage({
+                        current: nowurl,
+                        urls: imgsurl
+                    });
+                }
+            }
+        });
+
+    }
+
+  $(document).on('click', 'img', function(event) {
+      var path = allAjaxUrl.rooturlpath;
+      var imgArray = [];
+      var curImageSrc = path + $(this).attr('src');
+      curImageSrc = curImageSrc.replace(/\s/g, "");
+      //				var oParent = $(this).parent();
+      if(curImageSrc) {
+          $('img').each(function(index, el) {
+              var itemSrc = path + $(this).attr('src');
+              imgArray.push(itemSrc);
+          });
+          wx.previewImage({
+              current: curImageSrc,
+              urls: imgArray
+          });
+      }
+  });
+</script>
+</html>

@@ -1,0 +1,81 @@
+/*医院列表*/
+.hos_child{
+	height: 8rem;
+	padding-top: .2rem;
+}
+.hos_child .hos_list_top{
+	height: 7.7rem;
+	/*border: 1px solid red;*/
+	font-size: .2rem;
+	line-height: .35rem;
+}
+.hos_list_top div{
+	float: left;
+}
+.hos_list_top .left{
+	width: 28%;
+	margin: -.2rem .2rem 0 -.2rem;
+
+}
+.hos_list_top .left img{
+	height: 9em;
+}
+.hos_list_top .right{
+	padding-left:.2rem;
+	margin-top: .2em;
+	width: 70%;
+}
+ul li{
+	list-style: none;
+}
+/*主页css*/
+
+.hospitail_detail .hos_data {
+	border-top: 1px dashed #dcdcdc;
+	/*border-bottom: 1px solid #f3f3f3;*/
+	margin-top: .1rem;
+	width: 94%;
+	margin-left: 3%;
+	font-size: .85rem;
+}
+
+.hospitail_detail p {
+	/* height: .84rem; */
+	position: relative;
+	font-weight: 500;
+}
+
+
+.hospitail_detail .hos_data .left {
+	height: .9rem;
+	position: absolute;
+	top: .65rem;
+	left: 0;
+}
+
+.hospitail_detail .hos_data span {
+	display: inline-block;
+	width: 80%;
+	height: 2.8rem;
+	line-height: 2.9rem;
+	margin-left: .4rem;
+}
+.hospitail_detail .hos_data .next {
+	height: .8rem;
+	position: absolute;
+	top: .7rem;
+	right: 0;
+}
+.hospitail_detail .hos_detail_pic {
+	padding: .9rem 0;
+	/* border: 1px solid red; */
+}
+.hos_data img{
+	margin-top: .3rem;
+}
+
+
+
+
+
+

@@ -1,0 +1,79 @@
+
+.xywz_top {
+	/*width: 7.5rem;*/
+	border: 1px solid transparent;
+	padding: 0;
+	/*margin: 0 auto;
+	margin-top: .7em;*/
+	float: left;
+	width: 94.5%;
+}
+.xywz_top .find .find_doc,.xywz_top .find .find_hos {
+	/*height: 7.4rem;*/
+	/*	background-image: url(../img/xywz/find_doc.png);
+        background-position: center;
+        background-size: 100% 100%;
+        background-repeat: no-repeat;*/
+	position: relative;
+	width: 100%;
+	margin-top: 1rem;padding-bottom: 2rem;
+}
+.find_docDiv{
+	/*height: 3.7rem;*/
+	width: 97%;
+	margin-left: 2%;
+	overflow: hidden;
+	margin-bottom: 1rem;
+}
+.find div .black {
+	height: 1.45rem;
+	line-height: 1.35rem;
+	/*font-size: 1rem;*/
+	font-weight: 500;
+}
+.find .find_doc .btm,.find .find_hos .btm {
+	/*width: 84%;*/
+	height: 3rem;
+	font-size: .8rem;
+	/* border: 1px solid red; */
+	margin: 0 0 0 0;
+	line-height: 1.5rem;
+/*	position: absolute;*/
+	/*bottom:7%;
+	left: 51%;*/
+	margin-top: 2.1rem;
+	margin-left: 5%;
+}
+.xywz_search{
+	height: 2.9rem;
+	border: 1px solid transparent;
+}
+.xywz_search .log{
+	width: 2.11rem;
+	margin: 0 auto;
+	margin-top: .25rem;
+}
+.xywz_search .title{
+	font-size: .24rem;
+    font-weight: 500;
+    letter-spacing: 1px;
+    color: #333333;
+    text-align: center;
+    height: .8rem;line-height: .8rem;
+}
+.contentdiv,.contentdiv2{
+	width: 90%;
+	margin-left: 8%;
+}
+.contentdiv p,.contentdiv2 p{
+	height: inherit;
+	line-height: 1.6rem;
+	font-size: .85rem;
+	color: #000000;
+	padding: .1rem 0;
+}
+.leftimg{
+	width: 1rem;
+	vertical-align: top;
+	margin: .3rem .6rem 0 -.35rem;
+}

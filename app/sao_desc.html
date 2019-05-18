@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<link rel="stylesheet" href="css/base.css" />
+	<link rel="stylesheet" href="css/util.css" />
+	<link rel="stylesheet" href="css/sao_desc.css" />
+	<script type="text/javascript" src="plug/jquery-1.11.3.js" ></script>
+	<script src="js/lib/jweixin-1.1.0.js"> </script>
+	<script src="js/common.js"></script>
+	<script src="js/wxScan.js"></script>
+	<link href="css/mui.min.css" rel="stylesheet" />
+	<script src="js/mui.min.js"></script>
+	<title>便捷约定</title>
+</head>
+<style>
+</style>
+<body style="background-color: #f1f1f1;">
+<div class="modelOpen">
+	<div class="mubu"></div>
+	<div class="modelOpenback">
+		<!--<img src="../img/yuyueback.png">-->
+		<span class="toYuyue">医院列表：</span>
+		<ul>
+			<!--<li>杭州时光医疗美容医院</li>-->
+		</ul>
+	</div>
+</div>
+<div class="content">
+	<!--标题-->
+	<!--<a href="../index.html"><div class="header"></div></a>-->
+	<div class="pub_hearder flex_vertical justify_content_equal">
+	<!--	<img class="up_page pub_hearder_left" src="img/header/header_left.png" onclick="window.history.go(-1)" />-->
+		<div class="head_center head_centerZi" style="    width: inherit;">
+			<span class="set_head_dot" style="width: .15rem;height: .15rem;border-radius: 50%;"></span>
+			<span class="set_head_dot" style="width: .25rem;height: .27rem;border-radius: 50%;"></span>
+			<span class="set_head_dot"></span>
+			<span class="head_title">便捷约定</span>
+			<span class="set_head_dot"></span>
+			<span class="set_head_dot" style="width: .25rem;height: .27rem;;border-radius: 50%;"></span>
+			<span class="set_head_dot" style="width: .15rem;height: .15rem;border-radius: 50%;"></span>
+		</div>
+	</div>
+	<div style="    margin-bottom: 25%;">
+
+			<img class="saoWarn" src="img/saoWarn.png">
+
+		<!--<p>尚未在平台预约，直接去医院就诊的用户，可去指定的医院就诊，诊断结束，询问医生便捷约定的二维码，扫过后会自动生成订单，请在我的订单里查看。</p>-->
+		<img class="saoDoc" src="img/saoDoc.png">
+	</div>
+	<!--<div class="buttonDiv">
+	<button class="readHos" onclick="readHos()">查看指定医院</button>
+	</div>-->
+	<div class="buttonDiv">
+	<button class="sao" onclick="Wx.scanQRCodeChoose()">扫一扫</button>
+		<!--<button class="sao" onclick="window.location.reload()">扫一扫</button>-->
+	</div>
+	<!--<img class="up_page pub_hearder_left" style="width: 3rem;
+    height: 3rem;
+   position: fixed;margin-top: 0;top: 3.35rem;
+    left: 1%;z-index: 999" src="img/header/header_leftHui.png" onclick="mui.back()">-->
+	<div id="bcid">
+		<div style="height:100%"></div>
+
+		<p class="tip">...扫描载入中...</p>
+	</div>
+	<div class="footer" id="nav" style="height: 3.8rem;">
+		<ul>
+			<li onclick="window.location.href = 'xywz.html'"><img style="margin-bottom: 0" src="img/banner/homeHui.png"><p>首页</p></li>
+			<li onclick="window.location.href = 'sao_desc.html'"><img style="margin-bottom: 0" src="img/banner/saoxuan.png"><p style="color: #00afa1;font-weight: 600;">快捷约定</p></li>
+			<li onclick="window.location.href = 'user_center.html'"><img style="margin-bottom: 0" src="img/banner/myHui.png"><p style="">我的</p></li>
+		</ul>
+	</div>
+</div>
+<!--<footer>
+	<div class="fbt" onclick="mui.back()">取　 消</div>
+</footer>-->
+</body>
+
+<script type="text/javascript" charset="utf-8">
+   $(document).ready(function () {
+       User.info();
+   });
+    var User = {
+        info: function () { //个人中心信息
+            var url = SERVER_ADDR + '/app/user/myInfo';
+            var Data = {};
+            Data.id = getQueryString('itemId');
+            ajaxGetRetInfo(url, Data, this.infoSuccess, '请求失败', 'GET', true, undefined);
+        },
+        infoSuccess: function (res) {
+            if (res.success == true) {
+
+            } else {
+                alert(res.data);
+            }
+        },
+    }
+    $(".mubu").click(function(){
+        $('.modelOpen').hide();
+    })
+	function readHos() {
+        Get.GetHospitals();
+        $('.modelOpen').show();
+    }
+    var Get = {
+        GetHospitals: function () {
+            var url = SERVER_ADDR + '/app/hospital/getHospitals.json';
+            var Data = '';
+            ajaxGetRetInfo(url, Data, this.GetHospitalsSuccess, '请求失败', 'GET', true, undefined);
+        },
+        GetHospitalsSuccess: function (retInfo) {
+            if (retInfo.success == true) {
+                var html = '';
+                if(retInfo.data.length > 0){
+                    $('.modelOpenback ul').empty();
+                    retInfo.data.forEach(function (value) {
+                        html += '<li>'+value.name+'</li>';
+					})
+                    $('.modelOpenback ul').append(html);
+				}
+            } else {
+                alert(retInfo.data)
+            }
+        }
+    }
+
+</script>
+
+</html>

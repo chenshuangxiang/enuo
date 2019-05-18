@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,minimum-scale=1,maximum-scale=1,user-scalable=no,minimal-ui">
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/util.css">
+    <link rel="stylesheet" href="css/browDetail.css">
+    <link rel="stylesheet" href="css/lib/fsgallery.css" />
+    <script type="text/javascript" src="plug/jquery-1.11.3.js"></script>
+    <script type="text/javascript" src="js/lib/fs_forse.js" ></script>
+    <title>超声洁牙拼团</title></head>
+<style>
+    .left_tittle span{
+        color: #00afa1;margin-left: 0;   font-size: .3rem;
+    }
+</style>
+<!--<body style="background-color: #f1f1f1;background: url('img/browActive/browDetailBack.jpg') no-repeat;background-size: 100%;">-->
+<body style="background-color: #e1f1fd">
+<div class="successOpen" style="z-index: 999999">
+    <div class="mubu"></div>
+    <!--<img class="mubuDian" src="img/vote/voteDianBack.png">-->
+    <p class="sucescsclose"  onclick="$('.successOpen').hide()"></p>
+    <div class="jiangback">
+        <!--<img src="../img/yuyueback.png">-->
+        <img class="jiangbackImg" src="img/browActive/browJiangShuiyang.png">
+    </div>
+    <p class="getJiang" onclick="window.location.href = 'myBrow.html?index=1'"></p>
+</div>
+<div class="shareOpen">
+    <div class="mubu"></div>
+    <div class="modelOpenback" style="    width: 86%;
+    left: 7%;background-color: white;    padding-bottom: 1.3rem;">
+        <img class="payclose" onclick="$('.shareOpen').hide()" style="position: relative;right: 0" src="img/payclose.png">
+        <img class="sharSuccess" src="img/browActive/noJiang.png">
+        <p class="paySuccessZi" style="font-size: 1rem;">很遗憾，奖品好像迷路了...</p>
+        <p class="paySuccessZi" style="    font-size: .75rem;color: #676767;width: 100%;margin: .5rem 0 1rem 0;">(温馨提示：分享可获得抽奖机会，大奖等你来拿！)</p>
+    </div>
+</div>
+<div class="shareOpenBefore">
+    <div class="mubu"  style="opacity: .8;z-index: 999"></div>
+    <div class="modelOpenback" style="background-color: rgba(255,255,255,0);top: 2%;
+    width: 90%;
+    left: 5%;">
+        <img class="activityFu" src="img/shareXiumeiOneImg.png">
+        <img class="activityClose" onclick="$('.shareOpenBefore').hide();$('.search').show()" src="img/know.png">
+    </div>
+</div>
+<div class="shareAddBeforeOpenBefore" onclick="$('.search').hide();$('.activityFuDetailZhi').fadeIn();$('.activityFuDetailZhi').fadeOut();$('.activityFuDetailZhi').fadeIn()">
+    <div class="mubu"  style="opacity: .8;z-index: 999"></div>
+    <div class="modelOpenback" style="background-color: rgba(255,255,255,0);top: 2%;
+    width: 90%;
+    left: 5%;">
+        <img class="activityFuDetailZhi" style="display: none" src="img/browActive/browToZhi.png">
+        <img class="activityFuDetailToShare" src="img/browActive/browToShare.png">
+        <img class="activityFuDetail" style="width: 80%;margin-left: 10%" src="img/browActive/browAddBrowZi.png">
+        <img class="activityFuDetail" src="img/browActive/browShareDetial.png">
+       <!-- <img class="activityClose" onclick="$('.shareOpenBefore').hide();$('.search').show()" src="img/know.png">-->
+    </div>
+</div>
+<div class="content xywz" style="    background: none;">
+    <!--<img class="browDetailBackImg" src="img/browActive/browDetailBack.jpg">-->
+   <!-- <div class="headerimg  flex_vertical justify_content_equal">
+        <img class="headerimgTop"  src=""/>
+        <img class="up_page pub_hearder_left" src="img/header/header_leftHui.png?v=9e72a57" onclick="window.location.href = 'vote.html'">
+    </div>-->
+    <div class="pub_hearder flex_vertical justify_content_equal">
+        <!--<img class="up_page pub_hearder_left" src="img/header/header_left.png" />-->
+        <!--<div class="head_center" style="    width: 69%;">
+            <div class="search_publish" style="left: .34rem;   height: 1rem;">
+                <div style="position: relative;    margin-top: .9em;    width: 4.5rem;">
+                    <input style="background-color: transparent;border: 1.4px solid white;height: .55rem;" type="text" placeholder="搜索您感兴趣的项目"/><img style="    top: .55rem;" src="img/search.png" />
+                </div>
+            </div>
+        </div>-->
+        <img class="up_page pub_hearder_left" src="img/header/header_left.png" onclick="window.history.go(-1)" />
+        <div class="head_center head_centerZi">
+            <!--	<div class="search_publish">
+                    <div style="position: relative;">
+                        <input class="toggleSou" type="text" style="color: black;height: .5rem; margin-bottom: .15em;" placeholder="搜索医生"/>
+                    </div>
+                </div>-->
+            <span class="set_head_dot" style="width: .15rem;height: .15rem;border-radius: 50%;"></span>
+            <span class="set_head_dot" style="width: .25rem;height: .27rem;border-radius: 50%;"></span>
+            <span class="set_head_dot"></span>
+            <span class="head_title">超声洁牙拼团</span>
+            <span class="set_head_dot"></span>
+            <span class="set_head_dot" style="width: .25rem;height: .27rem;;border-radius: 50%;"></span>
+            <span class="set_head_dot" style="width: .15rem;height: .15rem;border-radius: 50%;"></span>
+        </div>
+        <img class="search" onclick="window.location.href = 'browIndex.html'" src="img/browActive/browActiveInex.png"/>
+    </div>
+
+
+    <div class="neiAbsolut">
+        <!--<p class="docNum">编号:001</p>
+        <img class="docImg" src="img/find_doc/goods_pic.png"/>-->
+
+        <div class="rankDiv" style="margin-top: 1rem;">
+            <div class="rankDivOwn">
+                <div class="rankDivOwnOne">
+                    <img class="rankDivOwnImg" src="img/browActive/browChild.png">
+                    <img style="width: 74%; margin-top: -1rem;" src="img/pin/toothOwn.png">
+                </div>
+                <div class="pingDao">
+                    <p class="dingP"><span style="color: #fc5c16;font-size: 1.2rem;">拼团中...</span></p>
+                    <p class="shenP" style="font-size: .8rem;    margin: .1rem 0 .1rem 0;">仅剩<span class="shenNum"></span>个名额</p>
+                    <p class="countDownP" style="font-size: .8rem;"><span class="timeDao"></span>后结束</p>
+                    <p class="activeTimeP">开始时间：<span class="activetime"></span></p>
+                    <p class="activeAddressP">拼成时间：<span class="activeEndtime">活动地址：</span></p>
+                </div>
+                <img class="changeRank" src="">
+            </div>
+            <div class="rankDivChild">
+                <div class="rankDivChildOne"><img class="zhu" src="img/browActive/browChild.png"></div>
+                <div class="rankDivChildOne" style="margin-right: 0"><img class="niu" src="img/browActive/browChild.png"></div>
+                <div class="toGoYao" style="
+    float: right;
+    margin-right: 5%;
+    color: #fc5c16;
+    font-size: .95rem;
+    vertical-align: top;
+    margin-top: 1rem;text-decoration:underline;display: none" onclick="if(numberOfTeams < 3){
+                        if(myPositionAll == 0){  //团长弹幕
+                           $('.activityFu').attr('src','img/shareXiumeiOwnImg.png')
+                        }
+                        $('.shareOpenBefore').show();
+                        $('.search').hide();}">去邀请></div>
+                <!--<div class="rankDivChildOne"><img class="hou" src="img/browActive/browChild.png"></div>
+                <div class="rankDivChildOne"><img class="long" src="img/browActive/browChild.png"></div>-->
+            </div>
+            <div style="clear: both"></div>
+            <!--<div class="chengDiv"><div style="float: right;margin-right: 2%"><img src="img/browActive/chengImg.png"><span class="chengSpan">&nbsp;成团即可获得精美礼品</span></div></div>-->
+        </div>
+        <div style="clear: both"></div>
+        <div class="noJiangDiv" style="display: none">
+            <img src="img/browActive/noJiang.png">
+            <p style="color: #333;font-size: 1rem">很遗憾，您未能中奖哦，下次运气会更好！</p>
+            <p style="color: #cccccc;font-size: .7rem">(温馨提示：分享还可获得一次抽奖机会，大奖等你来拿！)</p>
+        </div>
+    </div>
+    <img class="browcouponImg"  src="img/pin/toothcouponMargin.png">
+    <div class="neiAbsolutZi" style="margin-top: 0">
+        <p style="font-size: 1rem;text-align: center;padding: .4rem 0 .15rem 0;">活动内容：</p>
+        <p>1、参与方式：关注【e诺健康】微信公众号，点击下方“<span class="zizi">活动专区”-“洁牙拼团</span>”即可参与本次活动；</p>
+        <p>2、活动期间，用户选择“<span class="zizi">我要当团长”/“寻找我的团</span>”参与拼团活动。一旦队伍人数达到3人，即可视为拼团成功，团长免单，团员可享受58元特价超声洁牙一次（原价380元）；</p>
+        <p>3、团长可于【e诺健康】—“个人中心—余额”中提现，并于“<span class="zizi">个人中心—我的订单</span>”中进行预约。团员可于【e诺健康】—“个人中心—我的订单”中直接进行预约；</p>
+        <p>4、活动截止前，若拼团人数未到3人，团员可<span class="zizi">随时更换团队</span>。活动时间截止后，若拼团队伍还未满员，即视为队伍过期，过期队伍成员可点击【e诺健康】微信公众号下方菜单栏中的“个人中心”-“我的订单”申请退还全款；</p>
+        <p>5、活动时间：<span class="zizi">2019年4月18日 9:00-2019年4月20日18:00</span>；</p>
+        <p>6、在法律允许的范围内，本次活动最终解释权归e诺健康所有。</p>
+    </div>
+  <!--  <div class="divHengDiv">
+
+    <div class="divHeng">
+        <span class="divHengName">参 &nbsp;赛 &nbsp;人:</span>
+        <span class="divHengDetail name">无语无语</span>
+    </div>
+    <div class="divHeng">
+        <span class="divHengName">职 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;称:</span>
+        <span class="divHengDetail title">主治医师</span>
+    </div>
+    <div class="divHeng">
+        <span class="divHengName">所属医院:</span>
+        <span class="divHengDetail hospital">杭州天鑫瑞丽医院</span>
+    </div>
+    <div class="divHeng">
+        <span class="divHengName">推荐理由:</span>
+        <span class="divHengDetail reason" style="line-height: 1.3rem;">我对你无语了我对你无语了我对你无语了我对你无语了我对你无语了我对你无语了我对你无语了</span>
+    </div>
+    </div>-->
+
+   <!-- <div class="id">
+        <p class="bottomname" style="text-align: center">
+            &lt;!&ndash;<input type="checkbox" onchange="Get.check(this)" class="option-input">&ndash;&gt;
+         &lt;!&ndash;   <span class="goodsName">投他一票</span>&ndash;&gt;
+            <span class="sureBack" onclick="Get.check(this)">投他一票</span>
+        </p>
+       &lt;!&ndash; <p class="waen">(页面勾选即可同步到活动首页)</p>&ndash;&gt;
+
+    </div>-->
+</div>
+<!--<script type="text/javascript" src="js/viewport.js"></script>-->
+<script src="js/common.js"></script>
+<script type="text/javascript" src="js/browDetail.js"></script>
+<script src="js/lib/jweixin-1.1.0.js"> </script>
+<script src="js/getShare.js"> </script>
+</body>
+<script>
+    $(document).ready(function () {
+        init();
+})
+</script>
+</html>

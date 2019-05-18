@@ -1,0 +1,163 @@
+/*医院列表*/
+.hos_child{
+	height: 8rem;
+	padding-top: .2rem;
+}
+.hos_child .hos_list_top{
+	height: 7.7rem;
+	/*border: 1px solid red;*/
+	font-size: .2rem;
+	line-height: .35rem;
+}
+.hos_list_top div{
+	float: left;
+}
+.hos_list_top .left{
+	width: 28%;
+	margin: -.2rem .2rem 0 -.2rem;
+
+}
+.hos_list_top .left img{
+	height: 9em;
+}
+.hos_list_top .right{
+	padding-left:.2rem;
+	margin-top: .2em;
+	width: 70%;
+}
+ul li{
+	list-style: none;
+}
+.famous_doc_layer {
+	width: 100%;
+	height: 26rem;
+	padding-bottom: 1rem;
+	background-color: white;
+	/* position: absolute; */
+	/* z-index: 1000; */
+/*	margin-top: 8px;*/
+/*	padding: .2rem .3rem .2rem .3rem;*/
+	font-size: .24rem;
+	border-radius: .1rem;
+	background:url("../img/riliback.png")  no-repeat;
+	background-size: 104% 100%;
+	background-position: 44% 0%;
+	overflow: hidden;
+	position: relative;
+}
+.famous_doc_layer>p {
+	width: 1rem;
+	height: 1.6rem;
+	overflow: hidden;
+	position: absolute;
+	top: 13.4rem;
+}
+/*日历*/
+#schedule-box{
+	width: 94%;
+	height: 76.5%;
+	margin: 0 auto;
+	margin-top: 13%;
+	padding: 1rem 1rem;
+	font-size: 1rem;
+	/*background-color: white;*/
+	border-radius: .3rem;
+	padding-top: .5rem;
+}
+.schedule-hd{
+	display: flex;
+	justify-content: space-between;
+	padding: 0 4% .8rem 4%;
+
+}
+.today{
+	flex: 1;
+	text-align: center;
+}
+.ul-box{
+	overflow: hidden;
+}
+.ul-box > li{
+	float: left;
+	width: 14.28%;
+	text-align: center;
+	padding: .15rem 0;
+}
+.other-month{
+	color: #999999;
+}
+.current-month{
+	color: #333333;
+}
+.today-style{
+	border-radius: 50%;
+	background: #58d321;
+}
+.arrow{
+	cursor: pointer;
+}
+.dayStyle{
+	display: inline-block;
+	width: 35px;
+	height: 35px;
+	border-radius: 50%;
+	text-align: center;
+	line-height: 35px;
+	cursor: pointer;
+}
+.current-month > .dayStyle:hover{
+	background: #00BDFF;
+	color: #ffffff;
+}
+.today-flag{
+	background: #fbc614;
+	color: #fff;
+}
+.boxshaw{
+	box-shadow: 1px 2px 18px -8px #00C2B1
+}
+.selected-style {
+	background: #00C2B1;
+	color: #ffffff;
+}
+#h3Ele{
+	text-align: center;
+	display: none;
+}
+.riliyuyue{
+	margin: .1rem 0 .5rem 10%;
+	color: #444;
+	font-size: .88rem;
+}
+.bottomFunc{
+/*	position: absolute;*/
+	width: 100%;
+	bottom: 4rem;
+}
+
+/*底部*/
+.doc_homepage_btm {
+	width: 100%;
+	height: 2.7rem;
+}
+.fixed {
+	position: fixed;
+	bottom: 0px;
+}
+.doc_homepage_btm div {
+	display: inline-block;
+	width: 100%;
+	height: 4rem;
+	line-height: 2.8rem;
+	font-size: 1rem;
+	font-weight: bold;
+	text-align: center;
+	color: #ffffff;
+	float: left;
+}
+.doc_homepage_btm .make {
+	background-color: #00AFA1;
+}
+
+
+

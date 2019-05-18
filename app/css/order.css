@@ -1,0 +1,364 @@
+/*医院列表*/
+.hos_child{
+	/*height: 11.9rem;*/
+	padding-top: .2rem;
+}
+.hos_child .hos_list_top{
+	/*height: 11.6rem;*/
+	/*border: 1px solid red;*/
+	font-size: .8rem;
+	line-height: .35rem;
+}
+.hos_list_top div{
+	float: left;
+}
+.hos_list_top .left{
+	width: 26%;
+	margin: -.2rem .2rem 0 -.2rem;
+	clear: both;
+}
+.hos_list_top .left img{
+	max-height: 4.9rem;
+	overflow: hidden;
+	width: initial;
+}
+.hos_list_top .right{
+	padding-left:.2rem;
+	width: 73%;
+}
+.right p {
+	margin-bottom: .2rem;
+	height: 1.4rem;
+	line-height: 1.4rem;
+}
+.detail .name {
+	display: inline-block;
+	font-size: .9rem;
+	letter-spacing: 1px;
+	width: 100%;
+	color: black;
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+}
+.docLevel {
+	color: #00aea0;
+	font-size: .8rem;
+	margin-left: 3%;
+}
+.peopelCount {
+	color: #feb62a;
+}
+.goodPlace {
+	border-top: 1px dashed #cccccc;
+	padding: .5em 0 0 0;
+	margin: .4em 0 0 0;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+.spanFloat{
+	display: inline-block;
+	width: 50%;
+	overflow: hidden;
+	float: left;
+	white-space:nowrap;
+	text-overflow:ellipsis;
+	font-size: .9rem;
+}
+ul li{
+	list-style: none;
+}
+.split{
+	width: 96%;
+	height: 1px;
+	margin-left: 2%;
+	border-top: 1px dashed #e5e5e5;
+}
+.yuyueTop {
+	width: 94%;
+	color: black;
+	font-size: .9rem;
+	margin: .5rem 0 0 4%;
+	height: 2.2rem;
+	line-height: 1.6rem;
+	clear: both;
+	border-bottom: solid 1px #dcdcdc;
+}
+.orderContent{
+	width: 94%;
+	color: black;
+	font-size: .2rem;
+	margin: .7rem 0 0 4%;
+	height: 5.5rem;
+	clear: both;
+	border-bottom: solid 1px #dcdcdc;
+}
+.orderBottom{
+	width: 94%;
+	color: black;
+	font-size: .8rem;
+	margin: .5rem 0 0 4%;
+	height: 2.2rem;
+	line-height: 1.6rem;
+	clear: both;
+}
+.famousName {
+	display: inline-block;
+}
+.yuyueStatus {
+	color: #00afa1;
+	font-weight: 500;
+	font-size: .85rem;
+	float: right;
+	margin-right: 1.5%;
+}
+.orderDel,.ordercancel {
+	color: #444;
+	font-weight: 500;
+	font-size: .8rem;
+	float: right;
+	margin-right: 1.5%;
+	border: 1px solid #dcdcdc;
+	background-color: white;
+	outline: none;
+	padding: .25rem .5rem;
+}
+.payBottom{
+	position: absolute;
+	bottom: .7rem;
+	right: 1.5%;
+	width: 100%;
+}
+.ordercanceljiancha {
+	color: #444;
+	font-weight: 500;
+	font-size: .8rem;
+	float: right;
+	margin-right: 1.5%;
+	border: 1px solid #dcdcdc;
+	background-color: white;
+	outline: none;
+	padding: .25rem .5rem;
+	position: absolute;
+	bottom: .6rem;
+	right: 25.5%;
+	border-radius: 5px;
+}
+.orderPay{
+	border-radius: 5px;
+	color: white;
+	font-weight: 500;
+	font-size: .8rem;
+	float: right;
+	margin-left: 1.5%;
+	margin-right: 1.5%;
+	border: none;
+	background-color: #f81f7b;
+	outline: none;
+	padding: .25rem .6rem;
+}
+.ordersure,.ordercommont{
+	border-radius: 5px;
+	color: white;
+	font-weight: 500;
+	font-size: .8rem;
+	float: right;
+	margin-left: 1.5%;
+	margin-right: 1.5%;
+	border: none;
+	background-color: #00afa1;
+	outline: none;
+	padding: .25rem .6rem;
+}
+.orderdetailchoose{
+	color: #555;
+	font-size: .72rem;
+}
+.orderzong{
+	color: #444;
+	font-size: .75rem;
+}
+.orderzongfu{
+	color: #f81f7b;
+	font-size: .7rem;
+}
+.orderzongPrice{
+	color: #f81f7b;
+	font-size: 1rem;
+}
+/*申诉*/
+/*电话*/
+.call-active{
+	-webkit-transform: translateY(100%);
+	-ms-transform: translateY(100%);
+	transform: translateY(100%);
+}
+.shareCall{
+	background-color: white;
+	height: 6rem;
+	font-size: 14px;
+	bottom: 0;
+	left: 0;
+	position: fixed;
+	-webkit-transition: -webkit-transform 500ms;
+	transition: transform 500ms;
+	width: 100%;
+	z-index: 1110;
+}
+.sharebg {
+	background-color: rgba(0, 0, 0, 0.2);
+	bottom: 0;
+	height: 100%;
+	left: 0;
+	opacity: 0;
+	position: fixed;
+	right: 0;
+	top: 0;
+	width: 100%;
+	z-index: 1100;
+	display: none;
+}
+/*向上全部拉出*/
+/*.share-title { background-color: #f8f8f8; border-bottom: 1px solid #fff; border-top-left-radius: 2px; border-top-right-radius: 2px; color: #555; font-weight: 400; margin: 0 10px; padding: 10px 0 0; text-align: center; }*/
+.share-title::after {
+	border-bottom: 1px solid #dfdfdf;
+	content: "";
+	display: block;
+	height: 0px;
+	margin-top: 10px;
+	width: 100%;
+}
+.sharebg-active {
+	opacity: 1;
+	display: block;
+}
+
+.clear {
+	clear: both;
+}
+.mainCall{
+	width: 100%;
+	height:3.1rem;
+	line-height: 3.1rem;
+}
+.mainCall img{
+	width: 2rem;
+	margin: .2rem 0 0 28%;
+}
+.mainCall a{
+	color: #00afa1;
+	font-size: 1.3rem;
+	text-decoration:none;
+	width: 100%;
+	height: 3.1rem;
+	line-height: 2.9rem;
+	display: inline-block;
+}
+.split{
+	width: 100%;
+	height: 0.4rem;
+	background-color: #f5f5f5
+}
+.cancel{
+	width: 100%;
+	height: 2.5rem;
+	line-height:2.5rem;
+	color: #00afa1;
+	font-size: .9rem;
+	text-align: center;
+}
+/*预约弹窗*/
+.shareTuiBeforeOpenBefore{
+	position: fixed;
+	width: 100%;
+	height: 100%;
+	z-index: 999;
+	top: 0;
+	display: none;
+}
+.activityFuDetailZhi{
+	width: 20%;
+	float: right;
+	clear: both;
+}
+.activityFuDetailToShare{
+	width: 33%;
+	float: right;
+	clear: both;
+	margin: 1rem 6% .5rem 0;
+}
+.mubu{
+	position: fixed;
+	width: 100%;
+	height: 100%;
+	background-color: #000000;
+	opacity: 0.2;
+}
+.paySuccessZi{
+	font-size: .9rem;
+	line-height: 1.3rem;
+	text-align: center;
+	/* height: 1.5rem; */
+	width: 80%;
+
+	margin-left: 10%;
+}
+.paySuccessBackZi{
+	font-size: 1rem;
+	text-align: center;
+	line-height: 4.2rem;
+	height: 3.8rem;
+}
+.successBackPay{
+	font-size: .9rem;
+	text-align: center;
+	line-height: 3rem;
+	height: 3rem;
+	border-top: 1px solid #dddddd;
+	border-bottom: 1px solid #dddddd;
+	color: #00afa1;
+}
+.noBackPay{
+	font-size: .9rem;
+	text-align: center;
+	line-height: 2.5rem;
+	height: 2.5rem;
+	color: #444;
+}
+.modelOpenback{
+	width: 76%;
+	position: fixed;
+	top: 26%;
+	left: 12%;
+	z-index: 99999;
+	border-radius: 5px;
+	background-color: white;
+}
+.payclose,.paybackclose{
+	width: 1.25rem;
+	float: right;
+	margin: .85rem;
+}
+.paySuccess{
+	width: 19%;
+	margin: 12% 0 4.5% 41%;
+}
+.toYuyue,.toYuyueno{
+	width: 29%;
+	height: 2.2rem;
+	background-color: #00afa1;
+	border: none;
+	outline: none;
+	/* position: absolute; */
+	border-radius: 5px;
+	color: white;
+	font-size: .85rem;
+	margin: 6% 0 9% 6%;
+}
+.toYuyueno{
+	background-color: white;
+	color: #707070;
+	border: 1px solid #707070;
+	margin-left: 17%;
+}

@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<link rel="stylesheet" href="css/base.css" />
+	<link rel="stylesheet" href="css/util.css" />
+	<link rel="stylesheet" href="css/lib/xiala.css" />
+	<link rel="stylesheet" href="css/order_pay.css" />
+	<script type="text/javascript" src="plug/jquery-1.11.3.js" ></script>
+	<script src="js/common.js"></script>
+	<!--<title>支付订单</title>--><title>支付订单</title>
+</head>
+<body style="background-color: #f1f1f1;">
+<div class="content">
+	<!--标题-->
+	<!--<a href="../index.html"><div class="header"></div></a>-->
+	<div class="pub_hearder flex_vertical justify_content_equal" style="z-index: 99; position: fixed;
+    top: 0;">
+		<img class="up_page pub_hearder_left" src="img/header/header_left.png" onclick="window.location.href = 'user_center.html'" />
+		<div class="head_center head_centerZi" style="width: 70%;
+    margin-left: 5%;">
+			<!--	<div class="search_publish">
+                    <div style="position: relative;">
+                        <input class="toggleSou" type="text" style="color: black;height: .5rem; margin-bottom: .15em;" placeholder="搜索医生"/>
+                    </div>
+                </div>-->
+			<span class="set_head_dot" style="width: .15rem;height: .15rem;border-radius: 50%;"></span>
+			<span class="set_head_dot" style="width: .25rem;height: .27rem;border-radius: 50%;"></span>
+			<span class="set_head_dot"></span>
+			<span class="head_title">支付订单</span>
+			<span class="set_head_dot"></span>
+			<span class="set_head_dot" style="width: .25rem;height: .27rem;;border-radius: 50%;"></span>
+			<span class="set_head_dot" style="width: .15rem;height: .15rem;border-radius: 50%;"></span>
+		</div>
+		<!--<img class="search pub_hearder_right" src="img/forward.png" />-->
+		<!--	<img class="search pub_hearder_right" onclick="Show.Sou()" src="img/search.png"/>-->
+	</div>
+	<!--<div class="famous_doc_layer">
+		<div class="yuyueTop">预约单号：<span class="famousName">4545454102536</span><span class="yuyueStatus">预约中</span></div>
+		<div class="split"></div>
+		<div class="btm">
+			<p><span class="famousName">预约医院：</span><span class="hosName">杭州复旦医院</span></p>
+			<p><span class="famousName">预约科室：</span><span class="docName">李华</span></p>
+			<p><span class="famousName">预约医生：</span><span class="docLevel">主任医师</span></p>
+			<p><span class="famousName">预约时间：</span><span class="docSub">五官科</span> &#45;&#45; <span class="docSubSub">五官科</span></p>
+		</div>
+	</div>-->
+	<!--滑动区域-->
+
+	<!--商品-->
+		<!--展示上拉加载的数据列表-->
+
+			<div class="hos_child set_box_shadow" style="margin-top: 3.5rem;">
+				<div class="hos_list_top clearfix">
+					<div class="yuyueTop">订单号：<span class="famousName hosName orderSn">256554586</span></div>
+					<div class="yuyueTop" style="border-bottom: 0">实付款：<span class="orderzongPrice" style="font-size: 1.1rem">1208</span><span class="orderzongfu">￥</span></div>
+			</div>
+			</div>
+	<div class="hos_child set_box_shadow"><div class="hos_list_top clearfix">
+		<div class="yuyueTop"><span class="famousName hosName">请选择支付方式</span></div>
+		<p class="hos_data" style="border-bottom: 0;padding-bottom: .8rem;">
+			<img src="img/wecatImg.png">
+			<span class="">微信支付</span>
+			<!--<img class="next" src="img/next.png">-->
+			<input class="paygou next" type="radio" name="sex" value="man" checked>
+		</p>
+	</div>
+	</div>
+	<p style="margin: 1rem 0 0 5%;;font-size: .7rem;color: #444">为避免订单失效，建议您在30分钟之内完成支付</p>
+	<div class="payBtn" onclick="Go.topanimate()">确认支付</div>
+	<!--下滑弹出-->
+	<div class="share first-active">
+		<div class="mainTop">
+			<div class="main_close"><img src="img/close.png"></div>
+			<div class="payZi">确认付款</div>
+			<div class="main_wen" style="right: 4%;left: inherit;"><img src="img/wen.png"></div>
+		</div>
+		<div class="orderprice orderpriceQuan">￥1258.00</div>
+		<div class="orderprice orderpriceFen"><input type="text" class="fendanVal" placeholder="输入支付金额"/></div>
+		<div class="yuyueTop" style="width: 92%;margin-top: .7rem">订单信息：<span class="payRightChoose">4546546546</span><span class="payRightChoose">订单号：</span></div>
+		<div class="yuyueTop" style="border-bottom: 0;width: 92%;padding-top: .2rem;"  onclick="Go.topanimateRight()">付款方式：<img style="width: .4rem;
+    margin: 0.47rem 0 0 .7rem;" class="payRightChoose" src="img/next.png"><span class="payRightChoose payRightChooseZi">全额付款</span></div>
+		<div style="clear:both"></div>
+
+		<div class="sure">确定</div>
+	</div>
+
+	<div class="share2 second-active">
+		<div class="mainTop">
+			<div class="main_Back"><img style="transform: rotate(180deg);width: 0.6rem;" onclick="Go.topanimateBack()" src="img/next.png"></div>
+			<div class="payZi">请选择付款方式</div>
+			<div class="main_wen" style="right: 9px;left: inherit;"><img src="img/wen.png"></div>
+		</div>
+		<div class="yuyueTop choosePayDiv" style="width: 92%;margin-top: .7rem" onclick="Go.quaneBack()">全额付款<img class="payRightChoose choosegou" src="img/goublue.png"></div>
+		<div class="yuyueTop choosePayDiv" style="border-bottom: 0;width: 92%;padding-top: .2rem;" onclick="Go.fendanBack()">分单支付<!--<img class="payRightChoose choosegou" src="img/goublue.png">--></div>
+		<div style="clear:both"></div>
+	</div>
+
+</div>
+</body>
+
+<!--mescroll本身不依赖jq,这里为了模拟发送ajax请求,获取模拟数据-->
+<!--<script type="text/javascript" src="js/viewport.js" ></script>-->
+<script type="text/javascript" src="js/util.js"></script>
+<script src="js/order_pay.js"></script>
+<!--	<script src="../res/pdlist1.js" type="text/javascript" charset="utf-8"></script>-->
+
+<script type="text/javascript" charset="utf-8">
+	$(document).ready(function () {
+		init();
+    })
+</script>
+
+</html>

@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no,minimal-ui">
+<!--<link rel="stylesheet" href="plug/swiper/css/swiper.css"/>-->
+<link rel="stylesheet" href="css/base.css" />
+<link rel="stylesheet" href="css/util.css" />
+<link rel="stylesheet" href="css/find_subject.css" />
+	<link rel="stylesheet" href="css/lib/xiala.css" />
+<!--<title>找科室</title>--><title>e诺</title>
+</head>
+<body style="background-color: #f1f1f1;">
+<div id="loading"><!--<img src="img/loading.gif">--></div>
+<div class="content">
+	
+<!--头部-->
+	<div class="height" style="overflow: auto">
+<div class="pub_hearder flex_vertical justify_content_equal" style="z-index: 99">
+	<!--<img class="up_page pub_hearder_left" src="img/header/header_left.png" />-->
+	<div class="head_center" style="margin-left: 0;text-align: center">
+		<!--<div class="search_publish">
+			<div style="position: relative;">
+				<input class="toggleSou" type="text" style="color: black;height: .5rem; margin-bottom: .15em;" placeholder="搜索医生"/>
+			</div>
+		</div>-->
+		<span class="set_head_dot" style="width: .05rem;height: .05rem;border-radius: 50%;"></span>
+		<span class="set_head_dot" style="width: .08rem;height: .08rem;border-radius: 50%;"></span>
+		<span class="set_head_dot"></span>
+		<span class="head_title">内科</span>
+		<span class="set_head_dot"></span>
+		<span class="set_head_dot" style="width: .08rem;height: .08rem;border-radius: 50%;"></span>
+		<span class="set_head_dot" style="width: .06rem;height: .06rem;border-radius: 50%;"></span>
+	</div>
+	<!--<img class="search pub_hearder_right" onclick="Show.Sou()" src="img/search.png"/>-->
+</div>
+<!--搜索框-->
+<!--<div class="search_publish">
+	<div style="position: relative;">
+		<input type="text" placeholder="搜索你感兴趣的医院"/><img src="img/search.png" />
+	</div>
+</div>-->
+
+<!--菜单栏-->
+<div class="menu_nav dov_nav clearfix" style="z-index: 99;position: relative;">
+	<div class="ranking flex_all_center subChildRoom"><!-- onclick="Choose.subsubject()"-->
+		<span>子科室</span>&nbsp;<img src="img/down.png" />
+	</div>
+	<div class="address flex_all_center level">
+		<span>职称</span>&nbsp;<img src="img/down.png" />
+	</div>
+</div>
+		<div class="Sort-eject Sort-height subjectLong">
+			<ul class="Sort-Sort subjectLongSort">
+			</ul>
+		</div>
+		<div class="Sort-eject Sort-height levelLong" style="right: 0">
+			<ul class="Sort-Sort levelLongSort ">
+			</ul>
+		</div>
+
+<!--医院筛选列表-->
+<div class="menu_content">
+	<!--类型列表-->
+	<div class="all_type_detail none">
+		<!--<p data_value = "0">骨科</p>
+		<p data_value = "1">眼科</p>
+		<p>......</p>-->
+	</div>
+	<!--区域列表-->
+	<div class="address_detail none">
+		<!--<p>主治医师</p>
+		<p>主治医师。。</p>-->
+	</div>
+	<!--排名列表-->
+	<div class="ranking_detail none" style="right: 0;">
+		<!--<p>极好</p>
+		<p>极好。。。。</p>-->
+	</div>
+</div>
+
+<!--医院列表-->
+<div class="">
+	<!--遮罩层-->
+	<div class="shade none"></div>
+	<!--列表-->
+	<div class="hos_list">
+
+	</div>
+</div>
+</div>
+
+</div>
+<script type="text/javascript" src="plug/jquery-1.11.3.js" ></script>
+<script type="text/javascript" src="js/viewport.js" ></script>
+<script src="js/common.js"></script>
+<script type="text/javascript" src="js/find_subject.js"></script>
+<!--<script type="text/javascript" src="js/util.js"></script>
+<script type="text/javascript" src="js/method.js"></script>
+<script type="text/javascript" src="js/find_hos.js" ></script>-->
+
+</body>
+<script>
+    $(document).ready(function () {
+        init()
+    })
+</script>
+</html>

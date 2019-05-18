@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<link rel="stylesheet" href="css/base.css" />
+		<link rel="stylesheet" href="css/util.css" />
+		<link rel="stylesheet" href="css/bind_tel.css" />
+		<script type="text/javascript" src="plug/jquery-1.11.3.js" ></script>
+		<script src="js/common.js"></script>
+		<title>演唱会门票兑换</title>
+	</head>
+
+	<body style="background-color: #f1f1f1;">
+	<div class="content">
+		<!--标题-->
+		<div class="pub_hearder flex_vertical justify_content_equal" style="z-index: 99">
+			<img class="up_page pub_hearder_left" src="img/header/header_left.png" onclick="window.history.go(-1)" />
+			<div class="head_center" style="">
+				<span class="set_head_dot" style="width: .15rem;height: .15rem;border-radius: 50%;"></span>
+				<span class="set_head_dot" style="width: .25rem;height: .27rem;border-radius: 50%;"></span>
+				<span class="set_head_dot"></span>
+				<span class="head_title">演唱会门票兑换</span>
+				<span class="set_head_dot"></span>
+				<span class="set_head_dot" style="width: .25rem;height: .27rem;;border-radius: 50%;"></span>
+				<span class="set_head_dot" style="width: .15rem;height: .15rem;border-radius: 50%;"></span>
+			</div>
+		</div>
+		<div class="hos_child set_box_shadow">
+			<div class="hos_list_top clearfix">
+				<div class="left">券号</div>
+				<div class="right"><input style="height: 2rem;
+    line-height: 2rem;
+    border: none;
+    outline: none;
+    font-size: .85rem;" class="telNum" placeholder="请输入券号" type="number"/>
+					<!--<button  onclick="Go.getcode(this)">获取验证码</button>-->
+				<!--	<input type="button" value=""/></div>-->
+			</div>
+			</div>
+
+			<div class="hos_list_top clearfix" style="border-bottom: none">
+				<div class="left">密码</div>
+				<div class="right"><input class="telCode" placeholder="请输入密码" type="text"/></div>
+			</div>
+
+		</div>
+
+		<div class="clearfix"></div>
+		<div style="color: red;font-size: .85rem;    margin: .8rem 0 0 9%;">注：请注意区分大小写</div>
+		<div class="bindBtn" onclick="Go.singRecharge()">确定</div>
+	</div>
+	</body>
+	<script type="text/javascript" charset="utf-8"></script>
+	<script src="js/singRecharge.js"></script>
+</html>

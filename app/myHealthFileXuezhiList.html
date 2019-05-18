@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+
+	<!--在您实际的项目中,请留意mescroll-option.css的图片路径是否引用正确,可写成绝对路径或网络地址-->
+	<!--可把mescroll-option.css代码拷贝到mescroll.min.css中,合为一个css文件,方便引用-->
+	<!--<link rel="stylesheet" href="css/lib/mescroll.css">
+	<link rel="stylesheet" href="option/mescroll-option.css">-->
+	<link rel="stylesheet" href="css/base.css" />
+	<link rel="stylesheet" href="css/util.css" />
+	<link rel="stylesheet" href="css/lib/mobileSelect.css" />
+	<link rel="stylesheet" href="css/myHealthFileXuezhiList.css" />
+	<link rel="stylesheet" href="css/lib/xiala.css" />
+	<script type="text/javascript" src="plug/jquery-1.11.3.js" ></script>
+	<script src="js/lib/mobileSelect.js"></script>
+	<script src="js/common.js"></script>
+	<script src="js/myHealthFileXuezhiList.js"></script>
+	<title>血脂</title>
+</head>
+<style>
+	.nav .active{
+		background-color: #00afa1;
+		color: white;
+	}
+	.nav p{
+		float: left;
+		width: 25%;
+		padding: .8rem 0 .6rem 0;
+		margin: 0;
+	}
+</style>
+<body style="background-color: #ebebeb;">
+<div class="content">
+	<!--标题-->
+	<!--<a href="../index.html"><div class="header"></div></a>-->
+	<div class="pub_hearder flex_vertical justify_content_equal" style="background:none;background-color: #f5f5f5;">
+		<img class="up_page pub_hearder_left_noQuan"  src="img/left.png" onclick="window.location.href = 'myHealthFile.html?tab=3'" />
+		<div class="head_center head_centerZi">
+			<span class="head_title" style="color: black">血脂</span>
+		</div>
+	</div>
+	<button class="rulu" style="background-color:#00afa1;color: white;">录入</button>
+	<div class="hos_child" style="    margin-top: -.1rem;    padding: .7rem 0;float: none">
+		<div class="hos_list_top clearfix">
+			<div class="left" style="width: 33%;text-align: right;font-size: .92rem;line-height: 2.9rem;">总胆固醇</div>
+			<div class="right" style="width: 62%;height: 3rem;line-height: 3.3rem;"><input class="xuezhiVal totalCholesterol" placeholder="" type="text"><span class="mol">mmol/L</span></div>
+		</div>
+		<div class="hos_list_top clearfix">
+			<div class="left" style="width: 33%;text-align: right;font-size: .92rem;line-height: 2.9rem;">低密度脂蛋白</div>
+			<div class="right" style="width: 62%;height: 3rem;line-height: 3.3rem;"><input class="xuezhiVal ldl" placeholder="" type="text"><span class="mol">mmol/L</span></div>
+		</div>
+		<div class="hos_list_top clearfix">
+			<div class="left" style="width: 33%;text-align: right;font-size: .92rem;line-height: 2.9rem;">高密度脂蛋白</div>
+			<div class="right" style="width: 62%;height: 3rem;line-height: 3.3rem;"><input class="xuezhiVal hdl" placeholder="" type="text"><span class="mol">mmol/L</span></div>
+		</div>
+		<div class="hos_list_top clearfix">
+			<div class="left" style="width: 33%;text-align: right;font-size: .92rem;line-height: 2.9rem;">甘油三酯</div>
+			<div class="right" style="width: 62%;height: 3rem;line-height: 3.3rem;"><input class="xuezhiVal triglyceride" placeholder="" type="text"><span class="mol">mmol/L</span></div>
+		</div>
+	</div>
+	<div class="ceTimeDiv">测量时间<span class="nowDay"></span><div class="xuezhiVal ceTime" style="height: 1.8rem;" id="trigger3"></div></div>
+
+	<button class="rulu post" onclick="Go.xuezhi()">提交</button>
+	<button class="rulu" style="margin-bottom: 0" onclick="">历史</button>
+	<div id="mescroll3">
+		<!--<li class="hos_child set_box_shadow">
+			<div class="hos_list_top clearfix">
+				<div class="yuyueTop">
+					<span class="famousName hosName">血压</span>
+				</div>
+				<div class="orderContent" itemid="3133" onclick="href(this)">
+					<div class="left"><img src="https://www.enuo120.com/upload/image/201806/05/HfgFPMKo1MVTEvAEkk4.png"></div>
+					<div class="right">
+						<p class="detail">
+							<span class="name">高压mmHg</span>
+						</p>
+						<p class="detail">
+							<span class="name">低压mmHg</span>
+						</p>
+						<p class="detail" style="margin-bottom: .45rem;">
+							<span class="name">心率mmHg</span>
+						</p>
+						<p class="orderdetailchoose" style="    margin-bottom: .5rem;">
+							<span>测量时间：</span>
+							<span class="orderdetailchooseName">2019-02-26 17:11:57</span>
+						</p>
+					</div>
+				</div>
+			</div>
+		</li>
+		<li class="hos_child set_box_shadow">
+			<div class="hos_list_top clearfix">
+				<div class="yuyueTop" itemid="3133" onclick="href(this)">
+					<span class="famousName hosName">血压</span>
+				</div>
+				<div class="orderContent">
+					<div class="left"><img src="https://www.enuo120.com/upload/image/201806/05/HfgFPMKo1MVTEvAEkk4.png"></div>
+					<div class="right">
+						<p class="detail">
+							<span class="name">高压mmHg</span>
+						</p>
+						<p class="detail">
+							<span class="name">低压mmHg</span>
+						</p>
+						<p class="detail" style="margin-bottom: .45rem;">
+							<span class="name">心率mmHg</span>
+						</p>
+						<p class="orderdetailchoose" style="    margin-bottom: .5rem;">
+							<span>测量时间：</span>
+							<span class="orderdetailchooseName">2019-02-26 17:11:57</span>
+						</p>
+					</div>
+				</div>
+			</div>
+		</li>-->
+	</div>
+</div>
+</body>
+
+<!--在您实际的项目中,请留意mescroll-option.js的图片路径是否引用正确,可写成绝对路径或网络地址-->
+<!--可把mescroll-option.js代码拷贝到mescroll.min.js中,合为一个js文件,方便引用-->
+<!--<script src="js/lib/mescroll.js" type="text/javascript" charset="utf-8"></script>-->
+<!--<script src="option/mescroll-option.js" type="text/javascript" charset="utf-8"></script>-->
+<!--mescroll本身不依赖jq,这里为了模拟发送ajax请求,获取模拟数据-->
+<!--<script type="text/javascript" src="js/viewport.js" ></script>-->
+<script type="text/javascript" src="js/util.js"></script>
+<!--<script src="js/dos_yuyue.js"></script>-->
+<!--	<script src="../res/pdlist1.js" type="text/javascript" charset="utf-8"></script>-->
+
+<script type="text/javascript" charset="utf-8">
+	$(document).ready(function () {
+		init();
+    })
+
+</script>
+
+</html>

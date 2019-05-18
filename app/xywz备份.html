@@ -1,0 +1,634 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no,minimal-ui,viewport-fit:contain">
+<!--<link rel="stylesheet" href="plug/swiper/css/swiper.css"/>-->
+<link rel="stylesheet" href="css/base.css" />
+<link rel="stylesheet" href="css/util.css" />
+<link rel="stylesheet" href="css/xywz.css" />
+	<link rel="stylesheet" href="css/iponex.css" />
+	<link href="css/lib/swiper-3.3.1.min.css" rel="stylesheet">
+	<script type="text/javascript" src="plug/jquery-1.11.3.js" ></script>
+	<!--<script type="text/javascript" src="js/viewport.js" ></script>-->
+	<script src="js/common.js"></script>
+	<script src="js/xywz.js"></script>
+	<script src="js/lib/swiper.min.js"></script>
+	<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=AEKrrtZejAfxZmAsbDxDbjrHDFxkcNo7"></script>
+	<title>e诺健康</title>
+</head>
+<style>
+/*	@media only screen and (device-width: 375px) and (device-height: 812px) and (-webkit-device-pixel-ratio: 3) {
+		!*导航操作栏上移*!
+		#nav {
+			bottom: 34px;
+		}
+	}*/
+@media all and (min-width: 220px) {
+	.ks_list .ks_child{
+		height: 4.6rem;
+	}
+	.ks_list .ks_child p {
+		width: 1.8rem;
+		height: 1.82rem;
+		margin: 0 auto;
+		margin-top: .65rem;
+		margin-bottom: -.3rem;
+	}
+}
+@media all and (min-width: 320px) {
+	.ks_list .ks_child{
+		height: 4.6rem;
+	}
+	.ks_list .ks_child p {
+		width: 1.8rem;
+		height: 1.82rem;
+		margin: 0 auto;
+		margin-top: .65rem;
+		margin-bottom: -.3rem;
+	}
+}
+
+@media all and (min-width: 360px) {
+	.ks_list .ks_child{
+		height: 5.4rem;
+	}
+	.ks_list .ks_child p {
+		width: 1.9rem;
+		height: 1.92rem;
+		margin: 0 auto;
+		margin-top: .9rem;
+		margin-bottom: -.2rem;
+	}
+}
+@media all and (min-width: 410px) {
+	.ks_list .ks_child{
+		height: 5.95rem;
+	}
+	.ks_list .ks_child p {
+		width: 2rem;
+		height: 2.02rem;
+		margin: 0 auto;
+		margin-top: 1.1rem;
+		margin-bottom: -.1rem;
+	}
+}
+@media all and (min-width: 480px) {
+	.ks_list .ks_child{
+		height: 6.9rem;
+	}
+	.ks_list .ks_child p {
+		width: 2rem;
+		height: 2.02rem;
+		margin: 0 auto;
+		margin-top: 1.3rem;
+		margin-bottom: -.1rem;
+	}
+}
+@media all and (min-width: 560px) {
+	.ks_list .ks_child{
+		height: 8rem;
+	}
+	.ks_list .ks_child p {
+		width: 2.3rem;
+		height: 2.32rem;
+		margin: 0 auto;
+		margin-top: 1.7rem;
+		margin-bottom: -.1rem;
+	}
+}
+
+@media all and (min-width: 640px) {
+	.ks_list .ks_child{
+		height: 9.2rem;
+	}
+	.ks_list .ks_child p {
+		width: 2.5rem;
+		height: 2.52rem;
+		margin: 0 auto;
+		margin-top: 2rem;
+		margin-bottom: .1rem;
+	}
+}
+
+@media all and (min-width: 720px) {
+	.ks_list .ks_child{
+		height: 10.4rem;
+	}
+	.ks_list .ks_child p {
+		width: 2.7rem;
+		height: 2.72rem;
+		margin: 0 auto;
+		margin-top: 2.5rem;
+		margin-bottom: .3rem;
+	}
+}
+</style>
+<script>
+		if(is_weixn()){
+            console.log(sessionStorage.getItem("codeValue"))
+            if(sessionStorage.getItem("codeValue") == 'true'){
+                sessionStorage.setItem("codeValue", 'false');
+                Get.haveCodeGet();
+            }else{
+                Get.firstCodeGet();
+            }
+		}
+</script>
+<!--<script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1275197096'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s22.cnzz.com/z_stat.php%3Fid%3D1275197096%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));</script>-->
+<body style="    overflow-y: scroll;    height: 100%;
+    background-color: #f1f1f1;">
+<!--<marquee>e诺第三方医疗监管平台，因为改版升级，多家医院已经下架，请各医院重新提交相关资料。如有疑问可以拨打4000696120</marquee>-->
+<div style="position: absolute;top: 2.7rem;height: 1.5rem;background-color: white;opacity: 0.3;z-index: 999;width: 100%;"></div>
+<div class="modelOpen" style="display: none;">
+	<div class="mubu" style="opacity: 0.4;"></div>
+	<div class="modelOpenback" style="top: 13%;width: 76%;left: 12%">
+		<img class="activityFu" src="img/rotor/rotorFadeIn.png" onclick="window.location.href = 'rotorNine.html'">
+		<img class="activityClose" src="img/closeActivity.png">
+	</div>
+</div>
+<div class="msg">
+	<span class="msgText">正在开发中，敬请期待...</span>
+</div>
+<div class="content xywz" style="margin-bottom: 4.5rem;">
+<!--<img src="img/erweima.png">-->
+<!--头部-->
+<div class="pub_hearder flex_vertical justify_content_equal">
+	<!--<img class="up_page pub_hearder_left" style="width: .9rem;height: initial;margin:-.3em .3rem 0 3%;" src="img/address.png" /><span class="addressZi">杭州</span>-->
+	<div class="head_center" style="width: 100%;">
+		<span class="set_head_dot" style="width: .15rem;height: .15rem;border-radius: 50%;"></span>
+		<span class="set_head_dot" style="width: .25rem;height: .27rem;border-radius: 50%;"></span>
+		<span class="set_head_dot"></span>
+		<span class="head_title">首页</span>
+		<span class="set_head_dot"></span>
+		<span class="set_head_dot" style="width: .25rem;height: .27rem;;border-radius: 50%;"></span>
+		<span class="set_head_dot" style="width: .15rem;height: .15rem;border-radius: 50%;"></span>
+	</div>
+	<!--<img class="search pub_hearder_right" onclick="Wx.scanQRCode()" style="    position: absolute;
+    margin-top: -.1rem;
+    right: 3%;" src="img/search.png"/>-->
+</div>
+<!--<div class="topBackradius"></div>-->
+	<div class="swiper-container swiper-container-horizontal swiper-container-lun">
+		<div class="swiper-wrapper" style="transform: translate3d(-750px, 0px, 0px); transition-duration: 0ms;">
+			<!--<div class="swiper-slide swiper-slide-duplicate" style="width: 375px;">
+			<a href=""><img src="img/swiperImg1.jpg"></a>
+		</div>-->
+			<!--<div onclick="window.location.href = 'vote.html'" class="swiper-slide swiper-slide-active">
+				<a><img src="img/swiperVote.jpg"></a>
+			</div>-->
+			<!--<div onclick="window.location.href = 'browShare.html'" class="swiper-slide swiper-slide-active">
+				<a><img src="img/swiperImg5.jpg"></a>
+			</div>-->
+			<!--<div onclick="window.location.href = 'browIndex.html'" class="swiper-slide swiper-slide-active">
+				<a><img src="img/pin/toothRuleTopImg.jpg"></a>
+			</div>-->
+			<div onclick="window.location.href = 'myHuliCard.html'" class="swiper-slide swiper-slide-active">
+				<a><img src="img/swiperHuliCardImg.jpg"></a>
+			</div>
+			<div class="swiper-slide swiper-slide-active">
+				<a><img src="img/swiperImg3.png"></a>
+			</div>
+			<div class="swiper-slide swiper-slide-prev">
+				<a><img src="img/swiperImg1.jpg"></a>
+			</div>
+			<!--<div class="swiper-slide swiper-slide-active">
+				<a href=""><img src="img/swiperImg2.jpg"></a>
+			</div>-->
+
+			<!--<div class="swiper-slide swiper-slide-active">
+				<a href=""><img src="img/swiperImg4.jpg"></a>
+			</div>-->
+		</div>
+		<!-- Add Pagination  轮播小点-->
+		<div class="swiper-pagination swiper-pagination-clickable swiper-pagination-bullets">
+			<span class="swiper-pagination-bullet"></span>
+			<span class="swiper-pagination-bullet swiper-pagination-bullet-active"></span>
+			<span class="swiper-pagination-bullet"></span>
+		</div>
+	</div>
+	<div style="width: 100%;    margin-top: 0;    margin-bottom: -.1rem;">
+	<div class="vidioImgDiv"  onclick="">
+	<img class="vidioImg" src="img/videoImg.png">
+		<img class="play" src="img/videoPlay.png">
+	</div>
+	<div class="xywz_top" style="margin-left: 2%;margin-top: .38rem;">
+		<img class="" src="img/vedioRight.png">
+		<!--<div class="find clearfix" style="    margin-top: -.3rem;">
+			<div class="find_doc set_box_shadow" style="box-shadow: none" onclick="window.location.href = 'choose.html'">
+				<img src="img/zhiImg.png">
+				<div class="btm">
+					<p class="black">治疗约定</p>
+					<p style="color: #a0a0a0;font-size: .6rem;">TREATMENT</p>
+				</div>
+			</div>
+			<div class="find_hos set_box_shadow" style="box-shadow: none" onclick="window.location.href = 'ym_index.html'">&lt;!&ndash;window.location.href = 'zxmr.html?subjectId=11&subjectName=美丽约定'&ndash;&gt;
+				<img src="img/meiImg.png">
+				<div class="btm">
+					<p class="black">美丽约定</p>
+					<p style="color: #a0a0a0;font-size: .7rem;">医疗整形</p>
+				</div>
+			</div>
+		</div>-->
+
+	</div>
+	</div>
+	<div style="clear: both"></div>
+	<div class="swiper-container-pao">
+		<div class="swiper-wrapper">
+			<div class="swiper-slide" onclick="window.location.href = 'choose.html'"><img src="img/pao2Img1.png"></div>
+			<div class="swiper-slide" onclick="window.location.href = 'ym_index.html'"><img src="img/pao2Img2.png"></div>
+			<div class="swiper-slide" onclick="$('.msgText').text('正在开发中，即将上线...');$('.msg').fadeIn();setTimeout(function () {$('.msg').fadeOut();},1200);"><img src="img/pao2Img3.png"></div>
+			<div class="swiper-slide" onclick="$('.msgText').text('正在开发中，敬请期待...');$('.msg').fadeIn();setTimeout(function () {$('.msg').fadeOut();},1200);"><img src="img/pao2Img4.png"></div>
+			<div class="swiper-slide" onclick="$('.msgText').text('正在开发中，敬请期待...');$('.msg').fadeIn();setTimeout(function () {$('.msg').fadeOut();},1200);"><img src="img/pao2Img5.png"></div>
+			<div class="swiper-slide" onclick="$('.msgText').text('正在开发中，敬请期待...');$('.msg').fadeIn();setTimeout(function () {$('.msg').fadeOut();},1200);"><img src="img/pao2Img6.png"></div>
+			<!--<div class="swiper-slide"><img src="img/paoImg4.png"></div>
+			<div class="swiper-slide"><img src="img/paoImg5.png"></div>
+			<div class="swiper-slide"><img src="img/paoImg6.png"></div>-->
+		</div>
+		<!-- Add Pagination -->
+		<!--<div class="swiper-pagination"></div>-->
+	</div>
+	<div style="clear: both"></div>
+	<div class="hospitail_detail set_box_shadow doctor_detail" style="    background: none;;padding: 0;overflow:hidden; box-shadow: 0px 6px 20px 0 rgba(127, 127, 127, 0.05);    margin-top: 0;">
+		<!--延伸-->
+		<!--<p class="hos_data" style="border-top: 0" onclick="''">
+			<img class="left" src="img/e.png">
+			<div class="jianbiecenter">
+				<p class="jianZiblue">你被“检查”了吗</p>
+				<p class="jianZisamll">鉴别是否过度检查或过度治疗</p>
+			</div>
+
+			<img class="next" src="img/nextblack.png">
+		</p>-->
+		<img style="width: 48%;margin-right: 1%" onclick="window.location.href = 'dd_distri.html'" src="img/dddistri.png">
+		<img style="width: 48%" onclick="window.location.href = 'enuosay.html';/*layer.open({
+    content: '此功能暂未开通'
+    ,skin: 'msg'
+    ,time: 2 //2秒后自动关闭
+  });*/" src="img/enuosay.png"><!--window.location.href = 'enuosay.html'" src="img/enuosay.png-->
+		<!--<div class="jianbiecenter">
+			<p class="jianZiblue">你被“检查”了吗？</p>
+			<p class="jianZisamll">鉴别是否过度检查或过度治疗</p>
+		</div>-->
+	</div>
+	<div class="hos_doc_team set_box_shadow" style="margin-bottom: 3.3rem;    margin-top: .74rem;">
+		<!--<div class="left_tittle ill_office_pg" style="width: 40%;height: 2.5rem;    position: relative;    top: .3rem;
+    left:0%;
+    text-align: center;">
+			<span style="color: #00afa1;font-size: .9rem">一一</span><span style="font-weight: 500;color: #00afa1;font-size: .9rem">约定医疗体验专区</span><span style="font-size: .9rem;color: #00afa1;">一一</span>
+		</div>-->
+		<div class="left_tittle ill_office_pg"  style="    display: initial;    width: 100%;
+    height: 1.5rem;
+    padding-left: .5rem;
+    position: relative;">
+		<span class="xywztejia xywztejiaLeft" style="width: 47%;height: 2.2rem;
+    line-height: 2.2rem;
+    font-size: .9rem;
+    margin-left: 1%;    color: #00afa1;margin-top: .5rem;margin-bottom: .8rem;">治疗约定特价体验区<p class="avtivitySpan avtivityactive"></p></span>
+			<span class="xywztejia xywztejiaRight" style="width: 47%;height: 2.2rem;
+    line-height: 2.2rem;
+    font-size: .9rem;
+    margin-left: 1%;    color: #00afa1;margin-top: .5rem;margin-bottom: .8rem;">项目检查体验区 <p style="width: 48%;margin-left: 27%" class="avtivitySpan"></p></span>
+
+			<!--<span style="color: #707070;float: right;    margin-right: 2.6%;
+    margin-top: .9rem;font-size: .75rem" onclick="window.location.href = 'special_more.html'">更多 ></span>-->
+		</div>
+		<div class="tejiaLeft">
+		<!--医生列表-->
+		<div class="hos_doc_list">
+			<!--<div class="hos_doc_child clearfix">
+				<div class="doc_child_left">
+					<img src="img/hos_index/doc.png">
+				</div>
+				&lt;!&ndash;右边&ndash;&gt;
+				<div class="doc_child_right" style="margin: 0 0 0 0;">
+					<div class="id">
+						<p class="name"><span class="hot">热销</span><span class="goodsName">【水漾活跃名字】水漾活跃名字水漾活跃漾活跃名字水漾字</span></p>
+						<p class="address">杭州东方整形们整部</p>
+						<p><span class="price">￥618</span><del class="oldprice">￥10265</del><span class="yuyue">已预约<span class="peopelcount">236</span>人</span></p>
+					</div>
+				</div>
+			</div>
+			<div class="hos_doc_child clearfix">
+				<div class="doc_child_left">
+					<img src="img/hos_index/doc.png">
+				</div>
+				&lt;!&ndash;右边&ndash;&gt;
+				<div class="doc_child_right" style="margin: 0 0 0 0;">
+					<div class="id">
+						<p class="name"><span class="hot">热销</span><span class="goodsName">【水漾活跃名字】水漾活跃名字水漾活跃漾活跃名字水漾字</span></p>
+						<p class="address">杭州东方整形们整部</p>
+						<p><span class="price">￥618</span><del class="oldprice">￥10265</del><span class="yuyue">已预约<span class="peopelcount">236</span>人</span></p>
+					</div>
+				</div>
+			</div>
+			<div class="hos_doc_child clearfix">
+				<div class="doc_child_left">
+					<img src="img/hos_index/doc.png">
+				</div>
+				&lt;!&ndash;右边&ndash;&gt;
+				<div class="doc_child_right" style="margin: 0 0 0 0;">
+					<div class="id">
+						<p class="name"><span class="hot">热销</span><span class="goodsName">【水漾活跃名字】水漾活跃名字水漾活跃漾活跃名字水漾字</span></p>
+						<p class="address">杭州东方整形们整部</p>
+						<p><span class="price">￥618</span><del class="oldprice">￥10265</del><span class="yuyue">已预约<span class="peopelcount">236</span>人</span></p>
+					</div>
+				</div>
+			</div>-->
+		</div>
+		<!--查看更多-->
+		<div style="       width: 102%;
+    margin-left: -1%;
+    height: .35rem;
+    line-height: .35rem;background-color: #f4f4f4"></div>
+		<div class="all_doc" onclick="window.location.href = 'special_more.html'">
+			查看更多商品
+		</div>
+		</div>
+		<div class="tejiaRight" style="display: none">
+			<!--医生列表-->
+			<div class="hos_doc_listJiancha">
+				<!--<div class="hos_doc_child clearfix">
+                    <div class="doc_child_left">
+                        <img src="img/hos_index/doc.png">
+                    </div>
+                    &lt;!&ndash;右边&ndash;&gt;
+                    <div class="doc_child_right" style="margin: 0 0 0 0;">
+                        <div class="id">
+                            <p class="name"><span class="hot">热销</span><span class="goodsName">【水漾活跃名字】水漾活跃名字水漾活跃漾活跃名字水漾字</span></p>
+                            <p class="address">杭州东方整形们整部</p>
+                            <p><span class="price">￥618</span><del class="oldprice">￥10265</del><span class="yuyue">已预约<span class="peopelcount">236</span>人</span></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="hos_doc_child clearfix">
+                    <div class="doc_child_left">
+                        <img src="img/hos_index/doc.png">
+                    </div>
+                    &lt;!&ndash;右边&ndash;&gt;
+                    <div class="doc_child_right" style="margin: 0 0 0 0;">
+                        <div class="id">
+                            <p class="name"><span class="hot">热销</span><span class="goodsName">【水漾活跃名字】水漾活跃名字水漾活跃漾活跃名字水漾字</span></p>
+                            <p class="address">杭州东方整形们整部</p>
+                            <p><span class="price">￥618</span><del class="oldprice">￥10265</del><span class="yuyue">已预约<span class="peopelcount">236</span>人</span></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="hos_doc_child clearfix">
+                    <div class="doc_child_left">
+                        <img src="img/hos_index/doc.png">
+                    </div>
+                    &lt;!&ndash;右边&ndash;&gt;
+                    <div class="doc_child_right" style="margin: 0 0 0 0;">
+                        <div class="id">
+                            <p class="name"><span class="hot">热销</span><span class="goodsName">【水漾活跃名字】水漾活跃名字水漾活跃漾活跃名字水漾字</span></p>
+                            <p class="address">杭州东方整形们整部</p>
+                            <p><span class="price">￥618</span><del class="oldprice">￥10265</del><span class="yuyue">已预约<span class="peopelcount">236</span>人</span></p>
+                        </div>
+                    </div>
+                </div>-->
+			</div>
+			<!--查看更多-->
+			<div style="       width: 102%;
+    margin-left: -1%;
+    height: .35rem;
+    line-height: .35rem;background-color: #f4f4f4"></div>
+			<div class="all_doc" onclick="window.location.href = 'find_subject_special.html?type=check&subjectName=检查类'">
+				查看更多商品
+			</div>
+		</div>
+	</div>
+
+
+	<!--<div class="hos_doc_team set_box_shadow" style="margin-bottom: 1.3rem;    margin-top: 1rem;">
+		&lt;!&ndash;<div class="left_tittle ill_office_pg" style="width: 40%;height: 2.5rem;    position: relative;    top: .3rem;
+    left:0%;
+    text-align: center;">
+			<span style="color: #00afa1;font-size: .9rem">一一</span><span style="font-weight: 500;color: #00afa1;font-size: .9rem">约定医疗体验专区</span><span style="font-size: .9rem;color: #00afa1;">一一</span>
+		</div>&ndash;&gt;
+		<div class="left_tittle ill_office_pg"  style="    display: initial;    width: 100%;
+    height: 1.5rem;
+    padding-left: .5rem;
+    position: relative;">
+		<span class="green_long" style="    width: .2rem;
+    height: .65rem;"></span><span style="    height: 2.2rem;
+    line-height: 2.7rem;
+    font-size: .9rem;
+    margin-left: .6rem;    color: #00afa1;">项目检查体验区</span>
+			<span style="color: #707070;float: right;    margin-right: 2.6%;
+    margin-top: .9rem;font-size: .75rem" onclick="window.location.href = 'find_subject_special.html?type=check&subjectName=检查类'">更多 ></span>
+		</div>
+
+	</div>-->
+<!--<div class="xywz_search set_box_shadow">
+	<div class="log">
+		<img src="img/xywz/e.png" />
+	</div>
+	<div class="title">医疗的事，我们帮您约定</div>
+	&lt;!&ndash;搜索框&ndash;&gt;
+
+</div>-->
+<!--	<div class="xywz_top">
+		<div class="find clearfix">
+			<div style="margin-left: 0.5%" class="find_doc set_img_bg findToptwo" onclick="window.location.href = 'find_doc.html'">
+				<div class="btm">
+					<p class="black">找医生</p>
+					<p>快速查询名医专家的坐诊信息</p>
+				</div>
+			</div>
+			<div class="find_hos set_img_bg findToptwo" onclick="window.location.href = 'find_hos.html'">
+				<div class="btm">
+					<p class="black">找医院</p>
+					<p>快速搜索查询附近医院</p>
+				</div>
+			</div>
+		</div>
+	</div>-->
+
+<!--名医专家-->
+<!--<div class="doc_specialist set_box_shadow">
+	<div class="left_tittle ill_office_pg" style="width: 2rem;">
+		<span class="green_long"></span><span>名医专家</span>
+	</div>
+	<div class="more flex_vertical">
+		<span>更准确 更放心</span><img src="img/right.png" />
+	</div>
+</div>-->
+
+<!--科室-->
+<!--<div class="ks set_box_shadow" style="margin-top: .1rem;border-radius: 10px">
+	<div class="left_tittle ill_office_pg"  style="    width: 80%;
+    height: 1.5rem;
+    padding-left: .5rem;
+    position: relative;">
+		<span class="green_long" style="    width: .2rem;
+    height: .65rem;"></span><span style="    height: 2rem;
+    line-height: 2.7rem;
+    font-size: .9rem;
+    margin-left: .6rem;">科室</span>
+	</div>
+	&lt;!&ndash;科室列表&ndash;&gt;
+	<div class="ks_list clearfix">
+		&lt;!&ndash;<div class="ks_child">
+			<p class="img1 set_img_bg"></p><br /><span>妇科</span>
+		</div>
+		<div class="ks_child">
+			<p class="img2 set_img_bg"></p><br /><span>儿科</span>
+		</div>
+		<div class="ks_child">
+			<p class="img3 set_img_bg"></p><br /><span>皮肤性病科</span>
+		</div>
+		<div class="ks_child" style="border-right:0;">
+			<p class="img4 set_img_bg"></p><br /><span>内科</span>
+		</div>
+		<div class="ks_child">
+			<p class="img5 set_img_bg"></p><br /><span>男科</span>
+		</div>&ndash;&gt;
+
+	</div>
+</div>-->
+<!--<div class="footer">
+	<ul>
+		<li onclick="window.location.href = 'xywz.html'"><img src="img/banner/home.png"><p style="font-weight: 600; color: #00afa1;">首页</p></li>
+		<li onclick="window.location.href = 'ym_index.html'"><img src="img/banner/specialHui.png"><p>特价专区</p></li>
+		<li onclick="window.location.href = 'user_center.html'"><img style="height: .45rem;margin-bottom: .15rem;" src="img/banner/myHui.png"><p style="    margin-top: -.17rem;">我的</p></li>
+	</ul>
+</div>-->
+	<div class="footer" id="nav" style="height: 3.8rem;">
+		<ul>
+			<li onclick="window.location.href = 'xywz.html'"><strong class="newsBiaoXywz"></strong><img src="img/banner/home.png"><p style="color: #00afa1;font-weight: 600;">首页</p></li>
+			<!--<li onclick="window.location.href = 'sao_desc.html'"><img src="img/banner/sao.png"><p style="">快捷约定</p></li>-->
+			<li onclick="window.location.href = 'special_more.html'"><strong class="newsBiaoSpecialProduct"></strong><img src="img/banner/te.png"><p style="">特价专区</p></li>
+			<!--<li class="chooseHref"><img src="img/banner/te.png"><p style="">活动专区</p>
+				<span><img style="width: 100%;height: auto;margin: 0" src="img/navbg.png">
+				<div style="position:absolute;top:0;left:0;width: 100%">
+					<a href="/app/activityAll.html">焕颜健康大行动</a>
+                    <a href="/app/special_more.html">特价专区</a>
+				</div>
+				</span>
+			</li>-->
+			<li onclick="window.location.href = 'user_center.html'"><strong class="newsBiaoUserCenter"></strong><img src="img/banner/myHui.png"><p style="">我的</p></li>
+		</ul>
+	</div>
+</div>
+<!--<script type="text/javascript" src="js/util.js"></script>
+<script type="text/javascript" src="js/method.js"></script>
+<script type="text/javascript" src="js/find_hos.js" ></script>-->
+
+
+</body>
+<script>
+    document.addEventListener("plusready", function() {
+        // 注册返回按键事件
+        plus.key.addEventListener('backbutton', function() {
+            // 事件处理
+            plus.nativeUI.confirm("退出程序？", function(event) {
+                if (event.index == 0) {
+                    plus.runtime.quit();
+                }
+            }, null, ["取消", "确定"]);
+        }, false);
+    });
+    $(document).ready(function () {
+        init();
+        create();
+        getLocationCity();//获取当前城市定位
+       /* if(localStorage.getItem('modelOpen') != 'true'){
+            setTimeout(function () {
+                $('.modelOpen').fadeIn();
+                localStorage.setItem('modelOpen','true');
+            },500);
+		}*/
+        $(".activityClose").click(function(){
+            $('.modelOpen').fadeOut();
+        });
+		$('.xywztejia').click(function () {
+            $('.xywztejia').children('.avtivitySpan').removeClass('avtivityactive');
+            $(this).children('.avtivitySpan').addClass('avtivityactive');
+        });
+        $('.xywztejiaLeft').click(function () {
+			$('.tejiaLeft').show();
+            $('.tejiaRight').hide();
+            Get.tuiMore();
+        });
+        $('.xywztejiaRight').click(function () {
+            $('.tejiaLeft').hide();
+            $('.tejiaRight').show();
+            Get.tuiMorejiancha();
+        });
+        setTimeout(function () {
+            $('.find_doc,.find_hos').height($('.vidioImg').height() / 2.15);
+            $('.xywz_top .find .find_doc img, .xywz_top .find .find_hos img').css('max-height',$('.find_doc').height()*0.7);
+            $('.find .find_doc .btm, .find .find_hos .btm').css('left',$('.xywz_top .find .find_doc img').width() + $('.find_doc').width() * 0.11);
+        },500)
+        var swiper = new Swiper('.swiper-container-lun', {
+            pagination: '.swiper-pagination',
+            loop: true,//轮播图循环
+            grabCursor: false,
+            paginationClickable: true,// 原点点击切换
+            autoplay: 3000, // 三秒钟自动轮播
+            speed:600,
+            autoplayDisableOnInteraction: false //手指滚过后继续轮播
+        });
+        var swiperPao = new Swiper('.swiper-container-pao', {
+           /* pagination: '.swiper-pagination',*/
+            slidesPerView: 2.5,
+            centeredSlides: false,
+            paginationClickable: true,
+            spaceBetween: 5,
+            autoplay : 2500,//自动划动
+			speed:1500,
+            loop : true,//循环
+            loopedSlides:3,
+            autoplayDisableOnInteraction : false
+        });
+        $('.vidioImgDiv').click(function () {
+            $('.vidioImgDiv').empty().append('<video id="video1" webkit-playsinline="" width="100%" style=""\n' +
+                '\t   controls="controls" autoplay="autoplay"  poster="img/videoImg.png" src="img/vedio/veido.mp4"></video>')
+        })
+       /* $('.swiper-slide').width(400)*/
+    })
+    var create = function (x, y)
+    {
+        var marquee = document.createElement ('marquee');
+        marquee.style.position = 'absolute';
+        marquee.style.left = 0;
+        marquee.style.top = '2.8rem';
+        marquee.style.fontSize = .9 + 'rem';
+        marquee.style.zIndex = 999;
+        marquee.style.color = 'red';
+        marquee.style.height = '1.5rem';
+        marquee.setAttribute('scrollamount','3');
+        marquee.innerText = 'e诺第三方医疗监管平台，因为改版升级，多家医院已经下架，请各医院重新提交相关资料。如有疑问可以拨打4000696120'//document.querySelector('span').innerText;
+        document.body.appendChild (marquee);
+    }
+    function getLocationCity() {
+        var geolocation = new BMap.Geolocation();
+        var gc = new BMap.Geocoder();
+        var city = '';
+        geolocation.getCurrentPosition(function (r) {
+            console.log(r)
+            if (this.getStatus() == BMAP_STATUS_SUCCESS) {
+                //appLat = r.point.lat;
+                //appLng = r.point.lng;
+                var pt = r.point;
+                gc.getLocation(pt, function (rs) {
+                    var addComp = rs.addressComponents;
+                    console.log(addComp)
+					var addCompCity = addComp.city;
+					if(addCompCity.indexOf('市') != '-1'){
+                        city = addCompCity.split('市')[0];
+					}else if(addCompCity.indexOf('区') != '-1'){
+                        city = addCompCity.split('区')[0];
+                    }
+                });
+            }
+            else {
+                // layer.open({ content: "定位失败，请重试!", time: 2 });
+            }
+        }, { enableHighAccuracy: true });
+    }
+
+</script>
+</html>

@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+
+	<!--在您实际的项目中,请留意mescroll-option.css的图片路径是否引用正确,可写成绝对路径或网络地址-->
+	<!--可把mescroll-option.css代码拷贝到mescroll.min.css中,合为一个css文件,方便引用-->
+	<link rel="stylesheet" href="css/lib/mescroll.css">
+	<link rel="stylesheet" href="option/mescroll-option.css">
+	<link rel="stylesheet" href="css/base.css" />
+	<link rel="stylesheet" href="css/util.css" />
+	<link rel="stylesheet" href="css/order.css" />
+	<link rel="stylesheet" href="css/lib/xiala.css" />
+	<link rel="stylesheet" href="css/myBrow.css" />
+<!--	<link rel="stylesheet" href="css/lib/layer.css" />-->
+	<script type="text/javascript" src="plug/jquery-1.11.3.js" ></script>
+<!--	<script type="text/javascript" src="js/lib/layer.js" ></script>-->
+	<script src="js/common.js"></script>
+	<!--<title>我的订单</title>--><title>我的绣眉活动</title>
+</head>
+<style>
+	input::-webkit-input-placeholder{
+		color: white;
+		font-size: 8px;
+	}
+</style>
+<body style="background-color: #f1f1f1;">
+<div class="modelOpen">
+	<div class="mubu"></div>
+	<div class="modelOpenback">
+		<img class="payclose" src="img/payclose.png">
+		<!--<img src="../img/yuyueback.png">-->
+		<img class="paySuccess" src="img/browActive/browWarn.png">
+		<p class="paySuccessZi">
+			请11月9日-11月12日期间使用入场券进入场地，确定要使用么？</p>
+		<button class="toYuyueno" onclick="Card.use()">确认</button>
+		<button class="toYuyue">取消</button>
+	</div>
+</div>
+<div class="bindFiveOpen">
+	<div class="mubu"></div>
+	<div class="modelOpenback" style="    border-radius: 8px;top: 16%;    width: 82%;
+    left: 9%;">
+		<!--<img class="payclose" onclick="$('.bindFiveOpen').hide()" src="img/payclose.png">-->
+		<!--<img src="../img/yuyueback.png">-->
+		<!--<img class="paySuccess" src="img/browActive/browWarn.png">-->
+		<!--<p class="paySuccessZi">
+			请11月9日-11月12日期间使用入场券进入场地，确定要使用么？</p>-->
+		<p class="addtop">信息填写</p>
+		<div class="addPeopleDiv">
+			<p>第一位</p>
+		<div class="addPeople clearfix" style="border-bottom: none">
+			<div class="left">姓名：</div>
+			<div class="right"><input class="telCode bindName bindName1" placeholder="请输入姓名" type="text"></div>
+		</div>
+		<div class="addPeople clearfix" style="border-bottom: none">
+			<div class="left">手机号：</div>
+			<div class="right"><input class="telCode bindMobile bindMobile1" placeholder="请输入手机号" type="tel"></div>
+		</div>
+		</div>
+		<div style="clear: both"></div>
+		<div class="addPeopleDiv">
+			<p>第二位</p>
+			<div class="addPeople clearfix" style="border-bottom: none">
+				<div class="left">姓名：</div>
+				<div class="right"><input class="telCode bindName bindName2" placeholder="请输入姓名" type="text"></div>
+			</div>
+			<div class="addPeople clearfix" style="border-bottom: none">
+				<div class="left">手机号：</div>
+				<div class="right"><input class="telCode bindMobile bindMobile2" placeholder="请输入手机号" type="tel"></div>
+			</div>
+		</div>
+		<div style="clear: both"></div>
+
+        <p class="addPeopleWarn"><input onchange="checkToInput(this)" type="checkbox" class="option-input">* 我已确认成员信息准确无误</p>
+		<button class="toYuyue sureAdd" disabled onclick="Get.addPeople()">点击提交</button>
+
+	</div>
+</div>
+<div class="shareUseBeforeOpenBefore" onclick="$('.search').hide();$('.activityFuDetailZhi').fadeIn();$('.activityFuDetailZhi').fadeOut();$('.activityFuDetailZhi').fadeIn()">
+	<div class="mubu"  style="opacity: .8;z-index: 999"></div>
+	<div class="modelOpenback" style="background-color: rgba(255,255,255,0);top: 2%;
+    width: 90%;
+    left: 5%;">
+		<img class="activityFuDetailZhi" style="display: none" src="img/browActive/browToZhi.png">
+		<img class="activityFuDetailToShare" src="img/browActive/browToShare.png">
+		<img class="activityFuDetail" style="width: 80%;margin-left: 10%" src="img/browActive/browNowUse.png">
+		<img class="activityFuDetail" src="img/browActive/browShareDetial.png">
+		<!-- <img class="activityClose" onclick="$('.shareOpenBefore').hide();$('.search').show()" src="img/know.png">-->
+	</div>
+</div>
+<div class="pinOpen">
+	<div class="mubu"></div>
+	<div class="modelOpenback">
+		<img class="payclose" onclick="$('.pinOpen').hide()" src="img/payclose.png">
+		<!--<img src="../img/yuyueback.png">-->
+		<img class="paySuccess" src="img/browActive/browWarn.png">
+		<p class="paySuccessZi">你还未加入团队</p>
+		<!--<p class="paySuccessZi">PAYMENT SUCCESSFUL</p>-->
+		<!--<button class="toYuyueno" onclick="Get.waitQueue()">随机拼团</button>-->
+		<button class="toYuyue" style="margin-left: 30%;width: 40%;" onclick="window.location.href = 'browList.html'">手动选团</button>
+	</div>
+</div>
+<div class="pinOpenRead">
+	<div class="mubu"></div>
+	<div class="modelOpenback">
+		<img class="payclose" onclick="$('.pinOpenRead').hide()" src="img/payclose.png">
+		<!--<img src="../img/yuyueback.png">-->
+		<img class="paySuccess" src="img/browActive/browWarn.png">
+		<p class="paySuccessZi">成功加入团队！</p>
+		<!--<p class="paySuccessZi">PAYMENT SUCCESSFUL</p>-->
+		<!--<button class="toYuyueno" onclick="Get.waitQueue()">随机拼团</button>-->
+		<button class="toYuyue toRead" style="margin-left: 30%;width: 40%;" onclick="window.location.href = 'browList.html'">去看看吧</button>
+	</div>
+</div>
+<div class="content">
+	<!--标题-->
+	<!--<a href="../index.html"><div class="header"></div></a>-->
+	<div class="pub_hearder flex_vertical justify_content_equal" style="z-index: 99; position: fixed;
+    top: 0;">
+		<img class="up_page pub_hearder_left" src="img/header/header_left.png" onclick="window.location.href = 'user_center.html'" />
+		<div class="head_center head_centerZi">
+			<!--	<div class="search_publish">
+                    <div style="position: relative;">
+                        <input class="toggleSou" type="text" style="color: black;height: .5rem; margin-bottom: .15em;" placeholder="搜索医生"/>
+                    </div>
+                </div>-->
+			<span class="set_head_dot" style="width: .15rem;height: .15rem;border-radius: 50%;"></span>
+			<span class="set_head_dot" style="width: .25rem;height: .27rem;border-radius: 50%;"></span>
+			<span class="set_head_dot"></span>
+			<span class="head_title">我的绣眉活动</span>
+			<span class="set_head_dot"></span>
+			<span class="set_head_dot" style="width: .25rem;height: .27rem;;border-radius: 50%;"></span>
+			<span class="set_head_dot" style="width: .15rem;height: .15rem;border-radius: 50%;"></span>
+		</div>
+		<!--<img class="search pub_hearder_right" src="img/forward.png" />-->
+		<!--	<img class="search pub_hearder_right" onclick="Show.Sou()" src="img/search.png"/>-->
+	</div>
+	<!--<div class="famous_doc_layer">
+		<div class="yuyueTop">预约单号：<span class="famousName">4545454102536</span><span class="yuyueStatus">预约中</span></div>
+		<div class="split"></div>
+		<div class="btm">
+			<p><span class="famousName">预约医院：</span><span class="hosName">杭州复旦医院</span></p>
+			<p><span class="famousName">预约科室：</span><span class="docName">李华</span></p>
+			<p><span class="famousName">预约医生：</span><span class="docLevel">主任医师</span></p>
+			<p><span class="famousName">预约时间：</span><span class="docSub">五官科</span> &#45;&#45; <span class="docSubSub">五官科</span></p>
+		</div>
+	</div>-->
+	<!--滑动区域-->
+	<div class="nav" style="position: fixed;
+    top: 2.7rem;    width: 100%;    font-size: .95rem;">
+		<p style="width: 30%;margin: 0 0% 0 13%;" class="active" i="0">绣眉入场券</p>
+		<p style="width: 30%;margin: 0 0% 0 12%;" i="1" class="">已获得奖品</p>
+	</div>
+	<!--商品-->
+	<div id="mescroll0" class="mescroll" style="background-color: #f1f1f1;top: 5.4rem;">
+		<!--模拟的轮播-->
+		<!--	<img class="swiper" src="../res/img/swiper.jpg"/>-->
+		<!--筛选条件; 模拟列表的重置和演示空布局的使用-->
+		<!--<div class="nav">
+            <p class="active" i="0">全部</p>
+            &lt;!&ndash;<p i="1">奶粉</p>
+            <p i="2">图书</p>&ndash;&gt;
+        </div>-->
+		<!--展示上拉加载的数据列表-->
+		<ul id="dataList0" class="data-list" style="margin-top: .8em;">
+			<!--<li class="hos_child set_box_shadow">
+				<div class="hos_list_top clearfix">
+				<div class="yuyueTop"><span class="famousName hosName">杭州时光口腔医院</span><span class="yuyueStatus orderStatus">交易成功</span></div>
+				<div class="orderContent">
+				<div class="left"><img src="img/find_doc/hos1.png"/></div>
+				<div class="right">
+					<p class="detail">
+						<span class="name">【水漾活跃】水漾活跃水漾活跃水漾活跃水漾活跃水漾活跃</span>
+						</p>
+					<p class="orderdetailchoose">
+						<span>已选择：</span><span class="orderdetailchooseName">水漾活跃</span> <span class="orderdetailchooseCount">x2</span>
+						</p>
+					<p class="orderzong">
+						<span>合计：</span><span class="orderzongfu">￥</span><span class="orderzongPrice">1208</span>
+						</p>
+					</div>
+				</div>
+				<div class="orderBottom">定单号：<span class="famousName orderNum">20171226506</span><button class="orderDel">删除订单</button></div>
+			</div>
+			</li>-->
+		</ul>
+	</div>
+	<!--医生-->
+	<div id="mescroll1" class="mescroll hide" style="background-color: #f1f1f1;top: 5.4rem;">
+		<ul id="dataList1" class="data-list">
+		</ul>
+	</div>
+
+	<!--医院-->
+	<div id="mescroll2" class="mescroll hide" style="background-color: #f1f1f1;top: 5.4rem;">
+		<ul id="dataList2" class="data-list">
+		</ul>
+	</div>
+	<div id="mescroll3" class="mescroll hide" style="background-color: #f1f1f1;top: 5.4rem;">
+		<ul id="dataList3" class="data-list">
+		</ul>
+	</div>
+</div>
+<div class="shareCall call-active">
+	<div class="mainCall">
+		<a href="tel:4000696120"><img src="img/call-out.png"><span style="vertical-align: top;">4000696120</span></a>
+	</div>
+	<div class="split"></div>
+	<div class="cancel" onclick="To.closetopanimate()">取消</div>
+</div>
+
+</body>
+
+<!--在您实际的项目中,请留意mescroll-option.js的图片路径是否引用正确,可写成绝对路径或网络地址-->
+<!--可把mescroll-option.js代码拷贝到mescroll.min.js中,合为一个js文件,方便引用-->
+<script src="js/lib/mescroll.js" type="text/javascript" charset="utf-8"></script>
+<!--<script src="option/mescroll-option.js" type="text/javascript" charset="utf-8"></script>-->
+<!--mescroll本身不依赖jq,这里为了模拟发送ajax请求,获取模拟数据-->
+<!--<script type="text/javascript" src="js/viewport.js" ></script>-->
+<script type="text/javascript" src="js/util.js"></script>
+<script src="js/myBrow.js"></script>
+<script src="js/lib/jweixin-1.1.0.js"> </script>
+<script src="js/getShare.js"> </script>
+<!--	<script src="../res/pdlist1.js" type="text/javascript" charset="utf-8"></script>-->
+
+<script type="text/javascript" charset="utf-8">
+
+</script>
+
+</html>

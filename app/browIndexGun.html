@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,minimum-scale=1,maximum-scale=1,user-scalable=no,minimal-ui">
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/util.css">
+    <link rel="stylesheet" href="css/browIndex.css">
+    <link rel="stylesheet" href="css/lib/fsgallery.css" />
+    <script type="text/javascript" src="plug/jquery-1.11.3.js"></script>
+    <script type="text/javascript" src="js/lib/fs_forse.js" ></script>
+    <title>绣眉活动</title></head>
+<style>
+    .left_tittle span{
+        color: #00afa1;margin-left: 0;   font-size: .3rem;
+    }
+</style>
+<!--<body style="background-color: #f1f1f1;background: url('img/browActive/browDetailBack.jpg') no-repeat;background-size: 100%;">-->
+<body>
+<div class="modelOpen">
+    <div class="mubu"></div>
+    <div class="modelOpenback">
+        <img class="payclose" src="img/payclose.png">
+        <!--<img src="../img/yuyueback.png">-->
+        <img class="paySuccess" src="img/browActive/browWarn.png">
+        <p class="paySuccessZi">您加入的团目前只有2名团员<br>一小时后拼团结束<br>您可以选择继续等待或更换队伍加入</p>
+        <button class="toYuyueno">继续等待</button>
+        <button class="toYuyue" style="background-color: #f81f7b" onclick="window.location.href = 'browList.html'">换团</button>
+    </div>
+</div>
+<!--<div class="shareOpen">
+    <div class="mubu"></div>
+    <div class="modelOpenback" style="    width: 86%;
+    left: 7%;">
+        <img class="payclose" style="position: relative;" src="img/payclose.png">
+        <img class="sharSuccess" src="img/browActive/noJiang.png">
+        <p class="paySuccessZi" style="font-size: 1rem;">很遗憾，奖品好像迷路了...</p>
+        <p class="paySuccessZi" style="    font-size: .75rem;color: #676767;width: 100%;margin: .5rem 0 1rem 0;">(温馨提示：分享可获得抽奖机会，大奖等你来拿！)</p>
+    </div>
+</div>-->
+<div class="shareOpenBefore" style="display: none;">
+    <div class="mubu"  style="opacity: .7"></div>
+    <div class="modelOpenback" style="background-color: rgba(255,255,255,0);top: 3%;
+    width: 90%;
+    left: 5%;">
+        <img class="activityFu" src="img/shareXiumeiImg.png">
+        <img class="activityClose" onclick="$('.shareOpenBefore').hide()" src="img/know.png">
+    </div>
+</div>
+<div class="content xywz" style="    background: none;">
+    <img class="browDetailBackImg" src="img/browActive/browIndexBack.png">
+   <!-- <div class="headerimg  flex_vertical justify_content_equal">
+        <img class="headerimgTop"  src=""/>
+        <img class="up_page pub_hearder_left" src="img/header/header_leftHui.png?v=9e72a57" onclick="window.location.href = 'vote.html'">
+    </div>-->
+    <div class="pub_hearder flex_vertical justify_content_equal">
+        <!--<img class="up_page pub_hearder_left" src="img/header/header_left.png" />-->
+        <!--<div class="head_center" style="    width: 69%;">
+            <div class="search_publish" style="left: .34rem;   height: 1rem;">
+                <div style="position: relative;    margin-top: .9em;    width: 4.5rem;">
+                    <input style="background-color: transparent;border: 1.4px solid white;height: .55rem;" type="text" placeholder="搜索您感兴趣的项目"/><img style="    top: .55rem;" src="img/search.png" />
+                </div>
+            </div>
+        </div>-->
+        <img class="up_page pub_hearder_left" src="img/header/header_left.png" onclick="window.history.go(-1)" />
+        <div class="head_center head_centerZi">
+            <!--	<div class="search_publish">
+                    <div style="position: relative;">
+                        <input class="toggleSou" type="text" style="color: black;height: .5rem; margin-bottom: .15em;" placeholder="搜索医生"/>
+                    </div>
+                </div>-->
+            <span class="set_head_dot" style="width: .15rem;height: .15rem;border-radius: 50%;"></span>
+            <span class="set_head_dot" style="width: .25rem;height: .27rem;border-radius: 50%;"></span>
+            <span class="set_head_dot"></span>
+            <span class="head_title">绣眉活动</span>
+            <span class="set_head_dot"></span>
+            <span class="set_head_dot" style="width: .25rem;height: .27rem;;border-radius: 50%;"></span>
+            <span class="set_head_dot" style="width: .15rem;height: .15rem;border-radius: 50%;"></span>
+        </div>
+        <img class="search" onclick="window.location.href = 'browRule.html'" src="img/browActive/browRule.png"/>
+    </div>
+
+    <div class="">
+        <img class="browIndexName" src="img/browActive/browIndexName.png">
+        <div style="width: 100%;margin-bottom: .3rem;"><img style="width: 18%;margin-left: 41%" class="browIndexOne browIndexOneMe" src="img/browActive/browIndexMyRank.png"></div>
+        <div style="width: 100%;margin-bottom: .8rem;position: relative"><img class="browIndexOne browIndexOne1" onclick="window.location.href = 'browGoOwnGun.html'" src="img/browActive/browIndex1.png">
+            <img class="browIndexOne browIndexOne2" style="width: 41%;" onclick="window.location.href = 'browList.html'" src="img/browActive/browIndex2.png">
+            <img class="zuRight" src="img/browActive/indexRight.png">
+
+        </div>
+       <!-- <div style="width: 100%;margin-bottom: 1rem;"> </div>-->
+        <div style="width: 100%;margin-bottom: 1.8rem;"><img class="browIndexOne browIndexOne3" onclick="window.location.href = 'browBuyOne.html'" src="img/browActive/browIndex3.png"></div>
+        <div style="    width: 100%;
+    text-align: center;
+    margin-bottom: .8rem;
+    font-size: .87rem;
+    color: black;
+    line-height: 1.2rem;">温馨提示：加入任意团队都可享受e诺超低福利价，<br>成团后团长可获得<span style="color: #c10f49;font-size: 1rem">超值返利福利</span>，团员可获得<span style="color: #c10f49;font-size: 1rem">惊喜大礼</span>！</div>
+        <!--/app/browBuyOwn.html?type=qiyuan-->
+    </div>
+</div>
+<img class="shack" src="img/laba.png">
+<div class="marquee">
+    <div class="marqueeBack"></div>
+    <ul class="line">
+
+    </ul>
+</div>
+<!--<script type="text/javascript" src="js/viewport.js"></script>-->
+<script src="js/common.js"></script>
+<script type="text/javascript" src="js/browIndex.js"></script>
+<script type="text/javascript" src="js/lib/slideup.js"></script>
+<script src="js/lib/jweixin-1.1.0.js"> </script>
+<script src="js/getShare.js"> </script>
+</body>
+<script>
+    $(document).ready(function () {
+        init();
+})
+</script>
+</html>

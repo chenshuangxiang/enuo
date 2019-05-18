@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		
+		<!--在您实际的项目中,请留意mescroll-option.css的图片路径是否引用正确,可写成绝对路径或网络地址-->
+		<!--可把mescroll-option.css代码拷贝到mescroll.min.css中,合为一个css文件,方便引用-->
+		<link rel="stylesheet" href="css/lib/mescroll.css">
+		<link rel="stylesheet" href="option/mescroll-option.css">
+		<link rel="stylesheet" href="css/base.css" />
+		<link rel="stylesheet" href="css/util.css" />
+		<link rel="stylesheet" href="css/find_subject.css" />
+		<link rel="stylesheet" href="css/lib/xiala.css" />
+		<script type="text/javascript" src="plug/jquery-1.11.3.js" ></script>
+		<script src="js/lib/jweixin-1.1.0.js"> </script>
+		<script src="js/common.js"></script>
+		<script src="js/getLocation.js"></script>
+		<script type="text/javascript" src="https://api.map.baidu.com/api?v=2.0&ak=AEKrrtZejAfxZmAsbDxDbjrHDFxkcNo7"></script>
+		<!--<title>找科室</title>--><title>找科室</title>
+	</head>
+
+	<body style="background-color: #f1f1f1;">
+	<div class="mubuxiala"></div>
+	<div class="content">
+		<!--标题-->
+		<!--<a href="../index.html"><div class="header"></div></a>-->
+		<div class="pub_hearder flex_vertical justify_content_equal" style="z-index: 99;position: fixed;
+    top: 0">
+			<img class="up_page pub_hearder_left" style="" src="img/header/header_left.png" onclick="window.history.go(-1)">
+			<div class="head_center" style="width: 100%">
+				<!--	<div class="search_publish">
+                        <div style="position: relative;">
+                            <input class="toggleSou" type="text" style="color: black;height: .5rem; margin-bottom: .15em;" placeholder="搜索医生"/>
+                        </div>
+                    </div>-->
+				<span class="set_head_dot" style="width: .15rem;height: .15rem;border-radius: 50%;"></span>
+				<span class="set_head_dot" style="width: .25rem;height: .27rem;border-radius: 50%;"></span>
+				<span class="set_head_dot"></span>
+				<span class="head_title">找医生</span>
+				<span class="set_head_dot"></span>
+				<span class="set_head_dot" style="width: .25rem;height: .27rem;;border-radius: 50%;"></span>
+				<span class="set_head_dot" style="width: .15rem;height: .15rem;border-radius: 50%;"></span>
+			</div>
+			<!--	<img class="search pub_hearder_right" onclick="Show.Sou()" src="img/search.png"/>-->
+		</div>
+		<div class="menu_nav dov_nav clearfix" style="z-index: 99;position: fixed;
+    top: 2.7rem;">
+			<div class="ranking flex_all_center subChildRoom"><!-- onclick="Choose.subsubject()"-->
+				<span class="subText">子科室</span>&nbsp;<img src="img/down.png" />
+			</div>
+			<div class="address flex_all_center level">
+				<span class="levelText">职称</span>&nbsp;<img src="img/down.png" />
+			</div>
+		</div>
+		<div class="Sort-eject Sort-height subjectLong">
+			<ul class="Sort-Sort subjectLongSort">
+			</ul>
+		</div>
+		<div class="Sort-eject Sort-height levelLong" style="right: 0">
+			<ul class="Sort-Sort levelLongSort ">
+			</ul>
+		</div>
+		<!--滑动区域-->
+		<div id="mescroll" class="mescroll" style="background-color: #f1f1f1;top: 5.2rem;">
+			<!--模拟的轮播-->
+		<!--	<img class="swiper" src="../res/img/swiper.jpg"/>-->
+			<!--筛选条件; 模拟列表的重置和演示空布局的使用-->
+			<!--<div class="nav">
+				<p class="active" i="0">全部</p>
+				&lt;!&ndash;<p i="1">奶粉</p>
+				<p i="2">图书</p>&ndash;&gt;
+			</div>-->
+			<!--展示上拉加载的数据列表-->
+			<ul id="dataList" class="data-list" style="margin-top: .8em;">
+				<!--<li>
+					<img class="pd-img" src="../res/img/pd1.jpg"/>
+					<p class="pd-name">商品标题商品标题商品标题商品标题商品标题商品</p>
+					<p class="pd-price">200.00 元</p>
+					<p class="pd-sold">已售50件</p>
+				</li>-->
+			</ul>
+		</div>
+	</div>
+	</body>
+
+	<!--在您实际的项目中,请留意mescroll-option.js的图片路径是否引用正确,可写成绝对路径或网络地址-->
+	<!--可把mescroll-option.js代码拷贝到mescroll.min.js中,合为一个js文件,方便引用-->
+	<script src="js/lib/mescroll.js" type="text/javascript" charset="utf-8"></script>
+	<!--<script src="option/mescroll-option.js" type="text/javascript" charset="utf-8"></script>-->
+	<!--mescroll本身不依赖jq,这里为了模拟发送ajax请求,获取模拟数据-->
+	<script src="js/find_subject.js"></script>
+<!--	<script src="../res/pdlist1.js" type="text/javascript" charset="utf-8"></script>-->
+	<script type="text/javascript" charset="utf-8">
+		var mescroll;
+		$(function(){
+            init();
+            if(is_weixn()){
+                getSign();
+            }else{
+                baiduLocation();
+            }
+		/*	$('.levelClick').click(function () {
+			    console.log(555)
+                $('.levelText').text($(this).text()).attr('levelId',$(this).attr('levelId'));
+                $('#dataList').empty();
+                var page = {num: 1, size: 5, doctorTypeId: $(this).attr('levelId')}
+               // mescroll.resetUpScroll();
+                mescroll.setPageNum(1)
+                getListData(page)
+            })
+            $('.subsubjectClick').click(function () {
+                $('.subText').text($(this).text()).attr('subsubId',$(this).attr('subsubId'));
+                $('#dataList').empty();
+                var page = {num: 1, size: 5, subSubjectId: $(this).attr('subsubId')}
+                // mescroll.resetUpScroll();
+                mescroll.setPageNum(1)
+                getListData(page)
+            })*/
+			//创建MeScroll对象
+            $('.sou').attr('sou', '')
+			 mescroll = initMeScroll("mescroll", {
+				up: {
+					clearEmptyId:"dataList",
+					isBoth: true, //上拉加载时,如果滑动到列表顶部是否可以同时触发下拉刷新;默认false,两者不可同时触发; 这里为了演示改为true,不必等列表加载完毕才可下拉;
+					callback: getListData, //上拉加载的回调
+				}
+			});
+
+			/*初始化菜单*/
+			//var pdType=0;//全部商品0; 奶粉1; 图书2;
+		/*	$(".nav p").click(function(){
+				var i=$(this).attr("i");
+				if(pdType!=i) {
+					//更改列表条件
+					pdType=i;
+					$(".nav .active").removeClass("active");
+					$(this).addClass("active");
+					//重置列表数据
+					mescroll.resetUpScroll();
+				}
+			})*/
+
+
+
+		});
+        /*联网加载列表数据  page = {num:1, size:10}; num:当前页 从1开始, size:每页数据条数 */
+        function getListData(page){
+            console.log(page)
+            page.size = 10;
+            page.subjectId = getQueryString('subjectId')
+            page.subSubjectId = $('.subText').attr('subsubId');
+            page.doctorTypeId = $('.levelText').attr('levelId');
+            //联网加载数据
+            console.log(", page.num="+page.num);
+            getListDataFromNet( page.num, page.size,page.subjectId,page.subSubjectId,page.doctorTypeId, function(data){
+                //联网成功的回调,隐藏上拉加载的状态
+                console.log("data.length="+data.length);
+                mescroll.endSuccess(data.length);//传参:数据的总数; mescroll会自动判断列表如果无任何数据,则提示空;列表无下一页数据,则提示无更多数据;
+                //设置列表数据
+                setListData(data);
+            }, function(){
+                //联网失败的回调,隐藏上拉加载的状态
+                mescroll.endErr();
+            });
+        }
+
+        /*设置列表数据*/
+        function setListData(data){
+            var listDom=$("#dataList");
+            for (var i = 0; i < data.length; i++) {
+                var pd=data[i];
+
+                var str='';
+                str += '<li class="hos_child set_box_shadow" docId="'+pd.id+'" onclick="href(this)">' ;
+                if(pd.businesStatus == 'normal' || pd.businesStatus == undefined){
+                    str += '<div class="hos_list_top clearfix">' ;
+                }else if(pd.businesStatus == 'violate'){
+                    str += '<div class="hos_list_top clearfix" style="background: url('+"img/violate.png"+') 100% 46% / 30% no-repeat">' ;
+                }else if(pd.businesStatus == 'closed'){
+                    str += '<div class="hos_list_top clearfix" style="background: url('+"img/closedHos.png"+') 100% 46% / 30% no-repeat">' ;
+                }
+                str += '<div class="left"><img src="'+pd.headImgUrl+'"/></div>' +
+                    '<div class="right">' +
+                    '<p class="detail">' +
+                    '<span class="name">'+pd.name+'</span>'+ pd.subSubjectName+' <span class="docLevel">'+pd.doctorTypeName+'</span>'+
+                    '<span style="float: right;color: #707070;display: inline-block">' ;
+
+                if(Number(pd.distance) < 1000){
+                    str +='<span style="color: #00afa1">'+pd.distance+'m</span>';
+                }else if(Number(pd.distance) >= 1000){
+                    str +='<span style="color: #00afa1">'+(Number(pd.distance)/1000).toFixed(1)+'km</span>';
+                }else if(pd.distance == undefined){
+                    //str +='<span style="color: #00afa1">cv</span>';
+                }
+                str += '</p>' +
+                    '<p>' +
+                    '<span style="color: #00afa1">'+pd.hospitalName+'</span>' +
+                    '</p>' +
+                    /*'<p>' +
+                    '<span>科室：</span><span>'+pd.subSubjectName+'</span>' +
+                    '</p>' +*/
+                   /* '<p>' +
+                    '<span>预约：</span><span class="peopelCount">'+pd.orderQuantity+'人</span>' +
+                    '</p>' +*/
+                    '<p class="goodPlace overflow_num_ellipsis" style="    height: 2.6em;;color: #707070"' +
+                    '<span>擅长领域：'+pd.specialty+'</span>' ;
+                /*if(pd.diseases && pd.diseases.length > 0){
+                    pd.diseases.forEach(function (value, index) {
+                        str +=  '<span>'+value+' '+'</span>'
+                    })
+                }*/
+                str += '</p>' +
+                    '</div>' +
+                    '</div></li>'
+
+                /*	var liDom=document.createElement("li");
+                    liDom.innerHTML=str;
+                    listDom.appendChild(liDom);*/
+                listDom.append(str);
+            }
+
+        }
+        function href(obj) {
+            window.location.href = "dos_index.html?docId="+$(obj).attr('docId')
+        }
+        /*联网加载列表数据*/
+        function getListDataFromNet(pageNum,pageSize,subjectId,subSubjectId,doctorTypeId,successCallback,errorCallback) {
+          /*  var url;
+            if(subjectId == '' || subjectId == undefined){
+                url = SERVER_ADDR + '/app/topthree/doctor/getList.json?pageNumber='+pageNum+'&pageSize='+pageSize;
+            }else{
+                url = SERVER_ADDR + '/app/topthree/doctor/getList.json?pageNumber='+pageNum+'&pageSize='+pageSize+'&subjectId='+subjectId;
+            }*/
+            var data = {};
+            data.pageNumber = pageNum;
+            data.pageSize = pageSize;
+            data.subjectId = subjectId;
+            if(subSubjectId != '' && subSubjectId != undefined){
+                data.subSubjectId = subSubjectId;
+			}
+            if(doctorTypeId != '' && doctorTypeId != undefined){
+                data.doctorTypeId = doctorTypeId;
+            }
+            data.latitude = localStorage.getItem("latitude");//30.317750930786133//
+            data.longitude = localStorage.getItem("longitude");//120.10475158691406//
+            data.cityName = localStorage.getItem('city');
+            data.provinceName = localStorage.getItem('province');
+            //延时一秒,模拟联网
+            $.ajax({
+                type: 'GET',
+                url: SERVER_ADDR + '/app/doctor/getList.json?',
+				data:data,
+                dataType: 'json',
+                success: function(data){
+                    if(data.success == true){
+                        var data=data.data; // 模拟数据: ../res/pdlist1.js
+                        var listData=[];
+
+                        //pdType 全部商品0; 奶粉1; 图书2;
+
+                        //奶粉
+                        for (var i = 0; i < data.length; i++) {
+                            listData.push(data[i]);
+                        }
+
+                        //回调
+                        successCallback(listData);
+                    }else{
+                        alert(data.data);
+                    }
+                },
+                error: errorCallback
+            });
+        }
+        function callback() {
+            var page = {num: 1, size: 5, subjectId: undefined,subSubjectId: undefined,doctorTypeId: undefined}
+            // mescroll.resetUpScroll();
+            mescroll.setPageNum(1)
+            getListData(page)
+        }
+	</script>
+
+</html>

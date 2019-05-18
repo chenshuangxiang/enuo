@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<link rel="stylesheet" href="css/base.css" />
+		<link rel="stylesheet" href="css/util.css" />
+		<link rel="stylesheet" href="css/change_tel.css" />
+		<script type="text/javascript" src="plug/jquery-1.11.3.js" ></script>
+		<script src="js/common.js"></script>
+		<script type="text/javascript" src="js/lib/gt.js" ></script>
+		<title>更改绑定手机号</title>
+	</head>
+
+	<body style="background-color: #f1f1f1;">
+	<div class="content">
+		<!--标题-->
+		<div class="pub_hearder flex_vertical justify_content_equal" style="z-index: 99">
+			<img class="up_page pub_hearder_left" src="img/header/header_left.png" onclick="window.location.href = 'user_center.html'" />
+			<div class="head_center" style="">
+				<span class="set_head_dot" style="width: .15rem;height: .15rem;border-radius: 50%;"></span>
+				<span class="set_head_dot" style="width: .25rem;height: .27rem;border-radius: 50%;"></span>
+				<span class="set_head_dot"></span>
+				<span class="head_title">更改绑定手机号</span>
+				<span class="set_head_dot"></span>
+				<span class="set_head_dot" style="width: .25rem;height: .27rem;;border-radius: 50%;"></span>
+				<span class="set_head_dot" style="width: .15rem;height: .15rem;border-radius: 50%;"></span>
+			</div>
+		</div>
+		<div class="hos_child set_box_shadow">
+			<div class="hos_list_top clearfix">
+				<div class="left">手机号</div>
+				<div class="right"><input class="telNum" placeholder="请输入手机号" style="width: 53%;" type="text"/>
+					<button style="max-width: 47%;" id="bindTel">获取验证码</button>
+					<!--<input type="button" onclick="Go.getcode(this)" value="获取验证码"/>-->
+				</div>
+			</div>
+			<div class="hos_list_top clearfix" style="border-bottom: none">
+				<div class="left">验证码</div>
+				<div class="right"><input class="telCode" placeholder="请输入手机验证码" type="text"/></div>
+			</div>
+
+		</div>
+		<div class="bindBtn" onclick="Go.bind()">确定</div>
+	</div>
+	</body>
+	<script type="text/javascript" charset="utf-8"></script>
+	<script src="js/change_tel.js?v=777"></script>
+</html>

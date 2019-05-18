@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no,minimal-ui">
+<!--<link rel="stylesheet" href="plug/swiper/css/swiper.css"/>-->
+<link rel="stylesheet" href="css/base.css" />
+<link rel="stylesheet" href="css/util.css" />
+<link rel="stylesheet" href="css/browBuyOwn.css" />
+	<script type="text/javascript" src="plug/jquery-1.11.3.js" ></script>
+
+<title>绣眉活动</title>
+</head>
+<style>
+	.zizi{
+		color: #c30f4c;
+	}
+	.lvzi{
+		color:#00afa1;
+	}
+</style>
+<body style="background-color: #f1f1f1;">
+<div class="toOpen">
+	<div class="mubu"></div>
+	<div class="modelOpenback">
+		<img class="payclose" onclick="$('.toOpen').hide()" src="img/payclose.png">
+		<!--<img src="../img/yuyueback.png">-->
+		<img class="paySuccess" src="img/browActive/browWarn.png">
+		<p class="paySuccessZi">纹眉活动只能购买一次哦</p>
+		<p class="paySuccessZi">若您尚未支付，请到我的订单进行支付</p>
+		<button class="toYuyue" style="margin-left: 30%;" onclick="window.location.href = 'order.html'">前往查看</button>
+	</div>
+</div>
+<div class="content xywz">
+	
+<!--头部-->	
+<div class="headerimg flex_vertical justify_content_equal">
+	<img class="up_page pub_hearder_left" style=" width: 3rem;
+    height: 3rem;
+   position: absolute;margin-top: 0;top: .2rem;
+    left: 1%;" src="img/header/header_leftHui.png" onclick="window.history.go(-1)"/>
+	<img class="headerimgTop" src="img/browActive/browQuan.png">
+<!--	<div class="head_center" style="    width: 69%;">
+		<div class="search_publish" style="left: .34rem;   height: 1rem;">
+			<div style="position: relative;    margin-top: .9em;    width: 4.5rem;">
+				<input style="background-color: transparent;border: 1.4px solid white;height: .55rem;" type="text" placeholder="搜索医生、医院、科室"/><img style="    top: .55rem;" src="img/search.png" />
+			</div>
+		</div>
+	</div>-->
+	<!--<img class="search pub_hearder_right" onclick="To.favourite()" style="	width: .7rem;height: .7rem;position: absolute;margin-top: 0;top: .22rem;
+    right: 1%;" src="img/favouriteNo.png"/>-->
+</div>
+	<div class="hos_doc_team">
+		<div class="cptitle" style=""><span class="cptitleName">e诺首届纹绣艺术节</span>
+			<p class="priceyuyue"><span style="font-size: .27rem;"></span><span class="price priceIndex">￥840</span><span class="priceRight zi">e诺包团福利价</span></p>
+			<p class="priceyuyue" style="    margin-top: .3rem;    margin-left: .2rem;margin-right:0">
+			<del class="oldprice" style="margin-right:7%;">价格 5040-20997</del>
+				<span class="oldprice"><span class="peopelcount"></span>人已抢购</span>
+			<!--<span class="oldprice"><span class="peopelcount">236</span>人已抢购</span>-->
+			<span  class="yuyueZi" style="margin-top: 0" onclick="toLocalAddress()">浙江爱德医院南侧<img class="addressImg" src="img/hosaddress.png"></span>
+			</p>
+		</div>
+		<div class="ill_office_pg" style="width: 40%;display: inline-block">
+			<span style="color: #000000;    margin-left: -.3rem;    font-size: 1rem;">详情介绍：</span>
+		</div>
+		<div class="gouKnow">
+			<p>1、杭城<span class="zizi">多家纹绣单位</span>参与活动，<span class="zizi">20多种眉形任意挑选</span>，用户凭此券可参加e诺无创绣眉艺术节，活动期间可<span class="zizi">免费体验</span>在场任意纹绣机构的<span class="zizi">眉型设计</span>；</p>
+			<p>2、用户对比眉型设计之后可在<span class="zizi">现场预约</span>心仪机构，<span class="zizi">线下</span>凭此券到所预约的机构免费体验绣眉；</p>
+			<p>3、用户现场凭体验券到所预约的机构<span class="zizi">免费体验绣眉</span>，对选手的纹绣水平感到<span class="zizi">满意</span>，可将该券签名后<span class="zizi">交给商家</span>作为凭证（<span class="zizi">体验券一经涂改、损坏即视为无效</span>）；</p>
+			<p>4、用户可在<span class="zizi">半年内</span>到所体验的纹绣机构特价<span class="zizi">补色一次</span>（价格为<span class="lvzi">100元</span>）；</p>
+			<p>5、奖品可在e诺健康公众号<span class="lvzi">“个人中心”-“我的绣眉活动”</span>中查看；</p>
+			<p class="zizi" style="color: #c30f4c;">6、体验券一经售出，不予退换。</p>
+			<!--	购买福利：
+				1.用户购买成功之后，大几率获得精美大奖。</p>-->
+		</div>
+		<div class="ill_office_pg" style="width: 40%;display: inline-block">
+			<span style="color: #000000;    margin-left: -.3rem;    font-size: 1rem;">购买福利：</span>
+		</div>
+		<div class="gouKnow">
+			<p>1、活动期间，用户参与<span class="zizi">3人成团活动</span>即可享受840元特价（280元/张），参与活动有机会获得精美礼品。</p>
+			<!--<p>2.用户<span class="zizi">购买成功</span>之后，可获得<span class="zizi">精美大奖</span>。</p>-->
+		</div>
+	</div>
+	<!--上弹-->
+	<!--<div class="share3 first-active">
+
+		<div class="mainTop">
+			<div class="main_img"><center><img src="img/peopleImg.png"></center></div>
+			<div class="main_price">
+				<span>现价：￥</span><span class="newPrice">680</span><br>
+				<p class="beforePriceP">
+				<span class="beforePriceSpan">原价</span><span class="beforePrice">￥2680</span>
+				</p>
+			</div>
+			<div class="main_close"><img src="img/close.png"></div>
+		</div>
+		<div style="clear:both"></div>
+		<div style="height:68%;overflow-y:scroll">
+			<div class="main_chicun">
+				<div class="main_chicun1">选择项目</div>
+				<div class="main_choose">
+					<div valuesid="12451" class="choose_shose nochoose">脂肪全脸填充</div>
+				</div>
+			</div>
+			<div class="main_chicun">
+				<div class="main_chicun1" style="width: initial;margin-top: 1.7em;">购买数量</div>
+				<div class="getCount">
+					<span class="clickbtn jian" onclick="Click.jian()">&#45;&#45;</span>
+					<span class="buycount">1</span>
+					<span class="clickbtn" onclick="Click.jia()">+</span>
+				</div>
+			</div>
+		</div>
+		<div class="sure" onclick="Go.pay()">确定</div>  &lt;!&ndash;onclick="Click.sure()"&ndash;&gt;
+	</div>-->
+	<div class="doc_homepage_btm fixed clearfix">
+		<p class="tel_consult" onclick="Go.topanimate()"><img src="img/browActive/call.png"><span>电话咨询</span></p>
+		<!--<p class="line_consult" ><img src="img/news.png"><span>在线咨询</span></p>-->
+		<div class="doc_homepage_btmRight">
+			<div style="width: 50%;border-top-right-radius:20px;border-bottom-right-radius: 20px" class="make" onclick="Go.pay()">立即抢购</div>
+			<div style="width: 50%;background-color: #ff78a6;border-top-left-radius:20px;border-bottom-left-radius: 20px " class="make line_consult" onclick="Go.chat()" employee="127">私信咨询</div>
+
+		</div>
+	</div>
+	<div class="shareCall call-active">
+		<div class="mainCall">
+			<a href="tel:4000696120"><img src="img/call-out.png"><span style="vertical-align: top;">4000696120</span></a>
+		</div>
+		<div class="split"></div>
+		<div class="cancel" onclick="Go.closetopanimate()">取消</div>
+	</div>
+</div>
+<!--<script type="text/javascript" src="js/viewport.js" ></script>-->
+<script src="js/common.js"></script>
+<script type="text/javascript" src="js/browBuyOneFive.js"></script>
+<script src="js/lib/jweixin-1.1.0.js"> </script>
+<script src="js/getShare.js"> </script>
+<script src="js/getSignHos.js"> </script>
+<!--<script src="js/ym_index.js"></script>-->
+<!--<script type="text/javascript" src="js/util.js"></script>
+<script type="text/javascript" src="js/method.js"></script>
+<script type="text/javascript" src="js/find_hos.js" ></script>-->
+
+
+</body>
+<script>
+    $(document).ready(function () {
+        init();
+        //follow.wecat();
+        //Get.getDocInfo();
+    })
+
+</script>
+</html>

@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
+		<meta content="Discover the rich set of features in CanvasFlip. Explore everything about rapid prototyping, sharing and analyzing the UX of prototypes on the tool. Know more." name="description">
+		<meta name="robots" content="index, follow">
+		<meta name="googlebot" content="index, follow">
+		<meta name="keywords" content="features,rapid prototyping,sharing,analyzing,prototypes">
+		<meta name="author" content="CANVASFLIP.COM">
+		<meta name="copyright" content="CANVASFLIP.COM">
+		<title>美丽回家大转盘</title>
+		<link rel="stylesheet" href="css/base.css">
+		<link rel="stylesheet" href="css/util.css">
+		<link href="css/rotorNine.css" rel="stylesheet" type="text/css" />
+		<link href="css/lib/layer.css" rel="stylesheet" type="text/css" />
+		<script src="js/jquery-1.11.3.js" type="text/javascript"></script>
+	</head>
+	<style>
+		.left_tittle span{
+			color: #00afa1;margin-left: 0;   font-size: .3rem;
+		}
+		.layui-m-layerchild{
+			background-color: rgba(255,255,255,0);
+		}
+	</style>
+	<body>
+	<div class="content xywz" style="    background: none;">
+		<img class="browDetailBackImg" src="img/rotor/rotorNineBack.jpg">
+		<div class="pub_hearder flex_vertical justify_content_equal">
+			<img class="up_page pub_hearder_left" src="img/header/header_left.png" onclick="window.history.go(-1)" />
+			<div class="head_center head_centerZi">
+				<span class="set_head_dot" style="width: .15rem;height: .15rem;border-radius: 50%;"></span>
+				<span class="set_head_dot" style="width: .25rem;height: .27rem;border-radius: 50%;"></span>
+				<span class="set_head_dot"></span>
+				<span class="head_title">美丽回家大转盘</span>
+				<span class="set_head_dot"></span>
+				<span class="set_head_dot" style="width: .25rem;height: .27rem;;border-radius: 50%;"></span>
+				<span class="set_head_dot" style="width: .15rem;height: .15rem;border-radius: 50%;"></span>
+			</div>
+		</div>
+			<div class="draw" id="lottery">
+				<table style="width: 100%;">
+					<tr>
+						<!--<div class="img">
+								<img src="images/img1.png" alt="">
+							</div>-->
+						<td class="item lottery-unit lottery-unit-0">
+							<span class="name">国内往返机票</span>
+						</td>
+						<td class="gap"></td>
+						<td class="item lottery-unit lottery-unit-1">
+							<span class="name">眼综合</span>
+						</td>
+						<td class="gap"></td>
+						<td class="item lottery-unit lottery-unit-2">
+							<span class="name">全切双眼皮</span>
+						</td>
+						<td class="gap"></td>
+						<td class="item lottery-unit lottery-unit-3">
+							<span class="name">黑脸娃娃</span>
+						</td>
+					</tr>
+					<tr>
+						<td class="gap-2" colspan="5"></td>
+					</tr>
+					<tr>
+						<td class="item lottery-unit lottery-unit-11">
+							<span class="name">光子嫩肤</span>
+						</td>
+						<td class="gap"></td>
+						<td class="">
+							<img class="draw-btn" src="img/rotor/bg3.png">
+						</td>
+						<td class="gap"></td>
+						<td class="itemNo">
+							<span class="name"></span>
+						</td>
+						<td class="gap"></td>
+						<td class="item lottery-unit lottery-unit-4">
+							<span class="name">额头自体脂肪填充</span>
+						</td>
+					</tr>
+					<tr>
+						<td class="gap-2" colspan="5"></td>
+					</tr>
+					<tr>
+						<td class="item lottery-unit lottery-unit-10">
+							<span class="name">除皱</span>
+						</td>
+						<td class="gap"></td>
+						<td class="itemNo">
+							<span class="name"></span>
+						</td>
+						<td class="gap"></td>
+						<td class="itemNo">
+							<span class="name"></span>
+						</td>
+						<td class="gap"></td>
+						<td class="item lottery-unit lottery-unit-5">
+							<span class="name">瘦脸针</span>
+						</td>
+					</tr>
+					<tr>
+						<td class="gap-2" colspan="5"></td>
+					</tr>
+					<tr>
+						<td class="item lottery-unit lottery-unit-9">
+							<span class="name">水氧美人</span>
+						</td>
+						<td class="gap"></td>
+						<td class="item lottery-unit lottery-unit-8">
+							<span class="name">硅胶假体隆鼻</span>
+						</td>
+						<td class="gap"></td>
+						<td class="item lottery-unit lottery-unit-7">
+							<span class="name">皮秒祛斑</span>
+						</td>
+						<td class="gap"></td>
+						<td class="item lottery-unit lottery-unit-6">
+							<span class="name">超声洁牙</span>
+						</td>
+					</tr>
+				</table>
+			</div>
+		<!--Import Copyright -->
+		<!--弹窗layer-->
+			<div id='info' style = "display : none">
+				<a>
+					<img style="width: 100%;" src="img/rotor/tk_img.png">
+					<img class="openClick" style="width: 100%;" src="img/rotor/tk_img_zaichou.png" onclick="layer.closeAll()">
+				</a>
+				<h1>100元</h1>
+			</div>
+		<p class="chouCiDiv">你还有<span class="chouCi">0</span>次抽奖机会</p>
+		<p style=" margin: .5rem 0 2rem 0;;text-align: center"><a class="myJiang" href="/app/myRotorJiang.html">我的奖品</a></p>
+		<div style="width: 80%;margin-bottom: 1rem;font-size: .87rem;color: black;line-height: 1.3rem;margin-left: 10%;position: relative">
+			<img src="img/rotor/guize.png">
+			<p style="margin-top: .7rem;">1.每位用户拥有二次抽奖机会，二个中奖奖品只能选择其一；<br>
+				2.用户仅有一次奖品领取机会，凡点击领取奖品后，抽奖机会即被用完，<span style="color: red">奖品数量有限，先领先得哦</span>；<br>
+				4.本次活动最终解释权归e诺第三方医疗监管平台所有；<br>
+			</p>
+		</div>
+	</div>
+	<img class="shack" src="img/laba.png">
+	<div class="marquee">
+		<div class="marqueeBack"></div>
+		<ul class="line">
+
+		</ul>
+	</div>
+	</body>
+	<script src="js/common.js"></script>
+	<script src="js/lib/layer.js"></script>
+	<script src="js/rotorNine.js"></script>
+	<script type="text/javascript" src="js/lib/slideup.js"></script>
+	<script src="js/lib/jweixin-1.1.0.js"> </script>
+	<script src="js/getShare.js"> </script>
+	<script>
+        $(document).ready(function () {
+            init();
+            if(window.history.length == 1 || getQueryString('ling') == 1){
+                $('.pub_hearder_left').attr("onclick","window.location.href = 'user_center.html'");
+            }
+
+        })
+	</script>
+</html>

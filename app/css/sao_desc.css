@@ -1,0 +1,84 @@
+.readHos,.sao {
+	border-radius: 5px;
+	color: white;
+	font-weight: 500;
+	font-size: 1rem;
+	border: none;
+	background-color: #00afa1;
+	outline: none;
+	width: 7.5rem;
+	padding: .6rem 0;
+	display: block;
+	margin: 0 auto;
+}
+.saoWarn{
+	width: 68%;
+	margin: 17% 2% 0 4%;
+}
+.saoDoc{
+	width: 19%;
+	margin: 29% 0 0 0;
+	vertical-align: top;
+}
+.buttonDiv{
+	height: 5rem;
+}
+/*医院弹窗*/
+.modelOpen{
+	position: fixed;
+	width: 100%;
+	height: 100%;
+	z-index: 999;
+	top: 0;
+	display: none;
+}
+.mubu{
+	position: fixed;
+	width: 100%;
+	height: 100%;
+	background-color: #000000;
+	opacity: 0.2;
+}
+.modelOpenback{
+	width: 56%;
+	height: 45%;
+	background-color: white;
+	border-radius: 6px;
+	position: fixed;
+	top: 23%;
+	left: 21%;
+	z-index: 99999;
+	padding: .85rem 0 .5rem .8rem;
+	overflow-y: auto;
+}
+.toYuyue{
+	width: 61%;
+	height: 1.6rem;
+	color: #444;
+	font-size: .85rem;
+	display: block;
+}
+.modelOpenback ul li{
+	min-height: 1.6rem;
+	font-size: .85rem;
+	display: block;
+	color: #444;
+}
+#bcid {
+	width: 100%;
+	height: 100%;
+	position: fixed;
+	top: 0;
+	bottom: 0;
+	z-index: 99;
+	text-align: center;
+	display: none;
+}
+footer{
+	display: none;
+}
+.tip {
+	color: #FFFFFF;
+	font-weight: bold;
+	text-shadow: 0px -1px #103E5C;
+}

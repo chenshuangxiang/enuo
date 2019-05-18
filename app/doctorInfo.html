@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+
+	<!--在您实际的项目中,请留意mescroll-option.css的图片路径是否引用正确,可写成绝对路径或网络地址-->
+	<!--可把mescroll-option.css代码拷贝到mescroll.min.css中,合为一个css文件,方便引用-->
+	<!--<link rel="stylesheet" href="css/lib/mescroll.css">
+	<link rel="stylesheet" href="option/mescroll-option.css">-->
+	<link rel="stylesheet" href="css/base.css" />
+	<link rel="stylesheet" href="css/util.css" />
+	<link rel="stylesheet" href="css/doctorInfo.css" />
+	<link rel="stylesheet" href="css/lib/fsgallery.css" />
+	<link rel="stylesheet" href="css/lib/xiala.css" />
+	<script type="text/javascript" src="plug/jquery-1.11.3.js" ></script>
+	<script src="js/common.js"></script>
+	<script src="js/lib/jweixin-1.1.0.js"> </script>
+	<script type="text/javascript" src="js/lib/fs_forse.js" ></script>
+	<script type="text/javascript" src="js/lib/lrz.bundle.js"></script>
+	<script type="text/javascript" src="js/lib/1.chunk.js"></script>
+	<script type="text/javascript" src="js/lib/2.chunk.js"></script>
+	<title>社区医师资料</title>
+</head>
+<style>
+
+</style>
+<body style="background-color: #ebebeb;">
+<div class="content">
+	<!--标题-->
+	<!--<a href="../index.html"><div class="header"></div></a>-->
+	<div class="pub_hearder flex_vertical justify_content_equal" style="z-index: 99; position: fixed;top: 0;background: none;background-color: #ebebeb;">
+		<img class="up_page pub_hearder_left_noQuan"  src="img/left.png" onclick="window.location.href = 'user_center.html'" />
+		<div class="head_center head_centerZi">
+			<!--	<div class="search_publish">
+                    <div style="position: relative;">
+                        <input class="toggleSou" type="text" style="color: black;height: .5rem; margin-bottom: .15em;" placeholder="搜索医生"/>
+                    </div>
+                </div>-->
+			<!--<span class="set_head_dot" style="width: .15rem;height: .15rem;border-radius: 50%;"></span>
+			<span class="set_head_dot" style="width: .25rem;height: .27rem;border-radius: 50%;"></span>
+			<span class="set_head_dot"></span>-->
+			<span class="head_title" style="color: black">社区医师资料</span>
+			<!--<span class="set_head_dot"></span>
+			<span class="set_head_dot" style="width: .25rem;height: .27rem;;border-radius: 50%;"></span>
+			<span class="set_head_dot" style="width: .15rem;height: .15rem;border-radius: 50%;"></span>-->
+		</div>
+		<!--<img class="search pub_hearder_right" src="img/forward.png" />-->
+		<!--	<img class="search pub_hearder_right" onclick="Show.Sou()" src="img/search.png"/>-->
+	</div>
+	<!--医生-->
+	<div id="mescroll1" class="mescroll" style="top: 2.7rem;width: 100%;position: absolute;z-index: -1">
+		<div class="hos_child">
+			<div class="head"><img class="headImg" src="img/health/noHeadImg.png"><span class="userName" style="font-size: 1.1rem;"></span></div>
+		<!--	<p style="padding-left: .5rem;    margin: .7rem 0 .5rem 1rem;;border-left: 3px solid #00afa1;font-size: .92rem;"><span class="img_span algin">基本信息</span></p>-->
+			<div class="hos_list_top clearfix">
+				<div class="left">年龄</div>
+				<div class="right"><input class="userName userAgeDoctor" type="text"></div>
+			</div>
+			<div class="hos_list_top clearfix">
+				<div class="left">性别</div>
+				<div class="right">
+					<img class="healthSexImg" src="img/health/healthMan.png">
+					<span class="sexname">男</span>
+				</div>
+			</div>
+			<!--<div class="hos_list_top clearfix">
+				<div class="left">出生年月</div>
+				<div class="right"><input class="userName userNameDoctor" type="text"></div>
+			</div>-->
+			<div class="hos_list_top clearfix">
+				<div class="left">联系方式</div>
+				<div class="right"><input class="mobile mobileDoctor" placeholder="请输入正确的联系方式" type="tel"></div>
+			</div>
+			<div class="hos_list_top clearfix">
+				<div class="left">实名认证</div>
+				<div class="right"><span class="renzhenZi">已认证</span><img class="renzhen" onclick="" src=""></div>
+			</div>
+			<!--<div class="hos_list_top clearfix">
+				<div class="left">所属地区</div>
+				<div class="right"><select class="community communityDoctor"><option>滚动选择社区名称</option></select></div>
+			</div>-->
+			<div class="hos_list_top clearfix" style="border-bottom: none;height: auto">
+				<div class="left">自我简介</div>
+				<div class="right"><textarea class="breif breifDoctor" placeholder="必填，字数不限"></textarea></div>
+			</div>
+		</div>
+</div>
+</div>
+</body>
+
+<!--在您实际的项目中,请留意mescroll-option.js的图片路径是否引用正确,可写成绝对路径或网络地址-->
+<!--可把mescroll-option.js代码拷贝到mescroll.min.js中,合为一个js文件,方便引用-->
+<!--<script src="js/lib/mescroll.js" type="text/javascript" charset="utf-8"></script>-->
+<!--<script src="option/mescroll-option.js" type="text/javascript" charset="utf-8"></script>-->
+<!--mescroll本身不依赖jq,这里为了模拟发送ajax请求,获取模拟数据-->
+<!--<script type="text/javascript" src="js/viewport.js" ></script>-->
+<script type="text/javascript" src="js/util.js"></script>
+<script src="js/doctorInfo.js"></script>
+<!--	<script src="../res/pdlist1.js" type="text/javascript" charset="utf-8"></script>-->
+
+<script type="text/javascript" charset="utf-8">
+	$(document).ready(function () {
+		init();
+    })
+</script>
+
+</html>

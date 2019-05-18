@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+
+	<link rel="stylesheet" href="css/base.css" />
+	<link rel="stylesheet" href="css/util.css" />
+	<link rel="stylesheet" href="css/my_collect.css" />
+	<link rel="stylesheet" href="css/lib/xiala.css" />
+	<script type="text/javascript" src="plug/jquery-1.11.3.js" ></script>
+	<script src="js/common.js"></script>
+	<!--<title>搜索</title>--><title>搜索</title>
+</head>
+<style>
+	input::-webkit-input-placeholder{
+		color: white;
+		font-size: .8rem;
+	}
+	input[type="search"]::-webkit-search-cancel-button{
+		display: none;
+		-webkit-appearance: none;
+	}
+	.searchSpan {
+		width: 1.8rem;
+		height: 1.8rem;
+		top: .8rem;
+		/* float: right; */
+		/* margin-left: 7%; */
+		position: fixed;
+		right: 2%;
+		font-size: .85rem;
+	}
+
+	.search {
+		width: 1rem;
+		margin: .3rem 0 0 .3rem;
+	}
+	.toggleSou{
+		background-color: transparent;
+		border: 1.4px solid white;
+		width: 100%;
+		height: .6rem;
+		border-radius: .3rem;
+		font-size: .24rem;
+		letter-spacing: 0.5px;
+		color: black;
+		text-indent: .2rem;
+		outline: none;
+	}
+	.searchSpan{
+		color: white;
+	}
+	.search_publish img{
+		width: 1rem;
+		position: absolute;
+		top: .3rem;
+		right: 4%;
+		padding-top: .5rem;
+		margin-top: -.5rem;
+		padding-bottom: .5rem;
+		margin-bottom: -.5rem;
+	}
+</style>
+<body style="background-color: #f1f1f1;">
+<div class="content">
+	<!--标题-->
+	<!--<a href="../index.html"><div class="header"></div></a>-->
+	<div class="pub_hearder flex_vertical justify_content_equal" style="z-index: 99; position: fixed;
+    top: 0;">
+		<!--<img class="up_page pub_hearder_left" src="img/header/header_left.png" onclick="window.history.go(-1)" />-->
+		<!--<div class="head_center head_centerZi">
+			&lt;!&ndash;	<div class="search_publish">
+                    <div style="position: relative;">
+                        <input class="toggleSou" type="text" style="color: black;height: .5rem; margin-bottom: .15em;" placeholder="搜索医生"/>
+                    </div>
+                </div>&ndash;&gt;
+			<span class="set_head_dot" style="width: .15rem;height: .15rem;border-radius: 50%;"></span>
+			<span class="set_head_dot" style="width: .25rem;height: .27rem;border-radius: 50%;"></span>
+			<span class="set_head_dot"></span>
+			<span class="head_title">我的收藏</span>
+			<span class="set_head_dot"></span>
+			<span class="set_head_dot" style="width: .25rem;height: .27rem;;border-radius: 50%;"></span>
+			<span class="set_head_dot" style="width: .15rem;height: .15rem;border-radius: 50%;"></span>
+		</div>-->
+		<!--<span class="search_publish" style="z-index: 99;    width: 60%;
+    margin-left: 12%;">
+				<input class="toggleSou" type="text" style="font-size: .9rem;margin-bottom: 0" placeholder="搜索您感兴趣的项目"/>
+		</span>-->
+		<div class="search_publish" style="left: 4%;
+    z-index: 99;
+    width: 81%;
+    top: .2rem;">
+			<form action="javascript:return true;" class="input-kw-form">
+				<input class="toggleSou" type="search" autocomplete="off" style="    border-radius: .35rem;font-size: .85rem;color: white; padding-left: 1em;height: 29px;    line-height: 29px;
+    margin-bottom: 7px;   background-color: transparent;
+    border: 1.4px solid white;" placeholder="搜索您感兴趣的项目"/>
+			</form>
+			<img class="sou" onclick="Show.Sou()" src="img/search.png">
+		</div>
+		<!--<img class="search pub_hearder_right" src="img/forward.png" />-->
+			<span class="searchSpan"  onclick="Show.none()" style="display: inline-block;">
+					取消
+				</span>
+	</div>
+	<!--<div class="famous_doc_layer">
+		<div class="yuyueTop">预约单号：<span class="famousName">4545454102536</span><span class="yuyueStatus">预约中</span></div>
+		<div class="split"></div>
+		<div class="btm">
+			<p><span class="famousName">预约医院：</span><span class="hosName">杭州复旦医院</span></p>
+			<p><span class="famousName">预约科室：</span><span class="docName">李华</span></p>
+			<p><span class="famousName">预约医生：</span><span class="docLevel">主任医师</span></p>
+			<p><span class="famousName">预约时间：</span><span class="docSub">五官科</span> &#45;&#45; <span class="docSubSub">五官科</span></p>
+		</div>
+	</div>-->
+	<!--滑动区域-->
+	<div class="nav" style="position: fixed;
+    top: 2.7rem;    width: 100%;    font-size: .95rem;display: none">
+		<p class="active meigou" i="0" name="项目">美购</p>
+		<p i="1" class="doc"  name="医生">医生</p>
+		<p i="2" class="hos" name="医院">医院</p>
+		<p i="3" class="spe" name="特价">特价</p>
+		<p i="4" class="product" name="全部项目">全部项目</p>
+	</div>
+	<!--商品-->
+	<div id="mescroll0" class="mescroll" style="background-color: #f1f1f1;top: 5.4rem;">
+		<!--模拟的轮播-->
+		<!--	<img class="swiper" src="../res/img/swiper.jpg"/>-->
+		<!--筛选条件; 模拟列表的重置和演示空布局的使用-->
+		<!--<div class="nav">
+            <p class="active" i="0">全部</p>
+            &lt;!&ndash;<p i="1">奶粉</p>
+            <p i="2">图书</p>&ndash;&gt;
+        </div>-->
+		<!--展示上拉加载的数据列表-->
+		<ul id="dataList0" class="data-list" style="margin-top: .8em;">
+			<!--<li>
+                <img class="pd-img" src="../res/img/pd1.jpg"/>
+                <p class="pd-name">商品标题商品标题商品标题商标标题商品标题商品</p>
+                <p class="pd-price">200.00 元</p>
+                <p class="pd-sold">已售50件</p>
+            </li>-->
+		</ul>
+	</div>
+	<!--医生-->
+	<div id="mescroll1" class="mescroll hide" style="background-color: #f1f1f1;top: 5.4rem;">
+		<ul id="dataList1" class="data-list">
+		</ul>
+	</div>
+
+	<!--医院-->
+	<div id="mescroll2" class="mescroll hide" style="background-color: #f1f1f1;top: 5.4rem;">
+		<ul id="dataList2" class="data-list">
+		</ul>
+	</div>
+</div>
+</body>
+<!--mescroll本身不依赖jq,这里为了模拟发送ajax请求,获取模拟数据-->
+<!--<script type="text/javascript" src="js/viewport.js" ></script>-->
+<script type="text/javascript" src="js/util.js"></script>
+<script src="js/footer.js"></script>
+<!--<script src="js/dos_yuyue.js"></script>-->
+<!--	<script src="../res/pdlist1.js" type="text/javascript" charset="utf-8"></script>-->
+
+<script type="text/javascript" charset="utf-8">
+	$(document).ready(function () {
+        $(".toggleSou").on('keypress',function(e) {
+            var keycode = e.keyCode;
+            if(keycode=='13') {
+                e.preventDefault();
+                //请求搜索接口
+                Show.Sou();
+            }
+        });
+		/*init();*/
+		if(getQueryString('type') == 'doctor'){
+            $(".nav .active").removeClass("active");
+			$('.doc').addClass("active");
+			$('.toggleSou').attr('placeholder','搜索您感兴趣的医生')
+		}else if(getQueryString('type') == 'hospital'){
+            $(".nav .active").removeClass("active");
+            $('.hos').addClass("active");
+            $('.toggleSou').attr('placeholder','搜索您感兴趣的医院')
+        }else if(getQueryString('type') == 'meigou'){
+            $(".nav .active").removeClass("active");
+            $('.meigou').addClass("active");
+            $('.toggleSou').attr('placeholder','搜索您感兴趣的项目')
+        }else if(getQueryString('type') == 'beauty' || getQueryString('type') == 'cure'){
+            $(".nav .active").removeClass("active");
+            $('.product').addClass("active");
+            $('.toggleSou').attr('placeholder','搜索您感兴趣的项目')
+        }else if(getQueryString('type') == 'special'){
+            $(".nav .active").removeClass("active");
+            $('.spe').addClass("active");
+            $('.toggleSou').attr('placeholder','搜索您感兴趣的特价产品')
+        }
+        $(".nav p").click(function(){
+            $(".nav .active").removeClass("active");
+            $(this).addClass("active");
+            $('.toggleSou').attr('placeholder','搜索您感兴趣的'+$(this).attr('name'));
+        });
+    })
+	var Show = {
+	    Sou:function () {
+            if($('.meigou').hasClass('active') == true){
+				window.location.href = 'zxmr.html?val='+$('.toggleSou').val()+'&specialName=全部项目';
+            }else if($('.doc').hasClass('active') == true){
+                window.location.href = 'find_doc.html?val='+$('.toggleSou').val()
+			}else if($('.hos').hasClass('active') == true){
+                window.location.href = 'find_hos.html?val='+$('.toggleSou').val()
+            }else if($('.product').hasClass('active') == true){
+                window.location.href = 'find_project.html?val='+$('.toggleSou').val() + '&type='+getQueryString('type')
+            }else if($('.spe').hasClass('active') == true){
+                window.location.href = 'find_subject_special.html?val='+$('.toggleSou').val()+'&subjectName=搜索';
+            }
+        },
+        none:function () {
+			window.history.go(-1);
+        }
+	}
+</script>
+
+</html>

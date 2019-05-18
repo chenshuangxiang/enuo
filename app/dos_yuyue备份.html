@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+
+	<!--在您实际的项目中,请留意mescroll-option.css的图片路径是否引用正确,可写成绝对路径或网络地址-->
+	<!--可把mescroll-option.css代码拷贝到mescroll.min.css中,合为一个css文件,方便引用-->
+	<link rel="stylesheet" href="css/lib/mescroll.css">
+	<link rel="stylesheet" href="option/mescroll-option.css">
+	<link rel="stylesheet" href="css/base.css" />
+	<link rel="stylesheet" href="css/util.css" />
+	<link rel="stylesheet" href="css/dos_yuyue.css" />
+	<link rel="stylesheet" href="css/lib/xiala.css" />
+	<script type="text/javascript" src="plug/jquery-1.11.3.js" ></script>
+	<script src="js/common.js"></script>
+	<title>e诺</title>
+</head>
+<style>
+	input::-webkit-input-placeholder{
+		color: white;
+		font-size: 8px;
+	}
+</style>
+<body style="background-color: #f1f1f1;">
+<div class="modelOpen">
+	<div class="mubu"></div>
+	<div class="modelOpenback">
+		<!--<img class="closeopen" src="img/close.png">-->
+
+		<!--<img src="../img/yuyueback.png">-->
+	<!--	<p class="chooseqin">请选择医院</p>-->
+			<div class="hosDiv">
+                <input class="sex nan" type="radio" value="1" name="sex" checked="">
+                <span class="sexname"><img src="img/chongImg1.png"></span><br>
+
+               <!-- <span class="sexAddress">地址：浙江省杭州市拱墅区教工路596号</span>-->
+            </div>
+            <div class="hosDiv">
+                <input class="sex nan" value="2" type="radio" name="sex">
+                <span class="sexname"><img src="img/chongImg2.png"></span><br>
+              <!--  <span class="sexAddress">地址：浙江省杭州市拱墅区教工路596号</span>-->
+            </div>
+		<div class="hosDiv">
+			<input class="sex nan" value="3" type="radio" name="sex">
+			<span class="sexname"><img src="img/chongImg3.png"></span><br>
+			<!--  <span class="sexAddress">地址：浙江省杭州市拱墅区教工路596号</span>-->
+		</div>
+		<div class="hosDiv">
+			<input class="zanbu" type="button" value="暂不购买直接预约">
+			<input class="chongbtn" type="button" value="确定">
+		</div>
+	</div>
+</div>
+<div class="content">
+	<!--标题-->
+	<!--<a href="../index.html"><div class="header"></div></a>-->
+	<div class="pub_hearder flex_vertical justify_content_equal" style="z-index: 99;">
+		<img class="up_page pub_hearder_left" src="img/header/header_left.png" onclick="window.history.go(-1)" />
+		<div class="head_center head_centerZi">
+			<!--	<div class="search_publish">
+                    <div style="position: relative;">
+                        <input class="toggleSou" type="text" style="color: black;height: .5rem; margin-bottom: .15em;" placeholder="搜索医生"/>
+                    </div>
+                </div>-->
+			<span class="set_head_dot" style="width: .15rem;height: .15rem;border-radius: 50%;"></span>
+			<span class="set_head_dot" style="width: .25rem;height: .27rem;border-radius: 50%;"></span>
+			<span class="set_head_dot"></span>
+			<span class="head_title">预约</span>
+			<span class="set_head_dot"></span>
+			<span class="set_head_dot" style="width: .25rem;height: .27rem;;border-radius: 50%;"></span>
+			<span class="set_head_dot" style="width: .15rem;height: .15rem;border-radius: 50%;"></span>
+		</div>
+		<!--<img class="search pub_hearder_right" src="img/forward.png" />-->
+			<!--<img class="search pub_hearder_right" onclick="" src="img/search.png"/>-->
+		<!--<span class="closeOrder" onclick="Btn.cancelyuyue()">暂不预约</span>-->
+	</div>
+	<!--<div class="famous_doc_layer">-->
+		<div class="set_box_shadow biaoge" style="overflow: hidden">
+
+			<div class="title">
+				<img class="leftto" onclick="up_week()" src="img/leftto.png">
+				<p style="display: inline-block">
+					<span class="yuyuetitle">坐诊表</span>
+					<span class="nowday">2018-10-10</span>
+				</p>
+
+				<img class="rightto" onclick="next_week()" src="img/nextto.png"></div>
+			<div class="healing_time">   <!--am pm 的class不能乱改，后面根据class判断上午下午-->
+				<div class="heal_time_container clearfix" id="myYuyue">
+					<div class="weekname">
+						<p class="lefttop">排班</p>
+						<p class="">上午</p>
+						<p class="">下午</p>
+					</div>
+					<div class="week">
+						<div class="day">
+							<span class="dayzhou">周六</span><br><span class="daytime">10.15</span>
+						</div>
+						<p class="am daymm"></p>
+						<p class="pm daymm"></p>
+					</div>
+					<div class="week">
+						<div class="day">
+							<span class="dayzhou">周六</span><br><span class="daytime">10.15</span>
+						</div>
+						<p class="am daymm"></p>
+						<p class="pm daymm"></p>
+					</div>
+					<div class="week">
+						<div class="day">
+							<span class="dayzhou">周六</span><br><span class="daytime">10.15</span>
+						</div>
+						<p class="am daymm"></p>
+						<p class="pm daymm"></p>
+					</div>
+					<div class="week">
+						<div class="day">
+							<span class="dayzhou">周六</span><br><span class="daytime">10.15</span>
+						</div>
+						<p class="am daymm"></p>
+						<p class="pm daymm"></p>
+					</div>
+					<div class="week">
+						<div class="day">
+							<span class="dayzhou">周六</span><br><span class="daytime">10.15</span>
+						</div>
+						<p class="am daymm"></p>
+						<p class="pm daymm"></p>
+					</div>
+					<div class="week">
+						<div class="day">
+							<span class="dayzhou">周六</span><br><span class="daytime">10.15</span>
+						</div>
+						<p class="am daymm"></p>
+						<p class="pm daymm"></p>
+					</div>
+					<div class="week">
+						<div class="day">
+							<span class="dayzhou">周六</span><br><span class="daytime">10.15</span>
+						</div>
+						<p class="am daymm"></p>
+						<p class="pm daymm"></p>
+					</div>
+				</div>
+			</div>
+			<div class="activeDiv">
+				<span class="activeDivspan activeDivspanActive"></span>
+				<span class="activeDivspan"></span><span class="activeDivspan"></span>
+			</div>
+		</div>
+		<div class="set_box_shadow btm" style="height: 47%">
+			<p class="doctorDiv hosDiv"><span class="famousName">医&nbsp;&nbsp;院：</span><span class="hosName" style="color: #00afa1;">杭州复旦医院</span></p>
+			<p class="doctorDiv docDiv"><span class="famousName">医&nbsp;&nbsp;生：</span><span class="docName">李华</span></p>
+			<p class="doctorDiv levelDiv"><span class="famousName">职&nbsp;&nbsp;称：</span><span class="docLevel">主任医师</span></p>
+			<p class="doctorDiv subjectDiv"><span class="famousName">科&nbsp;&nbsp;室：</span><span class="docSub">五官科</span> -- <span class="docSubSub">五官科</span></p>
+			<p class="doctorDiv goodDiv" style="    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+    overflow: hidden;"><span class="famousName">擅长领域：</span><span class="shanchang">顽固性失眠，咳嗽顽固性失眠，咳嗽顽固性失眠，咳嗽</span></p>
+			<!--特价-->
+			<p class="productDiv"><span class="famousName">医&nbsp;&nbsp;院：</span><span class="productHosName" style="color: #00afa1;">杭州复旦医院</span></p>
+			<p class="productDiv"><span style="float: left;" class="famousName">产&nbsp;&nbsp;品：</span><span class="product">水漾活跃水漾活跃水漾活跃水漾活跃水漾活跃</span></p>
+			<p class="productDiv"><span style="float: left;" class="famousName">地&nbsp;&nbsp;址：</span><span class="productAddress">杭州没莫干山路</span></p>
+			<!--医美-->
+			<p class="projectDiv"><span class="famousName">医&nbsp;&nbsp;院：</span><span class="projectHosName" style="color: #00afa1;">杭州复旦医院</span></p>
+			<p class="projectDiv"><span style="float: left;" class="famousName">项&nbsp;&nbsp;目：</span><span class="project">水漾活跃活跃水漾活跃</span></p>
+			<p class="projectDiv"><span style="float: left;" class="famousName">地&nbsp;&nbsp;址：</span><span class="projectAddress">杭州没莫干山路</span></p>
+			<!--体验券-->
+			<!--<p class="couponDiv"><span class="famousName">体验券编号：</span><span class="couponSn"></span></p>-->
+			<p class="couponDiv"><span class="famousName">医&nbsp;&nbsp;&nbsp;院：</span><span class="couponHos" style="color: #00afa1;"></span></p>
+			<p class="couponDiv"><span class="famousName">产&nbsp;&nbsp;&nbsp;品：</span><span class="couponSub"></span></p>
+			<p class="couponDiv"><span class="famousName">地&nbsp;&nbsp;&nbsp;址：</span><span class="couponAddress">杭州没莫干山路</span></p>
+		</div>
+	<div class="warn">
+		<p>
+			<span style="font-weight: 600">注：</span><span>一、项目未成交，预付款可申请退款；</span>
+		</p>
+		<p>
+			 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;二、线下支付不予退款。
+		</p>
+
+	</div>
+		<!--<div class="split"></div>-->
+
+		<!--<div class="btn">
+			<button onclick="up_week()">上周</button><button onclick="next_week()">下周</button>
+		</div>-->
+		<!--球-->
+	<!--	<p class="left"><span></span></p>
+		<p><span></span></p>-->
+		<!--<img src="img/famous_doc/left_circle.png" />
+        <img src="img/famous_doc/right_circle.png" />-->
+	<!--</div>-->
+	<!--<div class="hospitail_detail set_box_shadow doctor_detail" style="overflow:hidden;    margin-top: .8rem;">
+		&lt;!&ndash;延伸&ndash;&gt;
+		<p class="hos_data" style="border-top: 0">
+			<img class="left" src="img/person.png" />
+			<span class="">医生资料</span>
+			<img class="next" src="img/next.png" />
+		</p>
+		<p class="hos_data">
+			<img class="left" src="img/dosaddre.png" />
+			<span class="">杭州东方美容门整部</span>
+			<img class="next" src="img/next.png" />
+		</p>
+	</div>-->
+	<div class="doc_homepage_btm fixed clearfix">
+		<div class="make" onclick="Btn.yuyue()">预约</div>
+<!--		<input type="button" class="clickYuyue"  value="预约"/>-->
+	</div>
+
+	<!--滑动区域-->
+	<div id="mescroll" class="mescroll" style="display: none">
+		<!--模拟的轮播-->
+		<!--	<img class="swiper" src="../res/img/swiper.jpg"/>-->
+		<!--筛选条件; 模拟列表的重置和演示空布局的使用-->
+		<!--<div class="nav">
+            <p class="active" i="0">全部</p>
+            &lt;!&ndash;<p i="1">奶粉</p>
+            <p i="2">图书</p>&ndash;&gt;
+        </div>-->
+		<!--展示上拉加载的数据列表-->
+		<ul id="dataList" class="data-list" style="margin-top: .8em;">
+			<!--<li>
+                <img class="pd-img" src="../res/img/pd1.jpg"/>
+                <p class="pd-name">商品标题商品标题商品标题商品标题商品标题商品</p>
+                <p class="pd-price">200.00 元</p>
+                <p class="pd-sold">已售50件</p>
+            </li>-->
+		</ul>
+	</div>
+</div>
+</body>
+
+<!--在您实际的项目中,请留意mescroll-option.js的图片路径是否引用正确,可写成绝对路径或网络地址-->
+<!--可把mescroll-option.js代码拷贝到mescroll.min.js中,合为一个js文件,方便引用-->
+<script src="js/lib/mescroll.js" type="text/javascript" charset="utf-8"></script>
+<script src="js/dos_yuyue.js"></script>
+<!--<script src="option/mescroll-option.js" type="text/javascript" charset="utf-8"></script>-->
+<!--mescroll本身不依赖jq,这里为了模拟发送ajax请求,获取模拟数据-->
+<!--<script type="text/javascript" src="js/viewport.js" ></script>-->
+<!--<script type="text/javascript" src="js/util.js"></script>-->
+
+<!--	<script src="../res/pdlist1.js" type="text/javascript" charset="utf-8"></script>-->
+
+<script type="text/javascript" charset="utf-8">
+	$(document).ready(function () {
+		initer();
+		//User.info();
+    })
+    var mescroll;
+    $(function(){
+     /*   init();*/
+        /*	$('.levelClick').click(function () {
+                console.log(555)
+                $('.levelText').text($(this).text()).attr('levelId',$(this).attr('levelId'));
+                $('#dataList').empty();
+                var page = {num: 1, size: 5, doctorTypeId: $(this).attr('levelId')}
+               // mescroll.resetUpScroll();
+                mescroll.setPageNum(1)
+                getListData(page)
+            })
+            $('.subsubjectClick').click(function () {
+                $('.subText').text($(this).text()).attr('subsubId',$(this).attr('subsubId'));
+                $('#dataList').empty();
+                var page = {num: 1, size: 5, subSubjectId: $(this).attr('subsubId')}
+                // mescroll.resetUpScroll();
+                mescroll.setPageNum(1)
+                getListData(page)
+            })*/
+        $('.sou').click(function () {
+            $('#dataList').empty();
+            $('.sou').attr('sou',$('.toggleSou').val());
+            var page = {num: 1, size: 10, keyword: $('.toggleSou').val()}
+            // mescroll.resetUpScroll();
+            mescroll.setPageNum(1)
+            getListData(page)
+        })
+        //创建MeScroll对象
+        $('.sou').attr('sou', '')
+        /*mescroll = initMeScroll("mescroll", {
+            up: {
+                clearEmptyId:"dataList",
+                isBoth: true, //上拉加载时,如果滑动到列表顶部是否可以同时触发下拉刷新;默认false,两者不可同时触发; 这里为了演示改为true,不必等列表加载完毕才可下拉;
+                callback: getListData, //上拉加载的回调
+            }
+        });*/
+
+        /*初始化菜单*/
+        //var pdType=0;//全部商品0; 奶粉1; 图书2;
+        /*	$(".nav p").click(function(){
+                var i=$(this).attr("i");
+                if(pdType!=i) {
+                    //更改列表条件
+                    pdType=i;
+                    $(".nav .active").removeClass("active");
+                    $(this).addClass("active");
+                    //重置列表数据
+                    mescroll.resetUpScroll();
+                }
+            })*/
+
+
+
+    });
+    /*联网加载列表数据  page = {num:1, size:10}; num:当前页 从1开始, size:每页数据条数 */
+    function getListData(page){
+        console.log(page)
+        page.size = 10;
+        page.keyword = $('.toggleSou').val();
+        //联网加载数据
+        console.log(", page.num="+page.num);
+        getListDataFromNet( page.num, page.size,page.keyword,function(data){
+            //联网成功的回调,隐藏上拉加载的状态
+            console.log("data.length="+data.length);
+            mescroll.endSuccess(data.length);//传参:数据的总数; mescroll会自动判断列表如果无任何数据,则提示空;列表无下一页数据,则提示无更多数据;
+            //设置列表数据
+            setListData(data);
+        }, function(){
+            //联网失败的回调,隐藏上拉加载的状态
+            mescroll.endErr();
+        });
+    }
+
+    /*设置列表数据*/
+    function setListData(data){
+        var listDom=$("#dataList");
+        for (var i = 0; i < data.length; i++) {
+            var pd=data[i];
+
+            var str='';
+            str += '<li class="hos_child set_box_shadow"><div class="hos_list_top clearfix">' +
+                '<div class="left"><img src="img/find_doc/hos1.png"/></div>' +
+                '<div class="right">' +
+                '<p class="detail">' +
+                '<span class="name">'+pd.name+'</span> <span class="docLevel">'+pd.doctorTypeName+'</span>' +
+                '</p>' +
+                '<p>' +
+                '<span>医院：</span><span>'+pd.hospitalName+'</span>' +
+                '</p>' +
+                '<p>' +
+                '<span>科室：</span><span>'+pd.subSubjectName+'</span>' +
+                '</p>' +
+                '<p>' +
+                '<span>预约：</span><span class="peopelCount">'+pd.orderQuantity+'人</span>' +
+                '</p>' +
+                '<p class="goodPlace" style="    height: 1.9em;">' +
+                '<span>擅长领域：擅长</span><span>'+pd.specialty+'</span>' +
+                '</p>' +
+                '</div>' +
+                '</div></li>'
+
+            /*	var liDom=document.createElement("li");
+                liDom.innerHTML=str;
+                listDom.appendChild(liDom);*/
+            listDom.append(str);
+        }
+    }
+
+    /*联网加载列表数据*/
+    function getListDataFromNet(pageNum,pageSize,keyword,successCallback,errorCallback) {
+        /*  var url;
+          if(subjectId == '' || subjectId == undefined){
+              url = SERVER_ADDR + '/app/topthree/doctor/getList.json?pageNumber='+pageNum+'&pageSize='+pageSize;
+          }else{
+              url = SERVER_ADDR + '/app/topthree/doctor/getList.json?pageNumber='+pageNum+'&pageSize='+pageSize+'&subjectId='+subjectId;
+          }*/
+        var data = {};
+        data.pageNumber = pageNum;
+        data.pageSize = pageSize;
+        if(keyword != '' && keyword != undefined){
+            data.keyword = keyword;
+        }
+        //延时一秒,模拟联网
+        $.ajax({
+            type: 'GET',
+            url: SERVER_ADDR + '/app/topthree/doctor/getList.json?',
+            data:data,
+            dataType: 'json',
+            success: function(data){
+                var data=data.data; // 模拟数据: ../res/pdlist1.js
+                var listData=[];
+
+                //奶粉
+                for (var i = 0; i < data.length; i++) {
+                    listData.push(data[i]);
+                }
+
+                //回调
+                successCallback(listData);
+            },
+            error: errorCallback
+        });
+    }
+</script>
+
+</html>

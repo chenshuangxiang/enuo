@@ -1,0 +1,204 @@
+
+.addPhontBtn {
+	display: inline-block;
+	width: 6rem;
+	height: 6rem;
+	 /*border: 1px solid #dcdcdc;*/
+	text-align: center;
+	vertical-align: top;
+	 margin-top: 1rem;
+	position: relative;
+	/*float: right;*/
+	margin-right: 0;
+	background-color: #f1f1f1;
+}
+.addPhontBtn img {
+	width: 1.8rem;
+	margin: 2rem 0 -.2rem 0;
+}
+.addPhontBtn input[type="file"] {
+	position: absolute;
+	right: 4.3%;
+	width: 6rem;
+	height: 6rem;
+	opacity: 0;
+}
+.photoPost {
+	display: inline-block;
+	width: 5rem;
+	height: 3rem;
+	background-color: #e7e7e7;
+	vertical-align: top;
+	float: right;
+	margin-right: 1rem;
+	margin-top: -.4rem;
+	position: relative;
+	text-align: center;
+}
+.photoPost img{
+	height: 100%;
+}
+.delPhoto{
+	width: 100%;
+	height: 1.2rem;
+	line-height: 1.2rem;
+	font-size: .8rem;
+	color: white;
+	text-align: center;
+	position: absolute;
+	bottom: 0;
+	right: 0;
+	background-color: rgba(97, 97, 97, 0.6);
+}
+.warnPhoto{
+	color: red;
+	font-size: .9rem;
+	vertical-align: top;
+	display: inline-block;
+	margin-top: 3rem;
+}
+.famousName {
+	display: inline-block;
+	font-size: .92rem;
+	margin-left: 4%;
+}
+.ordercommont {
+	border-radius: 5px;
+	color: white;
+	font-weight: 500;
+	font-size: .8rem;
+	float: right;
+	margin-left: 1.5%;
+	margin-right: 3%;
+	border: none;
+	background-color: #00afa1;
+	outline: none;
+	padding: .4rem .7rem;
+}
+.mescroll1DivAdd{
+	background-color: white;
+	margin-top: 2.7rem;
+}
+.bingzhuangInput{
+	width: 92%;
+	height: 2rem;
+	line-height: 2rem;
+	color: #444;
+	padding-left: 2%;
+	margin-left: 4%;
+	margin-top: .1rem;
+	margin-bottom: 1rem;
+	border: 1px solid #c7c7c7;
+	font-size: .95rem;
+}
+.orderBottom {
+	width: 100%;
+	color: black;
+	font-size: .8rem;
+	margin: .5rem 0 0 0;
+	height: 2.2rem;
+	line-height: 1.6rem;
+	clear: both;
+	background-color: white;
+}
+.orderBottom textarea {
+	width: 91%;
+	border: 1px solid #d8d8d8;
+	/* border: none; */
+	font-size: .9rem;
+	height: 7rem;
+	resize: none;
+	outline: none;
+	padding: .5rem;
+	margin: 0 0 0 4.5%;
+	background-color: #f3f3f3;
+}
+.postBingli{
+	width: 80%;
+	margin-left: 10%;
+	height: 2.7rem;
+	float: none;
+	font-size: 1rem;
+	margin-top: 2.7rem;
+}
+.hos_child{
+	/*height: 8rem;*/
+	padding-top: .2rem;
+	padding-bottom: 0.2em;
+	/*margin-top: .9rem;*/
+	float: left;
+}
+.hos_child .hos_list_top{
+	height: 2.9rem;
+	/*border: 1px solid red;*/
+	font-size: 1rem;
+	line-height:2.5rem;
+	/*display: flex;*/
+	float: left;
+	width: 95%;
+	color:#333333;
+	margin-left: 2.8%;
+	border-bottom: 1px solid #e5e5e5
+}
+/*.hos_list_top div{
+	float: left;
+}*/
+.hos_list_top .left{
+	width: 25%;
+	margin: -.2rem 0 0 -0.5%;
+	line-height: 3.3rem;
+	padding-left: 3%;
+	color: #555;
+	float: left;
+}
+.hos_list_top .left img{
+	height: 9em;
+}
+.hos_list_top .right{
+	padding-left:.2rem;
+	margin-top: .2em;
+	width: 71%;
+	float: left;
+}
+.right input[type="text"]{
+	width: 90%;
+	height: 2rem;
+	line-height: 2rem;
+	border: none;
+	outline: none;
+	font-size: .85rem;
+}
+.right select {
+	width: 70%;
+	height: 1.7rem;
+	line-height: 1.7rem;
+	border: 1px solid #c5c5c5;
+	background-color: white;
+	font-size: .85rem;
+	-webkit-appearance:none;
+	padding-left: .5rem;
+}
+.postImgP{
+	width: 6rem;
+	height: 6rem;
+	line-height: 6rem;
+	display: inline-block;
+	text-align: center;
+	border: 1px solid #e5e5e5;
+	position: relative;
+	margin-right: .7rem;
+	vertical-align: top;
+	margin-top: 1rem;
+}
+.postImg{
+	max-width: 5.9rem;
+	max-height: 5.9rem;
+	margin: .1rem .1rem 0 .1rem;
+}
+.closePhoto{
+	position: absolute;
+	right: -.6rem;
+	top: -.6rem;
+	width: 1.3rem;
+	background-color: white;
+}

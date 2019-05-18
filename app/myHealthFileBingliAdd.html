@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+
+	<!--在您实际的项目中,请留意mescroll-option.css的图片路径是否引用正确,可写成绝对路径或网络地址-->
+	<!--可把mescroll-option.css代码拷贝到mescroll.min.css中,合为一个css文件,方便引用-->
+	<!--<link rel="stylesheet" href="css/lib/mescroll.css">
+	<link rel="stylesheet" href="option/mescroll-option.css">-->
+	<link rel="stylesheet" href="css/base.css" />
+	<link rel="stylesheet" href="css/util.css" />
+	<link rel="stylesheet" href="css/myHealthFileBingliAdd.css" />
+	<link rel="stylesheet" href="css/lib/xiala.css" />
+	<script type="text/javascript" src="plug/jquery-1.11.3.js" ></script>
+	<script src="js/lib/datePicker.js"></script>
+	<script src="js/common.js"></script>
+	<script src="js/myHealthFileBingliAdd.js"></script>
+	<title>添加就诊病历</title>
+</head>
+<style>
+	.nav .active{
+		background-color: #00afa1;
+		color: white;
+	}
+	.nav p{
+		float: left;
+		width: 25%;
+		padding: .8rem 0 .6rem 0;
+		margin: 0;
+	}
+</style>
+<body style="background-color: #ebebeb;">
+<div class="content">
+	<!--标题-->
+	<!--<a href="../index.html"><div class="header"></div></a>-->
+	<div class="pub_hearder flex_vertical justify_content_equal" style="z-index: 99; position: fixed;top: 0;background: none;background-color:  #f5f5f5;">
+		<img class="up_page pub_hearder_left_noQuan"  src="img/left.png" onclick="window.location.href = 'myHealthFile.html?tab=1'" />
+		<div class="head_center head_centerZi">
+			<span class="head_title" style="color: black">添加就诊病历</span>
+		</div>
+	</div>
+	<!--医生-->
+
+		<div class="mescroll1DivAdd">
+			<div class="hos_child">
+				<div class="hos_list_top clearfix">
+					<div class="left">病历类型</div>
+					<div class="right">
+						<select class="community">
+							<option>就诊病历</option>
+						</select>
+					</div>
+				</div>
+				<div class="hos_list_top clearfix">
+					<div class="left">病历日期</div>
+					<div class="right"><input id="bornDate" onfocus="this.blur()"  placeholder="请选择病历日期" type="text"></div>
+				</div>
+				<div class="hos_list_top clearfix">
+					<div class="left">医疗机构</div>
+					<div class="right"><input class="hosName" placeholder="请输入医疗机构名称" type="text"></div>
+				</div>
+			</div>
+			<div class="orderBottom" style="height: inherit;">
+			<!--	<p style="font-size: 1.03rem;line-height: 2.5rem;padding-left: 4%;">就诊病状</p>
+				<input class="bingzhuangInput" type="text" placeholder="请填写就诊病状"/>-->
+				<p style="font-size: 1.03rem;line-height: 2.5rem;padding-left: 5.2%;    color: #555;">就诊内容</p>
+				<textarea placeholder="请填写就诊内容、备注"></textarea></div>
+			<div class="orderBottom" style="height: inherit;padding-bottom: 1rem;    margin-top: -.5rem;">
+					<span class="famousName orderNum inputImg">
+						<span class="addPhontBtn"><input type="file" class="hidden" id="file" multiple="multiple">
+							<img src="img/addPhoto.png">
+						</span>
+					</span>
+					<span class="warnPhoto">*请拍照上传就诊病历，要求图片清晰</span>
+			</div>
+
+		</div>
+	<button class="ordercommont postBingli" onclick="To.addPatientReport();">提交上传</button>
+
+</div>
+</body>
+
+<!--在您实际的项目中,请留意mescroll-option.js的图片路径是否引用正确,可写成绝对路径或网络地址-->
+<!--可把mescroll-option.js代码拷贝到mescroll.min.js中,合为一个js文件,方便引用-->
+<!--<script src="js/lib/mescroll.js" type="text/javascript" charset="utf-8"></script>-->
+<!--<script src="option/mescroll-option.js" type="text/javascript" charset="utf-8"></script>-->
+<!--mescroll本身不依赖jq,这里为了模拟发送ajax请求,获取模拟数据-->
+<!--<script type="text/javascript" src="js/viewport.js" ></script>-->
+<script type="text/javascript" src="js/util.js"></script>
+<!--<script src="js/dos_yuyue.js"></script>-->
+<!--	<script src="../res/pdlist1.js" type="text/javascript" charset="utf-8"></script>-->
+
+<script type="text/javascript" charset="utf-8">
+	$(document).ready(function () {
+	    init();
+        var calendar = new datePicker();
+        calendar.init({
+            'trigger': '#bornDate', /*按钮选择器，用于触发弹出插件*/
+            'type': 'date',/*模式：date日期；datetime日期时间；time时间；ym年月；*/
+            'minDate':'1900-1-1',/*最小日期*/
+            'maxDate':'2100-12-31',/*最大日期*/
+            'onSubmit':function(){/*确认时触发事件*/
+                var theSelectData=calendar.value;
+            },
+            'onClose':function(){/*取消时触发事件*/
+            }
+        });
+    })
+
+</script>
+
+</html>

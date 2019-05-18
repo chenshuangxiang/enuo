@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+
+	<!--在您实际的项目中,请留意mescroll-option.css的图片路径是否引用正确,可写成绝对路径或网络地址-->
+	<!--可把mescroll-option.css代码拷贝到mescroll.min.css中,合为一个css文件,方便引用-->
+	<!--<link rel="stylesheet" href="css/lib/mescroll.css">
+	<link rel="stylesheet" href="option/mescroll-option.css">-->
+	<link rel="stylesheet" href="css/base.css" />
+	<link rel="stylesheet" href="css/util.css" />
+	<link rel="stylesheet" href="css/realCertify.css" />
+	<link rel="stylesheet" href="css/lib/fsgallery.css" />
+	<link rel="stylesheet" href="css/lib/xiala.css" />
+	<script type="text/javascript" src="plug/jquery-1.11.3.js" ></script>
+	<script src="js/common.js"></script>
+	<script src="js/lib/jweixin-1.1.0.js"> </script>
+	<script type="text/javascript" src="js/lib/fs_forse.js" ></script>
+	<script type="text/javascript" src="js/lib/lrz.bundle.js"></script>
+	<script type="text/javascript" src="js/lib/1.chunk.js"></script>
+	<script type="text/javascript" src="js/lib/2.chunk.js"></script>
+	<!--<title>我的收藏</title>--><title>身份认证</title>
+</head>
+<style>
+
+</style>
+<body style="background-color: #ebebeb;">
+<div class="content">
+	<!--标题-->
+	<!--<a href="../index.html"><div class="header"></div></a>-->
+	<div class="pub_hearder flex_vertical justify_content_equal" style="z-index: 99; position: fixed;top: 0;background: none;background-color: #ebebeb;">
+		<img class="up_page pub_hearder_left_noQuan"  src="img/left.png" onclick="window.location.href = 'user_center.html'" />
+		<div class="head_center head_centerZi">
+			<!--	<div class="search_publish">
+                    <div style="position: relative;">
+                        <input class="toggleSou" type="text" style="color: black;height: .5rem; margin-bottom: .15em;" placeholder="搜索医生"/>
+                    </div>
+                </div>-->
+			<!--<span class="set_head_dot" style="width: .15rem;height: .15rem;border-radius: 50%;"></span>
+			<span class="set_head_dot" style="width: .25rem;height: .27rem;border-radius: 50%;"></span>
+			<span class="set_head_dot"></span>-->
+			<span class="head_title" style="color: black">身份认证</span>
+			<!--<span class="set_head_dot"></span>
+			<span class="set_head_dot" style="width: .25rem;height: .27rem;;border-radius: 50%;"></span>
+			<span class="set_head_dot" style="width: .15rem;height: .15rem;border-radius: 50%;"></span>-->
+		</div>
+		<!--<img class="search pub_hearder_right" src="img/forward.png" />-->
+		<!--	<img class="search pub_hearder_right" onclick="Show.Sou()" src="img/search.png"/>-->
+	</div>
+	<!--<div class="famous_doc_layer">
+		<div class="yuyueTop">预约单号：<span class="famousName">4545454102536</span><span class="yuyueStatus">预约中</span></div>
+		<div class="split"></div>
+		<div class="btm">
+			<p><span class="famousName">预约医院：</span><span class="hosName">杭州复旦医院</span></p>
+			<p><span class="famousName">预约科室：</span><span class="docName">李华</span></p>
+			<p><span class="famousName">预约医生：</span><span class="docLevel">主任医师</span></p>
+			<p><span class="famousName">预约时间：</span><span class="docSub">五官科</span> &#45;&#45; <span class="docSubSub">五官科</span></p>
+		</div>
+	</div>-->
+	<!--滑动区域-->
+	<div class="nav" style="position: fixed;
+    top: 2.7rem;    width: 100%;    font-size: .95rem;border-top: 1px solid #dddddd;border-bottom: none">
+		<p style="    padding: .6rem 0 .6rem 0;" class="active" i="0">实名认证</p>
+		<p style="    padding: .6rem 0 .6rem 0;" i="1" class="">医师认证</p>
+		<p style="    padding: .6rem 0 .6rem 0;" i="2" class="">护士认证</p>
+	</div>
+	<!--商品-->
+	<div id="mescroll0" class="mescroll" style="top: 6.4rem;width: 100%">
+		<div class="writeWarn">请填写证件上的真实姓名及证件号码</div>
+		<div class="hos_child">
+			<div class="hos_list_top clearfix" style="font-size: 1rem">
+				<div class="left">真实姓名</div>
+				<div class="right"><input class="userRealName" placeholder="请输入真实姓名" type="text"></div>
+			</div>
+			<div class="hos_list_top clearfix" style="border-bottom: none;font-size: 1rem">
+				<div class="left">身份证号</div>
+				<div class="right"><input class="idcard" placeholder="请输入正确的身份证号" type="text"></div>
+			</div>
+		</div>
+		<div class="clearfix"></div>
+		<button class="bindBtn certification" onclick="Go.certification()">提交</button>
+	</div>
+	<!--医生-->
+	<div id="mescroll1" class="mescroll hide" style="top: 5.4rem;width: 100%;position: absolute;z-index: -1">
+		<div class="hos_child">
+			<p style="padding-left: .5rem;    margin: .7rem 0 .5rem 1rem;;border-left: 3px solid #00afa1;font-size: .92rem;"><span class="img_span algin">基本信息</span></p>
+			<div class="hos_list_top clearfix">
+				<div class="left">姓名</div>
+				<div class="right"><input class="userName userNameDoctor" placeholder="请输入真实姓名" type="text"></div>
+			</div>
+			<div class="hos_list_top clearfix">
+				<div class="left">性别</div>
+				<div class="right">
+					<input class="sex nan" type="radio" name="sexDoctor" value="man" checked>
+					<span class="sexname">男</span>
+					<input class="sex nv" type="radio" name="sexDoctor" value="woman">
+					<span class="sexname">女</span>
+				</div>
+			</div>
+			<div class="hos_list_top clearfix">
+				<div class="left">联系方式</div>
+				<div class="right"><input class="mobile mobileDoctor" placeholder="请输入正确的联系方式" type="tel"></div>
+			</div>
+			<div class="hos_list_top clearfix">
+				<div class="left">所属社区</div>
+				<div class="right"><select class="community communityDoctor"><option value="">滚动选择社区名称</option></select></div>
+			</div>
+			<div class="hos_list_top clearfix" style="border-bottom: none;height: auto">
+				<div class="left">自我简介</div>
+				<div class="right"><textarea class="breif breifDoctor" placeholder="必填，字数不限"></textarea></div>
+			</div>
+		</div>
+		<div class="clearfix"></div>
+		<div class="hos_child">
+			<p style="padding-left: .5rem;    margin: .7rem 0 .5rem 1rem;;border-left: 3px solid #00afa1;font-size: .92rem;"><span class="img_span algin">资质证明</span></p>
+			<div class="hos_list_top hos_list_top2 clearfix" style="border-bottom: none;">
+				<div class="left">医师执业证照片</div>
+				<div class="right">
+					<span class="addPhontBtn" id="zhiyeNumDoctorFile"><input type="file" class="hidden" onchange="imgFile(this)" id="zhiyeNumDoctorImgFile" multiple="multiple"><img src="img/addPhoto.png"></span>
+					<div class="doctorFileImg zhiyeDoctorImg">
+
+					</div>
+
+				</div>
+			</div>
+			<div class="hos_list_top hos_list_top2 clearfix">
+				<div class="left">医师执业证编码</div>
+				<div class="right"><input style="border: 1px solid #ccc;;width: 99%;" class="zhiyeNum zhiyeNumDoctor" placeholder="请填写医师执业证编码" type="text"></div>
+			</div>
+			<div class="hos_list_top hos_list_top2 clearfix" style="border-bottom: none;">
+				<div class="left">医师资格证照片</div>
+				<div class="right">
+					<span class="addPhontBtn"><input type="file" class="hidden" onchange="imgFile(this)" id="doctorZigeFile" multiple="multiple"><img src="img/addPhoto.png"></span>
+					<div class="doctorFileImg zigeDoctorImg">
+
+					</div>
+				</div>
+			</div>
+			<div class="hos_list_top hos_list_top2 clearfix" style="height: auto">
+				<div class="left">医师资格证编码</div>
+				<div class="right"><input style="border: 1px solid #ccc;;width: 99%;" class="doctorZigeNum" placeholder="请填写医师资格证编码" type="text"></div>
+			</div>
+			<div class="hos_list_top clearfix" style="border-bottom: none;">
+				<div class="left" style="width: 56%">其他（医院胸牌、职称证等）</div>
+				<div class="right" style="width: 41%;">
+					<span class="addPhontBtn"><input type="file" class="hidden" onchange="imgFile(this)" id="doctorQitaFile" multiple="multiple"><img src="img/addPhoto.png"></span>
+					<div class="doctorFileImg qitaDoctorImg">
+
+					</div>
+				</div>
+			</div>
+			<div class="hos_list_top hos_list_top2 clearfix" style="border-bottom: none;height: auto">
+				<div class="left">其他证件编码</div>
+				<div class="right"><input style="border: 1px solid #ccc;width: 99%;" class="doctorQitaNum" placeholder="请填写其他执业证件编码" type="text"></div>
+			</div>
+		</div>
+		<div class="clearfix"></div>
+		<button class="bindBtn" onclick="Go.bindDoctor()">提交审核</button>
+	</div>
+
+	<!--医院-->
+	<div id="mescroll2" class="mescroll hide" style="top: 5.4rem;width: 100%;position: absolute;z-index: -1">
+		<div class="hos_child">
+			<p style="padding-left: .5rem;    margin: .7rem 0 .5rem 1rem;;border-left: 3px solid #00afa1;font-size: .92rem;"><span class="img_span algin">基本信息</span></p>
+			<div class="hos_list_top clearfix">
+				<div class="left">姓名</div>
+				<div class="right"><input class="userName userNameNurse" placeholder="请输入真实姓名" type="text"></div>
+			</div>
+			<div class="hos_list_top clearfix">
+				<div class="left">性别</div>
+				<div class="right">
+					<input class="sex nan" type="radio" name="sexNurse" value="man" checked>
+					<span class="sexname">男</span>
+					<input class="sex nv" type="radio" name="sexNurse" value="woman">
+					<span class="sexname">女</span>
+				</div>
+			</div>
+			<div class="hos_list_top clearfix">
+				<div class="left">联系方式</div>
+				<div class="right"><input class="mobile mobileNurse" placeholder="请输入正确的联系方式" type="tel"></div>
+			</div>
+			<div class="hos_list_top clearfix">
+				<div class="left">所属社区</div>
+				<div class="right"><select class="community communityNurse"><option value="">滚动选择社区名称</option></select></div>
+			</div>
+			<div class="hos_list_top clearfix" style="border-bottom: none;height: auto">
+				<div class="left">自我简介</div>
+				<div class="right"><textarea class="breif breifNurse" placeholder="必填，字数不限"></textarea></div>
+			</div>
+		</div>
+		<div class="clearfix"></div>
+		<div class="hos_child">
+			<p style="padding-left: .5rem;    margin: .7rem 0 .5rem 1rem;;border-left: 3px solid #00afa1;font-size: .92rem;"><span class="img_span algin">资质证明</span></p>
+			<div class="hos_list_top hos_list_top2 clearfix" style="border-bottom: none;">
+				<div class="left">护士执业证照片</div>
+				<div class="right">
+					<span class="addPhontBtn"><input type="file" class="hidden" onchange="imgFile(this)" id="nurseZhiyeFile" multiple="multiple"><img src="img/addPhoto.png"></span>
+					<div class="doctorFileImg zhiyeNurseImg">
+
+					</div>
+				</div>
+			</div>
+			<div class="hos_list_top hos_list_top2 clearfix">
+				<div class="left">护士执业证编码</div>
+				<div class="right"><input style="border: 1px solid #ccc;;width: 99%;" class="nurseZhiyeNum" placeholder="请填写护士执业证编码" type="text"></div>
+			</div>
+			<div class="hos_list_top hos_list_top2 clearfix" style="border-bottom: none;">
+				<div class="left">护士资格证照片</div>
+				<div class="right">
+					<span class="addPhontBtn"><input type="file" class="hidden" onchange="imgFile(this)" id="nurseZigeFile" multiple="multiple"><img src="img/addPhoto.png"></span>
+					<div class="doctorFileImg zigeNurseImg">
+
+					</div>
+				</div>
+			</div>
+			<div class="hos_list_top hos_list_top2 clearfix" style="height: auto">
+				<div class="left">护士资格证编码</div>
+				<div class="right"><input style="border: 1px solid #ccc;;width: 99%;" class="nurseZigeNum" placeholder="请填写护士资格证编码" type="text"></div>
+			</div>
+			<div class="hos_list_top clearfix" style="border-bottom: none;">
+				<div class="left" style="width: 56%">其他（医院胸牌、职称证等）</div>
+				<div class="right" style="width: 41%;">
+					<span class="addPhontBtn"><input type="file" class="hidden" onchange="imgFile(this)" id="qitaFile" multiple="multiple"><img src="img/addPhoto.png"></span>
+					<div class="doctorFileImg qitaNurseImg">
+
+					</div>
+				</div>
+			</div>
+			<div class="hos_list_top hos_list_top2 clearfix" style="border-bottom: none;height: auto">
+				<div class="left">其他证件编码</div>
+				<div class="right"><input style="border: 1px solid #ccc;width: 99%;" class="nurseQitaNum" placeholder="请填写其他执业证件编码" type="text"></div>
+			</div>
+		</div>
+		<div class="clearfix"></div>
+		<button class="bindBtn" onclick="Go.bindNurse()">提交审核</button>
+	</div>
+</div>
+</body>
+
+<!--在您实际的项目中,请留意mescroll-option.js的图片路径是否引用正确,可写成绝对路径或网络地址-->
+<!--可把mescroll-option.js代码拷贝到mescroll.min.js中,合为一个js文件,方便引用-->
+<!--<script src="js/lib/mescroll.js" type="text/javascript" charset="utf-8"></script>-->
+<!--<script src="option/mescroll-option.js" type="text/javascript" charset="utf-8"></script>-->
+<!--mescroll本身不依赖jq,这里为了模拟发送ajax请求,获取模拟数据-->
+<!--<script type="text/javascript" src="js/viewport.js" ></script>-->
+<script type="text/javascript" src="js/util.js"></script>
+<script src="js/footer.js"></script>
+<script src="js/realCertify.js"></script>
+<!--	<script src="../res/pdlist1.js" type="text/javascript" charset="utf-8"></script>-->
+
+<script type="text/javascript" charset="utf-8">
+	$(document).ready(function () {
+		init();
+    })
+</script>
+
+</html>

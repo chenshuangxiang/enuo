@@ -1,0 +1,175 @@
+/*活动*/
+.modelOpen {
+	position: fixed;
+	width: 100%;
+	height: 100%;
+	z-index: 999;
+	top: 0;
+	/* display: none; */
+}
+.mubu {
+	position: fixed;
+	width: 100%;
+	height: 100%;
+	background-color: #000000;
+	opacity: 0.8;
+}
+.sureBack{
+	width: 30%;
+	height: 2.3rem;
+	display: inline-block;
+	line-height: 2.3rem;
+	text-align: center;
+	border: none;
+	background-color: #00afa1;
+	border-radius: 5px;
+	/* margin-left: 2%; */
+	/* margin-top: .8rem; */
+	font-size: 1.1rem;
+	color: #fff;
+}
+.modelOpenback {
+	width: 90%;
+	position: fixed;
+	top: 3%;
+	left: 6%;
+	z-index: 99999;
+}
+.activityFu {
+	width:100%
+}
+.activityClose{
+	width: 1.9rem;
+	margin-left: 57%;
+	margin-top: 13%;
+}
+
+.pub_hearder_left {
+	width: 2.7rem;
+	height: 2.7rem;
+	position: fixed;
+	margin-top: 0;
+	top: .2rem;
+	left: 1%;
+}
+.docImgDiv{
+	width: 70%;
+	margin-left: 15%;
+	background-color: black;
+	opacity: 0.3;
+	height: 12.7rem;
+	/*position: absolute;*/
+	margin-top: 10rem;
+	position: relative;
+}
+.docImg{
+	/*background-color: black; */
+	/*opacity: 0.16; */
+	/* height: 13rem; */
+	/* max-height: 11rem; */
+	/* position: absolute; */
+/*width: 42%;
+	margin-top: 15.5%;*/
+	/*left: 29%;
+	z-index: 999;
+	position: absolute;*/
+	width: 80%;
+/*	margin-top: 5%;
+	margin-left: 11%;*/
+}
+.option-input {
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	-ms-appearance: none;
+	-o-appearance: none;
+	appearance: none;
+	background: #fff;
+	outline: none;
+	border: 1px solid #00afa1;
+	color: #fff;
+	width: 1.4rem;
+	height: 1.4rem;
+	border-radius: 3px;
+	margin: 3px 3% .5rem 4%;
+	cursor: pointer;
+	vertical-align: top;
+}
+.option-input:checked {
+	background: url(../img/vote/voteGou.png);
+	background-size: 100% 100%;
+	background-color: #fff;
+	color: white;
+}
+.goodsName{
+	font-size: 1.25rem;
+	color: #00afa1;
+	height: 1.7rem;
+	display: inline-block;
+	line-height: 1.9rem;
+}
+.docNum {
+	position: absolute;
+	top: 0;
+	left: 0;
+	opacity: 0.5;
+	padding: 0 .3rem 0 .3rem;
+	font-size: .9rem;
+	height: 1.8rem;
+	line-height: 1.8rem;
+	background-color: black;
+	border-top-right-radius: 40px;
+	border-bottom-right-radius: 40px;
+	color: white;
+	/* margin-top: 10rem; */
+	z-index: 99999;
+}
+.neiAbsolut{
+	position: absolute;
+	margin-top: 33%;
+	/*top: 30%;*/
+	width: 71%;
+	margin-left: 22%;
+}
+.waen{
+	width: 100%;
+	font-size: .7rem;
+	color: #afafaf;
+	text-align: center;
+}
+.id{
+	position: fixed;
+	bottom: 0;
+	margin-bottom: 0;
+	padding-bottom: .5rem;
+	padding-top: .5rem;
+	background-color: white;
+	/* left: 26%; */
+	width: 100%;
+}
+.divHengDiv{
+	width: 83%;
+	margin-left: 9%;
+	margin-top: 100%;
+	margin-bottom: 6rem;
+	position: absolute;
+	padding-bottom: 4rem;
+}
+.divHeng{
+	width: 100%;
+	margin-bottom: .6rem;
+}
+.divHengName{
+	font-size: .95rem;
+	color: black;
+}
+.divHengDetail{
+	font-size: .95rem;
+	color: #606060;
+}
+
+
+
+
+
+
+

@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta http-equiv="content-type" content="text/html" charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<link rel="stylesheet" href="../css/base.css" />
+	<link rel="stylesheet" href="../css/util.css" />
+	<link rel="stylesheet" href="../css/lib/xiala.css" />
+	<link rel="stylesheet" href="../css/order_pay.css" />
+	<script type="text/javascript" src="../plug/jquery-1.11.3.js" ></script>
+	<script src="../js/common.js"></script>
+	<!--<title>支付订单</title>--><title>e诺</title>
+</head>
+<body style="background-color: #f1f1f1;">
+<div class="modelOpen">
+	<div class="mubu"></div>
+	<div class="modelOpenback">
+		<img class="payclose" src="../img/payclose.png">
+		<!--<img src="../img/yuyueback.png">-->
+		<img class="paySuccess" src="../img/paySuccess.png">
+		<p class="paySuccessZi">支付成功</p>
+		<p class="paySuccessZi">PAYMENT SUCCESSFUL</p>
+		<button class="toYuyueno" onclick="window.location.href = '../order.html'">暂不预约</button>
+		<button class="toYuyue" onclick="Go.specilaYuyue()">立即预约</button>
+	</div>
+</div>
+<div class="paybackOpen">
+	<div class="mubu"></div>
+	<div class="modelOpenback">
+		<!--<img class="paybackclose" src="../img/payclose.png">-->
+		<!--<img src="../img/yuyueback.png">-->
+		<!--<img class="paySuccess" src="../img/paySuccess.png">-->
+		<p class="paySuccessBackZi">请确认微信支付是否已完成</p>
+<!--		<p class="paySuccessZi">PAYMENT SUCCESSFUL</p>-->
+		<p class="successBackPay" onclick="paySuccessDo()">已完成支付</p>
+		<p class="noBackPay" onclick="$('.paybackOpen').hide();Go.topanimate()">支付遇到问题，重新支付</p>
+	</div>
+</div>
+<div class="payOpen">
+	<div class="mubu"></div>
+	<div class="payOpenback">
+		<!--<img src="../img/yuyueback.png">-->
+		<img class="payDoc" src="../img/payma.png">
+		<span class="toBtn toBtnGo" onclick="Go.history()"></span>
+		<span class="toBtn toBtnPay" onclick="Go.liupay()"></span>
+	</div>
+</div>
+<div class="successOpen" style="z-index: 999999;display: none">
+	<div class="mubu" style="opacity: 0.6"></div>
+	<!--<img class="mubuDian" src="img/vote/voteDianBack.png">-->
+	<p class="sucescsclose"  onclick="$('.successOpen').hide()"></p>
+	<div class="jiangback">
+		<!--<img src="../img/yuyueback.png">-->
+		<img class="jiangbackImg" src="../img/browActive/browJiangShuiyang.png">
+	</div>
+	<p class="getJiang" onclick="$('.successOpen').hide();
+		if(toBrowOpen == 1){
+		    window.location.href = '../myBrow.html?index=1&open=1';
+		}else{
+		    window.location.href = '../myBrow.html?index=1&read=1';
+		}
+	/*if(getQueryString('teamid') == null && specail == 'embroidery_eyebrow_festival_20181011'){
+	        $('.pinOpen').show()
+	}else{
+	    window.location.href = '../myBrow.html?index=1';
+	}*/"></p>
+</div>
+<div class="successPinOpen" style="z-index: 999999;display: none">
+	<div class="mubu" style="opacity: 0.6"></div>
+	<!--<img class="mubuDian" src="img/vote/voteDianBack.png">-->
+	<p class="sucescsclose"  onclick="$('.successOpen').hide()"></p>
+	<div class="jiangback">
+		<!--<img src="../img/yuyueback.png">-->
+		<img class="jiangbackImg" src="../img/browActive/browJiangShuiyang.png">
+	</div>
+	<p class="getJiang" onclick="window.location.href = '../myBrow.html?index=1'"></p>
+</div>
+<div class="pinOpen">
+	<div class="mubu"></div>
+	<div class="modelOpenback">
+		<img class="payclose" onclick="$('.pinOpen').hide()" src="../img/payclose.png">
+		<!--<img src="../img/yuyueback.png">-->
+		<img class="paySuccess" src="../img/browActive/browWarn.png">
+		<p class="paySuccessZi">你还未加入团队</p>
+		<!--<p class="paySuccessZi">PAYMENT SUCCESSFUL</p>-->
+		<!--<button class="toYuyueno" onclick="Get.waitQueue()">随机拼团</button>-->
+		<button class="toYuyue" style="margin-left: 30%;" onclick="window.location.href = '../browList.html'">手动选团</button>
+	</div>
+</div>
+<div class="sharePayOpenBefore" onclick="$('.activityFuDetailZhi').fadeIn();$('.activityFuDetailZhi').fadeOut();$('.activityFuDetailZhi').fadeIn()">
+	<div class="mubu"  style="opacity: 1;z-index: 999"></div>
+	<div class="modelOpenback" style="background-color: rgba(255,255,255,0);top: 2%;
+    width: 90%;
+    left: 5%;">
+		<img class="activityFuDetailZhi" style="display: none" src="../img/browActive/browToZhi.png">
+		<img class="activityFuDetailToShare" src="../img/browActive/browToShare.png">
+		<img class="activityFuDetail" style="width: 80%;margin-left: 10%" src="../img/browActive/browBuyTan.png">
+		<img class="activityFuDetail" src="../img/browActive/browShareDetial.png">
+		<!-- <img class="activityClose" onclick="$('.shareOpenBefore').hide();$('.search').show()" src="img/know.png">-->
+	</div>
+</div>
+<div class="content">
+	<!--标题-->
+	<!--<a href="../index.html"><div class="header"></div></a>-->
+	<div class="pub_hearder flex_vertical justify_content_equal" style="z-index: 99; ">
+		<img class="up_page pub_hearder_left" src="../img/header/header_left.png" onclick="Go.historygo()" /><!--window.history.go(-1)-->
+		<div class="head_center head_centerZi" style="">
+			<!--	<div class="search_publish">
+                    <div style="position: relative;">
+                        <input class="toggleSou" type="text" style="color: black;height: .5rem; margin-bottom: .15em;" placeholder="搜索医生"/>
+                    </div>
+                </div>-->
+			<span class="set_head_dot" style="width: .15rem;height: .15rem;border-radius: 50%;"></span>
+			<span class="set_head_dot" style="width: .25rem;height: .27rem;border-radius: 50%;"></span>
+			<span class="set_head_dot"></span>
+			<span class="head_title">支付订单</span>
+			<span class="set_head_dot"></span>
+			<span class="set_head_dot" style="width: .25rem;height: .27rem;;border-radius: 50%;"></span>
+			<span class="set_head_dot" style="width: .15rem;height: .15rem;border-radius: 50%;"></span>
+		</div>
+		<!--<img class="search pub_hearder_right" src="img/forward.png" />-->
+		<!--	<img class="search pub_hearder_right" onclick="Show.Sou()" src="img/search.png"/>-->
+	</div>
+	<div class="hos_doc_team set_box_shadow" style="margin-bottom: 1.3rem;    margin-top: .8rem;">
+		<!--医生列表-->
+		<div class="hos_doc_list">
+			<div class="hos_doc_child clearfix" onclick="href(this)" style="border-bottom:0">
+				<div class="doc_child_left"><img style="max-height: 4.5rem;"
+												 src="http://www.enuo120.com:7070/upload/image/201801/17/VNKx9xtw9R9NGCDPTo4.png">
+				</div>
+				<div class="doc_child_right" style="margin: 0 0 0 0;">
+					<div class="id"><p class="name"><span class="goodsName">腋下激光脱毛（包干）</span>
+					</p>
+						<p class="address">杭州时光医疗</p>
+						<p><span style="color: #f81f7b;font-size: .7rem;">￥</span><span class="price">0.01</span>
+							</p>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!--查看更多-->
+	</div>
+	<!--<div class="famous_doc_layer">
+		<div class="yuyueTop">预约单号：<span class="famousName">4545454102536</span><span class="yuyueStatus">预约中</span></div>
+		<div class="split"></div>
+		<div class="btm">
+			<p><span class="famousName">预约医院：</span><span class="hosName">杭州复旦医院</span></p>
+			<p><span class="famousName">预约科室：</span><span class="docName">李华</span></p>
+			<p><span class="famousName">预约医生：</span><span class="docLevel">主任医师</span></p>
+			<p><span class="famousName">预约时间：</span><span class="docSub">五官科</span> &#45;&#45; <span class="docSubSub">五官科</span></p>
+		</div>
+	</div>-->
+	<!--滑动区域-->
+
+	<!--商品-->
+		<!--展示上拉加载的数据列表-->
+
+			<div class="hos_child set_box_shadow" style="    margin-top: -.4rem;">
+				<div class="hos_list_top clearfix">
+					<div class="yuyueTop" style="height: 1.4rem;">商品总额：<span class="famousName hosName orderzongPrice orderlastPrice"></span></span><span class="orderzongfu">￥</span></div>
+					<div class="yuyueTop yuePriceDiv" style="border-bottom: 0;margin-top: -.3rem;display: none">余额抵用：<span class="orderzongPrice yuePrice" style="font-size: 1.1rem"></span><span class="orderzongfu">-￥</span></div>
+					<div class="yuyueTop zhuanYueDiv" style="border-bottom: 0;height: 1.4rem;display: none">专项余额：<span class="zhuanYueDi" style="font-size: .8rem;color: #888;"></span><span class="orderzongfu" style="    color: #888;">￥</span><input class="paygou next" style="float: right;
+        margin-top: .4rem;
+    width: .8rem;
+    height: .8rem;    margin-right: 0.5rem;" checked disabled type="checkbox" name="yue" value="yue"></div>
+					<div class="yuyueTop yueDiv" style="border-bottom: 0;height: 1.4rem;">余额抵用：<span class="yueDi" style="font-size: .8rem;color: #888;">98.00</span><span class="orderzongfu" style="    color: #888;">￥</span><input onclick="Get.diYue()" class="paygou next yueRadio" style="float: right;
+        margin-top: .4rem;
+    width: .8rem;
+    height: .8rem;    margin-right: 0.5rem;" type="checkbox" name="yue" value="yue"></div>
+
+					<div class="yuyueTop" style="border-bottom: 0"><span class="orderzongPrice orderafterPrice" style="font-size: 1.1rem"></span><span class="orderzongfu">￥</span><span style="float: right">应付：</span></div>
+			</div>
+			</div>
+	<div class="hos_child set_box_shadow payMethod" style="    margin-top: 1rem;"><div class="hos_list_top clearfix">
+		<div class="yuyueTop"><span class="famousName hosName">请选择支付方式</span></div>
+		<p class="hos_data wechatP" style="border-bottom: 0;padding-bottom: .8rem;border-bottom: solid 1px #dcdcdc;">
+			<img src="../img/wecatImg.png">
+			<span class="">微信支付</span>
+			<input class="paygou next" type="radio" name="sex" value="wecat" checked>
+		</p>
+		<p class="hos_data" style="border-bottom: 0;padding-bottom: .8rem;border-bottom: solid 1px #dcdcdc;">
+			<img src="../img/zfbImg.png">
+			<span class="">支付宝支付</span>
+			<input class="paygou next" type="radio" name="sex" value="zfb">
+		</p>
+		<p class="hos_data" style="border-bottom: 0;padding-bottom: .8rem;">
+			<img src="../img/lianlianImg.png">
+			<span class="">银行支付</span>
+			<input class="paygou next" type="radio" name="sex" value="lianlian">
+		</p>
+	</div>
+	</div>
+	<!--<p style="margin: 1rem 0 0 5%;;font-size: .7rem;color: #444">为避免订单失效，建议您在30分钟之内完成支付</p>-->
+	<div class="payBtn" onclick="Go.topanimate()">确认支付</div>
+	<!--下滑弹出-->
+	<div class="share first-active">
+		<div class="mainTop">
+			<div class="main_close"><img src="../img/close.png"></div>
+			<div class="payZi">确认付款</div>
+			<div class="main_wen" style="right: 4%;left: inherit;"><img src="../img/wen.png"></div>
+		</div>
+		<div class="orderprice orderpriceQuan"></div>
+		<div class="orderprice orderpriceFen"><input type="number" min="0.01" class="fendanVal" placeholder="输入支付金额"/></div>
+		<div class="yuyueTop" style="width: 92%;margin-top: .7rem">订单信息：<span class="payRightChoose orderSn">4546546546</span><span class="payRightChoose">订单号：</span></div>
+		<div class="yuyueTop fenDiv" style="border-bottom: 0;width: 92%;padding-top: .2rem;"  onclick="Go.topanimateRight()">付款方式：<img style="width: .4rem;
+    margin: 0.47rem 0 0 .7rem;" class="payRightChoose" src="../img/next.png"><span class="payRightChoose payRightChooseZi">全额付款</span></div>
+		<p class="redpay" style="color: #ff4025;font-size: .9rem;margin-left: 4%;margin-top: .7rem;line-height: 1.2rem;width: 92%;">注 ：由于在线支付限制，如果遇到金额过大无法支付，请在付款方式里选择分单支付</p>
+		<div style="clear:both"></div>
+
+		<div class="sure"  onclick="Pay.click()">确定</div>
+	</div>
+
+	<div class="share2 second-active">
+		<div class="mainTop">
+			<div class="main_Back"><img style="transform: rotate(180deg);width: 0.6rem;" onclick="Go.topanimateBack()" src="../img/next.png"></div>
+			<div class="payZi">请选择付款方式</div>
+			<div class="main_wen" style="right: 9px;left: inherit;"><img src="../img/wen.png"></div>
+		</div>
+		<div class="yuyueTop choosePayDiv" style="width: 92%;margin-top: .7rem" onclick="Go.quaneBack()">全额付款<img class="payRightChoose choosegou" src="../img/goublue.png"></div>
+		<div class="yuyueTop choosePayDiv" style="border-bottom: 0;width: 92%;padding-top: .2rem;" onclick="Go.fendanBack()">分单支付<!--<img class="payRightChoose choosegou" src="img/goublue.png">--></div>
+		<div style="clear:both"></div>
+	</div>
+
+</div>
+<form method="post" action="https://wap.lianlianpay.com/payment.htm">
+	<input type="hidden" name="req_data" value=""/>
+	<!--<input type="hidden" name="busi_partner" value=""/>
+	<input type="hidden" name="dt_order" value=""/>
+	<input type="hidden" name="money_order" value=""/>
+	<input type="hidden" name="name_goods" value=""/>
+	<input type="hidden" name="no_order" value=""/>
+	<input type="hidden" name="notify_url" value=""/>
+	<input type="hidden" name="oid_partner" value=""/>
+	<input type="hidden" name="risk_item" value=""/>
+	<input type="hidden" name="app_request" value=""/>
+	<input type="hidden" name="sign" value=""/>
+	<input type="hidden" name="sign_type" value=""/>
+	<input type="hidden" name="user_id" value=""/>
+	<input type="hidden" name="version" value=""/>-->
+	<input type="submit" id="lianlianPay" style="display: none">
+</form>
+<form id="pay_form" method="POST" action="https://wap.alipay.com/gateway.do">
+	<input type="hidden" name="sign" value=""/>
+	<input type="hidden" name="sign_type" value=""/>
+	<input type="hidden" name="charset" value=""/>
+	<input type="hidden" name="app_id" value=""/>
+	<input type="hidden" name="method" value=""/>
+	<input type="hidden" name="version" value=""/>
+	<div class="wrapper buy-wrapper" style="display: none">
+		<a href="javascript:void(0);" class="J-btn-submit btn mj-submit btn-strong btn-larger btn-block">确认支付</a>
+	</div>
+</form>
+<form name="zfbpay_form" method="POST" action="">
+	<!--<input type="hidden" name="biz_content" value="{&quot;enable_pay_channels&quot;:&quot;balance,moneyFund,creditCard&quot;,&quot;out_trade_no&quot;:&quot;2018090616477&quot;,&quot;product_code&quot;:&quot;QUICK_WAP_WAY&quot;,&quot;subject&quot;:&quot;婵€鍏夌鐥�&quot;,&quot;total_amount&quot;:&quot;10.0&quot;}">-->
+	<input type="hidden" name="biz_content" value="{&quot;enable_pay_channels&quot;:&quot;balance,moneyFund,creditCard&quot;,&quot;out_trade_no&quot;:&quot;2018090616477&quot;,&quot;product_code&quot;:&quot;QUICK_WAP_WAY&quot;,&quot;subject&quot;:&quot;婵€鍏夌鐥�&quot;,&quot;total_amount&quot;:&quot;10.0&quot;}">
+	<input type="submit" value="提交" id="zfbPay" style="display:none" >
+</form>
+
+
+</body>
+
+<!--mescroll本身不依赖jq,这里为了模拟发送ajax请求,获取模拟数据-->
+<!--<script type="text/javascript" src="js/viewport.js" ></script>-->
+<script type="text/javascript" src="../js/util.js"></script>
+<script src="../js/order_pay.js"></script>
+<script type="text/javascript" src="../js/ap.js"></script>
+<script src="../js/lib/jweixin-1.1.0.js"> </script>
+<script src="../js/getShare.js"> </script>
+<!--	<script src="../res/pdlist1.js" type="text/javascript" charset="utf-8"></script>-->
+
+<script type="text/javascript" charset="utf-8">
+	$(document).ready(function () {
+		init();
+    })
+</script>
+
+</html>

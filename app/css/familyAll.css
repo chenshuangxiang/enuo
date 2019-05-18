@@ -1,0 +1,133 @@
+.hos_child{
+	/*height: 8rem;*/
+	padding-top: .4rem;
+	padding-bottom: 0.2em;
+	margin-top: .9rem;
+	float: left;
+	background-color: white;
+	width: 100%;
+}
+.hos_child .hos_list_top{
+	/*height: 2.9rem;*/
+	/*border: 1px solid red;*/
+	font-size: .9rem;
+	/*line-height:2.5rem;*/
+	/*display: flex;*/
+	/*float: left;*/
+	width: 100%;
+	color:#333333;
+	/*padding-left: 2.8%;*/
+	/*border-bottom: 1px solid #e5e5e5*/
+}
+/*.hos_list_top div{
+	float: left;
+}*/
+.overflow_num_ellipsis {
+	display: -webkit-box;
+	-webkit-box-orient: vertical;
+	-webkit-line-clamp: 2;
+	overflow: hidden;
+}
+.hos_list_top .left{
+	width: 19%;
+	margin: .1rem 0 0 -0.5%;
+	line-height: 3.3rem;
+	padding-left: 0;
+	color: #222;
+	float: left;
+}
+.hos_list_top .left img{
+	max-height: 4.9rem;
+	overflow: hidden;
+	width: initial;
+	padding: .2rem;
+	border-radius: 50%;
+}
+.hos_list_top2 .left{
+	width: 33%
+ }
+.hos_list_top .right{
+	padding-left:6%;
+	margin-top: -2rem;
+	width: 75%;
+	float: left;
+}
+.hos_list_top2 .right{
+	width: 64%;
+}
+.right input[type="text"],.right input[type="tel"]{
+	width: 90%;
+	height: 2rem;
+	line-height: 2rem;
+	border: none;
+	outline: none;
+	font-size: .9rem;
+	padding-left: .3rem;
+}
+.right select{
+	width: 70%;
+	height: 1.7rem;
+	line-height: 1.7rem;
+	border: 1px solid #c5c5c5;font-size:.85rem;
+}
+.right textarea{
+	width: 97%;
+	min-height: 5rem;
+	border: 1px solid #c5c5c5;
+	margin-top: .7rem;
+	padding: .5rem .5rem .5rem .5rem;font-size: .85rem;
+}
+.right p {
+	margin-bottom: .2rem;
+	height: 1.4rem;
+	line-height: 1.4rem;
+}
+.orderReadMore {
+	float: right;
+	color: #00afa1;
+	margin-top: .15rem;
+	margin-bottom: .7rem;
+}
+.bindBtn {
+	width: 100%;
+	height: 3rem;
+	line-height: 3rem;
+	color: white;
+	font-size: 1.2rem;
+	text-align: center;
+	position: fixed;
+	bottom: 0;
+	background-color: #00afa1;
+}
+.bindBtnNoFamily{
+	width: 30%;
+	height: 3rem;
+	line-height: 3rem;
+	color: white;
+	font-size: 1.2rem;
+	text-align: center;
+
+	background-color: #00afa1;
+}
+.already{
+	font-size: .9rem;
+	border-radius: 15px;
+	background-color: #039be5;
+	color: white;
+	padding: .25rem .5rem;
+	margin-left: .8rem;
+}
+.noalready{
+	font-size: .9rem;
+	border-radius: 15px;
+	background-color: #e4e4e4;
+	padding: .25rem .5rem;
+	color: #777;
+	margin-left: .8rem;
+}
+.appelliation{
+	color: #00afa1;
+	background-color: #b0ebe6;
+	padding: .15rem .3rem;
+	font-size: .8rem;
+}

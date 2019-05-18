@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,minimum-scale=1,maximum-scale=1,user-scalable=no,minimal-ui">
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/util.css">
+    <link rel="stylesheet" href="css/sanbaIndex.css">
+    <link rel="stylesheet" href="css/lib/fsgallery.css" />
+    <script type="text/javascript" src="plug/jquery-1.11.3.js"></script>
+    <script type="text/javascript" src="js/lib/fs_forse.js" ></script>
+    <title>3.8女神节</title></head>
+<style>
+    .left_tittle span{
+        color: #00afa1;margin-left: 0;   font-size: .3rem;
+    }
+</style>
+<!--<body style="background-color: #f1f1f1;background: url('img/browActive/browDetailBack.jpg') no-repeat;background-size: 100%;">-->
+<body style="    background: #ebebeb;">
+<div class="modelOpen">
+    <div class="mubu"></div>
+    <div class="modelOpenback">
+        <img class="payclose" style="    margin-top: -2.7rem;width: 1.8rem;margin-right: 0;" onclick="$('.modelOpen').hide()" src="img/closeActivity.png">
+        <!--<img src="../img/yuyueback.png">-->
+        <img class="paySuccess" style="    margin: 7% 0 7% 17%;" src="img/scratchGongxi.png">
+        <img class="paySuccess paySuccessJiang" style="margin: 2% 0 2% 16%;" src="img/scratch66.png">
+        <!--<p class="paySuccessZi">恭喜你获得一个奖品</p>-->
+       <!-- <button class="toYuyueno" onclick="$('.modelOpen').hide()">再抽一次</button>-->
+        <button class="toYuyue" onclick="localStorage.setItem('scrathCode',$('.code').val());Get.toInfo()">立即领取</button>
+      <!--  <p class="paySuccessZiWarn">奖品数量有限，先领先得哦</p>-->
+    </div>
+</div>
+<div class="shareOpen">
+    <div class="mubu"></div>
+    <div class="modelOpenback" style="    width: 86%;
+    left: 7%;">
+        <img class="payclose" onclick="$('.shareOpen').hide()" style="position: relative;" src="img/payclose.png">
+        <img class="sharSuccess" src="img/browActive/noJiang.png">
+        <p class="paySuccessZi" style="font-size: 1rem;">很遗憾，奖品好像迷路了...</p>
+        <p class="paySuccessZi" style="    font-size: .75rem;color: #676767;width: 100%;margin: .5rem 0 1rem 0;">(温馨提示：分享可获得抽奖机会，大奖等你来拿！)</p>
+    </div>
+</div>
+<div class="shareOpenBefore" style="display: none;">
+    <div class="mubu"  style="opacity: .8"></div>
+    <div class="modelOpenback" style="background-color: rgba(255,255,255,0);top: 3%;
+    width: 90%;
+    left: 5%;">
+        <img class="activityFu" src="img/shareLingHbImg.png">
+        <img class="activityClose" onclick="$('.shareOpenBefore').hide()" src="img/know.png">
+    </div>
+</div>
+<div class="msg">
+    <span class="msgText">上传成功！审核中...(约15分钟)</span>
+</div>
+<div class="content xywz" style="    background: none;">
+    <img class="browDetailBackImg" style="margin-top: 2.7rem;" src="img/sanbaIndexBackImg.png">
+    <!-- <div class="headerimg  flex_vertical justify_content_equal">
+         <img class="headerimgTop"  src=""/>
+         <img class="up_page pub_hearder_left" src="img/header/header_leftHui.png?v=9e72a57" onclick="window.location.href = 'vote.html'">
+     </div>-->
+    <div class="pub_hearder flex_vertical justify_content_equal">
+        <!--<img class="up_page pub_hearder_left" src="img/header/header_left.png" />-->
+        <!--<div class="head_center" style="    width: 69%;">
+            <div class="search_publish" style="left: .34rem;   height: 1rem;">
+                <div style="position: relative;    margin-top: .9em;    width: 4.5rem;">
+                    <input style="background-color: transparent;border: 1.4px solid white;height: .55rem;" type="text" placeholder="搜索您感兴趣的项目"/><img style="    top: .55rem;" src="img/search.png" />
+                </div>
+            </div>
+        </div>-->
+        <img class="up_page pub_hearder_left" src="img/header/header_left.png" onclick="window.location.href = 'user_center.html'" />
+        <div class="head_center head_centerZi">
+            <!--	<div class="search_publish">
+                    <div style="position: relative;">
+                        <input class="toggleSou" type="text" style="color: black;height: .5rem; margin-bottom: .15em;" placeholder="搜索医生"/>
+                    </div>
+                </div>-->
+            <span class="set_head_dot" style="width: .15rem;height: .15rem;border-radius: 50%;"></span>
+            <span class="set_head_dot" style="width: .25rem;height: .27rem;border-radius: 50%;"></span>
+            <span class="set_head_dot"></span>
+            <span class="head_title">3.8女神节</span>
+            <span class="set_head_dot"></span>
+            <span class="set_head_dot" style="width: .25rem;height: .27rem;;border-radius: 50%;"></span>
+            <span class="set_head_dot" style="width: .15rem;height: .15rem;border-radius: 50%;"></span>
+        </div>
+        <!--<img class="search" onclick="window.location.href = 'browRule.html'" src="img/browActive/browRule.png"/>-->
+    </div>
+
+    <div class="contentDiv">
+        <img style="width: 82%;margin-left: 9%;" src="img/sanbaIndexImg.png"/>
+        <div style="width: 100%;margin-bottom: -.8rem;">
+
+            <input class="shareShai" type="button" onclick="$('.shareOpenBefore').show()" value="让TA来抢"/>
+            <input style="display: inline-block;background-color: #bb1d57" onclick="specialhref()" class="toPostPhoto" type="button" value="女神请点"/>
+            <input style="background-color: #bb1d57" onclick="window.location.href = 'sanbaGua.html'" class="readPhoto" type="button" value="立即抽奖"/>
+            <input style="background-color: #bb1d57" onclick="window.location.href = 'myCard.html'" class="tobooked" type="button" value="立即预约"/>
+            <p style="color: #bb1d57;font-size: .8rem;margin-left: 16%;height: 2rem; margin-bottom: -2rem;" onclick="$('.shareOpenBefore').show()">*分享领红包</p>
+        </div>
+       <!-- <img src="img/familyBeautyIndex2.png"/>-->
+        <!--<div class="banner">
+            <div class="turnplate" style="background-image:url(img/rotor/turnplate-bg.png);background-size:100% 100%;">
+                <canvas class="item" id="wheelcanvas" width="400px" height="400px"></canvas>
+                <img class="pointer" onclick="Get.chou()" src="img/rotor/turnplate-pointer.png"/>
+            </div>
+        </div>-->
+      <!--  <img class="duiProduct" src="img/scratchProduct.png">
+        <div>
+            <input type="text" placeholder="请输入兑换码" class="code">
+        </div>-->
+       <!-- <p class="chouCiDiv">你还有<span class="chouCi"></span>次抽奖机会</p>
+        <p style=" margin: .5rem 0 2rem 0;;text-align: center"><a href="/myRotorJiang.html" style="color: red;font-size: .85rem;text-decoration: underline">我的奖品></a></p>-->
+        <div style="margin-top: 2.5rem;width: 86%;margin-bottom: 2rem;font-size: .87rem;color: black;line-height: 1.3rem;margin-left: 7%;position: relative">
+            <p style="font-size: .95rem;color: black;width: 100%;text-align: center;margin: -1.5rem 0 1rem 0;"><span>活动时间：</span>2019年2月28日 - 2019年3月9日</p>
+           <!--<p style="font-size: 1.1rem;color: black">参与须知：</p>
+            <p style="margin-top: .7rem;color: #444;font-size: .8rem;">1、点击“就是要晒”按钮上传照片，审核通过后（审核时间约为15分钟），您可在菜单栏“个人中心”-“我的卡券”中领取美丽全家卡；<br>
+                2、点击“让TA来晒”，分享给微信好友或朋友圈、微信群，即可领取随机红包一个；<br>
+                3、 参与者需提供真实合影照片，全家福、母女照、父女照、姐妹照等均可，参赛作品风格与题裁不限；<br>
+                4、参与者如多次上传照片，我们也仅按1个名额颁发礼品；<br>
+                5、一旦参与，本活动将认定参与者提供了照片的合法使用授权，不再另行协议。
+            </p>-->
+        </div>
+        <!--/app/browBuyOwn.html?type=qiyuan-->
+    </div>
+</div>
+<!--<img class="shack" src="img/labaHuang.png">
+<div class="marquee">
+    <div class="marqueeBack"></div>
+    <ul class="line">
+
+    </ul>
+</div>-->
+<!--<script type="text/javascript" src="js/viewport.js"></script>-->
+<script src="js/common.js"></script>
+<script type="text/javascript" src="js/sanbaIndex.js"></script>
+<script type="text/javascript" src="js/lib/slideup.js"></script>
+<script src="js/lib/jweixin-1.1.0.js"> </script>
+<script src="js/getShare.js"> </script>
+</body>
+<script>
+    $(document).ready(function () {
+        init();
+        //$('#gallery img').fsgallery()
+    })
+</script>
+</html>

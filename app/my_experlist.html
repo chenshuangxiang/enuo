@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<link rel="stylesheet" href="css/base.css" />
+	<link rel="stylesheet" href="css/util.css" />
+	<link rel="stylesheet" href="css/more.css" />
+	<link rel="stylesheet" href="css/lib/xiala.css" />
+	<script type="text/javascript" src="plug/jquery-1.11.3.js" ></script>
+	<script src="js/common.js"></script>
+	<!--<title>更多</title>--><title>我的特价体验券</title>
+</head>
+<body style="background-color: #f1f1f1;">
+<div class="content">
+	<!--标题-->
+	<!--<a href="../index.html"><div class="header"></div></a>-->
+	<div class="pub_hearder flex_vertical justify_content_equal" style="z-index: 99;">
+		<img class="up_page pub_hearder_left" src="img/header/header_left.png" onclick="window.history.go(-1)" />
+		<div class="head_center head_centerZi">
+			<!--	<div class="search_publish">
+                    <div style="position: relative;">
+                        <input class="toggleSou" type="text" style="color: black;height: .5rem; margin-bottom: .15em;" placeholder="搜索医生"/>
+                    </div>
+                </div>-->
+			<span class="set_head_dot" style="width: .15rem;height: .15rem;border-radius: 50%;"></span>
+			<span class="set_head_dot" style="width: .25rem;height: .27rem;border-radius: 50%;"></span>
+			<span class="set_head_dot"></span>
+			<span class="head_title">我的特价体验券</span>
+			<span class="set_head_dot"></span>
+			<span class="set_head_dot" style="width: .25rem;height: .27rem;;border-radius: 50%;"></span>
+			<span class="set_head_dot" style="width: .15rem;height: .15rem;border-radius: 50%;"></span>
+		</div>
+	<!--	<img class="search pub_hearder_right" src="img/forward.png" />-->
+		<!--	<img class="search pub_hearder_right" onclick="Show.Sou()" src="img/search.png"/>-->
+	</div>
+	<div class="hospitail_detail set_box_shadow doctor_detail" style="overflow:hidden;    margin-top: .8rem;">
+		<!--延伸-->
+		<p class="hos_data" style="border-top: 0" onclick="window.location.href = 'my_experience.html'">
+			<img class="left" style="height: .75rem;    top: .8rem;" src="img/user_center/quan.png" />
+			<span style="    margin-left: 1.9rem;" class="">我的特价体验券</span>
+			<img class="next" src="img/next.png" />
+		</p>
+		<p class="hos_data hosDiv" onclick="window.location.href = 'order_exper.html'">
+			<img style="    top: .7rem;" class="left" src="img/user_center/yuyue.png" />
+			<span style="    margin-left: 1.9rem;" class="hosName">特价体验券订单</span>
+			<img class="next" src="img/next.png" />
+		</p>
+	</div>
+
+	<!--滑动区域-->
+	<div id="mescroll" class="mescroll" style="display: none">
+		<!--模拟的轮播-->
+		<!--	<img class="swiper" src="../res/img/swiper.jpg"/>-->
+		<!--筛选条件; 模拟列表的重置和演示空布局的使用-->
+		<!--<div class="nav">
+            <p class="active" i="0">全部</p>
+            &lt;!&ndash;<p i="1">奶粉</p>
+            <p i="2">图书</p>&ndash;&gt;
+        </div>-->
+		<!--展示上拉加载的数据列表-->
+		<ul id="dataList" class="data-list" style="margin-top: .8em;">
+			<!--<li>
+                <img class="pd-img" src="../res/img/pd1.jpg"/>
+                <p class="pd-name">商品标题商品标题商品标题商品标题商品标题商品</p>
+                <p class="pd-price">200.00 元</p>
+                <p class="pd-sold">已售50件</p>
+            </li>-->
+		</ul>
+	</div>
+</div>
+</body>
+
+<!--mescroll本身不依赖jq,这里为了模拟发送ajax请求,获取模拟数据-->
+<!--<script src="js/dos_index.js"></script>-->
+<!--	<script src="../res/pdlist1.js" type="text/javascript" charset="utf-8"></script>-->
+<script type="text/javascript" charset="utf-8">
+	$(document).ready(function () {
+		//init();
+    })
+</script>
+</html>

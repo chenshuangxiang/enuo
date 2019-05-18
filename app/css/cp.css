@@ -1,0 +1,437 @@
+/*animate*/
+.animateImg{
+	width: 2.5rem;
+	height: 2rem;
+	background: url("../img/chooseanimate.png") no-repeat;
+	background-size: 100%;
+	position: absolute;
+	top: .7rem;
+	right: -1%;
+	display: none;
+}
+.animateP{
+	margin: .3rem 0 0 .3rem;
+	padding-top: .3rem;
+	padding-bottom: .15rem;
+	padding-left: .2rem;
+}
+.animateP img{
+	width: .35rem;
+	margin: 0 .1rem 0 .1rem;
+}
+.animateP span{
+	display: inline-block;
+	font-size: .3rem;
+	vertical-align: top;
+}
+/*找医生*/
+.xywz_top {
+	width: 7.5rem;
+	border: 1px solid transparent;
+	padding: 0;
+	margin: 0 auto;
+	margin-top: .3em;
+}
+.xywz_top .find .find_doc,.xywz_top .find .find_hos {
+	height: 3.54rem;
+	background-image: url(../img/xywz/find_doc.png);
+	background-position: center;
+	background-size: 100% 100%;
+	background-repeat: no-repeat;
+}
+.xywz_top .find .find_hos {
+	background-image: url(../img/xywz/find_hos.png);
+}
+.xywz_top .find div {
+	width: 3.72rem;
+	height: 1.7rem;
+	float: left;
+}
+.find div .black {
+	height: .5rem;
+	line-height: .5rem;
+	font-size: .24rem;
+	font-weight: 500;
+}
+.find .find_doc .btm,.find .find_hos .btm {
+	width: 2.8rem;
+	height: 1rem;
+	font-size: .18rem;
+	/* border: 1px solid red; */
+	margin: 2.3rem 0 0 .5rem;
+	line-height: .3rem;
+}
+/*名医专家*/
+.doc_specialist{
+	height: .79rem;
+}
+.doc_specialist .more{
+	font-size: .3rem;
+    font-weight: 500;
+    width: 4.7rem;height: .79rem;
+    margin-left: 2rem;
+    /*border: 1px solid red;*/
+}
+.doc_specialist .more img{
+	height: .3rem;
+	position: absolute;
+	top: .24rem;right: .2rem;
+}
+.headerimg{
+	width: 100%;   /* height: 4.8rem;*/
+	/*background:url("../img/specialImg.png") no-repeat;
+	background-size: 100%;
+	background-position: 0%;*/
+	position: relative;
+	margin-bottom: -1px;
+}
+.headerimgTop{
+	width: 100%;
+}
+.cptitle{
+	/*border: 1px solid red;*/
+	display: table-cell;/*父元素设置为表格*/
+	vertical-align: middle;
+	width: 32%;height: 1rem;    position: relative;    top: 0;
+	left: 2%;
+	text-align: left;
+	font-size: .3rem;
+	border-bottom: 1px dashed #dcdcdc;
+}
+.cptitleName {
+	display: inline-block;
+	margin-top: 0.25rem;
+	margin-left: 1%;
+}
+.hosTitle{
+	font-size: .3rem;
+	line-height: .8rem;
+	height: .6rem;
+	margin-left: 1%;
+	color: #555
+}
+.hosTitle span{
+	color: #000;
+}
+.yuexiao {
+	line-height: .5rem;
+	padding-bottom: .27rem;
+}
+.yuyueZi{
+	font-size: .3rem;
+	color: #00afa1;
+	margin-top: .02rem;
+}
+.yuexiao p{
+	color: #000;
+}
+/*.peopelcount{
+	color: #feaa2c;
+}*/
+.priceyuyue{
+	margin: .2rem 0 .1rem 0;
+	/*margin-left: 3%;*/
+	padding-bottom: .2rem;
+	/*border-bottom: 1px dashed #dcdcdc;*/
+	float: right;
+	margin-right: 3%;
+	font-size: .35rem;
+}
+
+.hospitail_detail .hos_data span {
+	display: inline-block;
+	width: 80%;
+	height: .9rem;
+	line-height: .9rem;
+}
+.hospitail_detail .hos_data {
+	border-top: 1px dashed #dcdcdc;
+	/* border-bottom: 1px solid #f3f3f3; */;
+	width: 94%;
+	margin-left: 3%;
+}
+.hospitail_detail p {
+	/* height: .84rem; */
+	position: relative;
+	font-weight: 500;
+}
+.hospitail_detail .hos_data .next {
+	height: .35rem;
+	position: absolute;
+	top: .25rem;
+	right: 0;
+}
+.doc_child_right .id .name {
+	font-size: .3rem;
+	height: .5rem;
+	line-height: .5rem;
+	font-weight: 500;
+	color: #444;
+}
+.name {
+	color: black;
+	margin-bottom: 0;
+}
+.hos_doc_list .doc_child_right {
+	/* border: 1px solid black; */
+	width: 79%;
+	color: #333333;
+	padding-left: 0;
+}
+.doc_child_right .id span {
+	display: inline-block;
+	height: .5rem;
+}
+.commontTime {
+	color: #666;
+	font-size: .3rem;
+	float: right;
+}
+.commontZi {
+	font-size: .28rem;
+	clear: both;
+	color: #666;
+	margin-top: 0.2rem;
+}
+.commontImg {
+	width: 46%;
+	margin-right: 4%;
+	/* float: left; */
+}
+/*科室*/
+
+
+.hos_doc_list .hos_doc_child {
+	padding: .13rem 0 .13rem 0;
+	border-bottom: 1px solid #dcdcdc;
+	width: 96%;
+	display: flex;
+	margin-left: 2%;
+}
+.hos_doc_list .hos_doc_child div {
+	margin: 2% 3.5% 0 -0.8%;
+}
+.hos_doc_list .doc_child_left {
+	width: 31%;
+	/*height: 1rem;
+	border-radius: 5px;
+	overflow: hidden;*/
+}
+.hos_doc_list .doc_child_left img{
+	max-height: 5rem;
+	border-radius: 5px;
+	overflow: hidden;
+}
+.all_doc{
+	width: 100%;
+	height: 0.9rem;
+	line-height: 0.9rem;
+	text-align: center;
+	color: #00afa1;
+	font-size: .3rem;
+}
+.goodsName{
+	color: #333333;
+	line-height: .4rem;
+	font-size: .3rem;
+}
+.address{
+	color: #00afa1;
+	font-size: .26rem;
+	margin: .1rem 0 .1rem 0;
+}
+.price{
+	color: #f81f7b;
+	border-radius: 5px;
+	display: inline-block;
+	margin-right: .3rem;
+	font-size: .3rem;
+}
+.oldprice{
+	color: #999;
+	font-size: .2rem;
+}
+.yuyue{
+	/*color: #999;*/
+	font-size: .25rem;
+	/*float: right;
+	margin-right: -.3rem;*/
+	margin-top: .02rem;
+}
+.adverlist li {
+	position: relative;
+	/* padding: 10px 8px 10px 120px; */
+	/*border-bottom: 1px solid #eee;*/
+	width: 22%;
+	margin-left: 2.4%;
+	float: left;
+}
+.hos_list_top .left {
+	width: 100%;
+	/* margin: -.2rem .2rem 0 -.2rem; */
+}
+.hos_list_top div {
+	float: left;
+}
+.hos_list_top .right {
+	padding-left: .2rem;
+	margin-top: .5em;
+	width: 94%;
+	margin-left: 5%;
+}
+.right p {
+	margin-bottom: .2rem;
+	height: 1.4em;
+	line-height: 1.4em;
+}
+.advername{
+	font-size: .3rem;
+	color: black;
+	text-align: center;
+	overflow: hidden;
+	text-overflow:ellipsis;
+	white-space: nowrap;
+}
+.adveraddress{
+	font-size: .2rem;
+	color: #666;
+	text-align: center;
+	overflow: hidden;
+	text-overflow:ellipsis;
+	white-space: nowrap;
+}
+.adverprice{
+	color: #f81f7b;
+	font-size: .3rem;
+}
+.adveroldPrice{
+	color: #999;
+	font-size: .2rem;
+}
+/*电话*/
+
+.call-active{
+	-webkit-transform: translateY(100%);
+	-ms-transform: translateY(100%);
+	transform: translateY(100%);
+}
+.shareCall{
+	background-color: white;
+	height: 2.5rem;
+	font-size: 14px;
+	bottom: 0;
+	left: 0;
+	position: fixed;
+	-webkit-transition: -webkit-transform 500ms;
+	transition: transform 500ms;
+	width: 100%;
+	z-index: 1110;
+}
+.sharebg {
+	background-color: rgba(0, 0, 0, 0.2);
+	bottom: 0;
+	height: 100%;
+	left: 0;
+	opacity: 0;
+	position: fixed;
+	right: 0;
+	top: 0;
+	width: 100%;
+	z-index: 1100;
+	display: none;
+}
+/*向上全部拉出*/
+/*.share-title { background-color: #f8f8f8; border-bottom: 1px solid #fff; border-top-left-radius: 2px; border-top-right-radius: 2px; color: #555; font-weight: 400; margin: 0 10px; padding: 10px 0 0; text-align: center; }*/
+.share-title::after {
+	border-bottom: 1px solid #dfdfdf;
+	content: "";
+	display: block;
+	height: 0px;
+	margin-top: 10px;
+	width: 100%;
+}
+.sharebg-active {
+	opacity: 1;
+	display: block;
+}
+
+.clear {
+	clear: both;
+}
+.mainCall{
+	width: 100%;
+	height: 1.4rem;
+	line-height: 1.4rem;
+}
+.mainCall img{
+	width: .8rem;
+	margin: .14rem 0 0 28%;
+}
+.mainCall a{
+	color: #00afa1;
+	font-size: .55rem;
+	text-decoration:none;
+	width: 100%;
+	height: 1.4rem;
+	line-height: 1.4rem;
+	display: inline-block;
+}
+.split{
+	width: 100%;
+	height: 0.2rem;
+	background-color: #f5f5f5
+}
+.cancel{
+	width: 100%;
+	height: 1.1rem;
+	line-height: 1rem;
+	color: #00afa1;
+	font-size: .35rem;
+	text-align: center;
+}
+
+
+/*底部咨询*/
+.fixed {
+	position: fixed;
+	bottom: 0px;
+}
+.doc_homepage_btm {
+	width: 100%;
+	height: 1.2rem;
+}
+.doc_homepage_btm p {
+	display: inline-block;
+	width: 28%;
+	height: 1.2rem;
+	line-height: 1.2rem;
+	font-size: .2rem;
+	text-align: center;
+	color: #555;
+	float: left;
+	background-color: #ffffff;
+}
+.doc_homepage_btm p img {
+	width: .4rem;
+	display: block;
+	margin: .2rem 0 .2rem 39%;
+}
+.doc_homepage_btm p span {
+	display: block;
+	margin-top: -.4rem;
+	font-size: .25rem;
+}
+.doc_homepage_btm .make {
+	background-color: #00AFA1;
+}
+.doc_homepage_btm div {
+	display: inline-block;
+	width: 50%;
+	height: 1.2rem;
+	line-height: 1.2rem;
+	font-size: .3rem;
+	font-weight: bold;
+	text-align: center;
+	color: #ffffff;
+	float: left;
+}

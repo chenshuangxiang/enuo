@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<link rel="stylesheet" href="css/base.css" />
+	<link rel="stylesheet" href="css/util.css" />
+	<link rel="stylesheet" href="css/hos_index.css" />
+	<link rel="stylesheet" href="css/lib/xiala.css" />
+	<script type="text/javascript" src="plug/jquery-1.11.3.js" ></script>
+	<script src="js/common.js"></script>
+	<!--<title>医院主页</title>--><title>医院主页</title>
+</head>
+<style>
+	input::-webkit-input-placeholder{
+		color: white;
+		font-size: 8px;
+	}
+	.left_tittle span{
+		color: #00afa1;margin-left: 0;   font-size: .85rem;
+	}
+	.avtivitySpan {
+		width: 62%;
+		/* text-align: center; */
+		margin-left: 18.5%;
+	}
+	.avtivityactive {
+		border-bottom: 3px solid #00afa1;
+	}
+	.huiImg{
+		position: absolute;
+		right: 2%;
+		top: 6%;
+		width: 1.5rem;
+	}
+</style>
+<body style="background-color: #f1f1f1;">
+<div class="content">
+	<!--标题-->
+	<!--<a href="../index.html"><div class="header"></div></a>-->
+	<div class="pub_hearder flex_vertical justify_content_equal" style="z-index: 99;">
+		<img class="up_page pub_hearder_left" src="img/header/header_left.png" onclick="window.history.go(-1)" />
+		<div class="head_center head_centerZi">
+			<!--	<div class="search_publish">
+                    <div style="position: relative;">
+                        <input class="toggleSou" type="text" style="color: black;height: .5rem; margin-bottom: .15em;" placeholder="搜索医生"/>
+                    </div>
+                </div>-->
+			<span class="set_head_dot" style="width: .15rem;height: .15rem;border-radius: 50%;"></span>
+			<span class="set_head_dot" style="width: .25rem;height: .27rem;border-radius: 50%;"></span>
+			<span class="set_head_dot"></span>
+			<span class="head_title"> 医院主页 </span>
+			<span class="set_head_dot"></span>
+			<span class="set_head_dot" style="width: .25rem;height: .27rem;;border-radius: 50%;"></span>
+			<span class="set_head_dot" style="width: .15rem;height: .15rem;border-radius: 50%;"></span>
+		</div>
+		<img class="search pub_hearder_right" onclick="Get.favourite()" style="	width: 2rem;height: 2rem;position: absolute;margin-top: 0;top: .4rem;
+    right: 1.5%;" src="img/favouriteNo.png">
+		<!--<img class="search pub_hearder_right" src="img/forward.png" />-->
+		<!--	<img class="search pub_hearder_right" onclick="Show.Sou()" src="img/search.png"/>-->
+	</div>
+
+	<div class="headerimg">
+		<img style="width: 100%;" class="hosImgBack" src="img/backlogo.jpg">
+		<div class="hosdetailBack">
+		</div>
+		<div class="hosdetailInfo" style="    position: absolute;    width: 100%;
+    bottom: 0;height: 6rem;">
+			<!--<div class="doc_pic hos_pic clearfix">
+				<img class="hocImg" src="http://www.enuo120.com:7070/upload/image/201801/17/QRfa77GB8PzfuRIhCEE.png" />
+			</div>-->
+			<div class="doctor2 hos2">
+				<span class="big hosname">杭州东方整形</span><br />
+				<!--<span class="hosnameBu" style="font-size: .8rem;    color: #666;">医疗美容门诊部</span>-->
+			</div>
+			<p class="hos_data">
+				<a onclick="toLocalAddress()" id="thisAddress" style="display: inherit;">
+
+					<span class="hosAddress">杭州西湖区文三西路29号</span>
+					<img class="left" src="img/hosaddress.png" />
+				</a>
+			</p>
+		</div>
+		<!--	<div class="head_center" style="    width: 69%;">
+                <div class="search_publish" style="left: .34rem;   height: 1rem;">
+                    <div style="position: relative;    margin-top: .9em;    width: 4.5rem;">
+                        <input style="background-color: transparent;border: 1.4px solid white;height: .55rem;" type="text" placeholder="搜索医生、医院、科室"/><img style="    top: .55rem;" src="img/search.png" />
+                    </div>
+                </div>
+            </div>-->
+		<!--<img class="search pub_hearder_right" onclick="To.favourite()" style="	width: .7rem;height: .7rem;position: absolute;margin-top: 0;top: .22rem;
+        right: 1%;" src="img/favouriteNo.png"/>-->
+	</div>
+	<!--<div class="hospitail_detail set_box_shadow doctor_detail" style="overflow:hidden;    margin-top: .8rem;">
+		&lt;!&ndash;头像&ndash;&gt;
+		<div class="doc_pic hos_pic clearfix">
+			<img class="hocImg" src="img/hos_index/hos_pic.png" />
+		</div>
+		<div class="doctor2 hos2">
+			<span class="big hosname">杭州东方整形</span><br />
+			&lt;!&ndash;<span class="hosnameBu" style="font-size: .8rem;    color: #666;">医疗美容门诊部</span>&ndash;&gt;
+		</div>
+		&lt;!&ndash;成功预约&ndash;&gt;
+		&lt;!&ndash;<div class="make">
+			成功预约：<span class="make_num">2868</span>
+		</div>&ndash;&gt;
+
+		&lt;!&ndash;延伸&ndash;&gt;
+		&lt;!&ndash;<p class="hos_data">
+			<a onclick="getSign()" id="thisAddress" style="display: inherit;">
+			<img class="left" src="img/hos_index/address.png" />
+			<span class="hosAddress">杭州西湖区文三西路29号</span>
+			<img class="next" src="img/next.png" />
+			</a>
+		</p>&ndash;&gt;
+		<p class="hos_detail_pic">
+			&lt;!&ndash;<img src="img/hos_index/hos_detail_pic.png" /><img src="img/hos_index/hos_detail_pic.png" /><img src="img/hos_index/hos_detail_pic.png" /><img src="img/hos_index/hos_detail_pic.png" />&ndash;&gt;
+		</p>
+		<p class="hos_detail overflow_num_ellipsis descinfo" style="    -webkit-line-clamp: 4;">
+			杭州东方整形 前身是浙江省中医院整形美容中心，创立于1984年，是杭州首家以回春美容技术为特色的美容机构，在中国名医理事会整形美容专委会副理事长“回春天王”黄庆武院长和中国著名精致面雕大师张厚感的带领下汇集了一大批权威专家、教授，坚持以“安全、美丽、自然”为核心理念，倾力打造国际回春美容顶尖品牌。
+		</p>
+		<p class="all_content flex_all_center" onclick="Get.descsurplus()">
+			<span class="font_green">展开全部简介</span>&nbsp;
+			<img class="" src="img/hos_index/green_down.png" />
+		</p>
+	</div>-->
+	<div class="hospitail_detail hos_doc_team set_box_shadow" style="margin-bottom: 1.3rem;    margin-top: .8rem;    padding-bottom: 0.01rem;">
+		<div class="hospitail_detailDiv clearfix">
+		<div class="left_tittle ill_office_pg" style="width: 40%;height: 2rem;    position: relative;
+    left: .5rem;">
+			<span class="green_long" style="    width: .2rem;
+    height: .8rem;
+    border-radius: .3rem;"></span><span style="color: #00afa1;    margin-left: .7rem;font-size: .85rem;">关于医院</span>
+		</div>
+		<p class="hos_detail overflow_num_ellipsis descinfo" style="    -webkit-line-clamp: 3;">
+			杭州东方整形 前身是浙江省中医院整形美容中心，创立于1984年，是杭州首家以回春美容技术为特色的美容机构，在中国名医理事会整形美容专委会副理事长“回春天王”黄庆武院长和中国著名精致面雕大师张厚感的带领下汇集了一大批权威专家、教授，坚持以“安全、美丽、自然”为核心理念，倾力打造国际回春美容顶尖品牌。
+		</p>
+		<p class="all_content flex_all_center" onclick="Get.descsurplus()" style="    height: 2.4rem;
+    border-top: 1px solid #dcdcdc;">
+			<span class="" style="color: #707070;    font-size: .85rem;
+    margin-right: 2%;">展开全部简介</span>&nbsp;
+			<img class="" src="img/next.png" />
+		</p>
+		</div>
+	</div>
+	<!--<div class="hos_doc_team set_box_shadow" style="margin-bottom: 1.3rem;    margin-top: .8rem;">
+		<div class="left_tittle ill_office_pg" style="width: 40%;height: 2rem;    position: relative;
+    left: .5rem;">
+			<span class="green_long" style="    width: .2rem;
+    height: .8rem;
+    border-radius: .3rem;"></span><span style="color: #00afa1;    margin-left: .7rem;font-size: .85rem;">医生团队</span>
+		</div>
+		&lt;!&ndash;医生列表&ndash;&gt;
+		<div class="hos_doc_list hos_doc_list_doc">
+			&lt;!&ndash;<div class="hos_doc_child clearfix">
+				<div class="doc_child_left">
+					<img src="img/hos_index/doc.png">
+				</div>
+				&lt;!&ndash;右边&ndash;&gt;
+				<div class="doc_child_right" style="margin: 2% 0 0 0%;">
+					<div class="id">
+						<p class="name">李华&nbsp;<span class="hosLevel">执业医师</span></p>
+						<p><span>科室：</span><span>心血管内科</span></p>
+						<p><span>擅长项目：</span><span>心血管内科</span></p>
+					</div>
+				</div>
+			</div>
+			<div class="hos_doc_child clearfix">
+				<div class="doc_child_left">
+					<img src="img/hos_index/doc.png">
+				</div>
+				&lt;!&ndash;右边&ndash;&gt;
+				<div class="doc_child_right" style="margin: 2% 0 0 0%;">
+					<div class="id">
+						<p class="name">李华&nbsp;<span class="hosLevel">执业医师</span></p>
+						<p><span>科室：</span><span>心血管内科</span></p>
+						<p><span>擅长项目：</span><span>心血管内科</span></p>
+					</div>
+				</div>
+			</div>
+			<div class="hos_doc_child clearfix">
+				<div class="doc_child_left">
+					<img src="img/hos_index/doc.png">
+				</div>
+				&lt;!&ndash;右边&ndash;&gt;
+				<div class="doc_child_right" style="margin: 2% 0 0 0%;">
+					<div class="id">
+						<p class="name">李华&nbsp;<span class="hosLevel">执业医师</span></p>
+						<p><span>科室：</span><span>心血管内科</span></p>
+						<p><span>擅长项目：</span><span>心血管内科</span></p>
+					</div>
+				</div>
+			</div>&ndash;&gt;
+		</div>
+		&lt;!&ndash;查看更多&ndash;&gt;
+		<div class="all_doc all_doc_doc" onclick="Get.surplus()">
+			查看全部医生&nbsp;<img style="height: .55rem;    vertical-align: top;
+    margin-top: 1.05rem;    width: initial;" src="img/hos_index/green_down.png">
+		</div>
+	</div>-->
+
+	<div class="hos_doc_team_ym set_box_shadow" style="margin-bottom: 1.3rem;    margin-top: .8rem;">
+		<!--<div class="left_tittle ill_office_pg" style="width: 40%;height: 2rem;    position: relative;
+    left: .5rem;">
+			<span class="green_long" style="    width: .2rem;
+    height: .8rem;
+    border-radius: .3rem;"></span><span style="color: #00afa1;    margin-left: .7rem;font-size: .85rem;">本院推荐</span>
+		</div>-->
+		<div class="left_tittle ill_office_pg" style="width: 98%;height: 3rem;    position: relative;
+    left: .2rem;        display: inline-block;">
+			<span style="width: 45%;    height: 2.2rem;
+    line-height: 2.1rem;
+    margin-top: .5rem;" class="tabjia tabjiaLeft">本院推荐<p class="avtivitySpan avtivityactive"></p></span>
+			<span style="width: 45%;    height: 2.2rem;
+    line-height: 2.1rem;
+    margin-top: .5rem;" class="tabjia tabjiaRight">医生团队<p class="avtivitySpan"></p></span>
+
+		</div>
+		<!--医生列表-->
+		<div class="tejiaLeft">
+			<div class="hos_doc_list_ym">
+				<!--<div class="hos_child set_box_shadow" itemid="4" onclick="href(this)">
+                    <div class="hos_list_top clearfix">
+                        <div class="left"><img src="/upload/image/201712/12/INXsCadTX4mRW2qpgwT.png"></div>
+                        <div class="right"><p class="detail"><span class="name">医美医院</span></p>
+                            <p><span>项目：</span><span>眼部</span></p>
+                            <p><span>预约：</span><span class="peopelCount">0人</span></p></div>
+                    </div>
+                </div>-->
+				<!--<div class="hos_doc_child clearfix">
+                    <div class="doc_child_left">
+                        <img src="img/hos_index/doc.png">
+                    </div>
+                    <div class="doc_child_right" style="margin: 2% 0 0 0%;">
+                        <div class="id">
+                            <p class="name">李华&nbsp;<span class="hosLevel">执业医师</span></p>
+                            <p><span>科室：</span><span>心血管内科</span></p>
+                            <p><span>擅长项目：</span><span>心血管内科</span></p>
+                        </div>
+                    </div>
+                </div>-->
+				<!--<div class="hos_doc_child clearfix">
+                    <div class="doc_child_left">
+                        <img src="img/hos_index/doc.png">
+                    </div>
+                    &lt;!&ndash;右边&ndash;&gt;
+                    <div class="doc_child_right" style="margin: 2% 0 0 0%;">
+                        <div class="id">
+                            <p class="name">李华&nbsp;<span class="hosLevel">执业医师</span></p>
+                            <p><span>科室：</span><span>心血管内科</span></p>
+                            <p><span>擅长项目：</span><span>心血管内科</span></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="hos_doc_child clearfix">
+                    <div class="doc_child_left">
+                        <img src="img/hos_index/doc.png">
+                    </div>
+                    &lt;!&ndash;右边&ndash;&gt;
+                    <div class="doc_child_right" style="margin: 2% 0 0 0%;">
+                        <div class="id">
+                            <p class="name">李华&nbsp;<span class="hosLevel">执业医师</span></p>
+                            <p><span>科室：</span><span>心血管内科</span></p>
+                            <p><span>擅长项目：</span><span>心血管内科</span></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="hos_doc_child clearfix">
+                    <div class="doc_child_left">
+                        <img src="img/hos_index/doc.png">
+                    </div>
+                    &lt;!&ndash;右边&ndash;&gt;
+                    <div class="doc_child_right" style="margin: 2% 0 0 0%;">
+                        <div class="id">
+                            <p class="name">李华&nbsp;<span class="hosLevel">执业医师</span></p>
+                            <p><span>科室：</span><span>心血管内科</span></p>
+                            <p><span>擅长项目：</span><span>心血管内科</span></p>
+                        </div>
+                    </div>
+                </div>-->
+			</div>
+			<!--查看更多-->
+			<div class="all_doc all_doc_ym" onclick="Get.surplusym()">查看更多&nbsp;<img style="height: .55rem;    vertical-align: top;    width: initial;
+    margin-top: 1.05rem;transform: rotate(270deg)" src="img/hos_index/green_down.png">
+			</div>
+		</div>
+		<div class="tejiaRight" style="display: none">
+			<div class="hos_doc_list hos_doc_list_doc">
+
+			</div>
+			<div class="all_doc all_doc_doc" onclick="Get.surplus()">查看更多&nbsp;<img style="height: .55rem;    vertical-align: top;    width: initial;
+    margin-top: 1.05rem;transform: rotate(270deg)" src="img/hos_index/green_down.png">
+			</div>
+		</div>
+	</div>
+</div>
+</body>
+<!--mescroll本身不依赖jq,这里为了模拟发送ajax请求,获取模拟数据-->
+<script src="js/hos_index.js"></script>
+<script src="js/lib/jweixin-1.1.0.js"> </script>
+<script src="js/getShare.js"> </script>
+<!--	<script src="../res/pdlist1.js" type="text/javascript" charset="utf-8"></script>-->
+<script type="text/javascript" charset="utf-8">
+    $(document).ready(function () {
+        init();
+		getSign();
+    })
+</script>
+
+</html>

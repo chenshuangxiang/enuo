@@ -1,0 +1,161 @@
+/*@media all and (min-width: 220px) {
+	html {
+		font-size: 10px;
+	}
+}
+@media all and (min-width: 320px) {
+	html {
+		font-size: 10px;
+	}
+}
+
+@media all and (min-width: 360px) {
+	html {
+		font-size: 13px;
+	}
+}
+
+@media all and (min-width: 480px) {
+	html {
+		font-size: 16px;
+	}
+}
+@media all and (min-width: 560px) {
+	html {
+		font-size: 16px;
+	}
+}
+
+@media all and (min-width: 640px) {
+	html {
+		font-size: 20px;
+	}
+}*/
+
+/*@media all and (min-width: 720px) {
+	html {
+		font-size: 22px;
+	}
+}*/
+/*活动*/
+.adverlist li {
+	position: relative;
+	/* padding: 10px 8px 10px 120px; */
+	/* border-bottom: 1px solid #eee; */
+	width: 22%;
+	margin-left: 2.4%;
+	/*float: left;*/
+	display: inline-block;
+}
+.advername {
+	font-size: .9rem;
+	color: black;
+	text-align: center;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+.adveraddress {
+	font-size: .8rem;
+	color: #666;
+	text-align: center;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+.adverprice {
+	color: #f81f7b;
+	font-size: 1rem;
+}
+.adveroldPrice {
+	color: #999;
+	font-size: .7rem;
+	display: block;
+	margin-top: -.15rem;
+	padding-bottom: .4rem;
+}
+.all_content {
+	height: 2.2rem;
+	/* margin-top: 1rem; */
+	font-size: .8rem;
+	border-top: 1px dashed #dcdcdc;
+}
+.all_content img {
+	width: .8rem;
+	transform: rotate(180deg);
+}
+.xywz_top {
+	/*width: 7.5rem;*/
+	border: 1px solid transparent;
+	padding: 0;
+	/*margin: 0 auto;
+	margin-top: .7em;*/
+	float: left;
+	width: 94.5%;
+}
+.xywz_top .find .find_doc,.xywz_top .find .find_hos {
+	/*height: 11.2rem;*/
+	/*	background-image: url(../img/xywz/find_doc.png);
+        background-position: center;
+        background-size: 100% 100%;
+        background-repeat: no-repeat;*/
+	position: relative;
+	width: 100%;
+}
+.contentNews{
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	width: 100%;
+	color: #666;
+}
+.find_docDiv{
+	height: 3.7rem;
+	width: 97%;
+	margin-left: 1%;
+	position: relative;
+}
+.xywz_top .find .find_doc img,.xywz_top .find .find_hos img,.myHealthDiv img{
+	/*	width: 38%;*/
+	margin: 1rem 0 0 2%;
+	max-height: 1.8rem;
+	width: initial;
+}
+.xywz_top .find .find_hos {
+	/*background-image: url(../img/xywz/find_hos.png);*/
+}
+.find div .black{
+	height: 1.25rem;
+	line-height: 1.25rem;
+	font-size: 1rem;
+	font-weight: 600;
+}
+.lastTime{
+	float: right;
+	font-size: .8rem;
+	color: #555;
+	/*margin-right: .6rem;*/
+}
+.find .find_doc .btm,.find .find_hos .btm,.myHealthDiv .btm {
+	width: 82%;
+	height: 3rem;
+	font-size: .85rem;
+	/* border: 1px solid red; */
+	margin: 0 0 0 0;
+	line-height: 1.5rem;
+	position: absolute;
+	top: .5rem;
+	left: 17%;
+	/*bottom:7%;
+	left: 51%;*/
+}
+.new{
+	display: inline-block;
+	width: 8px;
+	height: 8px;
+	border-radius: 50%;
+	background-color: #ff9900;
+	position: absolute;
+	top: .4rem;
+	left: -.1rem;
+}

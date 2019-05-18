@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<link rel="stylesheet" href="css/base.css" />
+	<link rel="stylesheet" href="css/util.css" />
+	<link rel="stylesheet" href="css/rili_yuyue.css" />
+	<link rel="stylesheet" href="https://at.alicdn.com/t/font_234130_nem7eskcrkpdgqfr.css">
+	<script type="text/javascript" src="plug/jquery-1.11.3.js" ></script>
+	<script src="js/common.js"></script>
+	<!--<title>预约日历</title>--><title>预约日历</title>
+</head>
+<style>
+	input::-webkit-input-placeholder{
+		color: white;
+		font-size: 8px;
+	}
+</style>
+<body style="background-color: #f1f1f1;">
+<div class="content">
+	<div class="pub_hearder flex_vertical justify_content_equal" style="z-index: 99;">
+		<img class="up_page pub_hearder_left" src="img/header/header_left.png" onclick="window.history.go(-1)" />
+		<div class="head_center head_centerZi">
+			<span class="set_head_dot" style="width: .15rem;height: .15rem;border-radius: 50%;"></span>
+			<span class="set_head_dot" style="width: .25rem;height: .27rem;border-radius: 50%;"></span>
+			<span class="set_head_dot"></span>
+			<span class="head_title">预约</span>
+			<span class="set_head_dot"></span>
+			<span class="set_head_dot" style="width: .25rem;height: .27rem;;border-radius: 50%;"></span>
+			<span class="set_head_dot" style="width: .15rem;height: .15rem;border-radius: 50%;"></span>
+		</div>
+	</div>
+	<div class="famous_doc_layer">
+		<div id="schedule-box">
+
+		</div>
+		<div class="bottomFunc">
+			<p class="riliyuyue">预约医院：<span class="riliHos">维多利亚医院</span></p>
+			<p class="riliyuyue">预约项目：<span class="riliFunc">50ml玻尿酸</span></p>
+		</div>
+
+	</div>
+	<h3 id="h3Ele"></h3>
+	<div class="doc_homepage_btm fixed clearfix">
+		<div class="make" onclick="Btn.yuyue()">预约</div>
+	</div>
+</div>
+</body>
+<!--mescroll本身不依赖jq,这里为了模拟发送ajax请求,获取模拟数据-->
+<!--<script type="text/javascript" src="js/viewport.js" ></script>-->
+<script type="text/javascript" src="js/util.js"></script>
+<script src="js/lib/schedule.js"></script>
+<script>
+    var mySchedule = new Schedule({
+        el: '#schedule-box',
+        //date: '2018-9-20',
+        clickCb: function (y,m,d) {
+            document.querySelector('#h3Ele').innerHTML = y+'-'+m+'-'+d
+        },
+      /*  nextMonthCb: function (y,m,d) {
+            document.querySelector('#h3Ele').innerHTML = '日期：'+y+'-'+m+'-'+d
+        },
+        nextYeayCb: function (y,m,d) {
+            document.querySelector('#h3Ele').innerHTML = '日期：'+y+'-'+m+'-'+d
+        },
+        prevMonthCb: function (y,m,d) {
+            document.querySelector('#h3Ele').innerHTML = '日期：'+y+'-'+m+'-'+d
+        },
+        prevYearCb: function (y,m,d) {
+            document.querySelector('#h3Ele').innerHTML = '日期：'+y+'-'+m+'-'+d
+        }*/
+    });
+</script>
+<script src="js/rili_yuyue.js"></script>
+<script type="text/javascript" charset="utf-8">
+	$(document).ready(function () {
+		init();
+        $('.famous_doc_layer').height($(document).height() - $('.pub_hearder').height() - $('.make').height())
+    })
+</script>
+
+</html>

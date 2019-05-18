@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<link rel="stylesheet" href="css/base.css" />
+		<link rel="stylesheet" href="css/util.css" />
+		<link rel="stylesheet" href="css/bind_tel.css" />
+		<script type="text/javascript" src="plug/jquery-1.11.3.js" ></script>
+		<script src="js/lib/datePicker.js"></script>
+		<script src="js/lib/picker.min.js"></script>
+		<script src="js/lib/city.js"></script>
+		<script src="js/common.js"></script>
+		<!--<title>完善信息</title>--><title>完善信息</title>
+	</head>
+	<style>
+		.searchSpan {
+			width: 1.8rem;
+			height: 1.8rem;
+			top: .8rem;
+			color: white;
+			position: fixed;
+			right: 3%;
+			font-size: .85rem;
+		}
+		.hos_list_top .left {
+			width: 26%;
+		}
+		.hos_list_top .right {
+			width: 70%;
+		}
+		.renzhen{
+			margin-top: .6rem;
+			width: 4rem;
+			float: right;
+		}
+		textarea:disabled, input:disabled {
+			background-color: white;
+		}
+		/*预约弹窗*/
+		.modelOpen{
+			position: fixed;
+			width: 100%;
+			height: 100%;
+			z-index: 999;
+			top: 0;
+			display: none;
+		}
+		.mubu{
+			position: fixed;
+			width: 100%;
+			height: 100%;
+			background-color: #000000;
+			opacity: 0.2;
+		}
+		.hosDivOpen{
+			padding-left: 15%;
+			height: 2rem;
+			margin-bottom: .6rem;
+			margin-top: .3rem;
+		}
+		.paySuccessZi{
+			font-size: 1rem;
+			text-align: center;
+			/*height: 1.5rem;*/
+			margin-top: 1rem;
+		}
+		.modelOpenback{
+			width: 72%;
+			position: fixed;
+			top: 26%;
+			left: 15%;
+			z-index: 99999;
+			border-radius: 5px;
+			background-color: white;
+			padding-bottom: 2rem;
+		}
+		.payclose,.paybackclose{
+			width: 1.25rem;
+			float: right;
+			margin: .85rem;
+		}
+		.paySuccessZi input {
+			width: 75%;
+			margin-left: 2%;
+			height: 2rem;
+			line-height: 2rem;
+			font-size: .95rem;
+			color: #333;
+			text-align: center;
+			border: 1px solid #888;
+			border-radius: 3px;
+		}
+		.sureCoupon {
+			width: 30%;
+			height: 2.2rem;
+			background-color: #00afa1;
+			border: none;
+			outline: none;
+			/* position: absolute; */
+			border-radius: 5px;
+			color: white;
+			font-size: .85rem;
+			margin: 10% 0 0 35%;
+		}
+		.closeopen{
+			width: 1.25rem;
+			float: right;
+			margin: .55rem;
+		}
+	</style>
+	<body style="background-color: #f1f1f1;">
+	<div class="modelOpen" style="position: absolute">
+		<div class="mubu"></div>
+		<div class="modelOpenback" style="position: absolute">
+			<img class="payclose" onclick="$('.modelOpen').hide()" src="img/payclose.png">
+
+			<!--<img src="../img/yuyueback.png">-->
+			<p class="paySuccessZi" style=" margin-top:3rem;">实名认证</p>
+			<p class="paySuccessZi" style=" margin-top: 1rem;"><input type="text" class="userRealName" placeholder="请输入真实姓名"></p>
+			<p class="paySuccessZi"><input type="password" class="idcard" placeholder="请输入正确的身份证号"></p>
+			<button class="sureCoupon" onclick="Go.certification()">确定</button>
+		</div>
+	</div>
+	<div class="content">
+		<!--标题-->
+		<div class="pub_hearder flex_vertical justify_content_equal" style="z-index: 99">
+			<img class="up_page pub_hearder_left" src="img/header/header_left.png" onclick="window.history.go(-1)" />
+			<div class="head_center" style="width: 100%">
+				<span class="set_head_dot" style="width: .15rem;height: .15rem;border-radius: 50%;"></span>
+				<span class="set_head_dot" style="width: .25rem;height: .27rem;border-radius: 50%;"></span>
+				<span class="set_head_dot"></span>
+				<span class="head_title">完善信息</span>
+				<span class="set_head_dot"></span>
+				<span class="set_head_dot" style="width: .25rem;height: .27rem;;border-radius: 50%;"></span>
+				<span class="set_head_dot" style="width: .15rem;height: .15rem;border-radius: 50%;"></span>
+			</div>
+			<span class="searchSpan" onclick="Go.href()">跳过</span>
+		</div>
+		<div class="hos_child set_box_shadow">
+			<div class="hos_list_top clearfix">
+				<div class="left">姓名</div>
+				<div class="right"><input class="userName" placeholder="请输入姓名" type="text"/></div>
+			</div>
+			<div class="hos_list_top clearfix">
+				<div class="left">性别</div>
+				<div class="right">
+					<input class="sex nan" type="radio" name="sex" value="man" checked>
+					<span class="sexname">男</span>
+					<input class="sex nv" type="radio" name="sex" value="woman">
+					<span class="sexname">女</span>
+				</div>
+			</div>
+			<!--<div class="hos_list_top clearfix">
+				<div class="left">联系方式</div>
+				<div class="right"><input class="userName" disabled  value="15058370623" type="text"/></div>
+			</div>-->
+			<div class="hos_list_top clearfix">
+				<div class="left">出生日期</div>
+				<div class="right"><input onfocus="this.blur()" id="bornDate" placeholder="请选择出生日期" type="text"/></div>
+			</div>
+			<div class="hos_list_top clearfix">
+				<div class="left">地区</div>
+				<div class="right"><input class="" onfocus="this.blur()" placeholder="请选择城市" id="sel_city" type="text"/></div>
+			</div>
+			<div class="hos_list_top clearfix" style="border-bottom: none">
+				<div class="left">实名认证</div>
+				<div class="right"><img class="renzhen" onclick="$('.modelOpen').show()" src=""></div>
+			</div>
+		</div>
+		<div class="clearfix"></div>
+		<button class="bindBtn" onclick="Go.bind()">确认</button>
+	</div>
+	</body>
+	<script type="text/javascript" charset="utf-8"></script>
+	<script src="js/footer.js"></script>
+	<script src="js/bind_name.js"></script>
+	<script>
+        var nameEl = document.getElementById('sel_city');
+        var first = []; /* 省，直辖市 */
+        var second = []; /* 市 */
+        var third = []; /* 镇 */
+        var firstName = ''; /* 省，直辖市 */
+        var secondName = ''; /* 市 */
+        var thirdName = ''; /* 镇 */
+        var chooseList = [];
+        var selectedIndex = [0,0,0]; /* 默认选中的地区 */
+        var checked = [0, 0, 0]; /* 已选选项 */
+
+		$(document).ready(function () {
+			init();
+        })
+	</script>
+</html>

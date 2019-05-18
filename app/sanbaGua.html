@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no,minimal-ui,viewport-fit:contain">
+<link rel="stylesheet" href="css/base.css" />
+<link rel="stylesheet" href="css/util.css" />
+<link rel="stylesheet" href="css/sanbaGua.css" />
+	<script type="text/javascript" src="plug/jquery-1.11.3.js" ></script>
+	<script src="js/common.js"></script>
+	<script type="text/javascript" src="js/lib/jquery.gua.js"></script>
+	<script src="js/sanbaGua.js"></script>
+	<script src="js/lib/jweixin-1.1.0.js"> </script>
+	<script src="js/getShare.js"> </script>
+	<title>刮刮卡</title>
+</head>
+
+<body style="    overflow-y: scroll;    height: 100%;
+    background-color: #f1f1f1;">
+<div class="modelOpen">
+	<div class="mubu"></div>
+	<div class="modelOpenback">
+		<img class="closeopen" src="img/close.png">
+
+		<!--<img src="../img/yuyueback.png">-->
+		<p class="chooseqin">请选择医院</p>
+	<!--	<div class="hosDiv">
+			<input class="sex nan" type="radio" name="sex" checked="">
+			<span class="sexname">杭州时光医疗整形医院</span><br>
+			<span class="sexAddress">地址：浙江省杭州市拱墅区教工路596号</span>
+		</div>
+		<div class="hosDiv">
+			<input class="sex nan" type="radio" name="sex">
+			<span class="sexname">杭州时光医疗整形医院</span><br>
+			<span class="sexAddress">地址：浙江省杭州市拱墅区教工路596号</span>
+		</div>-->
+	</div>
+</div>
+<div class="content xywz" style="">
+	<img class="browDetailBackImg" style="margin-top: 2.7rem;" src="img/sanbaGuaBackImg.png">
+
+<!--头部-->
+<div class="pub_hearder flex_vertical justify_content_equal">
+	<img class="up_page pub_hearder_left" src="img/header/header_left.png" onclick="window.history.go(-1)"/>
+	<div class="head_center" style="    width: 100%;">
+		<span class="set_head_dot" style="width: .15rem;height: .15rem;border-radius: 50%;"></span>
+		<span class="set_head_dot" style="width: .25rem;height: .27rem;border-radius: 50%;"></span>
+		<span class="set_head_dot"></span>
+		<span class="head_title">刮刮卡</span>
+		<span class="set_head_dot"></span>
+		<span class="set_head_dot" style="width: .25rem;height: .27rem;;border-radius: 50%;"></span>
+		<span class="set_head_dot" style="width: .15rem;height: .15rem;border-radius: 50%;"></span>
+	</div>
+	<!--<img class="search pub_hearder_right" onclick="window.location.href = 'search.html?type=meigou'" style="position: absolute;
+    top: .8rem;
+    right: 3%;" src="img/search.png"/>-->
+</div>
+		<p style="color: #bb1d57;font-size: 2.3rem;text-align: center;position: relative;z-index: 99;font-weight: 600;margin: 2.1rem 0 .3rem 0">刮刮卡</p>
+		<p style="color: black;font-size: .95rem;text-align: center;position: relative;z-index: 99">大奖刮出来</p>
+
+		<div class="contentGua">
+			<img id="reduxBack" src="img/mask_img_bgborder.png" />
+			<div id="mask_img_bg"><img  src="img/mask_img_bg1.jpg" /></div>
+			<img id="redux" src="img/mask-img.jpg" />
+		</div>
+	<div style="width: 100%;margin-bottom: -.8rem;position: relative;text-align: center">
+		<input style="display: inline-block;background-color: #bb1d57" onclick="window.location.href = 'myCard.html'" class="toPostPhoto" type="button" value="我要预约">
+	</div>
+	<!--<div class="show">
+		<img class="show_bg" src="images/ok.png">
+		<img class="show_bg1" src="images/ok1.png">
+		<img class="show_food" src="images/mask_img_bg1.jpg" />
+		<a class="close"></a>
+		<a class="btn"></a>
+	</div>-->
+
+	<!--<div class="mask"></div>-->
+	<!--<img src="img/activityBrowTopImg.png" onclick="  window.location.href = 'special_cp.html?itemId=245'" style="width: 100%">-->
+	<div style="margin-top: .5rem;width: 88%;margin-bottom: 1.3rem;font-size: .87rem;color: black;line-height: 1.3rem;margin-left: 6%;position: relative">
+		<p style="font-size: .9rem;color: #444">活动规则：</p>
+         <p style="margin-top: .3rem;color: #444;font-size: .8rem;">1.刮开奖券，可立即查看中奖信息；<br>
+             2.1000万整形基金（共10个中奖名额），会直接放入您的e诺账号中，在【e诺健康】-【个人中心】中查看；<br>
+             3.在法律允许的范围内，本活动最终解释权归e诺健康平台所有。
+         </p>
+	</div>
+	<div style="clear: both"></div>
+	<img style="width: 76%;margin: 0 0 .8rem 12%;z-index: 99;position: relative;" src="img/specialGangImg.png">
+	<div class="hos_doc_team set_box_shadow" style="margin-bottom: 1.3rem;    margin-top: .5rem;">
+		<!--<div class="ill_office_pg" style="width: 100%;height:1.8rem; line-height: 2.5rem;
+    text-align: center;">
+			<span style="color: #00afa1;font-size: .9rem">一一</span><span style="font-weight: 500;color: #00afa1;font-size: .9rem">活动专区</span><span style="font-size: .9rem;color: #00afa1;">一一</span>
+		</div>-->
+
+		<!--医生列表-->
+		<div class="hos_doc_list">
+			<!--<div class="hos_doc_child clearfix">
+				<div class="doc_child_left">
+					<img src="img/hos_index/doc.png">
+				</div>
+				&lt;!&ndash;右边&ndash;&gt;
+				<div class="doc_child_right" style="margin: 0 0 0 0;">
+					<div class="id">
+						<p class="name"><span class="hot">热销</span><span class="goodsName">【水漾活跃名字】水漾活跃名字水漾活跃漾活跃名字水漾字</span></p>
+						<p class="address">杭州东方整形们整部</p>
+						<p><span class="price">￥618</span><del class="oldprice">￥10265</del><span class="yuyue">已预约<span class="peopelcount">236</span>人</span></p>
+					</div>
+				</div>
+			</div>
+			<div class="hos_doc_child clearfix">
+				<div class="doc_child_left">
+					<img src="img/hos_index/doc.png">
+				</div>
+				&lt;!&ndash;右边&ndash;&gt;
+				<div class="doc_child_right" style="margin: 0 0 0 0;">
+					<div class="id">
+						<p class="name"><span class="hot">热销</span><span class="goodsName">【水漾活跃名字】水漾活跃名字水漾活跃漾活跃名字水漾字</span></p>
+						<p class="address">杭州东方整形们整部</p>
+						<p><span class="price">￥618</span><del class="oldprice">￥10265</del><span class="yuyue">已预约<span class="peopelcount">236</span>人</span></p>
+					</div>
+				</div>
+			</div>
+			<div class="hos_doc_child clearfix">
+				<div class="doc_child_left">
+					<img src="img/hos_index/doc.png">
+				</div>
+				&lt;!&ndash;右边&ndash;&gt;
+				<div class="doc_child_right" style="margin: 0 0 0 0;">
+					<div class="id">
+						<p class="name"><span class="hot">热销</span><span class="goodsName">【水漾活跃名字】水漾活跃名字水漾活跃漾活跃名字水漾字</span></p>
+						<p class="address">杭州东方整形们整部</p>
+						<p><span class="price">￥618</span><del class="oldprice">￥10265</del><span class="yuyue">已预约<span class="peopelcount">236</span>人</span></p>
+					</div>
+				</div>
+			</div>-->
+			<div class="hos_doc_child clearfix" specialid="23" hospitalname="杭州天鑫瑞丽美容医院" address="玉古路165-1号"
+				 otherspecialid="undefined" otherhospitalname="undefined" otheraddress="undefined" onclick="href(this)"
+				 style="border-bottom: 1px solid rgb(220, 220, 220);">
+				<div class="doc_child_left"><img style="max-height: 4.5rem;"
+												 src="https://www.enuo120.com/upload/image/201801/26/FvjrlWme5sHLFyB2YDf.jpg">
+				</div>
+				<div class="doc_child_right" style="margin: 0 0 0 0;">
+					<div class="id"><p class="name"><span class="goodsName">99至尊卡（四个超值医美项目四选二）</span></p>
+						<p class="address">e诺第三方医疗监管平台特惠项目</p>
+						<p><span style="color: #f81f7b;font-size: .7rem;">￥</span><span class="price">99.00</span></p>
+					</div>
+				</div>
+			</div>
+			<div class="hos_doc_child clearfix" specialid="77" hospitalname="杭州天鑫瑞丽美容医院" address="玉古路165-1号"
+				 otherspecialid="undefined" otherhospitalname="undefined" otheraddress="undefined" onclick="href(this)"
+				 style="border-bottom: 1px solid rgb(220, 220, 220);">
+				<div class="doc_child_left"><img style="max-height: 4.5rem;"
+												 src="https://www.enuo120.com/upload/image/201802/03/IQydjVAKfC0VouCxAAq.jpg">
+				</div>
+				<div class="doc_child_right" style="margin: 0 0 0 0;">
+					<div class="id"><p class="name"><span class="goodsName">全切双眼皮</span></p>
+						<p class="address">e诺第三方医疗监管平台特惠项目</p>
+						<p><span style="color: #f81f7b;font-size: .7rem;">￥</span><span class="price">599.00</span></p>
+					</div>
+				</div>
+			</div>
+			<div class="hos_doc_child clearfix" specialid="248" hospitalname="浙江爱德口腔科" address="东新路509号"
+				 otherspecialid="undefined" otherhospitalname="undefined" otheraddress="undefined" onclick="href(this)"
+				 style="border-bottom: 1px solid rgb(220, 220, 220);">
+				<div class="doc_child_left"><img style="max-height: 4.5rem;"
+												 src="https://www.enuo120.com/upload/image/201805/22/mriwn3beyX8WeTXuglT.jpg">
+				</div>
+				<div class="doc_child_right" style="margin: 0 0 0 0;">
+					<div class="id"><p class="name"><span class="goodsName">超声洁牙</span></p>
+						<p class="address">e诺第三方医疗监管平台特惠项目</p>
+						<p><span style="color: #f81f7b;font-size: .7rem;">￥</span><span class="price">38.00</span></p>
+					</div>
+				</div>
+			</div>
+			<div class="hos_doc_child clearfix" specialid="79" hospitalname="浙江爱德口腔科" address="东新路509号"
+				 otherspecialid="undefined" otherhospitalname="undefined" otheraddress="undefined" onclick="href(this)"
+				 style="border-bottom: 1px solid rgb(220, 220, 220);">
+				<div class="doc_child_left"><img style="max-height: 4.5rem;"
+												 src="https://www.enuo120.com/upload/image/201806/05/HfgFPMKo1MVTEvAEkk4.png">
+				</div>
+				<div class="doc_child_right" style="margin: 0 0 0 0;">
+					<div class="id"><p class="name"><span class="goodsName">进口种植牙</span></p>
+						<p class="address">e诺第三方医疗监管平台特惠项目</p>
+						<p><span style="color: #f81f7b;font-size: .7rem;">￥</span><span class="price">4999.00</span></p>
+					</div>
+				</div>
+			</div>
+			<div class="hos_doc_child clearfix" specialid="256" hospitalname="浙江爱德口腔科" address="东新路509号"
+				 otherspecialid="undefined" otherhospitalname="undefined" otheraddress="undefined" onclick="href(this)"
+				 style="border-bottom: 1px solid rgb(220, 220, 220);">
+				<div class="doc_child_left"><img style="max-height: 4.5rem;"
+												 src="https://www.enuo120.com/upload/image/201806/20/hW2Wm5kl0ZxYgZdWAei.jpg">
+				</div>
+				<div class="doc_child_right" style="margin: 0 0 0 0;">
+					<div class="id"><p class="name"><span class="goodsName">玻璃离子补牙</span></p>
+						<p class="address">e诺第三方医疗监管平台特惠项目</p>
+						<p><span style="color: #f81f7b;font-size: .7rem;">￥</span><span class="price">28.00</span></p>
+					</div>
+				</div>
+			</div>
+			<div class="hos_doc_child clearfix" specialid="94" hospitalname="杭州静丽医院" address="丰登街122号"
+				 otherspecialid="undefined" otherhospitalname="undefined" otheraddress="undefined" onclick="href(this)"
+				 style="border-bottom: 1px solid rgb(220, 220, 220);">
+				<div class="doc_child_left"><img style="max-height: 4.5rem;"
+												 src="https://www.enuo120.com/upload/image/201803/19/tFrGpfD2jX9fa9exLqe.jpg">
+				</div>
+				<div class="doc_child_right" style="margin: 0 0 0 0;">
+					<div class="id"><p class="name"><span class="goodsName">激光祛痣</span></p>
+						<p class="address">e诺第三方医疗监管平台特惠项目</p>
+						<p><span style="color: #f81f7b;font-size: .7rem;">￥</span><span class="price">10.00</span></p>
+					</div>
+				</div>
+			</div>
+			<div class="hos_doc_child clearfix" specialid="249" hospitalname="浙江爱德口腔科" address="东新路509号"
+				 otherspecialid="undefined" otherhospitalname="undefined" otheraddress="undefined" onclick="href(this)"
+				 style="border-bottom: 1px solid rgb(220, 220, 220);">
+				<div class="doc_child_left"><img style="max-height: 4.5rem;"
+												 src="https://www.enuo120.com/upload/image/201805/22/0OmwpZBe4fbmtXlsAfv.jpg">
+				</div>
+				<div class="doc_child_right" style="margin: 0 0 0 0;">
+					<div class="id"><p class="name"><span class="goodsName">普通拔牙</span></p>
+						<p class="address">e诺第三方医疗监管平台特惠项目</p>
+						<p><span style="color: #f81f7b;font-size: .7rem;">￥</span><span class="price">28.00</span></p>
+					</div>
+				</div>
+			</div>
+			<!--<div class="hos_doc_child clearfix" specialid="64" hospitalname="杭州阿波罗男子医院" address="浙江省杭州市下城区体育场路58号"
+				 otherspecialid="undefined" otherhospitalname="undefined" otheraddress="undefined" onclick="href(this)"
+				 style="border-bottom: 0px;">
+				<div class="doc_child_left"><img style="max-height: 4.5rem;"
+												 src="https://www.enuo120.com/upload/image/201801/27/ouGxQNliysiNLjbFS9P.jpg">
+				</div>
+				<div class="doc_child_right" style="margin: 0 0 0 0;">
+					<div class="id"><p class="name"><span class="goodsName">腹部B超</span></p>
+						<p class="address">e诺第三方医疗监管平台特惠项目</p>
+						<p><span style="color: #f81f7b;font-size: .7rem;">￥</span><span class="price">10.00</span></p>
+					</div>
+				</div>
+			</div>-->
+		</div>
+		<!--查看更多-->
+		<!--<div class="all_doc">
+			查看更多商品
+		</div>-->
+	</div>
+	<div class="warn" style="margin-bottom: 1rem;">
+		<p style="    text-align: center;">
+			<!--<span style="font-weight: 600">活动背景：</span>--><span>以上活动由e诺第三方医疗监管平台全程监督</span>
+		</p>
+		<p style="    text-align: center;">
+			<!--<span style="font-weight: 600">活动规则：</span>--><!--咨询热线：4000696120-->
+		</p>
+	<!--	<p>
+			<span style="font-weight: 600">活动时间：</span>在2018年4月30日前使用，过期无效。
+		</p>-->
+	</div>
+</div>
+</body>
+<script>
+    $(document).ready(function () {
+        //follow.wecat();
+        init();
+    })
+</script>
+</html>

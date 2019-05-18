@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no,minimal-ui">
+<!--<link rel="stylesheet" href="plug/swiper/css/swiper.css"/>-->
+<link rel="stylesheet" href="css/base.css" />
+<link rel="stylesheet" href="css/util.css" />
+<link rel="stylesheet" href="css/ym_index.css" />
+	<script type="text/javascript" src="plug/jquery-1.11.3.js" ></script>
+<!--<title>医美整形</title>--><title>美丽约定</title>
+</head>
+<style>
+	input::-webkit-input-placeholder{
+		color: white;
+		font-size: 8px;
+	}
+	.huiImg{
+		position: absolute;
+		right: 2%;
+		top: 6%;
+		width: 1.5rem;
+	}
+</style>
+<body style="background-color: #f1f1f1;">
+<div class="content xywz">
+	
+<!--头部-->	
+<div class="pub_hearder flex_vertical justify_content_equal">
+	<!--<img class="up_page pub_hearder_left" src="img/header/header_left.png" />-->
+	<!--<div class="head_center" style="    width: 69%;">
+		<div class="search_publish" style="left: .34rem;   height: 1rem;">
+			<div style="position: relative;    margin-top: .9em;    width: 4.5rem;">
+				<input style="background-color: transparent;border: 1.4px solid white;height: .55rem;" type="text" placeholder="搜索您感兴趣的项目"/><img style="    top: .55rem;" src="img/search.png" />
+			</div>
+		</div>
+	</div>-->
+	<img class="up_page pub_hearder_left" src="img/header/header_left.png" onclick="window.location.href = 'xywz.html'" />
+	<div class="head_center head_centerZi">
+		<!--	<div class="search_publish">
+                <div style="position: relative;">
+                    <input class="toggleSou" type="text" style="color: black;height: .5rem; margin-bottom: .15em;" placeholder="搜索医生"/>
+                </div>
+            </div>-->
+		<span class="set_head_dot" style="width: .15rem;height: .15rem;border-radius: 50%;"></span>
+		<span class="set_head_dot" style="width: .25rem;height: .27rem;border-radius: 50%;"></span>
+		<span class="set_head_dot"></span>
+		<span class="head_title">美丽约定</span>
+		<span class="set_head_dot"></span>
+		<span class="set_head_dot" style="width: .25rem;height: .27rem;;border-radius: 50%;"></span>
+		<span class="set_head_dot" style="width: .15rem;height: .15rem;border-radius: 50%;"></span>
+	</div>
+	<img class="search pub_hearder_right" onclick="window.location.href = 'search.html?type=beauty'" src="img/search.png"/>
+</div>
+	<div class="set_box_shadow" style="    margin-top: 1rem;
+    margin-bottom: .9rem;">
+	<div class="find_docDiv" onclick="window.location.href = 'find_hos.html?hosId=6'">
+		<img src="img/hosLei.png">
+		<div class="btm" style="top: 1.3rem;left: 22%;">
+			<p class="black">医疗整形医院</p>
+			<!--<p>快速搜索查询附近医院</p>-->
+		</div>
+		<img class="next" src="img/next.png">
+	</div>
+		<div  class="find_docDiv" style="border-top: 1px solid #eeeeee" onclick="window.location.href = 'find_project.html?type=beauty'">
+			<img src="img/choose/findprojImg.png">
+			<div class="btm" style="top: 4.4rem;left: 22%;">
+				<p class="black">找项目</p>
+				<p>快速查找您所需要的项目</p>
+			</div>
+			<img class="next" style="top: 4.3rem;" src="img/next.png">
+		</div>
+		<!--<div  class="find_docDiv" style="border-top: 1px solid #eeeeee" onclick="window.location.href = 'find_project.html?type=beauty'">
+			<img src="img/choose/findprojImg.png">
+			<div class="btm" style="top: 4.3rem;left: 22%;">
+				<p class="black">找项目</p>
+				<p>快速查找您所需要的项目</p>
+			</div>
+			<img class="next" style="top: 4.3rem;" src="img/next.png">
+		</div>-->
+	</div>
+
+<!--<div class="xywz_search set_box_shadow">
+	<div class="log">
+		<img src="img/xywz/e.png" />
+	</div>
+	<div class="title">医疗的事，我们帮您约定</div>
+	&lt;!&ndash;搜索框&ndash;&gt;
+
+</div>-->
+<!--	<div class="xywz_top">
+		<div class="find clearfix">
+			<div class="find_doc set_img_bg" onclick="window.location.href = SERVER_ADDR + '/find_doc.html'">
+				<div class="btm">
+					<p class="black">找医生</p>
+					<p>快速查询名医专家的坐诊信息</p>
+				</div>
+			</div>
+			<div class="find_hos set_img_bg" onclick="window.location.href = SERVER_ADDR + '/find_hos.html'">
+				<div class="btm">
+					<p class="black">找医院</p>
+					<p>快速查询名医专家的坐诊信息</p>
+				</div>
+			</div>
+		</div>
+	</div>-->
+
+<!--名医专家-->
+<!--<div class="doc_specialist set_box_shadow">
+	<div class="left_tittle ill_office_pg" style="width: 2rem;">
+		<span class="green_long"></span><span>名医专家</span>
+	</div>
+	<div class="more flex_vertical">
+		<span>更准确 更放心</span><img src="img/right.png" />
+	</div>
+</div>-->
+<!--<div class="ks set_box_shadow" style="">
+	&lt;!&ndash;<div class="left_tittle ill_office_pg">
+		<span class="green_long"></span><span>科室</span>
+	</div>&ndash;&gt;
+	&lt;!&ndash;科室列表&ndash;&gt;
+	<div class="ks_list clearfix" style="display: block;border-bottom: 0">
+		&lt;!&ndash;<div class="ks_child">
+			<p class="img1 set_img_bg"></p><br /><span>妇科</span>
+		</div>
+		<div class="ks_child">
+			<p class="img2 set_img_bg"></p><br /><span>儿科</span>
+		</div>
+		<div class="ks_child">
+			<p class="img3 set_img_bg"></p><br /><span>皮肤性病科</span>
+		</div>
+		<div class="ks_child" style="border-right:0;">
+			<p class="img4 set_img_bg"></p><br /><span>内科</span>
+		</div>
+		<div class="ks_child">
+			<p class="img5 set_img_bg"></p><br /><span>男科</span>
+		</div>&ndash;&gt;
+
+	</div>
+	<div style="clear: both"></div>
+	&lt;!&ndash;<p class="all_content flex_all_center shouqi" onclick="Show.func()">
+		<span class="font_green">收起</span>
+		<img style="margin-left: .15rem" class="" src="img/hos_index/green_down.png">
+	</p>&ndash;&gt;
+</div>-->
+	<!--<div class="ks set_box_shadow" style="    margin-top: 1rem;    padding: 0;">
+		<div class="left_tittle ill_office_pg" style="width: 100%;
+    position: relative;
+    padding-left: 0;">
+			<div></div>
+			<img src="img/adver.png">
+		</div>
+		<div class="left_tittle ill_office_pg" style="width: 100%;
+    position: relative;
+    padding-left: 0;">
+			<img src="img/adver.png">
+		</div>
+		<div  class="ill_office_pg" style="margin-top: .15rem;">
+			<ul class="adverlist">
+				<li>
+						<div class="left"><img src="img/adver2.png"></div>
+						<p class="advername">鼻综合整形</p>
+						<p class="adveraddress">杭州时光医疗</p>
+						<p class="detail"><span class="adverprice">￥295</span> <del class="adveroldPrice">￥400</del></p>
+				</li>
+				<li>
+					<div class="left"><img src="img/adver2.png"></div>
+					<p class="advername">鼻综合整形</p>
+					<p class="adveraddress">杭州时光医疗</p>
+					<p class="detail"><span class="adverprice">￥295</span> <del class="adveroldPrice">￥400</del></p>
+				</li>
+				<li>
+					<div class="left"><img src="img/adver2.png"></div>
+					<p class="advername">鼻综合整形</p>
+					<p class="adveraddress">杭州时光医疗</p>
+					<p class="detail"><span class="adverprice">￥295</span> <del class="adveroldPrice">￥400</del></p>
+				</li>
+				<li>
+					<div class="left"><img src="img/adver2.png"></div>
+					<p class="advername">鼻综合整形</p>
+					<p class="adveraddress">杭州时光医疗</p>
+					<p class="detail"><span class="adverprice">￥295</span> <del class="adveroldPrice">￥400</del></p>
+				</li>
+			</ul>
+		</div>
+		<div style="clear: both"></div>
+		<p class="all_content flex_all_center" style="    margin-top: .4rem;">
+			<span class="font_green">查看更多</span>
+			<img style="margin-left: .15rem;transform: rotate(270deg);" class="" src="img/hos_index/green_down.png">
+		</p>
+	</div>-->
+	<div class="hos_doc_team set_box_shadow" style="margin-bottom: 1.3rem;    margin-top: 1rem;background: rgba(199,237,204,0);">
+		<!--<div class="left_tittle ill_office_pg" style="width: 40%;height: 2.5rem;    position: relative;    top: .3rem;
+    left:0%;
+    text-align: center;">
+			<span style="color: #00afa1;font-size: .9rem">一一</span><span style="font-weight: 500;color: #00afa1;font-size: .9rem">爱美的e诺人都在买</span><span style="font-size: .9rem;color: #00afa1;">一一</span>
+		</div>-->
+		<!--医生列表-->
+		<div class="hos_doc_list">
+			<!--<div class="hos_doc_child clearfix">
+				<div class="doc_child_left">
+					<img src="img/hos_index/doc.png">
+				</div>
+				&lt;!&ndash;右边&ndash;&gt;
+				<div class="doc_child_right" style="margin: 0 0 0 0;">
+					<div class="id">
+						<p class="name"><span class="hot">热销</span><span class="goodsName">【水漾活跃名字】水漾活跃名字水漾活跃漾活跃名字水漾字</span></p>
+						<p class="address">杭州东方整形们整部</p>
+						<p><span class="price">￥618</span><del class="oldprice">￥10265</del><span class="yuyue">已预约<span class="peopelcount">236</span>人</span></p>
+					</div>
+				</div>
+			</div>
+			<div class="hos_doc_child clearfix">
+				<div class="doc_child_left">
+					<img src="img/hos_index/doc.png">
+				</div>
+				&lt;!&ndash;右边&ndash;&gt;
+				<div class="doc_child_right" style="margin: 0 0 0 0;">
+					<div class="id">
+						<p class="name"><span class="hot">热销</span><span class="goodsName">【水漾活跃名字】水漾活跃名字水漾活跃漾活跃名字水漾字</span></p>
+						<p class="address">杭州东方整形们整部</p>
+						<p><span class="price">￥618</span><del class="oldprice">￥10265</del><span class="yuyue">已预约<span class="peopelcount">236</span>人</span></p>
+					</div>
+				</div>
+			</div>
+			<div class="hos_doc_child clearfix">
+				<div class="doc_child_left">
+					<img src="img/hos_index/doc.png">
+				</div>
+				&lt;!&ndash;右边&ndash;&gt;
+				<div class="doc_child_right" style="margin: 0 0 0 0;">
+					<div class="id">
+						<p class="name"><span class="hot">热销</span><span class="goodsName">【水漾活跃名字】水漾活跃名字水漾活跃漾活跃名字水漾字</span></p>
+						<p class="address">杭州东方整形们整部</p>
+						<p><span class="price">￥618</span><del class="oldprice">￥10265</del><span class="yuyue">已预约<span class="peopelcount">236</span>人</span></p>
+					</div>
+				</div>
+			</div>-->
+		</div>
+		<!--查看更多-->
+		<!--<div class="all_doc" onclick="window.location.href = 'special_more.html'">
+			查看更多商品
+		</div>-->
+	</div>
+	<!--<div class="footer" id="nav" style="height: 3.8rem;">
+		<ul>
+			<li onclick="window.location.href = 'xywz.html'"><img src="img/banner/homeHui.png"><p style="">首页</p></li>
+			<li onclick="window.location.href = 'ym_index.html'"><img src="img/banner/special.png"><p style="color: #00afa1;font-weight: 600;">特价专区</p></li>
+			<li onclick="window.location.href = 'user_center.html'"><img src="img/banner/myHui.png"><p style="">我的</p></li>
+		</ul>
+	</div>-->
+</div>
+<!--<script type="text/javascript" src="js/viewport.js" ></script>-->
+<script src="js/common.js"></script>
+<script src="js/ym_index.js"></script>
+<!--<script type="text/javascript" src="js/util.js"></script>
+<script type="text/javascript" src="js/method.js"></script>
+<script type="text/javascript" src="js/find_hos.js" ></script>-->
+
+
+</body>
+<script>
+    $(document).ready(function () {
+        follow.wecat();
+        init()
+    })
+</script>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no,minimal-ui">
+    <script type="text/javascript" src="plug/jquery-1.11.3.js" ></script>
+    <script src="js/lib/jweixin-1.1.0.js"> </script>
+    <script type="text/javascript" src="js/common.js" ></script>
+    <!--<title>扫一扫</title>--><title>扫一扫</title>
+</head>
+<body>
+    <button id="sao" onclick="ajaxPay();">扫一扫</button>
+</body>
+<script>
+    function ajaxPay() {
+        var url = SERVER_ADDR + '/wx/getSign.json';
+        var Data = {};
+        Data.url = window.location.href;
+        /*if(SERVER_ADDR == 'http://www.enuo120.com'){*/
+            ajaxGetRetInfo(url, Data, ajaxPaySuccess, '请求失败', 'GET', true, undefined);
+        /*}*/
+    }
+    function ajaxPaySuccess(retInfo) {
+        console.log(retInfo)
+        payResult(retInfo);
+    }
+    function payResult(jsonData) {
+        console.log(jsonData);
+
+        wx.config({
+            debug: true,
+            appId: jsonData.data.appId,
+            timestamp: jsonData.data.timestamp,
+            nonceStr: jsonData.data.nonceStr,
+            signature: jsonData.data.signature,
+            jsApiList: ['scanQRCode']
+        });
+        wx.ready(function () {
+            // 在这里调用 API
+            //alert('开始检测的JS接口');
+            wx.scanQRCode({
+                needResult: 0, // 默认为0，扫描结果由微信处理，1则直接返回扫描结果，
+                scanType: ["qrCode"], // 可以指定扫二维码还是一维码，默认二者都有
+                success: function (res) {}
+            })
+        });
+
+    }
+</script>
+</html>

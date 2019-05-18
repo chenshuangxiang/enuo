@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+
+	<!--在您实际的项目中,请留意mescroll-option.css的图片路径是否引用正确,可写成绝对路径或网络地址-->
+	<!--可把mescroll-option.css代码拷贝到mescroll.min.css中,合为一个css文件,方便引用-->
+	<!--<link rel="stylesheet" href="css/lib/mescroll.css">
+	<link rel="stylesheet" href="option/mescroll-option.css">-->
+	<link rel="stylesheet" href="css/base.css" />
+	<link rel="stylesheet" href="css/util.css" />
+	<link rel="stylesheet" href="css/doctorInfo.css" />
+	<link rel="stylesheet" href="css/lib/fsgallery.css" />
+	<link rel="stylesheet" href="css/lib/xiala.css" />
+	<script type="text/javascript" src="plug/jquery-1.11.3.js" ></script>
+	<script src="js/common.js"></script>
+	<script src="js/lib/jweixin-1.1.0.js"> </script>
+	<script type="text/javascript" src="js/lib/fs_forse.js" ></script>
+	<script type="text/javascript" src="js/lib/lrz.bundle.js"></script>
+	<script type="text/javascript" src="js/lib/1.chunk.js"></script>
+	<script type="text/javascript" src="js/lib/2.chunk.js"></script>
+	<title>咨询问诊</title>
+</head>
+<style>
+	.sexImgSrc{
+		width: 1.4rem;
+		vertical-align: top;
+		margin-top: -.2rem;
+		margin-right: 1%;
+	}
+	.topname{
+		width: 100%;
+		height: 2rem;
+		line-height: 2rem;
+		font-size: 1rem;
+		text-align: center;
+		margin-top: 1.5rem;
+	}
+	.bindBtn {
+		width: 60%;
+		margin-left: 20%;
+		border-radius: 5px;
+		height: 3rem;
+		line-height: 3rem;
+		color: white;
+		font-size: 1.1rem;
+		margin-top: 6%;
+		text-align: center;
+		background-color: #00afa1;
+	}
+</style>
+<body style="background-color: white">
+<div class="content">
+	<!--标题-->
+	<!--<a href="../index.html"><div class="header"></div></a>-->
+	<div class="pub_hearder flex_vertical justify_content_equal" style="z-index: 99; position: fixed;top: 0;background: none;background-color: #f5f5f5;">
+		<img class="up_page pub_hearder_left_noQuan"  src="img/left.png" onclick="window.location.href = 'user_center.html'" />
+		<div class="head_center head_centerZi">
+			<!--	<div class="search_publish">
+                    <div style="position: relative;">
+                        <input class="toggleSou" type="text" style="color: black;height: .5rem; margin-bottom: .15em;" placeholder="搜索医生"/>
+                    </div>
+                </div>-->
+			<!--<span class="set_head_dot" style="width: .15rem;height: .15rem;border-radius: 50%;"></span>
+			<span class="set_head_dot" style="width: .25rem;height: .27rem;border-radius: 50%;"></span>
+			<span class="set_head_dot"></span>-->
+			<span class="head_title" style="color: black">咨询问诊</span>
+			<!--<span class="set_head_dot"></span>
+			<span class="set_head_dot" style="width: .25rem;height: .27rem;;border-radius: 50%;"></span>
+			<span class="set_head_dot" style="width: .15rem;height: .15rem;border-radius: 50%;"></span>-->
+		</div>
+		<!--<img class="search pub_hearder_right" src="img/forward.png" />-->
+		<!--	<img class="search pub_hearder_right" onclick="Show.Sou()" src="img/search.png"/>-->
+	</div>
+	<div style="background-color: #ebebeb;height: 1rem;margin-top: 2.7rem"></div>
+	<!--医生-->
+	<div id="mescroll1" class="mescroll" style="top: 2rem;width: 100%;position: absolute;z-index: -1">
+		<div class="hos_child">
+			<p class="topname">我的专属健管师</p>
+			<div class="head"><img class="headImg" src="img/health/noHeadImg.png">
+				<span class="userName" style="font-size: 1.1rem;"></span>
+			</div>
+			<div style="text-align: center; margin-bottom:5rem;">
+				<a class="myHealthmanA" style="color: black;font-size: .85rem" href="tel:4000696120">
+					<span class="myHealthName myHealthman"></span></a>
+				<!--<span class="username" style="font-size: 1.1rem;">陈双祥</span>-->
+			</div>
+			<div class="bindBtn" onclick="Go.healthmanchat()">线上咨询</div>
+			<div class="bindBtn goBtn" style="border: 1px solid #00afa1;background-color: white;color: #00afa1"
+				 onclick="Go.toyuyueHealthman()">预约上门
+			</div>
+		</div>
+	</div>
+</div>
+</body>
+
+<!--在您实际的项目中,请留意mescroll-option.js的图片路径是否引用正确,可写成绝对路径或网络地址-->
+<!--可把mescroll-option.js代码拷贝到mescroll.min.js中,合为一个js文件,方便引用-->
+<!--<script src="js/lib/mescroll.js" type="text/javascript" charset="utf-8"></script>-->
+<!--<script src="option/mescroll-option.js" type="text/javascript" charset="utf-8"></script>-->
+<!--mescroll本身不依赖jq,这里为了模拟发送ajax请求,获取模拟数据-->
+<!--<script type="text/javascript" src="js/viewport.js" ></script>-->
+<script type="text/javascript" src="js/util.js"></script>
+<script src="js/healthmanInfo.js"></script>
+<!--	<script src="../res/pdlist1.js" type="text/javascript" charset="utf-8"></script>-->
+
+<script type="text/javascript" charset="utf-8">
+	$(document).ready(function () {
+		init();
+    })
+</script>
+
+</html>

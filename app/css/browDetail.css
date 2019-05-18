@@ -1,0 +1,313 @@
+.pub_hearder_left {
+	width: 2.7rem;
+	height: 2.7rem;
+	position: fixed;
+	margin-top: 0;
+	top: .2rem;
+	left: 1%;
+}
+.docImgDiv{
+	width: 70%;
+	margin-left: 15%;
+	background-color: black;
+	opacity: 0.3;
+	height: 12.7rem;
+	/*position: absolute;*/
+	margin-top: 10rem;
+	position: relative;
+}
+.shenNum{
+	color: #ff0000;
+	height: 1.7rem;
+	display: inline-block;
+	line-height: 1.9rem;
+}
+.docNum {
+	position: absolute;
+	top: 0;
+	left: 0;
+	opacity: 0.5;
+	padding: 0 .3rem 0 .3rem;
+	font-size: .9rem;
+	height: 1.8rem;
+	line-height: 1.8rem;
+	background-color: black;
+	border-top-right-radius: 40px;
+	border-bottom-right-radius: 40px;
+	color: white;
+	/* margin-top: 10rem; */
+	z-index: 99999;
+}
+.neiAbsolut{
+	width: 96%;
+	margin-left: 2%;
+	background-color: white;
+	border-radius: 4px;
+	margin-bottom: .6rem;
+	margin-top: .7rem;
+}
+.search {
+	position: absolute;
+	top: .7rem;;
+	width: initial;
+	height: 1.7rem;;
+	margin-top: -.2rem;
+	right: .5rem;
+}
+.chengSpan{
+	color: #fd0200;
+	font-size: .9rem;
+	margin-top: .5rem;
+	vertical-align: top;
+	display: inline-block;
+}
+.chengDiv{
+	padding-top: .7rem;
+	height: 3rem;
+}
+.chengDiv img{
+	width: 1.7rem;
+	vertical-align: top;
+}
+.readJiang{
+	padding: .3rem .5rem;
+	font-size: .88rem;
+	background-color: #00AFA1;
+	color: #ffffff;
+	float: right;
+	margin-right: 0;
+	border-radius: 4px;
+	margin-top: -.2rem;
+}
+.noJiangDiv{
+	text-align: center;
+	padding-bottom: 1rem;
+	padding-top: 1.2rem;
+}
+.noJiangDiv img{
+	width: 60%;
+	text-align: center;
+	margin-left: -9%;
+	margin-bottom: -.4rem;
+}
+.noJiangDiv p{
+	text-align: center;
+	margin-bottom: .5rem;
+}
+.rankDiv{
+	width: 92%;
+	margin-left: 4%;
+	/*border-bottom: 1px solid #cccccc;*/
+	float: left;
+	padding-bottom: .8rem;
+}
+.rankDivOwn{
+	width: 100%;
+	float: left;
+	padding-bottom: .5rem;
+	border-bottom: 1px solid #ddd;
+}
+.rankDivOwnOne{
+	width: 21%;
+	margin-left: 1%;
+	float: left;
+	text-align: center;
+	position: relative;
+}
+.rankDivOwnImg{
+	border: 2px solid #fda818;
+	border-radius: 50%;
+}
+.rankDivChildOne img{
+	width: 73%;
+}
+.pingDao{
+	width: 40%;
+	float: left;
+	margin-left: 5%;
+	margin-top: .3rem;
+}
+.changeRank{
+	float: right;
+	width: 17%;
+	margin: 1.5rem 2% 0 0;
+}
+.neiAbsolutZi {
+	width: 96%;
+	margin-left: 2%;
+	background-color: white;
+	border-radius: 4px;
+	padding: 0 2%;
+	font-size: .85rem;
+	margin-top: .7rem;
+	padding-bottom: .6rem;
+	border: 1px solid #8db0f0;
+	margin-bottom: 2rem;
+}
+.neiAbsolutZi p {
+	line-height: 1.4rem;
+}
+.zizi {
+	color: #fc5c16;
+}
+.rankDivChild{
+	width: 73%;
+	margin-left: 24%;
+	float: left;
+	margin-top: 1.1rem;
+}
+.rankDivChildOne{
+	width: 29%;
+	float: left;
+	text-align: center;
+	margin-right: 8%;
+}
+.rankDivChildOne img{
+	width: 73%;
+	border: 1px dashed #8d8c8c;
+	border-radius: 50%;
+}
+.activeTimeP{
+	display: none;
+	font-size: .88rem;
+	margin-top: .4rem;
+}
+.activeAddressP{
+	display: none;
+	font-size: .88rem;
+	margin-top: .2rem;
+}
+/*眉毛*/
+.browDetailBackImg{
+	width: 100%;
+	position: fixed;
+	z-index: -9;
+}
+.browcouponImg{
+	width: 96%;
+	margin-left: 2%;
+	margin-bottom: .5rem;
+}
+/*拼团成功*/
+.successOpen,.shareOpen,.shareOpenBefore,.shareAddBeforeOpenBefore{
+	position: fixed;
+	width: 100%;
+	height: 100%;
+	z-index: 99999;
+	top: 0;
+	 display: none;
+}
+.activityClose {
+	width: 20%;
+	left: -1%;
+	top: -1%;
+	position: absolute;
+}
+.activityFu,.activityFuDetail{
+	width: 100%;
+}
+.activityFuDetailZhi{
+	width: 20%;
+	float: right;
+	clear: both;
+}
+.activityFuDetailToShare{
+	width: 33%;
+	float: right;
+	clear: both;
+	margin: 1rem 6% .5rem 0;
+}
+.sharSuccess{
+	width: 73%;
+	margin: 3% 0 -6% 10%;
+}
+.mubu{
+	position: fixed;
+	width: 100%;
+	height: 100%;
+	background-color: #000000;
+	opacity: 0.8;
+}
+.mubuDian{
+	position: fixed;
+	width: 100%;
+	height: 100%;
+	z-index: 999999;
+}
+.paySuccessZi{
+	font-size: 1.2rem;
+	text-align: center;
+	height: 1.5rem;
+}
+.payclose, .paybackclose {
+	width: 1.25rem;
+	float: right;
+	margin: .85rem;
+}
+.payclose{
+	position: fixed;
+	top: 25%;
+	right: 12%;
+	z-index: 9999999;
+}
+.sucescsclose{
+	width: 2rem;
+	height: 5rem;
+	position: fixed;
+	top: 20%;
+	right: 5%;
+	z-index: 9999999;
+}
+.paySuccess {
+	width: 25%;
+	margin: 13% 0 6% 37%;
+}
+.jiangback{
+	width: 100%;
+	height: 100%;
+}
+.jiangbackImg{
+	position: fixed;
+	top: 0;
+	z-index: 99999;
+}
+.modelOpenback {
+	width: 72%;
+	position: fixed;
+	top: 26%;
+	/* height: 12rem; */
+	left: 15%;
+	padding-bottom: 3.3rem;
+	z-index: 99999;
+	border-radius: 5px;
+	background-color: #dcdcdc;
+}
+.toYuyue, .toYuyueno {
+	width: 21.5%;
+	height: 1.9rem;
+	background-color: #f6554b;
+	outline: none;
+	/* position: absolute; */
+	color: white;
+	border-radius: 20px;
+	font-size: .83rem;
+	margin: 0 0 8% 3%;
+	border: 1px solid white;
+	z-index: 9999999;
+	position: fixed;
+	top: 53%;
+	left: 48.5%;
+}
+.toYuyueno {
+	left: 23%;
+}
+.getJiang{
+	width: 40%;
+	height: 10rem;
+	z-index: 9999999;
+	position: fixed;
+	top: 32.5%;
+	left: 30%;
+}
+
+

@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+
+	<!--在您实际的项目中,请留意mescroll-option.css的图片路径是否引用正确,可写成绝对路径或网络地址-->
+	<!--可把mescroll-option.css代码拷贝到mescroll.min.css中,合为一个css文件,方便引用-->
+	<!--<link rel="stylesheet" href="css/lib/mescroll.css">
+	<link rel="stylesheet" href="option/mescroll-option.css">-->
+	<link rel="stylesheet" href="css/base.css" />
+	<link rel="stylesheet" href="css/util.css" />
+	<link rel="stylesheet" href="css/myHealthFile.css" />
+	<link rel="stylesheet" href="css/lib/xiala.css" />
+	<script type="text/javascript" src="plug/jquery-1.11.3.js" ></script>
+	<script src="js/common.js"></script>
+	<script src="js/myHealthFile.js"></script>
+	<title>我的健康档案</title>
+</head>
+<style>
+	.nav .active{
+		background-color: #00afa1;
+		color: white;
+	}
+	.nav p{
+		float: left;
+		width: 25%;
+		padding: .8rem 0 .6rem 0;
+		margin: 0;
+	}
+</style>
+<body style="background-color: #ebebeb;">
+<div class="content">
+	<!--标题-->
+	<!--<a href="../index.html"><div class="header"></div></a>-->
+	<div class="pub_hearder flex_vertical justify_content_equal" style="z-index: 99; position: fixed;top: 0;background: none;background-color: #f5f5f5;">
+		<img class="up_page pub_hearder_left_noQuan"  src="img/left.png" onclick="window.location.href = 'user_center.html'" />
+		<div class="head_center head_centerZi">
+			<span class="head_title" style="color: black">我的健康档案</span>
+		</div>
+	</div>
+	<!--滑动区域-->
+	<div class="nav" style="position: fixed;
+    top: 2.7rem;    width: 100%;    font-size: .95rem;border-top: 1px solid #dddddd;border-bottom: none">
+		<p style="    padding: .65rem 0 .48rem 0;" class="active" i="0">基础信息</p>
+		<p style="    padding: .65rem 0 .48rem 0;" i="1" class="">就诊病历</p>
+		<p style="    padding: .65rem 0 .48rem 0;" i="2" class="">体检报告</p>
+		<p style="    padding: .65rem 0 .48rem 0;" i="3" class="">日常监测</p>
+	</div>
+	<!--商品-->
+	<div id="mescroll0" class="mescroll" style="top: 6.4rem;width: 100%;position: absolute;z-index: -1">
+		<div class="homeList">
+			<div class="head"><img class="fullHeadImgUrl" src="img/enuoFang.jpg"></div>
+			<div style="text-align: center; margin-bottom: 1rem;"><span class="name myname" style="font-size: 1.3rem;color: black">陈双祥</span>
+				<span class="sexImg"><img class="sexImgSrc"  src=""></span> <span class="age">18</span></div>
+			<div style="text-align: center;color: #555;margin-bottom:.5rem;font-size: .85rem"><span style="margin-right: 18px;">我的健康助理：<span class="myhealthname">无</span></span></div>
+			<div style="text-align: center;color: #555;;font-size: .85rem"><span style="margin-right: 18px;">所属医生：<span class="mydoctorname">无</span></span>
+				<span>所属护士：<span class="mynursename">无</span></span></div>
+		</div>
+		<div class="homeList" style="padding: 10px 2%;float: left;width: 100%;    margin-top: .7rem;">
+			<div class="homeService" onclick="window.location.href = 'myHealthBaseInfo.html'">
+				<img class="homeServiceCenterImg" src="img/health/myInfo.png"><span class="homeServiceCenterZi">个人基本信息</span>
+				<p class="homeServiceRight"><span class="percent personalInformationPercent"></span><span>%</span></p>
+			</div>
+			<div style="margin-right: 0" class="homeService" onclick="window.location.href = 'myHealthHealthInfo.html'">
+				<img class="homeServiceCenterImg" src="img/health/myhealthInfo.png"><span class="homeServiceCenterZi">基础健康信息</span>
+				<p class="homeServiceRight"><span class="percent basicInfoPercent"></span><span>%</span></p>
+			</div>
+			<div class="homeService" onclick="window.location.href = 'myHealthLife.html'">
+				<img class="homeServiceCenterImg" src="img/health/myLifeInfo.png"><span class="homeServiceCenterZi">个人生活方式</span>
+				<p class="homeServiceRight"><span class="percent userLifePercent"></span><span>%</span></p>
+			</div>
+			<div style="margin-right: 0" class="homeService" onclick="$('.nav p[i=3]').click();">
+				<img class="homeServiceCenterImg" src="img/health/myMeterInfo.png"><span class="homeServiceCenterZi">日常指标监测</span>
+				<!--<p class="homeServiceRight"><span class="percent"></span><span>%</span></p>-->
+			</div>
+			<div class="homeService" onclick="$('.nav p[i=1]').click();">
+				<img class="homeServiceCenterImg" src="img/health/myAnalyseInfo.png"><span class="homeServiceCenterZi">健康分析报告</span>
+				<!--<p class="homeServiceRight"><span class="percent"></span><span>%</span></p>-->
+			</div>
+			<div style="margin-right: 0" class="homeService" onclick="alert('即将开放，敬请期待')">
+				<img class="homeServiceCenterImg" src="img/health/contractService.png"><span class="homeServiceCenterZi">签约服务</span>
+				<!--<p class="homeServiceRight"><span class="percent">60</span><span>%</span></p>-->
+			</div>
+		</div>
+	</div>
+	<!--医生-->
+	<div id="mescroll1" class="mescroll hide" style="top: 5.4rem;width: 100%;position: absolute;z-index: -1">
+		<img class="addMescroll1Img" onclick="window.location.href = 'myHealthFileBingliAdd.html'" src="img/health/add.png">
+		<div class="mescroll1DivList">
+			<!--<div class="hos_child caseDiv set_box_shadow" style="width: 94%;float: none">
+				<div class="hos_list_top clearfix">
+					<div class="orderContent" style="margin: .3rem 0 0 2%;" onclick="href(this)">
+						<div class="left" style="width: 24%;line-height: inherit"><img
+								src="https://www.enuo120.com/upload/image/201806/05/HfgFPMKo1MVTEvAEkk4.png"></div>
+						<div class="right" style="margin-top: .1rem;padding-left: 2%">
+							<p class="detail"><span class="name" style="font-size: 1.05rem">就诊病状</span></p>
+							<p class="detail" style="line-height: 1rem;color: #999;    height: auto;">
+								<span class="name">病状病状病状病状病状病状病状病状病状病状病状病状。。。</span>
+							</p>
+							<p class="orderdetailchoose" style="    margin-bottom: .5rem;color: #999">
+								<span>上传时间：</span>
+								<span class="orderdetailchooseName">2019.02.26</span>
+								<button class="orderReadMore" onclick="">查看更多></button>
+							</p>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="hos_child set_box_shadow" style="width: 94%;float: none">
+				<div class="hos_list_top clearfix">
+					<div class="orderContent" style="margin: .3rem 0 0 2%;" onclick="href(this)">
+						<div class="left" style="width: 24%;line-height: inherit"><img
+								src="https://www.enuo120.com/upload/image/201806/05/HfgFPMKo1MVTEvAEkk4.png"></div>
+						<div class="right" style="margin-top: .1rem;padding-left: 2%">
+							<p class="detail"><span class="name" style="font-size: 1.05rem">就诊病状</span></p>
+							<p class="detail" style="line-height: 1rem;color: #999;    height: auto;">
+								<span class="name">病状病状病状病状病状病状病状病状病状病状病状病状。。。</span>
+							</p>
+							<p class="orderdetailchoose" style="    margin-bottom: .5rem;color: #999">
+								<span>上传时间：</span>
+								<span class="orderdetailchooseName">2019.02.26</span>
+								<button class="orderReadMore" onclick="">查看更多></button>
+							</p>
+						</div>
+					</div>
+				</div>
+			</div>-->
+		</div>
+	</div>
+
+	<!--医院-->
+	<div id="mescroll2" class="mescroll hide" style="top: 5.4rem;width: 100%;position: absolute;z-index: -1">
+		<img class="addMescroll1Img" onclick="window.location.href = 'myHealthFileTijianAdd.html'" src="img/health/add.png">
+		<div class="mescroll2DivList">
+		</div>
+	</div>
+	<div id="mescroll3" class="mescroll hide" style="top: 5.4rem;width: 100%;position: absolute;z-index: -1">
+		<!--<li class="hos_child set_box_shadow" style="margin-left: 0;border-radius: 0">
+			<div class="hos_list_top clearfix">
+				<div class="yuyueTop">
+					<span class="famousName hosName">血压</span>
+				</div>
+				<div class="orderContent">
+					<button class="ordercommont"  onclick="window.location.href = 'myHealthFileXueyaList.html'">历史数据></button>
+					<div class="left"><img src="https://www.enuo120.com/upload/image/201806/05/HfgFPMKo1MVTEvAEkk4.png"></div>
+					<div class="right">
+						<p class="detail">
+							<span class="name">高压mmHg</span>
+						</p>
+						<p class="detail">
+							<span class="name">低压mmHg</span>
+						</p>
+						<p class="detail" style="margin-bottom: .45rem;">
+							<span class="name">心率mmHg</span>
+						</p>
+						<p class="orderdetailchoose" style="    margin-bottom: .5rem;">
+							<span>测量时间：</span>
+							<span class="orderdetailchooseName">2019-02-26 17:11:57</span>
+						</p>
+					</div>
+				</div>
+			</div>
+		</li>
+		<li class="hos_child set_box_shadow" style="margin-left: 0;border-radius: 0" >
+			<div class="hos_list_top clearfix">
+				<div class="yuyueTop">
+					<span class="famousName hosName">血糖</span>
+				</div>
+				<div class="orderContent">
+					<button class="ordercommont"  onclick="window.location.href = 'myHealthFileXuetangList.html'">历史数据></button>
+					<div class="left"><img src="https://www.enuo120.com/upload/image/201806/05/HfgFPMKo1MVTEvAEkk4.png"></div>
+					<div class="right">
+						<p class="detail">
+							<span class="name">餐后mmHg</span>
+						</p>
+						<p class="detail">
+							<span class="name">空腹mmHg</span>
+						</p>
+
+						<p class="orderdetailchoose" style="    margin-bottom: .5rem;">
+							<span>测量时间：</span>
+							<span class="orderdetailchooseName">2019-02-26 17:11:57</span>
+						</p>
+					</div>
+				</div>
+			</div>
+		</li>
+		<li class="hos_child set_box_shadow" style="margin-left: 0;border-radius: 0">
+			<div class="hos_list_top clearfix">
+				<div class="yuyueTop">
+					<span class="famousName hosName">血脂</span>
+				</div>
+				<div class="orderContent">
+					<button class="ordercommont"  onclick="window.location.href = 'myHealthFileXuezhiList.html'">历史数据></button>
+					<div class="left"><img src="https://www.enuo120.com/upload/image/201806/05/HfgFPMKo1MVTEvAEkk4.png"></div>
+					<div class="right">
+						<p class="detail">
+							<span class="name">餐后mmHg</span>
+						</p>
+						<p class="detail">
+							<span class="name">空腹mmHg</span>
+						</p>
+
+						<p class="orderdetailchoose" style="    margin-bottom: .5rem;">
+							<span>测量时间：</span>
+							<span class="orderdetailchooseName">2019-02-26 17:11:57</span>
+						</p>
+					</div>
+				</div>
+			</div>
+		</li>-->
+	</div>
+</div>
+</body>
+<script type="text/javascript" src="js/util.js"></script>
+</html>

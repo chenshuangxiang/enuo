@@ -1,0 +1,223 @@
+
+.warn{
+	width: 90%;
+	margin-left: 5%;
+	margin-top: 1rem;
+}
+.warn p{
+	color: #707070;
+	font-size: .85rem;
+	line-height: 1.5rem;
+}
+/*特价*/
+.hos_doc_list .hos_doc_child {
+	padding: .6rem 0 .6rem 0;
+	border-bottom: 1px solid #dcdcdc;
+	width: 96%;
+	display: flex;
+	margin-left: 2%;
+}
+.hos_doc_list .hos_doc_child div {
+	margin: 2% 2.5% 0 -0.8%;
+}
+.hos_doc_list .doc_child_left {
+	width: 27%;
+}
+.doc_child_right{
+	width: 70%;
+}
+.all_doc{
+	width: 100%;
+	height: 2.8rem;
+	line-height: 2.8rem;
+	text-align: center;
+	color: #00afa1;
+	font-size: .85rem;
+}
+.hot{
+	color: #f81f7b;
+	border-radius: 3px;
+	padding: .05rem .15rem;;
+	border: 1px solid #f81f7b;
+	font-size: .75rem;
+	margin-right: .3rem;
+}
+.goodsName{
+	color: #333333;
+	line-height: 1.5rem;
+	font-size: .85rem;
+}
+.address{
+	color: #00afa1;
+	font-size: .8rem;
+	margin: .25rem 0 .25rem 0
+}
+.price{
+	color: #f81f7b;
+	border-radius: 5px;
+	display: inline-block;
+	margin-right: .3rem;
+	font-size: 1.1rem;
+}
+.oldprice{
+	color: #999;
+	font-size: .75rem;
+}
+.yuyue{
+	color: #999;
+	font-size: .8rem;
+	float: right;
+	margin-right: -.3rem;
+	margin-top: .06rem;
+}
+/*跑马*/
+.swiper-container-pao {
+	width: 100%;
+	/*  height: 300px;*/
+	margin: 0 auto 0 auto;
+	overflow: hidden;
+}
+.swiper-container-pao .swiper-slide {
+	text-align: center;
+	font-size: 18px;
+	/*background: #fff;*/
+	width: 60%;
+	height: 6rem;
+	margin-left: 0.5%;
+	margin-right: 0%;
+	/* Center slide text vertically */
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: -webkit-flex;
+	display: flex;
+	-webkit-box-pack: center;
+	-ms-flex-pack: center;
+	-webkit-justify-content: center;
+	justify-content: center;
+	-webkit-box-align: center;
+	-ms-flex-align: center;
+	-webkit-align-items: center;
+	align-items: center;
+}
+.swiper-container-pao .swiper-slide img{
+	width: 100%;
+}
+
+/*预约弹窗*/
+.modelOpen{
+	position: fixed;
+	width: 100%;
+	height: 100%;
+	z-index: 999;
+	top: 0;
+	display: none;
+}
+.mubu{
+	position: fixed;
+	width: 100%;
+	height: 100%;
+	background-color: #000000;
+	opacity: 0.2;
+}
+.hosDiv{
+	padding-left: 1.25rem;
+	/*height: 3.5rem;*/
+	margin-bottom: .6rem;
+	margin-top: .3rem;
+}
+.sex:checked {
+	background: url(../img/checkboxBlue.png);
+	background-size: 100% 100%;
+	color: white;
+	border: 0px;
+}
+.sex {
+	float: left;
+	width: 14px;
+	/* margin-left: 12px; */
+	height: 14px;
+	margin-top: .51rem;
+	outline: none;
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	-ms-appearance: none;
+	-o-appearance: none;
+	appearance: none;
+	background: #fff;
+	border-radius: 50%;
+	border: 1px solid #c0c0c0;
+	color: #fff;
+	display: block;
+}
+.sexname {
+	float: left;
+	margin: .4rem .5em .4rem 5px;
+	font-size: 1rem;
+}
+.sexAddress{
+	margin: .4rem .5em .4rem 1.7rem;
+	font-size: .75rem;
+	display: block;
+	/* text-align: left; */
+	clear: both;
+	color: #707070;
+}
+.chooseqin{
+	font-size: .85rem;
+	color: #333;
+	height: 2rem;
+	line-height: 2rem;
+	margin-top: .7rem;
+	padding-left: 1rem;
+}
+.paySuccessZi{
+	font-size: 1rem;
+	text-align: center;
+	height: 1.5rem;
+}
+.modelOpenback{
+	width: 72%;
+	position: fixed;
+	top: 26%;
+	left: 15%;
+	z-index: 99999;
+	border-radius: 5px;
+	background-color: white;
+	padding-bottom: 1rem;
+}
+.closeopen{
+	width: 1.25rem;
+	float: right;
+	margin: .55rem;
+}
+.paySuccess{
+	width: 19%;
+	margin: 12% 0 4.5% 41%;
+}
+.toYuyue{
+	width: 50%;
+	height: 2.2rem;
+	background-color: white;
+	border: 1px solid #00afa1;
+	outline: none;
+	/*position: absolute;*/
+	border-radius: 5px;
+	color: #00afa1;
+	font-size: .85rem;
+	margin: 9% 0 12% 25%;
+	/*left: 20%;
+	bottom: 17%;*/
+}
+.sureTejia{
+	width: 30%;
+	margin-left: 35%;
+	height: 2rem;
+	text-align: center;
+	line-height: 2rem;
+	border: none;
+	outline: none;
+	color: white;
+	font-size: .9rem;
+	background-color: #00afa1;
+	margin-top: .9rem;
+}

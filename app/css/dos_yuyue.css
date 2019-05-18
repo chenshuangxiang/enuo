@@ -1,0 +1,429 @@
+.closeOrder {
+	height: 1.2rem;
+	color: white;
+	font-size: .8rem;
+	display: none;
+	position: absolute;
+	right: 3%;
+	top: .85rem;
+}
+/*医院列表*/
+.hos_child{
+	height: 8rem;
+	padding-top: .2rem;
+}
+.hos_child .hos_list_top{
+	height: 7.7rem;
+	/*border: 1px solid red;*/
+	font-size: .2rem;
+	line-height: .35rem;
+}
+.hos_list_top div{
+	float: left;
+}
+.hos_list_top .left{
+	width: 28%;
+	margin: -.2rem .2rem 0 -.2rem;
+
+}
+.hos_list_top .left img{
+	height: 9em;
+}
+.hos_list_top .right{
+	padding-left:.2rem;
+	margin-top: .2em;
+	width: 70%;
+}
+ul li{
+	list-style: none;
+}
+.famous_doc_layer {
+	width: 100%;
+	height: 26rem;
+	/*background-color: white;*/
+	/* position: absolute; */
+	/* z-index: 1000; */
+	margin-top: .4rem;
+/*	margin-left: 3%;*/
+	padding: .5rem .5rem .2rem .6rem;
+	font-size: .24rem;
+	border-radius: .1rem;
+
+	background: url(../img/yueyueback.png) no-repeat;
+	background-size: 100% 100%;
+	background-position: 0% 0%;
+
+}
+.famous_doc_layer .left {
+	left: 0.34rem;
+	transform: rotatey(180deg);
+}
+.famous_doc_layer>p:last-child {
+	right: 0.3rem;
+}
+.famous_doc_layer>p {
+	width: 1rem;
+	height: 1.6rem;
+	overflow: hidden;
+	position: absolute;
+	top: 13.4rem;
+}
+.famous_doc_layer>p>span {
+	display: inline-block;
+	width: 0.7rem;
+	height: 1.5rem;
+	border-bottom-left-radius: 1rem;
+	border-top-left-radius: 1rem;
+	background-color: #cbcbcb;
+	opacity: 0.5;
+	-webkit-opacity: 0.5;
+}
+.famousName{
+	display: inline-block;
+}
+.btm{
+	height: 10rem;
+	padding: .5rem 0 1rem 0;
+}
+.btm p{
+	margin: .6rem 0 0 4%;
+	font-size: .9rem;
+	display: none;
+}
+.shanchang,.product{
+	line-height: 1.4rem;
+	display: inline;
+}
+.product{
+	float: left;
+	width: 73%;
+	margin-top: .05rem;
+}
+.productDiv{
+	display: none;
+	float: left;
+	width: 100%;
+	line-height: 1.4rem;
+}
+.split{
+	width: 90%;
+	height: 1px;
+	margin-left: 5%;
+	border-top: 1px dashed #e5e5e5;
+}
+.healthTextarea{
+	width: 75%;
+	height: 6rem;
+	padding: .3rem 0 0 .5rem;
+	margin-top: .1rem;
+	font-size: .85rem;
+}
+.addressInput{
+	width: 75%;
+	margin-top: 0.4rem;
+	height: 2rem;
+	padding-left: 1rem;
+	font-size: .85rem;
+}
+/*出诊时间*/
+.title{
+	/*height: .7rem;line-height: .7rem;*/
+	font-size: 1rem;
+	font-weight: 500;
+	text-align: center;
+	margin-bottom: 1rem;
+	margin-top: .7rem;
+	color: #00afa1;
+}
+.healing_time{
+	border: 1px solid #8b8b8b;
+	/*padding: 0 .3rem;*/
+	margin-top: .8rem;
+	border-right: 0;
+	border-bottom: 0;
+	width: 97%;
+	margin-left: 1.5%;
+}
+.healing_time .title{
+	/*border: 1px solid black;*/
+
+}
+.yuyuetitle{
+	letter-spacing: .2rem;
+}
+.yuyuetitle,.nowday{
+	display: block;
+}
+.leftto,.rightto{
+	margin: 2% 14% 0 14%;
+	width: .55rem;
+	vertical-align: top;
+}
+.nowday{
+	font-size: .7rem;
+}
+.warn {
+	width: 100%;
+	margin-left: 13%;
+	margin-top: 1rem;
+}
+.warn p {
+	color: #707070;
+	font-size: .7rem;
+	line-height: 1.1rem;
+}
+.healing_time .heal_time_container{
+	/*border: 1px solid black;*/
+	height:6.3rem;
+	font-size: .24rem;
+	font-weight: 500;
+	text-align: center;
+	color: #333333;
+}
+.week,.weekname{
+	width: 12.5%;
+	height: 6.3rem;
+	text-align: center;
+	float: left;
+}
+.weekname p{
+	font-size: .85rem;
+	color: #555;
+}
+.day {
+	width: 100%;
+	height: 2.1rem;
+	font-size: .75rem;
+	color: #555;
+	border-right: 1px solid #8b8b8b;
+	border-bottom: 1px solid #8b8b8b;
+}
+.dayzhou{
+	margin-top: .1rem;
+	display: inline-block;
+}
+.heal_time_container div p{
+
+	width: 100%;
+	height: 2.1rem;
+	line-height: 2.1rem;
+	border-right: 1px solid #8b8b8b;
+	border-bottom: 1px solid #8b8b8b;
+}
+.heal_time_container div p:first-child{
+	font-size: .85rem;
+}
+.heal_time_container div p span{
+	display: inline-block;height: 1rem;    width: 100%;
+}
+
+.btn{
+	margin: 0 auto;
+	width: 200px;height: 30px;
+	margin-top: 10px;
+}
+.btn button{
+	border: 1px solid black;
+	margin-left: 20%;
+}
+/*底部*/
+.doc_homepage_btm {
+	width: 100%;
+	height: 3.3rem;
+}
+.fixed {
+	position: fixed;
+	bottom: 0px;
+}
+.doc_homepage_btm div {
+	display: inline-block;
+	width: 100%;
+	height: 3.3rem;
+	line-height: 3.3rem;
+	font-size: 1.1rem;
+	font-weight: bold;
+	text-align: center;
+	color: #ffffff;
+	float: left;
+}
+.doc_homepage_btm .make {
+	background-color: #00AFA1;
+}
+.activeDiv{
+	text-align: center;
+	margin-top: .9rem;
+	margin-bottom: 1.15rem;
+}
+
+.activeDiv span{
+	display: inline-block;
+	margin-right: .4rem;
+}
+.activeDivspan{
+	width: .5rem;
+	height: .5rem;
+	background-color: #eeeeee;
+	border-radius: 50%;
+}
+.activeDivspanActive{
+	width: 1.2rem;
+	height: .5rem;
+	background-color: #00afa1;
+	border-radius: 3rem;
+}
+.daymm{
+	background-color:white;
+	font-size:.85rem;
+	color: #000000;
+}
+.yuyueActive{
+	background-color:#cdebe0;
+/*	color:white*/
+}
+
+/*预约弹窗*/
+.modelOpen{
+	position: fixed;
+	width: 100%;
+	height: 100%;
+	z-index: 999;
+	top: 0;
+	display: none;
+}
+.mubu{
+	position: fixed;
+	width: 100%;
+	height: 100%;
+	background-color: #000000;
+	opacity: 0.2;
+}
+.hosDiv{
+	padding-left: 1rem;
+	/*height: 3.5rem;*/
+	margin-bottom: .6rem;
+	margin-top: .3rem;
+	clear: both;
+}
+.sex:checked {
+	background: url(../img/checkboxblueyuan.png);
+	background-size: 100% 100%;
+	color: white;
+	border: 0px;
+}
+.sex {
+	float: left;
+	width: 17px;
+	margin-right: .5rem;
+	/* margin-left: 12px; */
+	height: 17px;
+	margin-top: .51rem;
+	outline: none;
+	margin-top: 9.5%;
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	-ms-appearance: none;
+	-o-appearance: none;
+	appearance: none;
+	background: #fff;
+	border-radius: 50%;
+	border: 1px solid #c0c0c0;
+	color: #fff;
+	display: block;
+}
+.sexname {
+	float: left;
+	margin: .4rem .5em .4rem 5px;
+	font-size: 1rem;
+	width: 84%;
+}
+.sexAddress{
+	margin: .4rem .5em .4rem 1.7rem;
+	font-size: .75rem;
+	display: block;
+	/* text-align: left; */
+	clear: both;
+	color: #707070;
+}
+.chooseqin{
+	font-size: .85rem;
+	color: #333;
+	height: 2rem;
+	line-height: 2rem;
+	margin-top: .7rem;
+	padding-left: 1rem;
+}
+.paySuccessZi{
+	font-size: 1rem;
+	text-align: center;
+	height: 1.5rem;
+}
+.modelOpenback{
+	width: 80%;
+	position: fixed;
+	top: 19%;
+	left: 10%;
+	z-index: 99999;
+	border-radius: 5px;
+	background-color: white;
+	padding-top: 1rem;
+	padding-bottom: 1rem;
+}
+.closeopen{
+	width: 1.25rem;
+	float: right;
+	margin: -.5rem .4rem 0 .55rem;
+}
+.paySuccess{
+	width: 19%;
+	margin: 12% 0 4.5% 41%;
+}
+.toYuyue{
+	width: 50%;
+	height: 2.2rem;
+	background-color: white;
+	border: 1px solid #00afa1;
+	outline: none;
+	/*position: absolute;*/
+	border-radius: 5px;
+	color: #00afa1;
+	font-size: .85rem;
+	margin: 9% 0 12% 25%;
+	/*left: 20%;
+	bottom: 17%;*/
+}
+.sureTejia{
+	width: 30%;
+	margin-left: 35%;
+	height: 2rem;
+	text-align: center;
+	line-height: 2rem;
+	border: none;
+	outline: none;
+	color: white;
+	font-size: .9rem;
+	background-color: #00afa1;
+	margin-top: .9rem;
+}
+.zanbu{
+	color: #707070;
+	width: 47%;
+	border: 1px solid #707070;
+	font-size: .79rem;
+	padding: .5rem 0;
+	outline:none;
+	border-radius: 4px;
+	background-color: white;
+	margin-left: 2%;
+	margin-top: 3%;
+}
+.chongbtn{
+	width: 35%;
+	border: none;
+	font-size: .79rem;
+	margin-left: 7%;
+	background-color: #00afa1;
+	color: white;
+	outline:none;
+	padding: .5rem 0;
+	border-radius: 4px;
+}

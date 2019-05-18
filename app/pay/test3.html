@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+    <title>Title</title>
+    <style>
+        @media screen and (max-width: 319px) {
+            html {
+                font-size: 85.33333px; } }
+        @media screen and (min-width: 320px) and (max-width: 359px) {
+            html {
+                font-size: 85.33333px; } }
+        @media screen and (min-width: 360px) and (max-width: 374px) {
+            html {
+                font-size: 96px; } }
+        @media screen and (min-width: 375px) and (max-width: 383px) {
+            html {
+                font-size: 100px; } }
+        @media screen and (min-width: 384px) and (max-width: 399px) {
+            html {
+                font-size: 102.4px; } }
+        @media screen and (min-width: 400px) and (max-width: 413px) {
+            html {
+                font-size: 106.66667px; } }
+        @media screen and (min-width: 414px) {
+            html {
+                font-size: 110.4px; } }
+        /*CSS Reset*/
+        body,
+        div,
+        dl,
+        dt,
+        dd,
+        ul,
+        ol,
+        li,
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6,
+        pre,
+        code,
+        form,
+        fieldset,
+        legend,
+        input,
+        textarea,
+        p,
+        blockquote,
+        th,
+        td,
+        header,
+        hgroup,
+        nav,
+        section,
+        article,
+        aside,
+        footer,
+        figure,
+        figcaption,
+        menu,
+        button {
+            margin: 0;
+            padding: 0; }
+        li{
+            list-style: none;
+        }
+        #app{
+            width: 100%;
+            max-width: 640px;
+        }
+        li {
+            height: 1.2rem;
+            width: 100%;
+            border-bottom: 1px solid #cccccc;
+            text-align: center;
+            line-height: 1.2rem;
+            font-size: 20px;
+        }
+    </style>
+    <script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+
+</head>
+<body>
+<div id="app">
+    <ul>
+        <li data-page="1" data-url="http://baidu.com?id=1">第一页 第1个li</li>
+        <li data-page="1" data-url="http://baidu.com?id=2">第一页 第2个li</li>
+        <li data-page="1" data-url="http://baidu.com?id=3">第一页 第3个li</li>
+        <li data-page="1" data-url="http://baidu.com?id=4">第一页 第4个li</li>
+        <li data-page="1" data-url="http://baidu.com?id=5">第一页 第5个li</li>
+        <li data-page="1" data-url="http://baidu.com?id=6">第一页 第6个li</li>
+        <li data-page="1" data-url="http://baidu.com?id=7">第一页 第7个li</li>
+        <li data-page="1" data-url="http://baidu.com?id=8">第一页 第8个li</li>
+        <li data-page="1" data-url="http://baidu.com?id=9">第一页 第9个li</li>
+        <li data-page="1" data-url="http://baidu.com?id=10">第一页 第10个li</li>
+        <li data-page="1" data-url="http://baidu.com?id=11">第一页 第11个li</li>
+        <li data-page="1" data-url="http://baidu.com?id=12">第一页 第12个li</li>
+        <li data-page="1" data-url="http://baidu.com?id=13">第一页 第13个li</li>
+        <li data-page="1" data-url="http://baidu.com?id=14">第一页 第14个li</li>
+        <li data-page="1" data-url="http://baidu.com?id=15">第一页 第15个li</li>
+
+        <li data-page="2" data-url="http://baidu.com?id=16">第二页 第1个li</li>
+        <li data-page="2" data-url="http://baidu.com?id=17">第二页 第2个li</li>
+        <li data-page="2" data-url="http://baidu.com?id=18">第二页 第3个li</li>
+        <li data-page="2" data-url="http://baidu.com?id=19">第二页 第4个li</li>
+        <li data-page="2" data-url="http://baidu.com?id=20">第二页 第5个li</li>
+        <li data-page="2" data-url="http://baidu.com?id=21">第二页 第6个li</li>
+        <li data-page="2" data-url="http://baidu.com?id=22">第二页 第7个li</li>
+        <li data-page="2" data-url="http://baidu.com?id=23">第二页 第8个li</li>
+        <li data-page="2" data-url="http://baidu.com?id=24">第二页 第9个li</li>
+        <li data-page="2" data-url="http://baidu.com?id=25">第二页 第10个li</li>
+        <li data-page="2" data-url="http://baidu.com?id=26">第二页 第11个li</li>
+        <li data-page="2" data-url="http://baidu.com?id=27">第二页 第12个li</li>
+        <li data-page="2" data-url="http://baidu.com?id=28">第二页 第13个li</li>
+        <li data-page="2" data-url="http://baidu.com?id=29">第二页 第14个li</li>
+        <li data-page="2" data-url="http://baidu.com?id=30">第二页 第15个li</li>
+    </ul>
+</div>
+</body>
+<script type="text/javascript">
+    /*
+     *  1.为什么我要返回定位呢。肯定是增加用户的体验度。比如你刚看的那条信息挺感
+     *  兴趣的，点进详情看完了，回来一看，不见了，是不是很呕心啊。
+     *  2.难点在哪里？
+     *    难点1：当我们有很多的列表的时候，列表肯定是滚动加载。于是我们直接保存滚动条的位置
+     *    的方式可以放弃了。
+     *    难点2：我们怎么确定是从详情返回来的?
+     *  3.我们该怎么实现呢？
+     *    其实我们实现的方式跟保存滚动条的位置差不多。但要对scrollTop的距离进行处理。
+     *    a.我们点击这点详情的时候，可视区域列表的条数，可以是一页的数据，可能会是2页数据。
+     *    这种情况下我们都要把结果保留下来。
+     *    b.当我们点击这条数据的时候存现当前页滚动了多少就可以了。
+     *
+     *   下面具体看代码：
+     */
+    (function(global,$,factory){
+        var keepScrollTop = 0;  //用于最后保存的滚动条的位置
+        var tool =factory();
+        $.fn.savePosition = function(options){
+            var dataPage,logo,objLogo,prevNum,containerHeight = 0,scrollTopDistance = 0,elIndex = 0,
+                prevHeight = 0,prevCountPage = 0,prevCountPageDistance = 0,prevDistance = 0,
+                prevPageScrollDistance = 0;
+            var elements = this;
+            var defaults = {
+                container:$(window),    //滚动的容器
+                logo:"data-url",     // 用于计算在这个容器中的每个LI中的唯一标识量。一般为去详情的连接
+                currentPage:"data-page",   //点击当前的li的页码
+                pageResize:30,                //与后台交互的每页返回的数量。 默认是30,
+                goToDetailElement:$(".go-detail") ,   //滚动的每个列的总对象
+                nodeLi:"",  //元素节点
+                getPageNum:"getPageNum",              //1表示单页数据，2表示双页数据。设置是请求单页数据还是双页数据的标识量。放在URL上。
+                urlPageNum:"pageNum",               //用于放到URL上面的参数标识表示当前是几页.  pageNum = currentPage   //返回来的时候用这个参数来判断是不是需要滚动
+            };
+            var settings = $.extend(defaults,options || {});
+            dataPage = elements.attr(settings.currentPage);    //求出点击对象位于哪一个页码
+            logo = elements.attr(settings.logo);     //求出当前对象的唯一标识量
+            containerHeight = parseInt(settings.container.outerHeight());   //容器的高度
+            scrollTopDistance = parseInt(settings.container.scrollTop());  //滚动的距离
+            elements.parent().find(""+ settings.nodeLi + "["+settings.currentPage + "=" + dataPage  +"]").each(function(index, obj){
+                objLogo = $(obj).attr(settings.logo);
+                elIndex = index;
+                if(logo == objLogo){
+                    prevNum = elements.prevAll().length;
+                    prevHeight = tool.getDistance(elements.parent().children(),prevNum - elIndex);
+                    prevCountPage = parseInt(prevNum / settings.pageResize);
+                    if(scrollTopDistance < prevHeight){
+                        elements.parent().children().each(function(index,target){
+                            if(prevCountPage > 0 ){
+                                if(index < (prevCountPage - 1) * settings.pageResize){
+                                    prevCountPageDistance += parseInt($(target).outerHeight());
+                                };
+                            };
+                        });
+                        tool.changeUrlPar(settings.urlPageNum,dataPage - 1);         //当前的页数
+                        tool.changeUrlPar(settings.getPageNum,2);              //获取双页数据
+                        keepScrollTop = scrollTopDistance -  prevCountPageDistance;                   //请求双页数据 向上 减 1;
+                    }else{
+                        prevDistance = tool.getDistance(elements.parent().children(),(prevCountPage + 1) * settings.pageResize);
+                        prevPageScrollDistance = tool.getDistance(elements.parent().children(),prevCountPage * settings.pageResize);
+                        if(prevDistance < (scrollTopDistance + containerHeight)){
+                            tool.changeUrlPar(settings.urlPageNum,dataPage);       //点击对象位于当前的页数
+                            tool.changeUrlPar(settings.getPageNum,2);                //请求双页数据
+                            keepScrollTop = scrollTopDistance - prevPageScrollDistance;
+                        }else{
+                            tool.changeUrlPar(settings.urlPageNum,dataPage);       //点击对象位于当前的页数
+                            tool.changeUrlPar(settings.getPageNum,1);   //请求单页数据
+                            keepScrollTop = scrollTopDistance - prevPageScrollDistance;
+                        };
+                    };
+                };
+            });
+            tool.setSessionStorage("keepScrollTop",keepScrollTop);     //保存滚动条的位置
+            return this;
+        };
+        $.getSessionStorage = function(opt){
+            opt = sessionStorage.getItem(opt);
+            return opt;
+        };
+    })(window,jQuery,function(){
+        var tool = {
+            changeUrlPar:function(arg, val){    //改变URL参数
+                function changeU(destiny, par, par_value) {
+                    var pattern = par+'=([^&]*)';
+                    var replaceText = par+'='+par_value;
+                    if (destiny.match(pattern))
+                    {
+                        var tmp = '/\\'+par+'=[^&]*/';
+                        tmp = destiny.replace(eval(tmp), replaceText);
+                        return (tmp);
+                    }
+                    else {
+                        if (destiny.match('[\?]'))
+                        {
+                            return destiny+'&'+ replaceText;
+                        }
+                        else
+                        {
+                            return destiny+'?'+replaceText;
+                        }
+                    }
+                    return destiny+'\n'+par+'\n'+par_value;
+                }
+                var hash = window.location.hash;
+                history.replaceState(null,'',location.pathname+location.search);
+                url = window.location.href;
+                var newUrl = changeU(url,arg,val) + hash;
+                history.replaceState(null,'',newUrl);
+                return false;
+            },
+            removeUrlPar:function(options){
+                history.replaceState(null,'',location.pathname+location.search);
+                var newParamStr = "";
+                var quotes = window.location.href.indexOf("?");
+                if(quotes != -1){
+                    var webUrl = window.location.href.split("?")[0];
+                    var paramsStr = window.location.href.split("?")[1].toString();
+                    if(paramsStr.indexOf("&") != -1){
+                        var pageIndex = paramsStr.indexOf(options);
+                        if(pageIndex != -1){
+                            var pageArr = paramsStr.split("&");
+                            for(var i = 0; i < pageArr.length; i++){
+                                if(pageArr[i].match(options)){
+                                    pageArr.splice(i,1);
+                                };
+                            };
+                            newParamStr = pageArr.join("&");
+                        }else{
+                            newParamStr = paramsStr;
+                        } ;
+
+                    }else{
+                        if(paramsStr.match(options)){
+                            newParamStr = "";
+                        }else {
+                            newParamStr = paramsStr;
+                        };
+                    };
+                    history.replaceState(null,'',webUrl + "?" + newParamStr);
+                }else{
+                    history.replaceState(null,'',w.location.href);
+                }
+            },
+            getDistance:function(obj,maxNum){
+                var h = 0;
+                obj.each(function(index,target){
+                    if(index < maxNum){
+                        h += parseInt($(target).outerHeight());
+                    }
+                });
+                return h;
+            },
+            setSessionStorage:function(keyName,opt){
+                sessionStorage.setItem(keyName,opt);
+                console.log(opt)
+            },
+        }
+
+        return tool;
+    })
+    $("li").on("click",function(){
+        $(this).savePosition({pageResize:15});
+        /*
+         *   1.http://localhost/index.php/Home/Web?pageNum=2&getPageNum=1
+         * 点击玩了以后url就变成这样了。这时候表示 返回来的时候请求第二页的数据。只请求一次。从第二页开始
+         *
+         * 2.http://localhost/index.php/Home/Web?pageNum=1&getPageNum=2
+         * 这样表示请求也数据。从第一页的数据开始
+         *
+         */
+        var _herf = $(this).attr("data-url");
+        window.location.href = _herf;
+    });
+    //当我们初始化的时候
+    var pageNum = 1,getPageNum = 2;  //这两个数的值是从URL中获取的。只有从详情返回来 时候，才有
+
+    if(!!pageNum && !!getPageNum){
+        //其中还有很多判定，肯定是先获取数据在滚动。。。
+        $(window).scrollTop($.getSessionStorage('keepScrollTop'));
+    }else{
+
+    }
+</script>
+</html>

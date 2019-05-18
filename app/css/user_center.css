@@ -1,0 +1,632 @@
+/*医院列表*/
+.hos_child{
+	height: 8rem;
+	padding-top: .2rem;
+}
+.hos_child .hos_list_top{
+	height: 7.7rem;
+	/*border: 1px solid red;*/
+	font-size: .2rem;
+	line-height: .35rem;
+}
+.hos_list_top div{
+	float: left;
+}
+.hos_list_top .left{
+	width: 28%;
+	margin: -.2rem .2rem 0 -.2rem;
+
+}
+.hos_list_top .left img{
+	height: 9em;
+}
+.hos_list_top .right{
+	padding-left:.2rem;
+	margin-top: .2em;
+	width: 70%;
+}
+
+.hos_doc_child {
+	padding: .5rem 2% .5rem 4%;
+	margin-left: -0.5%;
+	/*border-bottom: 1px solid #dcdcdc;*/
+	width: 101%;
+	display: flex;
+	margin-top: .7rem;
+}
+.hos_doc_child div {
+	margin: 2% 1% 0 -0.8%;
+}
+.hos_doc_list .doc_child_left {
+	width: 27%;
+}
+.doc_child_left img{
+	max-height: 5rem;
+	border-radius: 50%;
+	overflow: hidden;
+	padding: 1px;
+	border: 1px solid white
+}
+.doc_child_right{
+	width: 70%;
+}
+.all_doc{
+	width: 100%;
+	height: 2.8rem;
+	line-height: 2.8rem;
+	text-align: center;
+	color: #000000;
+	font-size: .85rem;
+}
+.hot{
+	color: #f81f7b;
+	border-radius: 3px;
+	padding: .05rem .15rem;;
+	border: 1px solid #f81f7b;
+	font-size: .75rem;
+	margin-right: .3rem;
+}
+.price{
+	/*color: #f81f7b;
+	border-radius: 5px;*/
+	display: inline-block;
+	margin-right: .4rem;
+	font-size: .9rem;
+	color: #333;
+	background-color: #fdaa19;
+	padding: .1rem .7rem;
+	border-radius: 50px;
+}
+.oldprice{
+	color: #333;
+	font-size: .9rem;
+	text-decoration: underline;
+}
+.huiImg {
+	position: absolute;
+	right: 4%;
+	top: 29%;
+	width: .6rem;
+}
+
+ul li{
+	list-style: none;
+}
+.detail .name{
+	font-size: .3rem;
+	letter-spacing: 1px;
+	color: black;
+	font-weight: 600;
+}
+.subP{
+	height: 2em;
+	line-height: 2em;
+	text-align: center;
+}
+.goodPlace{
+	border-top: 1px dashed #cccccc;
+	padding: .5em 0 0 0;
+	margin: .4em 0 0 0;
+	overflow: hidden;
+	text-overflow:ellipsis;
+	white-space: nowrap;
+}
+.hos_child .hos_list_btm{
+	border-top: 1px dashed #DCDCDC;
+	padding: .2rem 0;
+	margin-top: .2rem;
+}
+.hos_child .hos_list_btm p{
+	float: left;
+	border-right: 1px dashed #DCDCDC;
+	height: .6rem;
+	padding: 0 .2rem;
+	width: 33%;
+}
+.hos_child .hos_list_btm p:last-child{
+	border: 0;
+}
+.hos_list_btm p img{
+	margin-right: .2rem;
+}
+.hos_list_btm p span{
+	font-size: .2rem;
+	color: #00AFA1;
+	margin-left: .1rem;
+}
+
+/*主页css*/
+.hospitail_detail .hos_pic {
+	height: 5rem;
+}
+.doctor_detail .doc_pic {
+	width: 5rem;
+	margin: 0 auto;
+	margin-top: 2.4em;
+	margin-bottom: .5rem;
+	position: relative;
+	text-align: center;
+	border-radius: 50%;
+	/*overflow: hidden;*/
+}
+.yue{
+	/*color: #fdff48;
+	font-size: 1.1rem;
+	position: absolute;
+	top: 30%;
+	left: 0;
+	text-align: center;
+	width: 100%;*/
+}
+.doctor_detail .doctor2 {
+	text-align: center;
+	font-size: .24rem;
+}
+
+.doctor_detail .make {
+	font-size: .85rem;
+	text-align: center;
+	height: 3rem;
+	line-height: 2.2rem;
+	color: #555;
+}
+.loginStatus{
+	/*width: 4.5rem;
+	height: 1.8rem;
+	text-align: center;
+	color: white;
+	margin-top: .8rem;*/
+}
+.realStatus{
+	width: 4rem;
+	margin: .2rem .2rem .2rem .7rem;
+	vertical-align: top;
+}
+.newyearImgDiv{
+	width: 4.5rem;
+	height: 1.8rem;
+	text-align: center;
+	color: #fdff48;
+	margin-top: .8rem;
+}
+.newyearImg{
+	width: 1.3rem;
+	vertical-align: top;
+	margin-top: .3rem;
+	margin-right: .2rem;
+}
+.doctor_detail .make span {
+	/*font-weight: bold;*/
+}
+.lefthref{
+	/*position: absolute;
+	left: .7rem;
+	top:.7rem;*/
+	position: absolute;
+	top: 61%;
+	font-size: .9rem;
+	color: white;
+}
+.righthref{
+	position: absolute;
+	right: .7rem;
+	top:.7rem;
+	width: 1.2rem;
+}
+.score{
+	/*border-top: 1px dashed #dcdcdc;*/
+	width: 94%;
+	margin-left: 3%;
+	padding-top: .3rem;
+}
+.scoreUl li{
+	float: left;
+	margin-right: 11.2%;
+	width: 24%;
+	color: white;
+	font-size: .85rem;
+}
+
+.commontCount{
+	font-size: .3rem;
+	color: #00afa1;
+}
+.screzi{
+	font-size: .85rem;
+}
+
+.hos_detail_pic img {
+	width: 4.5rem;
+	margin-left: .68rem;
+}
+.hospitail_detail .hos_data {
+	border-top: 1px solid #eeeeee;
+	/*border-bottom: 1px solid #f3f3f3;*/
+	margin-top: .1rem;
+	width: 100%;
+	padding:0 3%;
+	font-size: .85rem;
+}
+
+.hospitail_detail p {
+	/* height: .84rem; */
+	position: relative;
+	font-weight: 500;
+}
+
+
+.hospitail_detail .hos_data .left {
+	height: 1.25rem;
+	position: absolute;
+	top: .4rem;
+	left: 5%;
+	width: initial;
+}
+
+.hospitail_detail .hos_data span {
+	display: inline-block;
+	width: 80%;
+	height: 2.7rem;
+	line-height: 2.8rem;
+	margin-left: 2.2rem;
+}
+.hospitail_detail .hos_data .next {
+	height: .8rem;
+	position: absolute;
+	top: .7rem;
+	right: 5%;
+}
+.newsCount{
+	height: 1.5rem;
+	line-height: 1.5rem;
+	text-align: center;
+	position: absolute;
+	top: .7rem;
+	right: 10%;
+	font-size: 1.1rem;
+	background-color: #FF5722;
+	color: #fff;
+	min-width: 1.4rem;
+	border-radius: 30px;
+	display: none;
+}
+.wecatName{
+	height: 1.5rem;
+	line-height: 1.5rem;
+	text-align: center;
+	position: absolute;
+	top: .7rem;
+	right: 10%;
+	font-size: .9rem;
+	color: #adadad;
+	min-width: 1.4rem;
+}
+.hospitail_detail .hos_detail_pic {
+	padding: .9rem 0;
+	/* border: 1px solid red; */
+}
+.hos_data img{
+	margin-top: .3rem;
+	width: initial;
+}
+.dai{
+	width:100%;
+	/*height: 6.5rem;*/
+	padding: .3rem 0 0.6rem 0;
+	background-color: white;
+}
+.dai_detail{
+	background-color: white;
+	width:50%;
+	/*height: 4rem;*/
+	float: left;
+	/*margin-left:2%;*/
+	padding-bottom: .8rem;
+}
+.dai_img{
+	width:100%;
+	margin-top:0.4rem;
+	text-align: center;
+}
+.dai_img img{
+	width: initial;
+	height: 2.8rem;
+}
+.dai_zi{
+	width:100%;
+	height:1rem;
+	line-height:1rem;
+	text-align: center;
+	padding-top:0.3rem;
+	font-size: .85rem;
+}
+.my_dingdan_detail{
+	width: 100%;
+	float: left;
+}
+
+.shenpi{
+	display: none;
+	color: white;
+	font-size: .85rem;
+
+}
+.dingdan2_img{
+	float: left;
+	margin-top: 1rem;
+	text-align: center;
+	width: 100%;
+}
+.dingdan2_img img{
+	width:2.5rem;
+}
+.dingdan2_zi{
+	width:100%;
+	text-align: center;
+	font-size: .85rem;
+	float: left;
+	margin-top: .5rem;
+	margin-bottom:.4rem;
+	color: #4c4c4c;
+}
+.mobile_zi{
+	width: 100%;
+	text-align: center;
+	font-size: .8rem;
+	float: left;
+	margin-bottom: .7rem;
+	color: #4c4c4c;
+}
+.myHealthName{
+	color: #919191;
+	vertical-align: top;
+}
+.dingdan2{
+	background-color: white;
+	width: 33.33%;
+	float: left;
+	/*border-bottom: 1px solid #e5e5e5;
+	border-right: 1px solid #e5e5e5;*/
+}
+.am-modal-active {
+	transform: translateY(0);
+	-webkit-transform: translateY(0);
+	-ms-transform: translateY(0);
+}
+.first-active{
+	-webkit-transform: translateY(100%);
+	-ms-transform: translateY(100%);
+	transform: translateY(100%);
+}
+
+.share {
+	background-color: white;
+	height: 8rem;
+	font-size: 14px;
+	bottom: 0;
+	left: 0;
+	position: fixed;
+	-webkit-transition: -webkit-transform 500ms;
+	transition: transform 500ms;
+	width: 100%;
+	z-index: 1110;
+}
+.sharebg {
+	background-color: rgba(0, 0, 0, 0.2);
+	bottom: 0;
+	height: 100%;
+	left: 0;
+	opacity: 0;
+	position: fixed;
+	right: 0;
+	top: 0;
+	width: 100%;
+	z-index: 1100;
+	display: none;
+}
+/*向上全部拉出*/
+/*.share-title { background-color: #f8f8f8; border-bottom: 1px solid #fff; border-top-left-radius: 2px; border-top-right-radius: 2px; color: #555; font-weight: 400; margin: 0 10px; padding: 10px 0 0; text-align: center; }*/
+.share-title::after {
+	border-bottom: 1px solid #dfdfdf;
+	content: "";
+	display: block;
+	height: 0px;
+	margin-top: 10px;
+	width: 100%;
+}
+.sharebg-active {
+	opacity: 1;
+	display: block;
+}
+
+.clear {
+	clear: both;
+}
+.mainTop{
+	width: 100%;
+	height: 4rem;
+	line-height: 4rem;
+}
+.mainTop img{
+	width: 2.3rem;
+	margin: .5rem 0 0 0;
+}
+.mainTop a{
+	color: #00afa1;
+	font-size: 1.5rem;
+	text-decoration:none;
+	width: 100%;
+	height: 4rem;
+	line-height: 4rem;
+	display: inline-block;
+	text-align: center;
+}
+.split{
+	width: 100%;
+	height: 0.7rem;
+	background-color: #f5f5f5
+}
+.cancel{
+	width: 100%;
+	height: 3rem;
+	line-height: 3rem;
+	color: #00afa1;
+	font-size: 1rem;
+	text-align: center;
+}
+
+
+/*预约弹窗*/
+.modelOpen{
+	position: fixed;
+	width: 100%;
+	height: 100%;
+	z-index: 999;
+	top: 0;
+	display: none;
+}
+.mubu{
+	position: fixed;
+	width: 100%;
+	height: 100%;
+	background-color: #000000;
+	opacity: 0.2;
+}
+.hosDivOpen{
+	padding-left: 15%;
+	height: 2rem;
+	margin-bottom: .6rem;
+	margin-top: .3rem;
+}
+.sex:checked {
+	background: url(../img/checkboxBlue.png);
+	background-size: 100% 100%;
+	color: white;
+	border: 0px;
+}
+.sex {
+	float: left;
+	width: 14px;
+	/* margin-left: 12px; */
+	height: 14px;
+	margin-top: .51rem;
+	outline: none;
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	-ms-appearance: none;
+	-o-appearance: none;
+	appearance: none;
+	background: #fff;
+	border-radius: 50%;
+	border: 1px solid #c0c0c0;
+	color: #fff;
+	display: block;
+}
+.sexname {
+	float: left;
+	margin: .4rem .5em .4rem 6%;
+	font-size: 1rem;
+}
+.sexAddress{
+	margin: .4rem .5em .4rem 1.7rem;
+	font-size: .75rem;
+	display: block;
+	/* text-align: left; */
+	clear: both;
+	color: #707070;
+}
+.chooseqin{
+	font-size: .85rem;
+	color: #333;
+	height: 2rem;
+	line-height: 2rem;
+	margin-top: .7rem;
+	padding-left: 1rem;
+}
+.paySuccessZi{
+	font-size: 1rem;
+	text-align: center;
+	/*height: 1.5rem;*/
+	margin-top: 1rem;
+}
+.modelOpenback{
+	width: 72%;
+	position: fixed;
+	top: 26%;
+	left: 15%;
+	z-index: 99999;
+	border-radius: 5px;
+	background-color: white;
+	padding-bottom: 2rem;
+}
+.payclose,.paybackclose{
+	width: 1.25rem;
+	float: right;
+	margin: .85rem;
+}
+.paySuccessZi input {
+	width: 75%;
+	margin-left: 2%;
+	height: 2rem;
+	line-height: 2rem;
+	font-size: .95rem;
+	color: #333;
+	text-align: center;
+	border: 1px solid #888;
+	border-radius: 3px;
+}
+.sureCoupon {
+	width: 30%;
+	height: 2.2rem;
+	background-color: #00afa1;
+	border: none;
+	outline: none;
+	/* position: absolute; */
+	border-radius: 5px;
+	color: white;
+	font-size: .85rem;
+	margin: 10% 0 0 35%;
+}
+.closeopen{
+	width: 1.25rem;
+	float: right;
+	margin: .55rem;
+}
+.paySuccess{
+	width: 19%;
+	margin: 12% 0 4.5% 41%;
+}
+.toHref {
+	width: 46%;
+	border-radius: 50px;
+	height: 2.3rem;
+	line-height: 2.3rem;
+	color: white;
+	font-size: 1rem;
+	margin-left: 18%;
+	margin-top: 0.6rem;
+	text-align: center;
+	background-color: #38b69a;
+}
+.msg{
+	width: 100%;
+	color: #fff;
+	position: fixed;
+	margin-top: 70%;
+	z-index: 20;
+	text-align: center;
+	display: none;
+}
+.msgText{
+	padding: 6px 14px;
+	text-align: center;
+	line-height: 1rem;
+	word-break: break-all;
+	overflow: hidden;
+	font-size: 1rem;
+	border-radius: 4px;
+	background-color: rgba(0,0,0,.85);
+}
+
+
+

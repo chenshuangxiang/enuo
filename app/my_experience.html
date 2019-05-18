@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+
+	<!--在您实际的项目中,请留意mescroll-option.css的图片路径是否引用正确,可写成绝对路径或网络地址-->
+	<!--可把mescroll-option.css代码拷贝到mescroll.min.css中,合为一个css文件,方便引用-->
+	<link rel="stylesheet" href="css/lib/mescroll.css">
+	<link rel="stylesheet" href="option/mescroll-option.css">
+	<link rel="stylesheet" href="css/base.css" />
+	<link rel="stylesheet" href="css/util.css" />
+	<link rel="stylesheet" href="css/my_experience.css" />
+	<link rel="stylesheet" href="css/lib/xiala.css" />
+	<script type="text/javascript" src="plug/jquery-1.11.3.js" ></script>
+	<script src="js/common.js"></script>
+	<!--<title>我的收藏</title>--><title>e诺</title>
+</head>
+<style>
+
+</style>
+<body style="background-color: #f1f1f1;">
+<div class="content">
+	<!--标题-->
+	<!--<a href="../index.html"><div class="header"></div></a>-->
+	<div class="pub_hearder flex_vertical justify_content_equal" style="z-index: 99; position: fixed;
+    top: 0;">
+		<img class="up_page pub_hearder_left" src="img/header/header_left.png" onclick="window.location.href = 'user_center.html'" />
+		<div class="head_center head_centerZi">
+			<!--	<div class="search_publish">
+                    <div style="position: relative;">
+                        <input class="toggleSou" type="text" style="color: black;height: .5rem; margin-bottom: .15em;" placeholder="搜索医生"/>
+                    </div>
+                </div>-->
+			<span class="set_head_dot" style="width: .15rem;height: .15rem;border-radius: 50%;"></span>
+			<span class="set_head_dot" style="width: .25rem;height: .27rem;border-radius: 50%;"></span>
+			<span class="set_head_dot"></span>
+			<span class="head_title">我的特价体验券</span>
+			<span class="set_head_dot"></span>
+			<span class="set_head_dot" style="width: .25rem;height: .27rem;;border-radius: 50%;"></span>
+			<span class="set_head_dot" style="width: .15rem;height: .15rem;border-radius: 50%;"></span>
+		</div>
+		<!--<img class="search pub_hearder_right" src="img/forward.png" />-->
+		<!--	<img class="search pub_hearder_right" onclick="Show.Sou()" src="img/search.png"/>-->
+	</div>
+	<!--<div class="famous_doc_layer">
+		<div class="yuyueTop">预约单号：<span class="famousName">4545454102536</span><span class="yuyueStatus">预约中</span></div>
+		<div class="split"></div>
+		<div class="btm">
+			<p><span class="famousName">预约医院：</span><span class="hosName">杭州复旦医院</span></p>
+			<p><span class="famousName">预约科室：</span><span class="docName">李华</span></p>
+			<p><span class="famousName">预约医生：</span><span class="docLevel">主任医师</span></p>
+			<p><span class="famousName">预约时间：</span><span class="docSub">五官科</span> &#45;&#45; <span class="docSubSub">五官科</span></p>
+		</div>
+	</div>-->
+	<!--滑动区域-->
+	<div class="nav" style="position: fixed;
+    top: 2.7rem;    width: 100%;    font-size: .95rem;">
+		<p class="active" i="0">可用</p>
+		<p i="1" class="">已用</p>
+		<p i="2" class="">失效</p>
+	</div>
+	<!--商品-->
+	<div id="mescroll0" class="mescroll" style="background-color: #f1f1f1;top: 5.4rem;">
+		<!--模拟的轮播-->
+		<!--	<img class="swiper" src="../res/img/swiper.jpg"/>-->
+		<!--筛选条件; 模拟列表的重置和演示空布局的使用-->
+		<!--<div class="nav">
+            <p class="active" i="0">全部</p>
+            &lt;!&ndash;<p i="1">奶粉</p>
+            <p i="2">图书</p>&ndash;&gt;
+        </div>-->
+		<!--展示上拉加载的数据列表-->
+		<ul id="dataList0" class="data-list" style="margin-top: .8em;">
+			<!--<li>
+                <img class="pd-img" src="../res/img/pd1.jpg"/>
+                <p class="pd-name">商品标题商品标题商品标题商品标题商品标题商品</p>
+                <p class="pd-price">200.00 元</p>
+                <p class="pd-sold">已售50件</p>
+            </li>-->
+			<!--<li style="border-bottom: 0;margin-top: .8rem;" class="set_box_shadowImg"><div class="hos_list_top clearfix">
+				<div class="backImg"><img src="img/experienceImg.png"/></div>
+				<div class="right">
+					<div class="detail">
+						<span class="name">编号：0000000</span>
+						<span class="use useed">已使用</span>
+						</div>
+					<p>
+						<span style="font-size: 1.2rem;font-weight: 600">洁牙</span>
+					</p>
+					<p style="    margin: 0.5% 0 2.5% 0;">
+						<span style="font-size:.85rem">杭州时光医疗</span>
+					</p>
+					<p   style="font-size:.75rem">
+						<span>有效期：</span><span>2017-11-12</span><span> 截止</span>
+					</p>
+					</div>
+				</div></li>
+			<li style="border-bottom: 0;margin-top: .8rem;" class="set_box_shadowImg"><div class="hos_list_top clearfix">
+				<div class="backImg"><img src="img/experienceImg.png"/></div>
+				<div class="right">
+					<div class="detail">
+						<span class="name">编号：0000000</span>
+						<span class="use">使用</span>
+					</div>
+					<p>
+						<span style="font-size: 1.2rem;font-weight: 600">洁牙</span>
+					</p>
+					<p style="    margin: 0.5% 0 2.5% 0;">
+						<span style="font-size:.85rem">杭州时光医疗</span>
+					</p>
+					<p   style="font-size:.75rem">
+						<span>有效期：</span><span>2017-11-12</span><span> 截止</span>
+					</p>
+				</div>
+			</div></li>-->
+		</ul>
+	</div>
+	<!--医生-->
+	<div id="mescroll1" class="mescroll hide" style="background-color: #f1f1f1;top: 5.4rem;">
+		<ul id="dataList1" class="data-list">
+		</ul>
+	</div>
+
+	<!--医院-->
+	<div id="mescroll2" class="mescroll hide" style="background-color: #f1f1f1;top: 5.4rem;">
+		<ul id="dataList2" class="data-list">
+		</ul>
+	</div>
+</div>
+</body>
+
+<!--在您实际的项目中,请留意mescroll-option.js的图片路径是否引用正确,可写成绝对路径或网络地址-->
+<!--可把mescroll-option.js代码拷贝到mescroll.min.js中,合为一个js文件,方便引用-->
+<script src="js/lib/mescroll.js" type="text/javascript" charset="utf-8"></script>
+<!--<script src="option/mescroll-option.js" type="text/javascript" charset="utf-8"></script>-->
+<!--mescroll本身不依赖jq,这里为了模拟发送ajax请求,获取模拟数据-->
+<!--<script type="text/javascript" src="js/viewport.js" ></script>-->
+<script type="text/javascript" src="js/util.js"></script>
+<!--<script src="js/dos_yuyue.js"></script>-->
+<!--	<script src="../res/pdlist1.js" type="text/javascript" charset="utf-8"></script>-->
+
+<script type="text/javascript" charset="utf-8">
+	$(document).ready(function () {
+		/*init();*/
+		$('li').height($('.backImg img').height())
+    })
+    var mescroll;
+    var curNavIndex=0;//首页0; 奶粉1; 面膜2; 图书3;
+    var mescrollArr=new Array(4);//4个菜单所对应的4个mescroll对象
+    //初始化首页
+    mescrollArr[0]=initMescroll("mescroll0", "dataList0");
+    $(function(){
+        /*初始化菜单*/
+        $(".nav p").click(function(){
+            var i=Number($(this).attr("i"));
+            if(curNavIndex!=i) {
+                //更改列表条件
+                $(".nav .active").removeClass("active");
+                $(this).addClass("active");
+                //隐藏当前列表
+                $("#mescroll"+curNavIndex).hide();
+                //显示对应的列表
+                curNavIndex=i;
+                $("#mescroll"+curNavIndex).show();
+                //取出菜单所对应的mescroll对象,如果未初始化则初始化
+                if(mescrollArr[i]==null) mescrollArr[i]=initMescroll("mescroll"+i, "dataList"+i);
+            }
+        })
+    });
+    /*创建MeScroll对象*/
+    function initMescroll(mescrollId,clearEmptyId){
+        //创建MeScroll对象,内部已默认开启下拉刷新,自动执行up.callback,刷新列表数据;
+        var mescroll = new MeScroll(mescrollId, {
+            //上拉加载的配置项
+            up: {
+                callback: getListData, //上拉回调,此处可简写; 相当于 callback: function (page) { getListData(page); }
+                noMoreSize: 4, //如果列表已无数据,可设置列表的总数量要大于半页才显示无更多数据;避免列表数据过少(比如只有一条数据),显示无更多数据会不好看; 默认5
+                empty: {
+                    icon: "option/mescroll-empty.png", //图标,默认null
+                    tip: "亲,暂无结果~", //提示
+                    //btntext: "去逛逛 >", //按钮,默认""
+                   /* btnClick: function(){//点击按钮的回调,默认null
+                        alert("点击了按钮,具体逻辑自行实现");
+                    }*/
+                },
+                toTop: {
+                    src: "option/mescroll-totop.png" //回到顶部按钮的图片路径
+                },
+                clearEmptyId: clearEmptyId //相当于同时设置了clearId和empty.warpId; 简化写法;默认null
+            }
+        });
+        return mescroll;
+    }
+    /*联网加载列表数据  page = {num:1, size:10}; num:当前页 从1开始, size:每页数据条数 */
+    function getListData(page){
+        console.log(page)
+        page.size = 10;
+        //联网加载数据
+        console.log("curNavIndex="+curNavIndex+", page.num="+page.num);
+        getListDataFromNet(curNavIndex, page.num, page.size,function(data){
+            //联网成功的回调,隐藏上拉加载的状态
+            console.log("data.length="+data.length);
+            mescrollArr[curNavIndex].endSuccess(data.length);//传参:数据的总数; mescroll会自动判断列表如果无任何数据,则提示空;列表无下一页数据,则提示无更多数据;
+            //设置列表数据
+            setListData(data);
+        }, function(){
+            //联网失败的回调,隐藏上拉加载的状态
+            mescrollArr[curNavIndex].endErr();
+        });
+    }
+
+    /*设置列表数据*/
+    function setListData(data){
+        var listDom=$("#dataList" + curNavIndex);
+        for (var i = 0; i < data.length; i++) {
+            var pd=data[i];
+            var str='';
+            if(curNavIndex == 0){
+                str += '<li style="border-bottom: 0;margin-top: .8rem;" class="set_box_shadowImg"><div class="hos_list_top clearfix"> ' +
+					'<div class="backImg"><img src="img/experienceImg.png"/></div> ' +
+					'<div class="right"> ' +
+					'<div class="detail"> ' +
+					'<span class="name">编号：'+pd.sn+'</span> ' +
+					'<span class="use" onclick="To.use(this)" useId="'+pd.id+'">使用</span> ' +
+					'</div> ' +
+					'<p> ' +
+					'<span style="font-size: 1.2rem;font-weight: 600">'+pd.experienceCouponName+'</span> ' +
+					'</p> ' +
+					'<p style="    margin: 0.5% 0 2.5% 0;"> ' +
+					'<span style="font-size:.85rem">'+pd.hospitalName+'</span> ' +
+					'</p> ' +
+					'<p   style="font-size:.75rem"> ' +
+					'<span>有效期：</span><span>'+pd.invalidDate+'</span><span> 截止</span> ' +
+					'</p> ' +
+					'</div> ' +
+					'</div></li>';
+            }else if(curNavIndex == 1){
+                str += '<li style="border-bottom: 0;margin-top: .8rem;" class="set_box_shadowImg"><div class="hos_list_top clearfix"> ' +
+                    '<div class="backImg"><img src="img/experienceImg.png"/></div> ' +
+                    '<div class="right"> ' +
+                    '<div class="detail"> ' +
+                    '<span class="name">编号：'+pd.sn+'</span> ' +
+                    '<span class="use useed">已使用</span> ' +
+                    '</div> ' +
+                    '<p> ' +
+                    '<span style="font-size: 1.2rem;font-weight: 600">'+pd.experienceCouponName+'</span> ' +
+                    '</p> ' +
+                    '<p style="    margin: 0.5% 0 2.5% 0;"> ' +
+                    '<span style="font-size:.85rem">'+pd.hospitalName+'</span> ' +
+                    '</p> ' +
+                    '<p   style="font-size:.75rem"> ' +
+                    '<span>有效期：</span><span>'+pd.invalidDate+'</span><span> 截止</span> ' +
+                    '</p> ' +
+                    '</div> ' +
+                    '</div></li>';
+
+            }else if(curNavIndex == 2){
+                str += '<li style="border-bottom: 0;margin-top: .8rem;" class="set_box_shadowImg"><div class="hos_list_top clearfix"> ' +
+                    '<div class="backImg"><img style="filter:grayscale(100%);" src="img/experienceImg.png"/></div> ' +
+                    '<div class="right"> ' +
+                    '<div class="detail"> ' +
+                    '<span class="name">编号：'+pd.sn+'</span> ' +
+                    '<span class="use useed">已失效</span> ' +
+                    '</div> ' +
+                    '<p> ' +
+                    '<span style="font-size: 1.2rem;font-weight: 600">'+pd.experienceCouponName+'</span> ' +
+                    '</p> ' +
+                    '<p style="    margin: 0.5% 0 2.5% 0;"> ' +
+                    '<span style="font-size:.85rem">'+pd.hospitalName+'</span> ' +
+                    '</p> ' +
+                    '<p   style="font-size:.75rem"> ' +
+                    '<span>有效期：</span><span>'+pd.invalidDate+'</span><span> 截止</span> ' +
+                    '</p> ' +
+                    '</div> ' +
+                    '</div></li>';
+
+            }
+            listDom.append(str);
+        }
+        /*setTimeout(function () {
+           $('li').height($('.backImg img').height())
+        },200)*/
+
+        //
+    }
+    /*联网加载列表数据*/
+    function getListDataFromNet(curNavIndex,pageNum,pageSize,successCallback,errorCallback) {
+        /*  var url;
+          if(subjectId == '' || subjectId == undefined){
+              url = SERVER_ADDR + '/app/topthree/doctor/getList.json?pageNumber='+pageNum+'&pageSize='+pageSize;
+          }else{
+              url = SERVER_ADDR + '/app/topthree/doctor/getList.json?pageNumber='+pageNum+'&pageSize='+pageSize+'&subjectId='+subjectId;
+          }*/
+        var data = {};
+        data.pageNumber = pageNum;
+        data.pageSize = pageSize;
+        if(curNavIndex == 0){
+            data.status = 'wait';
+		}else if(curNavIndex == 1){
+            data.status = 'success';
+        }else if(curNavIndex == 2){
+            data.status = 'invalid';
+        }
+        //延时一秒,模拟联网
+        $.ajax({
+            type: 'GET',
+            url: SERVER_ADDR + '/app/user/experienceCoupon/getList.json',
+            data:data,
+            dataType: 'json',
+            success: function(data){
+                if(data.success == true){
+                    var data=data.data; // 模拟数据: ../res/pdlist1.js
+                    var listData=[];
+                    //根据type  加入不同的数组
+                    for (var i = 0; i < data.length; i++) {
+                        listData.push(data[i]);
+                    }
+                    /*if(curNavIndex==0){  //可用
+                        for (var i = 0; i < data.length; i++) {
+                            listData.push(data[i]);
+                        }
+                    }else if(curNavIndex==1){ // 已用
+                        for (var i = 0; i < data.length; i++) {
+                            listData.push(data[i]);
+                        }
+                    }else if(curNavIndex==2){  //失效
+                        for (var i = 0; i < data.length; i++) {
+                            listData.push(data[i]);
+                        }
+                    }*/
+
+                    //回调
+                    successCallback(listData);
+                }else{
+                    alert(data.data);
+                }
+            },
+            error: errorCallback
+        });
+    }
+    var To = {
+        use:function (obj) {
+            window.location.href = 'pay/dos_yuyue.html?docId='+ $(obj).attr('useId') + '&type=coupon';
+        }
+	}
+</script>
+
+</html>
