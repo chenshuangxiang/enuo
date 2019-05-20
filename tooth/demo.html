@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>测试code</title>
+</head>
+<body>
+	<script>
+//		//测试公众号支付code
+		if(window.location.search.split("?")[1]){
+			var code=window.location.search.split("?")[1].split("&")[0].split("=")[1];
+			alert(code);
+			if(code){
+				var data ={
+					"code":"1",
+				}
+				alert(JSON.stringify(data));
+				$.post("http://47.95.254.125:8080/enuoServerV2/pay/weChatPay",data,function(res){
+					alert("进来了");
+				});
+
+			}
+		}
+	</script>
+</body>
+</html>

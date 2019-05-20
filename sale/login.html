@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1.0, maximum-scale=1.0">
+    <title>登录</title>
+    <script src="js/jquery-1.11.3.min.js"></script>
+    <script src="js/common.js?v=222"></script>
+    <link rel="stylesheet" href="css/login.css">
+
+</head>
+<style>
+    .gaiPsd{
+        text-decoration: underline;
+        display: inline-block;
+        float: right;
+        margin: 1rem 10% 0 0;
+        color: #666;
+        font-size: .8em;
+    }
+</style>
+<body>
+<div class="contain">
+    <div class="logo">
+        <img src="img/logo.png">
+    </div>
+    <form class="info">
+        <div><label><img src="img/data.png"><input placeholder="请输入账号" id="username" type="text"></label></div>
+        <div><label><img src="img/account.png" ><input placeholder="请输入密码" id="pwd" type="password"></label></div>
+    </form>
+    <button class="login_btn" onclick="Go.login();">登录</button>
+</div>
+
+</body>
+<script type="text/javascript">
+    $(document).ready(function () {
+
+    });
+    var Go = {
+        login: function () {
+            var url = SERVER_ADDR + '/salesman/login/submit';
+            var Data = {};
+            Data.mobile = $('#username').val();
+            Data.password = $('#pwd').val();
+            ajaxGetRetInfo(url, Data, this.loginSuccess, '请求失败', 'POST', true, undefined);
+        },
+        loginSuccess: function (retInfo) {
+            console.log(retInfo)
+            if (retInfo.success == true) {
+                window.location.href = 'home.html';
+            }else {
+                alert(retInfo.data);
+            }
+        }
+    }
+</script>
+</html>

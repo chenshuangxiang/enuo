@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>文章列表--e诺分诊后台管理</title>
+	<meta name="renderer" content="webkit">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="format-detection" content="telephone=no">
+	<link rel="stylesheet" href="../../layui/css/layui.css" media="all" />
+	<link rel="stylesheet" href="../../css/font_eolqem241z66flxr.css" media="all" />
+	<link rel="stylesheet" href="../../css/news.css" media="all" />
+</head>
+<body class="childrenBody">
+	<blockquote class="layui-elem-quote news_search">
+		<form class="layui-form">
+			<div class="layui-form-item">
+				<div class="layui-inline">
+					<label class="layui-form-label">姓名</label>
+					<div class="layui-input-inline">
+						<input type="text" value="" placeholder="请输入姓名" class="layui-input search_input newsName">
+					</div>
+				</div>
+				<div class="layui-inline">
+					<label class="layui-form-label">联系方式</label>
+					<div class="layui-input-inline">
+						<input type="number" name="phone" lay-verify="required|phone" autocomplete="off" class="layui-input mobile" placeholder="根据联系方式筛选">
+					</div>
+				</div>
+				<div class="layui-inline">
+					<label class="layui-form-label">咨询时间</label>
+					<div class="layui-input-inline">
+						<input type="text" class="layui-input newsTime" onclick="layui.laydate({elem:this})" placeholder="根据咨询时间筛选">
+					</div>
+				</div>
+				<div class="layui-inline">
+					<label class="layui-form-label">咨询医院</label>
+					<div class="layui-input-inline">
+						<select name="newsHos" class="newsHos" lay-filter="newsHos" lay-search="">
+							<option value="">根据医院筛选</option>
+						</select>
+					</div>
+				</div>
+				<div class="layui-inline">
+					<label class="layui-form-label">状态</label>
+					<div class="layui-input-inline">
+						<select name="status" class="status" lay-filter="status">
+							<option value="">根据状态筛选</option>
+							<option value="">根据状态筛选</option>
+							<!--<option value="unallot">未分诊</option>-->
+							<option value="loading">申请中</option>
+							<option value="allot">已分诊</option>
+						</select>
+					</div>
+				</div>
+
+				<div class="layui-inline" style="margin-left: 42px">
+					<a class="layui-btn search_btn">查询</a>
+				</div>
+				<div class="layui-inline" style="margin-left: 20px">
+					<a class="layui-btn layui-btn-danger batchDel">批量删除</a>
+				</div>
+				<div class="layui-inline" style="margin-left: 20px">
+					<a class="layui-btn layui-btn-warm getexcel">导出</a>
+				</div>
+				<!--<div class="layui-inline" style="margin-left: 42px">
+					<a class="layui-btn layui-btn-normal consultAdd">添加咨询</a>
+				</div>-->
+			</div>
+			<div class="fenOpen" style="display: none;    margin-top: 20px;">
+				<div class="layui-form-item">
+					<div class="layui-inline">
+						<label class="layui-form-label">分诊医院</label>
+						<div class="layui-input-inline">
+							<select name="newsHos" class="newsHos newsHosFen" lay-verify="required" lay-filter="newsHos" lay-search="">
+								<option value="">请选择分诊医院</option>
+							</select>
+						</div>
+					</div>
+				</div>
+				<div class="layui-form-item">
+					<div class="layui-inline">
+						<label class="layui-form-label">分诊时间</label>
+						<div class="layui-input-inline">
+							<input type="text" lay-verify="required" class="layui-input newsTimeFen"
+								   onclick="layui.laydate({elem:this})"
+								   placeholder="请选择分诊时间">
+						</div>
+					</div>
+				</div>
+				<div class="layui-form-item">
+					<div class="layui-inline">
+						<label class="layui-form-label">姓名</label>
+						<div class="layui-input-inline">
+							<input type="text" value="" placeholder="请输入姓名" lay-verify="required" class="layui-input search_input newsNameReset">
+						</div>
+					</div>
+				</div>
+				<div class="layui-form-item">
+					<div class="layui-inline">
+						<label class="layui-form-label">联系方式</label>
+						<div class="layui-input-inline">
+							<input type="number" name="phone" lay-verify="required|phone" autocomplete="off" class="layui-input mobileReset" placeholder="根据联系方式筛选">
+						</div>
+					</div>
+				</div>
+
+
+				<button class="layui-btn layui-btn-lg sureFen" style="margin: 15px 0 0 120px;width: 107px">确 定</button>
+			</div>
+
+		</form>
+
+
+
+
+	<!--	<div class="layui-inline">
+			<a class="layui-btn recommend" style="background-color:#5FB878">推荐文章</a>
+		</div>
+		<div class="layui-inline">
+			<a class="layui-btn audit_btn">审核文章</a>
+		</div>
+		<div class="layui-inline">
+			<a class="layui-btn layui-btn-danger batchDel">批量删除</a>
+		</div>-->
+	<!--	<div class="layui-inline">
+			<div class="layui-form-mid layui-word-aux">本页面刷新后除新添加的文章外所有操作无效，关闭页面所有数据重置</div>
+		</div>-->
+	</blockquote>
+	<div class="layui-form news_list" lay-filter="tablelist">
+	  	<table class="layui-table">
+		    <colgroup>
+				<col width="50"><col>
+				<col width="11%">
+				<col width="9%">
+				<col width="9%">
+				<col width="9%">
+				<col width="9%">
+				<col width="8%">
+		    </colgroup>
+		    <thead>
+				<tr>
+					<th><input type="checkbox" name="" lay-skin="primary" lay-filter="allChoose" id="allChoose"></th>
+					<th>分诊时间</th>
+					<th>患者姓名</th>
+					<th>联系方式</th>
+					<th>来源</th>
+					<th>客服</th>
+					<th>咨询病种</th>
+					<th>分诊医院</th>
+					<th>状态</th>
+					<th>操作</th>
+				</tr> 
+		    </thead>
+		    <tbody class="news_content"></tbody>
+		</table>
+	</div>
+	<div id="page"></div>
+	<script type="text/javascript" src="../../js/jquery-1.11.3.js"></script>
+	<script type="text/javascript" src="../../js/common.js"></script>
+	<script type="text/javascript" src="../../layui/layui.js"></script>
+	<script type="text/javascript" src="allTriage.js"></script>
+</body>
+</html>

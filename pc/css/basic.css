@@ -1,0 +1,308 @@
+@charset "utf-8";
+body,h1,h2,h3,ul,ol,li,p,figure,div,fieldset{
+	margin: 0;
+	padding: 0;
+}
+body {
+	background-color: #fff;
+	font-family: "Helvetica Neue",Helvetica,Arial,"Microsoft Yahei UI","Microsoft YaHei",SimHei,"宋体",simsun,sans-serif;
+}
+ul,ol {
+	list-style: outside none none;
+}
+a {
+	text-decoration: none;
+}
+
+.none{
+	display: none;
+}
+.block{
+	display: block;
+}
+/*清除浮动*/
+.clearfix:after{
+	/*content: ".";
+	display: block;
+	height: 0;
+	clear: both;
+	visibility: hidden;*/
+	content:""; display: block; clear: both;
+}
+/*垂直居中*/
+.flex_vertical{
+	display: flex;/*弹性布局，设在父元素上，子元素居中*/
+	display: -webkit-flex;
+	align-items: center;/*垂直居中*/
+	-webkit-align-items: center;
+}
+/*单行文本溢出*/
+.overflow_ellipsis{
+	overflow: hidden;
+	text-overflow:ellipsis;
+	white-space: nowrap;/*禁止换行*/
+}
+
+/*1.表单input封装*/
+.input_reuse{
+	width: 295px;height: 60px;
+	float: left;
+	margin-left: 10px;margin-top: 5px;
+	font-family: Adobe Heiti Std R;
+}
+.input_reuse input{
+	width: 275px;height: 25px;
+}
+.form_select{
+	width: 279px;
+	height: 31px;
+}
+.input_reuse span{
+	font-size: 14px;
+	display: inline-block;
+	margin-bottom: 3px;
+}
+
+
+
+/*2,内容区头部封装*/
+.area_head{
+	height: 50px;
+	border-bottom: 1px solid #bfbfbf;
+	position: relative;
+}
+.area_head_top{
+	height: 40px;
+	border-top: 1px solid #bfbfbf;
+	position: relative;
+}
+.detail{
+	width:100%;height: 40px;
+	border-top: 1px solid #BFBFBF;
+	border-bottom: 1px solid #BFBFBF;
+	margin-left: 0px;
+	color: #00AFA1;
+	text-indent: 20px;
+	line-height: 40px;
+}
+.area_head_green{
+	display: inline-block;
+	height: 50px;
+	line-height: 50px;
+	color: #00AFA1;
+	margin-left: 20px;
+}
+.area_head_red{
+	display: inline-block;
+	height: 50px;
+	line-height: 50px;
+	color: red;
+	margin-left: 20px;
+}
+/*全选框*/
+.all_select{
+	display: inline-block;
+	margin: 0px 10px 0px 400px;
+	position: relative;
+	top: 3px;
+}
+/*按钮*/
+.area_head_sub{
+	background-color: white;
+	border:1px solid #959595;
+	height: 30px;width: 100px;
+	border-radius: 3px;
+	position: absolute;
+	right: 50px;top: 10px;
+}
+.area_head_sub_ora{
+	background-color: #FEAA2C;
+	border: 0px;
+	height: 30px;width: 100px;
+	color: white;
+	border-radius: 3px;
+	position: absolute;
+	right: 50px;top: 10px;
+}
+.area_head_sub_red{
+	background-color: #f12020;
+	border: 0px;
+	height: 30px;width: 100px;
+	color: white;
+	border-radius: 3px;
+	position: absolute;
+	right: 50px;top: 10px;
+}
+
+/*3,表格封装*/
+table{
+	width: 920px;
+	font-size: 12px;
+	/*设置表格上下间距*/
+	border-collapse: separate;
+	border-spacing:2px 15px;
+	margin: 0 auto;
+	margin-right: 15px;
+}
+thead tr{
+	height: 35px;
+	background-color: #00AFA1;
+	color: white;
+}
+.tbody tr:nth-child(odd){
+	background-color: #DAF3F5;
+}
+table td{
+	text-align: center;
+	min-height: 35px;
+	padding: 7px 0;
+}
+table>tbody>tr{
+	margin-top: 20px;
+	background-color: #f2f2f2;
+}
+/*表格的按钮封装*/
+td .btn_gray{
+	width: 54px;
+	height: 20px;
+	background-color: #cccccc;
+	border: 0px;
+	font-size: 12px;
+	color: white;
+	border-radius: 10px;
+}
+td .btn_green{
+	width: 54px;
+	height: 20px;
+	background-color: #00AFA1;
+	border: 0px;
+	font-size: 12px;
+	color: white;
+	border-radius: 10px;
+}
+td .btn_orange{
+	width: 54px;
+	height: 20px;
+	background-color: #FEAA2C;
+	border: 0px;font-size: 12px;
+	color: white;
+	border-radius: 10px;
+}
+td .btn_white{
+	width: 54px;
+	height: 20px;
+	background-color: white;
+	border: 1px solid #959595;
+	font-size: 12px;
+	border-radius: 10px;
+}
+
+/*列表底部分页*/	
+/*.page{
+	border: 1px solid green;
+	height: 42px;
+	text-align: center;
+	line-height: 42px;
+}
+.page button{
+	background-color: white;
+	border: 0px;
+	height: 40px;
+	vertical-align: top;
+}
+.page .show_page{
+	display: inline-block;
+	border: 2px solid #00AFA1;
+	border-radius: 17px;
+	width: 32px;height: 32px;
+	vertical-align: top;
+}*/
+/*分页2*/
+.page{
+	/*border: 1px solid green;*/
+	height: 40px;
+	font-family: MicrosoftYaHei;
+  	font-size: 14px;
+  	padding-left: 20px;
+}
+.page>button{
+	border: 1px solid #dcdcdc;
+	height: 25px;line-height: 25px;
+	padding: 0 10px;
+	background-color: white;
+}
+.page .page_num{
+	display: inline-block;
+	border-top:1px solid #DCDCDC ;
+	border-bottom: 1px solid #DCDCDC;
+}
+.page_num span{
+	display: inline-block;
+	width: 25px;height: 25px;line-height: 25px;text-align: center;
+	border-left: 1px solid #dcdcdc;
+}
+.page_num span:last-child{
+	border-right: 1px solid #DCDCDC;
+}
+.page .select_page{
+	display: inline-block;
+	width: 22px;height: 20px;line-height: 22px;text-align: center;
+	border: 1px solid #dcdcdc;
+}
+.page .confirm_page{
+	background-color:#00afa1;
+	color: white;
+	border: 0px;
+}
+
+/*4,遮罩层和弹出框的封装*/
+.shade{
+	width: 100%;
+	height: 600px;
+	background-color: #000000;
+	position: absolute;
+	z-index: 999;
+	top: 0;left: 0;
+	opacity: 0.6;
+	filter:Alpha(opacity=60);
+}
+/*弹框*/
+.popup_box{
+	width: 300px;
+	height: 300px;
+	position: absolute;
+	top: 170px;left: 50%;
+	margin-left: -150px;
+	z-index: 1000;
+	background: url(../img/popup.png) no-repeat center;
+}
+.popup_box_head{
+	width: 100%;
+	height: 52px;
+	color: white;
+	text-indent: 30px;
+	line-height: 52px;
+}
+.popup_box_head span{
+	display: inline-block;
+	margin-left: 130px;
+}
+.popup_box_input{
+	height: 40px;
+	width: 80%;
+	border: 1px solid #E5E5E5;
+	margin: 20px auto;
+	line-height: 40px;
+	border-radius: 7px;
+	text-indent: 10px;
+}
+.popup_box_input input{
+	height: 30px;
+	margin-left: 5px;
+	border: 0px;
+	border-left: 1px solid #E5E5E5;
+	outline: none;
+	text-indent: 5px;
+}
+
+

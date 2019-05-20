@@ -1,0 +1,203 @@
+@charset "utf-8";
+body,h1,h2,h3,h4,p,ul,ol,form,fieldset,figure {
+	margin: 0;
+	padding: 0;
+}
+body {
+	background-color: #fff;
+	font-family: "Helvetica Neue", Helvetica, Arial, "Microsoft Yahei UI", "Microsoft YaHei", SimHei, "\5B8B\4F53", simsun, sans-serif;
+}
+ul,ol {
+	list-style: outside none none;
+}
+a {
+	text-decoration: none;
+}
+
+/*页面头部*/
+.head{
+	width: 100%;height: 46px;
+	text-align: center;
+	position: relative;
+	padding-top: 3px;
+}
+.head .head_left{
+	height: 22px;
+	position: absolute;
+	left: 15px;top: 12px;
+}
+.head .min_logo{
+	height: 40px;
+	text-align: center;
+}
+.head .head_right{
+	height: 26px;
+	position: absolute;
+	right: 15px;top: 12px;
+}
+
+/*页面内容*/
+.content{
+	background-color: #f5f5f5;
+	width: 100%;
+	padding:10px 0 70px 0;
+	position: relative;
+}
+.content_form{
+	width: 94%;
+	margin: 0 auto;
+	border-radius: 10px;
+  	background-color: #ffffff;
+  	padding:10px 0;
+}
+
+
+/*表单*/
+.form{
+	width: 96%;
+	margin: 0 auto;
+	border-radius: 5px;
+  	background-color: #ffffff;
+  	border: 1px solid #bfbfbf;
+}
+/*表单头部*/
+.form_head{
+	width: 100%;height: 44px;
+	border-bottom: 1px solid #bfbfbf;
+	text-indent: 10px;
+	position: relative;
+}
+.form_head_green{
+	color: #00AFA1;
+	font-size: 18px;
+	height: 42px;
+	line-height: 42px;
+}
+.form_head_red{
+	color: #F02E2E;
+	font-size: 16px;
+	height: 42px;
+	line-height: 42px;
+}
+.form_head_btn_red{
+	width: 100px;height: 30px;line-height: 30px;
+	background-color: #f02e2e;
+	border: 0px;outline: none;
+	border-radius: 5px;
+	color: white;
+	font-size: 16px;
+	position: absolute;
+	right: 10px;top: 7px;
+}
+.form_head_btn{
+	width: 100px;height: 30px;line-height: 30px;
+	border: 1px solid #BFBFBF;outline: none;
+	border-radius: 5px;
+	font-size: 16px;
+	position: absolute;
+	right: 10px;top: 7px;
+	background-color: white;
+}
+/*表单输入框和select框*/
+.form_input{
+	width: 92%;height: 60px;
+	margin-left: 15px;
+	margin-top: 5px;
+	font-family: PingFang-SC;
+	color: #000000;
+}
+.form_input input{
+	width: 98%;height: 25px;
+	border: 1px solid #dcdcdc;
+	margin-top: 5px;
+	font-family: PingFang-SC;
+	color: #000000;
+}
+.form_input select{
+	width: 98%;height: 27px;
+	border: 1px solid #dcdcdc;
+	font-family: PingFang-SC;
+	color: #000000;
+}
+
+
+/*页面底部*/
+.bottom{
+	width: 100%;height: 60px;
+	/*border: 1px solid red;*/
+	position: fixed;
+	bottom: 0px;
+	background-color: #ffffff;
+}
+.bottom_left{
+	width: 48%;height: 60px;
+	/*border: 1px solid red;*/
+	float: left;
+	text-align: center;
+}
+.bottom_right{
+	width: 48%;height: 60px;
+	/*border: 1px solid red;*/
+	float: left;
+	text-align: center;
+}
+.bottom_left_img{
+	height: 25px;
+	margin: 6px 0 3px 0;
+}
+.bottom_right_img{
+	height: 20px;
+	margin: 9px 0 3px 0;
+}
+.bottom_left_span{
+	font-size: 14px;
+	color: #FEAA2C;
+}
+.bottom_right_span{
+	font-size: 14px;
+	color: #00AFA1;
+}
+
+
+
+
+/*媒介查询*/
+@media only screen and (min-width: 320px) and (max-width: 400px) {
+	.form_head_green{
+		color: #00AFA1;
+		font-size: 16px;
+		height: 42px;
+		line-height: 42px;
+	}
+	.form_head_red{
+		color: #F02E2E;
+		font-size: 14px;
+		height: 42px;
+		line-height: 42px;
+	}
+	.form_head_btn{
+		width: 90px;
+		height: 25px;line-height: 25px;
+		border: 1px solid #BFBFBF;outline: none;
+		border-radius: 5px;
+		font-size: 14px;
+		position: absolute;
+		right: 10px;top: 8px;
+		background-color: white;
+	}
+	.form_head_btn_red{
+		width: 90px;
+		height: 25px;line-height: 25px;
+		background-color: #f02e2e;
+		border: 0px;outline: none;
+		border-radius: 5px;
+		color: white;
+		font-size: 14px;
+		position: absolute;
+		right: 10px;top: 8px;
+	}
+	
+}
+
+
+

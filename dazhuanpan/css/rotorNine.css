@@ -1,0 +1,80 @@
+
+*, :after, :before {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+* {
+    margin: 0;
+    padding: 0;
+}
+
+table {
+    border-spacing: 0;
+    border-collapse: collapse;
+    text-align: center;
+}
+
+.draw {
+    width: 80%;
+    margin: 3rem 0 0 10%;
+ /*   height: 600px;*/
+    padding: 7% 6% 0 7.2%;
+    background-image: url(../images/bg.png);
+    background-repeat: no-repeat;
+    background-size: 100%;
+}
+
+.draw .item {
+    width:32.5%;
+   /* height: 83px;*/
+    background-image: url(../images/bg1.png);
+    background-repeat: no-repeat;
+    background-size: 94%;
+}
+
+.draw .item.active {
+    background-image: url(../images/bg2.png);
+    background-repeat: no-repeat;
+    background-size: 100%;
+}
+
+.draw .img {
+    display: table-cell;
+    width: 150px;
+    height: 61px;
+    vertical-align: middle;
+    text-align: center;
+}
+
+.draw .img img {
+    vertical-align: top;
+}
+
+.draw .gap {
+    width: 4px;
+}
+
+.draw .gap-2 {
+    height: 4px;
+}
+
+.draw .name {
+    display: block;
+  /*  margin-top: 10px;*/
+    font-size: 14px;
+    width: 93%;
+}
+
+.draw .draw-btn {
+    display: block;
+    height: 83px;
+    line-height: 83px;
+    /*border-radius: 20px;*/
+    font-size: 25px;
+    font-weight: 700;
+    text-decoration: none;
+    background-image: url(../images/bg3.png);
+    background-repeat: no-repeat;
+    background-size: 96%;
+}

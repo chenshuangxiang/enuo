@@ -1,0 +1,196 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no"><meta name="apple-mobile-web-app-capable" content="yes"><link rel="stylesheet" href="css/lib/mescroll.css?v=33c720c"><link rel="stylesheet" href="option/mescroll-option.css?v=37a26b4"><link rel="stylesheet" href="css/base.css?v=dd0905f"><link rel="stylesheet" href="css/util.css?v=9472158"><link rel="stylesheet" href="css/find_doc.css?v=e665a70"><link rel="stylesheet" href="css/lib/xiala.css?v=a1cdceb"><script type="text/javascript" src="plug/jquery-1.11.3.js?v=4663977"></script><script src="js/lib/jweixin-1.1.0.js?v=2038a52"></script><script src="js/common.js?v=e9fcb43"></script><script src="js/getLocation.js?v=349d499"></script><script src="js/lib/echo.min.js?v=b782724"></script><script type="text/javascript" src="https://api.map.baidu.com/api?v=2.0&ak=AEKrrtZejAfxZmAsbDxDbjrHDFxkcNo7"></script><title>找医生</title></head><style>input::-webkit-input-placeholder{
+		color: white;
+		font-size: 1rem;
+	}</style><body style="background-color: #f1f1f1;"><div class="content" style=""><div class="pub_hearder flex_vertical justify_content_equal" style="z-index: 99;   position: fixed;
+    top: 0;"><img class="up_page pub_hearder_left" src="img/header/header_left.png?v=29fd7c6" onclick="window.history.go(-1)"><div class="head_center head_centerZi"><span class="set_head_dot" style="width: .15rem;height: .15rem;border-radius: 50%;"></span> <span class="set_head_dot" style="width: .25rem;height: .27rem;border-radius: 50%;"></span> <span class="set_head_dot"></span> <span class="head_title">找医生</span> <span class="set_head_dot"></span> <span class="set_head_dot" style="width: .25rem;height: .27rem;;border-radius: 50%;"></span> <span class="set_head_dot" style="width: .15rem;height: .15rem;border-radius: 50%;"></span></div><img class="search pub_hearder_right" onclick="window.location.href = 'search.html?type=doctor'" src="img/search.png?v=9ae3ecd"></div><div id="mescroll" class="mescroll" style="background-color: #f1f1f1;top: 2.4rem;"><ul id="dataList" class="data-list" style="margin-top: .8em;"></ul></div></div></body><script src="js/lib/mescroll.js?v=a4fd843" type="text/javascript" charset="utf-8"></script><script type="text/javascript" charset="utf-8">var mescroll;
+    $(function(){
+        if(is_weixn()){
+            getSign();
+		}else{
+            baiduLocation();
+		}
+
+     /*   init();*/
+        /*	$('.levelClick').click(function () {
+                console.log(555)
+                $('.levelText').text($(this).text()).attr('levelId',$(this).attr('levelId'));
+                $('#dataList').empty();
+                var page = {num: 1, size: 5, doctorTypeId: $(this).attr('levelId')}
+               // mescroll.resetUpScroll();
+                mescroll.setPageNum(1)
+                getListData(page)
+            })
+            $('.subsubjectClick').click(function () {
+                $('.subText').text($(this).text()).attr('subsubId',$(this).attr('subsubId'));
+                $('#dataList').empty();
+                var page = {num: 1, size: 5, subSubjectId: $(this).attr('subsubId')}
+                // mescroll.resetUpScroll();
+                mescroll.setPageNum(1)
+                getListData(page)
+            })*/
+       /* $('.sou').click(function () {
+            $('#dataList').empty();
+            $('.sou').attr('sou',$('.toggleSou').val());
+            var page = {num: 1, size: 10, keyword: $('.toggleSou').val()}
+            // mescroll.resetUpScroll();
+            mescroll.setPageNum(1)
+            getListData(page)
+        })*/
+        //创建MeScroll对象
+       /* $('.sou').attr('sou', '')*/
+        mescroll = initMeScroll("mescroll", {
+            up: {
+                clearEmptyId:"dataList",
+                isBoth: true, //上拉加载时,如果滑动到列表顶部是否可以同时触发下拉刷新;默认false,两者不可同时触发; 这里为了演示改为true,不必等列表加载完毕才可下拉;
+                callback: getListData, //上拉加载的回调
+            }
+        });
+
+        /*初始化菜单*/
+        //var pdType=0;//全部商品0; 奶粉1; 图书2;
+        /*	$(".nav p").click(function(){
+                var i=$(this).attr("i");
+                if(pdType!=i) {
+                    //更改列表条件
+                    pdType=i;
+                    $(".nav .active").removeClass("active");
+                    $(this).addClass("active");
+                    //重置列表数据
+                    mescroll.resetUpScroll();
+                }
+            })*/
+    });
+    /*联网加载列表数据  page = {num:1, size:10}; num:当前页 从1开始, size:每页数据条数 */
+    function getListData(page){
+        console.log(page)
+        page.size = 10;
+            if(page.goCount == 1){
+                page.keyword = '';
+			}else{
+                page.keyword = getQueryString('val');
+			}
+        //联网加载数据
+        console.log(", page.num="+page.num);
+        getListDataFromNet( page.num, page.size,page.keyword,function(data){
+            //联网成功的回调,隐藏上拉加载的状态
+            console.log("data.length="+data.length);
+            mescroll.endSuccess(data.length);//传参:数据的总数; mescroll会自动判断列表如果无任何数据,则提示空;列表无下一页数据,则提示无更多数据;
+            //设置列表数据
+            setListData(data);
+        }, function(){
+            //联网失败的回调,隐藏上拉加载的状态
+            mescroll.endErr();
+        });
+    }
+
+    /*设置列表数据*/
+    function setListData(data){
+        var listDom=$("#dataList");
+        for (var i = 0; i < data.length; i++) {
+            var pd=data[i];
+
+            var str='';
+            str += '<li class="hos_child set_box_shadow" docId="'+pd.id+'" onclick="href(this)" style="height: inherit;">' ;
+					if(pd.businesStatus == 'normal' || pd.businesStatus == undefined){
+						str += '<div class="hos_list_top clearfix" style="height: inherit;">' ;
+					}else if(pd.businesStatus == 'violate'){
+                        str += '<div class="hos_list_top clearfix" style="background: url('+"img/violate.png"+') 100% 46% / 30% no-repeat;height: inherit;">' ;
+                    }else if(pd.businesStatus == 'closed'){
+                        str += '<div class="hos_list_top clearfix" style="background: url('+"img/closedHos.png"+') 100% 46% / 30% no-repeat;height: inherit;">' ;
+                    }
+            str += '<div class="left"><img src="img/backlogo.jpg?v=78d0f90" data-echo="'+pd.headImgUrl+'"/></div>' +
+                '<div class="right">' +
+                '<p class="detail" style="height: inherit;">' +
+                '<span class="name">'+pd.name+'</span> <span class="docLevel">'+pd.subSubjectName+'<span style="color: #707070;display: inline-block;margin-left: .6rem">'+ pd.doctorTypeName+'</span></span>' +
+                '<span style="float: right;color: #707070;display: inline-block">' ;
+
+            if(Number(pd.distance) < 1000){
+                str +='<span style="color: #00afa1">'+pd.distance+'m</span>';
+            }else if(Number(pd.distance) >= 1000){
+                str +='<span style="color: #00afa1">'+(Number(pd.distance)/1000).toFixed(1)+'km</span>';
+            }else if(pd.distance == undefined){
+                //str +='<span style="color: #00afa1"></span>';
+			}
+				//'<span class="" style="color: #00afa1">'+pd.orderQuantity+'</span></span>' +
+
+            str += '</p>' +
+                '<p>' +
+                '<span style="color: #00afa1">'+pd.hospitalName+'</span><span style="display: inline-block;margin-left: .8rem">'+pd.hospitalLevel+'</span>' +
+                '</p>' +
+               /* '<p>' +
+                '<span>科室：</span><span>'+pd.subSubjectName+'</span>' +
+                '</p>' +*/
+                '<p class="goodPlace overflow_num_ellipsis" style="height: 2.6em;border-top: 0;color: #707070">' +
+                '<span>擅长领域：'+pd.specialty+'</span>' ;
+           /* if(pd.diseases && pd.diseases.length > 0){
+                pd.diseases.forEach(function (value, index) {
+                    str +=  '<span>'+value+' '+'</span>'
+                })
+            }*/
+            str += '</p>' +
+                '</div>' +
+                '</div></li>'
+
+            /*	var liDom=document.createElement("li");
+                liDom.innerHTML=str;
+                listDom.appendChild(liDom);*/
+            listDom.append(str);
+            Echo.init({
+                offset: 2000,
+                throttle: 100
+            })
+        }
+    }
+    function href(obj) {
+        window.location.href = "dos_index.html?docId="+$(obj).attr('docId')
+    }
+    /*联网加载列表数据*/
+    function getListDataFromNet(pageNum,pageSize,keyword,successCallback,errorCallback) {
+        /*  var url;
+          if(subjectId == '' || subjectId == undefined){
+              url = SERVER_ADDR + '/app/topthree/doctor/getList.json?pageNumber='+pageNum+'&pageSize='+pageSize;
+          }else{
+              url = SERVER_ADDR + '/app/topthree/doctor/getList.json?pageNumber='+pageNum+'&pageSize='+pageSize+'&subjectId='+subjectId;
+          }*/
+        var data = {};
+        data.pageNumber = pageNum;
+        data.pageSize = pageSize;
+        console.log(keyword)
+        if(keyword != '' && keyword != undefined && keyword != null){
+            data.keyword = keyword;
+        }
+        data.latitude = localStorage.getItem("latitude");//30.317750930786133//
+        data.longitude = localStorage.getItem("longitude");//120.10475158691406//
+        data.cityName = localStorage.getItem('city');
+        data.provinceName = localStorage.getItem('province');
+        //延时一秒,模拟联网
+        $.ajax({
+            type: 'GET',
+            url: SERVER_ADDR + '/app/doctor/getList.json',
+            data:data,
+            dataType: 'json',
+            success: function(data){
+                if(data.success == true){
+                    var data=data.data; // 模拟数据: ../res/pdlist1.js
+                    var listData=[];
+
+                    //奶粉
+                    for (var i = 0; i < data.length; i++) {
+                        listData.push(data[i]);
+                    }
+
+                    //回调
+                    successCallback(listData);
+                }else{
+                    alert(data.data);
+                }
+            },
+            error: errorCallback
+        });
+    }
+    function callback() {
+        var page = {num: 1, size: 5, keyword: undefined}
+        // mescroll.resetUpScroll();
+        mescroll.setPageNum(1)
+        getListData(page)
+    }</script></html>

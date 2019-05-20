@@ -1,0 +1,36 @@
+
+<!DOCTYPE html >
+<html >
+<head>
+<meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1" />
+<meta name="renderer" content="webkit" />
+<title>{dede:field.seotitle/}_{dede:global.cfg_webname/}</title>
+<meta name="keywords" content="{dede:field name='keywords'/}" />
+<meta name="description" content="{dede:field name='description' function='html2text(@me)'/}" />
+<meta name="renderer" content="webkit"/>
+<link href="{dede:global.cfg_cmsurl/}/css/style.css" type="text/css" rel="stylesheet">
+<LINK href="{dede:global.cfg_cmsurl/}/css/reset.css" type="text/css" rel="stylesheet">
+<script src="{dede:global.cfg_cmsurl/}/js/jquery.min.js" type="text/javascript"></script>
+<script src="{dede:global.cfg_cmsurl/}/js/jquery.touchslider.min.js" type="text/javascript"></script>
+<script src="{dede:global.cfg_cmsurl/}/js/index.js" type="text/javascript"></script>
+<link href="{dede:global.cfg_cmsurl/}/css/content.css" rel="stylesheet" type="text/css" />
+<script src="{dede:global.cfg_cmsurl/}/js/tab.js" type="text/javascript" language="javascript"></script>
+<script type="text/javascript" src="{dede:global.cfg_cmsurl/}/js/jquery.lazyload.min.js"></script>
+</head>
+<body>
+{dede:include filename="header.htm"/}
+{dede:include filename="inc_banner.htm"/}
+{dede:include filename="inc_item.htm"/}
+<div class="IyhNr while padd2030 width">
+  <div class="IyhBt"><span>当前位置</span>&nbsp;&nbsp;&nbsp;&nbsp;{dede:field name='position'/} </div>
+  <div class="ppjj_miancon" style="line-height:30px; font-size:14px;">
+
+    {dede:field.content/}
+  </div>
+
+  <div class="clear"></div>
+</div>
+{dede:include filename="footer.htm"/}
+</body>
+</html>

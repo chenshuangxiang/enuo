@@ -1,0 +1,64 @@
+<view style='height:100vh'>
+  <scroll-view scroll-y style='height:92vh' bindscrolltoupper="lower">
+    <view class='title'>
+      <view class='left'>
+        购物清单
+      </view>
+    </view>
+     <view class='list'>
+        <view class='item1' wx:if="{{!isEdit}}" wx:for="{{data.goods}}">
+          <navigator class='content' hover-class="none" url="/pages/details/index?id=1">
+            <image src='{{item.img}}'></image>
+            <view class='text'>
+              <view class='name'>{{item.title}}</view>
+              <view class='price1'>
+                <text>¥{{item.price}}</text>
+                <text>x{{item.num}}</text>
+              </view>
+            </view>
+          </navigator>
+        </view>
+      </view>
+    <view class='title'>
+      <view class='left'>
+        收货地址
+      </view>
+    </view>
+     <navigator hover-class="none" url="/pages/addressList/index?type=1" class='address'>
+      <view class='left'>
+        <view>{{address.mobile}} {{address.name}} 收</view>
+        <view>{{address.city[0]}} {{address.city[1]}} {{address.city[2]}} {{address.detailed}}</view>
+      </view>
+       <view class='choice'>
+        <image style='width:8px;height:15px;' src='/images/my_order.png'></image>
+      </view>
+    </navigator>
+    <view class='title' style='border-top:1px solid #dedede;'>
+      <view class='left'>
+        发票信息
+      </view>
+      <view class='right'>
+        <image src='/images/my_order.png'></image>
+      </view>
+    </view>
+
+  <view class='a-child' data-tid='{{list[0].id}}' bindtap='selectChild'>
+      <view class='child-mid'>点击获取属性</view>
+  </view>
+    <button hover-class="hover" loading="{{loading}}" bindtap="buttontap"> 点击button </button>
+    <button bindtap="postImg">上传图片</button>
+    <image style="width: 100%" src="{{postImgSrc}}"></image>
+    <button bindtap="showMusic">播放音乐</button>
+      <button bindtap="readPhoto">看图片</button>
+      <button bindtap="sao">扫一扫</button>
+      <button bindtap="phonecall">拨打电话</button>
+      <button bindtap="zhen">震动</button>
+      <br/>
+      <view animation="{{animationData}}" class="aninate">5555</view>
+      <button bindtap="animate">动画</button>
+      <button open-type="getUserInfo" bindgetuserinfo="getuserinfo">获取信息</button>
+  </scroll-view>
+  <view bindtap="pay" class='btn'>
+  支付啊啊啊啊
+  </view>
+</view>

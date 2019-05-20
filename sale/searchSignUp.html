@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1.0, maximum-scale=1.0">
+    <title>用户验证码查询</title>
+    <script src="js/jquery-1.11.3.min.js"></script>
+    <script src="js/common.js?v=222"></script>
+</head>
+<style>
+    body{
+        margin: 0;
+    }
+    .pub_hearder {
+        width: 100%;
+        height: 3rem;
+       /* background: linear-gradient(to right,#00afa1, #00c59e);*/
+        position: relative;
+        margin-bottom: -1px;
+        border-bottom: 1px solid #959595;
+        z-index: 99; position: fixed;
+        top: 0;
+    }
+    .search_publish {
+        /* height: 1rem; */
+      /*  background: linear-gradient(to right,#00afa1, #00c59e);*/
+        border: 0;
+        position: relative;
+        /* top: -4px; */
+        left: -.35rem;
+    }
+    .searchSpan {
+        color: #707070;
+        width: 1.8rem;
+        height: 1.8rem;
+        top: 1rem;
+        /* float: right; */
+        /* margin-left: 7%; */
+        position: fixed;
+        right: 2%;
+        font-size: .85rem;
+    }
+    .search_publish input {
+        width: 100%;
+        height: 2rem;
+        line-height: 2rem;
+        border-radius: 1.5rem;
+        /* border: solid 2px rgba(255, 255, 255, 0.5); */
+        font-size: .9rem;
+        letter-spacing: 0.5px;
+        text-indent: .2rem;
+        outline: none;
+        color: #707070;
+        padding-left: .7em;
+        margin-bottom: 7px;
+        margin-top: .2rem;
+        background-color: transparent;
+        border: solid 1px rgba(112, 112, 112, 0.7);
+       /* border: 1.4px solid white;*/
+    }
+    .search_publish img {
+        width: 1rem;
+        position: absolute;
+        top: .8rem;
+        right: 1%;
+        padding-top: .5rem;
+        margin-top: -.5rem;
+        padding-bottom: .5rem;
+        margin-bottom: -.5rem;
+    }
+    .ticket {
+        border: solid 1px #707070;
+        border-radius: 10px;
+        margin: 1rem 3.2% 0px 3.2%;
+        padding: 10px;
+    }
+    .ticket_content {
+        padding-top: 10px;
+        overflow: auto;
+        font-size: 0.88em;
+    }
+    .ticket_content p {
+        width: 99%;
+        float: left;
+        margin: 5px 3px 5px 0px;
+    }
+    .back {
+        width: 100%;
+        height: 2.5rem;
+        line-height: 2.5rem;
+        color: white;
+        font-size: 1rem;
+        text-align: center;
+        position: fixed;
+        bottom: 0;
+        background-color: #00ad9f;
+    }
+</style>
+<body>
+<!--<div class="pub_hearder flex_vertical justify_content_equal" style="background-color: white;">
+    <div class="search_publish" style="left: 4%;
+    z-index: 99;
+    width: 81%;
+    top: .2rem;">
+        <input class="toggleSou" type="text" style="" placeholder="搜索手机号">
+        <img class="sou" onclick="getYzm()" src="img/search.png">
+    </div>
+    &lt;!&ndash;<img class="search pub_hearder_right" src="img/forward.png" />&ndash;&gt;
+    <span class="searchSpan" onclick="window.history.go(-1)" style="display: inline-block;">
+					取消
+				</span>
+</div>-->
+<div style="margin-top: 1rem">
+    <ul id="dataList0" class="data-list" style="margin-top: .8em;    padding-left: 0;    margin-bottom: 4rem;">
+       <!-- <div class="ticket">
+            <div class="ticket_content" style="padding-top: 0"><p style="width: 99%">手机号：<span>13989455681</span></p>
+                <p style="width: 99%">发送时间：<span>2018-10-06</span></p>
+                <p style="width: 99%">验证码：<span>女</span></p></div>
+        </div>-->
+    </ul>
+</div>
+<div class="back" onclick=" window.location.href = 'home.html'">返回上一页</div>
+
+</body>
+<script type="text/javascript">
+    //获取地址栏url的参数
+    function getQueryString(name) {
+        var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
+        var r = window.location.search.substr(1).match(reg);
+        if (r != null) {
+            return decodeURIComponent(r[2]);
+        }
+        return null;
+    }
+    getYzm();
+    function getYzm() {
+        var url = SERVER_ADDR + '/common/signUpList.json';
+        var Data = '';
+        //Data.mobile = $('.toggleSou').val();
+        /*if(SERVER_ADDR == 'http://www.enuo120.com'){*/
+        ajaxGetRetInfo(url, Data, getYzmSuccess, '请求失败', 'GET', true, undefined);
+        /*}*/
+    }
+    function getYzmSuccess(retInfo) {
+        console.log(retInfo)
+        $('.data-list').empty();
+        retInfo.data.signUpList.forEach(function (value) {
+            $('.data-list').append('<div class="ticket">' +
+                '<div class="ticket_content" style="padding-top: 0">'+
+                '<p style="width: 99%">报名时间：<span>'+new Date(value.createDate).Format('yyyy-MM-dd hh:mm:ss')+'</span></p>' +
+                '<p><span style="width:55%;display: inline-block">机构名：<span>'+value.institutionName+'</span></span><span style="width:42%;display: inline-block">联系人：<span>'+value.linkman+'</span></span></p>' +
+                '<p style="width: 99%">地址：<span>'+value.institutionAddress+'</span></p>' +
+                '<p style="width: 99%">电话：<span>'+value.mobile+'</span></p>' +
+                '</div>' +
+                '</div>');
+        })
+    }
+</script>
+</html>

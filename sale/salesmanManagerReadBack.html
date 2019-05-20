@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+
+	<!--在您实际的项目中,请留意mescroll-option.css的图片路径是否引用正确,可写成绝对路径或网络地址-->
+	<!--可把mescroll-option.css代码拷贝到mescroll.min.css中,合为一个css文件,方便引用-->
+<!--	<link rel="stylesheet" href="../css/lib/mescroll.css">
+	<link rel="stylesheet" href="../option/mescroll-option.css">-->
+	<!--<link rel="stylesheet" href="../css/base.css" />
+	<link rel="stylesheet" href="../css/util.css" />-->
+	<link rel="stylesheet" href="css/dateOpen.css">
+	<link rel="stylesheet" href="css/consultlist.css">
+	<!--<link rel="stylesheet" href="../css/lib/xiala.css" />-->
+	<script type="text/javascript" src="js/jquery-1.11.3.min.js" ></script>
+	<script src="js/common.js"></script>
+	<title>打回率统计</title>
+</head>
+<style>
+	input::-webkit-input-placeholder{
+		color: white;
+		font-size: 8px;
+	}
+	.healing_time{
+		margin-top: .8rem;
+	}
+	table{
+		text-align: center;
+		width: 96%;
+		margin-left: 2%;
+	}
+	th{
+		border: 1px solid #e2e2e2;
+		padding: 6px 0;
+		font-weight: 500;
+		font-size: 1rem;
+	}
+	td{
+		min-height: 1.2rem;
+		line-height:1.2rem;
+		font-size: .9rem;
+		border: 1px solid #e2e2e2;
+		padding: 6px 0;
+	}
+	.allBeforeTime{
+		width: 25%;
+		margin-left: 2%;
+		height: 2rem;
+		border-radius: .1rem;
+		background-color: #ffffff;
+		font-size: .9rem;
+		font-weight: bold;
+		color: #00afa1;
+		border: 1px solid #00afa1;
+		margin-bottom: .6rem;
+	}
+</style>
+<body>
+
+<div class="content" style="margin-bottom: 3.5rem">
+	<!--标题-->
+	<!--<a href="../index.html"><div class="header"></div></a>-->
+	<div class="top" style="    border-bottom: 1px solid #cccccc;">
+		<label class="toptitle" style="width: 64%;">打回率统计<!--今日/合计:<span class="nowday">7</span>/<span class="allday">20</span>--></label>
+		<!--<img src="img/add.png" onclick="window.location.href = 'addConsult.html'" class="add_img" id="add_btn">-->
+	<!--	<span class="resetAdv" onclick="resetAdvOpen()">重新分配</span>-->
+	</div>
+	<!--<div class="famous_doc_layer">-->
+		<div class="set_box_shadow biaoge" style="overflow: hidden">
+
+			<div class="title" style="border-bottom: none;    padding-bottom: 0;">
+				<img class="leftto" onclick="up_week()" src="img/leftto.png">
+				<p style="display: inline-block">
+					<span class="yuyuetitle">今日</span>
+					<span class="nowday">2018-10-10</span>
+				</p>
+
+				<img class="rightto" onclick="next_week()" src="img/nextto.png"></div>
+			<div class="healing_time">
+				<div style="position: relative">
+				<button class="allBeforeTime nowDay" onclick="$('.dayDiv').show()"></button>
+				<div class="chooseDiv dayDiv" style="    z-index: 999;">
+					<div class="nameTop">请选择查询日期</div>
+					<div class="datePDiv" style="width: 63%;margin-left: 20%;">
+						<div class="datePDay"><span class="oneDaySpan"></span></div>
+						<div class="datePDay"><span class="twoDaySpan"></span></div>
+						<div class="datePDay nowDayDiv"><span class="nowDaySpan"></span><p class="nowDayZi">今日</p></div>
+					</div>
+					<div style="clear: both"></div>
+					<div style="text-align: center;margin-bottom: 1.2rem;    margin-top: 1rem;"><button class="sureBtn" onclick="Get.getChooseDay()">确定</button></div>
+				</div>
+				</div>
+				<table cellspacing="0">
+					<thead>
+					<tr>
+						<th width="25%">业务员</th>
+						<th width="25%">提交</th>
+						<th width="25%">打回</th>
+						<th width="25%">打回率</th>
+					</tr>
+					</thead>
+					<tbody class="news_content">
+						<!--<tr>
+							<td class="nowDayname">0</td>
+							<td class="nowDayadvisorys">0</td>
+							<td class="nowDayrepulse">0</td>
+							<td class="nowDayrepulseRate">0</td>
+						</tr>-->
+					</tbody>
+				</table>
+			</div>
+			<div class="healing_time" style="margin-top: 1.3rem;">
+				<div style="position: relative">
+				<button class="allBeforeTime nowMonth" onclick="$('.monthDiv').show()" style="">本月 ></button>
+					<div class="chooseDiv monthDiv">
+						<div class="nameTop">请选择查询月份</div>
+						<div class="datePDiv">
+							<p class="dateP">1</p>
+							<p class="dateP">2</p>
+							<p class="dateP">3</p>
+							<p class="dateP">4</p>
+							<p class="dateP">5</p>
+							<p class="dateP">6</p>
+							<p class="dateP">7</p>
+							<p class="dateP">8</p>
+							<p class="dateP">9</p>
+							<p class="dateP">10</p>
+							<p class="dateP">11</p>
+							<p class="dateP">12</p>
+						</div>
+						<div style="clear: both"></div>
+						<div style="text-align: center;margin-bottom: .9rem;"><button class="sureBtn" onclick="Get.getChooseMonth()">确定</button></div>
+					</div>
+				</div>
+				<table cellspacing="0">
+					<thead>
+					<tr>
+						<th width="25%">业务员</th>
+						<th width="25%">提交</th>
+						<th width="25%">打回</th>
+						<th width="25%">打回率</th>
+					</tr>
+					</thead>
+					<tbody class="news_content_month">
+					<!--<tr>
+						<td class="nowMonthname">0</td>
+						<td class="nowMonthadvisorys">0</td>
+						<td class="nowMonthrepulse">0</td>
+						<td class="nowMonthrepulseRate">0</td>
+					</tr>-->
+					</tbody>
+				</table>
+			</div>
+		</div>
+	<div class="back" onclick=" window.location.href = 'salemanList.html'">返回上一页</div>
+</div>
+</body>
+<script src="js/salesmanManagerReadBack.js"></script>
+<script type="text/javascript" charset="utf-8">
+	$(document).ready(function () {
+		init();
+    })
+
+</script>
+
+</html>

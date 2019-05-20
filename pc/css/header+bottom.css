@@ -1,0 +1,322 @@
+/*头部*/
+body{
+    color: #888888;
+}
+.header_top{
+    position: relative;
+    z-index: 10;
+    width: 100%;
+    min-width: 1200px;
+    height: 61px;
+    line-height: 60px;
+    background: #f9f9f9;
+}
+.header_top2{
+    position: relative;
+    width: 100%;
+    min-width: 1200px;
+    height:106px;
+    line-height:102px;
+    background: white;
+    z-index: -1;
+}
+.wd1200{
+    position: relative;
+    margin: 0 auto;
+    width:1200px;
+}
+.guideUl{
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    top: 39px;
+    width: 125px;
+    left:51px;
+}
+.guideUl li:hover{
+    background-color: #e3e3e3;
+}
+.guideparent:hover ul{
+    display: block;
+}
+.loaderweimaImg {
+    width: 24px;
+    height: 24px;
+    float: right;
+    margin-top: 8px;
+    margin-right:31px;
+    display: inline-block;
+    background: url(../../images/tsc/claim.png) -49px -55px;
+}
+.nav_logo{
+/*    padding-top: 11px;*/
+    width: 395px;
+    height: 105px;
+    float: left;
+}
+.nav_1 li{
+    float: left;
+}
+.nav_choose{
+    float: left;
+    width: 805px;
+}
+.nav_choose li{
+    float: left;
+    width: 109px;
+    padding:0 3px 0 3px;
+    text-align: center;
+}
+.nav_choose a{
+    font-size: 17px;
+}
+.logo_top{
+   height: 16px;
+    line-height: 16px;
+    padding: 0 2px 0 1px;
+    text-align: center;
+    border-radius: 2px;
+/*    background-color: #c4c3c1;*/
+    margin: 12px 5px 0 5px;
+    color: white;
+}
+.register_panduan{
+    text-decoration: underline;
+}
+.header_top li a{
+    color: #4f4f4f;
+    font-size: 15px;
+    font-weight: 400;
+    padding-right: 13px;
+    padding-left: 21px;
+    border-left: 1px solid #dcdcdc;
+}
+.islogin{
+    position: absolute;
+    right: 0;
+    height: 100%;
+}
+.nav_l li{
+    float: left;
+}
+.ischoose a{
+    padding: 40px 0;
+}
+.loadHover{
+    position: absolute;
+    right: 173px;
+    top: 29px;
+    z-index: 9999999;
+    width: 232px;
+    height: 298px;
+    background-color: white;
+    display: none;
+    background: url("../../images/tsc/loaderweimaKuang.png");
+}
+.loadErweimaZi{
+    width: 233px;
+    text-align: center;
+    font-size: 14px;
+    height: 15px;
+    line-height: 15px;
+    color: #555
+}
+.softwareDownload{
+    position: relative;
+    padding-bottom: 20px;
+}
+.softwareDownload img{
+    position: absolute;
+    top: -19px;
+    left: 68px
+}
+.header{
+    width: 100%;
+    min-width: 1200px;
+    height: 80px;
+    border-bottom: 1px solid #d4d4d4;
+    background: #fff;
+}
+.header_log{
+    float: left;
+    margin-top: 14px;
+}
+#header_nav{
+    overflow: hidden;
+    position: relative;
+    height:80px;
+    line-height: 60px;
+    padding: 0 10px 0 20px;
+    /*width: 984px;*/
+    float: left;
+}
+#header_nav .o{
+    position: relative;
+    float: left;
+    padding: 10px 15px;
+    font-size: 1pc;
+    cursor: pointer;
+}
+.nav_1 li:nth-child(2){
+ /*   border-right: 1px solid white;
+    border-left: 1px solid white;*/
+}
+.kefu{
+    color: #999;
+    font-size: 14px;
+    border: 1px solid #999;
+    display: inline-block;
+    width: 89px;
+    line-height: 26px;
+    text-align: center;
+    height: 26px;
+    border-radius: 30px;
+}
+.kefu_img{
+    width: 18px;
+    height: 20px;
+    display: inline-block;
+    background: url(../../images/tsc/backimg.png) -141px -373px;
+}
+.kefu:hover{
+    cursor: pointer;
+     color: #ffb312;
+}
+.changjian_problem:hover{
+    cursor: pointer;
+    color: #ffb312;
+}
+.changjian_problem{
+    color: #999;
+    font-size: 14px;
+    border: 1px solid #999;
+    display: inline-block;
+    width: 79px;
+    text-align: center;
+    height: 26px;
+    margin-left: 15px;
+    line-height: 29px;
+    border-radius: 30px;
+}
+.header_r{
+    width: 250px;
+    height: 35px;
+    float: left;
+    border: 1.6px solid #d4d4d4;
+    margin-top:22.5px;
+}
+.header_r img{
+    height: 23px;
+    margin-top: -5px;
+    margin-left: 5px;
+}
+.header_r input[type="text"]{
+    width: 201px;
+    height: 33px;
+    margin-left: 9px;
+    border: none;
+    font-size: 16px;
+    font-family: 微软雅黑;
+}
+.sousearch{
+       background-color: #fb6d6d;
+       box-shadow: inset 0px 0px 8px #de4242;
+}
+/*button,input[type="button"]{
+    color: white;
+    border: none;
+    outline: none;
+    cursor: pointer;
+}*/
+.wd1200 button{
+    margin-top: 23px;
+    float: right;
+    font-size: 16px;
+    width: 76px;
+    height: 36.5px;
+}
+/*中部*/
+.place{
+    width: 1200px;
+    margin: 0 auto;
+    font-size: 14px;
+    color: #767676;
+    height: 45px;
+    line-height: 45px;
+}
+.task_all{
+    width: 1200px;
+    margin: 0 auto;
+    position: relative;
+}
+.leftTopShow{
+    position: absolute;
+    top: 60px;
+    left: 4.5px;
+    display: block !important;;
+}
+.My_nav{
+    position: relative;
+    float: left;
+    width:218px;
+    height:810px;
+    color: gray;
+    background:url("../../images/tsc/box_bg.png") no-repeat;
+    background-position: 0% 0%;
+    background-size: 100% 125%;
+}
+.box{
+    height:25px;
+    background-color:#24a9cc;
+    font-size: 19px;
+    margin-left: 67px;
+}
+.box img{
+    margin-left:6px;
+    margin-top: -2px;
+}
+.nav{
+    width:216px;
+    height: 72px;
+    line-height: 72px;
+    font-size: 14px;
+    margin-left:-42px;
+    text-align: left;
+    /*padding-top:1px;*/
+    cursor: pointer;
+    color: white;}
+.My_nav .p{
+    /*border-top:2px solid #dcdcdc;*/
+   /* padding:2px 0;*/
+    width:136px;
+    margin-left: 43px;
+}
+.p .active{
+/*    background: url('../../images/nav_bg.png') no-repeat;*/
+    background-color: #2798c4;
+    color: #fdd34f
+}
+/*底部*/
+/*底部*/
+.footer {
+    padding: 25px 0 25px 0;
+    z-index: 999;
+    position: relative;
+    background: url("../../images/tsc/bottom_img.png") no-repeat;
+    background-position: 0% 0%;
+    background-size: 100% 100%;
+    border-top: 1px solid #dcdcdc;
+}
+.wd1000{
+    width: 765pt;
+    height: 140px;
+    position: relative;
+    margin: 0 auto;
+}
+.wd1000bottom{
+    width: 890pt;
+    height: 58px;
+    line-height: 58px;
+    position: relative;
+    margin: 0 auto;
+}

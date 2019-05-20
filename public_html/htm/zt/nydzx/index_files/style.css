@@ -1,0 +1,513 @@
+* {
+	margin: 0px; padding: 0px; border: currentColor; border-image: none;
+}
+.R-swt-right li {
+	right: 0px;
+}
+body {
+	background: rgb(255, 255, 255); text-align: center; padding-bottom: 60px !important; font-family: "Î¢ÈíÑÅºÚ",sans-serif; font-size: 12px;
+}
+.wp {
+	margin: 0px auto; width: 1000px; text-align: left;
+}
+img {
+	border: 0px currentColor; border-image: none;
+}
+.img {
+	margin: 0px auto; clear: both; display: block;
+}
+.right {
+	float: right; display: block;
+}
+.left {
+	float: left; display: block;
+}
+.clear {
+	clear: both;
+}
+ul {
+	list-style: none;
+}
+li {
+	list-style: none;
+}
+a {
+	text-decoration: none;
+}
+.h_50 {
+	height: 50px; clear: both; display: block;
+}
+.h_20 {
+	height: 20px; clear: both; display: block;
+}
+.h_10 {
+	height: 10px; clear: both; display: block;
+}
+.clearFix {
+	clear: both; display: block;
+}
+.pubW {
+	width: 1080px; position: relative;
+}
+.pubH {
+	width: 1080px; position: relative;
+}
+.center {
+	margin: 0px auto;
+}
+.float_left {
+	float: left;
+}
+.float_right {
+	float: right;
+}
+.display-i {
+	display: inline;
+}
+.display-b {
+	display: block;
+}
+.relative {
+	position: relative;
+}
+.absolute {
+	position: absolute;
+}
+#noMarginR {
+	margin-right: 0px;
+}
+#header {
+	width: 100%; height: 66px; position: absolute; z-index: 5; opacity: 0.8; background-color: rgba(6, 6, 6, 0.8); -webkit-opacity: 0.8; -moz-opacity: 0.8;
+}
+#header h1 {
+	width: 220px; height: 42px; margin-top: 14px; margin-left: 50px; float: left; display: inline;
+}
+#header h1 a {
+	background: url("common_icon.png") no-repeat -5px -133px; width: 220px; height: 42px; display: block;
+}
+#header ul {
+	width: 700px; height: 36px; margin-top: 14px; margin-left: 15px; float: left; display: inline;
+}
+#header ul li {
+	height: 36px; color: rgb(255, 255, 255); line-height: 36px; font-size: 16px; margin-right: 15px; float: left; display: inline;
+}
+#header ul li span {
+	width: 36px; height: 36px; margin-right: 8px; float: left; display: inline;
+}
+#header ul li span.span1 {
+	background: url("common_icon.png") no-repeat -227px -130px;
+}
+#header ul li span.span2 {
+	background: url("common_icon.png") no-repeat -14px -186px; width: 240px; margin-top: 4px;
+}
+#header ul li span.span3 {
+	margin-left: -42px;
+}
+#header .fhsy {
+	background: url("zixun_icon.png") no-repeat -179px -310px; width: 77px; height: 22px; margin-top: 22px; float: left; display: table;
+}
+#header .fhsy:hover {
+	background: url("zixun_icon.png") no-repeat -179px -339px;
+}
+#footer {
+	background: url("footer_bg.jpg") repeat-x; width: 100%; height: 170px;
+}
+.footer_wrap {
+	width: 1190px; height: 170px;
+}
+.footerlogo {
+	background: url("common_icon.png") no-repeat -2px -4px; width: 91px; height: 108px; padding-top: 0px; margin-top: 18px; margin-left: 20px; float: left; display: inline;
+}
+.border {
+	height: 111px; margin-top: 11px; margin-left: 17px; border-left-color: rgb(56, 56, 56); border-left-width: 1px; border-left-style: dashed; float: left; display: inline;
+}
+.footer_secicon {
+	height: 100px; margin-top: 35px; float: left;
+}
+.footer_secicon li {
+	width: 85px; height: 100px; margin-right: 20px; margin-left: 25px; float: left; display: inline;
+}
+.footer_secicon li i {
+	width: 48px; height: 48px; margin-left: 18px; float: left; display: block; cursor: pointer;
+}
+.footer_secicon li i a {
+	width: 48px; height: 48px; display: block; cursor: pointer;
+}
+.footer_secicon li span {
+	width: 100%; height: 40px; text-align: center; color: rgb(167, 167, 167); line-height: 40px; font-size: 16px; float: left;
+}
+.footer_secicon1 {
+	background: url("common_icon.png") no-repeat -109px -11px;
+}
+.footer_secicon2 {
+	background: url("common_icon.png") no-repeat -173px -11px;
+}
+.footer_secicon3 {
+	background: url("common_icon.png") no-repeat -237px -11px;
+}
+.footer_secicon4 {
+	background: url("common_icon.png") no-repeat -301px -11px;
+}
+.footer_secicon5 {
+	background: url("common_icon.png") no-repeat -366px -11px;
+}
+.footer_secicon6 {
+	background: url("common_icon.png") no-repeat -430px -11px;
+}
+.footer_secicon7 {
+	background: url("common_icon.png") no-repeat -494px -11px;
+}
+.footer_secicon8 {
+	background: url("common_icon.png") no-repeat -558px -11px;
+}
+.footer_secicon li:hover .footer_secicon1 {
+	background: url("common_icon.png") no-repeat -109px -71px;
+}
+.footer_secicon li:hover .footer_secicon2 {
+	background: url("common_icon.png") no-repeat -173px -71px;
+}
+.footer_secicon li:hover .footer_secicon3 {
+	background: url("common_icon.png") no-repeat -237px -71px;
+}
+.footer_secicon li:hover .footer_secicon4 {
+	background: url("common_icon.png") no-repeat -301px -71px;
+}
+.footer_secicon li:hover .footer_secicon5 {
+	background: url("common_icon.png") no-repeat -366px -71px;
+}
+.footer_secicon li:hover .footer_secicon6 {
+	background: url("common_icon.png") no-repeat -430px -71px;
+}
+.footer_secicon li:hover .footer_secicon7 {
+	background: url("common_icon.png") no-repeat -494px -71px;
+}
+.footer_secicon li:hover .footer_secicon8 {
+	background: url("common_icon.png") no-repeat -558px -71px;
+}
+.footer_copyright {
+	width: 100%; height: 35px; text-align: center; color: rgb(167, 167, 167); line-height: 35px; font-size: 12px; float: left;
+}
+.banner {
+	background: url("banner_bg.jpg"); height: 686px; overflow: hidden;
+}
+.banner1 {
+	background: url("banner1.jpg") no-repeat top; height: 200px; display: block;
+}
+.banner2 {
+	background: url("banner2.jpg") no-repeat top; height: 200px; display: block;
+}
+.banner3 {
+	background: url("banner3.jpg") no-repeat top; height: 200px; display: block;
+}
+.banner4 {
+	background: url("banner4.jpg") no-repeat top; height: 86px; display: block;
+}
+.banner3 a {
+	width: 550px; height: 73px; display: block;
+}
+.banner3 .wp {
+	width: 1100px;
+}
+.banner3 .wp div {
+	padding-top: 85px; padding-left: 13px;
+}
+h2 {
+	background-position: top; text-align: center; color: rgb(31, 31, 31); line-height: 60px; padding-top: 131px; font-size: 48px; font-weight: normal; background-repeat: no-repeat;
+}
+.zx {
+	padding: 20px; text-align: center;
+}
+.zx a {
+	background: rgb(255, 33, 67); padding: 0px 100px; transition:300ms linear; top: 0px; height: 64px; color: rgb(255, 255, 255); line-height: 64px; font-size: 24px; font-weight: bolder; border-bottom-color: rgb(226, 27, 52); border-bottom-width: 6px; border-bottom-style: solid; display: inline-block; position: relative; -moz-transition: all 300ms linear; -o-transition: all 300ms linear; -webkit-transition: all 300ms linear;
+}
+.zx a:hover {
+	background: rgb(253, 66, 95); border-radius: 10px; top: 0px; border-bottom-color: rgb(255, 33, 67); border-bottom-width: 6px; border-bottom-style: solid;
+}
+.zx a span {
+	background: url("zx_point.png") no-repeat right 8px; height: 70px; line-height: 70px; padding-right: 70px; display: inline-block;
+}
+.co1 {
+	background: url("1_bg.png") no-repeat center 120px; height: 748px;
+}
+.co1 .wp {
+	height: 648px;
+}
+.co1 h2 {
+	padding-top: 118px; background-image: url("1_ti.png");
+}
+.co1 ul {
+	padding-top: 50px; padding-left: 0px;
+}
+.co1 ul li {
+	background: rgb(254, 155, 178); width: 235px; height: 280px; overflow: hidden; margin-left: 15px; float: left; position: relative;
+}
+.co1 ul li img.img_da {
+	width: 229px; height: 224px;
+}
+.co1 ul li.padd {
+	margin-top: 20px;
+}
+.co1 ul li font {
+	border: 3px solid rgb(254, 155, 178); border-image: none; width: 229px; height: 224px; overflow: hidden; display: block;
+}
+.co1 ul li span {
+	width: 229px; height: 50px; text-align: center; color: rgb(255, 255, 255); line-height: 50px; overflow: hidden; font-size: 24px; display: block;
+}
+.co1 ul li p {
+	background: rgb(254, 155, 178); border-radius: 1000px; transition:800ms; left: 0px; top: 280px; width: 100%; height: 100%; color: rgb(255, 255, 255); font-size: 18px; position: absolute; z-index: 100; -moz-transition: all 800ms; -o-transition: all 800ms; -webkit-transition: all 800ms;
+}
+.co1 ul li:hover p {
+	border-radius: 0px; left: 0px; top: 0px;
+}
+.co1 ul li p b {
+	padding: 20px 20px 20px 25px; line-height: 36px; font-weight: normal; display: block;
+}
+.co2 {
+	background: url("2_bg.jpg") repeat-y top; height: 648px;
+}
+.co2 .wp {
+	background: url("2-bg1.jpg") no-repeat top; height: 648px; position: relative;
+}
+.co2 .wp a {
+	left: 8px; width: 465px; height: 100px; bottom: 0px; display: block; position: absolute;
+}
+.co2 h2 {
+	color: rgb(255, 255, 255); padding-top: 131px; background-image: url("2_ti.png");
+}
+.co2 .div {
+	width: 500px; color: rgb(255, 255, 255); padding-top: 20px;
+}
+.co2_co {
+	padding: 10px 20px 0px; color: rgb(51, 51, 51); line-height: 30px; font-size: 18px; display: block;
+}
+.co2_co p {
+	color: rgb(255, 255, 255); text-indent: 2em; font-size: 18px;
+}
+.co2_co p.big {
+	line-height: 40px; font-size: 24px;
+}
+.co3 h2 {
+	padding-top: 131px; background-image: url("3_ti.png");
+}
+.co3 .wp {
+	background: url("3-bg.jpg") no-repeat 1px 0px; width: 1060px; height: 558px; position: relative;
+}
+.co3_co {
+	padding: 30px 65px 260px 480px; color: rgb(51, 51, 51); line-height: 30px; font-size: 18px; display: block;
+}
+.co3 .wp .zx {
+	padding-left: 420px;
+}
+.co3 .zx {
+	padding-top: 20px;
+}
+.co3 .zx a {
+	padding: 0px; width: 558px !important;
+}
+.co4 h2 {
+	padding-top: 108px; background-image: url("4_ti.png");
+}
+.co4 {
+	background: url("4-bg.jpg") no-repeat center 120px rgb(251, 247, 239); height: 680px; padding-top: 20px; position: relative;
+}
+.co4_co {
+	padding: 80px 180px 50px 230px; color: rgb(51, 51, 51); line-height: 40px; font-size: 24px; display: block;
+}
+.co5 h2 {
+	padding-top: 131px; background-image: url("5_ti.jpg");
+}
+.co5 .wp {
+	background: url("5-1.jpg") no-repeat 1px 0px; height: 565px; position: relative;
+}
+.co5 li {
+	background: rgb(246, 187, 61); width: 33%; height: 118px; overflow: hidden; margin-right: 0px; float: left;
+}
+.co5 li.list1 {
+	background: rgb(121, 200, 255);
+}
+.co5 li.list2 {
+	background: rgb(255, 134, 155);
+}
+.co5 li p {
+	padding: 20px; text-align: center; color: rgb(255, 255, 255); line-height: 36px; font-size: 24px;
+}
+.co5 .zx {
+	padding-top: 320px;
+}
+.co56 {
+	background: url("57.png"); height: 27px; display: block;
+}
+.co6 h2 {
+	padding-top: 131px; background-image: url("6_ti.jpg");
+}
+.co6 li {
+	background: rgb(240, 240, 240); width: 322px; height: 322px; text-align: center; color: rgb(51, 51, 51); overflow: hidden; margin-right: 18px; float: left;
+}
+.co6 li span {
+	font-size: 18px;
+}
+.co6 li p {
+	font-size: 14px;
+}
+.co6 li img {
+	margin-bottom: 20px;
+}
+.co6 li.last {
+	margin: 0px; float: right;
+}
+.co6 li.ser {
+	margin: 0px;
+}
+.co8 h2 {
+	padding-top: 131px; background-image: url("9_ti.jpg");
+}
+.co8 .wp {
+	background: url("8-bg.jpg") no-repeat 1px 0px; height: 435px; position: relative;
+}
+.co8 li {
+	left: 0px; top: 0px; width: 170px; height: 170px; position: absolute;
+}
+.co8 li span {
+	text-align: center; color: rgb(255, 33, 67); font-size: 30px; display: block;
+}
+.co8 li p {
+	line-height: 30px; font-size: 18px;
+}
+.co8 li.list1 {
+	left: 25px; top: 30px;
+}
+.co8 li.list2 {
+	left: 810px; top: 30px;
+}
+.co8 li.list3 {
+	left: 25px; top: 260px;
+}
+.co8 li.list4 {
+	left: 810px; top: 260px;
+}
+.co8 a {
+	left: 230px; width: 540px; height: 75px; bottom: 0px; position: absolute;
+}
+.co9 h2 {
+	padding-top: 131px; background-image: url("9_ti.jpg");
+}
+.co9 .wp {
+	background: url("9-1.jpg") no-repeat 0px 0px; height: 329px;
+}
+.co9 li {
+	width: 248px; height: 164px; overflow: hidden; margin-right: 2px; float: left;
+}
+.co9 li a {
+	transition:300ms linear; width: 250px; height: 165px; text-align: center; color: rgb(51, 51, 51); font-size: 18px; display: block; -moz-transition: all 300ms linear; -o-transition: all 300ms linear; -webkit-transition: all 300ms linear;
+}
+.co9 li a span {
+	transition:300ms linear; padding-top: 130px; display: block; -moz-transition: all 300ms linear; -o-transition: all 300ms; -webkit-transition: all 300ms;
+}
+.co9 li a.bai {
+	color: rgb(255, 255, 255);
+}
+.co9 li a:hover {
+	background: rgb(255, 33, 67); color: rgb(255, 255, 255);
+}
+.co9 li a:hover span {
+	color: rgb(255, 255, 255); padding-top: 60px;
+}
+.co9 li a:hover span::before {
+	content: "+";
+}
+.co9 li a:hover span::after {
+	content: "+";
+}
+.co9 li.last {
+	margin-right: 0px; margin-left: 1px;
+}
+.co9 li a:hover span.last::after {
+	content: "¸ü¶à×ÉÑ¯×ÉÑ¯";
+}
+#doctorfoucs {
+	background: url("docbg.jpg") no-repeat center; width: 100%; height: 720px; color: rgb(0, 0, 0); line-height: 1.7; overflow: hidden; font-size: 18px;
+}
+#doctorfoucs h2 {
+	margin: 0px; padding: 0px; width: 100%; height: 85px; text-align: center; line-height: 85px; font-size: 42px;
+}
+#doctorfoucs .wrapper {
+	margin: 0px auto; width: 1180px; height: 635px; position: relative;
+}
+#doctornav {
+	left: 0px; width: 100%; height: 140px; text-align: center; bottom: 5px; position: absolute; z-index: 11;
+}
+#doctornav a {
+	background: rgb(255, 255, 255); margin: 10px 5px 0px; border-radius: 50%; border: 2px solid rgb(255, 255, 255); transition:300ms linear; border-image: none; width: 125px; height: 125px; overflow: hidden; display: inline-block; -o-transition: all 300ms linear; -moz-transiton: all 300ms linear; -webket-transition: all 300ms linear;
+}
+#doctornav .navsamll {
+	width: 100%; overflow: hidden; margin-top: 15px;
+}
+#doctornav .navsamll a {
+	margin: 10px 0px 0px; width: 110px; height: 110px;
+}
+#doctornav a img {
+	width: 100%;
+}
+#doctornav a:hover {
+	border: 2px solid rgb(248, 72, 126); border-image: none; overflow: hidden;
+}
+#doctornav a.on {
+	border: 2px solid rgb(248, 72, 126); border-image: none; overflow: hidden;
+}
+.dchangebox {
+	width: 100%; height: 635px; overflow: hidden; position: relative;
+}
+.dchangebox .dchange {
+	left: 0px; top: 0px; position: absolute;
+}
+.dcontent {
+	width: 1180px; height: 635px; float: left;
+}
+.dcontent.zjd {
+	background: url("hb.png") no-repeat 115px bottom;
+}
+.dcontent.tt {
+	background: url("gxl.png") no-repeat 115px bottom;
+}
+.dcontent .docs {
+	width: 550px; height: 635px; float: right; position: relative;
+}
+.dcontent .docs h3 {
+	text-align: left; line-height: 1; overflow: hidden; font-size: 48px; font-weight: bold; margin-top: 50px; margin-bottom: 0px;
+}
+.dcontent .docs h3 span {
+	font-size: 26px; font-weight: normal; margin-left: 30px;
+}
+.dcontent .docs p {
+	margin-top: 20px;
+}
+.dcontent .docs a {
+	border-radius: 28px; transition:300ms linear; left: 55px; width: 212px; height: 58px; text-align: center; bottom: 155px; color: rgb(255, 255, 255); line-height: 58px; font-size: 26px; text-decoration: none; display: block; position: absolute; background-color: rgb(96, 95, 95); -o-transition: all 300ms linear; -moz-transiton: all 300ms linear; -webket-transition: all 300ms linear;
+}
+.dcontent .docs a.yuyue {
+	background: rgb(248, 72, 126); left: 300px;
+}
+.dcontent .docs a:hover {
+	background: rgb(235, 163, 19);
+}
+.sm_bottom {
+	width: 100%; bottom: 0px; border-top-color: rgb(255, 255, 255); border-top-width: 1px; border-top-style: solid; display: none; position: fixed; z-index: 1000; _position: absolute; _bottom: 0px;
+}
+.sm_nav .wp {
+	width: 1100px;
+}
+.sm_nav {
+	background: rgb(255, 33, 67); height: 60px; color: rgb(255, 255, 255); font-size: 18px;
+}
+.sm_nav img {
+	padding-top: 0px; padding-right: 50px; float: left; display: inline-block;
+}
+.sm_nav a {
+	padding: 0px 10px; color: rgb(255, 255, 255); line-height: 60px;
+}
+.rotate {
+	z-index: 9;
+}
+.rotate:hover {
+	transition:0.5s ease-in-out; z-index: 10; transform: scale(1.1); -o-transition: all 0.5s ease-in-out 0s; -webkit-transition: all 0.5s ease-in-out 0s; -moz-transform: all 0.5s ease-in-out 0s; -webkit-transform: scale(1.1); -o-transform: rotate(180deg)scale(1.1);
+}

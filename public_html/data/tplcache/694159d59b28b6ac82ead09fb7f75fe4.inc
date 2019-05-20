@@ -1,0 +1,1 @@
+<a target="_blank" class="bt" href="[field:typelink /]">[field:typename /]</a>

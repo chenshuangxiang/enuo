@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+    <link rel="stylesheet" href="css/summernote.css" />
+    <link rel="stylesheet" href="css/summernote-bs3.css" />
+    <link rel="stylesheet" href="css/font-awesome.min.css" />
+    <title>Title</title>
+</head>
+<style>
+    .note-editor {
+        width: 100%;
+        margin-right: 69px;
+        height: auto!important;
+        border: 1px solid #cccccc;
+        /*float: right;*/
+    }
+    .publish{
+        width: 170px;
+        height: 46px;
+        line-height: 31px;
+        font-size: 14px;
+        margin-left: 330px;
+        border: none;
+        border-radius: 5px;
+        margin-top: 50px;
+        margin-bottom: 35px;
+        color: white;
+        background-color: #00afa1;
+        letter-spacing: 2px;
+    }
+</style>
+<body>
+    <div class="content_size">
+        <div id="summernote" class="summernote"></div>
+    </div>
+
+</body>
+<script type="text/javascript" src="js/jquery-1.11.3.js" ></script>
+<script type="text/javascript" src="js/summernote.min.js"></script>
+<script type="text/javascript" src="js/summernote-zh-CN.js"></script>
+<script type="text/javascript" src="js/bootstrap.min.js"></script>
+<script>
+    $(document).ready(function() {
+        //$(".note-editable").css("height",$(window).height());
+        /**
+         *  加载编辑框
+         */
+        $('#summernote').summernote({
+            height: $(window).height(),
+          //  width: $(window).width(),
+            lang: 'zh-CN',
+            maxHeight: null,
+            minHeight: null,
+            focus: true,
+            toolbar: [
+                ['color', ['color']],
+                ['para', ['paragraph']],
+                ['style', ['bold', 'italic', 'underline']],
+                ['fontsize', ['fontsize']],
+
+              //  ['height', ['height']],
+                ['insert', ['link', 'picture']]
+            ],
+
+            onImageUpload: function (files, editor, $editable) {
+                console.log('onImageUpload:' + files[0].name);
+                if (!files[0].name) {
+                    files[0].name = 'qqscreenshot.png';
+                }
+                console.log(files[0]);
+                sendFile(files[0], editor, $editable);
+            },
+        });
+
+        function sendFile(file, editor, $editable) {
+            var formData = new FormData();
+            formData.append("file", file);
+            console.log(file)
+            if(file == undefined){
+                return
+            }
+
+            $.ajax({
+                type: 'POST',
+                data: formData,
+                url: url + '/common/file/upload', //图片上传出来的url，返回的是图片上传后的路径，http格式
+                cache: false,
+                contentType: false,
+                processData: false,
+                dataType: "json",
+                success: function (res) {//data是返回的hash,key之类的值，key是定义的文件名
+                    if (res.success == true) {
+                        editor.insertImage($editable, res.data);
+                    } else {
+                        alert(res.data);
+                    }
+                },
+                error: function () {
+                    alert("上传失败");
+                }
+            });
+        }
+
+        $('.publish').click(function () {
+            Feed.publish();
+        });
+        /**
+         *  点击发表
+         */
+        var Feed = {
+            publish: function () {   //发表文章
+                var contentinput = $('.summernote').code().replace('&nbsp;', '');//$('.note-editable').html()
+
+                data = new Object();
+                data.content = contentinput;
+
+                var content = contentinput;
+                if(content==""){
+                    alert("文章不能为空");
+                }
+                var data = {
+                    "content":content
+                }
+                //调用ajax
+                $.post_ajax("/admin/admin/add",data,function(data){
+                    console.log(data);
+                    if(data.success==true){
+                        alert(data.data);
+                    }else{
+                        alert(data.data);
+                    }
+                });
+            }
+        }
+
+
+
+    });
+</script>
+</html>

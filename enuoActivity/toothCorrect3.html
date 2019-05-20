@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="renderer" content="webkit">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+<link rel="stylesheet" href="css/base.css" />
+<link rel="stylesheet" href="css/util.css" />
+<script src="js/viewport.js"></script>
+<script src="js/jquery-1.11.3.js"></script>
+<title>义诊日报名</title>
+<style>
+* {
+	margin: 0px;
+	padding: 0px;
+}
+
+body {
+	width: 7.5rem;
+	/*height: 13.3rem;*/
+	background-color: #00ca72;
+	/*background: -webkit-linear-gradient(left, #00beb5, #00b7d7);*/
+	/* Safari 5.1 - 6.0 */
+	/*background: -o-linear-gradient(right, #00beb5, #00b7d7);
+	!* Opera 11.1 - 12.0 *!
+	background: -moz-linear-gradient(right, #00beb5, #00b7d7);
+	!* Firefox 3.6 - 15 *!
+	background: linear-gradient(to right, #00beb5, #00b7d7);*/
+	/* 标准的语法 */
+	/*position: relative;*/
+}
+.logo{
+	width: 6rem;height: .76rem;
+	/*border: 1px solid red;*/
+	font-family: HYk2gj;
+    font-size: .78rem;
+    line-height: .78rem;
+    letter-spacing: 3.1px;
+    color: #ffffff;
+    margin: 0 auto;
+    margin-top: 1.5rem;
+    /*text-shadow: 2px 3px 2px white;*/
+    font-size: bold;
+    text-align: center;
+}
+.content {
+	width: 80%;
+	position: relative;
+	top: 1.5rem;
+	left: 10%;
+	font-size: 14px;
+}
+
+.content p {
+	width: 100%;
+	height: 40px;
+	background-color: white;
+	margin-bottom: .5rem;
+	border-radius: 5px;
+	box-shadow: -4px 0px 38px 0 rgba(174, 18, 62, 0.2);
+}
+
+.content p span {
+	height: 40px;
+	width: 30%;
+	/*color: blue;*/
+	display: inline-block;
+	line-height: 40px;
+	text-align: center;
+}
+
+.content p input {
+	height: 30px;
+	width: 60%;
+	border: 0px;
+	display: inline-block;
+	line-height: 40px;
+	outline: none;
+	font-size: 16px;
+}
+
+.content p select {
+	height: 30px;
+	border: 0px;
+	line-height: 30px;
+	width: 50%;
+	/*font-size: 16px;*/
+	background-color: white;
+	/*color: ;*/
+	appearance: none;
+	-moz-appearance: none;
+	-webkit-appearance: none;
+}
+
+select::-ms-expand {
+	display: none;
+}
+
+
+/*三角形*/
+
+.tria {
+	display: inline-block;
+	width: 0;
+	height: 0px;
+	position: absolute;
+	right: 15px;
+	top: 17px;
+	border-left: 8px solid transparent;
+	border-right: 8px solid transparent;
+	border-top: 8px solid black;
+}
+
+.btn {
+	margin-top: 50px;
+	/*filter:alpha(opacity:30); 
+			opacity:0;  -moz-opacity:0;
+			-khtml-opacity: 0;*/
+}
+
+.btn .sub {
+	width: 100%;
+	background-color: white;
+	height: 40px;
+	color: #00ca72;
+	font-size: 16px;
+	border-radius: 5px;
+}
+
+h1 {
+	margin: 40px 0 10px 0;
+	text-align: center;
+	color: blue;
+	height: .76rem;
+	line-height: .76rem;
+	letter-spacing: 2px;
+	font-size: .5rem;
+}
+
+h2 {
+	text-align: center;
+	color: blue;
+}
+.problem{
+	border: none;
+}
+.consult {
+	width: 200px;
+	height: 30px;
+	line-height: 30px;
+	/*border: 1px solid red;*/
+	position: relative;
+	top: 2rem;
+	left: 55%;
+	margin-left: -100px;
+	color: white;
+}
+
+.consult img {
+	width: 20px;
+	position: relative;
+	top: 5px;
+}</style>
+</head>
+<body>
+	<div class="logo">
+			<!--<img src="img/reinforce_tooth.jpg" />-->
+		义诊日报名
+	</div>
+	<!--<h1>e诺健牙日</h1>-->
+	<!--<h2>携手各大口腔医院，豪情特惠！</h2>-->
+	<div class="content" style="padding-bottom: 1rem;">
+		
+		<form id="form1" style="background-color: transparent;">
+			<p class="parent">
+				<span>姓名：</span>
+				<input type="text" class="username" placeholder="请输入您的姓名"/>
+			</p>
+			<p class="parent">
+				<span>手机：</span>
+				<input type="number" class="phone" placeholder="请输入您的手机号"/>
+			</p>
+			<!--<p class="parent">
+				<span>项目：</span>
+				<select class="attendProject">
+					<option>请选择</option>
+					<option>牙齿矫正</option>
+					<option>种植牙</option>
+					<option>其他</option>
+				</select>
+			</p>-->
+			<p class="parent">
+				<span>问题：</span>
+				<input type="text" class="problem" placeholder="请输入您想要问的问题"/>
+			</p>
+			<p class="btn" style="margin-top: 20%;border-radius: 0px;background-color: transparent;">
+				<input class="sub" type="button" value="报 名"/>
+			</p>
+		</form>
+	</div>
+	<div class="consult">
+		<img src="img/call.png"/>&nbsp;<span>咨询热线:&nbsp;</span><span style="font-size: 18px;">95105120</span>
+	</div>
+<script>var select_val;
+var ill;
+$(function() {
+
+	$(".sub").click(function() {
+		var username = $(".username").val();
+		var phone = $(".phone").val();
+		var problem = $('.problem').val();
+		var date = new Date().Format('yyyy-MM-dd');
+		var data = {
+			"name": username,
+			"telephone": phone,
+			//			"illId":select_val,
+			"attendProject": problem + date
+		}
+		console.log(data);
+		if(username == "") {
+			alert("姓名不能为空");
+			return false;
+		}
+		if(phone == "") {
+			alert("手机号不能为空");
+			return false;
+		}
+
+//		if(ill == "" || ill == undefined) {
+//			alert("选择项目不能为空");
+//			return false;
+//		}
+		var url = "http://47.95.254.125:8080/enuoact/doubleElevenAdd";
+		//		var url= "http://192.168.30.120:8080/disActivity/enroll";
+		$.ajaxSetup({
+			headers: {
+				'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'
+			}
+		});
+		$.post(url, data, function(data) {
+			console.log(data);
+			if(data.code == 0) {
+				alert("报名成功");
+				//$('#form1')[0].reset(); //重置表单
+			} else {
+				alert(data.msg);
+			}
+		});
+
+	});
+});
+Date.prototype.Format = function (fmt) { //author: meizz
+    // jshint ignore:start
+    var o = {
+        "M+": this.getMonth() + 1,                 //月份
+        "d+": this.getDate(),                    //日
+        "h+": this.getHours(),                   //小时
+        "m+": this.getMinutes(),                 //分
+        "s+": this.getSeconds(),                 //秒
+        "q+": Math.floor((this.getMonth() + 3) / 3), //季度
+        "S": this.getMilliseconds()             //毫秒
+    };
+    if (/(y+)/.test(fmt))
+        fmt = fmt.replace(RegExp.$1, (this.getFullYear() + "").substr(4 - RegExp.$1.length));
+    for (var k in o)
+        if (new RegExp("(" + k + ")").test(fmt))
+            fmt = fmt.replace(RegExp.$1, (RegExp.$1.length == 1) ? (o[k]) : (("00" + o[k]).substr(("" + o[k]).length)));
+    return fmt;
+    // jshint ignore:end
+};
+
+</script>
+</body>
+</html>

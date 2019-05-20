@@ -1,0 +1,546 @@
+* {
+	margin: 0px; padding: 0px; border: 0px currentColor; border-image: none;
+}
+body {
+	font-family: "Microsoft YaHei","SimSun","ËÎÌו"; font-size: 0.87em; background-color: rgb(0, 0, 0);
+}
+.clearfix::before {
+	display: table; content: "";
+}
+.clearfix::after {
+	display: table; content: "";
+}
+.clearfix::after {
+	overflow: hidden; clear: both;
+}
+.clearfix {
+	-ms-zoom: 1;
+}
+.blank {
+	width: 100%; height: 10px; overflow: hidden; clear: both;
+}
+.blank25 {
+	width: 100%; height: 25px; overflow: hidden; clear: both;
+}
+.blank30 {
+	width: 100%; height: 30px; overflow: hidden; clear: both;
+}
+.red {
+	color: rgb(255, 0, 0); text-decoration: none;
+}
+.line {
+	border-bottom-color: rgb(176, 176, 176); border-bottom-width: 1px; border-bottom-style: solid;
+}
+.w1000 {
+	width: 1000px;
+}
+.pubW {
+	width: 1034px;
+}
+.pubW1 {
+	width: 980px;
+}
+.center {
+	margin: 0px auto;
+}
+.clr {
+	margin: 0px auto; height: 0px; overflow: hidden; clear: both;
+}
+.fl {
+	float: left; display: inline;
+}
+.fr {
+	float: right; display: inline;
+}
+.float_left {
+	float: left;
+}
+.float_right {
+	float: right;
+}
+.display-i {
+	display: inline;
+}
+.display-b {
+	display: block;
+}
+.relative {
+	position: relative;
+}
+.absolute {
+	position: absolute;
+}
+#header {
+	width: 100%; height: 66px; position: absolute; z-index: 5; opacity: 0.8; background-color: rgba(6, 6, 6, 0.8); -webkit-opacity: 0.8; -moz-opacity: 0.8; -khtml-opacity: 0.8;
+}
+#header h1 {
+	width: 220px; height: 36px; margin-top: 14px; margin-left: 50px; float: left; display: inline;
+}
+#header h1 a {
+	background: url("common_icon.png") no-repeat -5px -133px; width: 220px; height: 40px; display: block;
+}
+#header ul {
+	width: 600px; height: 36px; margin-top: 14px; margin-left: 15px; float: left; display: inline;
+}
+#header ul li {
+	height: 36px; color: rgb(255, 255, 255); line-height: 36px; font-size: 16px; margin-right: 15px; float: left; display: inline;
+}
+#header ul li span {
+	width: 36px; height: 36px; margin-right: 8px; float: left; display: inline;
+}
+#header ul li span.span1 {
+	background: url("common_icon.png") no-repeat -227px -130px;
+}
+#header ul li span.span2 {
+	background: url("common_icon.png") no-repeat -14px -186px; width: 240px; margin-top: 4px;
+}
+#header ul li span.span3 {
+	margin-left: -42px;
+}
+#header .fhsy {
+	background: url("zixun_icon.png") no-repeat -179px -310px; width: 77px; height: 22px; margin-top: 22px; float: left; display: table;
+}
+#header .fhsy:hover {
+	background: url("zixun_icon.png") no-repeat -179px -339px;
+}
+#sections h1 {
+	font-style: normal; font-weight: normal;
+}
+em {
+	font-style: normal; font-weight: normal;
+}
+#sections p {
+	line-height: 2em;
+}
+#sections img {
+	display: block;
+}
+#sections li {
+	list-style: none;
+}
+#sections .lf {
+	float: left;
+}
+#sections .rf {
+	float: right;
+}
+#sections a {
+	color: rgb(255, 255, 255); text-decoration: none; display: block;
+}
+#sectionsNav {
+	width: 100%; background-color: rgb(78, 60, 48);
+}
+#sections .navfloat {
+	top: 0px; position: fixed; z-index: 1000;
+}
+#sectionsNav .secNav {
+	margin: 0px auto; width: 1020px; height: 50px;
+}
+#sectionsNav .secNav a {
+	font-size: 20px;
+}
+#sectionsNav .current a {
+	background: rgb(147, 117, 67); color: rgb(237, 237, 237);
+}
+#sectionsNav .secNav li {
+	width: 170px; height: 50px; text-align: center; line-height: 50px; float: left;
+}
+#sections {
+	margin: 0px auto; width: 100%;
+}
+#secbanner {
+	width: 100%; position: relative; min-width: 1210px;
+}
+#secbanner img {
+	width: 100%;
+}
+#section01 {
+	width: 100%; max-width: 1920px;
+}
+#section01 .sec01t > img {
+	width: 100%;
+}
+#section01 .sec01f {
+	padding: 30px 0px; height: 155px; background-color: rgb(0, 0, 0);
+}
+#section01 .sec01f ul {
+	margin: 0px auto; width: 1080px;
+}
+#section01 .sec01f ul li {
+	width: 145px; text-align: center; color: rgb(172, 143, 102); font-size: 18px; font-weight: 500; float: left;
+}
+#section01 .sec01f ul li + li {
+	margin-left: 85px;
+}
+#section01 .sec01f li img {
+	margin-bottom: 10px;
+}
+#section01 .sec01s {
+	background: url("sec01-7.jpg") no-repeat center; width: 100%; height: 1094px;
+}
+#section01 .sec01s .con {
+	margin: 0px auto; width: 1105px; height: 1000px; position: relative;
+}
+#section01 .sec01s .con > div {
+	top: 200px; width: 470px; position: absolute;
+}
+#section01 .sec01s .con .conf {
+	left: 40px; font-size: 48px;
+}
+#section01 .sec01s .con > div p {
+	line-height: 1.8em; font-size: 20px; margin-top: 20px;
+}
+#section01 .sec01s .con > div span {
+	text-align: center; font-size: 48px; display: block;
+}
+#section01 .sec01s .con .cons {
+	left: 620px;
+}
+#section01 .sec01s .con ul {
+	width: 355px; right: 80px; bottom: -30px; position: absolute;
+}
+#section01 .sec01s .con ul li {
+	width: 156px; float: left; position: relative;
+}
+#section01 .sec01s .con li em {
+	top: 0px; width: 156px; height: 171px; text-align: center; color: rgb(255, 255, 255); line-height: 171px; font-size: 24px; display: none; position: absolute; background-color: rgb(87, 87, 87);
+}
+#section02 {
+	width: 100%; max-width: 1920px; background-color: rgb(0, 0, 0);
+}
+#section02 .sec02t > img {
+	width: 100%;
+}
+#section02 .sec02 {
+	margin: 0px auto; width: 1200px; height: 830px;
+}
+#section02 .sec02 > p {
+	padding: 30px 14px; margin-top: 20px; border-top-color: rgb(255, 255, 255); border-bottom-color: rgb(255, 255, 255); border-top-width: 1px; border-bottom-width: 1px; border-top-style: dashed; border-bottom-style: dashed;
+}
+#section02 .sec02 > span {
+	margin: 50px 0px; text-align: center; color: rgb(103, 73, 21); font-size: 48px; display: block;
+}
+#section02 .sec02 dl {
+	width: 221px; float: left;
+}
+#section02 .sec02 dl + dl {
+	margin-left: 20px;
+}
+#section02 .sec02 dd span {
+	margin: 20px auto; padding: 0px 10px; width: 85px; height: 35px; color: rgb(255, 231, 209); line-height: 35px; font-size: 24px; font-weight: bold; display: block; background-color: rgb(88, 70, 42);
+}
+#section02 .sec02 dd p {
+	padding: 0px 20px; color: rgb(255, 255, 255); line-height: 26px; font-size: 16px;
+}
+#section03 {
+	background: url("sec03-1.jpg") no-repeat center; width: 100%; height: 548px; color: rgb(172, 143, 102); clear: both; max-width: 1920px;
+}
+#section03 .sec03 {
+	margin: 0px auto; width: 1200px; padding-top: 100px;
+}
+#section03 .sec03 h1 {
+	text-align: center; font-size: 36px;
+}
+#section03 .sec03 p {
+	margin: 65px 0px 80px 160px; width: 915px; text-align: center; line-height: 1.5em; font-size: 20px;
+}
+#section03 .sec03 div {
+	margin: 0px auto; padding: 10px 15px; border: 2px solid currentColor; border-image: none; width: 1155px; text-align: center; font-size: 24px;
+}
+#section04 {
+	background: url("sec04-1.jpg") no-repeat center; width: 100%; height: 886px; max-width: 1920px;
+}
+#section04 .sec04 {
+	margin: 0px auto; width: 1008px; height: 669px; position: relative;
+}
+#section04 .sec04 ul {
+	top: 60px; position: absolute;
+}
+#section04 .sec04 li {
+	width: 329px; height: 381px; margin-right: 10px; margin-bottom: 10px; float: left; background-color: rgb(255, 255, 255);
+}
+#section04 .sec04 li.mr0 {
+	margin-right: 0px;
+}
+#section04 .sec04 li p {
+	text-align: center; padding-top: 12px; font-size: 24px;
+}
+#section04 .sec04 li span {
+	font-size: 18px; display: block;
+}
+#section04 .sec04 li span.sp1 {
+	color: rgb(239, 146, 0); font-family: "Impact"; font-size: 40px;
+}
+#section04 .sec04 li em {
+	color: rgb(239, 146, 0); font-size: 29px;
+}
+#section05 {
+	width: 100%; max-width: 1920px;
+}
+#section05 .sec05f > img {
+	width: 100%;
+}
+#section05 .sec05 {
+	height: 622px; clear: both; background-color: rgb(0, 0, 0);
+}
+#section05 .show {
+	margin: 0px auto; width: 1210px; height: 622px; position: relative; min-width: 1210px;
+}
+#section05 .main {
+	margin: 0px auto; width: 1210px; height: 622px; overflow: hidden;
+}
+#section05 .show span {
+	top: 240px; width: 45px; display: block; position: absolute; z-index: 10; cursor: pointer;
+}
+#section05 .show .lbtn {
+	left: 0px;
+}
+#section05 .show .rbtn {
+	right: 0px;
+}
+#section05 .imgbox {
+	width: 1210px; overflow: hidden; position: relative;
+}
+#section05 .imgbox ul {
+	margin: 0px; padding: 0px; width: 2500px; height: 622px; overflow: hidden;
+}
+#section05 .imgbox li {
+	height: 622px; text-align: center; float: left; position: relative;
+}
+#section05 .imgbox li a {
+	padding: 0px 20px; left: 667px; bottom: 64px; color: rgb(255, 255, 255); font-size: 26px; position: absolute; background-color: rgb(147, 115, 67);
+}
+#section05 .imgbox li img {
+	width: 1210px; height: 622px;
+}
+#section05 .btn {
+	left: 60px; bottom: 60px; position: absolute; z-index: 10;
+}
+#section06 {
+	width: 100%; max-width: 1920px;
+}
+#section06 .sec06 .sec06f {
+	height: 390px; padding-top: 70px; background-color: rgb(31, 31, 31);
+}
+#section06 .sec06 .sec06f .sec06fcon {
+	margin: 0px auto; width: 1180px;
+}
+#section06 .sec06f .sec06fcon img {
+	margin: 0px auto; width: 670px;
+}
+#section06 .sec06 .sec06s {
+	height: 710px; background-color: rgb(13, 13, 13);
+}
+#section06 .sec06 .sec06s .sec06scon {
+	margin: 0px auto; width: 1200px; padding-top: 20px; position: relative;
+}
+#section06 .sec06f .sec06fcon .sec06nav {
+	margin: 45px auto 0px; width: 1170px;
+}
+#section06 .sec06f .sec06nav li {
+	border: 1px solid rgb(60, 45, 24); border-image: none; width: 548px; height: 88px; text-align: center; color: rgb(140, 109, 64); line-height: 1em; padding-top: 10px; font-size: 41px; float: left; cursor: default; background-color: transparent;
+}
+#section06 .sec06f .sec06nav li + li {
+	margin-left: 30px;
+}
+#section06 .sec06f .sec06nav li span {
+	font-size: 31px;
+}
+#section06 .sec06f .sec06nav .licurr {
+	border: 0px currentColor; border-image: none; color: rgb(255, 255, 255); background-color: rgb(140, 109, 64);
+}
+#section06 .sec06 a {
+	padding: 5px 10px; border: 1px solid rgb(172, 143, 102); border-image: none; left: 440px; top: 540px; color: rgb(172, 143, 102); font-size: 48px; position: absolute;
+}
+#section07 {
+	width: 100%; max-width: 1920px;
+}
+#section07 .sec07f img {
+	width: 100%;
+}
+#section07 .sec07 {
+	background: url("sec07-1.jpg") no-repeat top; height: 128px; padding-top: 660px;
+}
+#section07 .sec07 a {
+	margin: 0px auto; padding: 5px 10px; border: 1px solid rgb(172, 143, 102); border-image: none; width: 390px; text-align: center; color: rgb(172, 143, 102); font-size: 48px;
+}
+#section08 {
+	width: 100%; max-width: 1920px;
+}
+#section08 .sec08f img {
+	width: 100%;
+}
+#section08 .sec08 {
+	height: 360px; padding-top: 35px; background-color: rgb(0, 0, 0);
+}
+#section08 .sec08 .con {
+	margin: 50px auto; width: 310px; text-align: center;
+}
+#section08 .imglslide {
+	margin: 0px auto; width: 100%; height: 170px; overflow: hidden;
+}
+#section08 .imglslide li {
+	float: left;
+}
+#section08 .imglslide li + li {
+	margin-left: 30px;
+}
+#section08 .imglslide li img {
+	width: 286px;
+}
+#section08 .sec08 a {
+	padding: 5px 10px; border: 1px solid rgb(172, 143, 102); border-image: none; color: rgb(172, 143, 102); font-size: 48px;
+}
+#section09 {
+	width: 100%; clear: both; max-width: 1920px; background-color: rgb(255, 255, 255);
+}
+#section09 .con {
+	height: 230px; background-color: rgb(78, 60, 47);
+}
+#section09 .title {
+	margin: 0px auto; padding: 35px 0px; width: 900px;
+}
+#section09 .title h1 {
+	color: rgb(255, 255, 255); display: inline-block;
+}
+#section09 .title img {
+	margin-bottom: -10px; margin-left: 5px; display: inline-block;
+}
+#section09 .sec8nav {
+	margin: 0px auto; width: 1200px;
+}
+#section09 .sec8nav dl {
+	width: 133px; height: 120px; text-align: center; color: rgb(255, 255, 255); font-size: 18px; float: left; cursor: default;
+}
+#section09 .sec8nav dt {
+	padding-top: 50px;
+}
+#section09 .sec8nav .menter {
+	background: url("sec09-nav1.jpg") no-repeat; color: rgb(232, 227, 218);
+}
+#section09 .sec8nav .mout {
+	background: url("sec09-nav2.jpg") no-repeat; color: rgb(165, 163, 159);
+}
+#section09 .desc {
+	margin: 60px auto 0px; width: 950px; height: 400px; position: relative; background-color: rgb(255, 255, 255);
+}
+#section09 .see {
+	top: 320px; right: 550px;
+}
+#section09 .descshow {
+	display: block;
+}
+#section09 .deschid {
+	display: none;
+}
+#section09 .left {
+	width: 389px; float: left;
+}
+#section09 .right {
+	width: 456px; padding-top: 30px; margin-left: 55px; float: left;
+}
+#section09 .right span:first-child {
+	font-size: 30px; margin-bottom: 10px; display: block;
+}
+#section09 .btn {
+	right: 60px; bottom: 100px; position: absolute;
+}
+#section09 .btn img {
+	width: 150px; height: 40px;
+}
+#section10 {
+	background: rgb(255, 255, 255); width: 100%; height: 400px; max-width: 1920px;
+}
+#section10 .sec10t {
+	background: url("sec10-1.jpg") no-repeat; height: 140px;
+}
+#section10 .sec10t h1 {
+	text-align: center; color: rgb(123, 121, 115); line-height: 140px; font-size: 48px;
+}
+#section10 .sec10 ul {
+	margin: 70px auto; width: 1032px;
+}
+#section10 .sec10 ul li {
+	width: 225px; float: left;
+}
+#section10 .sec10 ul li + li {
+	margin-left: 40px;
+}
+#footer {
+	background: url("footer_bg.jpg") repeat-x; width: 100%; height: 170px;
+}
+.footer_wrap {
+	width: 1190px; height: 170px;
+}
+.footerlogo {
+	background: url("common_icon.png") no-repeat -2px -4px; width: 91px; height: 108px; margin-top: 18px; margin-left: 20px; float: left; display: inline;
+}
+.border {
+	height: 111px; margin-top: 11px; margin-left: 17px; border-left-color: rgb(56, 56, 56); border-left-width: 1px; border-left-style: dashed; float: left; display: inline;
+}
+.footer_secicon {
+	height: 100px; margin-top: 35px; float: left;
+}
+.footer_secicon li {
+	width: 85px; height: 100px; margin-right: 20px; margin-left: 25px; float: left; display: inline;
+}
+.footer_secicon li i {
+	width: 48px; height: 48px; margin-left: 18px; float: left; display: block; cursor: pointer;
+}
+.footer_secicon li i a {
+	width: 48px; height: 48px; display: block; cursor: pointer;
+}
+.footer_secicon li span {
+	width: 100%; height: 40px; text-align: center; color: rgb(167, 167, 167); line-height: 40px; font-size: 16px; float: left;
+}
+.footer_secicon1 {
+	background: url("common_icon.png") no-repeat -109px -11px;
+}
+.footer_secicon2 {
+	background: url("common_icon.png") no-repeat -173px -11px;
+}
+.footer_secicon3 {
+	background: url("common_icon.png") no-repeat -237px -11px;
+}
+.footer_secicon4 {
+	background: url("common_icon.png") no-repeat -301px -11px;
+}
+.footer_secicon5 {
+	background: url("common_icon.png") no-repeat -366px -11px;
+}
+.footer_secicon6 {
+	background: url("common_icon.png") no-repeat -430px -11px;
+}
+.footer_secicon7 {
+	background: url("common_icon.png") no-repeat -494px -11px;
+}
+.footer_secicon8 {
+	background: url("common_icon.png") no-repeat -558px -11px;
+}
+.footer_secicon li:hover .footer_secicon1 {
+	background: url("common_icon.png") no-repeat -109px -71px;
+}
+.footer_secicon li:hover .footer_secicon2 {
+	background: url("common_icon.png") no-repeat -173px -71px;
+}
+.footer_secicon li:hover .footer_secicon3 {
+	background: url("common_icon.png") no-repeat -237px -71px;
+}
+.footer_secicon li:hover .footer_secicon4 {
+	background: url("common_icon.png") no-repeat -301px -71px;
+}
+.footer_secicon li:hover .footer_secicon5 {
+	background: url("common_icon.png") no-repeat -366px -71px;
+}
+.footer_secicon li:hover .footer_secicon6 {
+	background: url("common_icon.png") no-repeat -430px -71px;
+}
+.footer_secicon li:hover .footer_secicon7 {
+	background: url("common_icon.png") no-repeat -494px -71px;
+}
+.footer_secicon li:hover .footer_secicon8 {
+	background: url("common_icon.png") no-repeat -558px -71px;
+}
+.footer_copyright {
+	width: 100%; height: 35px; text-align: center; color: rgb(167, 167, 167); line-height: 35px; font-size: 12px; float: left;
+}

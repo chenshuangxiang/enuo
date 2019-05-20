@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta http-equiv="Access-Control-Allow-Origin" content="*">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <link rel="icon" href="favicon.ico">
+    <title>e诺分诊后台</title>
+
+    <link rel="stylesheet" href="layui/css/layui.css" media="all">
+    <link rel="stylesheet" href="css/font_eolqem241z66flxr.css" media="all" />
+    <link rel="stylesheet" href="css/main.css" media="all" />
+</head>
+<style>
+    .larry-side-menu {
+        position: absolute;
+        cursor: pointer;
+        z-index: 19940201;
+        left: 185px;
+        margin-top: 2px;
+        color: white;
+        text-align: center;
+        width: 30px;
+        height: 30px;
+        background-color: #2299ee;
+        line-height: 30px;
+        top: 23%;
+    }
+    .layui-btn-sm {
+        height: 30px;
+        line-height: 30px;
+        padding: 0 10px;
+        font-size: 12px;
+    }
+    .layui-nav-item-ding{
+        height: 45px;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        white-space: nowrap;display: block;
+        padding: 0 20px;
+        color: #fff;
+        color: rgba(255,255,255,.7);
+        transition: all .3s;
+        -webkit-transition: all .3s;
+        width: 100%;
+        line-height: 45px;
+    }
+    /*::-webkit-scrollbar {
+        width: 10px;
+        height: 10px;
+    }::-webkit-scrollbar-thumb {
+         border-radius: 0;
+         background-color: rgba(0,0,0,.3);
+     }*/
+</style>
+<body class="layui-layout-body">
+<div class="layui-layout layui-layout-admin">
+    <div class="layui-header">
+        <div class="layui-logo">e诺分诊后台</div>
+        <div class="larry-side-menu" pc="">
+            <i class="fa fa-bars" aria-hidden="true" style="font-style: inherit;">三</i>
+        </div>
+        <!-- 头部区域（可配合layui已有的水平导航） -->
+        <ul class="layui-nav layui-layout-right">
+           <!-- <li class="layui-nav-item" pc>
+                <a href="#todayRecord.html?v=333"><i class="iconfont icon-gonggao" data-icon="icon-todayrecord"></i><cite>今日回访</cite></a>
+            </li>-->
+            <li class="layui-nav-item">
+                <a href="javascript:;">
+                    <img src="img/face.jpg" class="layui-nav-img">
+                    <span style="color: #58acea" class="usertype"></span>
+                    <span class="userName"></span>
+                </a>
+                <dl class="layui-nav-child">
+                    <!--<dd><a href="#top">基本资料</a></dd>
+                    <dd><a href="javascript:;">安全设置</a></dd>-->
+                    <dd><a href="#changePwd.html"><i class="iconfont icon-shezhi1" data-icon="icon-shezhi1"></i><cite>修改密码</cite></a></dd>
+                    <dd class="layout"><a href="javascript:;"><i class="iconfont icon-loginout"></i><cite>退出</cite></a></dd>
+                </dl>
+            </li>
+            <!--<li class="layui-nav-item"><a href="javascript:;">注销</a></li>-->
+        </ul>
+    </div>
+    <ul class="layui-nav daohangTop" style="padding-left: 190px;height: 40px;border-radius: 0;line-height: 39px;background-color: #32343a;">
+        <div class="layui-logo" style="    line-height: 40px;font-weight: 600">导航栏</div>
+       <a style="padding: 0 10px;"  href="#allSize.html?v=333"><button onclick="toIndex();" class="layui-btn layui-btn-primary layui-btn-sm toIndexBtn toHrefBtn">首页</button></a>
+       <a style="padding: 0 10px;"  href="#staffList.html?v=333"><button onclick="toAdviosy();" class="layui-btn layui-btn-primary layui-btn-sm toAdvisyBtn toHrefBtn">咨询管理</button></a>
+       <a style="padding: 0 10px;" href="#allAdvisory.html?type=advisory&v=333"><button onclick="toHuiZong();" class="layui-btn  layui-btn-primary layui-btn-sm toHuiZongBtn toHrefBtn">数据管理</button></a>
+    </ul>
+
+    <div class="layui-side layui-bg-black">
+        <div class="layui-side-scroll">
+            <!-- 左侧导航区域（可配合layui已有的垂直导航） -->
+            <ul class="layui-nav layui-nav-tree leftUl" lay-filter="test">
+                <!--<li class="layui-nav-item layui-nav-itemed">
+                    <a class="" href="javascript:;">文章管理</a>
+                    <dl class="layui-nav-child">
+                        <dd><a href="#type-list">文章类型</a></dd>
+                        <dd><a href="#article-list">文章列表</a></dd>
+                    </dl>
+                </li>-->
+                <li class="layui-nav-item indexLi"><a href="#allSize.html?v=333"><i class="layui-icon">&#xe68e;</i><cite>首页</cite></a></li>
+                <p class="layui-nav-item-ding layui-nav-item-dingzixun"><cite>咨询管理</cite></p>
+                <li class="layui-nav-item adviosyLi"><!--<a href="#allCount.html?v=333"><i class="layui-icon">&#xe60e;</i><cite>汇总统计</cite>-->
+                    <a class="" href="javascript:;"><i class="layui-icon">&#xe857;</i><cite>咨询记录</cite></a>
+                    <dl class="layui-nav-child">
+                        <!-- <dd><a href="#appointmentList.html?v=1113">预约项目</a></dd>-->
+                        <dd class="staffListDD"><a href="#staffList.html?v=333">全部咨询</a></dd>
+                        <dd class="allConsultDD"><a href="#allConsult.html?v=333">客服咨询</a></dd>
+                        <dd><a href="#allConsultUser.html?v=333">用户咨询</a></dd>
+
+                    </dl>
+                </li>
+               <!-- <li class="layui-nav-item staffList" style="display: none"><a href="#staffList.html?v=333"><i class="layui-icon">&#xe857;</i><cite>全部咨询管理</cite></a></li>
+                <li class="layui-nav-item"><a href="#allConsult.html?v=333"><i class="iconfont icon-text"></i><cite>咨询中心</cite></a></li>-->
+                <li class="layui-nav-item triageLi"><a href="#allTriage.html?v=333"><i class="layui-icon">&#xe630;</i><cite>分诊记录</cite></a></li>
+                <li class="layui-nav-item todayRecordLi"><a href="#todayRecord.html?v=333"><i class="iconfont icon-gonggao" data-icon="icon-todayrecord"></i><cite>今日回访</cite></a></li>
+               <!-- <li class="layui-nav-item allRecordLi"><a href="#allRecord.html?v=333"><i class="layui-icon">&#xe63a;</i><cite>回访记录</cite></a></li>-->
+                <li class="layui-nav-item allRecordLi"><!--<a href="#allCount.html?v=333"><i class="layui-icon">&#xe60e;</i><cite>汇总统计</cite>-->
+                    <a class="" href="javascript:;"><i class="layui-icon">&#xe63a;</i><cite>回访记录</cite></a>
+                    <dl class="layui-nav-child">
+                        <dd class="allRecordDD"><a href="#allRecord.html?v=333">全部回访</a></dd>
+                        <dd class="platfromRecordDD"><a href="#platfromRecord.html?v=333">平台回访</a></dd>
+                        <dd class="hospitalRecordDD"><a href="#hospitalRecord.html?v=333">医院回访</a></dd>
+                        <dd class="userRecordDD"><a href="#userRecord.html?v=333">用户回访</a></dd>
+                    </dl>
+                </li>
+                <p class="layui-nav-item-ding layui-nav-item-dingshuju"><cite>数据管理</cite></p>
+                <li class="layui-nav-item shujuLi">
+                <a class="" href="javascript:;"><i class="layui-icon">&#xe60e;</i><cite>数据管理</cite></a>
+                <dl class="layui-nav-child">
+                   <!-- <dd><a href="#appointmentList.html?v=1113">预约项目</a></dd>-->
+                    <dd class="allAdvisoryDD"><a onclick="huiZongLeftClick()" href="#allAdvisory.html?type=advisory&v=333">咨询量统计</a></dd>
+                    <dd class="allAdvisoryDD"><a onclick="huiZongLeftClick()" href="#allAdvisory.html?type=coupon&v=333">体验券统计</a></dd>
+                    <dd class="allAdvisoryDD"><a onclick="huiZongLeftClick()" href="#allRepulseAdvisory.html?v=333">打回率统计</a></dd>
+                    <dd><a onclick="huiZongLeftClick()" href="#allLog.html?type=coupon&v=333">日志</a></dd>
+
+                </dl>
+                </li>
+                <!--<li class="layui-nav-item"><a href="#allLog.html?v=333"><i class="layui-icon">&#xe628;</i><cite>日志</cite></a></li>-->
+            </ul>
+        </div>
+    </div>
+
+    <div class="layui-body">
+        <!-- 内容主体区域 -->
+        <div id="layui-body" style="padding: 3px 3px">
+
+        </div>
+    </div>
+
+    <!--<div class="layui-footer">
+        &lt;!&ndash; 底部固定区域 &ndash;&gt;
+        ©ulcodes.com
+    </div>-->
+</div>
+<!-- 移动导航 -->
+<div class="site-tree-mobile layui-hide"><i class="layui-icon">&#xe602;</i></div>
+<div class="site-mobile-shade"></div>
+<script src="layui/layui.js" charset="utf-8"></script>
+<script type="text/javascript" src="js/common.js?v=222"></script>
+<script type="text/javascript" src="js/index.js?v=222"></script>
+</body>
+</html>

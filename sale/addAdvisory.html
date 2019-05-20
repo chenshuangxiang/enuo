@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1.0, maximum-scale=1.0">
+    <title>添加回访</title>
+    <link rel="stylesheet" href="css/add.css">
+    <link rel="stylesheet" href="css/iosSelect.css">
+    <script src="js/jquery-1.11.3.min.js"></script>
+    <script src="js/common.js?v=222"></script>
+    <script src="js/iosSelect.js"></script>
+<style>
+    textarea{
+        width: 100%;
+        min-height: 8rem;
+        margin-left: 1%;
+        border: 1px solid #cccccc;
+    }
+</style>
+</head>
+<body>
+    <div class="top">
+        <img src="img/more.png" onclick="locationhref()">
+        <label>添加回访</label>
+    </div>
+    <div style="margin-bottom: 5rem;">
+       <!-- <div class="expires">
+            <p>
+                <img src="img/split.png" class="img_span">
+                <span class="img_span algin" >下次回访时间：</span>
+                <span style="float: right;"><input class="checkbox" type="checkbox"/><span>不再回访</span></span>
+            </p>
+            <label  data-year="" data-month="" data-date="" class="selectDate" id="showDate">
+                &lt;!&ndash; <span  id="expire_date"></span><img src="img/date.png" class="date">&ndash;&gt;
+                &lt;!&ndash;2018年 3月 7日&ndash;&gt;
+            </label>
+        </div>-->
+        <!--<div class="expires">
+            <p>
+                <img src="img/split.png" class="img_span">
+                <span class="img_span algin" >回访状态：</span>
+            </p>
+            <label>
+            <select class="allotStatus">
+                <option value="">请选择状态</option>
+                <option value="refuse" title="refuse">拒接</option>
+                <option value="emptyNum" title="emptyNum">空号/停机</option>
+                <option value="infoError" title="infoError">信息不符</option>
+                <option value="hospitalUnAccess" title="hospitalUnAccess">院方未回访</option>
+                <option value="success" title="success">已成交</option>
+                <option value="hasAccess" title="hasAccess">跟踪复访</option>
+            </select>
+            </label>
+        </div>-->
+        <div class="expires">
+            <p>
+                <img src="img/split.png" class="img_span">
+                <span class="img_span algin" >下次回访时间：</span>
+                <span style="float: right;"><input class="checkbox" type="checkbox"/><span>不再回访</span></span>
+            </p>
+            <label  data-year="" data-month="" data-date="" class="selectDate" id="showDate">
+                <!-- <span  id="expire_date"></span><img src="img/date.png" class="date">-->
+                <!--2018年 3月 7日-->
+            </label>
+        </div>
+        <div class="expires">
+            <p>
+                <img src="img/split.png" class="img_span">
+                <span class="img_span algin" >意向程度：</span>
+               <!-- <span style="float: right;"><input class="checkbox" type="checkbox"/><span>不再回访</span></span>-->
+            </p>
+            <label style="padding: 0;    width: 94%;">
+                <select id="intent">
+                    <option>请选择意向程度</option>
+                    <option value="STRONG_INTENEION">意向强烈</option>
+                    <option value="LITTLE_INTENEION">意向较强</option>
+                    <option value="GENERAL_INTENTION">意向一般，需要跟进</option>
+                    <option value="NO_INTENTION">暂时无意向</option>
+                </select>
+            </label>
+        </div>
+        <div class="params">
+            <p>
+                <img src="img/split.png" class="img_span">
+                <span class="img_span algin" >回访内容：</span>
+            </p>
+            <textarea placeholder="请输入回访内容" type="text" id="brief"></textarea>
+        </div>
+    </div>
+    <button class="add_tic_btn" onclick="Get.add()">添加</button>
+</body>
+<script>
+    var salesmanId;
+    $(document).ready(function () {
+        Get.getSalesmanId();
+    });
+    $('.checkbox').change(function () {
+        if($("input[type='checkbox']").is(':checked') == true){
+            $('#showDate').hide();
+        }else {
+            $('#showDate').show();
+        }
+    });
+   /*$('.allotStatus').change(function () {
+       if($('.allotStatus').val() == 'hasAccess'){
+           $('.nextRecordTime').show();
+       }else {
+           $('.nextRecordTime').hide();
+       }
+   });*/
+    var Get = {
+        getSalesmanId: function () {
+            var url = SERVER_ADDR + '/salesman/advisory/getSalesman.json';
+            var Data = {};
+            Data.advisoryId = getQueryString('id');
+            ajaxGetRetInfo(url, Data, this.getSalesmanIdSuccess, '请求失败', 'GET', true, undefined);
+        },
+        getSalesmanIdSuccess: function (retInfo) {
+            console.log(retInfo)
+            if (retInfo.success == true) {
+                salesmanId = retInfo.data.salesmanId;
+            }else{
+                alert(retInfo.data);
+            }
+        },
+        add: function () {
+            /*if($(".allotStatus").val() == ''){
+                alert('请选择状态');
+                return;
+            }*/
+            if($("#showDate").text() == ''){
+                alert('请选择回访时间');
+                return;
+            }
+            if($("#intent").val() == '请选择意向程度'){
+                alert('请选择意向程度');
+                return;
+            }
+            if($("#brief").val() == ''){
+                alert('请填写回访内容');
+                return;
+            }
+            var url = SERVER_ADDR + '/salesman/access/add';
+            var Data = {};
+            Data.advisoryId = getQueryString('id');
+            Data.brief = $("#brief").val();
+            Data.intention = $('#intent').val();
+            Data.salesmanId = salesmanId;
+            //Data.status = $(".allotStatus").val();
+            if($('.checkbox').prop("checked") == false){
+                Data.salesmanAccessDate = $('#showDate').text().replace('年 ','-').replace('月 ','-').replace('日','');
+            }
+            ajaxGetRetInfo(url, Data, this.addSuccess, '请求失败', 'POST', true, undefined);
+        },
+        addSuccess: function (retInfo) {
+            console.log(retInfo)
+            if (retInfo.success == true) {
+                alert(retInfo.data);
+                locationhref();
+                //window.location.href = "advisoryList.html?id="+getQueryString('id');
+            }else{
+                alert(retInfo.data);
+            }
+        },
+    }
+    function locationhref() {
+        if(getQueryString('page') == 'todayRecordList'){
+            window.location.href = 'todayRecordList.html?id='+getQueryString('id')
+        }else if(getQueryString('page') == 'advisoryList'){
+            window.history.go(-1);
+            //window.location.href = 'advisoryList.html?id='+getQueryString('id')
+        }
+    }
+</script>
+<script type="text/javascript">
+    var selectDateDom = $('.selectDate');
+    var showDateDom = $('#showDate');
+    // 初始化时间
+    var now = new Date();
+    var nowNextMonth = getNextMonth(now.Format('yyyy-MM-dd'));
+    var nowYear = nowNextMonth.split('-')[0];
+    var nowMonth = nowNextMonth.split('-')[1];
+    var nowDate = nowNextMonth.split('-')[2];
+    showDateDom.attr('data-year', nowYear);
+    showDateDom.attr('data-month', nowMonth);
+    showDateDom.attr('data-date', nowDate);
+    showDateDom.text(nowYear+'年 '+nowMonth+'月 '+nowDate+'日');
+    // 数据初始化
+    function formatYear (nowYear) {
+        var arr = [];
+        for (var i = nowYear - 5; i <= nowYear + 5; i++) {
+            arr.push({
+                id: i + '',
+                value: i + '年'
+            });
+        }
+        return arr;
+    }
+    function formatMonth () {
+        var arr = [];
+        for (var i = 1; i <= 12; i++) {
+            arr.push({
+                id: i + '',
+                value: i + '月'
+            });
+        }
+        return arr;
+    }
+    function formatDate (count) {
+        var arr = [];
+        for (var i = 1; i <= count; i++) {
+            arr.push({
+                id: i + '',
+                value: i + '日'
+            });
+        }
+        return arr;
+    }
+    var yearData = function(callback) {
+        // settimeout只是模拟异步请求，真实情况可以去掉
+        // setTimeout(function() {
+        callback(formatYear(nowYear))
+        // }, 2000)
+    }
+    var monthData = function (year, callback) {
+        // settimeout只是模拟异步请求，真实情况可以去掉
+        // setTimeout(function() {
+        callback(formatMonth());
+        // }, 2000);
+    };
+    var dateData = function (year, month, callback) {
+        // settimeout只是模拟异步请求，真实情况可以去掉
+        // setTimeout(function() {
+        if (/^(1|3|5|7|8|10|12)$/.test(month)) {
+            callback(formatDate(31));
+        }
+        else if (/^(4|6|9|11)$/.test(month)) {
+            callback(formatDate(30));
+        }
+        else if (/^2$/.test(month)) {
+            if (year % 4 === 0 && year % 100 !==0 || year % 400 === 0) {
+                callback(formatDate(29));
+            }
+            else {
+                callback(formatDate(28));
+            }
+        }
+        else {
+            throw new Error('month is illegal');
+        }
+        // }, 2000);
+        // ajax请求可以这样写
+        /*
+        $.ajax({
+            type: 'get',
+            url: '/example',
+            success: function(data) {
+                callback(data);
+            }
+        });
+        */
+    };
+    selectDateDom.bind('click', function () {
+        var oneLevelId = showDateDom.attr('data-year');
+        var twoLevelId = showDateDom.attr('data-month');
+        var threeLevelId = showDateDom.attr('data-date');
+        var iosSelect = new IosSelect(3,
+            [yearData, monthData, dateData],
+            {
+                title: '时间选择',
+                itemHeight: 35,
+                oneLevelId: oneLevelId,
+                twoLevelId: twoLevelId,
+                threeLevelId: threeLevelId,
+                showLoading: true,
+                callback: function (selectOneObj, selectTwoObj, selectThreeObj) {
+                    showDateDom.attr('data-year', selectOneObj.id);
+                    showDateDom.attr('data-month', selectTwoObj.id);
+                    showDateDom.attr('data-date', selectThreeObj.id);
+                    showDateDom.html(selectOneObj.value + ' ' + selectTwoObj.value + ' ' + selectThreeObj.value);
+                }
+            });
+    });
+</script>
+</html>

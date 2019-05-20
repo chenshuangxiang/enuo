@@ -1,0 +1,153 @@
+
+	<link rel="stylesheet" href="css/news.css" media="all" />
+	<style>
+		.layui-table td, .layui-table th{
+			padding: 5px 5px;
+			line-height: 16px;
+		}
+	</style>
+<body class="childrenBody">
+<div class="big">
+	<blockquote class="layui-elem-quote news_search">
+		<form class="layui-form">
+			<div class="layui-form-item">
+				<div class="layui-inline">
+					<label class="layui-form-label">选择时间</label>
+					<div class="layui-input-inline">
+						<input type="text" class="layui-input" id="timeInputOpen" style="width: 170px" placeholder="选择时间"/>
+					</div>
+				</div>
+				<!--<div class="layui-inline">
+					<label class="layui-form-label">联系方式</label>
+					<div class="layui-input-inline">
+						<input type="number" name="phone" lay-verify="required|phone" autocomplete="off" class="layui-input mobile" placeholder="根据联系方式筛选">
+					</div>
+				</div>-->
+				<!--<div class="layui-inline">
+					<label class="layui-form-label">专业职称</label>
+					<div class="layui-input-inline">
+						<select name="docLevel" class="docLevel" lay-filter="docLevel" lay-search="">
+							<option value="">根据专业职称筛选</option>
+						</select>
+					</div>
+				</div>-->
+
+
+				<!--<div class="layui-inline" style="margin-left: 42px">
+					<a class="layui-btn search_btn">查询</a>
+				</div>-->
+				<div class="layui-inline" style="margin-left: 42px">
+					<a class="layui-btn layui-btn-normal" onclick="searchBtnOutExcel($('#timeInputOpen').val())">导出表格</a>
+				</div>
+			</div>
+		</form>
+
+
+
+
+	<!--	<div class="layui-inline">
+			<a class="layui-btn recommend" style="background-color:#5FB878">推荐文章</a>
+		</div>
+		<div class="layui-inline">
+			<a class="layui-btn audit_btn">审核文章</a>
+		</div>
+		<div class="layui-inline">
+			<a class="layui-btn layui-btn-danger batchDel">批量删除</a>
+		</div>-->
+	<!--	<div class="layui-inline">
+			<div class="layui-form-mid layui-word-aux">本页面刷新后除新添加的文章外所有操作无效，关闭页面所有数据重置</div>
+		</div>-->
+	</blockquote>
+	<form class="layui-form">
+
+	<div class="layui-form news_list" style="    width: 100%;
+    overflow-x: auto;">
+		<table class="layui-table">
+			<colgroup>
+				<!--<col width="19%"><col>
+				<col width="15%"><col>
+				<col width="15%"><col>
+				<col width="15%"><col>
+				&lt;!&ndash;<col width="9%">&ndash;&gt;
+				<col width="15%">
+				<col width="15%">-->
+
+				<!--<col width="9%">-->
+
+				<!--<col width="10%">
+				<col width="10%">-->
+			</colgroup>
+			<thead>
+			<tr class="news_contentTr">
+				<!--<th><input type="checkbox" name="" lay-skin="primary" lay-filter="allChoose" id="allChoose"></th>-->
+				<!--<th>回访时间</th>
+				<th>患者姓名</th>
+				<th>联系方式</th>
+				&lt;!&ndash;<th>来源</th>&ndash;&gt;
+				<th width="15%">病种</th>
+				<th>客服</th>
+
+				&lt;!&ndash;<th>分诊医院</th>&ndash;&gt;
+				<th>客服回访状态</th>
+				<th width="20%">回访内容</th>-->
+				<!--<th>操作</th>-->
+			</tr>
+			</thead>
+			<tbody class="news_content"></tbody>
+		</table>
+	</div>
+	</form>
+</div>
+<!--<script type="text/html" id="check">
+	<input type="checkbox" name="checked" valueid="{{d.id}}" lay-skin="primary" lay-filter="checked">
+</script>-->
+<script type="text/html" id="delTemplate">
+	<a style="    height: 26px;
+    line-height: 26px;
+    padding: 0 8px;" class="layui-btn layui-btn-danger  layui-btn-xs" lay-event="del">删除</a>
+</script>
+<script type="text/html" id="type">
+	{{#  if(d.type === 'cure'){ }}
+	<select class="typeSelect" valueid="{{d.id}}" style="height: 27px;width: 100%;">
+		<option selected value="cure">医疗类</option>
+		<option value="materialScience">材料类</option>
+		<option value="drugs">药品类</option>
+		<option value="check">检查类</option>
+		<option value="health">保健类</option>
+	</select>
+	{{#  } else if(d.type === 'materialScience'){ }}
+	<select class="typeSelect"  valueid="{{d.id}}" style="height: 27px;width: 100%;">
+		<option value="cure">医疗类</option>
+		<option selected value="materialScience">材料类</option>
+		<option value="drugs">药品类</option>
+		<option value="check">检查类</option>
+		<option value="health">保健类</option>
+	</select>
+	{{#  } else if(d.type === 'drugs'){ }}
+	<select class="typeSelect"  valueid="{{d.id}}" style="height: 27px;width: 100%;">
+		<option value="cure">医疗类</option>
+		<option value="materialScience">材料类</option>
+		<option selected value="drugs">药品类</option>
+		<option value="check">检查类</option>
+		<option value="health">保健类</option>
+	</select>
+	{{#  } else if(d.type === 'check'){ }}
+	<select class="typeSelect"  valueid="{{d.id}}" style="height: 27px;width: 100%;">
+		<option value="cure">医疗类</option>
+		<option value="materialScience">材料类</option>
+		<option value="drugs">药品类</option>
+		<option selected value="check">检查类</option>
+		<option value="health">保健类</option>
+	</select>
+	{{#  } else if(d.type === 'health'){ }}
+	<select class="typeSelect"  valueid="{{d.id}}" style="height: 27px;width: 100%;">
+		<option value="cure">医疗类</option>
+		<option value="materialScience">材料类</option>
+		<option value="drugs">药品类</option>
+		<option value="check">检查类</option>
+		<option selected value="health">保健类</option>
+	</select>
+	{{#  } }}
+</script>
+
+	<script type="text/javascript" src="js/allAdvisory.js"></script>

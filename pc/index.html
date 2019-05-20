@@ -1,0 +1,402 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="renderer" content="webkit" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/header+bottom.css">
+    <script src="js/jquery-1.8.3.min.js"></script>
+    <title>e诺--约定医疗创领者</title>
+    <link rel="stylesheet" type="text/css" href="css/base.css">
+    <script type="text/javascript" src="js/onchange.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/login.css">
+</head>
+<style>
+    /*轮播*/
+    #slider {
+        /*       width:1920px;*/
+        /*height:800px;*/
+        margin:0 auto;
+        overflow:hidden;
+        position:relative;
+    }
+    #slider .view {
+        width:1200px;
+        height:600px;
+        margin:0 auto;
+        position: relative;
+    }
+    #slider .view li {
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: 1;
+    }
+    .control {
+        margin:0 auto;
+        position: absolute;
+        z-index: 10;
+        right:47%;
+        bottom: 15px;
+    }
+    .control li {
+        width: 20px;
+        height: 20px;
+        display: inline;
+    }
+    .control li a {
+        width: 20px;
+        height: 20px;
+        display: inline-block;
+        overflow: hidden;
+        background: url(img/triggers.png) no-repeat 0 0;
+        font-size: 0.2px;
+        line-height: 10000;
+    }
+    .control li.current a,.control li a:hover {
+        background: url(img/triggers.png) no-repeat 0 -20px;
+    }
+    #btn_prev,#btn_next{
+        width:50px;
+        height: 100px;
+        background-color: #ffffff;
+        opacity: 0.7;
+        z-index: 99;
+        position:absolute;
+        top: 41%;
+        cursor:pointer;
+       /* background:url(img/prev.png) no-repeat;*/
+    }
+    #btn_next{right:0;/*background:url(img/next.png) no-repeat*/;}
+    #btn_prev img,#btn_next img{
+        margin: 40px 0 0 19px;
+    }
+    /*轮播over*/
+
+    .homeAddAll{
+        position: relative;
+        height: 600px;
+        background-color: black;
+    }
+    .introimg{
+        background-image: url(img/banner1.png);
+        height:600px;
+        background-position: 50%;
+        background-repeat: no-repeat;
+    }
+    .introimg2{
+        background-image: url(img/banner2.png);
+        height:600px;
+        background-position: 50%;
+        background-repeat: no-repeat;
+    }
+    .introimg3{
+        background-image: url(img/banner4.png);
+        height:600px;
+        background-position: 50%;
+        background-repeat: no-repeat;
+    }
+    .footer_bottom{
+      /*  position: absolute;
+        right: 0;*/
+        width: 890pt;
+        margin: 0 auto;
+        height: 100px;
+        position: relative;
+    }
+    .footer_bottom .nav_l li a {
+        color: #313131;
+        font-size: 13.9px;
+        font-weight: 400;
+        padding-right: 16px;
+        padding-left: 18px;
+        border-left: 1px solid #898989;
+    }
+    .callme{
+        text-align: center;
+        font-size: 18.1px;
+        height: 52px;
+        line-height: 55px;
+        color: #313131;
+    }
+    .footer_bottom .nav_l{
+        position: absolute;
+        top: 55px;
+        left:170px;
+    }
+    .ip_descr{
+        position: absolute;
+        top: 61px;
+        border: 1px solid #d6d4d4;
+        background-color: white;
+        left: -61px;
+        width: 240px;
+        border-radius: 5px;
+    }
+    .ip_font{
+        padding: 11px 8px 1px 8px;
+        line-height: 19px;
+        color: #333;
+        font-size: 14px;
+    }
+    .ip_btn{
+        cursor: pointer;
+        width: 94px;
+        height: 32px;
+        margin-top: 1px;
+        font-size: 15px;
+        border-radius: 4px;
+        color: white;
+        border: none;
+        text-align: center;
+        background-color: #1bc9bd;
+        bottom: 0;
+        margin-left: 74px;
+        outline: none;
+    }
+    .jian{
+        position: absolute;
+        top: 48px;
+        border: 1px solid #b1b1b1;
+        background-color: white;
+        left: 45px;
+        width: 20px;
+        height: 14px;
+        border-bottom: 9px solid #e2e2e2;
+        border-left: 10px solid transparent;
+        border-right: 10px solid transparent;
+        border-top: none;
+        z-index: 99;
+    }
+</style>
+<body>
+
+
+<div class="head_block" style="z-index: 99;position: relative;">
+    <div class="header_top">
+        <div class="wd1200">
+            <ul class="nav_1">
+                <li><p class="logo_top" ><img src="img/logo.png"></p></li>
+                </ul>
+            <div class="islogin">
+                <ul class="nav_l">
+                    <li><a style="border: none" href=""><img style="margin-top: -5px;" src="img/call.png"><span style="color: #00aea2;font-size: 15.8px;margin-left: 7px;">40006 96120（9:00-18:00）</span></a></li>
+                    <li><a style="border: none" href="https://www.enuo120.com/hosAdmin/index.html" target="_blank">医院入口</a></li>
+                   <!-- <li><a href="http://www.enuo120.com:8001/cm/pc/login.html" target="_blank">医院接诊</a></li>-->
+                    <li style="position: relative;">
+                        <a style="margin-right: 11px" href="https://www.enuo120.com/hosAdminRe/hos_msg_apply.html" target="_blank">医院注册</a>
+                        <div class="ipDiv" style="display: none">
+                        <div class="jian"></div>
+                        <div class="ip_descr">
+                            <p class="ip_font"></p>
+                            <input class="ip_btn" type="button" onclick="toResetInfo()" value="点击修改"/>
+                        </div>
+                        </div>
+                    </li>
+                   <!-- <li class="owlogin" onclick="open_box()"><a>官网登录</a></li>-->
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+<div class="homeAddAll">
+   <!-- <img style="width: 100%;min-width: 900px" src="../images/ylc/banner.png">-->
+    <div id="slider">
+        <!-- 切换区域开始 -->
+        <ul class="view">
+            <li style="width: 1920px;margin-left: -360px">
+                <a href="javascript:;" target="_blank">
+                    <div style="position: relative;min-width: 1200px" class="introimg"></div>
+                    <!--<img src="../images/ylc/banner.png" alt="" />-->
+                </a>
+            </li>
+            <li style="width: 1920px;margin-left: -360px">
+                <a href="javascript:;" target="_blank">
+                    <div style="position: relative;min-width: 1200px" class="introimg2"></div>
+                  <!--  <img src="../images/ylc/banner2.png" alt="" />-->
+                </a>
+            </li>
+            <li style="width: 1920px;margin-left: -360px">
+                <a href="">
+                    <div style="position: relative;min-width: 1200px" class="introimg3"></div>
+                  <!--  <img src="../images/ylc/banner3.png" alt="" />-->
+                </a>
+            </li>
+        </ul>
+        <!-- 触发器 -->
+        <ul class="control">
+            <li><a href="javascript:;"></a></li>
+            <li><a href="javascript:;"></a></li>
+            <li><a href="javascript:;"></a></li>
+        </ul>
+        <!-- 上下翻页切换按钮 -->
+        <div id="btn_prev"><img src="img/prev.png"></div>
+        <div id="btn_next"><img src="img/next.png"></div>
+    </div>
+
+</div>
+<div class="footer_bottom">
+    <!--<div class="wd1000bottom">
+        <ul class="ft-nav_bottom">
+            <li class="copyright"><a style="border-right:none;margin-right: 13px">杭州景诺健康科技有限公司
+                联系电话：<img src="img/call.png"><span style="color: #00aea2;font-size: 15.8px;margin-left: 7px;
+    margin-top: 25px;
+    vertical-align: top;">40006 96120（9:00-18:00）</span></a><span><a style="border: none" href="">地址：杭州市拱墅区莫干山路1165号复地北城中心2楼-e诺</a></span> <span><a
+                    href="">浙ICP备15025570号　e诺 Copyright（C）(2015-2018)</a></span></li>
+        </ul>
+    </div>-->
+   <!-- <div class="islogin">-->
+    <p class="callme">联系我们</p>
+        <ul class="nav_l">
+            <li><a style="border: none" href="">杭州景诺健康科技有限公司</a></li>
+            <li><a style="border: none" href=""><img style="margin-top: -5px;" src="img/call.png"><span style="color: #00aea2;font-size: 15.8px;margin-left: 7px;">40006 96120（9:00-18:00）</span></a></li>
+            <li><a href="">浙ICP备15025570号　e诺 Copyright（C）(2015-2018)</a></li>
+        </ul>
+   <!-- </div>-->
+</div>
+<div class="shade" style="display: none;"></div>
+
+<!--弹出框-->
+
+<div class="popup" style="display: none;">
+    <div class="popup_head">
+        <span>官网登录</span><span onclick="close_box()" style="display: inline-block;position:absolute ;right: 20px;top: 0px;cursor: pointer">X</span>
+    </div>
+    <div class="popup_content">
+        <div class="login">
+
+            <form id="f_login">
+
+                <div class="input-section">
+
+                    <img src="img/user_name.png" />
+
+                    <input type="text" id="username" name="username" placeholder="用户名"/>
+
+                </div>
+
+                <div class="input-section">
+
+                    <img src="img/pass_word.png" />
+
+                    <input type="text" id="password" name="password" placeholder="密码"/>
+
+                </div>
+
+                <div class="input-section" style="border: none;margin-top: 10px;">
+
+                    <input type="button" id="login" value="登录" style="width: 300px;letter-spacing: 5px;font-size: 16px;color: white;border-radius: 5px;background-color: #00AFA1;"/>
+
+                </div>
+
+            </form>
+
+        </div>
+    </div>
+</div>
+
+</body>
+<script>
+    var hosId;
+    var SEVER_ADDR = 'https://www.enuo120.com';
+    $(document).ready(function () {
+        $('#slider .view li').soChange({
+            thumbObj: '#slider .control li',
+            thumbNowClass: 'current',//切换时使用样式
+            btnPrev: '#btn_prev',//上一张按钮
+            btnNext: '#btn_next',//下一张按钮
+            slideTime: 1000,//幻灯片换片时间
+            autoChange: true,
+            changeTime: 5000,
+        });
+        $("#login").click(function () {
+            var un = $("#username").val();
+            var pd = $("#password").val();
+
+            if (un == "" || un == null) {
+                alert("用户名不能为空");
+                return false;
+            }
+            if (pd == "" || pd == null) {
+                alert("密码不能为空");
+                return false;
+            }
+            var url = SEVER_ADDR + "/officialWebsite/manager/login";
+            var data = {"username": un, "password": pd}
+            $.post(url, data, function (data) {
+                //登录成功
+                data = JSON.parse(data);
+                if (data.success) {
+                    alert("登录成功");
+                    localStorage.setItem('owUsername',$('#username').val());
+                    window.location.reload();
+                } else {
+                    alert(data.data);
+                }
+            });
+        });
+    })
+    getNoReadMessage();
+    function getNoReadMessage() {
+        var url = SEVER_ADDR + "/officialWebsite/noRead/messageInfo/size";
+        var data = {"type": "HOSPITAL_REGISTER"}
+        $.get(url, data, function (data) {
+            //登录成功
+            data = JSON.parse(data);
+            if (data.success) {
+                $('.owlogin').attr('onclick','');
+                $('.owlogin').html('<a>' + localStorage.getItem('owUsername') + '</a>' + '<span style="    margin-left: -7px;cursor: pointer" onclick="layoutow()">退出</span>');
+                if(data.data.noReadSize > 0){
+                    getNoReadMessageInfo();
+                    $('.ipDiv').show();
+                }
+            } else {
+                if(data.data != '请先登录!'){
+                    alert(data.data);
+                }
+            }
+        });
+    }
+    function getNoReadMessageInfo() {
+        var url = SEVER_ADDR + "/officialWebsite/last/noRead/messageInfo";
+        var data = {"type": "HOSPITAL_REGISTER"}
+        $.get(url, data, function (data) {
+            //登录成功
+            data = JSON.parse(data);
+            if (data.success) {
+                $('.ip_font').text(data.data.lastNoReadMessageInfo.content);
+                hosId = data.data.lastNoReadMessageInfo.id;
+            } else {
+                alert(data.data);
+            }
+        });
+    }
+    function layoutow() {
+        var url = SEVER_ADDR + "/officialWebsite/manager/logout";
+        $.post(url, '', function (data) {
+            //登录成功
+            data = JSON.parse(data);
+            if (data.success) {
+                window.location.reload();
+            } else {
+                alert(data.data);
+            }
+        });
+    }
+    //关闭弹框
+    function close_box(){
+        $('.shade').css("display","none");
+        $('.popup').css("display","none");
+    }
+    //打开弹框
+    function open_box(){
+        $('.shade').css("display","block");
+        $('.popup').css("display","block");
+    }
+    function toResetInfo() {
+        window.location.href = SEVER_ADDR + '/hosAdminRe/hos_msg_apply.html?type=reset';
+    }
+</script>
+</html>

@@ -1,0 +1,113 @@
+<link rel="stylesheet" href="css/photoTable.css?v=ee9bf8c" media="all" />
+<body class="childrenBody">
+	<form class="layui-form haveTyq" style="margin-top: 15px;display: none">
+		<div class="layui-form-item">
+			<div class="layui-inline" style="margin-bottom: 10px">
+				<label class="layui-form-label">体验劵名称</label>
+				<div class="layui-input-inline">
+					<select name="tyqList" class="tyqList" lay-filter="tyqList">
+						<option value="">请选择体验劵名称</option>
+					</select>
+				</div>
+			</div>
+
+			<fieldset class="layui-elem-field" style="    padding-bottom: 29px;">
+				<legend style="font-size: 15px;">预约人数设置 （请在下列表格中填写相应的最高预约量）</legend>
+				<div class="layui-field-box">
+					<!--出诊时间-->
+					<div class="heal_time_container clearfix">
+						<!--<div class="">
+                            <p class=""></p>
+                            <p class=""><img src="img/left.png"/></p>
+                            <p class=""></p>
+                        </div>-->
+						<div class="">
+							<p class="flex_all_center">排班</p>
+							<p class="flex_all_center">上午</p>
+							<p class="flex_all_center" style="    border-bottom: 1px solid #DCDCDC;">下午</p>
+						</div>
+						<div class="week">
+							<p class="day">
+								<span class="">星期天</span>
+							</p>
+							<input type="text" style="border-bottom: 0" data_week="sunday" data_morning="true"/>
+							<input type="text" data_week="sunday" data_morning="false"/>
+							<!--<p class="am" data_val="休息"></p>
+                            <p class="pm" data_val="休息"></p>-->
+						</div>
+						<div class="week">
+							<p class="day">
+								<span class="">星期一</span>
+							</p>
+							<input type="text" style="border-bottom: 0" data_week="monday" data_morning="true"/>
+							<input type="text" data_week="monday" data_morning="false"/>
+						</div>
+						<div class="week">
+							<p class="day">
+								<span class="">星期二</span>
+							</p>
+							<input type="text" style="border-bottom: 0" data_week="tuesday" data_morning="true"/>
+							<input type="text" data_week="tuesday" data_morning="false"/>
+						</div>
+						<div class="week">
+							<p class="day">
+								<span class="">星期三</span>
+							</p>
+							<input type="text" style="border-bottom: 0" data_week="wednesday" data_morning="true"/>
+							<input type="text" data_week="wednesday" data_morning="false"/>
+						</div>
+						<div class="week">
+							<p class="day">
+								<span class="">星期四</span>
+							</p>
+							<input type="text" style="border-bottom: 0" data_week="thursday" data_morning="true"/>
+							<input type="text" data_week="thursday" data_morning="false"/>
+						</div>
+						<div class="week">
+							<p class="day">
+								<span class="">星期五</span>
+							</p>
+							<input type="text" style="border-bottom: 0" data_week="friday" data_morning="true"/>
+							<input type="text" data_week="friday" data_morning="false"/>
+						</div>
+						<div class="week">
+							<p class="day" style="    border-right: 1px solid #DCDCDC;    width: 61px;">
+								<span class="">星期六</span>
+							</p>
+							<input type="text" style="border-bottom: 0" data_week="saturday" data_morning="true"/>
+							<input type="text" data_week="saturday" data_morning="false"/>
+						</div>
+						<!--<div class="">
+                            <p class="flex_all_center"></p>
+                            <p class=""><img src="img/right.png"/></p>
+                            <p class=""></p>
+                        </div>-->
+					</div>
+				</div>
+			</fieldset>
+		</div>
+
+	<!--	<div class="layui-form-item">
+			<label class="layui-form-label">关键字</label>
+			<div class="layui-input-block">
+				<input type="text" class="layui-input" placeholder="请输入文章关键字">
+			</div>
+		</div>-->
+
+		<!--<div class="layui-form-item">
+			<label class="layui-form-label">文章内容</label>
+			<div class="layui-input-block">
+				<textarea class="layui-textarea layui-hide" name="content" lay-verify="content" id="news_content"></textarea>
+			</div>
+		</div>-->
+		<div class="layui-form-item">
+			<div class="layui-input-block">
+				<button class="layui-btn resetTyq" style="min-width: 216px;margin-bottom: 20px" lay-submit="" lay-filter="resetTyq">修改</button>
+				<!--<button type="reset" class="layui-btn layui-btn-primary">重置</button>-->
+		    </div>
+		</div>
+	</form>
+	<div class="layui-form noTyq" style="text-align: center;">
+		<img style="width: 400px" src="img/noTyq.png?v=8ba2bf5">
+	</div>
+	<script type="text/javascript" src="js/tyq.js?v=c56023b"></script>

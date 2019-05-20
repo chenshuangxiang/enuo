@@ -1,0 +1,43 @@
+<style>
+    td .layui-table-cell {
+        height: 80px;
+        line-height: 80px;
+    }
+
+    .content {
+        height: 80px;
+        line-height: normal;
+        width: 300px;
+        word-wrap: break-word;
+        white-space: normal;
+    }
+</style>
+<form class="layui-form changePwd">
+    <!--<div style="margin:0 0 15px 110px;color:#f00;">旧密码请输入“123456”，新密码必须两次输入一致才能提交</div>-->
+    <!--<div class="layui-form-item">
+        <label class="layui-form-label">用户名</label>
+        <div class="layui-input-block">
+            <input type="text" value="请叫我马哥" disabled class="layui-input layui-disabled">
+        </div>
+    </div>-->
+    <div class="layui-form-item">
+        <label class="layui-form-label">旧密码</label>
+        <div class="layui-input-block">
+            <input type="password" value="" placeholder="请输入旧密码" lay-verify="required"  id="oldPwd" class="layui-input pwd">
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">新密码</label>
+        <div class="layui-input-block">
+            <input type="password" value="" placeholder="请输入新密码" lay-verify="required" id="Pwd" class="layui-input pwd">
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <div class="layui-input-block">
+            <input type="button" class="layui-btn changePwd" lay-submit="" lay-filter="changePwd" value="立即修改"/>
+            <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+        </div>
+    </div>
+</form>
+<table id="al-table" lay-filter="al-table"></table>
+<script type="text/javascript" src="js/changePwd.js?v=222"></script>

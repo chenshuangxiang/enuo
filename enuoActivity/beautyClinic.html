@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="renderer" content="webkit">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+<script src="js/jquery-1.11.3.js"></script>
+<title>e诺医美推介会</title>
+<style>
+	*{
+		margin: 0px;padding: 0px;
+		-webkit-box-sizing: border-box;/*怪异模式,不考虑padding和border*/
+	    -moz-box-sizing: border-box;
+	    box-sizing: border-box;
+	}
+	.clearfix:after{
+		clear:both;
+		content:'.';
+		display:block;
+		width: 0;height: 0;
+		visibility:hidden;
+	}
+	body{
+		max-width: 640px;
+		height: 100%;
+		background-color:#00afa1;
+		/*background-size:100%;
+		background-position: 0px 0px;*/
+	}
+	.content{
+		width: 100%;
+		position: absolute;
+		top: 0%;left: 0;
+		/*border: 1px solid black;*/
+		font-size: 14px;
+	}
+	.sty{
+		width: 100%;
+	    height: 56px;
+	    font-family: HYk2gj;
+	    font-size: 30px;
+	    letter-spacing: 2.3px;
+	    text-align: center;
+	    color: #ffffff;
+	    margin:20% 0;
+	}
+	/*意向项目*/
+	.intere_prj{
+		width: 85%;
+		margin: 0 auto;
+		margin-top: 20px;
+		/*border: 1px solid red;*/
+	}
+	.intere_prj .left{
+		width: 20%;
+		height: 40px;
+		float: left;
+		text-align: right;
+	}
+	.intere_prj .right{
+		width: 75%;
+		float: right;
+	}
+	.right div select{
+		width: 100%;height: 40px;
+		border-radius: 5px;
+	    border: solid 1px #dcdcdc;
+	    text-indent: 20px;
+	}
+	.right .hos{
+		/*border: 1px solid red;*/
+		height: 50px;
+	}
+	.hos p{
+		font-size: 12px;line-height: 18px;
+		float: left;
+		/*border: 1px solid black;*/
+	}
+	.right .hos p:first-child{
+		width: 30px;
+	}
+	.hos img{
+		width: 12px;margin-left: 5px;
+	}
+	/*表单*/
+	.public_input{
+		width: 85%;
+		height: 40px;line-height: 40px;
+		margin: 0 auto;
+		margin-top:30px;
+		color: white;
+	}
+	.public_input span{
+		width: 15%;
+		height: 40px;line-height: 40px;
+		display: inline-block;
+	    text-align: justify;text-align-last: justify;
+	   /* margin-left: 5%;*/
+	    text-justify:inter-ideograph;
+	}
+	.public_input input{
+		width: 80%;
+		height: 40px;line-height: 40px;
+		border-radius: 5px;
+	    border: solid 1px #dcdcdc;
+	    text-indent: 20px;
+	    /*margin-left: 5%;*/
+	    /*float: left;*/
+	}
+	.confrim_btn{
+		margin-top: 60px;
+		margin-bottom: 50px;
+	}
+	.confrim_btn input{
+		color: #00AFA1;
+		background-color: white;
+		letter-spacing: 2px;
+		width: 80%;
+		margin-left: 0px;
+		text-indent: 0;
+		text-align: center;
+		font-weight: 900;
+		font-size: 18px;
+		margin-left: 18%;
+		
+	}
+
+	.consult{
+		width: 200px;height: 30px;line-height: 30px;
+		/*border: 1px solid red;*/
+		position: absolute;
+		bottom: -10%;
+		left:50%;
+		margin-left:-100px ;
+		color: white;
+	}
+	.consult img{
+		width: 20px;position: relative;top: 5px;
+	}
+	
+</style>
+</head>
+<body>
+<div class="content">
+	<div class="sty">
+		e诺-天鑫瑞丽美丽之约
+	</div>
+	<form id="form1">
+		<p class="public_input clearfix" style="margin-top:0px;">
+			<span style="">姓名</span>:
+			<input type="text" class="username" placeholder="请输入您的姓名"/>
+		</p>
+		<p class="public_input clearfix">
+			<span style="">手机号</span>:
+			<input type="text" class="phone" placeholder="请输入您的手机号"/>
+		</p>
+		<p class="public_input confrim_btn">
+			<input type="button" class="sub" value="报名"/>
+		</p>
+	</form>
+	<div class="consult">
+		<img src="img/call.png"/>&nbsp;<span>咨询热线:&nbsp;</span><span style="font-size: 18px;">95105120</span>
+	</div>
+</div>
+<script>
+//判断手机号
+function checkNumber(theObj) {
+  var reg = /^[1][3,4,5,7,8][0-9]{9}$/;
+  console.log(reg.test(theObj));
+  if (reg.test(theObj)) {
+    return true;
+  }
+  return false;
+}
+//判断汉字
+function isChinese(temp){  
+	 var re = /[^\u4e00-\u9fa5]/;  
+	 if(re.test(temp)) return false;  
+	 return true;  
+}  
+var hosId=1;
+var projectname;
+var flag=0;
+var url="http://47.95.254.125:8080/enuoact/doubleElevenAdd";
+$.ajaxSetup({
+	headers:{
+		'Content-Type':'application/x-www-form-urlencoded; charset=UTF-8'
+	}
+});
+	//提交
+	$(".sub").click(function(){
+		var username = $(".username").val();
+		var phone = $(".phone").val();
+		
+		var data = {
+			"name":username,
+			"telephone":phone,
+			"attendProject":"医美"
+		}
+		console.log(data);
+		console.log(isChinese(username));
+		if(username == "" || !isChinese(username)){
+			alert("姓名为空或者不是不是汉字");
+			return false;
+		}
+		
+		if(phone == "" || !checkNumber(phone)){
+			alert("手机号为空或非法");
+			return false;
+		}
+		$.post(url,data,function(data){
+				console.log(data);
+				if(data.code == 0){
+					alert("报名成功");
+					$('#form1')[0].reset();//重置表单
+				}else{
+					alert(data.msg);
+				}
+		});
+		
+	});
+</script>
+</body>
+</html>

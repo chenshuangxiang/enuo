@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>测试</title>
+    <script type="text/javascript" src="js/jquery-1.11.3.js?v=4663977"></script>
+    <script type="text/javascript">
+        var map = new Map();
+        var superId = 12;
+        $(function () {
+            initial();
+            $("select#one").change(function(){
+                $('#two').html('');
+                var val = $(this).val();
+                var child = getChildren(val,map);
+                for (var i = 0; i < child.length; i++){
+                    $('#two').append('<option value = '+ child[i].id +' >' +child[i].name +'</option>');
+                }
+            });
+        });
+
+        /**
+         * 初始化
+         */
+        function initial() {
+            // 把数据存到map里
+            $.getJSON("http://127.0.0.1/hospital/getSubjects.json",function (res) {
+               var data = res.data;
+               var isCheck = 0;
+                for (var i = 0; i < data.length ; i++) {
+                    var d = data[i];
+                    var item = d.item;
+                    map.set(d.name, item);
+                }
+
+                //绑定并选中一级菜单
+                var isCheck = 0;
+                var parentName;
+                var parentHtml = $('#one');
+                map.forEach(function (value, key) {
+                    if (parentName == null)
+                    {
+                        var child = getChildren(key, map);
+                        for (var i = 0; i < child.length; i++){
+                            if (superId == child[i].id)
+                            {
+                                isCheck = 1;
+                            }
+                        }
+                    }
+
+                    if (isCheck == 1)
+                    {
+                        parentHtml.append('<option selected = "selected" >' +key +'</option>');
+                        isCheck = 0;
+                        parentName = key;
+                    }else{
+                        parentHtml.append('<option  >' + key +'</option>');
+                    }
+                });
+
+                //绑定并选中二级菜单
+                var child = getChildren(parentName,map);
+                //$('#two').append('<option>请选择</option>')
+                if(child){
+                    for (var i = 0; i < child.length; i++){
+                        if (superId == child[i].id )
+                        {
+                            $('#two').append('<option selected = "selected" value = '+ child[i].id +' >' +child[i].name +'</option>');
+                        }
+                        else
+                        {
+                            $('#two').append('<option value = '+ child[i].id +' >' +child[i].name +'</option>');
+                        }
+                    }
+                }
+
+            });
+        }
+
+        /**
+         * 根据一级菜单获取二级菜单
+         * @param param
+         * @param map
+         * @returns {*}
+         */
+        function getChildren( param, map) {
+            var  result;
+            map.forEach(function (value, key) {
+                if (param == key)
+                {
+                    result = value;
+                }
+            });
+            return result;
+        }
+
+    </script>
+</head>
+<body>
+    <div>一级：
+        <select id = 'one'>
+            <option>请选择</option>
+        </select>
+    </div>
+
+    <div>二级：
+        <select id = 'two'>
+            <option>请选择</option>
+        </select>
+    </div>
+</body>
+</html>

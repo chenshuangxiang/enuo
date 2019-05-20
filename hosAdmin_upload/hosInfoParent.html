@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>个人资料--e诺分诊后台管理</title>
+	<meta name="renderer" content="webkit">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="format-detection" content="telephone=no">
+	<link rel="stylesheet" href="layui/css/layui.css?v=bbd7a39" media="all" />
+	<link rel="stylesheet" href="css/user.css?v=875974f" media="all" />
+</head>
+<style>
+	.layui-input-block div{
+		margin-top: 10px;
+		display: inline-block;
+	}
+	.images img,.medicalLicenseImage img,.businessLicenseImage img{
+		width: 50%;
+	}
+</style>
+<body class="childrenBody">
+<div class="layui-tab">
+	<ul class="layui-tab-title">
+		<li class="layui-this">医院详情</li>
+		<li>财务信息</li>
+	</ul>
+	<div class="layui-tab-content">
+		<div class="layui-tab-item layui-show" style="margin-top: 52px;">
+			<form class="layui-form">
+				<div class="user_left" id="layer-photos-demo">
+					<div class="layui-form-item">
+						<label class="layui-form-label">医院图片</label>
+						<div class="layui-input-block">
+							<div class="images"><img class="openimg" src=""></div>
+							<div class="images" style="display: none"><img class="openimg" src=""></div>
+						</div>
+					</div>
+					<div class="layui-form-item">
+						<label class="layui-form-label">医院名称</label>
+						<div class="layui-input-block">
+							<div class="hos_name"></div>
+						</div>
+					</div>
+					<div class="layui-form-item">
+						<label class="layui-form-label">医院等级</label>
+						<div class="layui-input-block">
+							<div class="hos_grade"></div>
+						</div>
+					</div>
+					<div class="layui-form-item">
+						<label class="layui-form-label">医院类型</label>
+						<div class="layui-input-block">
+							<div class="hos_type"></div>
+						</div>
+					</div>
+					<div class="layui-form-item">
+						<label class="layui-form-label">医院介绍</label>
+						<div class="layui-input-block">
+							<div class="hos_msg"></div>
+						</div>
+					</div>
+
+					<div class="layui-form-item">
+						<label class="layui-form-label">商务联系人</label>
+						<div class="layui-input-block">
+							<div class="businessContact"></div>
+						</div>
+					</div>
+					<div class="layui-form-item">
+						<label class="layui-form-label">商务联系人电话</label>
+						<div class="layui-input-block">
+							<div class="businessMobile"></div>
+						</div>
+					</div>
+					<div class="layui-form-item">
+						<label class="layui-form-label">医院电话</label>
+						<div class="layui-input-block">
+							<div class="phone"></div>
+						</div>
+					</div>
+					<div class="layui-form-item">
+						<label class="layui-form-label">邮箱</label>
+						<div class="layui-input-block">
+							<div class="email"></div>
+						</div>
+					</div>
+					<div class="layui-form-item">
+						<label class="layui-form-label">详细地址</label>
+						<div class="layui-input-block">
+							<div class="address"></div>
+						</div>
+					</div>
+					<div class="layui-form-item">
+						<label class="layui-form-label">公交信息</label>
+						<div class="layui-input-block">
+							<div class="busInformation"></div>
+						</div>
+					</div>
+					<div class="layui-form-item">
+						<label class="layui-form-label">官网</label>
+						<div class="layui-input-block">
+							<div class="website"></div>
+						</div>
+					</div>
+					<div class="layui-form-item">
+						<label class="layui-form-label">医疗机构执业许可证号</label>
+						<div class="layui-input-block">
+							<div class="medicalLicenseNo"></div>
+						</div>
+					</div>
+					<div class="layui-form-item">
+						<label class="layui-form-label">医疗机构执业许可证</label>
+						<div class="layui-input-block">
+							<div class="medicalLicenseImage"><img class="openimg" src=""></div>
+							<div class="medicalLicenseImage" style="display: none"><img class="openimg" src=""></div>
+						</div>
+					</div>
+					<div class="layui-form-item">
+						<label class="layui-form-label">企业营业执照号</label>
+						<div class="layui-input-block">
+							<div class="businessLicenseNo"></div>
+						</div>
+					</div>
+					<div class="layui-form-item">
+						<label class="layui-form-label">企业营业执证</label>
+						<div class="layui-input-block">
+							<div class="businessLicenseImage"><img class="openimg" src=""></div>
+							<div class="businessLicenseImage" style="display: none"><img class="openimg" src=""></div>
+						</div>
+					</div>
+
+				</div>
+			</form>
+		</div>
+		<div class="layui-tab-item"  style="margin-top: 80px;">
+			<div class="layui-form-item">
+				<label class="layui-form-label">开户行：</label>
+				<div class="layui-input-block">
+					<input type="text" value="" placeholder="请输入开户行" lay-verify="required" class="layui-input open_back">
+				</div>
+			</div>
+			<div class="layui-form-item">
+				<label class="layui-form-label">开户名：</label>
+				<div class="layui-input-block">
+					<input type="text" value="" placeholder="请输入开户名" lay-verify="required"  class="layui-input open_name">
+				</div>
+			</div>
+			<div class="layui-form-item">
+				<label class="layui-form-label">账号：</label>
+				<div class="layui-input-block">
+					<input type="text" value="" placeholder="请输入账号" lay-verify="required" class="layui-input account">
+				</div>
+			</div>
+			<div class="layui-form-item">
+				<label class="layui-form-label">财务联系人：</label>
+				<div class="layui-input-block">
+					<input type="text" value="" placeholder="请输入财务联系人" lay-verify="required" class="layui-input financing_concat">
+				</div>
+			</div>
+			<div class="layui-form-item">
+				<label class="layui-form-label">财务联系人电话：</label>
+				<div class="layui-input-block">
+					<input type="text" value="" placeholder="请输入财务联系人电话" lay-verify="required" class="layui-input financing_concat_phone">
+				</div>
+			</div>
+			<div class="layui-form-item">
+				<div class="layui-input-block">
+					<button class="layui-btn" lay-submit="" lay-filter="hosInfoSub">确 认</button>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+	<script type="text/javascript" src="js/user.js?v=6bf7d77"></script>

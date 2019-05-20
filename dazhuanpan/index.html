@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
+		<meta content="Discover the rich set of features in CanvasFlip. Explore everything about rapid prototyping, sharing and analyzing the UX of prototypes on the tool. Know more." name="description">
+		<meta name="robots" content="index, follow">
+		<meta name="googlebot" content="index, follow">
+		<meta name="keywords" content="features,rapid prototyping,sharing,analyzing,prototypes">
+		<meta name="author" content="CANVASFLIP.COM">
+		<meta name="copyright" content="CANVASFLIP.COM">
+		<title>抽奖</title>
+		<link href="css/rotorNine.css" rel="stylesheet" type="text/css" />
+		<link href="css/layer.css" rel="stylesheet" type="text/css" />
+		<script src="js/jquery-2.2.0.min.js" type="text/javascript"></script>
+	</head>
+	<body>
+			<div class="draw" id="lottery">
+				<table style="width: 100%;">
+					<tr>
+						<td class="item lottery-unit lottery-unit-0">
+							<!--<div class="img">
+								<img src="images/img1.png" alt="">
+							</div>-->
+							<span class="name">终身VIP会员</span>
+						</td>
+						<td class="gap"></td>
+						<td class="item lottery-unit lottery-unit-1">
+							<!--<div class="img">
+								<img src="images/img2.png" alt="">
+							</div>-->
+							<span class="name">三年VIP会员</span>
+						</td>
+						<td class="gap"></td>
+						<td class="item lottery-unit lottery-unit-2">
+							<!--<div class="img">
+								<img src="images/img3.png" alt="">
+							</div>-->
+							<span class="name">半年VIP会员</span>
+						</td>
+					</tr>
+					<tr>
+						<td class="gap-2" colspan="5"></td>
+					</tr>
+					<tr>
+						<td class="item lottery-unit lottery-unit-7">
+							<!--<div class="img">
+								<img src="images/img4.png" alt="">
+							</div>-->
+							<span class="name">399元充值卡一张</span>
+						</td>
+						<td class="gap"></td>
+						<td class="">
+							<a class="draw-btn" href="javascript:"></a>
+						</td>
+						<td class="gap"></td>
+						<td class="item lottery-unit lottery-unit-3">
+							<!--<div class="img">
+								<img src="images/img5.png" alt="">
+							</div>-->
+							<span class="name">100元充值卡一张</span>
+						</td>
+					</tr>
+					<tr>
+						<td class="gap-2" colspan="5"></td>
+					</tr>
+					<tr>
+						<td class="item lottery-unit lottery-unit-6">
+							<!--<div class="img">
+								<img src="images/img7.png" alt="">
+							</div>-->
+							<span class="name">免费体验一次</span>
+						</td>
+						<td class="gap"></td>
+						<td class="item lottery-unit lottery-unit-5">
+							<!--<div class="img">
+								<img src="images/img6.png" alt="">
+							</div>-->
+							<span class="name">九折优惠券一张</span>
+						</td>
+						<td class="gap"></td>
+						<td class="item lottery-unit lottery-unit-4">
+							<!--<div class="img">
+								<img src="images/img8.png" alt="">
+							</div>-->
+							<span class="name">参与大礼包一份</span>
+						</td>
+					</tr>
+				</table>
+			</div>
+		<!--Import Copyright -->
+		<!--弹窗layer-->
+			<div id='info' style = "display : none">
+				<a href=""><img style="width: 100%;" src="images/tk_img.png"></a>
+				<h1>100元</h1>
+			</div>
+	</body>
+	<script src="js/layer.js"></script>
+	<script src="js/rotorNine.js"></script>
+<script>
+	$('.item,.draw-btn').height($('.item').width());
+	$('#lottery').height($('#lottery').width() + 50);
+</script>
+</html>

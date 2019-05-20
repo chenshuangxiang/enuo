@@ -1,0 +1,360 @@
+/* 织梦58（dede58.com）做最好的织梦整站模板下载网站 */
+.element:after, .element:before {
+	content: " ";
+	display: table
+}
+.element:after {
+	clear: both
+}
+body {
+	font-family: "微软雅黑"
+}
+ul li {
+	list-style: none
+}
+ul {
+	padding: 0
+}
+a {
+	-webkit-transition: 150ms;
+	-moz-transition: 150ms;
+	-ms-transition: 150ms;
+	transition: 150ms;
+	color: #e1434e
+}
+a, a:active, a:focus, a:hover, a:visited {
+	text-decoration: none
+}
+::-webkit-scrollbar {
+width:5px;
+height:10px
+}
+::-webkit-scrollbar-button:vertical {
+display:none
+}
+::-webkit-scrollbar-corner, ::-webkit-scrollbar-track {
+background-color:#e2e2e2
+}
+::-webkit-scrollbar-thumb {
+border-radius:0;
+background-color:rgba(0,0,0,.3)
+}
+::-webkit-scrollbar-thumb:vertical:hover {
+background-color:rgba(0,0,0,.35)
+}
+::-webkit-scrollbar-thumb:vertical:active {
+background-color:rgba(0,0,0,.38)
+}
+@-webkit-keyframes icon-rotate {
+from {
+-webkit-transform:rotate(0)
+}
+to {
+	-webkit-transform: rotate(360deg)
+}
+}
+@keyframes icon-rotate {
+from {
+transform:rotate(0)
+}
+to {
+	transform: rotate(360deg)
+}
+}
+.icon-anim-rotate {
+	-webkit-animation-name: icon-rotate;
+	animation-name: icon-rotate;
+	-webkit-animation-duration: 1s;
+	animation-duration: 1s;
+	-webkit-animation-timing-function: linear;
+	animation-timing-function: linear
+}
+body.loginpage input::-webkit-input-placeholder, body.loginpage textarea::-webkit-input-placeholder {
+color:#fff
+}
+body.loginpage input:-moz-placeholder, body.loginpage textarea:-moz-placeholder {
+color:#fff
+}
+body.loginpage input::-moz-placeholder, body.loginpage textarea::-moz-placeholder {
+color:#fff
+}
+body.loginpage textarea:-ms-input-placeholder, body.loginpageinput:-ms-input-placeholder {
+color:#fff
+}
+body.loginpage .adminLoginForm {
+	line-height: 30px;
+	margin: 0 auto;
+	color: #fff;
+	width: 100vw;
+	padding: 20vh 10vw;
+	height: 100vh
+}
+body.loginpage .adminLoginForm .box {
+	background-color: rgba(255,255,255,.5);
+	padding: 5vh
+}
+body.loginpage .adminLoginForm .box h1 {
+	text-align: center;
+	margin-bottom: 20px
+}
+body.loginpage .adminLoginForm .box form.form-horizontal label {
+	text-align: left;
+	padding-right: 0;
+	font-size: 16px;
+	font-weight: 400
+}
+body.loginpage .adminLoginForm .box form.form-horizontal input.form-control {
+	background-color: transparent;
+	border: 0;
+	border-bottom: 1px solid #fff;
+	outline: 0;
+	box-shadow: none;
+	border-radius: 0;
+	color: #fff
+}
+body.loginpage .adminLoginForm .box form.form-horizontal input.form-control:focus {
+	outline: 0;
+	box-shadow: none
+}
+body.loginpage .adminLoginForm .box form.form-horizontal .codes {
+	padding-left: 0;
+	text-align: left
+}
+body.loginpage .adminLoginForm .box form.form-horizontal .codes img {
+	height: 100%;
+	max-width: 100%
+}
+body.loginpage .adminLoginForm .box form.form-horizontal .btn {
+	width: 100%;
+	border: 0;
+	border-radius: 0
+}
+body.loginpage .adminLoginForm .loginFooter {
+	text-align: center;
+	color: #fff;
+	font-size: 12px
+}
+body.loginpage .adminLoginForm .loginFooter a {
+	color: #fff;
+	font-size: 12px
+}
+body.index_body {
+	padding: 15px 0
+}
+body.index_body .rankview .mainbox {
+	padding: 15px 0;
+	background-color: #EDF1F2
+}
+body.index_body .rankview .mainbox .maintitle {
+	padding: 3px 0 3px 10px;
+	border-left: 3px solid #e1434e;
+	font-size: 16px;
+	letter-spacing: 1px
+}
+body.index_body .rankview .mainbox .maincontent {
+	padding: 0 15px;
+	margin-top: 15px
+}
+body.index_body .included .box {
+	width: 100%;
+	height: 100%;
+	text-align: center;
+	height: 120px
+}
+body.index_body .included .box h3, body.index_body .included .box h5 {
+	margin: 0
+}
+body.index_body .included .box .icon {
+	line-height: 150px
+}
+body.index_body .included .box .intro {
+	color: #fff;
+	padding-top: 33px
+}
+body.index_body .included .box .intro .total {
+	font-size: 26px
+}
+body.index_body .included .box .intro .name {
+	margin-top: 5px
+}
+body.index_body .included .box.wendang {
+	background-color: #f57665
+}
+body.index_body .included .box.wendang .icon i.fa {
+	color: #f9b5ac
+}
+body.index_body .included .box.bdsl {
+	background-color: #5bb5da
+}
+body.index_body .included .box.bdsl .icon i.fa {
+	color: #c0e4f2
+}
+body.index_body .included .box.qhsl {
+	background-color: #4fc3ba
+}
+body.index_body .included .box.qhsl .icon i.fa {
+	color: #b0e4e0
+}
+body.index_body .included .box.sgsl {
+	background-color: #f39c11
+}
+body.index_body .included .box.sgsl .icon i.fa {
+	color: #f7cf8a
+}
+body.index_body .page1 .user ul li {
+	line-height: 22px
+}
+body.index_body .page1 .quickmenu {
+	margin-top: 30px
+}
+body.index_body .page1 .quickmenu a {
+	color: #333
+}
+body.index_body .page1 .quickmenu p {
+	margin: 0;
+	text-align: center
+}
+body.index_body .page1 .quickmenu .maincontent {
+	text-align: center
+}
+body.index_body .page1 .quickmenu .maincontent .lmdh .fa-square {
+	color: #73a4f6
+}
+body.index_body .page1 .quickmenu .maincontent .xtsz .fa-square {
+	color: #ff8d5b
+}
+body.index_body .page1 .quickmenu .maincontent .wzlb .fa-square {
+	color: #ffd556
+}
+body.index_body .page1 .quickmenu .maincontent .fbwz .fa-square {
+	color: #72e5e5
+}
+body.index_body .page1 .quickmenu .maincontent .yqlj .fa-square {
+	color: #ffb199
+}
+body.index_body .page1 .quickmenu .maincontent .bdgl .fa-square {
+	color: #ddcda9
+}
+body.index_body .page2 {
+	margin-top: 30px
+}
+body.index_body .page2 .system {
+	border-radius: 0;
+	margin-top: 30px;
+	margin-bottom: -3px
+}
+body.index_body .page2 .system i.fa {
+	color: #fff
+}
+body.index_body .page2 .system .panel-heading {
+	background-color: #9956b5;
+	color: #fff;
+	border-radius: 0;
+	padding: 15px 10px;
+	border-bottom: 1px solid #b370cf
+}
+body.index_body .page2 .system .panel-body {
+	background-color: #8d44af;
+	border: 0
+}
+body.index_body .page2 .system .panel-body .list-group {
+	margin-bottom: 0;
+	border-radius: 0
+}
+body.index_body .page2 .system .panel-body .list-group .list-group-item {
+	background-color: #9956b5;
+	color: #fff;
+	border: 0;
+	padding: 15px 10px;
+	border-radius: 0
+}
+body.index_body .page2 .system .panel-body .list-group .list-group-item .text-muted {
+	color: #d9a3ee
+}
+body.index_body .page2 .newarticle .maincontent {
+	padding-top: 8px
+}
+body.index_body .page2 .newarticle .maincontent table {
+	margin-bottom: 0;
+	font-size: 12px
+}
+body.index_body .page2 .newarticle .maincontent table a {
+	color: #333
+}
+body.index_body .page2 .weather {
+	color: #fff;
+	margin-top: 30px;
+	background-color: #72d0ea
+}
+body.index_body .page2 .weather .city {
+	text-align: center;
+	font-size: 24px;
+	margin-bottom: 10px
+}
+body.index_body .page2 .weather .icons {
+	text-align: center
+}
+body.index_body .page2 .weather .icons p {
+	margin-top: 10px;
+	font-size: 14px;
+	margin-bottom: 0
+}
+body.index_body .page2 .mainbox.contact {
+	background-image: url(../images/contact-bg.jpg);
+	background-size: 100%;
+	margin-top: 30px
+}
+body.index_body .page2 .mainbox.contact .maintitle {
+	color: #fff
+}
+body.index_body .page2 .contact .avatar img {
+	border-radius: 100px;
+	border: 2px solid #fff
+}
+body.index_body .page2 .contact .avatar {
+	margin-bottom: 20px;
+	text-align: center
+}
+body.index_body .page2 .contact .maincontent {
+	font-size: 14px;
+	color: #fff
+}
+body.index_body .page2 .contact .maincontent .list-group {
+	width: 90%;
+	margin: 0 auto
+}
+body.index_body .page2 .contact .maincontent .list-group .list-group-item {
+	border: 0;
+	background-color: transparent;
+	padding: 6px 5px 7px 5px;
+	color: #fff
+}
+body.index_body .page2 .contact .maincontent .list-group .list-group-item .text-muted {
+	color: #cbcbcb
+}
+@media (max-width:767px) {
+body.loginpage .adminLoginForm {
+	padding: 10vh 10vw
+}
+body.loginpage .adminLoginForm .box form.form-horizontal input.form-control {
+	padding-left: 0
+}
+}
+@media (min-width:768px) {
+body.index_body .page1 .quickmenu, body.index_body .page2 .system, body.index_body .page2 .weather {
+	margin-top: 0
+}
+}
+@media (min-width:992px) {
+body.loginpage .adminLoginForm {
+	width: 50vw
+}
+}
+@media (min-width:1200px) {
+body.loginpage .adminLoginForm {
+	width: 60vw
+}
+body.loginpage .adminLoginForm .box {
+	padding: 10vh
+}
+}

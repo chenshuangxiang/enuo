@@ -1,0 +1,82 @@
+<!DOCTYPE html><html><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,minimum-scale=1,maximum-scale=1,user-scalable=no,minimal-ui"><link rel="stylesheet" href="css/base.css?v=dd0905f"><link rel="stylesheet" href="css/util.css?v=9472158"><link rel="stylesheet" href="css/activity_cp.css?v=1e57137"><script type="text/javascript" src="plug/jquery-1.11.3.js?v=4663977"></script><script src="js/lib/jweixin-1.1.0.js?v=2038a52"></script><script src="js/getShare.js?v=d631674"></script><title>VIP家庭口腔护理卡</title></head><style>.gouKnow p {
+		color: #545454;
+		font-size: .28rem;
+		line-height: .5rem;
+	}
+	/*open*/
+	.paybackOpen {
+		position: fixed;
+		width: 100%;
+		height: 100%;
+		z-index: 999;
+		top: 0;
+		display: none;
+	}
+	.mubu {
+		position: fixed;
+		width: 100%;
+		height: 100%;
+		background-color: #000000;
+		opacity: 0.2;
+	}
+	.modelOpenback {
+		width: 80%;
+		position: fixed;
+		top: 26%;
+		left: 10%;
+		z-index: 99999;
+		border-radius: 5px;
+		background-color: white;
+	}
+	.paybackclose {
+		width: 0.4rem;
+		float: right;
+		margin: .25rem;
+	}
+	.modelOpenback input{
+		width: 78%;
+		padding-left: 2%;
+		margin-left: 10%;
+		height: .7rem;
+		margin-top: .2rem;
+		margin-bottom: .3rem;
+		font-size: .31rem;
+		border: 1px solid #cccccc;
+	}
+	.toDuihuan {
+		width: 40%;
+		height: .75rem;
+		background-color: #00afa1;
+		border: none;
+		outline: none;
+		/* position: absolute; */
+		border-radius: 5px;
+		color: white;
+		font-size: .35rem;
+		margin: 6% 0 9% 2%;
+	}
+	.doc_homepage_btm div{
+		display: inline-block;
+		width: 30%;
+		margin-left: 12%;
+		height: .8rem;
+		line-height: .8rem;
+		margin-top: 0.2rem;
+		font-size: .3rem;
+		text-align: center;
+		color: #ffffff;
+		float: left;
+		font-weight: 500;
+	}</style><body style="background-color: white;"><div class="paybackOpen"><div class="mubu"></div><div class="modelOpenback"><img class="paybackclose" src="img/payclose.png?v=8df5df3"> <input type="text" class="huliCardCode" placeholder="请输入兑换码"> <button class="toDuihuan" onclick="Go.getHuliCardForCode()" style="margin-left: 30%;">兑换</button></div></div><div class="content xywz" style="background-color: white"><div class="headerimg flex_vertical justify_content_equal"><img class="up_page pub_hearder_left" style="width: 1rem;
+    height: 1rem;
+   position: absolute;margin-top: 0;top: .15rem;
+    left: 1%;" src="img/header/header_leftHui.png?v=9e72a57" onclick="window.history.go(-1)"> <img class="headerimgTop" style="width: 84%;
+    margin: .3rem 0 0 8%;" src="img/huliCard.png?v=eac8ca5"></div><div class="hos_doc_team set_box_shadow" style="margin-top:0.3rem;    padding-bottom: .2rem;margin-bottom: 1.5rem;"><div class="cptitle ill_office_pg" style="border-bottom: none"><span style="margin-top: 0;
+    font-size: .44rem;
+    font-weight: 600;
+    color: black;" class="cptitleName">爱德医院VIP家庭口腔护理卡</span><p class="priceyuyue" style="margin-top: .1rem;    padding-bottom: .05rem;"><span style="font-size: .27rem;"></span><span class="price priceIndex" style="color: #ff541e;font-size: .43rem;">￥1000</span><span style="font-size: .25rem;
+    color: #ff541e;">(限时抢购价)</span><br><del class="oldprice" style="font-size: .25rem;">价格￥6000</del></p></div><div class="gouKnow"><p>· 本卡限全家5口人使用，请勿转借</p><p>· 使用本卡可享受免挂号费、检查费、治疗费</p><p>· 本卡享有10次超声洁牙、10颗普通拔牙(不含麻醉费)、10颗玻璃离子补牙的免费服务</p><p>· 本卡内容属于医疗产品，一旦购买不予退款</p><p>· 本卡有效期为一年，到期后立即失效，自购买日开始计算有效时间</p><p>· 最终解释权归浙江爱德医院口腔科所有</p><p style="border-top: 1px solid #999999;color: #a9a9a9;margin-top: 0.1rem;padding-top: .1rem;">医疗投诉电话：4000696120</p><p></p></div></div><div class="doc_homepage_btm fixed clearfix" style="background-color: white; position: fixed;bottom:0;border-top:1px solid #ccc"><div style="color: black;border:1px solid #00AFA1;background-color: white;border-radius: 20px" class="make" onclick="$('.paybackOpen').show()">立即兑换</div><div style="border-left: 1px solid #ccc;margin-left: 9%;
+    width: 1px;"></div><div style="border-radius: 20px;margin-left: 9%" class="make" onclick="Go.pay()">立即购买</div></div></div><script type="text/javascript" src="js/viewport.js?v=efcdc5a"></script><script src="js/common.js?v=e9fcb43"></script><script type="text/javascript" src="js/activityHuLiCard.js?v=c369adc"></script></body><script>$(document).ready(function () {
+        //follow.wecat();
+		init();
+    })</script></html>

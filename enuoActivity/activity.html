@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="renderer" content="webkit">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+<link rel="stylesheet" href="css/base.css" />
+<link rel="stylesheet" href="css/util.css" />
+<script src="js/viewport.js"></script>
+<script src="js/jquery-1.11.3.js"></script>
+<title>活动</title>
+<style>
+* {
+	margin: 0px;
+	padding: 0px;
+}
+
+body {
+	width: 7.5rem;
+	background-color: #f1f1f1;;
+	/*height: 13.3rem;*/
+	/*background-color: #00b7d7;*/
+	/*background: -webkit-linear-gradient(left, #00beb5, #00b7d7);*/
+	/* Safari 5.1 - 6.0 */
+	/*background: -o-linear-gradient(right, #00beb5, #00b7d7);
+	!* Opera 11.1 - 12.0 *!
+	background: -moz-linear-gradient(right, #00beb5, #00b7d7);
+	!* Firefox 3.6 - 15 *!
+	background: linear-gradient(to right, #00beb5, #00b7d7);*/
+	/* 标准的语法 */
+	/*position: relative;*/
+}
+.logo{
+	width:100%;
+	/*border: 1px solid red;*/
+	font-family: HYk2gj;
+    font-size: .78rem;
+    line-height: .78rem;
+    letter-spacing: 3.1px;
+    color: #ffffff;
+    text-align: center;
+}
+.content {
+	width: 100%;
+	position: relative;
+	font-size: 14px;
+}
+
+.content p {
+	width: 96%;
+	margin-left: 2%;
+	/*height: 40px;*/
+	/*background-color: white;*/
+	margin-bottom: .1rem;
+	font-size: .3rem;
+	/*border-radius: 5px;
+	box-shadow: -4px 0px 38px 0 rgba(174, 18, 62, 0.2);*/
+}
+/*
+.content p span {
+	height: 40px;
+	width: 30%;
+	!*color: blue;*!
+	display: inline-block;
+	line-height: 40px;
+	text-align: center;
+}*/
+
+.content p input {
+	height: 30px;
+	width: 60%;
+	border: 0px;
+	display: inline-block;
+	line-height: 40px;
+	outline: none;
+	font-size: 16px;
+}
+
+.content p select {
+	height: 30px;
+	border: 0px;
+	line-height: 30px;
+	width: 50%;
+	/*font-size: 16px;*/
+	background-color: white;
+	/*color: ;*/
+	appearance: none;
+	-moz-appearance: none;
+	-webkit-appearance: none;
+}
+
+select::-ms-expand {
+	display: none;
+}
+
+
+/*三角形*/
+
+.tria {
+	display: inline-block;
+	width: 0;
+	height: 0px;
+	position: absolute;
+	right: 15px;
+	top: 17px;
+	border-left: 8px solid transparent;
+	border-right: 8px solid transparent;
+	border-top: 8px solid black;
+}
+
+.btn {
+	margin-top: 50px;
+	/*filter:alpha(opacity:30); 
+			opacity:0;  -moz-opacity:0;
+			-khtml-opacity: 0;*/
+}
+
+.btn .sub {
+	width: 100%;
+	background-color: #00b3e7;
+	height: 40px;
+	color: white;
+	font-size: 16px;
+	border-radius: 5px;
+}
+
+h1 {
+	margin: 40px 0 10px 0;
+	text-align: center;
+	color: blue;
+	height: .76rem;
+	line-height: .76rem;
+	letter-spacing: 2px;
+	font-size: .5rem;
+}
+
+h2 {
+	text-align: center;
+	color: blue;
+}
+
+.consult {
+	width: 200px;
+	height: 30px;
+	line-height: 30px;
+	/*border: 1px solid red;*/
+	position: relative;
+	top: 2rem;
+	left: 55%;
+	margin-left: -100px;
+	color: white;
+}
+
+.consult img {
+	width: 20px;
+	position: relative;
+	top: 5px;
+}
+	.activeZi{
+		font-size: .3rem;
+	}
+	.hrefDiv{
+		width: 100%;
+		float: left;
+		margin-bottom: .5rem;
+	}
+	.hrefDivIndex{
+		width: 30%;
+		float: left;
+		border-radius: 5px;
+		background-color: #fff;
+		padding: .2rem 1.5%.2rem 1.5%;
+		margin-left: 2.5%;
+		font-size: .3rem;
+	}
+	.title{
+		font-weight: 600;
+		font-size: .35rem;
+		margin: .2rem 0 .2rem;
+	}
+	.goTou{
+		/*width: 20%;*/
+		/*height: .3rem;*/
+		padding: .1rem .2rem;
+		border: none;
+		background-color: #00BDFF;
+		outline: none;
+		font-size: .3rem;
+		color: white;
+		border-radius: 3px;
+		margin-left: 11%;
+	}
+	#form1{
+		width: 80%;
+		position: fixed;
+		z-index: 999;
+		top: 25%;
+		left: 10%;
+		display: none;
+	}
+.mubu {
+	background-color: #000;
+	opacity: .2;
+	position: fixed;
+	width: 100%;
+	height: 100%;
+	z-index: 99;
+	display: none;
+	top: 0;
+	}
+</style>
+</head>
+<body>
+	<div class="logo">
+			<img src="img/activity.png" />
+
+	</div>
+	<div class="mubu"></div>
+	<!--<h1>e诺健牙日</h1>-->
+	<!--<h2>携手各大口腔医院，豪情特惠！</h2>-->
+	<div class="content" style="padding-bottom: 1rem;">
+		<div class="title">竞猜题目：非农数据竞猜：看谁猜得准</div>
+		<div class="hrefDiv">
+			<div class="hrefDivIndex">
+				<p><span style="font-weight: 600;font-size: .31rem">公布值>预期值</span>--利好美国经济及美元，利空原油</p>
+				<input type="button" class="goTou" value="点击投票" valuename="公布值>预期值"/>
+			</div>
+			<div class="hrefDivIndex">
+				<p><span style="font-weight: 600;font-size: .321rem">公布值<预期值</span>--利空美国经济及美元，利多原油</p>
+				<input type="button" class="goTou" value="点击投票" valuename="公布值<预期值"/>
+			</div>
+			<div class="hrefDivIndex">
+				<p><span style="font-weight: 600;font-size: .31rem">公布值≈预期值</span>--行情变化不大，原油震荡为主</p>
+				<input type="button" class="goTou" value="点击投票" valuename="公布值≈预期值"/>
+			</div>
+		</div>
+		<div class="activeZi">
+			<p>1.参与方式：参与竞猜活动需输入手机号码，一边获取奖项中奖短线通知</p>
+			<p>2.获奖者：竞猜数值正确的者随机抽取</p>
+			<p>3.获奖奖项：a.随机抽取10名竞猜数据准确者获得200元微信红包</p>
+			<p>b.随机抽取5名竞猜数据准确者获得公司精选个股3支</p>
+			<p>c.参与投票者提交竞猜后有机会获得随机红包一个</p>
+			<p>4.领奖方式：中奖者随机抽取，获奖名单将于所有客户交流群统一公告，中奖后公司客服可将电话联系</p>
+			<p>5.竞猜时间：每周非农数据公布的交易日当天，数据前公布均可参与</p>
+			<p>6.参与规则：根据投票链接点击投票，每人仅限竞猜一次，请认真选择竞猜预期</p>
+			<p>7.奖品发放时间：微信红包将会在抽奖名额公布后24小时内发放，抽取精选个股者会有相关老师一对一通知联系（提供买卖人）</p>
+		</div>
+		<form id="form1" style="background-color: white;">
+			<p class="parent" style="	margin-top: .5rem;margin-left: 7%;width: 91%;">
+				<span>姓名：</span>
+				<input type="text" class="username" placeholder="请输入您的姓名" style="    border: 1px solid #dddddd;width: 71%;"/>
+			</p>
+			<p class="parent" style="margin-top: .5rem;margin-left: 7%;width: 91%;">
+				<span>手机：</span>
+				<input type="number" class="phone" placeholder="请输入您的手机号" style="    border: 1px solid #dddddd;width: 71%;"/>
+			</p>
+			<p class="btn" style="    margin-top: 8%;
+    margin-bottom: 10%;
+    width: 70%;
+    margin-left: 16%;border-radius: 0px;background-color: transparent;">
+				<input class="sub" type="button" value="投 票"/>
+			</p>
+		</form>
+	</div>
+<script>var select_val;
+var ill;
+$(function() {
+	$('.goTou').click(function () {
+		$('#form1').show().attr('valuename',$(this).attr('valuename'));
+		$('.mubu').show()
+    });
+	$('.mubu').click(function () {
+        $('.mubu,#form1').hide();
+    })
+	$(".sub").click(function() {
+		var username = $(".username").val();
+		var phone = $(".phone").val();
+		var data = {
+			"name": username,
+			"mobile": phone,
+			"type": $('#form1').attr('valuename')
+		}
+		console.log(data);
+		if(username == "") {
+			alert("姓名不能为空");
+			return false;
+		}
+		if(phone == "") {
+			alert("手机号不能为空");
+			return false;
+		}
+//		if(ill == "" || ill == undefined) {
+//			alert("选择项目不能为空");
+//			return false;
+//		}
+		var url = "http://123.207.68.254/api/common/addMobile";
+		//		var url= "http://192.168.30.120:8080/disActivity/enroll";
+	/*	$.ajaxSetup({
+			headers: {
+				'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'
+			}
+		});*/
+		$.post(url, data, function(data) {
+			console.log(data);
+			data = JSON.parse(data);
+			if(data.success == true) {
+				alert("投票成功");
+				window.location.href = '../allot/member_custom_reg/referral_reg/ag/351';
+				//$('#form1')[0].reset(); //重置表单
+			} else {
+				alert(data.data);
+			}
+		});
+
+	});
+});</script>
+</body>
+</html>

@@ -1,0 +1,1567 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<meta charset="UTF-8">
+	<title>医院介绍 - 浙江大学医学院附属邵逸夫医院--中国首家通过JCI认证的公立医院</title>
+	<meta name="keywords" content="医院介绍" />
+	<meta name="description" content="医院介绍" />
+	<link rel="stylesheet" type="text/css" href="/tpl/default/css/swiper.min.css" />
+	<link rel="stylesheet" type="text/css" href="/tpl/default/css/lightbox.css" />
+	<link rel="stylesheet" type="text/css" href="/tpl/default/css/font-awesome.css" />
+	<link rel="stylesheet" type="text/css" href="/tpl/default/css/style.css" />
+	<link rel="shortcut icon" href="/tpl/default/images/favicon.ico" />
+</head>
+<body>
+<!-- head -->
+<div class="headwrap clearfix">
+	<div class="logobox">
+		<a href="http://www.srrsh.com/">
+			<img src="/tpl/default/images/logo.png">
+		</a>
+		
+	</div>
+	<div class="headitembox">
+	
+		<ul class="link1">
+			<li class="headitems">
+				<a href="" class="bluefont">中国首家通过JCI认证的公立医院</a>
+				<div class="topitemsimg">
+					<img src="/tpl/default/images/headimg01.jpg" alt="">
+				</div>
+			</li>
+			<li class="headitems">
+				<a href="" class="bluefont">中国医疗机构最佳雇主</a>
+				<div class="topitemsimg">
+					<img src="/tpl/default/images/headimg02.jpg" alt="">
+				</div>
+			</li>
+			
+			
+			<li class="headitems">
+				<a href="#">患者满意度调查</a>
+				<div class="topitemsimg">
+					<img src="/tpl/default/images/ewm.jpg" alt="" width="100px" height="100px">
+				</div>
+			</li>
+			<li class="headitems">
+				<a href="#">邵医健康APP</a>
+				<div class="topitemsimg">
+					<img src="/tpl/default/images/headimg03.jpg" alt="">
+				</div>
+			</li>
+			<li class="headitems">
+				<a href="">微信服务号</a>
+				<div class="topitemsimg">
+				<img src="/tpl/default/images/headimg04.jpg" alt="">	
+				</div>
+			</li>
+			<li class="headitems">
+				<a href="https://exmail.qq.com/cgi-bin/loginpage">邮箱入口</a>
+			</li>
+			<li class="headitems">
+				<a href="/user.php?mod=login">登录</a>
+			</li>
+			<li class="headitems">
+				<a href="/user.php?mod=login">注册</a>
+			</li>
+		</ul>
+		
+		
+	</div>
+	
+</div><!-- head -->
+<!-- menunav -->
+<div class="menubox clearfix">
+	<ul class="menunavbox">
+		<li class="menunavitem">
+			<a href="http://www.srrsh.com/" class="menunav_a">首页</a>
+		</li>
+		<li class="menunavitem">
+			<a href="/yykg/yyjs/" class="menunav_a">医院概况</a>
+			<div class="subnavitembox clearfix">
+				<ul>
+																				<li class="subnavitem">
+						<a href="/yykg/yyjs/#a2" class="subnav_a">医院介绍</a>
+					</li>
+																														<li class="subnavitem">
+						<a href="/yykg/yyjs/#a4" class="subnav_a">JCI认证</a>
+					</li>
+																														<li class="subnavitem">
+						<a href="/yykg/yyjs/#a8" class="subnav_a">信息公开</a>
+					</li>
+																														<li class="subnavitem">
+						<a href="/yykg/yyjs/#a5" class="subnav_a">医院环境</a>
+					</li>
+									</ul>
+				<ul>
+																														<li class="subnavitem">
+						<a href="/yykg/yyjs/#a7" class="subnav_a">应急通道</a>
+					</li>
+																														<li class="subnavitem">
+						<a href="http://www.srrsh.com/news/guoji/" class="subnav_a">国际交流</a>
+					</li>
+																														<li class="subnavitem">
+						<a href="/yykg/yyjs/#a9" class="subnav_a">联系我们</a>
+					</li>
+																								</ul>
+				<div class="subnavimg">
+					<img src="/tpl/default/images/navimg02.png" alt="">
+				</div>
+			</div>
+		</li>
+		<li class="menunavitem">
+			<a href="http://www.srrsh.com/yygk/yywh/" class="menunav_a">邵医文化</a>
+			<div class="subnavitembox clearfix">
+				<ul>
+																				<li class="subnavitem">
+						<a href="/yygk/yywh/#wenhua_12" class="subnav_a">邵医之声</a>
+					</li>
+																														<li class="subnavitem">
+						<a href="/yygk/yywh/#wenhua_13" class="subnav_a">邵医志友</a>
+					</li>
+																														<li class="subnavitem">
+						<a href="/yygk/yywh/#wenhua_161" class="subnav_a">邵医风采</a>
+					</li>
+																														<li class="subnavitem">
+						<a href="/yygk/yywh/#wenhua_162" class="subnav_a">邵医咖啡</a>
+					</li>
+									</ul>
+				<ul>
+																								</ul>
+				<div class="subnavimg">
+					<img src="/tpl/default/images/navimg03.png" alt="">
+				</div>
+			</div>
+		</li>
+		<li class="menunavitem">
+			<a href="/news/notice/" class="menunav_a">新闻中心</a>
+			<div class="subnavitembox clearfix">
+				<ul>
+																				<li class="subnavitem">
+						<a href="http://www.srrsh.com/news/notice/" class="subnav_a">通知公告</a>
+					</li>
+																														<li class="subnavitem">
+						<a href="http://www.srrsh.com/news/dongtai/" class="subnav_a">医院动态</a>
+					</li>
+																														<li class="subnavitem">
+						<a href="http://www.srrsh.com/news/media/" class="subnav_a">媒体报道</a>
+					</li>
+																														<li class="subnavitem">
+						<a href="http://www.srrsh.com/news/jsxm/" class="subnav_a">新技术新项目</a>
+					</li>
+									</ul>
+				<ul>
+																														<li class="subnavitem">
+						<a href="http://www.srrsh.com/lists/27.html" class="subnav_a">招岗招聘</a>
+					</li>
+																														<li class="subnavitem">
+						<a href="http://www.srrsh.com/news/caigou/" class="subnav_a">采购信息</a>
+					</li>
+																														<li class="subnavitem">
+						<a href="http://www.srrsh.com/news/xinxigongkai" class="subnav_a">信息公开</a>
+					</li>
+																								</ul>
+				<div class="subnavimg">
+					<img src="/tpl/default/images/navimg04.png" alt="">
+				</div>
+			</div>
+		</li>
+		<li class="menunavitem">
+			<a href="/jiuzheng/online/" class="menunav_a">医疗服务</a>
+			<div class="subnavitembox clearfix" style="width: 580px;">
+				<ul>
+																				<li class="subnavitem">
+						<a href="http://www.srrsh.com/jiuzheng/online/" class="subnav_a">在线服务</a>
+					</li>
+																														<li class="subnavitem">
+						<a href="http://www.srrsh.com/jiuzheng/keshi/" class="subnav_a">科室介绍</a>
+					</li>
+																														<li class="subnavitem">
+						<a href="http://www.srrsh.com/jiuzheng/professional/" class="subnav_a">专家介绍</a>
+					</li>
+																														<li class="subnavitem">
+						<a href="http://www.srrsh.com/jiuzheng/zhinan/" class="subnav_a">就医指南</a>
+					</li>
+									</ul>
+				<ul>
+																														<li class="subnavitem">
+						<a href="http://www.srrsh.com/jiuzhen/chutingzhen/" class="subnav_a">出/停诊信息</a>
+					</li>
+																														<li class="subnavitem">
+						<a href="http://www.srrsh.com/lists/102.html" class="subnav_a">医保信息</a>
+					</li>
+																														<li class="subnavitem">
+						<a href="http://www.srrsh.com/jiuzhen/way/" class="subnav_a">就诊线路</a>
+					</li>
+																														<li class="subnavitem">
+						<a href="http://www.srrsh.com/jiuzhen/baoxiao/" class="subnav_a">结算流程</a>
+					</li>
+									</ul>
+				<ul>
+																														<li class="subnavitem">
+						<a href="http://www.srrsh.com/jiuzhen/jiufen/" class="subnav_a">投诉流程</a>
+					</li>
+																														<li class="subnavitem">
+						<a href="http://www.srrsh.com/yihu/yiliao/" class="subnav_a">医疗团队</a>
+					</li>
+																														<li class="subnavitem">
+						<a href="http://www.srrsh.com/yihu/huli/" class="subnav_a">护理团队</a>
+					</li>
+																																								<li class="subnavitem">
+						<a href="http://www.srrsh.com/yihu/paiban/" class="subnav_a">专家名医排班</a>
+					</li>
+									</ul>
+				<ul>
+																								</ul>
+				<div class="subnavimg">
+					<img src="/tpl/default/images/navimg05.png" alt="">
+				</div>
+			</div>
+		</li>
+		
+		<li class="menunavitem">
+			<a href="/dangqun/fengcai/" class="menunav_a">党群工作</a>
+			<div class="subnavitembox clearfix">
+				<ul>
+																				<li class="subnavitem">
+						<a href="http://www.srrsh.com/dangqun/fengcai/" class="subnav_a">党政风采</a>
+					</li>
+																														<li class="subnavitem">
+						<a href="http://www.srrsh.com/dangqun/dongtai/" class="subnav_a">工作动态</a>
+					</li>
+																														<li class="subnavitem">
+						<a href="http://www.srrsh.com/dangqun/lianzheng/" class="subnav_a">廉政建设</a>
+					</li>
+																														<li class="subnavitem">
+						<a href="http://www.srrsh.com/dangqun/notice/" class="subnav_a">文件通知</a>
+					</li>
+									</ul>
+				<ul>
+																														<li class="subnavitem">
+						<a href="http://www.srrsh.com/dangqun/dangjian/" class="subnav_a">基层党建</a>
+					</li>
+																								</ul>
+				<div class="subnavimg">
+					<img src="/tpl/default/images/navimg07.png" alt="">
+				</div>
+			</div>
+		</li>
+		<li class="menunavitem">
+			<a href="/keyan/zhongdianxueke/" class="menunav_a">教学科研</a>
+			<div class="subnavitembox clearfix">
+				<ul>
+																				<li class="subnavitem">
+						<a href="/keyan/zhongdianxueke/#a66" class="subnav_a">教研动态</a>
+					</li>
+																														<li class="subnavitem">
+						<a href="/keyan/zhongdianxueke/#a67" class="subnav_a">科研成果</a>
+					</li>
+																														<li class="subnavitem">
+						<a href="/keyan/zhongdianxueke/#a68" class="subnav_a">医院教学</a>
+					</li>
+																														<li class="subnavitem">
+						<a href="/keyan/zhongdianxueke/#a70" class="subnav_a">临床试验</a>
+					</li>
+									</ul>
+				<ul>
+																														<li class="subnavitem">
+						<a href="/keyan/zhongdianxueke/#a63" class="subnav_a">进修培训</a>
+					</li>
+																																		</ul>
+				<div class="subnavimg">
+					<img src="/tpl/default/images/navimg08.png" alt="">
+				</div>
+			</div>
+		</li>
+		<li class="menunavitem">
+			<a href="/jiankang/intro/" class="menunav_a">健康促进</a>
+			<div class="subnavitembox clearfix">
+				<ul>
+																				<li class="subnavitem">
+						<a href="http://www.srrsh.com/jiankang/intro/" class="subnav_a">中心简介</a>
+					</li>
+																														<li class="subnavitem">
+						<a href="http://www.srrsh.com/jiankang/menzhen/" class="subnav_a">门诊体检</a>
+					</li>
+																														<li class="subnavitem">
+						<a href="http://www.srrsh.com/jiankang/zhuyuan/" class="subnav_a">住院体检</a>
+					</li>
+																																								<li class="subnavitem">
+						<a href="http://www.srrsh.com/lists/101.html" class="subnav_a">精细健康管理</a>
+					</li>
+									</ul>
+				<ul>
+																														<li class="subnavitem">
+						<a href="http://www.srrsh.com/lists/80.html" class="subnav_a">健康服务</a>
+					</li>
+																								</ul>
+				<div class="subnavimg">
+					<img src="/tpl/default/images/navimg06.png" alt="">
+				</div>
+			</div>
+		</li>
+	</ul>
+	<div class="menuiconbox">
+		<a class="menuicon_a menuiconsearch">
+			<form action="/search.php" method="get" id="searchForm" name="searchForm">
+				<input type="hidden" name="type" id="type" value=""/>
+				<input type="hidden" name="page" id="page" value=""/>
+				<img src="/tpl/default/images/icon01.png" >
+				<div class="menusearchbox">
+					<input type="text" class="searchinput" placeholder="请输入关键字" name="keyword" id="keyword" value="">
+					<div class="searchbtn">
+						<img src="/tpl/default/images/inputsearch.png" alt="" onclick="$('#searchForm').submit();">
+					</div>
+				</div>
+			</form>
+
+		</a>
+		<a href="http://www.srrsh-english.com/" class="menuicon_a"><img src="/tpl/default/images/icon02.png" ></a>
+	</div>
+</div><!-- menunav -->
+<!-- banner -->
+<div class="bannerbox">
+	<div class="mainbanner">
+		<img src="/tpl/default/images/hospitalbanner.png" class="bannerimg" />
+		<a href="javascript:void(0)" class="slide-cont">
+			<div class="slide-text">
+				<h2 class="slidetitle">医院概况</h2>
+				<p>浙江大学医学院附属邵逸夫医院是由香港知名实业家邵逸夫爵士捐资、浙江省人民政府 配套建设，集医疗、教学和科研为一体的公立综合性三级甲等医院</p>
+			</div>
+
+		</a>
+	</div>
+	<!-- publicmenu -->
+	<div class="publicnav">
+		<div class="mainbox clearfix">
+			<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<div>
+	<div class="navi_body">
+		<div class="navi_head">
+			<div style="width:100%; ">
+								<span>
+					<p class="navi_title">
+						<a href="/yykg/yyjs/#a2" class="publicnav_a publicnav_a_hover"">
+						医院介绍
+						</a>
+					</p>
+										<p><a href="http://www.srrsh.com/yykg/yyjs/ldjs/">领导介绍</a></p>
+										<p><a href="http://www.srrsh.com/yykg/yyjs/zhunru/">执业准入</a></p>
+										<p><a href="http://www.srrsh.com/yykg/yyjs/jigou/">机构信息</a></p>
+										<p><a href="http://www.srrsh.com/yykg/yyjs/xianlu/">交通线路</a></p>
+										<p><a href="http://www.srrsh.com/yykg/yyjs/sjtj/">数据统计</a></p>
+										<p><a href="http://www.srrsh.com/yykg/yyjs/yygz/">医院规章</a></p>
+										<p><a href="http://www.srrsh.com/lists/170.html">设施设备</a></p>
+					
+				</span>
+								<span>
+					<p class="navi_title">
+						<a href="/yykg/yyjs/#a4" class="publicnav_a "">
+						JCI认证
+						</a>
+					</p>
+										<p><a href="http://www.srrsh.com/lists/10.html">JCI历程</a></p>
+										<p><a href="http://www.srrsh.com/lists/11.html">质量改进</a></p>
+					
+				</span>
+								<span>
+					<p class="navi_title">
+						<a href="/yykg/yyjs/#a8" class="publicnav_a "">
+						信息公开
+						</a>
+					</p>
+										<p><a href="http://www.srrsh.com/lists/165.html">公开流程</a></p>
+					
+				</span>
+								<span>
+					<p class="navi_title">
+						<a href="/yykg/yyjs/#a5" class="publicnav_a "">
+						医院环境
+						</a>
+					</p>
+					
+				</span>
+								<span>
+					<p class="navi_title">
+						<a href="/yykg/yyjs/#a7" class="publicnav_a "">
+						应急通道
+						</a>
+					</p>
+					
+				</span>
+								<span>
+					<p class="navi_title">
+						<a href="http://www.srrsh.com/news/guoji/" class="publicnav_a "">
+						国际交流
+						</a>
+					</p>
+					
+				</span>
+								<span>
+					<p class="navi_title">
+						<a href="/yykg/yyjs/#a9" class="publicnav_a "">
+						联系我们
+						</a>
+					</p>
+					
+				</span>
+								<a href="/" class="goHomebtn">
+					<img src="/tpl/default/images/home.png" alt="">
+				</a>
+			</div>
+		</div>
+	</div>
+</div>
+<style  type="text/css">
+
+	.navi_head{
+		height:50px;
+	}
+	.navi_body{
+		overflow:hidden;
+		height:50px;
+	}
+	.navi_body:hover{
+		height:300px;
+		width:auto;
+		
+	}
+
+	.navi_head>div>span{
+		width:150px;
+		text-align:center;
+		/*height:300px;*/
+		display:inline-block;
+		font-size:14px;
+		float:left;
+
+	}
+
+	.navi_title{
+
+		line-height:50px;
+		margin-top:0;
+	}
+	.navi_head>div>span:a{
+		color:#FFFFFF;
+	}
+	.navi_head>div>span:hover{
+
+		background: rgba(32, 61, 143, 0.9) none repeat scroll 0 0;
+	}
+</style>		</div>
+	</div>
+</div>
+
+<!-- 医院介绍 -->
+<a name="a2"></a>
+<div class="mainbox">
+	<a class="index_titlebox" href="javascript:void(0)">
+		<h2 class="index_title">医院介绍</h2>
+		<div class="index_titleImg">
+			<p class="index_titletext">Hospital introduction</p>
+		</div>
+	</a>
+	<div class="introducecontent clearfix">
+		<div class="introduceLeft">
+			<p class="introduceTitle">
+				浙江大学医学院附属
+				邵逸夫医院
+			</p>
+		
+			<p class="introduceRightTitle">
+				医院概况
+			</p>
+			<p>
+				<div class="viewpart"><p style="text-align: center;">
+</p>
+<p style="text-align: center;">
+</p>
+<p style="text-align: center;">
+</p>
+<p style="text-align: center;">
+</p>
+<p>
+</p>
+<p>[名　 &nbsp;称]
+&nbsp; &nbsp;浙江大学医学院附属邵逸夫医院</p>
+<p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; / 浙江省邵逸夫医院</p>
+<p>[医院等级]
+&nbsp; &nbsp;三级甲类</p>
+<p>[联系电话]
+&nbsp; &nbsp;0086-0571-86090073（总机）</p>
+<p>[监督电话]
+&nbsp; &nbsp;0571-86006627</p>
+<p>[电子邮件]
+&nbsp; &nbsp;ts@srrsh.com</p>
+<p>[网 &nbsp; 址]
+&nbsp; &nbsp;http://www.srrsh.com
+</p>
+<p>[地 &nbsp; 址]
+&nbsp; &nbsp;杭州市庆春东路3号（邮编：310016）</p>
+<p>[地理位置]
+&nbsp; &nbsp;秋涛路与庆春东路交叉路口，秋涛路以东与江干区政府相邻</p>
+<p>&nbsp;
+</p></div>
+			</p>
+		</div>
+		<div class="introduceRight">
+		<p class="introduceRightTitle">
+				医院简介
+			</p>
+			<p>
+				<div class="viewpart"><p style="text-align: center;">
+</p>
+<p style="text-align: center;">
+</p>
+<p>浙江大学医学院附属邵逸夫医院是由香港知名实业家邵逸夫爵士捐资、浙江省人民政府配套建设，集医疗、教学和科研为一体的公立综合性三级甲等医院。&nbsp;</p></div>
+			</p>
+			<p class="introduceRightTitle">
+				医院规模
+			</p>
+			<p>
+				<div class="viewpart"><p style="text-align: center;">
+</p>
+<p style="text-align: center;">
+</p>
+<p style="text-align: center;">
+</p>
+<p style="text-align: center;">
+</p>
+<p style="text-indent: 32px;line-height: 150%">医院现有庆春和下沙两个院区，庆春院区89.5亩，下沙院区196亩。职工4487名（不含退休返聘人员），副高以上专家497名。核定床位数2400张，设有32个临床科室，88个护理单元，9个辅助科室。作为浙江大学医学院第三临床医学院，目前有22个博士点和30个硕士点，设有29个临床教学教研室。</p>
+<p>
+</p>
+<p style="margin:0cm;margin-bottom:.0001pt;text-align:justify;text-justify:inter-ideograph;font-size:10.5pt;font-family:'Calibri','sans-serif'">&nbsp;</p>
+
+<p></p></div>
+			</p>
+			<p class="introduceRightTitle">
+				发展历程
+			</p>
+			<div class="viewpart"><p style="text-align: center;">
+</p>
+<p style="text-align: center;">
+</p>
+<p style="text-align: center;">
+</p>
+<p style="text-align: center;">
+</p>
+<p style="text-align: center;">
+</p>
+<p style="text-align: center;">
+</p>
+<p>
+</p>
+<p style="margin:0cm;margin-bottom:.0001pt;text-align:justify;text-justify:inter-ideograph;font-size:10.5pt;font-family:'Calibri','sans-serif';text-align:left;text-indent:24.0pt;
+line-height:150%" align="left"></p>
+自1994年建院以来，在浙江省人民政府、浙江大学以及浙江省卫计委各级领导的悉心呵护下，在美国罗马琳达大学的无私帮助和社会各界的关爱下，医院不断借鉴国外优秀医疗机构的成功经验和管理模式，使医院实现跨越式发展，并走在国内医疗机构国际化进程的前列。医院于2006年12月顺利通过了国际医院评审联合委员会的评审，成为中国大陆首家通过国际医院评审（JCI )的公立医院，2016年两院区同时参评JCI，成为中国首家同等规模两院区同时通过JCI国际医院评审的医疗综合体；2017年通过国际医疗信息化最高级别认证HIMSS7；2017年成为中国首家加入MAYO CLINIC医疗联盟的公立医院；2013年1...<a href="http://www.srrsh.com/delimit/55.html" target="_blank" ><img src="/tpl/default/style/images/more.gif" /></a></div>
+		</div>
+	</div>
+</div>
+<!-- 医院图片 -->
+<div class="introductimgbox">
+	<div class="mainbox">
+		<img src="/tpl/default/images/introduceimg.png">
+	</div>
+</div>
+<!-- 医院项目 -->
+<div class="introductitembox">
+	<ul class="mainbox clearfix">
+		<li class="introductitem">
+			<div class="viewpart"><p class="introductitemTitle">医院的使命</p><p class="introductitemText">最大可能地促进人类的身心健康</p><p class="introductSubText">Our mission: To bring optimal holistic healthcare to humanity.</p></div>
+		</li>
+		<li class="introductitem">
+			<div class="viewpart"><p class="introductitemTitle">我们的目标</p><p class="introductitemText">建设一所技术一流、管理一流、设施一流、服务一流的现代化国际化综合性国家三甲医院</p><p class="introductSubText">Our Vision: Providing the nation’s finest care through excellence in skills, management, facilities and service.</p></div>
+		</li>
+		<li class="introductitem">
+			<div class="viewpart"><p class="introductitemTitle">我们的核心价值观</p><p class="introductitemText">正直真诚、关爱尊重、敬业奉献、凝聚合作、优质高效</p><p class="introductSubText">Our Core Values: Honesty, Respect, Commitment, Unity and Excellence.</p></div>
+		</li>
+		<li class="introductitem">
+			<div class="viewpart"><p style="text-align: center;">
+</p>
+<p class="introductitemTitle">我们的服务理念</p>
+<p class="introductitemText">给您真诚、信心和爱！</p>
+<p class="introductSubText">Service Philosophy: Giving you sincerity , confidence and love!</p></div>
+		</li>
+	</ul>
+	<!-- 特色项目 -->
+	<div class="mainbox" style="margin:30px auto;">
+		<p class="introductitemTitle">[特色医疗（服务）]  [重点专科]</p>
+		<ul class="clearfix">
+			<li class="characteristic">
+				<div class="viewpart"><p class="characteristicTitle">国家临床重点专科3个：</p><p>普通外科学、临床病理学、护理学；</p></div>
+			</li>
+			<li class="characteristic">
+				<div class="viewpart"><p style="text-align: center;">
+</p>
+<p style="text-align: center;">
+</p>
+<p style="text-align: center;">
+</p>
+<p style="text-align: center;">
+</p>
+<p style="text-align: center;">
+</p>
+<p style="text-align: center;">
+</p>
+<p style="text-align: center;">
+</p>
+<p style="text-align: center;">
+</p>
+<p style="text-align: center;">
+</p>
+<p style="text-align: center;">
+</p>
+<p class="characteristicTitle">浙江省级重点学科1个：内科学；</p>
+<p class="characteristicTitle">浙江省医学重点学科群1个：腔镜外科；</p>
+<p class="characteristicTitle">浙江省医学重点学科（支撑学科、创新学科）12个：</p>
+<p class="characteristicTitle">腹腔镜肝胆胰外科学、生殖微创外科学、个体化检验诊断学、心血管病再生医学、临床微生物学、角膜病学、微创胰胃外科学、内分泌代谢病学、全科医学、骨外科学、消化病学、恶性肿瘤个体化诊治学。</p>
+<p>
+</p>
+<p style="margin:0cm;margin-bottom:.0001pt;text-align:justify;text-justify:inter-ideograph;font-size:10.5pt;font-family:'Calibri','sans-serif'">&nbsp;</p>
+
+<p></p></div>
+			</li>
+			<li class="characteristic">
+				<div class="viewpart"><p class="characteristicTitle">研究平台7个：</p><p>浙江省生物治疗重点实验室、浙江省腔镜技术研究重点实验室、浙江大学邵逸夫临床医学研究所、浙江大学微创外科研究所、国家中医药科研三级实验室、浙江中医药胃肠病实验室、浙江中医药心血管病实验室。</p></div>
+			</li>
+			<li class="characteristic">
+				<div class="viewpart"><p class="characteristicTitle">浙江省技术指导中心2个：</p><p>全科医学技术指导中心、甲状腺病临床诊治技术指导中心。</p></div>
+			</li>
+		</ul>
+	</div>
+</div>
+<!-- 列表 -->
+<ul class="mainbox clearfix">
+	<li class="introduceitem">
+		<a href="http://www.srrsh.com/yykg/yyjs/zhunru/" class="introduceitembox">
+			<div class="introduceitemimg">
+				<img src="/tpl/default/images/introduceitem01.png" alt="">
+			</div>
+			<p class="introduceitemTitle">执业准入</p>
+			<p class="introduceitemSubTitle">Practice admittance</p>
+		</a>
+	</li>
+	<li class="introduceitem">
+		<a href="http://www.srrsh.com/yykg/yyjs/jigou/" class="introduceitembox">
+			<div class="introduceitemimg">
+				<img src="/tpl/default/images/introduceitem02.png" alt="">
+			</div>
+			<p class="introduceitemTitle">机构信息</p>
+			<p class="introduceitemSubTitle">Institutional information</p>
+		</a>
+	</li>
+	<li class="introduceitem">
+		<a href="http://www.srrsh.com/yykg/yyjs/xianlu/" class="introduceitembox">
+			<div class="introduceitemimg">
+				<img src="/tpl/default/images/introduceitem03.png" alt="">
+			</div>
+			<p class="introduceitemTitle">交通线路</p>
+			<p class="introduceitemSubTitle">Transport line</p>
+		</a>
+	</li>
+	<li class="introduceitem">
+		<a href="http://www.srrsh.com/yykg/yyjs/a9" class="introduceitembox">
+			<div class="introduceitemimg">
+				<img src="/tpl/default/images/introduceitem04.png" alt="">
+			</div>
+			<p class="introduceitemTitle">联系我们</p>
+			<p class="introduceitemSubTitle">Contact us</p>
+		</a>
+	</li>
+</ul>
+<!-- JCI认证 -->
+<a name="a4"></a>
+<div class="JCIcertifybox">
+	<a class="index_titlebox" href="">
+		<h2 class="index_title">JCI认证</h2>
+		<div class="index_titleImg">
+			<p class="index_titletext">JCI certification</p>
+		</div>
+	</a>
+	<div class="JCIcertifywrap">
+		<div class="mainbox clearfix">
+			<div class="JCIcertifyLeft">
+				<img src="/tpl/default/images/JCIlogo.png" alt="">
+			</div>
+			<div class="JCIcertifyRight">
+				<ul class="indexnews_navlist">
+					<li class="indexnews_item indexnews_itemactive">
+						<a href="javascript:;">
+							JCI内涵
+						</a>
+					</li>
+					<li class="indexnews_item">
+						<a href="javascript:;">
+							JCI与ISO
+						</a>
+					</li>
+					<li class="indexnews_item">
+						<a href="javascript:;">
+							JCI意义
+						</a>
+					</li>
+					<li class="indexnews_item">
+						<a href="javascript:;">
+							如何JCI认证
+						</a>
+					</li>
+				</ul>
+				<div class="switchbox">
+					<div class="swithitem" style="display: block;">
+						<p class="introduceRightTitle">JCI内涵</p>
+												<div class="viewpart"><p>JCI标准的理念是最大限度地实现可达到的标准，以病人为中心，建立相应的政策、制度和流程以鼓励持续不断的质量改进并符合当地的文化。JCI标准涵盖368个标准（其中200个核心标准，168个非核心标准），每个标准之下又包含几个衡量要素，共有1033小项，主要针对医疗、护理过程中最重要的环节，例如病人获得医疗护理服务的途径和连续性、病人健康状况的评估、医院感染的控制与预防、病人及其家属的权利以及健康教育等等。同时JCI标准也重视公共设施及安全管理、员工资格与培训、质量改进、医院领导层的协调合作以及信息管理等等。</p></div>
+						<!-- more btn -->
+						<!--<a href="" class="morebtn">MORE</a>-->
+					</div>
+					<div class="swithitem">
+						<p class="introduceRightTitle">JCI与ISO</p>
+												<div class="viewpart"><p>JCI和大家熟悉的ISO都属于国际认证标准，区别在于ISO国际通用标准适用于公司、工厂等产品生产和销售类企业，ISO的目的是要促使流程标准化以维持质量的恒定性；JCI标准则是专门用于医疗机构认证的国际医疗行业标准，JCI就是要更进一步在标准化的流程中，做到全面提升、整体改善。而且每三年对被认证单位进行复审，以确保质量。</p><p>JCI是国际医疗卫生机构认证联合委员会(Joint Commission on Accreditation of Healthcare Organizations&nbsp;简称JCAHO)用于对美国以外的医疗机构进行认证的附属机构。JCI...<a href="javascript://" onclick="fnViewMore(this);"><img src="/tpl/default/style/images/more.gif" /></a></p></div>
+						<!-- more btn -->
+						<!--<a href="" class="morebtn">MORE</a>-->
+					</div>
+					<div class="swithitem">
+						<p class="introduceRightTitle">JCI意义</p>
+												<div class="viewpart"><p>JCI标准主要关注的是医院的医疗质量、病人安全及其不断改进和提高。JCI认证的目的在于刺激各医疗卫生机构通过采用国际认可的标准和指标而持续不断地改善质量，并通过提供世界范围内的JCI认证服务来改善国际社会医疗服务质量。JCI标准完全从病人的利益和安全出发，向医院管理人员、临床工作者、后勤保障人员提出严格的要求，为病人提供完善、统一、安全的医学服务。</p><p>JCI标准对于医院医疗质量与病人安全的管理就像一个国家的宪法，非常细致具体，可操作性强，医院的所有这方面的管理政策都要求建立在这个标准之上，要求医院对所有的工作应该有书面的政策作为指引。每一个医师都要有授权，并...<a href="javascript://" onclick="fnViewMore(this);"><img src="/tpl/default/style/images/more.gif" /></a></p></div>
+						<!-- more btn -->
+						<!--<a href="" class="morebtn">MORE</a>-->
+					</div>
+					<div class="swithitem">
+						<p class="introduceRightTitle">如何JCI认证</p>
+												<div class="viewpart"><p>考察小组分别由医生、护士、行政官各1名组成，采取轮换制。他们都是各自领域的专家，并有国际工作经验。每个认证官负责检查所负责的标准是否符合要求，并进行评分。&nbsp;</p><p>认证所需时间并不固定，大约3～5天，一般包含以下几个步骤：&nbsp;</p><p>1.文件回顾（往往在每天早上进行）回顾医院的相关政策、会议记录等，有8个文件必须在认证官到来之前完成书面翻译。&nbsp;</p><p>2.约见领导层　反馈每天的认证考察知识，讨论需要改进和环节。&nbsp;</p><p>3.参观医疗护理单元　一般在考察医院设施、环境之后，认证官会与医疗护理人员一起回顾住院病历，一般要回顾8～10个；随机约见低层员工...<a href="javascript://" onclick="fnViewMore(this);"><img src="/tpl/default/style/images/more.gif" /></a></p></div>
+						<!-- more btn -->
+						<!--<a href="" class="morebtn">MORE</a>-->
+					</div>
+				</div>
+
+			</div>
+		</div>
+	</div>
+</div>
+<!-- JCI历程 -->
+<div class="historyswiper">
+	<a class="index_titlebox" href="">
+		<h2 class="index_title">JCI历程</h2>
+		<div class="index_titleImg">
+			<p class="index_titletext">JCI history</p>
+		</div>
+	</a>
+	<div class="swiper-container">
+		<div class="swiper-wrapper" id="jci_history_list">
+		</div>
+		<div class='swiper-button-next' style="margin-top: -186px"></div>
+		<div class='swiper-button-prev' style="margin-top: -186px"></div>
+		<!-- Add Pagination -->
+		<div class="swiper-pagination"></div>
+	</div>
+</div>
+
+<script type='text/html' id='jci_history_listTemplate'>
+    {{each}}
+		<div class="swiper-slide historyitem">
+			<div class="historyitemimg">
+				<img src="{{if $value.uploadfiles!=''}}{{$value.uploadfiles}}{{else}}/tpl/default/images/no_info.png{{/if}}" alt="">
+			</div>
+			<div class="historyitemText">
+				<p class="historyitemTitle">{{$value.title}}</p>
+				<p class="historyitemSubTitle">{{$value.summary}}</p>
+				<!-- more btn -->
+				<a href="{{$value.url}}" class="morebtn">MORE</a>
+			</div>
+		</div>
+    {{/each}}
+</script>
+<!-- 质量改进 -->
+<div class="jci_improvementbox">
+	<a class="index_titlebox" href="">
+		<h2 class="index_title">质量改进</h2>
+		<div class="index_titleImg">
+			<p class="index_titletext">quality improvement</p>
+		</div>
+	</a>
+	<div class="swiper-container">
+		<div class="swiper-wrapper" id="jci_improvement_list">
+		</div>
+		<div class="swiper-pagination"></div>
+	</div>
+</div>
+<script type='text/html' id='jci_improvement_listTemplate'>
+	<div class="swiper-slide">
+		<div class="improvementwrap clearfix">
+          {{each}}
+          {{if $index == 0}}
+					<div class="improvementLeft" {{if $value.uploadfiles!=''}}style="background: url({{$value.uploadfiles}}) no-repeat;"{{/if}}>
+						<div class="improvementTextwrap">
+							<div class="improvementTextbox">
+								<p class="improvementTitle">{{$value.title}}</p>
+								<p class="improvementText">{{$value.summary}}</p>
+							</div>
+							<div class="improvementTime">{{$value.timeline1}}</div>
+						</div>
+					</div>
+					{{else}}
+					<div class="improvementRight" {{if $value.uploadfiles!=''}}style="background: url({{$value.uploadfiles}}) no-repeat;"{{/if}}>
+						<div class="improvementTextwrap">
+							<div class="improvementTextbox">
+								<p class="improvementTitle">{{$value.title}}</p>
+								<p class="improvementText">{{$value.summary}}</p>
+							</div>
+							<div class="improvementTime">{{$value.timeline1}}</div>
+						</div>
+					</div>
+					{{/if}}
+          {{/each}}
+		</div>
+	</div>
+</script>
+<!-- 信息公开 -->
+<a name="a8"></a>
+<div class="informationswiper">
+	<a class="index_titlebox" href="">
+		<h2 class="index_title">信息公开</h2>
+		<div class="index_titleImg">
+			<p class="index_titletext">Information publicity</p>
+		</div>
+	</a>
+	<div class="swiper-container">
+		<div class="swiper-wrapper" id="Information_publicity">
+		</div>
+		<!-- Add Pagination -->
+		<div class="swiper-pagination"></div>
+	</div>
+</div>
+
+			<script type='text/html' id='Information_publicityTemplate'>
+        {{each}}
+				<div class="informationitem swiper-slide">
+					<p class="informationyear">{{$value.timeline3}}</p>
+					<p class="informationmonth">{{$value.timeline4}}</p>
+					<p class="informationTitle">{{$value.title}}</p>
+					<p class="informationSubTitle">{{$value.summary}}</p>
+					<!-- more btn -->
+					<a href="{{$value.url}}" class="detailsbtn">详情</a>
+				</div>
+        {{/each}}
+			</script>
+<!-- 医院环境 -->
+<a name="a5"></a>
+<div class="environmentbox">
+	<a class="index_titlebox" href="">
+		<h2 class="index_title">医院环境</h2>
+		<div class="index_titleImg">
+			<p class="index_titletext">Hospital environment</p>
+		</div>
+	</a>
+	<div class="swiper-container">
+		<div class="swiper-wrapper" id="Hospital_environment">
+			<script type='text/html' id='Hospital_environmentTemplate'>
+				<div class="swiper-slide">
+					<ul class="clearfix">
+                {{each}}
+				{{if $index%4==0 && $index!=0}}
+					</ul>
+				</div>
+				<div class="swiper-slide">
+					<ul class="clearfix">
+                {{/if}}
+				<li class="environmentitem" >
+					<img src="/{{$value.uploadfiles}}" class="environmentitemimg example-image">
+					<div class="environmentcover">
+						<a class="example-image-link" href="/{{$value.uploadfiles}}" data-lightbox="example-set" rel="lightbox">
+							<div class="environmentcoverbox">
+								<div class="environmentcovericon">
+									<div class="environmenticon">
+										<img src="/tpl/default/images/environmenticon.png">
+									</div>
+									<p class="environmentText">{{$value.timeline3}}</p>
+								</div>
+							</div>
+						</a>
+						</div>
+						
+				</li>
+                {{/each}}
+					</ul>
+				</div>
+			</script>
+		</div>
+		<div class="swiper-pagination"></div>
+	</div>
+</div>
+<!-- 应急通道 -->
+<a name="a7"></a>
+<div class="emergencyswiper">
+	<a class="index_titlebox" href="">
+		<h2 class="index_title">应急通道</h2>
+		<div class="index_titleImg">
+			<p class="index_titletext">Emergency passage</p>
+		</div>
+	</a>
+	<div class="swiper-container">
+		<div class="swiper-wrapper" id="Emergency_passage">
+		</div>
+		<!-- Add Pagination -->
+		<div class="swiper-pagination"></div>
+		<div class='swiper-button-next' style="margin-top: -60px"></div>
+		<div class='swiper-button-prev' style="margin-top: -60px"></div>
+	</div>
+</div>
+<script type='text/html' id='Emergency_passageTemplate'>
+	{{each}}
+	<div class="emergencyitem swiper-slide">
+		<a href="/{{$value.big_pic}}" class="emergencyitem_a" data-lightbox="example-set1" rel="lightbox1">
+			<div class="introduceitemimg">
+				<img src="/tpl/default/images/emergencyimg.png" alt="">
+			</div>
+			<div class="introduceitemimgblue">
+				<img src="/tpl/default/images/emergencyimg01.png" alt="">
+			</div>
+			<p class="departmentItemTitle">{{$value.title}}</p>
+		</a>
+	</div>
+  {{/each}}
+</script>
+<!-- 联系我们 -->
+<a name="a9"></a>
+<div class="contactbox">
+	<a class="index_titlebox" href="">
+		<h2 class="index_title">联系我们</h2>
+		<div class="index_titleImg">
+			<p class="index_titletext">contact us</p>
+		</div>
+	</a>
+	<div class="contactwrap">
+		<div class="mainbox ">
+			<div class="contactTop clearfix">
+				<dl class="contactitembox">
+										<p style="text-align: center;">
+</p>
+<p style="text-align: center;">
+</p>
+<p style="text-align: center;">
+</p>
+<p style="text-align: center;">
+</p>
+<p style="text-align: center;">
+</p>
+<ul class="list-paddingleft-2">
+  <li>
+  <p><span style="font-size: 24px;"><strong>庆春院区常用电话号码：（杭州区号0571）</strong></span></p>
+  </li>
+  <li>
+  <p>总机：86090073</p>
+  </li>
+  <li>
+  <p>急诊：86006099</p>
+  </li>
+  <li>
+  <p>夜间挂号收费：86006309</p>
+  </li>
+  <li>
+  <p>发热门诊电话：15868153790</p>
+  </li>
+  <li>
+  <p>入院准备中心：86006205（周一至周五：13:30-15:00）</p>
+  </li>
+  <li>
+  <p>党政办：86006617</p>
+  </li>
+  <li>
+  <p>门办：86006630</p>
+  </li>
+  <li>
+  <p>护理教育：86006829</p>
+  </li>
+  <li>
+  <p>&nbsp;</p>
+  </li>
+</ul>
+<p><br>
+</p>
+<p><br>
+</p>
+										<p style="text-align: center;">
+</p>
+<p style="text-align: center;">
+</p>
+<p style="text-align: center;">
+</p>
+<ul class="list-paddingleft-2" style="font-size: 12px; font-variant-ligatures: normal; font-variant-caps: normal; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; width: 1002.25px;">
+  <li>
+  <p><span style="font-size: 24px; font-weight: bold; font-family: &quot;Microsoft YaHei&quot;, 黑体, 宋体, sans-serif; color: rgb(255, 255, 255);">下沙院区常用电话号码：（杭州区号0571）</span></p>
+  </li>
+  <li style="color: rgb(0, 0, 0); font-style: normal; font-family: 宋体; font-weight: normal;">
+  <p>总机：87887077 传真：87887070</p>
+  </li>
+  <li style="color: rgb(0, 0, 0); font-style: normal; font-family: 宋体; font-weight: normal;">
+  <p>急诊：87887120 &nbsp; &nbsp;</p>
+  </li>
+  <li style="color: rgb(0, 0, 0); font-style: normal; font-family: 宋体; font-weight: normal;">
+  <p>夜间挂号收费：87887142</p>
+  </li>
+  <li style="color: rgb(0, 0, 0); font-style: normal; font-family: 宋体; font-weight: normal;">
+  <p>肠道门诊电话：87888290 &nbsp;（周一至周五：08：00-17：00）</p>
+  </li>
+  <li style="color: rgb(0, 0, 0); font-style: normal; font-family: 宋体; font-weight: normal;">
+  <p>肠道门诊电话：87887120 &nbsp; (周一至周五：17：00-08：00：周六周日）</p>
+  </li>
+  <li style="color: rgb(0, 0, 0); font-style: normal; font-family: 宋体; font-weight: normal;">
+  <p>院办：87887631&nbsp;</p>
+  </li>
+  <li style="color: rgb(0, 0, 0); font-style: normal; font-family: 宋体; font-weight: normal;">
+  <p>入院准备中心：87887055（周一至周五：13：30-15：00 ）</p>
+  </li>
+  <li style="color: rgb(0, 0, 0); font-style: normal; font-family: 宋体; font-weight: normal;">
+  <p>门办：87887056 &nbsp; 护理教育：87887619<br>
+  </p>
+  </li>
+</ul>
+<br class="Apple-interchange-newline">
+<p style="text-align: center;">
+</p>
+<p style="text-align: center;"></p>
+<div><br>
+</div>
+				</dl>
+				<dl class="contactitembox">
+										<p style="text-align: center;">
+</p>
+<p style="text-align: center;">
+</p>
+<p style="text-align: center;">
+</p>
+<ul class="list-paddingleft-2">
+  <li>
+  <p><strong><span style="font-size: 24px;">庆春院区预约与咨询：（杭州区号0571）</span></strong></p>
+  </li>
+  <li>
+  <p>检验问讯：86002063</p>
+  </li>
+  <li>
+  <p>胃镜问讯：86006824</p>
+  </li>
+  <li>
+  <p>药房问讯：86006801</p>
+  </li>
+  <li>
+  <p>药房：86006801</p>
+  </li>
+  <li>
+  <p>发热问讯：86006754</p>
+  </li>
+  <li>
+  <p>牙科问讯：86002050</p>
+  </li>
+  <li>
+  <p>体检中心预约与咨询电话：86006789</p>
+  </li>
+  <li>
+  <p>特需门诊预约与咨询电话：86006016（周一至周五：14:00～16：30）</p>
+  </li>
+  <li>
+  <p>专家门诊预约与咨询电话：86006667，86006031</p>
+  </li>
+  <li>
+  <p>（周一至周五：8:00-12:00,13:30-17:00）</p>
+  </li>
+</ul>
+<p><br>
+</p>
+										<p style="text-align: center;">
+</p>
+<p style="text-align: center;">
+</p>
+<ul class="list-paddingleft-2" style="font-size: 12px; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: normal; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; width: 1002.25px;">
+  <li>
+  <p><strong><span style="font-size: 24px; font-family: &quot;Microsoft YaHei&quot;, 黑体, 宋体, sans-serif; color: rgb(255, 255, 255);">下沙院区预约与咨询：（杭州区号0571）</span></strong></p>
+  </li>
+  <li style="color: rgb(0, 0, 0); font-style: normal; font-family: 宋体;">
+  <p>检验：87887581</p>
+  </li>
+  <li style="color: rgb(0, 0, 0); font-style: normal; font-family: 宋体;">
+  <p>胃镜：87887480</p>
+  </li>
+  <li style="color: rgb(0, 0, 0); font-style: normal; font-family: 宋体;">
+  <p>药房：87887161</p>
+  </li>
+  <li style="color: rgb(0, 0, 0); font-style: normal; font-family: 宋体;">
+  <p>病理：86002070</p>
+  </li>
+  <li style="color: rgb(0, 0, 0); font-style: normal; font-family: 宋体;">
+  <p>放射：87887560&nbsp;</p>
+  </li>
+  <li style="color: rgb(0, 0, 0); font-style: normal; font-family: 宋体;">
+  <p>牙科：87887400</p>
+  </li>
+  <li style="color: rgb(0, 0, 0); font-style: normal; font-family: 宋体;">
+  <p>体检中心预约与咨询：87888558（周一至周五：08：00-12：00；13：30-17：00）</p>
+  </li>
+  <li style="color: rgb(0, 0, 0); font-style: normal; font-family: 宋体;">
+  <p>特需门诊预约与咨询：87887088（周一至周五：08：00-12：00；13：30-17：00）</p>
+  </li>
+  <li style="color: rgb(0, 0, 0); font-style: normal; font-family: 宋体;">
+  <p>专家门诊预约与咨询：87887088（周一至周五：08：00-12：00；13：30-17：00）</p>
+  </li>
+</ul>
+<br class="Apple-interchange-newline">
+<p style="text-align: center;">
+</p>
+<p style="text-align: center;"></p>
+				</dl>
+			</div>
+			<div class="contactbottom clearfix">
+				<dl class="contactitembox">
+										<p style="text-align: center;">
+</p>
+<p style="text-align: center;">
+</p>
+<p style="text-align: center;">
+</p>
+<p style="text-align: center;">
+</p>
+<p style="text-align: center;">
+</p>
+<p style="text-align: center;">
+</p>
+<p style="text-align: center;">
+</p>
+<p style="text-align: center;">
+</p>
+<p style="text-align: center;">
+</p>
+<ul class="list-paddingleft-2" style="width: 1018.39px; white-space: normal;">
+  <li>
+  <p style=""><span style="font-weight: bold;"><big><big><big>庆春院区投诉（杭州区号0571）：</big></big></big><big></big></span></p>
+  </li>
+  <li style="white-space: normal;">
+  <p>医疗投诉：86006633 (医务科，2号楼2楼）&nbsp;&nbsp;&nbsp;&nbsp;</p>
+  </li>
+  <li>
+  <p style="">邮箱：<a href="mailto:yedw@srrsh.com" style="color: rgb(255, 255, 255);">yedw@srrsh.com</a></p>
+  </li>
+  <li style="white-space: normal;">
+  <p>门诊投诉：86006630 （门诊办公室，挂号大厅旁）&nbsp;<span style="font-size: 9pt;">&nbsp;&nbsp;</span></p>
+  </li>
+  <li style="white-space: normal;">
+  <p>监察室投诉：86006423</p>
+  </li>
+  <li style="white-space: normal;">
+  <p><br>
+  </p>
+  </li>
+</ul>
+										<p style="text-align: center;">
+</p>
+<ul class="list-paddingleft-2" style="margin: 0px; padding: 0px;" microsoft="" yahei",="" 黑体,="" 宋体,="" sans-serif;="" font-size:="" 14px;="" font-style:="" normal;="" font-variant-ligatures:="" font-variant-caps:="" font-weight:="" letter-spacing:="" orphans:="" 2;="" text-align:="" start;="" text-indent:="" 0px;="" text-transform:="" none;="" white-space:="" widows:="" word-spacing:="" -webkit-text-stroke-width:="" width:="" 1018.39px;"="">
+  <li style="margin: 0px; padding: 0px; list-style: none;">
+  <p style="margin: 0px; padding: 0px; font-size: 14px;"><span style="margin: 0px; padding: 0px;"><span style="margin: 0px; padding: 0px; font-size: 16px;"><big><span style="font-size: 16px; vertical-align: sub;"><big>下沙院区投诉（杭州区号0571）：</big></span></big><span style="font-family: &quot;Microsoft YaHei&quot;, 黑体, 宋体, sans-serif; color: rgb(102, 102, 102);"><big></big></span></span></span></p>
+  <span style="font-size: 16px; vertical-align: sub;">
+  </span></li>
+  <span style="font-size: 16px; vertical-align: sub;">
+  </span>
+  <li style="margin: 0px; padding: 0px; list-style: none;"><span style="font-size: 16px; vertical-align: sub;">
+  </span>
+  <p style="margin: 0px; padding: 0px; font-size: 14px;"><span style="font-family: &quot;Microsoft YaHei&quot;, 黑体, 宋体, sans-serif; color: rgb(102, 102, 102); vertical-align: sub;"><span style="font-size: 16px;"><span style="font-size: 16px;">医疗投诉：87887666&nbsp;&nbsp; 邮箱：</span></span><a href="http://www.srrsh.com/yykg/yyjs/mailto:yedw@srrsh.com" style="margin: 0px; padding: 0px; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); white-space: normal;"><span style="margin: 0px; padding: 0px; font-size: 16px;">yedw@srrsh.com</span></a></span></p>
+  <span style="font-size: 16px; vertical-align: sub;">
+  </span></li>
+  <span style="font-size: 16px; vertical-align: sub;">
+  </span>
+  <li style="margin: 0px; padding: 0px; list-style: none;"><span style="font-size: 16px; vertical-align: sub;">
+  </span>
+  <p style="margin: 0px; padding: 0px; font-size: 14px;"><span style="font-family: &quot;Microsoft YaHei&quot;, 黑体, 宋体, sans-serif; color: rgb(102, 102, 102); font-size: 16px; vertical-align: sub;">门诊投诉：87887056（门诊一站式服务8号窗口）</span></p>
+  </li>
+</ul>
+<div></div>
+<div><br>
+</div>
+<p style="text-align: center;">
+</p>
+<p style="text-align: center;"></p>
+				</dl>
+				<dl class="contactitembox">
+										<p style="text-align: center;">
+</p>
+<p style="text-align: center;">
+</p>
+<ul class="list-paddingleft-2" style="width: 1018.39px; white-space: normal;">
+  <li>
+  <p><strong><span style="font-size: 24px;">庆春院区交通路线：</span></strong></p>
+  </li>
+  <li>
+  <p>地址：浙江杭州庆春东路3号(310016)</p>
+  </li>
+  <li>
+  <p>公交路线：18路、20路、21路、56路、305路、518路、818路到红菱新村站</p>
+  <p><br>
+  </p>
+  </li>
+  <li>
+  <p><br>
+  </p>
+  </li>
+</ul>
+										<p style="text-align: center;">
+</p>
+<p style="text-align: center;">
+</p>
+<ul class="list-paddingleft-2" style="font-size: 12px; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: normal; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; width: 1018.39px;">
+  <li>
+  <p><strong><span style="font-size: 24px; font-family: &quot;Microsoft YaHei&quot;, 黑体, 宋体, sans-serif; color: rgb(255, 255, 255);">下沙院区交通路线：</span></strong></p>
+  </li>
+  <li style="color: rgb(0, 0, 0); font-style: normal; font-family: 宋体;">
+  <p>地址：浙江省杭州市经济技术开发区下沙路368号&nbsp;</p>
+  </li>
+  <li style="color: rgb(0, 0, 0); font-style: normal; font-family: 宋体;">
+  <p>公交路线：公交路线：298路、320路、365路、378路、383路、401路、B1、B1区间、商务1号线到幸福桥站</p>
+  </li>
+  <li style="color: rgb(0, 0, 0); font-style: normal; font-family: 宋体;">
+  <p>171路、298路（区间）、388路到邵逸夫医院下沙院区</p>
+  </li>
+</ul>
+<div><br>
+</div>
+<div><br>
+</div>
+<p style="text-align: center;">
+</p>
+<p style="text-align: center;"></p>
+				</dl>
+
+			</div>
+
+
+		</div>
+	</div>
+</div>
+<!-- foot -->
+<div class="footwrap">
+	<div class="footTopbox clearfix">
+		<div class="footiconbox">
+			<!--<a href="" class="footicon_weixin"></a>
+			<a href="" class="footicon_weibo"></a>
+			<a href="" class="footicon_qq"></a>
+			-->
+			
+			
+			
+			
+			
+			
+			<a href="/tpl/default/html/thanks.html" class="footicon_thank">特别感谢</a>
+		</div>
+		<ul class="footToplist">
+			<li class="footTopitem">
+				<i class="fa fa-map-marker" aria-hidden="true"></i>庆春院区地址：浙江杭州庆春东路3号(310016)
+			</li>
+			<li class="footTopitem">
+				<i class="fa fa-phone" aria-hidden="true"></i>电话：0571-86090073
+			</li>
+			<li class="footTopitem">
+				<i class="fa fa-fax" aria-hidden="true"></i>传真：0571-86044817
+			</li>
+		</ul>
+			<ul class="footToplist2">
+			<li class="footTopitem2">
+				<i class="fa fa-map-marker" aria-hidden="true"></i>下沙院区地址：浙江省杭州市经济技术开发区下沙路368号(310016)
+			</li>
+			<li class="footTopitem2">
+				<i class="fa fa-phone" aria-hidden="true"></i>电话：0571-87887077
+			</li>
+			<li class="footTopitem2">
+				<i class="fa fa-fax" aria-hidden="true"></i>传真：0571-86044817
+			</li>
+		</ul>
+	</div>
+	<div class="footline">
+		<div class="mainbox clearfix">
+			<div class="certificatebox">
+				<img src="/tpl/default/images/footimg01.png" alt="">
+				<p class="certificateName">国内首家JCI认证的公立医院</p>
+			</div>
+			<div class="certificatebox">
+				<img src="/tpl/default/images/footimg02.png" alt="">
+				<p class="certificateName">中国医疗机构最佳雇主</p>
+			</div>
+			<dl class="footitem">
+				<dt class="footTitle">就医热线</dt>
+				<dd ><i class="fa fa-phone" aria-hidden="true"></i><span class="tel">0571-8609 0073</span></dd>
+				<dd><i class="fa fa-envelope-o" aria-hidden="true"></i><a href="https://exmail.qq.com/cgi-bin/loginpage">邮箱登录</a></dd>
+			</dl>
+			<ul class="erweimalist">
+				<li class="erweimaitem">
+					<img src="/tpl/default/images/erweima01.png" alt="">
+					<p class="erweimaitemName">官方微信服务号</p>
+				</li>
+				<li class="erweimaitem">
+					<img src="/tpl/default/images/erweima02.png" alt="">
+					<p class="erweimaitemName">官方微信订阅号</p>
+				</li>
+				<li class="erweimaitem">
+					<img src="/tpl/default/images/erweima03.png" alt="">
+					<p class="erweimaitemName">邵医健康APP</p>
+				</li>
+				<li class="erweimaitem">
+					<img src="/tpl/default/images/erweima04.png" alt="">
+					<p class="erweimaitemName">医快付APP</p>
+				</li>
+				<li class="erweimaitem">
+					<img src="/tpl/default/images/erweima05.png" alt="">
+					<p class="erweimaitemName">支付宝服务窗</p>
+				</li>
+			</ul>
+		</div>
+	</div>
+	<div class="mainbox clearfix">
+		<ul class="footnav">
+			<li class="footnavitem">
+				<a href="http://www.srrsh.com/aboutus/">关于我们</a>
+			</li>
+			<li class="footnavitem">
+				<a href="http://www.srrsh.com/map/">网站地图</a>
+			</li>
+			<li class="footnavitem">
+				<a href="http://www.srrsh.com/help/">使用帮助</a>
+			</li>
+			<li class="footnavitem">
+				<a href="http://www.srrsh.com/yinsi/">隐私安全</a>
+			</li>
+			<li class="footnavitem">
+				<a href="http://www.srrsh.com/banquan/">版权申明</a>
+			</li>
+			<li class="footnavitem">
+				<a href="http://zp.srrsh.com:8080/zp/index.html">人才招聘</a>
+			</li>
+			<li class="footnavitem">
+				<a href="/yykg/yyjs/#a9">联系我们</a>
+			</li>
+		</ul>
+		<div class="copyright">
+			Copyright © 浙江大学医学院附属邵逸夫医院. All Rights Reserved. 浙ICP备09000568   BY：博搜网络
+		</div>
+	</div>
+	<!-- 回到顶部 -->
+	<div class="backtop">
+		<a href="javascript:goTop();">
+			<img src="/tpl/default/images/backtop.png" width="40" height="40">
+		</a>
+	</div>
+</div>
+<script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1262100021'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s19.cnzz.com/stat.php%3Fid%3D1262100021%26show%3Dpic' type='text/javascript'%3E%3C/script%3E"));</script><!-- foot -->
+<script type="text/javascript" src="/tpl/default/js/jquery-2.1.1.min.js"></script>
+<script type="text/javascript" src="/tpl/default/js/swiper.min.js"></script>
+<script type="text/javascript" src="/tpl/default/js/lightbox.js"></script>
+<script type="text/javascript" src="/tpl/default/js/artTemplate.js"></script>
+
+<script>
+$(function(){
+	// 导航菜单
+    $('.menunavitem').mouseover(function(){
+        $(this).find('.subnavitembox').show();
+    });
+    $('.menunavitem').mouseout(function(){
+        $('.subnavitembox').hide();
+    });
+
+    // banner 切换
+    var mySwiper = new Swiper('.environmentbox .swiper-container', {
+        autoplay: 5000,//可选选项，自动滑动
+        pagination : '.swiper-pagination',
+    })
+
+    // JCI认证内容切换
+    $('.indexnews_item').click(function(){
+        $(this).addClass('indexnews_itemactive').siblings().removeClass('indexnews_itemactive');
+        var newIndex = $(this).index();
+        $('.swithitem').eq(newIndex).show().siblings().hide();
+    });
+
+ 
+})
+
+
+    //回到顶部
+    function goTop(){
+        $('html,body').animate({'scrollTop':0},600);
+    }
+
+    $(function () {
+        //JCI历程
+        $.ajax({
+            url:"/api.php",
+            data:{
+                mod:'getInfolist',
+                page:1,
+                pagesize:9,
+                cateid:10
+            },
+            dataType:"JSON",
+            type:"GET",
+            success:function(data){
+                if('function' == typeof func){
+                    func(d);
+                }else{
+										var html = template('jci_history_listTemplate',data.data);
+										console.log(html)
+                    $('#jci_history_list').html(html);
+                    var swiper = new Swiper('.historyswiper .swiper-container', {
+                        nextButton: '.historyswiper .swiper-button-next',
+                        prevButton: '.historyswiper .swiper-button-prev',
+                        pagination: '.historyswiper .swiper-pagination',
+                        paginationType : 'fraction',
+                        slidesPerView: 3,
+								        paginationClickable: true,
+								        spaceBetween: 25
+                    });
+                }
+            }
+        });
+
+        //质量
+        $.ajax({
+            url:"/api.php",
+            data:{
+                mod:'getInfolist',
+                page:1,
+                pagesize:4,
+                cateid:11
+            },
+            dataType:"JSON",
+            type:"GET",
+            success:function(data){
+                if('function' == typeof func){
+                    func(d);
+                }else{
+                    var html = template('jci_improvement_listTemplate',data.data);
+                    $('#jci_improvement_list').append(html);
+                    var mySwiper = new Swiper('.jci_improvementbox .swiper-container', {
+                        autoplay: 5000,//可选选项，自动滑动
+                        pagination : '.jci_improvementbox .swiper-pagination',
+                    })
+                }
+            }
+        });
+
+        //信息公开
+        $.ajax({
+            url:"/api.php",
+            data:{
+                mod:'getInfolist',
+                page:1,
+                pagesize:6,
+                cateid:8
+            },
+            dataType:"JSON",
+            type:"GET",
+            success:function(data){
+                if('function' == typeof func){
+                    func(d);
+                }else{
+                    var html = template('Information_publicityTemplate',data.data);
+                    $('#Information_publicity').append(html);
+                    var swiper = new Swiper('.informationswiper .swiper-container', {
+                        nextButton: '.informationswiper .swiper-button-next',
+                        prevButton: '.informationswiper .swiper-button-prev',
+                        pagination: '.informationswiper .swiper-pagination',
+                        paginationType : 'fraction',
+                        slidesPerView: 3,
+								        spaceBetween: 24
+
+                    });
+                }
+            }
+        });
+
+        //医院环境
+        $.ajax({
+            url:"/api.php",
+            data:{
+                mod:'getAlbumlist',
+                page:1,
+                pagesize:8,
+                cateid:5
+            },
+            dataType:"JSON",
+            type:"GET",
+            success:function(data){
+                if('function' == typeof func){
+                    func(d);
+                }else{
+                    html = template('Hospital_environmentTemplate',data.data);
+                    $('#Hospital_environment').append(html);
+                    var swiper = new Swiper('.environmentbox .swiper-container', {
+                        nextButton: '.environmentbox .swiper-button-next',
+                        prevButton: '.environmentbox .swiper-button-prev',
+                        pagination: '.environmentbox .swiper-pagination',
+                        paginationType : 'fraction'
+                    });
+                }
+            }
+        });
+
+        //应急通道
+        $.ajax({
+            url:"/api.php",
+            data:{
+                mod:'getAlbumlist',
+                page:1,
+                pagesize:8,
+                cateid:7
+            },
+            dataType:"JSON",
+            type:"GET",
+            success:function(data){
+                if('function' == typeof func){
+                    func(d);
+                }else{
+                    html = template('Emergency_passageTemplate',data.data);
+                    $('#Emergency_passage').append(html);
+                    var swiper = new Swiper('.emergencyswiper .swiper-container', {
+                        nextButton: '.emergencyswiper .swiper-button-next',
+                        prevButton: '.emergencyswiper .swiper-button-prev',
+                        pagination: '.emergencyswiper .swiper-pagination',
+                        paginationType : 'fraction',
+                        slidesPerView: 4,
+								        spaceBetween: 12
+                    });
+				    // 应急通道
+				    $('.emergencyitem').on('mouseover',function(){
+				    	$(this).find('.introduceitemimg').hide();
+				    	$(this).find('.introduceitemimgblue').css('display','inline-block');
+				    });
+				      $('.emergencyitem').on('mouseout',function(){
+				    	$(this).find('.introduceitemimg').show();
+				    	$(this).find('.introduceitemimgblue').css('display','none');
+				    });
+                }
+            }
+        });
+    })
+
+//应急通道和医院环境
+function fnShowAlbum(albumid){
+    $.ajax({
+        url:'/api.php?mod=getPhotolist&albumid='+albumid,
+        type:"GET",
+        dataType:"JSON",
+        data:{ },
+        success:function(d) {
+            var data = d.data;
+            var html = [];//'<a href="''" title="文字说明"><img src="thumb_image3.jpg" width="72" height="72"></a>';
+            for (var i = 0, len = data.length; i < len; i++) {
+                html.push('<a href="/' + data[i].uploadfiles + '" title="' + data[i].intro + '"><img src="/tpl/default/style/images/loading.gif"></a>');
+            }
+            if(!$('#album').length){
+                $('body').append('<div id="album" style="display: none;"></div>');
+            }
+            $('#album').empty();
+            $('#album').append(html.join(''));
+            $('#album a').lightBox();
+            $('#album a:eq(0)').trigger('click');
+        }
+    });
+
+}
+</script>
+</body>
+</html>

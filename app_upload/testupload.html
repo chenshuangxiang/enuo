@@ -1,0 +1,30 @@
+<!doctype html><html><head><meta charset="UTF-8"><title></title><meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no"><style type="text/css"></style></head><body><input type="file" class="hidden" id="file" multiple="multiple"></body><script type="text/javascript" src="js/jquery-1.11.3.js?v=4663977"></script><script type="text/javascript" src="js/common.js?v=e9fcb43"></script><script type="text/javascript">$('#file').on('change', function() {
+        var files = this.files;
+        sub(files[0])
+    })
+    function sub(file) {
+        var formData = new FormData();
+        formData.append("file", file);
+        console.log(file)
+        if(file == undefined){
+            return
+        }
+        $.ajax({
+            url: SERVER_ADDR + "/common/importAccess",
+            type: "POST",
+            data: formData,
+            dataType : 'json',
+            cache: false,
+            processData: false,
+            contentType: false,
+            success: function(data) {
+                console.log(data)
+                if (data.success == true) {
+                    $('.addPhontBtn').before('<p class="postImgP"><img class="closePhoto" onclick="To.closephoto(this)" src="/app/img/closePhoto.png?v=66d63bd"><img class="postImg" src="'+data.data+'"></p>')
+                    $('input[type="file"]').val('');
+                } else {
+                    alert(data.data)
+                }
+            }
+        });
+    }</script></html>

@@ -1,0 +1,149 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no"><meta name="apple-mobile-web-app-capable" content="yes"><link rel="stylesheet" href="css/lib/mescroll.css?v=33c720c"><link rel="stylesheet" href="option/mescroll-option.css?v=37a26b4"><link rel="stylesheet" href="css/base.css?v=dd0905f"><link rel="stylesheet" href="css/util.css?v=9472158"><link rel="stylesheet" href="css/my_yuyue.css?v=6c0d1c9"><link rel="stylesheet" href="css/lib/xiala.css?v=a1cdceb"><script type="text/javascript" src="plug/jquery-1.11.3.js?v=4663977"></script><script src="js/common.js?v=e9fcb43"></script><title>e诺</title></head><style>input::-webkit-input-placeholder{
+		color: white;
+		font-size: 8px;
+	}</style><body style="background-color: #f1f1f1;"><div class="content"><div class="pub_hearder flex_vertical justify_content_equal" style="z-index: 99; position: fixed;
+    top: 0;"><img class="up_page pub_hearder_left" src="img/header/header_left.png?v=29fd7c6" onclick="window.history.go(-1)"><div class="head_center head_centerZi"><span class="set_head_dot" style="width: .15rem;height: .15rem;border-radius: 50%;"></span> <span class="set_head_dot" style="width: .25rem;height: .27rem;border-radius: 50%;"></span> <span class="set_head_dot"></span> <span class="head_title">我的预约</span> <span class="set_head_dot"></span> <span class="set_head_dot" style="width: .25rem;height: .27rem;;border-radius: 50%;"></span> <span class="set_head_dot" style="width: .15rem;height: .15rem;border-radius: 50%;"></span></div></div><div id="mescroll" class="mescroll" style="background-color: #f1f1f1;top: 2.7rem"><ul id="dataList" class="data-list" style="margin-top: .8em;"></ul></div></div></body><script src="js/lib/mescroll.js?v=a4fd843" type="text/javascript" charset="utf-8"></script><script type="text/javascript" src="js/util.js?v=08710d1"></script><script type="text/javascript" charset="utf-8">$(document).ready(function () {
+		/*init();*/
+    })
+    var mescroll;
+    $(function(){
+     /*   init();*/
+        /*	$('.levelClick').click(function () {
+                console.log(555)
+                $('.levelText').text($(this).text()).attr('levelId',$(this).attr('levelId'));
+                $('#dataList').empty();
+                var page = {num: 1, size: 5, doctorTypeId: $(this).attr('levelId')}
+               // mescroll.resetUpScroll();
+                mescroll.setPageNum(1)
+                getListData(page)
+            })
+            $('.subsubjectClick').click(function () {
+                $('.subText').text($(this).text()).attr('subsubId',$(this).attr('subsubId'));
+                $('#dataList').empty();
+                var page = {num: 1, size: 5, subSubjectId: $(this).attr('subsubId')}
+                // mescroll.resetUpScroll();
+                mescroll.setPageNum(1)
+                getListData(page)
+            })*/
+
+        //创建MeScroll对象
+        mescroll = initMeScroll("mescroll", {
+            up: {
+                clearEmptyId:"dataList",
+                isBoth: true, //上拉加载时,如果滑动到列表顶部是否可以同时触发下拉刷新;默认false,两者不可同时触发; 这里为了演示改为true,不必等列表加载完毕才可下拉;
+                callback: getListData, //上拉加载的回调
+            }
+        });
+
+        /*初始化菜单*/
+        //var pdType=0;//全部商品0; 奶粉1; 图书2;
+        /*	$(".nav p").click(function(){
+                var i=$(this).attr("i");
+                if(pdType!=i) {
+                    //更改列表条件
+                    pdType=i;
+                    $(".nav .active").removeClass("active");
+                    $(this).addClass("active");
+                    //重置列表数据
+                    mescroll.resetUpScroll();
+                }
+            })*/
+
+
+
+    });
+    /*联网加载列表数据  page = {num:1, size:10}; num:当前页 从1开始, size:每页数据条数 */
+    function getListData(page){
+        console.log(page)
+        page.size = 10;
+        //联网加载数据
+        console.log(", page.num="+page.num);
+        getListDataFromNet( page.num, page.size,function(data){
+            //联网成功的回调,隐藏上拉加载的状态
+            console.log("data.length="+data.length);
+            mescroll.endSuccess(data.length);//传参:数据的总数; mescroll会自动判断列表如果无任何数据,则提示空;列表无下一页数据,则提示无更多数据;
+            //设置列表数据
+            setListData(data);
+        }, function(){
+            //联网失败的回调,隐藏上拉加载的状态
+            mescroll.endErr();
+        });
+    }
+
+    /*设置列表数据*/
+    function setListData(data){
+        var listDom=$("#dataList");
+        for (var i = 0; i < data.length; i++) {
+            var pd=data[i];
+            switch (pd.status)
+			{
+				case 'wait':
+                    pd.status = '预约中';
+				    break;
+				case 'success':
+				    pd.status = '预约成功';
+				    break;
+                case 'fail':
+                    pd.status = '预约失败';
+                    break;
+                case 'diagnosis':
+                    pd.status = '已诊断';
+                    break;
+			}
+            var str='';
+            str += '<div class="famous_doc_layer" snId="'+pd.id+'"> ' +
+				'<div class="yuyueTop">预约单号：<span class="famousName">'+pd.sn+'</span><span class="yuyueStatus">'+pd.status+'</span></div> ' +
+				'<div class="split"></div> ' +
+				'<div class="btm"> ' +
+				'<p><span class="famousName">预约医院：</span><span class="hosName">'+pd.hospitalName+'</span></p> ' ;
+            if(pd.type == 'topThree'){
+                str += '<p><span class="famousName">预约科室：</span><span class="docName">'+pd.subjectName+'</span></p> ' +
+                '<p><span class="famousName">预约医生：</span><span class="docLevel">'+pd.projectName+'</span></p> '
+            }else{
+                str += '<p><span class="famousName">预约项目：</span><span class="docName">'+pd.projectName+'</span></p> '
+			}
+             str +=	'<p><span class="famousName">预约时间：</span><span class="docSub">'+pd.reservationDate+'</span></p> ' ;
+					if(pd.status == '预约失败'){
+                        str += '<p><span class="famousName">备 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;注：</span><span class="docSub">'+pd.reason+'</span></p> ' ;
+					}
+            str += '</div> ' +
+				'</div>';
+            listDom.append(str);
+        }
+    }
+
+    /*联网加载列表数据*/
+    function getListDataFromNet(pageNum,pageSize,successCallback,errorCallback) {
+        /*  var url;
+          if(subjectId == '' || subjectId == undefined){
+              url = SERVER_ADDR + '/app/topthree/doctor/getList.json?pageNumber='+pageNum+'&pageSize='+pageSize;
+          }else{
+              url = SERVER_ADDR + '/app/topthree/doctor/getList.json?pageNumber='+pageNum+'&pageSize='+pageSize+'&subjectId='+subjectId;
+          }*/
+        var data = {};
+        data.pageNumber = pageNum;
+        data.pageSize = pageSize;
+        //延时一秒,模拟联网
+        $.ajax({
+            type: 'GET',
+            url: SERVER_ADDR + '/app/user/getReservationList.json?',
+            data:data,
+            dataType: 'json',
+            success: function(data){
+                if(data.success == true){
+                    var data=data.data; // 模拟数据: ../res/pdlist1.js
+                    var listData=[];
+
+                    //奶粉
+                    for (var i = 0; i < data.length; i++) {
+                        listData.push(data[i]);
+                    }
+                    //回调
+                    successCallback(listData);
+                }else{
+                    alert(data.data)
+                }
+            },
+            error: errorCallback
+        });
+    }</script></html>

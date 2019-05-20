@@ -1,0 +1,299 @@
+
+	<link rel="stylesheet" href="css/news.css" media="all" />
+	<style>
+		.fenWarnZi{
+			color: #ff3322;
+			font-size: 12px;
+			text-align: center;
+			margin: -5px 0 5px 0;
+			display: none;
+		}
+		.fenHospitalSpan{
+			vertical-align: top;
+			margin: 7.5px 0 0 7px;
+			display: inline-block
+		}
+	</style>
+<body class="childrenBody">
+<div class="big">
+	<div class="layui-card-header">
+		<span class="layui-breadcrumb" style="visibility: visible;">
+			<span>您的位置：</span>
+  			<a href="#allSize.html?v=333">首页</a><span lay-separator="">/</span>
+  			<a onclick="toAdviosy();" href="#staffList.html?v=333">咨询管理</a><span lay-separator="">/</span>
+  			<a href=""><cite>全部咨询</cite></a>
+		</span>
+	</div>
+	<blockquote class="layui-elem-quote news_search" style="border: 1px solid #cccccc;background-color: white;padding: 0;width: 90%;margin: 15px 0 40px 5%">
+		<div class="layui-layer-title" style="cursor: move;background-color: #dedede">筛选查询</div>
+		<form class="layui-form">
+			<div class="layui-form-item">
+				<div class="layui-inline">
+					<label class="layui-form-label">关键词</label>
+					<div class="layui-input-inline">
+						<input type="text" value="" placeholder="请输入姓名/手机号" class="layui-input search_input newsName">
+					</div>
+				</div>
+				<!--<div class="layui-inline">
+					<label class="layui-form-label">联系方式</label>
+					<div class="layui-input-inline">
+						<input type="number" name="phone" lay-verify="required|phone" autocomplete="off" class="layui-input mobile" placeholder="根据联系方式筛选">
+					</div>
+				</div>-->
+				<div class="layui-inline">
+					<label class="layui-form-label">性别</label>
+					<div class="layui-input-inline">
+						<select name="sex" class="sex" lay-filter="sex">
+							<option value="">根据性别筛选</option>
+							<option value="man">男</option>
+							<option value="woman">女</option>
+							<option value="unknown">不详</option>
+						</select>
+					</div>
+				</div>
+				<div class="layui-inline">
+					<label class="layui-form-label">咨询医院</label>
+					<div class="layui-input-inline">
+						<select name="newsHos" class="newsHos" lay-filter="newsHos" lay-search="">
+							<option value="">根据医院筛选</option>
+						</select>
+					</div>
+				</div>
+				<div class="layui-inline">
+					<label class="layui-form-label">咨询员</label>
+					<div class="layui-input-inline">
+						<select name="kefuSelect" class="kefuSelect" lay-filter="kefuSelect" lay-search="">
+							<option value="">根据咨询员筛选</option>
+						</select>
+					</div>
+				</div>
+				<div class="layui-inline">
+					<label class="layui-form-label">咨询开始时间</label>
+					<div class="layui-input-inline">
+						<input type="text" class="layui-input newsTime" id="newsTime" placeholder="根据咨询开始时间筛选">
+					</div>
+
+				</div>
+				<div class="layui-inline">
+					<label class="layui-form-label">咨询结束时间</label>
+					<div class="layui-input-inline">
+						<input type="text" class="layui-input newsEndTime" id="newsEndTime" placeholder="根据咨询结束时间筛选">
+					</div>
+
+				</div>
+
+				<div class="layui-inline">
+					<label class="layui-form-label">状态</label>
+					<div class="layui-input-inline">
+						<select name="status" class="status" lay-filter="status">
+							<option value="">根据状态筛选</option>
+							<option value="">根据状态筛选</option>
+							<option value="unallot">未分诊</option>
+							<option value="allot">已分诊</option>
+							<option value="notPass">被打回</option>
+						</select>
+					</div>
+				</div>
+				<div class="layui-inline">
+					<label class="layui-form-label">来源</label>
+					<div class="layui-input-inline">
+						<select name="from" class="from" lay-filter="from" lay-search="">
+							<option value="">根据来源筛选</option>
+						</select>
+					</div>
+				</div>
+
+
+				<div class="layui-inline">
+					<label class="layui-form-label">病种标签</label>
+					<div class="layui-input-inline">
+						<select name="newsDiseasetag" class="newsDiseasetag" lay-filter="newsDiseasetag">
+							<option value="">根据病种标签筛选</option>
+							<option >洁牙</option>
+							<option >补牙</option>
+							<option >牙齿矫正</option>
+							<option >种植牙</option>
+							<option >镶牙</option>
+							<option >蛀牙</option>
+							<option >口腔咨询</option>
+							<option >鼻综合</option>
+							<option >身体检测</option>
+							<option >内科</option>
+							<option >妇科</option>
+							<option >骨科</option>
+							<option >减肥</option>
+							<option >医美咨询</option>
+							<option >护肤咨询</option>
+							<option >健康咨询</option>
+							<option >活动咨询</option>
+							<option >义诊</option>
+							<option >代金券</option>
+							<option >其他</option>
+						</select>
+						<!--<input type="text" value="" placeholder="请输入咨询病种" class="layui-input search_input newsDisease">-->
+					</div>
+				</div>
+				<div class="layui-inline">
+					<label class="layui-form-label">回访次数</label>
+					<div class="layui-input-inline">
+						<select name="visitCount" class="visitCount" lay-filter="visitCount">
+							<option value="">根据回访次数种筛选</option>
+							<option value="0">暂未回访</option>
+							<option value="1">回访1次</option>
+							<option value="2">回访2次</option>
+							<option value="3">回访3次</option>
+							<option value="4">回访4次</option>
+							<option value="5">回访5次</option>
+						</select>
+					</div>
+				</div>
+				<div class="layui-inline">
+					<label class="layui-form-label">意向程度</label>
+					<div class="layui-input-inline">
+						<select name="intention" class="intention" lay-filter="intention">
+							<option value="">请选择意向程度</option>
+							<option value="STRONG_INTENEION">意向强烈</option>
+							<option value="LITTLE_INTENEION">意向较强</option>
+							<option value="GENERAL_INTENTION">意向一般，需要跟进</option>
+							<option value="NO_INTENTION">暂时无意向</option>
+						</select>
+					</div>
+				</div>
+				<div class="layui-inline" style="margin-left: 42px">
+					<a class="layui-btn search_btn">查询</a>
+				</div>
+				<div class="layui-inline" style="margin-left: 42px">
+					<a class="layui-btn layui-btn-normal consultAdd">添加咨询</a>
+				</div>
+				<div class="layui-inline" style="margin-left: 42px">
+					<a class="layui-btn layui-btn-normal" onclick="write_fen_allot_open()">分配给客服</a>
+				</div>
+				<div class="layui-inline" style="margin-left: 42px">
+					<a class="layui-btn layui-btn-normal" onclick="consultFenAll()">批量分诊</a>
+				</div>
+			</div>
+			<div class="fenOpen" style="display: none;    margin-top: 20px;">
+			<div class="layui-form-item">
+				<div class="fenWarnZi">注意：该咨询有重单或者重复添加的可能</div>
+				<div class="layui-inline">
+					<label class="layui-form-label" style="width: 85px">分诊医院：</label>
+					<div class="layui-input-inline">
+						<select name="newsNoResultHos" class="newsNoResultHos newsHosFen" lay-filter="newsNoResultHos" lay-search="">
+							<option value="">请选择分诊医院</option>
+						</select>
+					</div>
+				</div>
+				<div class="layui-inline">
+					<label class="layui-form-label" style="width: 85px">已选择医院：</label>
+					<div class="layui-input-inline fenHospitalDiv" style="width: 228px;float: right;margin-right: 0;">
+						<!--<div><input type="checkbox" name="hospital" checked lay-skin="primary" lay-filter="choosehospital"><span class="fenHospitalSpan">杭州时光医疗</span></div>-->
+					</div>
+				</div>
+			</div>
+		<!--	<div class="layui-form-item">
+				<div class="layui-inline">
+					<label class="layui-form-label">分诊时间</label>
+					<div class="layui-input-inline">
+						<input type="text" class="layui-input newsTimeFen"
+							   onclick="layui.laydate({elem:this,istime: true,istoday: true, format: 'YYYY-MM-DD hh:mm:ss'})"
+							   placeholder="请选择分诊时间">
+					</div>
+				</div>
+			</div>-->
+				<input type="button" class="layui-btn layui-btn-lg sureFen" style="margin: 15px 0 15px 127px;width: 107px" value="确 定 分 诊"/>
+				<div class="layui-inline">
+					<label class="layui-form-label fenHospitalAlreadyZi" style="width: 85px">已分诊医院：</label>
+					<div class="layui-input-inline fenHospitalAlreadyDiv" style="width: 228px;float: right;margin-right: 0;">
+						<!--<div><input type="checkbox" name="hospital" checked lay-skin="primary" lay-filter="choosehospital"><span class="fenHospitalSpan">杭州时光医疗</span></div>-->
+					</div>
+				</div>
+			</div>
+			<div class="fenAlreadyOpen" style="display: none;    margin-top: 20px;">
+				<div class="layui-form-item">
+					<div class="layui-inline">
+						<label class="layui-form-label" style="width: 85px">已分诊医院：</label>
+						<div class="layui-input-inline fenHospitalAlreadyDiv" style="width: 228px;float: right;margin-right: 0;">
+							<!--<div><input type="checkbox" name="hospital" checked lay-skin="primary" lay-filter="choosehospital"><span class="fenHospitalSpan">杭州时光医疗</span></div>-->
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="writeFenOpen" style="display: none;    margin-top: 20px;">
+				<div class="layui-form-item">
+					<div class="layui-inline">
+						<label class="layui-form-label">分配数据</label>
+						<div class="layui-input-inline">
+							<select name="hoskefuSelect" class="hoskefuSelect" lay-filter="hoskefuSelect">
+
+							</select>
+							<!--<input type="text" class="layui-input intentOperatorZhuli" placeholder="">-->
+						</div>
+					</div>
+				</div>
+				<input type="button" class="layui-btn layui-btn-lg sureFenToHosKefu" style="margin: 15px 0 0 120px;width: 107px" value="确 定"/>
+			</div>
+			<div class="caozuoOpen" style="display: none;    margin-top: 20px;">
+				<div class="layui-form-item">
+					<div class="layui-inline">
+						<input type="button" class="layui-btn layui-btn-lg consultFen" style="display:none;margin: 15px 0 0 85px;width: 107px" value=" 分 诊"/>
+						<input type="button" class="layui-btn layui-btn-lg news_reset" style="display:none;margin: 15px 0 0 85px;width: 107px" value=" 编 辑"/>
+						<!--<input type="button" class="layui-btn layui-btn-lg news_record_add" style="margin: 15px 0 0 85px;width: 107px" value=" 回 访"/>-->
+					</div>
+				</div>
+			</div>
+		</form>
+
+
+
+
+	<!--	<div class="layui-inline">
+			<a class="layui-btn recommend" style="background-color:#5FB878">推荐文章</a>
+		</div>
+		<div class="layui-inline">
+			<a class="layui-btn audit_btn">审核文章</a>
+		</div>
+		<div class="layui-inline">
+			<a class="layui-btn layui-btn-danger batchDel">批量删除</a>
+		</div>-->
+	<!--	<div class="layui-inline">
+			<div class="layui-form-mid layui-word-aux">本页面刷新后除新添加的文章外所有操作无效，关闭页面所有数据重置</div>
+		</div>-->
+	</blockquote>
+
+	<div class="layui-form news_list" style="border: 1px solid #cccccc;width: 90%;margin-left: 5%">
+		<div class="layui-layer-title" style="cursor: move;;background-color: #dedede">数据列表</div>
+	  	<table class="layui-table">
+		    <colgroup>
+				<!--<col><col>
+				<col width="10%">
+				<col width="9%">
+				<col width="10%">
+				<col width="10%">
+				<col width="11%">
+				<col width="8%">-->
+		    </colgroup>
+		    <thead>
+				<tr>
+					<th><input type="checkbox" name="allot" lay-skin="primary" lay-filter="allChoose" id="allChoose"></th>
+					<th>咨询时间<span class="layui-table-sort layui-inline"><i class="layui-edge layui-table-sort-asc" onclick="$('.layui-table-sort-desc').css('border-top-color','#b2b2b2');$(this).css('border-bottom-color','#000');searchBtn(1,'asc');"></i><i class="layui-edge layui-table-sort-desc" onclick="$('.layui-table-sort-asc').css('border-bottom-color','#b2b2b2');$(this).css('border-top-color','#000');searchBtn(1,undefined)"></i></span></th>
+					<th>患者姓名</th>
+					<th>联系方式</th>
+					<th>来源</th>
+					<th>咨询员</th>
+					<th>客服</th>
+					<th>咨询病种</th>
+					<th>咨询医院</th>
+					<th>意向程度</th>
+					<th>状态</th>
+					<th>回访状态</th>
+					<th>操作</th>
+					<th>查看</th>
+				</tr> 
+		    </thead>
+		    <tbody class="news_content"></tbody>
+		</table>
+	</div>
+	<div id="page"></div>
+</div>
+
+	<script type="text/javascript" src="js/staffList.js?v=333"></script>

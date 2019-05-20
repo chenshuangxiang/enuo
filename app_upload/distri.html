@@ -1,0 +1,103 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no"><meta name="apple-mobile-web-app-capable" content="yes"><link rel="stylesheet" href="css/base.css?v=dd0905f"><link rel="stylesheet" href="css/util.css?v=9472158"><link rel="stylesheet" href="css/distri.css?v=a96f869"><link rel="stylesheet" href="css/lib/summernote2.css?v=6bbee65"><link rel="stylesheet" href="css/lib/summernote-bs3.css?v=ba3dd51"><link rel="stylesheet" href="css/lib/font-awesome.min.css?v=50ffe58"><script type="text/javascript" src="plug/jquery-1.11.3.js?v=4663977"></script><script src="js/common.js?v=e9fcb43"></script><script type="text/javascript" src="js/lib/summernote.js?v=54089cc"></script><script type="text/javascript" src="js/lib/summernote-zh-CN.js?v=0a0f46a"></script><script type="text/javascript" src="js/lib/bootstrap.min.js?v=6593de6"></script><title>发布</title></head><style>/*.note-editor .note-toolbar{
+		position: absolute;
+		bottom: 0;
+	}*/</style><body style="background-color: white"><div class="content"><div class="pub_hearder flex_vertical justify_content_equal" style="z-index: 99;"><img class="up_page pub_hearder_left" src="img/header/header_left.png?v=29fd7c6" onclick="window.history.go(-1)"><div class="head_center head_centerZi" style="text-align: left;
+    width: 70%;
+    margin-left: 13%;"><span class="head_title">0字</span></div><img class="closeOrderfabu" src="img/fabu.png?v=ceefc73"> <span class="closeOrder" onclick="">发布</span></div><div class="titlediv"><input type="text" placeholder="请输入标题"></div><div class="content_size"><div id="summernote" class="summernote"></div></div></div></body><script type="text/javascript" charset="utf-8">$(document).ready(function() {
+        //$(".note-editable").css("height",$(window).height());
+        /**
+         *  加载编辑框
+         */
+        $('#summernote').summernote({
+            //height: $(document).height() - $('.pub_hearder').height() - $('.titlediv').height(),
+            height:$(document).height() - 200,
+            //  width: $(window).width(),
+            lang: 'zh-CN',
+            maxHeight: null,
+            minHeight: null,
+            focus: true,
+            toolbar: [
+                ['color', ['color']],
+                ['para', ['paragraph']],
+                //['height', ['height']],
+                ['style', ['bold', 'italic', 'underline','clear']],
+                //['fontsize', ['fontsize']],
+                ['insert', ['link', 'picture']]
+            ],
+            callbacks: {
+                onImageUpload: function (files, editor, $editable) {
+                    console.log('onImageUpload:' + files[0].name);
+                    if (!files[0].name) {
+                        files[0].name = 'qqscreenshot.png';
+                    }
+                    console.log(files[0]);
+                    sendFile(files[0], editor, $editable);
+                }
+            }
+        });
+
+        function sendFile(file, editor, $editable) {
+            var formData = new FormData();
+            formData.append("file", file);
+            console.log(file)
+            if(file == undefined){
+                return
+            }
+
+            $.ajax({
+                type: 'POST',
+                data: formData,
+                url: SERVER_ADDR + '/common/file/upload', //图片上传出来的url，返回的是图片上传后的路径，http格式
+                cache: false,
+                contentType: false,
+                processData: false,
+                dataType: "json",
+                success: function (res) {//data是返回的hash,key之类的值，key是定义的文件名
+                    if (res.success == true) {
+                        //editor.insertImage($editable, res.data);
+                        $('#summernote').summernote('insertImage', res.data);
+                    } else {
+                        alert(res.data);
+                    }
+                },
+                error: function () {
+                    alert("上传失败");
+                }
+            });
+        }
+
+        $('.publish').click(function () {
+            Feed.publish();
+        });
+        /**
+         *  点击发表
+         */
+        var Feed = {
+            publish: function () {   //发表文章
+                var contentinput = $('.summernote').summernote('code').replace('&nbsp;', '')//$('.summernote').code().replace('&nbsp;', '');//$('.note-editable').html()
+
+                data = new Object();
+                data.content = contentinput;
+
+                var content = contentinput;
+                if(content==""){
+                    alert("文章不能为空");
+                }
+                var data = {
+                    "content":content
+                }
+                //调用ajax
+                $.post_ajax("/admin/admin/add",data,function(data){
+                    console.log(data);
+                    if(data.success==true){
+                        alert(data.data);
+                    }else{
+                        alert(data.data);
+                    }
+                });
+            }
+        }
+
+
+
+    });</script></html>

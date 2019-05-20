@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1.0, maximum-scale=1.0">
+    <title>修改密码</title>
+    <script src="js/jquery-1.11.3.min.js"></script>
+    <script src="js/common.js"></script>
+    <link rel="stylesheet" href="css/login.css">
+
+</head>
+<style>
+    .gaiPsd{
+        text-decoration: underline;
+        display: inline-block;
+        float: right;
+        margin: 1rem 10% 0 0;
+        color: #666;
+        font-size: .8em;
+    }
+    .back {
+        width: 100%;
+        height: 2.5rem;
+        line-height: 2.5rem;
+        color: white;
+        font-size: 1rem;
+        text-align: center;
+        position: fixed;
+        bottom: 0;
+        background-color: #00ad9f;
+    }
+</style>
+<body>
+<div class="contain">
+   <!-- <div class="logo">
+        <img src="img/logo.png">
+    </div>-->
+    <form class="info">
+        <!--<div><label><img src="img/data.png"><input placeholder="请输入手机号" id="username" type="text"></label></div>-->
+        <div><label><img src="img/account.png" ><input placeholder="请输入原密码" id="pwd" type="password"></label></div>
+        <div><label><img src="img/account.png" ><input placeholder="请输入新密码" id="pwdnew" type="password"></label></div>
+    </form>
+    <button class="login_btn" onclick="Go.reset();">确认修改</button>
+    <div class="back" onclick=" window.history.go(-1)">返回上一页</div>
+</div>
+
+</body>
+<script type="text/javascript">
+    $(document).ready(function () {
+
+    });
+    var Go = {
+        reset: function () {
+            var url = SERVER_ADDR + '/business/coupon/updatePassword';
+            var Data = {};
+            //Data.phone = $('#username').val();
+            Data.oldPassword = $('#pwd').val();
+            Data.newPassword = $('#pwdnew').val();
+            ajaxGetRetInfo(url, Data, this.resetSuccess, '请求失败', 'POST', true, undefined);
+        },
+        resetSuccess: function (retInfo) {
+            console.log(retInfo)
+            if (retInfo.success == true) {
+                window.location.href = 'login.html';
+            }else {
+                alert(retInfo.data);
+            }
+        }
+    }
+</script>
+</html>

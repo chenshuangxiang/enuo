@@ -1,0 +1,163 @@
+<html>
+<head>
+<title>爱德口腔</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<script src="js/jquery-1.11.3.js"></script>
+</head>
+<style>
+	input[type="text"],input[type="tel"]{
+		position: absolute;
+		top: 4px;
+		width: 80%;
+		left: 11.5%;
+		height: 146px;
+		font-size: 47px;
+		border: none;
+		outline: none;
+	}
+</style>
+<body bgcolor="#FFFFFF" leftmargin="0" topmargin="0" marginwidth="0" marginheight="0">
+<!-- Save for Web Slices (未标题-1.jpg) -->
+<table id="__01" width="1080" height="1921" border="0" cellpadding="0" cellspacing="0">
+	<tr>
+		<td colspan="5">
+			<img src="images/&#x672a;&#x6807;&#x9898;-1_01.gif" width="1080" height="33" alt=""></td>
+	</tr>
+	<tr>
+		<td rowspan="12">
+			<img src="images/&#x672a;&#x6807;&#x9898;-1_02.gif" width="30" height="1887" alt=""></td>
+		<td colspan="2">
+			<img src="images/&#x672a;&#x6807;&#x9898;-1_03.gif" width="391" height="107" alt=""></td>
+		<td colspan="2" rowspan="2">
+			<img src="images/&#x672a;&#x6807;&#x9898;-1_04.gif" width="659" height="549" alt=""></td>
+	</tr>
+	<tr>
+		<td colspan="2">
+			<img src="images/&#x672a;&#x6807;&#x9898;-1_05.gif" width="391" height="442" alt=""></td>
+	</tr>
+	<tr>
+		<td rowspan="10">
+			<img src="images/&#x672a;&#x6807;&#x9898;-1_06.gif" width="116" height="1338" alt=""></td>
+		<td colspan="2" style="position: relative">
+			<img src="images/&#x672a;&#x6807;&#x9898;-1_07.gif" width="794" height="154" alt="">
+			<input class="username" placeholder="姓名" type="text"/>
+		</td>
+		<td rowspan="10" style="position: relative">
+			<img src="images/&#x672a;&#x6807;&#x9898;-1_08.gif" width="140" height="1338" alt="">
+		</td>
+	</tr>
+	<tr>
+		<td colspan="2" style="position: relative">
+			<img src="images/&#x672a;&#x6807;&#x9898;-1_09.gif" width="794" height="26" alt="">
+		</td>
+	</tr>
+	<tr>
+		<td colspan="2" style="position: relative">
+			<img src="images/&#x672a;&#x6807;&#x9898;-1_10.gif" width="794" height="152" alt="">
+			<input class="phone" placeholder="电话" type="tel"/>
+		</td>
+	</tr>
+	<tr>
+		<td colspan="2">
+			<img src="images/&#x672a;&#x6807;&#x9898;-1_11.gif" width="794" height="27" alt=""></td>
+	</tr>
+	<tr>
+		<td colspan="2" style="position: relative">
+			<img src="images/&#x672a;&#x6807;&#x9898;-1_12.gif" width="794" height="153" alt="">
+			<input class="age" placeholder="年龄" type="tel"/>
+		</td>
+	</tr>
+	<tr>
+		<td colspan="2">
+			<img src="images/&#x672a;&#x6807;&#x9898;-1_13.gif" width="794" height="22" alt=""></td>
+	</tr>
+	<tr>
+		<td colspan="2" style="position: relative">
+			<img src="images/&#x672a;&#x6807;&#x9898;-1_14.gif" width="794" height="158" alt="">
+			<input class="disease" placeholder="牙齿情况" type="text"/>
+		</td>
+	</tr>
+	<tr>
+		<td colspan="2">
+			<img src="images/&#x672a;&#x6807;&#x9898;-1_15.gif" width="794" height="23" alt=""></td>
+	</tr>
+	<tr>
+		<td colspan="2">
+			<img class="btn" src="images/&#x672a;&#x6807;&#x9898;-1_16.gif" width="794" height="155" alt=""></td>
+	</tr>
+	<tr>
+		<td colspan="2">
+			<img src="images/&#x672a;&#x6807;&#x9898;-1_17.gif" width="794" height="468" alt=""></td>
+	</tr>
+	<tr>
+		<td>
+			<img src="images/&#x5206;&#x9694;&#x7b26;.gif" width="30" height="1" alt=""></td>
+		<td>
+			<img src="images/&#x5206;&#x9694;&#x7b26;.gif" width="116" height="1" alt=""></td>
+		<td>
+			<img src="images/&#x5206;&#x9694;&#x7b26;.gif" width="275" height="1" alt=""></td>
+		<td>
+			<img src="images/&#x5206;&#x9694;&#x7b26;.gif" width="519" height="1" alt=""></td>
+		<td>
+			<img src="images/&#x5206;&#x9694;&#x7b26;.gif" width="140" height="1" alt=""></td>
+	</tr>
+</table>
+<!-- End Save for Web Slices -->
+</body>
+<script>var select_val;
+var ill;
+$(function() {
+
+    $(".btn").click(function() {
+        var username = $(".username").val();
+        var phone = $(".phone").val();
+        var age = $(".age").val();
+        var disease = $(".disease").val();
+        var data = {
+            "name": username,
+            "mobile": phone,
+            "age": age,
+            "disease": disease,
+        }
+        console.log(data);
+        if(username == "") {
+            alert("姓名不能为空");
+            return false;
+        }
+        if(phone == "") {
+            alert("手机号不能为空");
+            return false;
+        }
+        if(age == "") {
+            alert("年龄不能为空");
+            return false;
+        }
+        if(disease == "") {
+            alert("牙齿情况不能为空");
+            return false;
+        }
+//		if(ill == "" || ill == undefined) {
+//			alert("选择项目不能为空");
+//			return false;
+//		}
+        var url = "https://www.enuo120.com/common/enroll";
+        //		var url= "http://192.168.30.120:8080/disActivity/enroll";
+        $.ajaxSetup({
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'
+            }
+        });
+        $.post(url, data, function(data) {
+            console.log(data);
+            data = JSON.parse(data);
+            if(data.success) {
+                alert("报名成功");
+                //$('#form1')[0].reset(); //重置表单
+            } else {
+                alert(data.data);
+            }
+        });
+
+    });
+});</script>
+</html>

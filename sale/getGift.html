@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1.0, maximum-scale=1.0">
+    <title>口腔护理礼包</title>
+    <script src="js/jquery-1.11.3.min.js"></script>
+    <script src="js/common.js?v=222"></script>
+    <script src="js/getGift.js"></script>
+    <script src="js/jweixin-1.1.0.js"> </script>
+    <script src="js/getShare.js"></script>
+   <!-- <link rel="stylesheet" href="css/login.css">-->
+    <link rel="stylesheet" href="css/layer.css">
+    <link rel="stylesheet" href="css/getGift.css">
+</head>
+<style>
+    body{
+        margin: 0;
+        padding: 0;
+        position: relative;
+        background-color: #f3f3f4;
+    }
+    .back {
+        width: 92%;
+        padding-right: 8%;
+        height: 2.5rem;
+        line-height: 2.5rem;
+        color: white;
+        font-size: 1rem;
+        text-align: center;
+        position: fixed;
+        bottom: 0;
+        display: none;
+        background-color: #00ad9f;
+    }
+    .containImg{
+        width: 100%;
+        display:block;
+    }
+    .getImg{
+        width: 33%;
+        margin-top: -15%;
+        margin-left: 33%;
+        vertical-align: top;
+    }
+    .backImg{
+        width: 1.5rem;
+        height: 1.5rem;
+        margin-left: .8rem;
+        margin-top: .5rem;
+        float: left;
+    }
+    .closeopen {
+        position: absolute;
+        width: 1.3rem;
+        right: .5rem;
+        top: .5rem;
+        opacity: .7;
+    }
+    .layeropen{
+        width: 90%;
+        z-index: 20;
+        text-align: center;
+        position: absolute;
+        border-radius: 4px;
+        background-color: black;
+        opacity: 0.5;
+        height: 11rem;
+        margin-top: 55%;
+        margin-left: 5%;
+        padding-top: 4px;
+        display: none;
+    }
+    .openBig{
+        width: 90%;
+        z-index: 20;
+        text-align: center;
+        position: absolute;
+        border-radius: 4px;
+        margin-top: 55%;
+        margin-left: 5%;
+        padding-top: 4px;
+        display: none;
+    }
+</style>
+<body>
+<!--<div class="shadow" style="position: fixed"></div>-->
+<div class="layeropen">
+
+</div>
+<div class="openBig">
+    <img class="closeopen" onclick="Go.checkConsultClose()" src="img/closewhite.png">
+    <p ><input type="tel" class="mobile" placeholder="请输入您的手机号"/></p>
+
+    <button class="accurate_btn" style="margin: 3% 0;font-weight: 600;width: 40%;font-size: 1.2em;" onclick="Go.getGift()">领取礼包</button>
+</div>
+<div class="msg">
+    <span class="msgText"></span>
+</div>
+<div style="position: relative;top: 0;left: 0;" class="back" onclick=" window.location.href = 'mouseGiftList.html'"><img class="backImg" src="img/header_left.png">口腔护理礼包</div>
+<div class="contain">
+   <!-- <div class="logo">
+        <img src="img/logo.png">
+    </div>-->
+    <img class="containImg noGetImg" src="img/gift1.png">
+    <img class="getImg noGetImg" onclick="Go.get()" src="img/get.gif">
+    <img class="containImg noGetImg"  style="margin-bottom: -34%;" src="img/gift2.png">
+    <div class="getMobileDiv">
+        <div style="width: 100%;text-align: center;    padding-top: .4rem;"><img class="getDetailImg" src="img/getDetailImg.png"></div>
+    <ul id="dataList" class="data-list">
+       <!-- <li class="hos_child set_box_shadow ulli" onclick="href(this)">
+            <div class="hos_list_top clearfix">
+                <div class="left"><img src="img/giftHeadImg2.png">
+                </div>
+                <div class="right">
+                    <p>15058370623</p>
+                    <p><span class="getTime">2018-09-26 20:23:20</span><span class="getStatus">已失效</span></p>
+                </div>
+            </div>
+        </li>
+        <li class="hos_child set_box_shadow ulli" onclick="href(this)">
+            <div class="hos_list_top clearfix">
+                <div class="left"><img src="img/giftHeadImg1.png">
+                </div>
+                <div class="right">
+                    <p>15058370623<span style="color: #00ad9f">（No.0017）</span></p>
+                    <p><span class="getTime">2018-09-26 20:23:20</span><span class="getStatus" style="color: #f49d16">已领取</span></p>
+                </div>
+            </div>
+        </li>-->
+    </ul>
+    </div>
+    <img class="containImg" style="margin-top: 1.2rem;" src="img/gift3.png">
+    <a class="tel" href="tel:0571-85132808"></a>
+    <a class="address" onclick="share = 1;if(is_weixn()){
+        getSign();
+    }else{
+        window.location.href = 'http://api.map.baidu.com/geocoder?location='+30.312649+','+120.18159+'&output=html'
+    };" href="tel:0571-85132808"></a>
+    <!--<button class="login_btn" onclick="Go.reset();">确认修改</button>-->
+
+</div>
+</body>
+</html>

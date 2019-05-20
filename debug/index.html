@@ -1,0 +1,298 @@
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+    <title>接口调试工具</title>
+    <link rel="stylesheet" href="//cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <style>
+        .ng-hide {
+            display: none !important;
+        }
+
+        h4 {
+            margin-bottom: 0;
+        }
+
+        .input-group-sm {
+            padding-bottom: 10px;
+        }
+
+        .input-group-sm input {
+            width: 75%;
+            float: right;
+        }
+
+        .input-group-sm input:first-child {
+            width: 20%;
+            float: left;
+        }
+
+        .clr {
+            zoom: 1;
+        }
+
+        .clr:after {
+            content: ' ';
+            display: block;
+            line-height: 1;
+            height: 0px;
+            overflow: hidden;
+            clear: both;
+        }
+
+        .form-control.success {
+            cursor: auto;
+            background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAAANwAAADcBYx2BhQAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAAETSURBVDiNpZM9SgRBEIW/cXcPoSwsLu4trDqEPwgKLggGioGRlXiBPoIY+AObrIGJiYli9w2MNPEeom6b9A6tzMCw86CSV/09uovqIsZIGy21ohcJENOOmPYWChDTFeAVeBPTIUDRdAZi2geegbVkfQCjRjcQ0wHwksEA78H5WTc7dAScA6fB+bvMHwJPwCCDH4GN8gliug1MU/MHGAfnJ2I6SnA/gx+AreD8J0A3gyJQAB3gVkxXgWNgOYPvgZ3g/NfcKIcopofARQqp0hTYC85/52Y5xOD8JXAAzCrgCbD7H/4TkEKugXF60lxXwH5wPvdKVe6BmG4CN6lOgvP1yxJjrKz1M+nV9fJqvIl1av0bfwGJ4Ia+ElkxlQAAAABJRU5ErkJggg==);
+            background-attachment: scroll;
+            background-position: 98% 50%;
+            background-repeat: no-repeat;
+        }
+        .form-control.error{
+            cursor: auto;
+            background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAAANwAAADcBYx2BhQAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAADtSURBVDiNpZOxDcIwEEX/JSWDpKBjhDMRDbRkDZggMAHZAjAlFJGAEbIFC1CmQEfjoHNsJFC+ZCk+3X/JfTskIhiiZJC7DzgxZzbn2bdmm/PsxJxFAXvmsaTUAFTb3GxCs9kAVEtKzZ55HACSFBmAkduWGuKeS7cduV4AAOkQbW52AFbqxdsOqGrV8npfRwFfIFqe2Ruhk2uofjFHAU7PH2shoBeYVhk7HQ8QMVfwxwkgnxCP0+mcSM7a3M3cD1aEFsXtdvG+IEleDwBt3wwEwbaut6PJZx2YJ9aYQtf0ssYUB+aJrgX34F8N/hvf1AOC/fctaBMAAAAASUVORK5CYII=);
+            background-attachment: scroll;
+            background-position: 98% 50%;
+            background-repeat: no-repeat;
+        }
+    </style>
+</head>
+<body ng-app="myApp" ng-controller="bodyCtrl">
+<div class="container" style="padding: 0 10px; width: 100%; min-width: 600px; ">
+    <div class="header clearfix">
+        <h3 class="text-muted" style="margin: 10px 0 0;">接口调试工具</h3>
+        <hr style="margin: 10px 0">
+    </div>
+    <div class="main pull-left" style="width: 50%; min-width: 300px; padding-right: 30px;">
+        <div class="alert-box"></div>
+        <div class="form-group">
+            <label>请求类型：</label><br>
+            <select name="type" ng-model="type" class="form-control input-sm" style="width: 100px;">
+                <option value="GET">GET</option>
+                <option value="POST">POST</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label>请求地址：</label>
+            <div class="input-group">
+                <span class="input-group-addon" ng-bind="locationHost"></span>
+                <input type="text" class="form-control input-sm" ng-model="url" placeholder="URL"
+                       ng-class="{'success':url,'error':!url}">
+            </div>
+        </div>
+        <div class="form-group">
+            <label>参数列表：</label>
+            <form id="inputForm">
+                <div class="input-group-sm clr" style="width: 100%;">
+                    <input type="text" class="form-control" ng-model="p1" placeholder="参数1">
+                    <input type="text" class="form-control" ng-model="v1" placeholder="数值1" name="{{ p1 }}"
+                           ng-class="{'success':(p1 && v1)}">
+                </div>
+                <div class="input-group-sm clr">
+                    <input type="text" class="form-control" ng-model="p2" placeholder="参数2">
+                    <input type="text" class="form-control" ng-model="v2" placeholder="数值2" name="{{ p2 }}"
+                           ng-class="{'success':(p2 && v2)}">
+                </div>
+                <div class="input-group-sm clr">
+                    <input type="text" class="form-control" ng-model="p3" placeholder="参数3">
+                    <input type="text" class="form-control" ng-model="v3" placeholder="数值3" name="{{ p3 }}"
+                           ng-class="{'success':(p3 && v3)}">
+                </div>
+                <div class="input-group-sm clr">
+                    <input type="text" class="form-control" ng-model="p4" placeholder="参数4">
+                    <input type="text" class="form-control" ng-model="v4" placeholder="数值4" name="{{ p4 }}"
+                           ng-class="{'success':(p4 && v4)}">
+                </div>
+                <div class="input-group-sm clr">
+                    <input type="text" class="form-control" ng-model="p5" placeholder="参数5">
+                    <input type="text" class="form-control" ng-model="v5" placeholder="数值5" name="{{ p5 }}"
+                           ng-class="{'success':(p5 && v5)}">
+                </div>
+                <div class="input-group-sm clr">
+                    <input type="text" class="form-control" ng-model="p6" placeholder="参数6">
+                    <input type="text" class="form-control" ng-model="v6" placeholder="数值6" name="{{ p6 }}"
+                           ng-class="{'success':(p6 && v6)}">
+                </div>
+                <div class="input-group-sm clr">
+                    <input type="text" class="form-control" ng-model="p7" placeholder="参数7">
+                    <input type="text" class="form-control" ng-model="v7" placeholder="数值7" name="{{ p7 }}"
+                           ng-class="{'success':(p7 && v7)}">
+                </div>
+                <div class="input-group-sm clr">
+                    <input type="text" class="form-control" ng-model="p8" placeholder="参数8">
+                    <input type="text" class="form-control" ng-model="v8" placeholder="数值8" name="{{ p8 }}"
+                           ng-class="{'success':(p8 && v8)}">
+                </div>
+                <div class="input-group-sm clr">
+                    <input type="text" class="form-control" ng-model="p9" placeholder="参数9">
+                    <input type="text" class="form-control" ng-model="v9" placeholder="数值9" name="{{ p9 }}"
+                           ng-class="{'success':(p9 && v9)}">
+                </div>
+                <div class="input-group-sm clr">
+                    <input type="text" class="form-control" ng-model="p10" placeholder="参数10">
+                    <input type="text" class="form-control" ng-model="v10" placeholder="数值10" name="{{ p10 }}"
+                           ng-class="{'success':(p10 && v10)}">
+                </div>
+                <div class="input-group-sm clr">
+                    <input type="text" class="form-control" ng-model="p11" placeholder="参数11">
+                    <input type="text" class="form-control" ng-model="v11" placeholder="数值11" name="{{ p11 }}"
+                           ng-class="{'success':(p11 && v11)}">
+                </div>
+                <div class="input-group-sm clr">
+                    <input type="text" class="form-control" ng-model="p12" placeholder="参数12">
+                    <input type="text" class="form-control" ng-model="v12" placeholder="数值12" name="{{ p12 }}"
+                           ng-class="{'success':(p12 && v12)}">
+                </div>
+            </form>
+        </div>
+        <button class="btn btn-primary btn-sm" id="sendAjax" ng-click="submit()">提交</button>
+        <hr>
+    </div>
+    <div class="form-group pull-left" style="width: 50%;padding-left: 30px; border-left: 1px solid #eee;">
+        <label>输出结果：</label>
+        <textarea id="response" style="width: 100%; height: 686px;"></textarea>
+    </div>
+</div>
+<script type="text/javascript" src="//cdn.bootcss.com/jquery/1.10.0/jquery.min.js"></script>
+<script type="text/javascript" src="//cdn.bootcss.com/angular.js/1.4.9/angular.min.js"></script>
+<script type="text/javascript">
+    var formatJson = function (json, options) {
+        var reg = null,
+                formatted = '',
+                pad = 0,
+                PADDING = '    '; // one can also use '\t' or a different number of spaces
+
+        // optional settings
+        options = options || {};
+        // remove newline where '{' or '[' follows ':'
+        options.newlineAfterColonIfBeforeBraceOrBracket = (options.newlineAfterColonIfBeforeBraceOrBracket === true) ? true : false;
+        // use a space after a colon
+        options.spaceAfterColon = (options.spaceAfterColon === false) ? false : true;
+
+        // begin formatting...
+        if (typeof json !== 'string') {
+            // make sure we start with the JSON as a string
+            json = JSON.stringify(json);
+        } else {
+            // is already a string, so parse and re-stringify in order to remove extra whitespace
+            json = JSON.parse(json);
+            json = JSON.stringify(json);
+        }
+
+        // add newline before and after curly braces
+        reg = /([\{\}])/g;
+        json = json.replace(reg, '\r\n$1\r\n');
+
+        // add newline before and after square brackets
+        reg = /([\[\]])/g;
+        json = json.replace(reg, '\r\n$1\r\n');
+
+        // add newline after comma
+        reg = /(\,)/g;
+        json = json.replace(reg, '$1\r\n');
+
+        // remove multiple newlines
+        reg = /(\r\n\r\n)/g;
+        json = json.replace(reg, '\r\n');
+
+        // remove newlines before commas
+        reg = /\r\n\,/g;
+        json = json.replace(reg, ',');
+
+        // optional formatting...
+        if (!options.newlineAfterColonIfBeforeBraceOrBracket) {
+            reg = /\:\r\n\{/g;
+            json = json.replace(reg, ':{');
+            reg = /\:\r\n\[/g;
+            json = json.replace(reg, ':[');
+        }
+        if (options.spaceAfterColon) {
+            reg = /\:/g;
+            json = json.replace(reg, ': ');
+        }
+
+        $.each(json.split('\r\n'), function (index, node) {
+            var i = 0,
+                    indent = 0,
+                    padding = '';
+
+            if (node.match(/\{$/) || node.match(/\[$/)) {
+                indent = 1;
+            } else if (node.match(/\}/) || node.match(/\]/)) {
+                if (pad !== 0) {
+                    pad -= 1;
+                }
+            } else {
+                indent = 0;
+            }
+
+            for (i = 0; i < pad; i++) {
+                padding += PADDING;
+            }
+
+            formatted += padding + node + '\r\n';
+            pad += indent;
+        });
+
+        return formatted;
+    };
+
+    //表单序列化为JSON
+    $.fn.serializeObject = function () {
+        var o = {};
+        var a = this.serializeArray();
+        $.each(a, function () {
+            if (o[this.name]) {
+                if (!o[this.name].push) {
+                    o[this.name] = [o[this.name]];
+                }
+                o[this.name].push(this.value || '');
+            } else {
+                o[this.name] = this.value || '';
+            }
+        });
+        return o;
+    };
+
+    //myApp
+    angular.module('myApp', [])
+    //ajax请求全局配置
+    .config(['$httpProvider', function ($httpProvider) {
+//        $httpProvider.defaults.headers.common['token'] = $.cookie('token') || 0;
+        $httpProvider.defaults.headers.common['Content-Type'] = 'application/x-www-form-urlencoded; charset=UTF-8';
+//        $httpProvider.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
+    }])
+    .controller('bodyCtrl', function ($scope, $http) {
+
+        $scope.locationHost = 'http://' + location.hostname;
+        $scope.type = 'GET';
+        $scope.url = '';
+
+        //提交表单
+        $scope.submit = function () {
+            $('#response').html('');
+            if ($scope.url.length > 0) {
+                $.ajax({
+                    url: $scope.url,
+                    type: $scope.type,
+                    data: $('#inputForm').serializeObject(),
+                    dataType: "json",
+                    cache: false,
+                    success: function (response) {
+                        if ($.isPlainObject(response))
+                            $('#response').val(formatJson(response));
+                        else
+                            $('#response').val(response);
+                    },
+                    error: function (err) {
+                        $('#response').val(formatJson(err));
+                    }
+                });
+            }
+            else {
+                alert('URL不能为空');
+            }
+        };
+    });
+</script>
+</body>
+</html>

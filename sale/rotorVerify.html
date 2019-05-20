@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+
+	<!--在您实际的项目中,请留意mescroll-option.css的图片路径是否引用正确,可写成绝对路径或网络地址-->
+	<!--可把mescroll-option.css代码拷贝到mescroll.min.css中,合为一个css文件,方便引用-->
+	<link rel="stylesheet" href="css/mescroll.css">
+	<link rel="stylesheet" href="option/mescroll-option.css">
+	<link rel="stylesheet" href="css/layers.css"/>
+	<!--<link rel="stylesheet" href="css/base.css" />-->
+<!--	<link rel="stylesheet" href="css/util.css" />-->
+<!--	<link rel="stylesheet" href="css/my_yuyue.css" />-->
+	<link rel="stylesheet" href="css/xiala.css?v=222" />
+	<link rel="stylesheet" href="css/list.css?v=222">
+	<script type="text/javascript" src="js/jquery-1.11.3.min.js" ></script>
+	<script src="js/common.js?v=222"></script>
+	<script src="js/layer.js"></script>
+	<title>纹绣大转盘奖品审核</title>
+</head>
+<style>
+/*	input::-webkit-input-placeholder{
+		color: white;
+		font-size: 8px;
+	}*/
+	.sureRotor{
+		width: 3.8rem;
+		/* margin-left: 16%; */
+		margin-right: 8%;
+		height: 1.8rem;
+		line-height: 1.7rem;
+		border-radius: 3px;
+		border: none;
+		outline: none;
+		background-color: #00afa1;
+		box-shadow: 0px 5px 20px 0 rgba(19, 19, 19, 0.2);
+		font-size: .9rem;
+		font-weight: bold;
+		color: #ffffff;
+		float: right;
+	}
+.toggleSou {
+	border-radius: .35rem;
+	font-size: .85rem;
+	color: #333;
+	padding-left: 1em;
+	height: 29px;
+	line-height: 29px;
+	width: 92%;
+	outline: none;
+	margin-left: 1%;
+	border: 1px solid #00afa1;
+}
+#search_btn{
+	position: fixed;
+	top: 1rem;
+	right: 2rem;
+}
+/*预约弹窗*/
+.modelOpen{
+	position: fixed;
+	width: 100%;
+	height: 100%;
+	z-index: 999;
+	top: 0;
+	display: none;
+}
+.mubu{
+	position: fixed;
+	width: 100%;
+	height: 100%;
+	background-color: #000000;
+	opacity: 0.2;
+}
+.paySuccessZi{
+	font-size: .9rem;
+	line-height: 1.3rem;
+	text-align: center;
+	/* height: 1.5rem; */
+	width: 80%;
+	margin-left: 10%;
+}
+.paySuccessZi input{
+	width: 90%;
+	margin-left: 2%;
+	height: 2rem;
+	line-height: 2rem;
+	font-size: 1rem;
+	color: #333;
+	text-align: center;
+	border: 1px solid #888;
+}
+.modelOpenback{
+	width: 76%;
+	position: fixed;
+	top: 26%;
+	left: 12%;
+	z-index: 99999;
+	border-radius: 5px;
+	background-color: white;
+}
+.payclose,.paybackclose{
+	width: 1.25rem;
+	float: right;
+	margin: .85rem;
+}
+.paySuccess{
+	width: 19%;
+	margin: 12% 0 4.5% 41%;
+}
+.toYuyue,.toYuyueno{
+	width: 29%;
+	height: 2.2rem;
+	background-color: #00afa1;
+	border: none;
+	outline: none;
+	/* position: absolute; */
+	border-radius: 5px;
+	color: white;
+	font-size: .85rem;
+	margin: 10% 0 9% 6%;
+}
+.toYuyueno{
+	background-color: white;
+	color: #707070;
+	border: 1px solid #707070;
+	margin-left: 17%;
+}
+</style>
+<body>
+<div class="modelOpen">
+	<div class="mubu"></div>
+	<div class="modelOpenback">
+		<img class="payclose" onclick="$('.modelOpen').hide()" src="img/payclose.png">
+		<!--<img src="../img/yuyueback.png">-->
+
+		<p class="paySuccessZi"><input type="text" class="snInput" placeholder="请输入体验券编号"/></p>
+		<button class="toYuyueno sureCoupon" onclick="addCoupon(this)">确定</button>
+		<button class="toYuyue" onclick="$('.modelOpen').hide()">取消</button>
+	</div>
+</div>
+<div class="content">
+	<!--标题-->
+	<!--<a href="../index.html"><div class="header"></div></a>-->
+
+	<!--<div class="famous_doc_layer">
+		<div class="yuyueTop">预约单号：<span class="famousName">4545454102536</span><span class="yuyueStatus">预约中</span></div>
+		<div class="split"></div>
+		<div class="btm">
+			<p><span class="famousName">预约医院：</span><span class="hosName">杭州复旦医院</span></p>
+			<p><span class="famousName">预约科室：</span><span class="docName">李华</span></p>
+			<p><span class="famousName">预约医生：</span><span class="docLevel">主任医师</span></p>
+			<p><span class="famousName">预约时间：</span><span class="docSub">五官科</span> &#45;&#45; <span class="docSubSub">五官科</span></p>
+		</div>
+	</div>-->
+	<!--头部-->
+	<div class="top">
+		<form action="javascript:return true;" class="input-kw-form" style="">
+			<input class="toggleSou" type="search" autocomplete="off" placeholder="输入您要搜索的手机号">
+		</form>
+		<img src="img/search.png"  onclick='search()' id="search_btn">
+		<!--<label>今日/合计:<span class="nowday">7</span>/<span class="allday">20</span></label>-->
+<!--		<img src="img/add.png" onclick="window.location.href = 'add.html'" class="add_img" id="add_btn">-->
+	</div>
+	<!--滑动区域-->
+	<!--<div class="nav" style="position: fixed;
+    top: 2.7rem;    width: 100%;    font-size: .95rem;border-bottom: 0">
+		<p class="active" i="0">全部</p>
+		<p i="1" class="">已预约</p>
+		<p i="2" class="">已完成</p>
+	</div>-->
+	<!--商品-->
+	<div id="mescroll0" class="mescroll" style="background-color: white;top: 2.3rem;">
+		<ul id="dataList0" class="data-list" style="margin-top: .8em;">
+
+		</ul>
+	</div>
+	<!--医生-->
+	<<!--div id="mescroll1" class="mescroll hide" style="background-color: white;top: 5.4rem;">
+		<ul id="dataList1" class="data-list">
+		</ul>
+	</div>-->
+
+	<!--医院-->
+	<!--<div id="mescroll2" class="mescroll hide" style="background-color: white;top: 5.4rem;">
+		<ul id="dataList2" class="data-list">
+		</ul>
+	</div>-->
+<!--	<div id="mescroll" class="mescroll" style="background-color: #f1f1f1;top: 2.7rem">
+		&lt;!&ndash;模拟的轮播&ndash;&gt;
+		&lt;!&ndash;	<img class="swiper" src="../res/img/swiper.jpg"/>&ndash;&gt;
+		&lt;!&ndash;筛选条件; 模拟列表的重置和演示空布局的使用&ndash;&gt;
+		&lt;!&ndash;<div class="nav">
+            <p class="active" i="0">全部</p>
+            &lt;!&ndash;<p i="1">奶粉</p>
+            <p i="2">图书</p>&ndash;&gt;
+        </div>&ndash;&gt;
+		&lt;!&ndash;展示上拉加载的数据列表&ndash;&gt;
+		<ul id="dataList" class="data-list" style="margin-top: .8em;">
+			&lt;!&ndash;<li>
+                <img class="pd-img" src="../res/img/pd1.jpg"/>
+                <p class="pd-name">商品标题商品标题商品标题商品标题商品标题商品</p>
+                <p class="pd-price">200.00 元</p>
+                <p class="pd-sold">已售50件</p>
+            </li>&ndash;&gt;
+		</ul>
+	</div>-->
+	<div class="back" onclick=" window.location.href = 'home.html'">返回上一页</div>
+</div>
+</body>
+
+<!--在您实际的项目中,请留意mescroll-option.js的图片路径是否引用正确,可写成绝对路径或网络地址-->
+<!--可把mescroll-option.js代码拷贝到mescroll.min.js中,合为一个js文件,方便引用-->
+<script src="js/mescroll.js" type="text/javascript" charset="utf-8"></script>
+<!--<script src="option/mescroll-option.js" type="text/javascript" charset="utf-8"></script>-->
+<!--mescroll本身不依赖jq,这里为了模拟发送ajax请求,获取模拟数据-->
+<!--<script type="text/javascript" src="js/viewport.js" ></script>-->
+<!--<script type="text/javascript" src="js/util.js"></script>-->
+<!--<script src="js/dos_yuyue.js"></script>-->
+<!--	<script src="../res/pdlist1.js" type="text/javascript" charset="utf-8"></script>-->
+
+<script type="text/javascript" charset="utf-8">
+	$(document).ready(function () {
+		/*init();*/
+        Get.count();
+    })
+	var Get = {
+        count: function () {
+            var url = SERVER_ADDR + '/salesman/index/info';
+            var Data = '';
+            ajaxGetRetInfo(url, Data, this.countSuccess, '请求失败', 'GET', true, undefined);
+        },
+        countSuccess: function (retInfo) {
+            $('.nowday').text(retInfo.data.todayRegisterQuantity);
+            $('.allday').text(retInfo.data.totalRegisterQuantity);
+        	}
+	}
+	function search() {
+        //mescrollArr[0]=initMescroll("mescroll0", "dataList0");
+        var page = {num: 1, size: 5,keyword: $('.toggleSou').val()}
+        mescrollArr[0].setPageNum(1)
+        getListData(page)
+    }
+
+    var curNavIndex=0;//首页0; 奶粉1; 面膜2; 图书3;
+    var mescrollArr=new Array(4);//4个菜单所对应的4个mescroll对象
+    mescrollArr[0]=initMescroll("mescroll0", "dataList0");
+    $(function(){
+        $(".nav p").click(function(){
+            var i=Number($(this).attr("i"));
+            if(curNavIndex!=i) {
+                //更改列表条件
+                $(".nav .active").removeClass("active");
+                $(this).addClass("active");
+                //隐藏当前列表
+                $("#mescroll"+curNavIndex).hide();
+                //显示对应的列表
+                curNavIndex=i;
+                $("#mescroll"+curNavIndex).show();
+                //取出菜单所对应的mescroll对象,如果未初始化则初始化
+                if(mescrollArr[i]==null) mescrollArr[i]=initMescroll("mescroll"+i, "dataList"+i);
+            }
+        })
+    });
+    /*创建MeScroll对象*/
+    function initMescroll(mescrollId,clearEmptyId){
+        //创建MeScroll对象,内部已默认开启下拉刷新,自动执行up.callback,刷新列表数据;
+        var mescroll = new MeScroll(mescrollId, {
+            //上拉加载的配置项
+            up: {
+                callback: getListData, //上拉回调,此处可简写; 相当于 callback: function (page) { getListData(page); }
+                noMoreSize: 4, //如果列表已无数据,可设置列表的总数量要大于半页才显示无更多数据;避免列表数据过少(比如只有一条数据),显示无更多数据会不好看; 默认5
+                empty: {
+                    icon: "option/mescroll-empty.png", //图标,默认null
+                    tip: "亲,暂无结果~", //提示
+                    //btntext: "去逛逛 >", //按钮,默认""
+                    /* btnClick: function(){//点击按钮的回调,默认null
+                         alert("点击了按钮,具体逻辑自行实现");
+                     }*/
+                },
+                toTop: {
+                    src: "option/mescroll-totop.png" //回到顶部按钮的图片路径
+                },
+                clearEmptyId: clearEmptyId //相当于同时设置了clearId和empty.warpId; 简化写法;默认null
+            }
+        });
+        return mescroll;
+    }
+    /*联网加载列表数据  page = {num:1, size:10}; num:当前页 从1开始, size:每页数据条数 */
+    function getListData(page){
+        console.log(page)
+        page.size = 10;
+        if(page.goCount == 1){
+            page.keyword = undefined;
+        }else{
+            page.keyword = $('.toggleSou').val();//getQueryString('val');
+        }
+        //联网加载数据
+        console.log("curNavIndex="+curNavIndex+", page.num="+page.num);
+        getListDataFromNet(page.num, page.size,page.keyword,function(data){
+            //联网成功的回调,隐藏上拉加载的状态
+            console.log("data.length="+data.length);
+            mescrollArr[0].endSuccess(data.length);//传参:数据的总数; mescroll会自动判断列表如果无任何数据,则提示空;列表无下一页数据,则提示无更多数据;
+            //设置列表数据
+            setListData(data);
+        }, function(){
+            //联网失败的回调,隐藏上拉加载的状态
+            mescrollArr[0].endErr();
+        });
+    }
+
+    /*设置列表数据*/
+    function setListData(data){
+        var listDom=$("#dataList" + curNavIndex);
+        for (var i = 0; i < data.length; i++) {
+            var pd=data[i];
+            var str='';
+            if(pd.isCertification == false){
+                pd.sex = '暂未完善';
+                pd.fullname = '暂未完善';
+			}else if(pd.sex == 'man'){
+                pd.sex = '男';
+			}else if(pd.sex == 'woman'){
+                pd.sex = '女';
+			}
+            /*if(curNavIndex == 0){*/
+            str += '<div class="ticket"> ' +
+               /* '<div class="title"> ' +
+                '<label class="ticket_num">体验券编号：<span class="num">'+pd.sn+'</span></label>' +
+                '<label class="ticket_status"><span class="status">'+pd.status+'</span>' +
+            	'</label> ' +
+                '</div> ' +*/
+                '<div class="ticket_content" style="padding-top: 0"> ' +
+                '<p style="width: 49%;display: inline-block">姓名：<span>'+pd.name+'</span></p><p style="width: 49%;;display: inline-block">手机号：<span>'+pd.mobile+'</span></p> ' +
+                '<p style="width: 99%">奖品：<span>'+pd.productName+'</span>' ;
+					if(pd.managerHasGive == false){
+                        str += '<button class="sureRotor" valuetype="'+pd.ruleType+'" valueid="'+pd.id+'" onclick="sureRotor(this)">通过</button>' ;
+                    }else{
+                        str += '<button class="sureRotor" style="background-color: #bcbcbc;">已领取</button>' ;
+					}
+                str += '</p> ' +
+                '</div> ' +
+                '</div>';
+            /*}else if(curNavIndex == 1){
+
+            }else if(curNavIndex == 2){
+
+            }*/
+            listDom.append(str);
+        }
+    }
+
+    /*联网加载列表数据*/
+    function getListDataFromNet(pageNum,pageSize,keyword,successCallback,errorCallback) {
+        /*  var url;
+          if(subjectId == '' || subjectId == undefined){
+              url = SERVER_ADDR + '/app/topthree/doctor/getList.json?pageNumber='+pageNum+'&pageSize='+pageSize;
+          }else{
+              url = SERVER_ADDR + '/app/topthree/doctor/getList.json?pageNumber='+pageNum+'&pageSize='+pageSize+'&subjectId='+subjectId;
+          }*/
+        var data = {};
+        data.pageNumber = pageNum;
+        data.pageSize = pageSize;
+        if(keyword != undefined){
+            data.keyword = keyword;
+        }
+        //延时一秒,模拟联网
+        $.ajax({
+            type: 'GET',
+            url: SERVER_ADDR + '/salesman/manager/allGifts',
+            data:data,
+            dataType: 'json',
+            success: function(data){
+                if(data.success == true){
+                    var data=data.data; // 模拟数据: ../res/pdlist1.js
+                    var listData=[];
+
+                    //奶粉
+                    for (var i = 0; i < data.length; i++) {
+                        listData.push(data[i]);
+                    }
+                    //回调
+                    successCallback(listData);
+                }else{
+                    alert(data.data)
+                }
+            },
+            error: errorCallback
+        });
+    }
+    function sureRotor(obj) {
+        var elThis = $(obj);
+        if(elThis.attr('valuetype') == 'HOSPITAL_EXPERIENCE_COUPON'){
+            $('.sureCoupon').attr('valueid',elThis.attr('valueid'));
+            $('.modelOpen').show();
+		}else{
+            layer.open({
+                content: '确定要通过吗？'
+                ,btn: ['取消', '确定']
+                ,no: function(index){
+                    var url = SERVER_ADDR + '/salesman/manager/examinationAndApproval';
+                    var Data = {};
+                    Data.id = elThis.attr('valueid');
+                    ajaxGetRetInfo(url, Data, function (retInfo) {
+                        console.log(retInfo)
+                        if (retInfo.success == true) {
+                            alert(retInfo.data);
+                            window.location.reload();
+                            //elThis.parent().parent().parent().remove();
+                        }else {
+                            alert(retInfo.data);
+                        }
+                    }, '请求失败', 'GET', true, undefined);
+                    layer.close(index);
+                }
+            });
+		}
+    }
+    function addCoupon(obj) {
+        var url = SERVER_ADDR + '/salesman/manager/examinationAndApproval';
+        var Data = {};
+        Data.id = $(obj).attr('valueid');
+        Data.sn = $('.snInput').val();
+        Data.invalidDate = getNextMonth(new Date().Format('yyyy-MM-dd'));
+        ajaxGetRetInfo(url, Data, function (retInfo) {
+            console.log(retInfo)
+            if (retInfo.success == true) {
+                alert(retInfo.data);
+                window.location.reload();
+                //elThis.parent().parent().parent().remove();
+            }else {
+                alert(retInfo.data);
+            }
+        }, '请求失败', 'GET', true, undefined);
+    }
+
+</script>
+
+</html>

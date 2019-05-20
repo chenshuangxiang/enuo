@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1.0, maximum-scale=1.0">
+    <title>修改体验券</title>
+    <link rel="stylesheet" href="css/add.css">
+    <link rel="stylesheet" href="css/iosSelect.css">
+    <link rel="stylesheet" href="css/layer.css">
+    <script src="js/jquery-1.11.3.min.js"></script>
+    <script src="js/common.js"></script>
+    <script src="js/iosSelect.js"></script>
+</head>
+<body>
+<div class="shadow"></div>
+<div class="layeropen">
+    <img class="closeopen" src="img/close.png">
+    <p ><span class="right">体验券编号：</span><span class="left ticker_num"></span></p>
+    <p><span class="right" style="vertical-align: top;">产品名称：</span><span class="left goods_id"></span></p>
+    <p><span class="right">活动医院：</span><span class="left hospital_id"></span></p>
+    <p><span class="right">患者姓名：</span><span class="left user_name"></span></p>
+    <p><span class="right">患者手机：</span><span class="left user_tel"></span></p>
+    <p><span class="right">产品失效时间：</span><span class="left showDate"></span></p>
+    <button class="accurate_btn" onclick="Get.add()">确定修改</button>
+</div>
+    <div class="top">
+        <img src="img/more.png" onclick="window.history.go(-1)">
+        <label>修改体验券</label>
+    </div>
+    <div style="margin-bottom: 5rem;">
+        <div class="params">
+            <p>
+                <img src="img/split.png" class="img_span">
+                <span class="img_span algin" >体验券编号：</span>
+            </p>
+            <input placeholder="请输入体验券编号" id="ticker_num">
+        </div>
+        <div class="expires">
+            <p>
+                <img src="img/split.png" class="img_span">
+                <span class="img_span algin" >产品名称：</span>
+            </p>
+            <label style="padding: 0;    width: 94%;">
+                <select id="goods_id">
+                    <option style="border: none">请选择</option>
+                </select>
+            </label>
+        </div>
+        <div class="expires">
+            <p>
+                <img src="img/split.png" class="img_span">
+                <span class="img_span algin">活动医院：</span>
+            </p>
+           <label style="padding: 0;    width: 94%;">
+               <select id="hospital_id">
+               <option >请选择</option>
+           </select>
+           </label>
+        </div>
+        <div class="params">
+            <p>
+                <img src="img/split.png" class="img_span">
+                <span class="img_span algin">患者姓名：</span>
+            </p>
+            <input placeholder="请输入患者姓名" id="user_name">
+        </div>
+        <div class="params">
+            <p>
+                <img src="img/split.png" class="img_span">
+                <span class="img_span algin">患者手机号：</span>
+            </p>
+            <input placeholder="请输入患者手机号" id="user_tel">
+        </div>
+        <div class="expires">
+            <p>
+                <img src="img/split.png" class="img_span">
+                <span class="img_span algin">产品失效时间：</span>
+            </p>
+            <label  data-year="" data-month="" data-date="" class="selectDate" id="showDate"><span  id="expire_date"></span><img src="img/date.png" class="date"></label>
+        </div>
+    </div>
+    <button class="add_tic_btn" onclick="Get.addconfirm()">修改</button>
+<!--<div class="shadow"></div>-->
+<!--<div class="layer_align">
+<div class="layer">
+    <p>体验券编号：<span>80017</span></p>
+    <p>产品名称：<span>80017</span></p>
+    <p>活动医院：<span>80017</span></p>
+    <p>体验券编号：<span>80017</span></p>
+    <p>体验券编号：<span>80017</span></p>
+    <p>体验券编号：<span>80017</span></p>
+</div>
+</div>-->
+
+</body>
+<script>
+    $(function () {
+        $(".closeopen").click(function () {
+            $('.shadow,.layeropen').hide();
+        });
+        Get.oneselect();
+        $('#goods_id').change(function () {
+            Get.twoselect();
+        })
+    })
+    var Get = {
+        oneselect: function () {
+            var url = SERVER_ADDR + '/business/coupon/getListBySelect.json';
+            var Data = '';
+            ajaxGetRetInfo(url, Data, this.oneselectSuccess, '请求失败', 'GET', true, undefined);
+        },
+        oneselectSuccess: function (retInfo) {
+            console.log(retInfo)
+            if (retInfo.success == true) {
+                retInfo.data.forEach(function (value) {
+                    $('#goods_id').append('<option value="'+value.id+'">'+value.name+'</option>')
+                })
+                Get.conponInfo();
+            }else {
+                alert(retInfo.data);
+            }
+        },
+        conponInfo: function () {
+            var url = SERVER_ADDR + '/business/coupon/getDetail.json';
+            var Data = {};
+            Data.id = getQueryString('id');
+            ajaxGetRetInfo(url, Data, this.conponInfoSuccess, '请求失败', 'GET', true, undefined);
+        },
+        conponInfoSuccess: function (retInfo) {
+            console.log(retInfo)
+            if (retInfo.success == true) {
+                $("#ticker_num").val(retInfo.data.sn);
+                $("#goods_id").val(retInfo.data.hospitalExperienceCouponId);
+                Get.twoselect();
+                if($("#goods_id").val() == null){
+                    $("#goods_id").val('请选择');
+                }
+                $("#user_name").val(retInfo.data.username);
+                $("#user_tel").val(retInfo.data.mobile);
+                console.log(retInfo.data.invalidDate)
+                var invalidDateYear = retInfo.data.invalidDate.split('-')[0];
+                var invalidDateMonth = retInfo.data.invalidDate.split('-')[1];
+                var invalidDateDay = retInfo.data.invalidDate.split('-')[2];
+                $('#showDate').text(invalidDateYear + '年 '+invalidDateMonth + '月 '+invalidDateDay + '日')
+                    .attr('data-year',invalidDateYear).attr('data-month',invalidDateMonth).attr('data-date',invalidDateDay);
+            }else {
+                alert(retInfo.data);
+            }
+        },
+        twoselect: function () {
+            var url = SERVER_ADDR + '/salesman/coupon/getExperienceCouponHospital.json';
+            var Data = {};
+            Data.experienceCouponId = $('#goods_id').val();
+            ajaxGetRetInfo(url, Data, this.twoselectSuccess, '请求失败', 'GET', true, undefined);
+        },
+        twoselectSuccess: function (retInfo) {
+            console.log(retInfo)
+            if (retInfo.success == true) {
+                $('#hospital_id').empty().append('<option>请选择</option>')
+                retInfo.data.forEach(function (value,index) {
+                    if(index == 0){
+                        $('#hospital_id').append('<option selected value="'+value.id+'">'+value.name+'</option>')
+                    }else{
+                        $('#hospital_id').append('<option value="'+value.id+'">'+value.name+'</option>')
+                    }
+                })
+            }else {
+                alert(retInfo.data);
+           }
+        },
+        addconfirm:function () {
+            $('.shadow,.layeropen').show();
+            $(".ticker_num").text($("#ticker_num").val());
+            $(".hospital_id").text($("#hospital_id").find("option:selected").text());
+            $(".goods_id").text($("#goods_id").find("option:selected").text());
+            $(".user_name").text($("#user_name").val());
+            $(".user_tel").text($("#user_tel").val());
+            $('.showDate').text($('#showDate').text().replace('年 ','-').replace('月 ','-').replace('日',''))
+        },
+        add: function () {
+            var url = SERVER_ADDR + '/business/coupon/update';
+            var Data = {};
+            Data.sn = $("#ticker_num").val();
+            Data.hospitalId = $("#hospital_id").val();
+            Data.hospitalExperienceCouponId = $("#goods_id").val();
+            Data.username = $("#user_name").val();
+            Data.mobile = $("#user_tel").val();
+            Data.invalidDate = $('#showDate').text().replace('年 ','-').replace('月 ','-').replace('日','');
+            Data.id = getQueryString('id');
+            ajaxGetRetInfo(url, Data, this.addSuccess, '请求失败', 'POST', true, undefined);
+        },
+        addSuccess: function (retInfo) {
+            console.log(retInfo)
+            if (retInfo.success == true) {
+                alert(retInfo.data);
+                window.location.href = 'list.html';
+            }else{
+                alert(retInfo.data);
+            }
+        },
+    }
+</script>
+<script type="text/javascript">
+    var selectDateDom = $('.selectDate');
+    var showDateDom = $('#showDate');
+    // 初始化时间
+    var now = new Date();
+  /*  var nowYear = now.getFullYear();
+    var nowMonth = now.getMonth() + 1;
+    var nowDate = now.getDate();
+    showDateDom.attr('data-year', nowYear);
+    showDateDom.attr('data-month', nowMonth);
+    showDateDom.attr('data-date', nowDate);*/
+    var nowNextMonth = getNextMonth(now.Format('yyyy-MM-dd'));
+    var nowYear = nowNextMonth.split('-')[0];
+    var nowMonth = nowNextMonth.split('-')[1];
+    var nowDate = nowNextMonth.split('-')[2];
+    showDateDom.attr('data-year', nowYear);
+    showDateDom.attr('data-month', nowMonth);
+    showDateDom.attr('data-date', nowDate);
+    showDateDom.text(nowYear+'年 '+nowMonth+'月 '+nowDate+'日');
+    // 数据初始化
+    function formatYear (nowYear) {
+        var arr = [];
+        for (var i = nowYear - 5; i <= nowYear + 5; i++) {
+            arr.push({
+                id: i + '',
+                value: i + '年'
+            });
+        }
+        return arr;
+    }
+    function formatMonth () {
+        var arr = [];
+        for (var i = 1; i <= 12; i++) {
+            arr.push({
+                id: i + '',
+                value: i + '月'
+            });
+        }
+        return arr;
+    }
+    function formatDate (count) {
+        var arr = [];
+        for (var i = 1; i <= count; i++) {
+            arr.push({
+                id: i + '',
+                value: i + '日'
+            });
+        }
+        return arr;
+    }
+    var yearData = function(callback) {
+        // settimeout只是模拟异步请求，真实情况可以去掉
+        // setTimeout(function() {
+        callback(formatYear(nowYear))
+        // }, 2000)
+    }
+    var monthData = function (year, callback) {
+        // settimeout只是模拟异步请求，真实情况可以去掉
+        // setTimeout(function() {
+        callback(formatMonth());
+        // }, 2000);
+    };
+    var dateData = function (year, month, callback) {
+        // settimeout只是模拟异步请求，真实情况可以去掉
+        // setTimeout(function() {
+        if (/^(1|3|5|7|8|10|12)$/.test(month)) {
+            callback(formatDate(31));
+        }
+        else if (/^(4|6|9|11)$/.test(month)) {
+            callback(formatDate(30));
+        }
+        else if (/^2$/.test(month)) {
+            if (year % 4 === 0 && year % 100 !==0 || year % 400 === 0) {
+                callback(formatDate(29));
+            }
+            else {
+                callback(formatDate(28));
+            }
+        }
+        else {
+            throw new Error('month is illegal');
+        }
+        // }, 2000);
+        // ajax请求可以这样写
+        /*
+        $.ajax({
+            type: 'get',
+            url: '/example',
+            success: function(data) {
+                callback(data);
+            }
+        });
+        */
+    };
+    selectDateDom.bind('click', function () {
+        var oneLevelId = showDateDom.attr('data-year');
+        var twoLevelId = showDateDom.attr('data-month');
+        var threeLevelId = showDateDom.attr('data-date');
+        var iosSelect = new IosSelect(3,
+            [yearData, monthData, dateData],
+            {
+                title: '时间选择',
+                itemHeight: 35,
+                oneLevelId: oneLevelId,
+                twoLevelId: twoLevelId,
+                threeLevelId: threeLevelId,
+                showLoading: true,
+                callback: function (selectOneObj, selectTwoObj, selectThreeObj) {
+                    showDateDom.attr('data-year', selectOneObj.id);
+                    showDateDom.attr('data-month', selectTwoObj.id);
+                    showDateDom.attr('data-date', selectThreeObj.id);
+                    showDateDom.html(selectOneObj.value + ' ' + selectTwoObj.value + ' ' + selectThreeObj.value);
+                }
+            });
+    });
+</script>
+</html>

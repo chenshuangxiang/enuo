@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1.0, maximum-scale=1.0">
+    <title>查找</title>
+    <script src="js/jquery-1.11.3.min.js"></script>
+</head>
+<style>
+    body{
+        margin: 0;
+    }
+    .pub_hearder {
+        width: 100%;
+        height: 3rem;
+       /* background: linear-gradient(to right,#00afa1, #00c59e);*/
+        position: relative;
+        margin-bottom: -1px;
+        border-bottom: 1px solid #959595;
+        z-index: 99; position: fixed;
+        top: 0;
+    }
+    .search_publish {
+        /* height: 1rem; */
+      /*  background: linear-gradient(to right,#00afa1, #00c59e);*/
+        border: 0;
+        position: relative;
+        /* top: -4px; */
+        left: -.35rem;
+    }
+    .searchSpan {
+        color: #707070;
+        width: 1.8rem;
+        height: 1.8rem;
+        top: 1rem;
+        /* float: right; */
+        /* margin-left: 7%; */
+        position: fixed;
+        right: 2%;
+        font-size: .85rem;
+    }
+    .search_publish input {
+        width: 100%;
+        height: 2rem;
+        line-height: 2rem;
+        border-radius: 1.5rem;
+        /* border: solid 2px rgba(255, 255, 255, 0.5); */
+        font-size: .9rem;
+        letter-spacing: 0.5px;
+        text-indent: .2rem;
+        outline: none;
+        color: #707070;
+        padding-left: .7em;
+        margin-bottom: 7px;
+        margin-top: .2rem;
+        background-color: transparent;
+        border: solid 1px rgba(112, 112, 112, 0.7);
+       /* border: 1.4px solid white;*/
+    }
+    .search_publish img {
+        width: 1rem;
+        position: absolute;
+        top: .8rem;
+        right: 1%;
+        padding-top: .5rem;
+        margin-top: -.5rem;
+        padding-bottom: .5rem;
+        margin-bottom: -.5rem;
+    }
+</style>
+<body>
+<div class="pub_hearder flex_vertical justify_content_equal" style="">
+    <div class="search_publish" style="left: 4%;
+    z-index: 99;
+    width: 81%;
+    top: .2rem;">
+        <input class="toggleSou" type="text" style="" placeholder="搜索患者姓名、手机号">
+        <img class="sou" onclick="sou()" src="img/search.png">
+    </div>
+    <!--<img class="search pub_hearder_right" src="img/forward.png" />-->
+    <span class="searchSpan" onclick="window.history.go(-1)" style="display: inline-block;">
+					取消
+				</span>
+</div>
+
+</body>
+<script type="text/javascript">
+    //获取地址栏url的参数
+    function getQueryString(name) {
+        var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
+        var r = window.location.search.substr(1).match(reg);
+        if (r != null) {
+            return decodeURIComponent(r[2]);
+        }
+        return null;
+    }
+    if(getQueryString('page') == 'mouseGiftList'){
+        $('.toggleSou').attr('placeholder','搜索礼包编号');
+    }
+        function sou() {
+            if(getQueryString('page') == 'list'){
+                window.location.href = 'list.html?val='+$('.toggleSou').val();
+            }else if(getQueryString('page') == 'register'){
+                window.location.href = 'registerList.html?val='+$('.toggleSou').val();
+            }else if(getQueryString('page') == 'mouseGiftList'){
+                window.location.href = 'mouseGiftList.html?val='+$('.toggleSou').val();
+            }
+
+        }
+</script>
+</html>

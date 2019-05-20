@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<link rel="stylesheet" href="css/consultlist.css">
+	<script type="text/javascript" src="js/jquery-1.11.3.min.js" ></script>
+	<script src="js/common.js?v=222"></script>
+	<title>回访详情</title>
+</head>
+<style>
+/*	input::-webkit-input-placeholder{
+		color: white;
+		font-size: 8px;
+	}*/
+	.revice{
+		border: 1px solid #00afa1;
+		outline: none;
+		color: #00afa1;
+		background-color: white;
+		padding: 1.5px 5px;
+		float: right;
+		border-radius: 3px;
+	}
+	.myscroll{
+		margin-top: 3.3rem;
+		margin-bottom: 1rem;
+	}
+</style>
+<body>
+<div class="content">
+	<!--标题-->
+	<!--<a href="../index.html"><div class="header"></div></a>-->
+
+	<!--<div class="famous_doc_layer">
+		<div class="yuyueTop">预约单号：<span class="famousName">4545454102536</span><span class="yuyueStatus">预约中</span></div>
+		<div class="split"></div>
+		<div class="btm">
+			<p><span class="famousName">预约医院：</span><span class="hosName">杭州复旦医院</span></p>
+			<p><span class="famousName">预约科室：</span><span class="docName">李华</span></p>
+			<p><span class="famousName">预约医生：</span><span class="docLevel">主任医师</span></p>
+			<p><span class="famousName">预约时间：</span><span class="docSub">五官科</span> &#45;&#45; <span class="docSubSub">五官科</span></p>
+		</div>
+	</div>-->
+	<!--头部-->
+	<div class="top" style="    top: 0;">
+		<img src="img/more.png" onclick="if(getQueryString('href') != null){
+			window.location.href = window.location.href.split('href=')[1].split('%22')[1];
+		}else {
+		    window.location.href = 'consultList.html'
+		}">
+		<label>回访详情</label>
+			<!--<select id="hospital_id">
+				<option >请选择医院</option>
+			</select>-->
+		<!--<label>今日/合计:<span class="nowday">7</span>/<span class="allday">20</span></label>-->
+		<img src="img/add.png" onclick="window.location.href = 'addAdvisory.html?id='+getQueryString('id')+'&page=advisoryList'" class="add_img" id="add_btn">
+		<!---->
+	</div>
+	<div class="myscroll"></div>
+	<!--滑动区域-->
+	<!--<div class="nav" style="position: fixed;
+    top: 2.7rem;    width: 100%;    font-size: .95rem;border-bottom: 0">
+		<p class="active" i="0">全部</p>
+		<p i="1" class="">未分诊</p>
+		<p i="2" class="">已分诊</p>
+	</div>-->
+	<!--商品-->
+	<!--医生-->
+	<!--<div id="mescroll1" class="mescroll hide" style="background-color: white;top: 5.4rem;">
+		<ul id="dataList1" class="data-list">
+		</ul>
+	</div>-->
+
+	<!--医院-->
+	<!--<div id="mescroll2" class="mescroll hide" style="background-color: white;top: 5.4rem;">
+		<ul id="dataList2" class="data-list">
+		</ul>
+	</div>-->
+<!--	<div id="mescroll" class="mescroll" style="background-color: #f1f1f1;top: 2.7rem">
+		&lt;!&ndash;模拟的轮播&ndash;&gt;
+		&lt;!&ndash;	<img class="swiper" src="../res/img/swiper.jpg"/>&ndash;&gt;
+		&lt;!&ndash;筛选条件; 模拟列表的重置和演示空布局的使用&ndash;&gt;
+		&lt;!&ndash;<div class="nav">
+            <p class="active" i="0">全部</p>
+            &lt;!&ndash;<p i="1">奶粉</p>
+            <p i="2">图书</p>&ndash;&gt;
+        </div>&ndash;&gt;
+		&lt;!&ndash;展示上拉加载的数据列表&ndash;&gt;
+		<ul id="dataList" class="data-list" style="margin-top: .8em;">
+			&lt;!&ndash;<li>
+                <img class="pd-img" src="../res/img/pd1.jpg"/>
+                <p class="pd-name">商品标题商品标题商品标题商品标题商品标题商品</p>
+                <p class="pd-price">200.00 元</p>
+                <p class="pd-sold">已售50件</p>
+            </li>&ndash;&gt;
+		</ul>
+	</div>-->
+<!--	<div class="back" onclick=" window.location.href = 'home.html'">返回上一页</div>-->
+</div>
+</body>
+<script type="text/javascript" charset="utf-8">
+	$(document).ready(function () {
+        Get.list();
+    });
+
+    /*设置列表数据*/
+    function setListData(data){
+        var listDom=$(".myscroll");
+        for (var i = 0; i < data.length; i++) {
+            var pd=data[i];
+            var str='';
+            str += '<div class="ticket"> ' +
+                '<div class="ticket_content" style="padding-top: 0"> ' +
+                '<p>回访人：<span>'+pd.creator+'</span></p> ' +
+                '<p>回访时间：<span>'+new Date(pd.createDate).Format('yyyy-MM-dd hh:mm:ss')+'</span></p> ' +
+                '<p>回访内容：<span>'+pd.brief+'</span></p> ' +
+                '<p>意向变动：<span>'+noData(pd.content)+'</span></p> ' +
+               /* '<p>咨询时间：<span>'+new Date(pd.createDate).Format('yyyy-MM-dd hh:mm:ss')+'</span><button class="revice" onclick="revice(this)" revicrid="'+pd.id+'">回访情况</button></p> ' +*/
+                '</div> ' +
+                '</div>';
+            listDom.append(str);
+        }
+    }
+    var Get = {
+        list: function () {
+            var url = SERVER_ADDR + '/salesman/access/getList.json';
+            var Data = {};
+            Data.advisoryId = getQueryString('id');
+            ajaxGetRetInfo(url, Data, this.listSuccess, '请求失败', 'GET', true, undefined);
+        },
+        listSuccess: function (retInfo) {
+            console.log(retInfo)
+            if (retInfo.success == true) {
+                setListData(retInfo.data);
+            }else {
+                alert(retInfo.data);
+            }
+        }
+	}
+</script>
+
+</html>

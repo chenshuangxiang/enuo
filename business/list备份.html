@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1.0, maximum-scale=1.0">
+    <title>预约体验券</title>
+    <link rel="stylesheet" href="css/list.css">
+    <link rel="stylesheet" href="css/iosSelect.css">
+    <script src="js/jquery-1.11.3.min.js"></script>
+    <script src="js/common.js"></script>
+    <script src="js/iosSelect.js"></script>
+</head>
+<body>
+<div id="contain">
+    <!--头部-->
+    <div class="top">
+      <!--  <img src="img/search.png" id="search_btn">-->
+        <label>今日/合计:<span>7</span>/<span>20</span></label>
+        <!--<img src="img/add.png" onclick="window.location.href = 'search.html'" class="add_img" id="add_btn">-->
+    </div>
+
+    <!--分类-->
+    <div class="classify">
+       <p class="type active">全部</p>
+       <p class="type">已预约</p>
+       <p class="type">已完成</p>
+    </div>
+    <!--券-->
+<!--    <form class="ticket">
+        <div class="title">体验券编号：<span>88894</span><span></span></div>
+        <div class="ticket_content">
+            <p>产品名称：<span>洁牙</span></p>
+            <p>患者姓名：<span>宋晓红</span></p>
+            <p>活动医院：<span>杭州时光医疗</span></p>
+            <p>联系方式：<span>1566941314</span></p>
+            <p>失效时间：<span>2018-10-10</span></p>
+        </div>
+     &lt;!&ndash;   <button class="modify_btn">修改</button>&ndash;&gt;
+    </form>-->
+    <div class="list list1">
+        <!--<div class="ticket">
+            <div class="title">
+                <label class="ticket_num">体验券编号：<span id="num">88894</span></label>
+                <label class="ticket_status"><span class="status" status-num="0">已预约</span></label>
+            </div>
+            <div class="ticket_content">
+                <p>产品名称：<span>洁牙</span></p>
+                <p>患者姓名：<span>宋晓红</span></p>
+                <p>活动医院：<span>杭州时光医疗</span></p>
+                <p>联系方式：<span>1566941314</span></p>
+                <p>失效时间：<span>2018-10-10</span></p>
+            </div>
+            &lt;!&ndash;<button class="modify_btn">修改</button>&ndash;&gt;
+        </div>-->
+    </div>
+    <div class="list list2">
+        <!--<div class="ticket">
+            <div class="title">
+                <label class="ticket_num">体验券编号：<span class="num">88894</span></label>
+                <label class="ticket_status"><span class="status" status-num="0">已预约</span></label>
+            </div>
+            <div class="ticket_content">
+                <p>产品名称：<span>洁牙</span></p>
+                <p>患者姓名：<span>宋晓红</span></p>
+                <p>活动医院：<span>杭州时光医疗</span></p>
+                <p>联系方式：<span>1566941314</span></p>
+                <p>失效时间：<span>2018-10-10</span></p>
+            </div>
+            &lt;!&ndash;<button class="modify_btn">修改</button>&ndash;&gt;
+        </div>-->
+    </div>
+    <div class="list list3">
+        <!--<div class="ticket">
+            <div class="title">
+                <label class="ticket_num">体验券编号：<span class="num">88894</span></label>
+                <label class="ticket_status"><span class="status" status-num="0">已预约</span></label>
+            </div>
+            <div class="ticket_content">
+                <p>产品名称：<span>洁牙</span></p>
+                <p>患者姓名：<span>宋晓红</span></p>
+                <p>活动医院：<span>杭州时光医疗</span></p>
+                <p>联系方式：<span>1566941314</span></p>
+                <p>失效时间：<span>2018-10-10</span></p>
+            </div>
+            &lt;!&ndash;<button class="modify_btn">修改</button>&ndash;&gt;
+        </div>-->
+    </div>
+
+</div>
+</body>
+<script>
+    var pageNumber = 1;
+    var total;
+    var type;
+    $(function () {
+        Get.list();
+        $(window).scroll(function(){
+            var scrollTop = $(this).scrollTop();
+            var scrollHeight = $(document).height();
+            var windowHeight = $(this).height();
+            if(scrollTop + windowHeight - scrollHeight == 0 ){
+                console.log("you are in the bottom");
+                if(total > $('.list1 .ticket').length){
+                    Get.list();
+                }
+            }
+        });
+        $(".type").click(function () {
+            console.log($(this).index())
+            if(!$(this).is(".active")){
+                $(this).addClass("active").siblings().removeClass("active");
+                $('.list').hide();
+                $('.list').eq($(this).index()).show();
+                if($(this).index() == 0){
+                    type = '';
+                }else if($(this).index() == 1){
+                    type = 'success';
+                }else if($(this).index() == 2){
+                    type = 'completed';
+                }
+                pageNumber = 1;
+                Get.list();
+            }
+        });
+    });
+    var Get = {
+        list:function () {  //加入列表接口
+            var url = SERVER_ADDR + '/salesman/coupon/getList.json';
+            var Data = {};
+            Data.pageNumber = pageNumber;
+            Data.pageSize = 10;
+            if(type != ''){
+                Data.status = type;
+            }
+            /*if(getQueryString('val') != ''){
+                Data.keyword = getQueryString('val');
+            }*/
+            ajaxGetRetInfo(url, Data, this.listSuccess, '请求失败', 'GET', true, undefined);
+        },
+        listSuccess:function (retInfo) {
+            console.log(retInfo)
+            if(retInfo.success == true){
+                if(retInfo.data && retInfo.data.length > 0){
+                    Get.addlist(retInfo.data);
+                }
+                total = retInfo.totalCount;
+            }else{
+                alert(retInfo.data)
+            }
+        },
+        addlist:function (retInfo) {  //加入列表
+            retInfo.forEach(function (value) {
+                console.log(value)
+                var html = '';
+                html += '<div class="ticket"> ' +
+                    '<div class="title"> ' +
+                    '<label class="ticket_num">体验券编号：<span class="num">'+value.sn+'</span></label>' +
+                    '<label class="ticket_status">' ;
+                    if (value.status == 'wait') {
+                        html += '<span class="status">未预约</span>';
+                    } else if (value.status == 'success') {
+                        html += '<span class="status">已预约</span>';
+                    } else if (value.status == 'completed') {
+                        html += '<span class="status">已完成</span>';
+                    }
+                html += '</label> ' +
+                    '</div> ' +
+                    '<div class="ticket_content"> ' +
+                    '<p>产品名称：<span>'+value.experienceCouponName+'</span></p> ' +
+                    '<p>患者姓名：<span>'+value.username+'</span></p> ' +
+                    '<p>活动医院：<span>'+value.hospitalName+'</span></p> ' +
+                    '<p>联系方式：<span>'+value.mobile+'</span></p> ' +
+                    '<p>失效时间：<span>'+value.invalidDate+'</span></p> ' +
+                    '</div> ' +
+                    '</div>';
+                $('.list').eq($('.active').index()).append(html);
+            });
+            pageNumber++;
+        }
+    }
+
+
+</script>
+</html>

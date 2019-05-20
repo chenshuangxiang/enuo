@@ -1,0 +1,46 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no"><meta name="apple-mobile-web-app-capable" content="yes"><link rel="stylesheet" href="css/base.css?v=dd0905f"><link rel="stylesheet" href="css/util.css?v=9472158"><link rel="stylesheet" href="css/sao_desc.css?v=666b497"><script type="text/javascript" src="plug/jquery-1.11.3.js?v=4663977"></script><script src="js/lib/jweixin-1.1.0.js?v=2038a52"></script><script src="js/common.js?v=e9fcb43"></script><script src="js/wxScan.js?v=c3b8e5a"></script><link href="css/mui.min.css?v=ecdc310" rel="stylesheet"><script src="js/mui.min.js?v=41276fc"></script><title>便捷约定</title></head><style></style><body style="background-color: #f1f1f1;"><div class="modelOpen"><div class="mubu"></div><div class="modelOpenback"><span class="toYuyue">医院列表：</span><ul></ul></div></div><div class="content"><div class="pub_hearder flex_vertical justify_content_equal"><div class="head_center head_centerZi" style="width: inherit;"><span class="set_head_dot" style="width: .15rem;height: .15rem;border-radius: 50%;"></span> <span class="set_head_dot" style="width: .25rem;height: .27rem;border-radius: 50%;"></span> <span class="set_head_dot"></span> <span class="head_title">便捷约定</span> <span class="set_head_dot"></span> <span class="set_head_dot" style="width: .25rem;height: .27rem;;border-radius: 50%;"></span> <span class="set_head_dot" style="width: .15rem;height: .15rem;border-radius: 50%;"></span></div></div><div style="margin-bottom: 25%;"><img class="saoWarn" src="img/saoWarn.png?v=94a447a"> <img class="saoDoc" src="img/saoDoc.png?v=6b45c38"></div><div class="buttonDiv"><button class="sao" onclick="Wx.scanQRCodeChoose()">扫一扫</button></div><div id="bcid"><div style="height:100%"></div><p class="tip">...扫描载入中...</p></div><div class="footer" id="nav" style="height: 3.8rem;"><ul><li onclick="window.location.href = 'xywz.html'"><img style="margin-bottom: 0" src="img/banner/homeHui.png?v=7a758c7"><p>首页</p></li><li onclick="window.location.href = 'sao_desc.html'"><img style="margin-bottom: 0" src="img/banner/saoxuan.png?v=0fbc392"><p style="color: #00afa1;font-weight: 600;">快捷约定</p></li><li onclick="window.location.href = 'user_center.html'"><img style="margin-bottom: 0" src="img/banner/myHui.png?v=2a48900"><p style="">我的</p></li></ul></div></div></body><script type="text/javascript" charset="utf-8">$(document).ready(function () {
+       User.info();
+   });
+    var User = {
+        info: function () { //个人中心信息
+            var url = SERVER_ADDR + '/app/user/myInfo';
+            var Data = {};
+            Data.id = getQueryString('itemId');
+            ajaxGetRetInfo(url, Data, this.infoSuccess, '请求失败', 'GET', true, undefined);
+        },
+        infoSuccess: function (res) {
+            if (res.success == true) {
+
+            } else {
+                alert(res.data);
+            }
+        },
+    }
+    $(".mubu").click(function(){
+        $('.modelOpen').hide();
+    })
+	function readHos() {
+        Get.GetHospitals();
+        $('.modelOpen').show();
+    }
+    var Get = {
+        GetHospitals: function () {
+            var url = SERVER_ADDR + '/app/hospital/getHospitals.json';
+            var Data = '';
+            ajaxGetRetInfo(url, Data, this.GetHospitalsSuccess, '请求失败', 'GET', true, undefined);
+        },
+        GetHospitalsSuccess: function (retInfo) {
+            if (retInfo.success == true) {
+                var html = '';
+                if(retInfo.data.length > 0){
+                    $('.modelOpenback ul').empty();
+                    retInfo.data.forEach(function (value) {
+                        html += '<li>'+value.name+'</li>';
+					})
+                    $('.modelOpenback ul').append(html);
+				}
+            } else {
+                alert(retInfo.data)
+            }
+        }
+    }</script></html>

@@ -1,0 +1,66 @@
+.contain{
+    width: 100%;
+    text-align: center;
+
+}
+.logo{
+    margin-top: 25%;
+}
+.logo img{
+    margin:0 auto;
+    width: 44%;
+
+}
+.info{
+    padding: 10px;
+    margin: 0 auto;
+    width: 88%;
+    margin-top: 6%;
+}
+.info div{
+    margin: 0 auto;
+    margin-top: 18%;
+
+}
+.info label{
+    border-bottom:#eeeeee 1px solid;
+    text-align: left;
+    padding: 10px 0px;
+}
+
+.info img{
+    width: 24px;
+    vertical-align: middle;
+}
+
+.info input{
+    outline: none;
+    border: none;
+    text-align: center;
+    font-family: PingFang-SC;
+    font-size: 1.1em;
+    /*margin-left: 15px;*/
+    line-height: 2;
+    vertical-align: middle;
+}
+
+.login_btn{
+    border-radius: 50px;
+    border: 2px solid #eeeeee;
+    width: 85%;
+    margin-top: 14%;
+    font-size: 1.1em;
+    padding: 10px;
+    background-color: white;
+    outline: none;
+    color: #feaa2c;
+}
+
+
+input:-ms-input-placeholder {
+    text-align: center;
+}
+
+input::-webkit-input-placeholder {
+    text-align: center;
+}

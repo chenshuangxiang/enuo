@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1.0, maximum-scale=1.0">
+    <title>添加合作商</title>
+    <link rel="stylesheet" href="css/add.css?v=45454">
+    <link rel="stylesheet" href="css/layer.css">
+    <script src="js/jquery-1.11.3.min.js"></script>
+    <script src="js/common.js?v=222"></script>
+</head>
+<style>
+    .params{
+        margin: 15px 9%;
+    }
+    .expiresTwo label{
+        display: inline-block;
+        border: solid 1px #707070;
+        border-radius: 10px;
+        padding: 0 10px;
+        width: 48%;
+        height: 2rem;
+        line-height: 2rem;
+    }
+    .expiresTwo select {
+        outline: none;
+        border: none;
+        border-radius: 10px;
+        width: 100%;
+        /* height: 1.8rem; */
+    }
+    .lable{
+        font-size: 0;
+    }
+    .lable .enabled {
+        width: 60px;
+        border-top-right-radius: 0;
+        border-bottom-right-radius: 0;
+        text-align: center;
+        text-indent: 0px;
+    }
+    .lable input {
+        height: 40px;
+        line-height: 40px;
+        width: 400px;
+        border-radius: 5px;
+        border: solid 1px #dcdcdc;
+        text-indent: 20px;
+        margin-left: 30px;
+
+    }
+    .lable .disable {
+        border-top-left-radius: 0;
+        border-bottom-left-radius: 0;
+        width: 60px;
+        text-align: center;
+        text-indent: 0px;
+        margin-left: 0;
+    }
+    .bg_green {
+        background-color: #00AFA1;
+        color: white;
+    }
+</style>
+<body>
+<div class="shadow" style="position: fixed"></div>
+<div class="layeropen" style="position: fixed;">
+    <img class="closeopen" src="img/close.png">
+    <p ><span class="right">编号：</span><span class="left code_num"></span></p>
+    <p><span class="right">姓名：</span><span class="left user_name"></span></p>
+    <p ><span class="right">手机号：</span><span class="left tel_num"></span></p>
+    <p ><span class="right">密码：</span><span class="left psd_num"></span></p>
+    <p ><span class="right">店铺名：</span><span class="left storename"></span></p>
+    <p ><span class="right">店铺地址：</span><span class="left address"></span></p>
+    <p ><span class="right">是否启用：</span><span class="left flag"></span></p>
+    <!--<p><span class="right">意向医院：</span><span class="left hospital_id"></span></p>
+    <p><span class="right">患者来源：</span><span class="left store_id"></span></p>
+    <p><span class="right">患者疾病：</span><span class="left disease_id"></span></p>
+    <p><span class="right">下次回访：</span><span class="left nextrecord_id"></span></p>
+    <p><span class="right">患者诉求：</span><span class="left brief_id"></span></p>-->
+    <button class="accurate_btn" style="margin: 10% 0;" onclick="Get.add()">确定添加</button>
+</div>
+    <div class="top">
+        <img src="img/more.png" onclick="window.location.href = 'businessList.html'">
+        <label>添加合作商</label>
+        <!--<span class="edit">退出</span>-->
+    </div>
+    <div style="margin-bottom: 5rem;">
+        <div class="params">
+            <!--<p>
+                <img src="img/split.png" class="img_span">
+                <span class="img_span algin">患者手机号：</span>
+            </p>-->
+            <input placeholder="编号" type="text" id="code" style="width: 41%;">
+            <input placeholder="姓名(选填)" id="user_name" style="    width: 37%;">
+
+        </div>
+        <div class="params">
+            <!--<p>
+                <img src="img/split.png" class="img_span">
+                <span class="img_span algin">患者手机号：</span>
+            </p>-->
+
+            <input placeholder="手机号(选填)" type="number" id="user_tel"  style="width: 41%;">
+            <input placeholder="密码" id="user_psd" style="    width: 37%;">
+
+        </div>
+        <div class="params">
+           <!-- <p>
+                <img src="img/split.png" class="img_span">
+                <span class="img_span algin">店铺名：</span>
+            </p>-->
+            <input placeholder="请输入店铺名" id="shop_name">
+        </div>
+   <!--     <div class="params expiresTwo">
+           &lt;!&ndash; <p>
+                <img src="img/split.png" class="img_span">
+                <span class="img_span algin" >性别：</span>
+            </p>&ndash;&gt;
+            <label style="padding: 0;">
+                <select id="sex">
+                    <option style="border: none">请选择性别</option>
+                    <option value="man">男</option>
+                    <option value="woman">女</option>
+                </select>
+            </label>
+            <input placeholder="请输入年龄" type="number" id="age_num" style="width: 37%;">
+        </div>-->
+       <!-- <div class="params">
+            <p>
+                <img src="img/split.png" class="img_span">
+                <span class="img_span algin" >年龄：</span>
+            </p>
+            <input placeholder="请输入年龄" type="number" id="age_num">
+        </div>-->
+        <!--<div class="params">
+            &lt;!&ndash;<p>
+                <img src="img/split.png" class="img_span">
+                <span class="img_span algin" >职业：</span>
+            </p>&ndash;&gt;
+            <input placeholder="请输入患者职业(选填)" type="text" id="job">
+        </div>-->
+        <div class="params">
+            <!--<p>
+                <img src="img/split.png" class="img_span">
+                <span class="img_span algin" >地址：</span>
+            </p>-->
+            <input placeholder="请输入店铺地址" type="text" id="address">
+        </div>
+       <!-- <div class="expires">
+            &lt;!&ndash;<p>
+                <img src="img/split.png" class="img_span">
+                <span class="img_span algin">意向医院：</span>
+            </p>&ndash;&gt;
+            <label style="padding: 0;    width: 94%;">
+                <select id="hospital_id">
+                    <option >请选择意向医院</option>
+                </select>
+            </label>
+        </div>
+        <div class="expires">
+            &lt;!&ndash;<p>
+                <img src="img/split.png" class="img_span">
+                <span class="img_span algin">来源：</span>
+            </p>&ndash;&gt;
+            <label style="padding: 0;    width: 94%;">
+                <select id="store_id">
+                    <option >请选择来源</option>
+                </select>
+            </label>
+        </div>
+        <div class="params">
+            &lt;!&ndash;<p>
+                <img src="img/split.png" class="img_span">
+                <span class="img_span algin" >疾病：</span>
+            </p>&ndash;&gt;
+            <input placeholder="请输入患者疾病" type="text" id="disease">
+        </div>-->
+        <div class="expires">
+            <p>
+                <!--<img src="img/split.png" class="img_span">-->
+                <span class="img_span algin" style="margin-left: 0">是否启用:</span>
+                <span class="lable">
+                  <input type="button" class="enabled" value="启用" data_val="true">
+                    <input type="button" class="disable" value="禁用" data_val="false">
+                </span>
+            </p>
+
+        </div>
+        <!--<div class="params">
+            &lt;!&ndash;<p>
+                <img src="img/split.png" class="img_span">
+                <span class="img_span algin" >其他诉求：</span>
+            </p>&ndash;&gt;
+            <input placeholder="请输入患者其他诉求" type="text" id="brief">
+        </div>-->
+        <!--<div class="params">
+            <p>
+                <img src="img/split.png" class="img_span">
+                <span class="img_span algin" >体验券编号：</span>
+            </p>
+            <input placeholder="请输入体验券编号" id="ticker_num">
+        </div>-->
+        <!--<div class="expires">
+            <p>
+                <img src="img/split.png" class="img_span">
+                <span class="img_span algin" >产品名称：</span>
+            </p>
+            <label style="padding: 0;    width: 94%;">
+                <select id="goods_id">
+                    <option style="border: none">请选择</option>
+                </select>
+            </label>
+        </div>-->
+
+
+        <!--<div class="expires">
+            <p>
+                <img src="img/split.png" class="img_span">
+                <span class="img_span algin">产品失效时间：</span>
+            </p>
+            <label  data-year="" data-month="" data-date="" class="selectDate" id="showDate">
+               &lt;!&ndash; <span  id="expire_date"></span><img src="img/date.png" class="date">&ndash;&gt;
+                &lt;!&ndash;2018年 3月 7日&ndash;&gt;
+            </label>
+        </div>-->
+    </div>
+    <button class="add_tic_btn" onclick="Get.addconfirm()">添加</button>
+<!--<div class="shadow"></div>-->
+<!--<div class="layer_align">
+<div class="layer">
+    <p>体验券编号：<span>80017</span></p>
+    <p>产品名称：<span>80017</span></p>
+    <p>参加医院：<span>80017</span></p>
+    <p>体验券编号：<span>80017</span></p>
+    <p>体验券编号：<span>80017</span></p>
+    <p>体验券编号：<span>80017</span></p>
+</div>
+</div>-->
+
+</body>
+<script>
+    $('.enabled').addClass("bg_green");
+    var flag='true';//默认启用
+    $(".enabled,.disable").click(function(){
+        flag = $(this).addClass("bg_green").attr("data_val");
+        $(this).siblings().removeClass("bg_green");
+        console.log(flag);
+    });
+    $(function () {
+        $(".closeopen").click(function () {
+            $('.shadow,.layeropen').hide();
+        });
+    });
+    var Get = {
+        addconfirm:function () {
+            $('.shadow,.layeropen').show();
+            $(".code_num").text($("#code").val());
+            $(".user_name").text($("#user_name").val());
+            $(".tel_num").text($("#user_tel").val());
+            $(".psd_num").text($("#user_psd").val());
+            $(".storename").text($("#shop_name").val());
+            $(".address").text($("#address").val());
+            if(flag == 'true'){
+                $(".flag").text('启用');
+            }else if(flag == 'false'){
+                $(".flag").text('禁用');
+            }
+        },
+        add: function () {
+            var url = SERVER_ADDR + '/salesman/business/add';
+            var Data = {};
+            Data.code = $("#code").val();
+            Data.name = $("#user_name").val();
+            Data.mobile = $("#user_tel").val();
+            if(flag == 'true'){
+                Data.enabled = true;
+            }else if(flag == 'false'){
+                Data.enabled = false;
+            }
+            Data.password = $("#user_psd").val();
+            Data.storeName = $("#shop_name").val();
+            Data.address = $("#address").val();
+            ajaxGetRetInfo(url, Data, this.addSuccess, '请求失败', 'POST', true, undefined);
+        },
+        addSuccess: function (retInfo) {
+            console.log(retInfo)
+            if (retInfo.success == true) {
+                alert(retInfo.data);
+                window.location.href = 'businessList.html';
+            }else{
+                alert(retInfo.data);
+            }
+        },
+    }
+</script>
+</html>

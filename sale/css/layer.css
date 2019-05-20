@@ -1,0 +1,59 @@
+body{
+    margin: 0 auto;
+}
+.shadow{
+    background-color: black;
+    width: 100%;
+    height: 100%;
+    opacity: 0.5;
+    z-index: 1;
+    position: absolute;
+    display: none;
+}
+
+.layeropen,.layeropen2{
+    width: 80%;
+    z-index: 20;
+    text-align: center;
+    position: absolute;
+    border-radius: 10px;
+    background-color: white;
+    margin-left: 10%;
+    margin-top: 30%;
+    padding-top:20px ;
+    display: none;
+}
+.layeropen p,.layeropen2 p{
+    margin: 0 auto;
+    margin-top: 15px;
+    font-size: .9rem;
+}
+.layeropen .right,.layeropen2 .right{
+    width: 40%;
+    text-align: right;
+    color: #707070;
+    vertical-align: top;
+}
+.layeropen span,.layeropen2 span{
+    display: inline-block;
+}
+.layeropen .left,.layeropen2 .left{
+    width: 40%;
+    text-align: left;
+}
+.layeropen2 select{
+    width: 80%;
+    height: 2rem;
+    font-size: 1rem;
+}
+.accurate_btn{
+    background-color: #00afa1;
+    border: none;
+    padding: 10px;
+    text-align: center;
+    color: white;
+    margin-top: 20%;
+    border-radius: 10px;
+    font-size: 1.1em;
+    margin-bottom: 20%;
+}

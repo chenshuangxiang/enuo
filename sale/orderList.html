@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+
+	<!--在您实际的项目中,请留意mescroll-option.css的图片路径是否引用正确,可写成绝对路径或网络地址-->
+	<!--可把mescroll-option.css代码拷贝到mescroll.min.css中,合为一个css文件,方便引用-->
+	<link rel="stylesheet" href="css/mescroll.css">
+	<link rel="stylesheet" href="option/mescroll-option.css">
+	<!--<link rel="stylesheet" href="css/base.css" />-->
+	<!--	<link rel="stylesheet" href="css/util.css" />-->
+	<!--	<link rel="stylesheet" href="css/my_yuyue.css" />-->
+	<link rel="stylesheet" href="css/xiala.css?v=152366" />
+	<link rel="stylesheet" href="css/orderlist.css?v=152366">
+	<link rel="stylesheet" href="https://at.alicdn.com/t/font_234130_nem7eskcrkpdgqfr.css">
+	<script type="text/javascript" src="js/jquery-1.11.3.min.js" ></script>
+	<script src="js/common.js?v=222"></script>
+	<script src="js/schedule.js"></script>
+	<title>体验券订单列表</title>
+</head>
+<style>
+	/*	input::-webkit-input-placeholder{
+            color: white;
+            font-size: 8px;
+        }*/
+</style>
+<body>
+<div class="payOpen">
+	<div class="mubu"></div>
+	<div class="payOpenback">
+		<div id="schedule-box">
+
+		</div>
+        <div class="searchMonth" onclick="searchMonth()">查该月</div>
+	</div>
+	<h3 id="h3Ele"></h3>
+</div>
+<div class="mubu"></div>
+<div class="layeropen">
+    <img class="closeopen" onclick="$('.layeropen,.mubu').hide()" src="img/close.png">
+    <p style="margin-top: 0;    font-size: 1.1rem;font-weight: 600;">订单详情</p>
+    <p><span class="right">项目：</span><span class="left goods_id"></span></p>
+    <p><span class="right">时间：</span><span class="left hospital_id"></span></p>
+    <p><span class="right">姓名：</span><span class="left user_name"></span></p>
+    <p><span class="right">手机：</span><span class="left user_tel"><a></a></span></p>
+    <p><span class="right">订单金额：</span><span class="left showDate"></span></p>
+</div>
+<div class="content">
+	<!--标题-->
+	<!--<a href="../index.html"><div class="header"></div></a>-->
+
+	<!--<div class="famous_doc_layer">
+		<div class="yuyueTop">预约单号：<span class="famousName">4545454102536</span><span class="yuyueStatus">预约中</span></div>
+		<div class="split"></div>
+		<div class="btm">
+			<p><span class="famousName">预约医院：</span><span class="hosName">杭州复旦医院</span></p>
+			<p><span class="famousName">预约科室：</span><span class="docName">李华</span></p>
+			<p><span class="famousName">预约医生：</span><span class="docLevel">主任医师</span></p>
+			<p><span class="famousName">预约时间：</span><span class="docSub">五官科</span> &#45;&#45; <span class="docSubSub">五官科</span></p>
+		</div>
+	</div>-->
+	<!--头部-->
+	<div class="topHref">
+		<div class="topHrefP activeP" onclick=" window.location.href = 'orderList.html'">体验券订单统计</div>
+		<div class="topHrefP" onclick=" window.location.href = 'orderOfflineList.html'">约定医疗订单统计</div>
+	</div>
+	<div class="top">
+		<span class="monthtime"></span>
+		<span class="monthprice">订单总金额￥<span></span></span>
+		<img class="timechoose" onclick="Get.rili()" src="img/timechoose.png">
+		<!-- <img src="img/search.png"  onclick="window.location.href = 'search.html'" id="search_btn">-->
+		<!--<label>今日/合计:<span class="nowday">7</span>/<span class="allday">20</span></label>-->
+		<!--		<img src="img/add.png" onclick="window.location.href = 'add.html'" class="add_img" id="add_btn">-->
+	</div>
+	<!--滑动区域-->
+	<!--<div class="nav" style="position: fixed;
+    top: 2.7rem;    width: 100%;    font-size: .95rem;border-bottom: 0">
+		<p class="active" i="0">全部</p>
+		<p i="1" class="">已预约</p>
+		<p i="2" class="">已完成</p>
+	</div>-->
+	<!--商品-->
+	<div id="mescroll0" class="mescroll" style="background-color: white;top: 6.4rem;">
+		<!--模拟的轮播-->
+		<!--	<img class="swiper" src="../res/img/swiper.jpg"/>-->
+		<!--筛选条件; 模拟列表的重置和演示空布局的使用-->
+		<!--<div class="nav">
+            <p class="active" i="0">全部</p>
+            &lt;!&ndash;<p i="1">奶粉</p>
+            <p i="2">图书</p>&ndash;&gt;
+        </div>-->
+		<!--展示上拉加载的数据列表-->
+		<ul id="dataList0" class="data-list" style="margin-top: .1em;">
+			<!--<li>
+                <img class="pd-img" src="../res/img/pd1.jpg"/>
+                <p class="pd-name">商品标题商品标题商品标题商品标题商品标题商品</p>
+                <p class="pd-price">200.00 元</p>
+                <p class="pd-sold">已售50件</p>
+            </li>-->
+		</ul>
+	</div>
+	<!--医生-->
+	<!--div id="mescroll1" class="mescroll hide" style="background-color: white;top: 5.4rem;">
+		<ul id="dataList1" class="data-list">
+		</ul>
+	</div>-->
+
+	<!--医院-->
+	<!--<div id="mescroll2" class="mescroll hide" style="background-color: white;top: 5.4rem;">
+		<ul id="dataList2" class="data-list">
+		</ul>
+	</div>-->
+	<!--	<div id="mescroll" class="mescroll" style="background-color: #f1f1f1;top: 2.7rem">
+            &lt;!&ndash;模拟的轮播&ndash;&gt;
+            &lt;!&ndash;	<img class="swiper" src="../res/img/swiper.jpg"/>&ndash;&gt;
+            &lt;!&ndash;筛选条件; 模拟列表的重置和演示空布局的使用&ndash;&gt;
+            &lt;!&ndash;<div class="nav">
+                <p class="active" i="0">全部</p>
+                &lt;!&ndash;<p i="1">奶粉</p>
+                <p i="2">图书</p>&ndash;&gt;
+            </div>&ndash;&gt;
+            &lt;!&ndash;展示上拉加载的数据列表&ndash;&gt;
+            <ul id="dataList" class="data-list" style="margin-top: .8em;">
+                &lt;!&ndash;<li>
+                    <img class="pd-img" src="../res/img/pd1.jpg"/>
+                    <p class="pd-name">商品标题商品标题商品标题商品标题商品标题商品</p>
+                    <p class="pd-price">200.00 元</p>
+                    <p class="pd-sold">已售50件</p>
+                </li>&ndash;&gt;
+            </ul>
+        </div>-->
+	<div class="back" onclick=" window.location.href = 'home.html'">返回上一页</div>
+</div>
+</body>
+
+<!--在您实际的项目中,请留意mescroll-option.js的图片路径是否引用正确,可写成绝对路径或网络地址-->
+<!--可把mescroll-option.js代码拷贝到mescroll.min.js中,合为一个js文件,方便引用-->
+<script src="js/mescroll.js" type="text/javascript" charset="utf-8"></script>
+<!--<script src="option/mescroll-option.js" type="text/javascript" charset="utf-8"></script>-->
+<!--mescroll本身不依赖jq,这里为了模拟发送ajax请求,获取模拟数据-->
+<!--<script type="text/javascript" src="js/viewport.js" ></script>-->
+<!--<script type="text/javascript" src="js/util.js"></script>-->
+<!--<script src="js/dos_yuyue.js"></script>-->
+<!--	<script src="../res/pdlist1.js" type="text/javascript" charset="utf-8"></script>-->
+
+<script type="text/javascript" charset="utf-8">
+    var date=new Date;
+    var year=date.getFullYear();
+    var month=date.getMonth()+1;
+    $('.monthtime').text(year + '年' + month + '月');
+    $(document).ready(function () {
+        /*init();*/
+        //Get.count();
+        newSchedule();
+        $('.mubu').click(function () {
+            $('.payOpen,.mubu').hide();
+        });
+    })
+    function newSchedule() {
+        new Schedule({
+            el: '#schedule-box',
+            clickCb: function (y,m,d) {
+                document.querySelector('#h3Ele').innerHTML = y+'-'+m+'-'+d
+                suretime();
+            },
+        });
+    }
+    var Get = {
+        count: function () {
+            var url = SERVER_ADDR + '/salesman/index/info';
+            var Data = '';
+            ajaxGetRetInfo(url, Data, this.countSuccess, '请求失败', 'GET', true, undefined);
+        },
+        countSuccess: function (retInfo) {
+            $('.nowday').text(retInfo.data.todayOrderQuantity);
+            $('.allday').text(retInfo.data.totalOrderQuantity);
+        },
+		rili:function () {
+			$('.payOpen,.mubu').show();
+        }
+    }
+
+    var curNavIndex=0;//首页0; 奶粉1; 面膜2; 图书3;
+    var mescrollArr=new Array(4);//4个菜单所对应的4个mescroll对象
+    mescrollArr[0]=initMescroll("mescroll0", "dataList0");
+    $(function(){
+        $(".nav p").click(function(){
+            var i=Number($(this).attr("i"));
+            if(curNavIndex!=i) {
+                //更改列表条件
+                $(".nav .active").removeClass("active");
+                $(this).addClass("active");
+                //隐藏当前列表
+                $("#mescroll"+curNavIndex).hide();
+                //显示对应的列表
+                curNavIndex=i;
+                $("#mescroll"+curNavIndex).show();
+                //取出菜单所对应的mescroll对象,如果未初始化则初始化
+                if(mescrollArr[i]==null) mescrollArr[i]=initMescroll("mescroll"+i, "dataList"+i);
+            }
+        })
+    });
+    /*创建MeScroll对象*/
+    function initMescroll(mescrollId,clearEmptyId){
+        //创建MeScroll对象,内部已默认开启下拉刷新,自动执行up.callback,刷新列表数据;
+        var mescroll = new MeScroll(mescrollId, {
+            //上拉加载的配置项
+            up: {
+                callback: getListData, //上拉回调,此处可简写; 相当于 callback: function (page) { getListData(page); }
+                noMoreSize: 4, //如果列表已无数据,可设置列表的总数量要大于半页才显示无更多数据;避免列表数据过少(比如只有一条数据),显示无更多数据会不好看; 默认5
+                empty: {
+                    icon: "option/mescroll-empty.png", //图标,默认null
+                    tip: "亲,暂无结果~", //提示
+                    //btntext: "去逛逛 >", //按钮,默认""
+                    /* btnClick: function(){//点击按钮的回调,默认null
+                         alert("点击了按钮,具体逻辑自行实现");
+                     }*/
+                },
+                toTop: {
+                    src: "option/mescroll-totop.png" //回到顶部按钮的图片路径
+                },
+                clearEmptyId: clearEmptyId //相当于同时设置了clearId和empty.warpId; 简化写法;默认null
+            }
+        });
+        return mescroll;
+    }
+    /*联网加载列表数据  page = {num:1, size:10}; num:当前页 从1开始, size:每页数据条数 */
+    function getListData(page){
+        console.log(page)
+        page.size = 10;
+
+        if(page.goCount == 1){
+            page.date = '';
+            page.isMonth = true;
+            $('.monthtime').text(year + '年' + month + '月');
+            //$('#schedule-box').empty();
+            //newSchedule();
+        }else{
+            if($('#h3Ele').text() != ''){ //点了日期
+                page.date = $('#h3Ele').text();
+                page.isMonth = false;
+                $('.monthtime').text($('#h3Ele').text().split('-')[0] + '年'+$('#h3Ele').text().split('-')[1] + '月'+$('#h3Ele').text().split('-')[2] + '日');
+            }else{  //点了月份
+                page.date = $('.today').text();
+                page.isMonth = true;
+                $('.monthtime').text($('.today').text().split('-')[0] + '年'+$('.today').text().split('-')[1] + '月');
+            }
+
+        }
+        //联网加载数据
+        console.log("curNavIndex="+curNavIndex+", page.num="+page.num);
+        getListDataFromNet(page.num, page.size, page.date,page.isMonth,function(data){
+            //联网成功的回调,隐藏上拉加载的状态
+            console.log("data.length="+data.length);
+            mescrollArr[0].endSuccess(data.length);//传参:数据的总数; mescroll会自动判断列表如果无任何数据,则提示空;列表无下一页数据,则提示无更多数据;
+            //设置列表数据
+            setListData(data);
+        }, function(){
+            //联网失败的回调,隐藏上拉加载的状态
+            mescrollArr[0].endErr();
+        });
+    }
+
+    /*设置列表数据*/
+    function setListData(data){
+        var listDom=$("#dataList" + curNavIndex);
+        for (var i = 0; i < data.length; i++) {
+            var pd=data[i];
+            var str='';
+            if(pd.isCertification == false){
+                pd.sex = '暂未完善';
+                pd.fullname = '暂未完善';
+            }else if(pd.sex == 'man'){
+                pd.sex = '男';
+            }else if(pd.sex == 'woman'){
+                pd.sex = '女';
+            }
+            /*if(curNavIndex == 0){*/
+            str += "<div class='ticket' valueid='"+pd.id+"' onclick='openDetail(this)' arrayjson='"+JSON.stringify(pd)+"'> " +
+                /* '<div class="title"> ' +
+                 '<label class="ticket_num">体验券编号：<span class="num">'+pd.sn+'</span></label>' +
+                 '<label class="ticket_status"><span class="status">'+pd.status+'</span>' +
+                 '</label> ' +
+                 '</div> ' +*/
+                '<div class="ticket_content" style="padding-top: 0"> ' +
+                '<p style="width: 99%;"><span>'+pd.projectName+'</span><span style="float: right;margin-right: .2rem">'+pd.amount+'</span></p> ' +
+               /* '<p style="width: 49%">姓名：<span>'+pd.fullname+'</span></p> ' +
+                '<p style="width: 49%">手机号：<span>'+pd.mobile+'</span></p> ' +*/
+                '<p style="width: 49%"><span>'+pd.createDate+'</span></p> ' +
+               /* '<p style="width: 49%">订单金额：￥</p> ' +*/
+				'<picture></picture>'+
+                '</div> ' +
+                '</div>';
+            /*}else if(curNavIndex == 1){
+
+            }else if(curNavIndex == 2){
+
+            }*/
+            listDom.append(str);
+        }
+    }
+
+    /*联网加载列表数据*/
+    function getListDataFromNet(pageNum,pageSize,date,isMonth,successCallback,errorCallback) {
+        /*  var url;
+          if(subjectId == '' || subjectId == undefined){
+              url = SERVER_ADDR + '/app/topthree/doctor/getList.json?pageNumber='+pageNum+'&pageSize='+pageSize;
+          }else{
+              url = SERVER_ADDR + '/app/topthree/doctor/getList.json?pageNumber='+pageNum+'&pageSize='+pageSize+'&subjectId='+subjectId;
+          }*/
+        var data = {};
+        data.pageNumber = pageNum;
+        data.pageSize = pageSize;
+        if(date == '' || date == undefined || date == null){
+            data.date = new Date().Format('yyyy-MM-dd');
+        }else{
+            data.date = date;
+        }
+        if(isMonth == undefined || isMonth == null){
+            data.isMonth = true;
+        }else {
+            data.isMonth = isMonth;
+        }
+      /*  if(isMonth == true){
+            console.log('true' +date)
+            //$('.monthtime').text(date.split('-')[0] + '年'+date.split('-')[1] + '月');
+            /!*if(date == ''){
+                $('.monthtime').text();
+            }*!/
+        }else if(isMonth == false){
+            console.log('false'+date);
+            //$('.monthtime').text(date.split('-')[0] + '年'+date.split('-')[1] + '月'+date.split('-')[2] + '日');
+        }*/
+        $.ajax({
+            type: 'GET',
+            url: SERVER_ADDR + '/salesman/order/getOrderList.json',
+            data:data,
+            dataType: 'json',
+            success: function(data){
+                if(data.success == true){
+
+                    $('.monthprice span').text('').text(data.data.totalAmount)
+                    if(data.data.list){
+                        var data=data.data.list; // 模拟数据: ../res/pdlist1.js
+                        var listData=[];
+
+                        //奶粉
+                        for (var i = 0; i < data.length; i++) {
+                            listData.push(data[i]);
+                        }
+                        //回调
+                        successCallback(listData);
+                    }else{
+                        successCallback('');
+                    }
+                }else{
+                    alert(data.data)
+                }
+            },
+            error: errorCallback
+        });
+    }
+    function suretime() {
+        $('.payOpen,.mubu').hide();
+        var page = {num: 1, size: 5, date: $('#h3Ele').text(),isMonth:false}
+        // mescroll.resetUpScroll();
+        mescrollArr[0].setPageNum(1)
+        getListData(page)
+    }
+    function searchMonth() {
+        $('.payOpen,.mubu').hide();
+        $('#h3Ele').text('');
+        var page = {num: 1, size: 5, date: $('.today').text(),isMonth:true}
+        // mescroll.resetUpScroll();
+        mescrollArr[0].setPageNum(1)
+        getListData(page)
+    }
+    function openDetail(obj) {
+        $('.layeropen,.mubu').show();
+        console.log(JSON.parse($(obj).attr('arrayjson')));
+        var retInfo = JSON.parse($(obj).attr('arrayjson'));
+        $('.goods_id').text(retInfo.projectName);
+        $('.hospital_id').text(retInfo.createDate);
+        $('.user_name').text(retInfo.fullname);
+        $('.user_tel a').text(retInfo.mobile).attr('href','tel:'+retInfo.mobile);
+        //$('.user_tel a');
+        $('.showDate').text(retInfo.amount);
+    }
+</script>
+
+</html>

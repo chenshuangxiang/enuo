@@ -1,0 +1,112 @@
+*{margin: 0;padding: 0;font-family:Microsoft YaHei;}
+html,body{
+	width: 100%;
+}
+.text-center{text-align: center;}
+*{
+	box-sizing:border-box;
+	-moz-box-sizing:border-box;
+	-webkit-box-sizing:border-box;
+}
+*::after,*::before{
+	box-sizing:border-box;
+	-moz-box-sizing:border-box;
+	-webkit-box-sizing:border-box;
+}
+a{
+	text-decoration: none;
+	color: #333;
+}
+.pull-left{ float: left;}
+.pull-right{ float: right;}
+.clearfix{clear:both;display:block;}
+.load{
+	margin-bottom: 35px;
+	float: left;
+}
+.loadtwo{
+	width: 200px;
+	height: 300px;
+	float: left;
+	background-color: #00c0f1;
+	margin-left: 240px;
+}
+.loadErweima{
+	width: 180px;
+	margin-top: 20px;
+}
+.loadWebBottom{
+	width: 160px;
+	margin-left: 20px;
+	height: 30px;
+	line-height: 30px ;
+	background-color: white;
+	margin-top: 220px;
+	cursor: pointer;
+}
+
+.container{
+	width: 1200px;
+	margin: 0 auto;
+	overflow: hidden;
+	position: relative;
+}
+
+.header{
+	width: 100%;
+	height: 80px;
+	background: rgba(255,255,255,0.6);
+	position: absolute;
+	left: 0px;
+	top: 0px;
+	z-index: 100;
+	overflow: hidden;
+	font-size: 16px;
+}
+
+.header .logo{
+	width: 95px;
+	height: 30px;
+	margin-left: 70px;
+	margin-top: 25px;
+}
+.header .nav{
+	margin-left: 30px;
+}
+.header  a{
+	display: inline-block;
+	width: 110px;
+	height: 80px;
+	line-height: 80px;
+	color: #333;
+	text-align: center;
+}
+.inner-page .header{
+	background: none;
+}
+.inner-page .header a{
+	color: #fff;
+}
+.header .nav a:hover,.header .nav a.active{
+	color: #c40000
+}
+
+.header{
+	height: 80px;
+	line-height: 80px;
+}
+.banner{
+	background: url(../images/index-ba-bgnew.jpg) no-repeat;
+	height: 817px;
+	position: relative;
+	z-index: 10;
+	padding-top: 210px;
+	width: 1200px;
+	margin: 0 auto;
+}
+
+
+
+
+
+

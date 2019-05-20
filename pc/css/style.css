@@ -1,0 +1,68 @@
+body,html {
+    position: relative;
+    margin: 0;
+    padding: 0;
+    min-width: 1200px;
+    min-height: 100%;
+    font-size: 15px;
+    font-family: 微软雅黑;
+    -webkit-tap-highlight-color: transparent;
+
+}
+
+button,input,select,textarea {
+    outline: 0;
+    border:1px solid #999;
+    font-family: 微软雅黑;
+}
+select{
+    cursor: pointer;
+}
+textarea {
+    resize: none;
+}
+
+h1,h2,h3,h4,h5,h6,li,ul {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+}
+input[type="text"]:focus,input[type="password"]:focus,input[type="number"]:focus,textarea:focus{
+    border: 1px solid #fbd856;
+    box-shadow: inset 0 1px 1px rgba(0,0,0,.06),0 0 8px rgba(246, 194, 62, 0.5);
+}
+img {
+    border: 0;
+    vertical-align: middle;
+}
+
+a {
+    outline: 0;
+    color: gray;;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+a img {
+    border: 0;
+}
+
+address,caption,cite,code,dfn,em,i,th,var {
+    font-weight: 400;
+    font-style: normal;
+}
+
+p,span {
+    margin: 0;
+    padding: 0;
+}
+
+.clear:after {
+    clear: both;
+    display: block;
+    overflow: hidden;
+    height: 0;
+    content: ".";
+}
+
+

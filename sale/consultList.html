@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+
+	<!--在您实际的项目中,请留意mescroll-option.css的图片路径是否引用正确,可写成绝对路径或网络地址-->
+	<!--可把mescroll-option.css代码拷贝到mescroll.min.css中,合为一个css文件,方便引用-->
+	<link rel="stylesheet" href="css/mescroll.css">
+	<link rel="stylesheet" href="option/mescroll-option.css">
+	<!--<link rel="stylesheet" href="css/base.css" />-->
+<!--	<link rel="stylesheet" href="css/util.css" />-->
+<!--	<link rel="stylesheet" href="css/my_yuyue.css" />-->
+	<link rel="stylesheet" href="css/xiala.css?v=152365" />
+	<link rel="stylesheet" href="css/consultlist.css">
+	<script type="text/javascript" src="js/jquery-1.11.3.min.js" ></script>
+	<script src="js/common.js?v=222"></script>
+	<title>咨询列表</title>
+</head>
+<style>
+	.nav p{
+		width: 13%;
+		margin: 0 0% 0 4.3%;
+	}
+</style>
+<style>
+/*	input::-webkit-input-placeholder{
+		color: white;
+		font-size: 8px;
+	}*/
+	.revice{
+		border: 1px solid #00afa1;
+		outline: none;
+		color: #00afa1;
+		background-color: white;
+		padding: 1.5px 5px;
+		float: right;
+		border-radius: 3px;
+	}
+	.readBack{
+		position: fixed;
+		top: 5.4rem;
+		width: 100%;
+		font-size: .9rem;
+		color: #00afa1;
+		text-align: center;
+		height: 1rem
+	}
+</style>
+<body style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);">
+<div class="content">
+	<!--标题-->
+	<!--<a href="../index.html"><div class="header"></div></a>-->
+
+	<!--<div class="famous_doc_layer">
+		<div class="yuyueTop">预约单号：<span class="famousName">4545454102536</span><span class="yuyueStatus">预约中</span></div>
+		<div class="split"></div>
+		<div class="btm">
+			<p><span class="famousName">预约医院：</span><span class="hosName">杭州复旦医院</span></p>
+			<p><span class="famousName">预约科室：</span><span class="docName">李华</span></p>
+			<p><span class="famousName">预约医生：</span><span class="docLevel">主任医师</span></p>
+			<p><span class="famousName">预约时间：</span><span class="docSub">五官科</span> &#45;&#45; <span class="docSubSub">五官科</span></p>
+		</div>
+	</div>-->
+	<!--头部-->
+	<div class="top">
+		  <img src="img/search.png"  onclick="window.location.href = 'searchConsult.html'" id="search_btn">
+			<!--<select id="hospital_id">
+				<option >请选择医院</option>
+			</select>-->
+		<label>咨询管理<!--今日/合计:<span class="nowday">7</span>/<span class="allday">20</span>--></label>
+		<img src="img/add.png" onclick="window.location.href = 'addConsult.html?v=222'" class="add_img" id="add_btn">
+	</div>
+	<!--滑动区域-->
+	<div class="nav" style="position: fixed;
+    top: 2.7rem;    width: 100%;    font-size: .95rem;border-bottom: 0">
+		<p class="navIndexP active" i="0">全部</p>
+		<p i="1" class="navIndexP">未分诊</p>
+		<p i="2" class="navIndexP">已分诊</p>
+		<p i="3" class="navIndexP">未审核</p>
+		<p i="4" class="navIndexP">未通过</p>
+	</div>
+	<div class="readBack" onclick="window.location.href = 'salesmanReadBack.html'">查看打回率</div>
+	<!--商品-->
+	<div id="mescroll0" class="mescroll" style="background-color: white;top: 6.4rem;">
+		<!--模拟的轮播-->
+		<!--	<img class="swiper" src="../res/img/swiper.jpg"/>-->
+		<!--筛选条件; 模拟列表的重置和演示空布局的使用-->
+		<!--<div class="nav">
+            <p class="active" i="0">全部</p>
+            &lt;!&ndash;<p i="1">奶粉</p>
+            <p i="2">图书</p>&ndash;&gt;
+        </div>-->
+		<!--展示上拉加载的数据列表-->
+		<ul id="dataList0" class="data-list" style="margin-top: .8em;">
+			<!--<li>
+                <img class="pd-img" src="../res/img/pd1.jpg"/>
+                <p class="pd-name">商品标题商品标题商品标题商品标题商品标题商品</p>
+                <p class="pd-price">200.00 元</p>
+                <p class="pd-sold">已售50件</p>
+            </li>-->
+		</ul>
+	</div>
+	<!--医生-->
+	<div id="mescroll1" class="mescroll hide" style="background-color: white;top: 6.4rem;">
+		<ul id="dataList1" class="data-list">
+		</ul>
+	</div>
+
+	<!--医院-->
+	<div id="mescroll2" class="mescroll hide" style="background-color: white;top: 6.4rem;">
+		<ul id="dataList2" class="data-list">
+		</ul>
+	</div>
+	<div id="mescroll3" class="mescroll hide" style="background-color: white;top: 6.4rem;">
+		<ul id="dataList3" class="data-list">
+		</ul>
+	</div>
+	<div id="mescroll4" class="mescroll hide" style="background-color: white;top: 6.4rem;">
+		<ul id="dataList4" class="data-list">
+		</ul>
+	</div>
+<!--	<div id="mescroll" class="mescroll" style="background-color: #f1f1f1;top: 2.7rem">
+		&lt;!&ndash;模拟的轮播&ndash;&gt;
+		&lt;!&ndash;	<img class="swiper" src="../res/img/swiper.jpg"/>&ndash;&gt;
+		&lt;!&ndash;筛选条件; 模拟列表的重置和演示空布局的使用&ndash;&gt;
+		&lt;!&ndash;<div class="nav">
+            <p class="active" i="0">全部</p>
+            &lt;!&ndash;<p i="1">奶粉</p>
+            <p i="2">图书</p>&ndash;&gt;
+        </div>&ndash;&gt;
+		&lt;!&ndash;展示上拉加载的数据列表&ndash;&gt;
+		<ul id="dataList" class="data-list" style="margin-top: .8em;">
+			&lt;!&ndash;<li>
+                <img class="pd-img" src="../res/img/pd1.jpg"/>
+                <p class="pd-name">商品标题商品标题商品标题商品标题商品标题商品</p>
+                <p class="pd-price">200.00 元</p>
+                <p class="pd-sold">已售50件</p>
+            </li>&ndash;&gt;
+		</ul>
+	</div>-->
+	<div class="back" onclick=" window.location.href = 'home.html'">返回上一页</div>
+</div>
+</body>
+
+<!--在您实际的项目中,请留意mescroll-option.js的图片路径是否引用正确,可写成绝对路径或网络地址-->
+<!--可把mescroll-option.js代码拷贝到mescroll.min.js中,合为一个js文件,方便引用-->
+<script src="js/mescroll.js" type="text/javascript" charset="utf-8"></script>
+<script src="js/consultList.js?v=1111" type="text/javascript"></script>
+<!--<script src="option/mescroll-option.js" type="text/javascript" charset="utf-8"></script>-->
+<!--mescroll本身不依赖jq,这里为了模拟发送ajax请求,获取模拟数据-->
+<!--<script type="text/javascript" src="js/viewport.js" ></script>-->
+<!--<script type="text/javascript" src="js/util.js"></script>-->
+<!--<script src="js/dos_yuyue.js"></script>-->
+<!--	<script src="../res/pdlist1.js" type="text/javascript" charset="utf-8"></script>-->
+
+<script type="text/javascript" charset="utf-8">
+
+</script>
+
+</html>

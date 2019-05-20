@@ -1,0 +1,252 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no"><meta name="apple-mobile-web-app-capable" content="yes"><link rel="stylesheet" href="css/lib/mescroll.css?v=33c720c"><link rel="stylesheet" href="option/mescroll-option.css?v=37a26b4"><link rel="stylesheet" href="css/base.css?v=dd0905f"><link rel="stylesheet" href="css/util.css?v=9472158"><link rel="stylesheet" href="css/enuosay.css?v=b0b0394"><link rel="stylesheet" href="css/lib/xiala.css?v=a1cdceb"><script type="text/javascript" src="plug/jquery-1.11.3.js?v=4663977"></script><script src="js/common.js?v=e9fcb43"></script><title>e诺说</title></head><style>input::-webkit-input-placeholder{
+		color: white;
+	}
+	input[type="search"]::-webkit-search-cancel-button{
+		display: none;
+		-webkit-appearance: none;
+	}
+	.search_publish img {
+		width: 1rem;
+		position: absolute;
+		top: .35rem;
+		left: 5%;
+		padding-top: .5rem;
+		margin-top: -.5rem;
+		padding-bottom: .5rem;
+		margin-bottom: -.5rem;
+	}
+	.search_publish{
+		left: 18%;
+		z-index: 99;
+		width: 79%;
+		top: .4rem;
+		border: 1.4px solid white;
+		height: 1.85rem;
+		border-radius: .35rem;
+	}
+	.search_publish input{
+		margin-top: 0.05rem;
+		vertical-align: top;border-radius: .35rem;font-size: .8rem;color: white; padding-left: 13%;height: 1.6rem;    line-height: 1.6rem;
+		margin-bottom: 0;   background-color: transparent;
+		border: none;
+		margin-left: -25%;
+		width: 74%;
+	}</style><body style="background-color: #f1f1f1;"><div class="content"><div class="pub_hearder flex_vertical justify_content_equal" style="z-index: 99; position: fixed;
+    top: 0;"><img class="up_page pub_hearder_left" src="img/header/header_left.png?v=29fd7c6" onclick="window.history.go(-1)"><div class="head_center head_centerZi"><span class="set_head_dot" style="width: .15rem;height: .15rem;border-radius: 50%;"></span> <span class="set_head_dot" style="width: .25rem;height: .27rem;border-radius: 50%;"></span> <span class="set_head_dot"></span> <span class="head_title">搜索</span> <span class="set_head_dot"></span> <span class="set_head_dot" style="width: .25rem;height: .27rem;;border-radius: 50%;"></span> <span class="set_head_dot" style="width: .15rem;height: .15rem;border-radius: 50%;"></span></div></div><div id="mescroll0" class="mescroll" style="background-color: #f1f1f1;top: 2.7rem;"><ul id="dataList0" class="data-list" style="margin-top: .8em;"></ul></div></div><div class="shareCall call-active"><div class="mainCall"><a href="tel:4000696120"><img src="img/call-out.png?v=ee262b3"><span style="vertical-align: top;">4000696120</span></a></div><div class="split"></div><div class="cancel" onclick="To.closetopanimate()">取消</div></div></body><script src="js/lib/mescroll.js?v=a4fd843" type="text/javascript" charset="utf-8"></script><script type="text/javascript" src="js/util.js?v=08710d1"></script><script type="text/javascript" charset="utf-8">$(document).ready(function () {
+		/*init();*/
+    })
+    var mescroll;
+    var curNavIndex=0;//首页0; 奶粉1; 面膜2; 图书3;
+    var mescrollArr=new Array(1);//4个菜单所对应的4个mescroll对象
+    //初始化首页
+    mescrollArr[0]=initMescroll("mescroll0", "dataList0");
+    $(function(){
+        /*初始化菜单*/
+    });
+    /*创建MeScroll对象*/
+    function initMescroll(mescrollId,clearEmptyId){
+        //创建MeScroll对象,内部已默认开启下拉刷新,自动执行up.callback,刷新列表数据;
+        var mescroll = new MeScroll(mescrollId, {
+            //上拉加载的配置项
+            up: {
+                callback: getListData, //上拉回调,此处可简写; 相当于 callback: function (page) { getListData(page); }
+                noMoreSize: 4, //如果列表已无数据,可设置列表的总数量要大于半页才显示无更多数据;避免列表数据过少(比如只有一条数据),显示无更多数据会不好看; 默认5
+                empty: {
+                    icon: "option/mescroll-empty.png", //图标,默认null
+                    tip: "亲,暂无结果~", //提示
+                    //btntext: "去逛逛 >", //按钮,默认""
+                   /* btnClick: function(){//点击按钮的回调,默认null
+                        alert("点击了按钮,具体逻辑自行实现");
+                    }*/
+                },
+                toTop: {
+                    src: "option/mescroll-totop.png" //回到顶部按钮的图片路径
+                },
+                clearEmptyId: clearEmptyId //相当于同时设置了clearId和empty.warpId; 简化写法;默认null
+            }
+        });
+        return mescroll;
+    }
+    /*联网加载列表数据  page = {num:1, size:10}; num:当前页 从1开始, size:每页数据条数 */
+    function getListData(page){
+        console.log(page)
+        page.size = 10;
+        /*if(page.goCount == 1){
+            page.keyword = '';
+        }else{*/
+            page.keyword = getQueryString('val');
+        /*}*/
+        //联网加载数据
+        console.log("curNavIndex="+curNavIndex+", page.num="+page.num);
+        getListDataFromNet(curNavIndex, page.num, page.size,page.keyword,function(data){
+            //联网成功的回调,隐藏上拉加载的状态
+            console.log("data.length="+data.length);
+            mescrollArr[curNavIndex].endSuccess(data.length);//传参:数据的总数; mescroll会自动判断列表如果无任何数据,则提示空;列表无下一页数据,则提示无更多数据;
+            //设置列表数据
+            setListData(data);
+        }, function(){
+            //联网失败的回调,隐藏上拉加载的状态
+            mescrollArr[curNavIndex].endErr();
+        });
+    }
+
+    /*设置列表数据*/
+    function setListData(data){
+        var listDom=$("#dataList" + curNavIndex);
+        for (var i = 0; i < data.length; i++) {
+            var pd=data[i];
+                setDataIndex(pd,listDom);
+        }
+    }
+    function setDataIndex(pd,listDom) {
+  /*      var status;
+        switch (pd.orderStatus){
+            case 'waitPaid':
+                status = '待支付';
+                break;
+            case 'waitConfirm':
+                status = '待确认';
+                break;
+            case 'cancelled':
+                status = '交易取消';
+                break;
+        }
+        if(pd.orderStatus == 'completed'){
+            if(pd.isEvaluation == false){
+                status = '待评价';
+			}else{
+                status = '交易成功';
+			}
+		}
+        if(pd.orderStatus == 'waitPaid'){
+            if(pd.type == 'censor'){
+                status = '检查待付款';
+            }
+        }
+        if(pd.orderStatus == 'waitConfirm') {
+            if (pd.type == 'product') {
+                if (pd.isReservation == false) {
+                    status = '待预约';
+                } else {
+                    status = '已预约';
+                }
+            }
+        }*/
+        var str='';
+        str += '<li class="hos_child set_box_shadow" atricleid="'+pd.id+'" onclick="href(this)">' +
+            '<div class="hos_list_top clearfix">' +
+          /*  '<div class="yuyueTop">' +
+            '<img src="'+pd.largeImage+'">' +
+            '</div>' +*/
+            '<div class="orderContent">' +
+            '<div class="right">' +
+            '<p class="detail">' +
+            '<span class="name">'+pd.title+'</span>' +
+            '</p>' +
+            '<div class="detailcontent">' +
+            '<span class="contentZi overflow_num_ellipsis" style="    -webkit-line-clamp: 3;">'+pd.content+'</span>' +
+            '</div>' +
+            '</div>' +
+            '</div>' +
+            '<div class="orderBottom">' +
+            '<span class="famousName orderNum">'+new Date(pd.createDate).Format('yyyy-MM-dd')+'</span>' +
+            /*'<span class="famousFloat" style="margin-right: .6rem;"><img style="    width: .73rem;" src="img/money.png?v=091180b"><span>888</span></span>' +
+            '<span class="famousFloat"><img style="    margin-top: .5rem;" src="img/read.png?v=a88c37f"><span>888</span></span>' +*/
+           /* '<span class="famousFloat"><img style="width: .7rem;" src="img/zan.png?v=1c956fd"><span>888</span></span>' +*/
+            '' +
+            '</div>' +
+            '</div>' +
+            '</li>';
+        listDom.append(str);
+    }
+
+    /*联网加载列表数据*/
+    function getListDataFromNet(curNavIndex,pageNum,pageSize,keyword,successCallback,errorCallback) {
+        var data = {};
+        data.pageNumber = pageNum;
+        data.pageSize = pageSize;
+        if(keyword != '' && keyword != undefined && keyword != null){
+            data.keyword = keyword;
+        }
+      /*  switch (curNavIndex){
+            case 0:
+                data.articleTypeId = 1;
+                break;
+            case 1:
+                data.articleTypeId = 2;
+                break;
+            case 2:
+                data.articleTypeId = 3;
+                break;
+            case 3:
+                data.articleTypeId = 4;
+                break;
+        }*/
+        //延时一秒,模拟联网
+        $.get_listajax(SERVER_ADDR + '/app/article/getList.json',data,function(data){
+            if(data.success == true){
+                var data=data.data; // 模拟数据: ../res/pdlist1.js
+                var listData=[];
+                //根据type  加入不同的数组
+                for (var i = 0; i < data.length; i++) {
+                    listData.push(data[i]);
+                }
+                //回调
+                successCallback(listData);
+            }else{
+                alert(data.data);
+            }
+        },errorCallback);
+        /*$.ajax({
+            type: 'GET',
+            url: SERVER_ADDR + '/app/article/getArticleList.json',
+            data:data,
+            dataType: 'json',
+            statusCode:{
+                403:function (data) {
+                    if(data.getResponseHeader('isAuthorization') == 'true'){
+                        var str = data.getResponseHeader('userAuthUrl');
+                        str = str.replace(/REDIRECT_URI/, encodeURI(window.location.href));
+                        sessionStorage.setItem("codeValue", 'true');
+                        window.location.href = str;
+                    }else{
+                        window.location.href = 'bind_tel.html';
+                    }
+                }
+            },
+            success: function(data){
+                if(data.success == true){
+                    var data=data.data; // 模拟数据: ../res/pdlist1.js
+                    var listData=[];
+                    //根据type  加入不同的数组
+
+                    if(curNavIndex==0){  //全部
+                        for (var i = 0; i < data.length; i++) {
+                            listData.push(data[i]);
+                        }
+                    }else if(curNavIndex==1){ // 待付款
+                        for (var i = 0; i < data.length; i++) {
+                            listData.push(data[i]);
+                        }
+                    }else if(curNavIndex==2){  //待确认
+                        for (var i = 0; i < data.length; i++) {
+                            listData.push(data[i]);
+                        }
+                    } else if(curNavIndex==3){  //待评价
+                        for (var i = 0; i < data.length; i++) {
+                            listData.push(data[i]);
+                        }
+                    }
+                    //回调
+                    successCallback(listData);
+                }else{
+                    alert(data.data);
+				}
+            },
+            error: errorCallback
+        });*/
+    }
+
+    function href(obj) {
+        window.location.href = "enuosayInfo.html?id="+$(obj).attr('atricleid');
+    }</script></html>

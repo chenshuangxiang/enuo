@@ -1,0 +1,1 @@
+bExistInstall|b:1;bExistVul|b:0;bMyadEvil|b:0;bMytagEvil|b:0;bFlinkEvil|b:0;bWrongSetting|b:0;bFeedBackEvil|b:0;bFeedBackajaxEvil|b:0;bSearchEvil|b:0;strWeakPasswd|s:0:"";aEvilMyadData|a:0:{}aEvilMytagData|a:0:{}aEvilFlinkData|a:0:{}aUserList|a:1:{i:1;a:2:{i:0;s:5:"admin";i:1;s:5:"admin";}}aVersion|a:3:{i:0;i:1;i:1;s:8:"20160928";i:2;s:8:"20180109";}

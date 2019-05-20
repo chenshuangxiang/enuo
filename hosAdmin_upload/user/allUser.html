@@ -1,0 +1,175 @@
+
+	<link rel="stylesheet" href="../css/news.css?v=499ce7e" media="all" />
+<body class="childrenBody">
+<div class="big">
+	<blockquote class="layui-elem-quote news_search">
+		<form class="layui-form">
+			<div class="layui-form-item">
+				<div class="layui-inline newsNameDiv">
+					<label class="layui-form-label">关键词</label>
+					<div class="layui-input-inline">
+						<input type="text" value="" placeholder="请输入姓名/手机号" class="layui-input search_input newsName">
+					</div>
+				</div>
+
+				<!--<div class="layui-inline">
+					<label class="layui-form-label">医生/助理</label>
+					<div class="layui-input-inline">
+						<select name="fenTo" class="fenTo" lay-filter="fenTo" lay-search="">
+							<option value="">根据医生/助理筛选</option>
+						</select>
+					</div>
+				</div>
+				<div class="layui-inline">
+					<label class="layui-form-label">客服</label>
+					<div class="layui-input-inline">
+						<select name="kefuSelect" class="kefuSelect" lay-filter="kefuSelect" lay-search="">
+							<option value="">根据客服筛选</option>
+						</select>
+					</div>
+				</div>
+				<div class="layui-inline">
+					<label class="layui-form-label">到诊时间</label>
+					<div class="layui-input-inline">
+						<input type="text" class="layui-input newsTime" id="newsTime" placeholder="根据到诊时间筛选">
+					</div>
+				</div>
+
+				<div class="layui-inline">
+					<label class="layui-form-label">状态</label>
+					<div class="layui-input-inline">
+						<select name="status" class="status" lay-filter="status">
+							<option value="">根据状态筛选</option>
+							<option value="">未到诊</option>
+							<option value="wait">侯诊</option>
+							<option value="loading">治疗中</option>
+							<option value="leave">弃诊</option>
+						</select>
+					</div>
+				</div>-->
+
+				<!--<div class="layui-inline">
+					<label class="layui-form-label">咨询病种</label>
+					<div class="layui-input-inline">
+						&lt;!&ndash;<select name="newsDisease" class="newsDisease" lay-filter="newsDisease">
+							<option value="">根据病种筛选</option>
+						</select>&ndash;&gt;
+						<input type="text" value="" placeholder="请输入咨询病种" class="layui-input search_input newsDisease">
+					</div>
+				</div>-->
+				<div class="layui-inline timediv">
+					<label class="layui-form-label">时间</label>
+					<div class="layui-input-inline">
+						<!--<input type="text" class="layui-input newsTime" onclick="layui.laydate({elem:this})" placeholder="请选择开始日期">-->
+						<input type="text" class="layui-input newsTime" id="newsTime" placeholder="请选择开始日期">
+					</div>
+					<label class="layui-form-label" style="width: inherit;padding: 9px 10px 9px 1px;">至</label>
+					<div class="layui-input-inline">
+						<!--<input type="text" class="layui-input newsTimeEnd" onclick="layui.laydate({elem:this})" placeholder="请选择结束日期">-->
+						<input type="text" class="layui-input newsTimeEnd" id="newsTimeEnd" placeholder="请选择结束日期">
+					</div>
+				</div>
+				<div class="layui-inline" style="margin-left: 42px">
+					<a class="layui-btn search_btn">查询</a>
+				</div>
+			<!--	<div class="layui-inline" style="margin-left: 42px">
+					<a class="layui-btn layui-btn-normal consultAdd">添加咨询</a>
+				</div>-->
+			</div>
+			<div class="fenOpen" style="display: none;    margin-top: 20px;">
+			<div class="layui-form-item">
+				<div class="layui-inline">
+					<label class="layui-form-label">分诊医院</label>
+					<div class="layui-input-inline">
+						<select name="newsNoResultHos" class="newsNoResultHos newsHosFen" lay-filter="newsNoResultHos" lay-search="">
+							<option value="">请选择分诊医院</option>
+						</select>
+					</div>
+				</div>
+			</div>
+
+		<!--	<div class="layui-form-item">
+				<div class="layui-inline">
+					<label class="layui-form-label">分诊时间</label>
+					<div class="layui-input-inline">
+						<input type="text" class="layui-input newsTimeFen"
+							   onclick="layui.laydate({elem:this,istime: true,istoday: true, format: 'YYYY-MM-DD hh:mm:ss'})"
+							   placeholder="请选择分诊时间">
+					</div>
+				</div>
+			</div>-->
+				<input type="button" class="layui-btn layui-btn-lg sureFen" style="margin: 15px 0 0 120px;width: 107px" value="确 定"/>
+			</div>
+			<div class="caozuoOpen" style="display: none;    margin-top: 20px;">
+				<div class="layui-form-item">
+					<div class="layui-inline">
+						<input type="button" class="layui-btn layui-btn-lg consultFen" style="display:none;margin: 15px 0 0 85px;width: 107px" value=" 分 诊"/>
+						<input type="button" class="layui-btn layui-btn-lg news_reset" style="display:none;margin: 15px 0 0 85px;width: 107px" value=" 编 辑"/>
+						<!--<input type="button" class="layui-btn layui-btn-lg news_record_add" style="margin: 15px 0 0 85px;width: 107px" value=" 回 访"/>-->
+					</div>
+				</div>
+			</div>
+		</form>
+
+
+
+
+	<!--	<div class="layui-inline">
+			<a class="layui-btn recommend" style="background-color:#5FB878">推荐文章</a>
+		</div>
+		<div class="layui-inline">
+			<a class="layui-btn audit_btn">审核文章</a>
+		</div>
+		<div class="layui-inline">
+			<a class="layui-btn layui-btn-danger batchDel">批量删除</a>
+		</div>-->
+	<!--	<div class="layui-inline">
+			<div class="layui-form-mid layui-word-aux">本页面刷新后除新添加的文章外所有操作无效，关闭页面所有数据重置</div>
+		</div>-->
+	</blockquote>
+
+	<div class="layui-form news_list">
+
+	  	<table class="layui-table">
+		    <colgroup>
+				<!--<col><col>
+				<col width="10%">
+				<col width="9%">
+				<col width="10%">
+				<col width="10%">
+				<col width="11%">
+				<col width="8%">-->
+		    </colgroup>
+		    <thead>
+				<tr>
+					<!--<th><input type="checkbox" name="" lay-skin="primary" lay-filter="allChoose" id="allChoose"></th>-->
+				<!--	<th>到诊时间</th>-->
+					<th>姓名</th>
+					<th>性别</th>
+					<th>联系方式</th>
+					<th>出生日期</th>
+					<th  class="nextTime">身份证号</th>
+					<th>最后就诊时间</th>
+					<th>最后就诊项目</th>
+
+
+					<!--<th>项目分类</th>
+					<th>项目</th>
+					<th>来源</th>
+					<th>预约医生</th>
+					<th>咨询</th>
+					<th>客服</th>
+					<th>初复诊</th>
+					<th>就诊号</th>
+					<th>就诊状态</th>-->
+					<!--<th>操作</th>-->
+					<th>查看</th>
+				</tr> 
+		    </thead>
+		    <tbody class="news_content"></tbody>
+		</table>
+	</div>
+	<div id="page"></div>
+</div>
+<script type="text/javascript" src="js/common.js?v=333"></script>
+	<script type="text/javascript" src="js/allUser.js?v=333"></script>

@@ -1,0 +1,435 @@
+body {
+	margin: 0px auto; padding: 0px; width: 100%; font-family: "Microsoft Yahei", "Tahoma", "SimSun";
+}
+a {
+	color: rgb(189, 69, 65); text-decoration: none;
+}
+img {
+	
+}
+ul {
+	margin: 0px; padding: 0px; list-style-type: none;
+}
+li {
+	margin: 0px; padding: 0px; list-style-type: none;
+}
+.top_dk {
+	background: url("banner.jpg") top; width: 100%; height: 696px;
+}
+.banna {
+	margin: 0px auto; width: 1000px; position: relative;
+}
+.banna .anniu_onea {
+	background: url("button.gif") no-repeat; left: 20px; top: 560px; width: 315px; height: 53px; position: absolute;
+}
+.xdhzxm {
+	background: url("yd.jpg") no-repeat center rgb(254, 193, 192); width: 100%; height: 486px;
+}
+.xdhzxm_con {
+	margin: auto; width: 1440px; position: relative;
+}
+.xdhzxm_con a {
+	width: 103px; height: 48px;
+}
+.xdhzxm_con .xdhzxm_a01 {
+	left: 62px; top: 338px; position: absolute;
+}
+.xdhzxm_con .xdhzxm_a02 {
+	left: 371px; top: 338px; position: absolute;
+}
+.xdhzxm_con .xdhzxm_a03 {
+	left: 669px; top: 338px; position: absolute;
+}
+.xdhzxm_con .xdhzxm_a04 {
+	left: 970px; top: 338px; position: absolute;
+}
+.xdhzxm_con .xdhzxm_a05 {
+	left: 1256px; top: 338px; position: absolute;
+}
+.three {
+	background: rgb(176, 225, 230); width: 100%;
+}
+.three_content {
+	background: url("three_bg.jpg") no-repeat top; margin: 0px auto; width: 1300px; height: 775px; font-family: "??????"; position: relative;
+}
+.three_con01 {
+	left: 477px; top: 551px; width: 296px; color: rgb(255, 255, 255); line-height: 28px; font-size: 16px; position: absolute;
+}
+.three_con02 {
+	left: 847px; top: 462px; font-size: 22px; position: absolute;
+}
+.three_con03 {
+	left: 1104px; top: 462px; font-size: 22px; position: absolute;
+}
+.three_con04 {
+	left: 847px; top: 720px; font-size: 22px; position: absolute;
+}
+.three_con05 {
+	left: 1104px; top: 720px; font-size: 22px; position: absolute;
+}
+.three_con06 {
+	left: 500px; top: 446px; width: 233px; height: 44px; position: absolute;
+}
+.four {
+	background: url("four_bg.jpg") no-repeat center; width: 100%; height: 835px; margin-top: 50px;
+}
+.four_content {
+	margin: 0px auto; width: 1100px; position: relative;
+}
+.four_con01 {
+	color: rgb(255, 255, 255); font-family: "??????"; font-size: 22px;
+}
+.four_con02 {
+	color: rgb(255, 255, 255); font-family: "??????"; font-size: 22px;
+}
+.four_con03 {
+	color: rgb(255, 255, 255); font-family: "??????"; font-size: 22px;
+}
+.four_con04 {
+	color: rgb(255, 255, 255); font-family: "??????"; font-size: 22px;
+}
+.four_con05 {
+	color: rgb(255, 255, 255); font-family: "??????"; font-size: 22px;
+}
+.four_con06 {
+	color: rgb(255, 255, 255); font-family: "??????"; font-size: 22px;
+}
+.four_con01 {
+	left: 179px; top: 369px; position: absolute;
+}
+.four_con02 {
+	left: 84px; top: 533px; position: absolute;
+}
+.four_con03 {
+	left: 180px; top: 658px; position: absolute;
+}
+.four_con04 {
+	left: 909px; top: 388px; position: absolute;
+}
+.four_con05 {
+	left: 947px; top: 561px; position: absolute;
+}
+.four_con06 {
+	left: 919px; top: 687px; position: absolute;
+}
+.five {
+	background: rgb(122, 181, 228); width: 100%; height: 207px;
+}
+.five_con {
+	margin: 0px auto; width: 720px; color: rgb(255, 255, 255); line-height: 207px; font-size: 52px;
+}
+.six {
+	background: rgb(233, 243, 253); width: 100%;
+}
+.six_content {
+	background: url("six_bg.jpg") no-repeat center; margin: 0px auto; width: 1366px; height: 667px; position: relative;
+}
+.six_con01 {
+	left: 621px; top: 239px; width: 743px; color: rgb(85, 82, 99); line-height: 48px; font-size: 22px; position: absolute;
+}
+.six_con02 {
+	left: 819px; top: 567px; position: absolute;
+}
+.seven {
+	background: url("seven_bg.jpg"); width: 100%; height: 660px;
+}
+.seven_content {
+	background: url("sevencon_bg.jpg") no-repeat bottom; margin: 0px auto; width: 1202px; height: 548px; position: relative;
+}
+.seven_title {
+	height: 150px; text-align: center; color: rgb(255, 255, 255); line-height: 150px; font-size: 52px;
+}
+.seven_con01 {
+	color: rgb(255, 255, 255); line-height: 36px; font-size: 24px;
+}
+.seven_con02 {
+	color: rgb(255, 255, 255); line-height: 36px; font-size: 24px;
+}
+.seven_con03 {
+	color: rgb(255, 255, 255); line-height: 36px; font-size: 24px;
+}
+.seven_con04 {
+	color: rgb(255, 255, 255); line-height: 36px; font-size: 24px;
+}
+.seven_con05 {
+	color: rgb(255, 255, 255); line-height: 36px; font-size: 24px;
+}
+.seven_con01 {
+	left: 48px; top: 444px; position: absolute;
+}
+.seven_con02 {
+	left: 306px; top: 444px; position: absolute;
+}
+.seven_con03 {
+	left: 554px; top: 444px; position: absolute;
+}
+.seven_con04 {
+	left: 802px; top: 444px; position: absolute;
+}
+.seven_con05 {
+	left: 1054px; top: 444px; position: absolute;
+}
+.seven_button {
+	margin: 0px auto; width: 210px; height: 50px;
+}
+.eight {
+	width: 100%;
+}
+.eight_content {
+	background: url("eightcon_bg.jpg") no-repeat center; margin: 0px auto; width: 1200px; height: 660px; position: relative;
+}
+.eight_title {
+	text-align: center; line-height: 160px; font-size: 52px;
+}
+.eight_con01 {
+	width: 192px; color: rgb(255, 255, 255); line-height: 30px; font-size: 22px;
+}
+.eight_con02 {
+	width: 192px; color: rgb(255, 255, 255); line-height: 30px; font-size: 22px;
+}
+.eight_con03 {
+	width: 192px; color: rgb(255, 255, 255); line-height: 30px; font-size: 22px;
+}
+.eight_con04 {
+	width: 192px; color: rgb(255, 255, 255); line-height: 30px; font-size: 22px;
+}
+.eight_con05 {
+	width: 192px; color: rgb(255, 255, 255); line-height: 30px; font-size: 22px;
+}
+.eight_con01 {
+	left: 24px; top: 356px; position: absolute;
+}
+.eight_con02 {
+	left: 266px; top: 356px; position: absolute;
+}
+.eight_con03 {
+	left: 514px; top: 356px; position: absolute;
+}
+.eight_con04 {
+	left: 758px; top: 356px; position: absolute;
+}
+.eight_con05 {
+	left: 998px; top: 356px; position: absolute;
+}
+.eight_button {
+	left: 454px; top: 556px; position: absolute;
+}
+.pubK {
+	width: 1190px;
+}
+.pubH {
+	width: 1100px;
+}
+.pubW {
+	width: 1100px;
+}
+.pubWN {
+	width: 1212px;
+}
+.pubW2 {
+	width: 1200px;
+}
+.pubW1 {
+	width: 1012px; -webkit-animation-property: -webkit-height; -webkit-transition-duration: 1s; -moz-animation-property: -moz-height; -moz-transition-duration: 1s; -o-animation-property: -o-height; -o-transition-duration: 1s;
+}
+.center {
+	margin: 0px auto;
+}
+.float_left {
+	float: left;
+}
+.float_right {
+	float: right;
+}
+.display-i {
+	display: inline;
+}
+.display-b {
+	display: block;
+}
+.relative {
+	position: relative;
+}
+.absolute {
+	position: absolute;
+}
+#noMarginR {
+	margin-right: 0px;
+}
+#header {
+	width: 100%; height: 66px; position: absolute; z-index: 5; opacity: 0.8; background-color: rgba(6, 6, 6, 0.8); -webkit-opacity: 0.8; -moz-opacity: 0.8; -khtml-opacity: 0.8;
+}
+#header h1 {
+	width: 220px; height: 36px; margin-top: 14px; margin-left: 50px; float: left; display: inline;
+}
+#header h1 a {
+	background: url("common_icon.png") no-repeat -5px -133px; width: 220px; height: 36px; display: block;
+}
+#header ul {
+	width: 700px; height: 36px; margin-top: 14px; margin-left: 15px; float: left; display: inline;
+}
+#header ul li {
+	height: 36px; color: rgb(255, 255, 255); line-height: 36px; font-size: 16px; margin-right: 15px; float: left; display: inline;
+}
+#header ul li span {
+	width: 36px; height: 36px; margin-right: 8px; float: left; display: inline;
+}
+#header ul li span.span1 {
+	background: url("common_icon.png") no-repeat -227px -130px;
+}
+#header ul li span.span2 {
+	background: url("common_icon.png") no-repeat -14px -186px; width: 240px; margin-top: 4px;
+}
+#header ul li span.span3 {
+	margin-left: -42px;
+}
+#header .fhsy {
+	background: url("zixun_icon.png") no-repeat -179px -310px; width: 77px; height: 22px; margin-top: 22px; float: left; display: table;
+}
+#header .fhsy:hover {
+	background: url("zixun_icon.png") no-repeat -179px -339px;
+}
+.box6 {
+	background: url("sgmy.jpg") no-repeat top; width: 100%; height: 700px;
+}
+.box6 h2 {
+	height: 137px; font-size: 0px;
+}
+#scroll_pic {
+	margin: 0px auto; width: 100%; height: 563px; overflow: hidden; position: relative;
+}
+#scroll_pic a {
+	display: block;
+}
+#scroll_pic .pre_btn {
+	background: url("jtl.png") no-repeat; left: 160px; top: 50%; width: 32px; height: 72px; margin-top: -55px; position: absolute; z-index: 2;
+}
+#scroll_pic .next_btn {
+	background: url("jtr.png") no-repeat; top: 50%; width: 32px; height: 72px; right: 160px; margin-top: -55px; position: absolute; z-index: 2;
+}
+#scroll_pic ul {
+	top: 0px; height: 563px; position: absolute;
+}
+#scroll_pic ul li {
+	width: 100%; height: 563px; padding-top: 20px; float: left;
+}
+.zj_imgbg1 {
+	background: url("hb.jpg") no-repeat top; height: 563px;
+}
+.zj_imgbg2 {
+	background: url("zk.jpg") no-repeat top; height: 563px;
+}
+.zj_info {
+	background: url("zszj.png") no-repeat right top; width: 550px; color: rgb(0, 0, 0); margin-top: 44px; float: right;
+}
+.zj_imgbg2 .zj_info {
+	width: 578px; margin-top: -10px;
+}
+.zj_info h4 {
+	height: 80px; text-align: left; color: rgb(234, 0, 89); line-height: 80px; font-size: 44px; margin-top: 30px;
+}
+.zj_info h4 span {
+	color: rgb(0, 0, 0); font-size: 24px;
+}
+.zj_info p.zjtoux {
+	line-height: 28px; font-size: 16px;
+}
+.zj_imgbg2 .zj_infop p.zjtoux {
+	line-height: 24px;
+}
+.zj_info p.zjinfos {
+	line-height: 24px; text-indent: 2em; font-size: 14px; margin-top: 16px;
+}
+.zj_info .scxmdiv {
+	width: 100%; line-height: 28px; margin-top: 18px; float: left;
+}
+.zj_info .scxmdiv h5 {
+	background: rgb(47, 143, 203); width: 72px; height: 28px; color: rgb(255, 255, 255); padding-left: 18px; font-size: 14px; font-weight: 800; float: left;
+}
+.zj_imgbg2 .zj_info .scxmdiv p {
+	width: 480px;
+}
+.zj_info .scxmdiv p {
+	width: 400px; font-size: 14px; float: left;
+}
+.zj_info a {
+	width: 170px; height: 48px; margin-top: 30px; margin-left: 130px; float: left; display: block;
+}
+#footer {
+	background: url("footer_bg.jpg") repeat-x; width: 100%; height: 170px;
+}
+.footer_wrap {
+	width: 1190px; height: 170px;
+}
+.footerlogo {
+	background: url("common_icon.png") no-repeat -2px -4px; width: 91px; height: 108px; margin-top: 18px; margin-left: 20px; float: left; display: inline;
+}
+.border {
+	height: 111px; margin-top: 11px; margin-left: 17px; border-left-color: rgb(56, 56, 56); border-left-width: 1px; border-left-style: dashed; float: left; display: inline;
+}
+.footer_secicon {
+	height: 100px; margin-top: 35px; float: left;
+}
+.footer_secicon li {
+	width: 85px; height: 100px; margin-right: 20px; margin-left: 25px; float: left; display: inline;
+}
+.footer_secicon li i {
+	width: 48px; height: 48px; margin-left: 18px; float: left; display: block; cursor: pointer;
+}
+.footer_secicon li i a {
+	width: 48px; height: 48px; display: block; cursor: pointer;
+}
+.footer_secicon li span {
+	width: 100%; height: 40px; text-align: center; color: rgb(167, 167, 167); line-height: 40px; font-size: 16px; float: left;
+}
+.footer_secicon1 {
+	background: url("common_icon.png") no-repeat -109px -11px;
+}
+.footer_secicon2 {
+	background: url("common_icon.png") no-repeat -173px -11px;
+}
+.footer_secicon3 {
+	background: url("common_icon.png") no-repeat -237px -11px;
+}
+.footer_secicon4 {
+	background: url("common_icon.png") no-repeat -301px -11px;
+}
+.footer_secicon5 {
+	background: url("common_icon.png") no-repeat -366px -11px;
+}
+.footer_secicon6 {
+	background: url("common_icon.png") no-repeat -430px -11px;
+}
+.footer_secicon7 {
+	background: url("common_icon.png") no-repeat -494px -11px;
+}
+.footer_secicon8 {
+	background: url("common_icon.png") no-repeat -558px -11px;
+}
+.footer_secicon li:hover .footer_secicon1 {
+	background: url("common_icon.png") no-repeat -109px -71px;
+}
+.footer_secicon li:hover .footer_secicon2 {
+	background: url("common_icon.png") no-repeat -173px -71px;
+}
+.footer_secicon li:hover .footer_secicon3 {
+	background: url("common_icon.png") no-repeat -237px -71px;
+}
+.footer_secicon li:hover .footer_secicon4 {
+	background: url("common_icon.png") no-repeat -301px -71px;
+}
+.footer_secicon li:hover .footer_secicon5 {
+	background: url("common_icon.png") no-repeat -366px -71px;
+}
+.footer_secicon li:hover .footer_secicon6 {
+	background: url("common_icon.png") no-repeat -430px -71px;
+}
+.footer_secicon li:hover .footer_secicon7 {
+	background: url("common_icon.png") no-repeat -494px -71px;
+}
+.footer_secicon li:hover .footer_secicon8 {
+	background: url("common_icon.png") no-repeat -558px -71px;
+}
+.footer_copyright {
+	width: 100%; height: 35px; text-align: center; color: rgb(167, 167, 167); line-height: 35px; font-size: 12px; float: left;
+}

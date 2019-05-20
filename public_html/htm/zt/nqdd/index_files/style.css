@@ -1,0 +1,426 @@
+* {
+	margin: 0px; padding: 0px; border: 0px currentColor; border-image: none;
+}
+body {
+	font-family: "Microsoft YaHei","SimSun"; background-color: rgb(255, 255, 255);
+}
+ul {
+	list-style: none;
+}
+li {
+	list-style: none;
+}
+a {
+	text-decoration: none;
+}
+.clear {
+	width: 100%; height: 0px; clear: both; font-size: 0px; display: block;
+}
+.w1100 {
+	margin: 0px auto; width: 1100px;
+}
+h1 {
+	font-weight: normal;
+}
+h2 {
+	font-weight: normal;
+}
+h3 {
+	font-weight: normal;
+}
+.zx {
+	background: rgb(189, 233, 255); border-radius: 50px; width: 296px; height: 58px; text-align: center; color: rgb(16, 67, 102); line-height: 58px; font-size: 29px; display: block;
+}
+.banner {
+	background: url("banner.jpg") no-repeat center; width: 100%; height: 561px; position: relative;
+}
+.banner a {
+	left: 50%; top: 430px; width: 275px; height: 80px; margin-left: 49px; display: block; position: absolute;
+}
+.qd-01 {
+	background: url("qd-01.jpg") no-repeat center; width: 100%; height: 141px;
+}
+.qd-02 {
+	background: url("qd-02.jpg") no-repeat center; width: 100%; height: 197px; overflow: hidden;
+}
+.qd-02 span {
+	margin: 80px 0px 0px 460px; color: rgb(255, 255, 255); font-size: 49px; display: block;
+}
+.qd-02 p {
+	margin: 7px 0px 0px 582px; color: rgb(199, 228, 250); font-size: 25px;
+}
+.qd-03 {
+	background: url("qd-03.jpg") no-repeat center; width: 100%; height: 318px; overflow: hidden;
+}
+.qd-03 p {
+	color: rgb(246, 250, 253); line-height: 25px; font-size: 22px; float: left; _display: inline;
+}
+.qd-04 {
+	background: url("qd-04.jpg") no-repeat center; width: 100%; height: 185px; position: relative;
+}
+.qd-05 {
+	background: url("qd-05.jpg") no-repeat center; width: 100%; height: 149px; overflow: hidden;
+}
+.qd-05 span {
+	margin: 0px 0px 0px 258px; color: rgb(255, 255, 255); font-size: 49px; display: block;
+}
+.qd-05 p {
+	margin: 7px 0px 0px 282px; color: rgb(199, 228, 250); font-size: 25px;
+}
+.qd-06 {
+	background: url("qd-06.jpg") no-repeat center; width: 100%; height: 257px; overflow: hidden;
+}
+.qd-06 p {
+	width: 220px; text-align: center; color: rgb(0, 81, 110); line-height: 24px; font-size: 16px; margin-top: 155px; float: left;
+}
+.qd-06 span {
+	line-height: 25px; font-size: 22px; display: block;
+}
+.qd-07 {
+	background: url("qd-07.jpg") no-repeat center; width: 100%; height: 230px; text-align: center; overflow: hidden;
+}
+.qd-07 p {
+	width: 220px; color: rgb(0, 81, 110); line-height: 24px; font-size: 16px; margin-top: 154px; float: left;
+}
+.qd-07 span {
+	line-height: 25px; font-size: 22px; display: block;
+}
+.qd-08 {
+	background: url("qd-08.jpg") no-repeat center; width: 100%; height: 205px;
+}
+.qd-09 {
+	background: url("qd-09.jpg") no-repeat center; width: 100%; height: 160px; overflow: hidden;
+}
+.qd-09 span {
+	margin: 0px 0px 0px 270px; color: rgb(255, 255, 255); font-size: 49px; display: block;
+}
+.qd-09 p {
+	margin: 7px 0px 0px 352px; color: rgb(199, 228, 250); font-size: 25px;
+}
+.qd-10 {
+	background: url("qd-10.jpg") no-repeat center; width: 100%; height: 374px; text-align: center; overflow: hidden;
+}
+.qd-10 p {
+	width: 200px; color: rgb(255, 255, 255); line-height: 24px; font-size: 16px; margin-top: 155px; float: left; _display: inline;
+}
+.qd-10 span {
+	color: rgb(0, 81, 110); line-height: 30px; font-size: 22px; display: block;
+}
+.qd-11 {
+	background: url("qd-11.jpg") no-repeat center; width: 100%; height: 176px;
+}
+.qd-12 {
+	background: url("qd-12.jpg") no-repeat center; width: 100%; height: 288px; overflow: hidden;
+}
+.qd-12 span {
+	margin: -5px 0px 0px 300px; color: rgb(255, 255, 255); font-size: 49px; display: block; _margin-top: 0;
+}
+.qd-12 p {
+	margin: 5px 0px 0px 449px; color: rgb(199, 228, 250); font-size: 25px; _margin-top: -2px;
+}
+.qd-12 .lt {
+	margin: 35px 0px 0px 28px; color: rgb(0, 71, 100); line-height: 26px; font-size: 14px; float: left; _display: inline; _margin-top: 25px;
+}
+.qd-12 .lt strong {
+	color: rgb(255, 255, 255); line-height: 50px; text-indent: 40px; font-size: 28px; display: block;
+}
+.qd-12 .rt {
+	margin: 35px 28px 0px 0px; color: rgb(0, 71, 100); line-height: 26px; font-size: 14px; float: right; _display: inline; _margin-top: 25px;
+}
+.qd-12 .rt strong {
+	color: rgb(255, 255, 255); line-height: 50px; text-indent: 40px; font-size: 28px; display: block;
+}
+.qd-13 {
+	background: url("qd-13.jpg") no-repeat center; width: 100%; height: 260px; overflow: hidden;
+}
+.qd-13 .lt {
+	margin: 58px 0px 0px 28px; color: rgb(0, 71, 100); line-height: 26px; font-size: 14px; float: left; _display: inline;
+}
+.qd-13 .lt strong {
+	color: rgb(255, 255, 255); line-height: 50px; text-indent: 40px; font-size: 28px; display: block;
+}
+.qd-13 .rt {
+	margin: 58px 28px 0px 0px; color: rgb(0, 71, 100); line-height: 26px; font-size: 14px; float: right; _display: inline;
+}
+.qd-13 .rt strong {
+	color: rgb(255, 255, 255); line-height: 50px; text-indent: 40px; font-size: 28px; display: block;
+}
+.qd-14 {
+	background: url("qd-14.jpg") no-repeat center; width: 100%; height: 156px; overflow: hidden;
+}
+.qd-14 .zt {
+	margin: 0px auto; width: 540px; color: rgb(0, 71, 100); line-height: 26px; font-size: 14px;
+}
+.qd-14 .zt strong {
+	color: rgb(255, 255, 255); line-height: 50px; text-indent: 150px; font-size: 28px; display: block;
+}
+.qd-15 {
+	background: url("qd-15.jpg") no-repeat center; width: 100%; height: 161px;
+}
+.qd-16 {
+	background: url("qd-16.jpg") no-repeat center; width: 100%; height: 242px; overflow: hidden;
+}
+.qd-16 span {
+	margin: 85px 0px 0px 350px; color: rgb(255, 255, 255); font-size: 49px; display: block;
+}
+.qd-16 p {
+	margin: 7px 0px 0px 410px; color: rgb(199, 228, 250); font-size: 25px;
+}
+.qd-17 p {
+	color: rgb(255, 255, 255); font-size: 30px;
+}
+.qd-18 p {
+	color: rgb(255, 255, 255); font-size: 30px;
+}
+.qd-19 p {
+	color: rgb(255, 255, 255); font-size: 30px;
+}
+.qd-20 p {
+	color: rgb(255, 255, 255); font-size: 30px;
+}
+.qd-17 {
+	background: url("qd-17.jpg") no-repeat center; width: 100%; height: 195px; overflow: hidden;
+}
+.qd-17 .lt {
+	margin: 40px 0px 0px 267px; width: 285px; color: rgb(214, 241, 251); line-height: 32px; font-size: 20px; float: left; _display: inline;
+}
+.qd-17 .lt p {
+	margin: 0px 0px 15px 90px;
+}
+.qd-17 .rt {
+	margin: 55px 0px 0px 45px; width: 285px; color: rgb(40, 67, 107); line-height: 32px; font-size: 20px; float: left; _display: inline;
+}
+.qd-17 .rt p {
+	margin: 0px 0px 15px 80px;
+}
+.qd-18 {
+	background: url("qd-18.jpg") no-repeat center; width: 100%; height: 196px; overflow: hidden;
+}
+.qd-18 .lt {
+	margin: 45px 0px 0px 237px; width: 285px; color: rgb(40, 67, 107); line-height: 32px; font-size: 20px; float: left; _display: inline;
+}
+.qd-18 .lt p {
+	margin: 0px 0px 15px 100px;
+}
+.qd-18 .rt {
+	margin: 48px 0px 0px 70px; width: 285px; color: rgb(214, 241, 251); line-height: 32px; font-size: 20px; float: left; _display: inline;
+}
+.qd-18 .rt p {
+	margin: 0px 0px 15px 80px;
+}
+.qd-19 {
+	background: url("qd-19.jpg") no-repeat center; width: 100%; height: 194px; overflow: hidden;
+}
+.qd-19 .lt {
+	margin: 45px 0px 0px 247px; width: 285px; color: rgb(214, 241, 251); line-height: 32px; font-size: 20px; float: left; _display: inline;
+}
+.qd-19 .lt p {
+	margin: 0px 0px 15px 100px;
+}
+.qd-19 .rt {
+	margin: 40px 0px 0px 60px; width: 285px; color: rgb(40, 67, 107); line-height: 32px; font-size: 20px; float: left; _display: inline;
+}
+.qd-19 .rt p {
+	margin: 0px 0px 15px 85px;
+}
+.qd-20 {
+	background: url("qd-20.jpg") no-repeat center; width: 100%; height: 196px; overflow: hidden;
+}
+.qd-20 .lt {
+	margin: 58px 0px 0px 255px; width: 285px; color: rgb(40, 67, 107); line-height: 32px; font-size: 20px; float: left; _display: inline;
+}
+.qd-20 .lt p {
+	margin: 0px 0px 15px 90px;
+}
+.qd-20 .rt {
+	margin: 40px 0px 0px 50px; width: 485px; color: rgb(214, 241, 251); line-height: 32px; font-size: 20px; float: left; _display: inline;
+}
+.qd-21 {
+	background: url("qd-21.jpg") no-repeat center; width: 100%; height: 165px; overflow: hidden;
+}
+.qd-22 {
+	background: url("qd-22.jpg") no-repeat center; width: 100%; height: 212px;
+}
+.qd-23 {
+	background: url("qd-23.jpg") no-repeat center; width: 100%; height: 255px;
+}
+.qd-24 {
+	background: url("qd-24.jpg") no-repeat center; width: 100%; height: 157px; overflow: hidden;
+}
+.qd-24 p {
+	margin: 30px 0px 0px 645px; color: rgb(255, 255, 255); line-height: 34px; font-size: 16px;
+}
+.qd-25 {
+	background: url("qd-25.jpg") no-repeat center; width: 100%; height: 190px;
+}
+.qd-26 {
+	background: url("qd-26.jpg") no-repeat center; width: 100%; height: 288px; overflow: hidden;
+}
+.qd-26 span {
+	margin: 5px 0px 0px 342px; color: rgb(255, 255, 255); font-size: 42px; display: block; _margin-top: 0;
+}
+.qd-26 p {
+	margin: 195px 0px 0px; color: rgb(255, 255, 255); font-size: 20px; float: left; _display: inline; _margin-top: 194px;
+}
+.qd-27 {
+	background: url("qd-27.jpg") no-repeat center; width: 100%; height: 96px;
+}
+.qd-28 {
+	background: url("qd-28.jpg") no-repeat center; width: 100%; height: 138px; overflow: hidden;
+}
+.qd-28 span {
+	margin: 5px 0px 0px 342px; color: rgb(255, 255, 255); font-size: 42px; display: block;
+}
+.qd-28 p {
+	margin: 12px 0px 0px 435px; color: rgb(199, 228, 250); font-size: 25px;
+}
+.qd-29 {
+	background: url("qd-29.jpg") no-repeat center; width: 100%; height: 198px; overflow: hidden;
+}
+.qd-29 p {
+	margin: 120px 0px 0px 260px; color: rgb(238, 252, 255); font-size: 25px;
+}
+.qd-29 strong {
+	font-size: 48px;
+}
+.qd-30 {
+	background: url("qd-30.jpg") no-repeat center; width: 100%; height: 161px; overflow: hidden;
+}
+.qd-30 p {
+	color: rgb(238, 252, 255); line-height: 24px; font-size: 16px; margin-left: 260px;
+}
+.qd-31 {
+	background: url("qd-31.jpg") no-repeat center; width: 100%; height: 192px; overflow: hidden;
+}
+.qd-31 a {
+	margin: 35px 0px 0px 310px; width: 236px; color: rgb(26, 94, 153); font-size: 18px; display: block;
+}
+.pubH {
+	width: 1100px;
+}
+.center {
+	margin: 0px auto;
+}
+.clearfix::before {
+	display: table; content: "";
+}
+.clearfix::after {
+	display: table; content: "";
+}
+.clearfix::after {
+	overflow: hidden; clear: both;
+}
+.clearfix {
+	-ms-zoom: 1;
+}
+#header {
+	width: 100%; height: 66px; position: absolute; z-index: 5; opacity: 0.8; background-color: rgba(6, 6, 6, 0.8); -webkit-opacity: 0.8; -moz-opacity: 0.8; -khtml-opacity: 0.8;
+}
+#header h1 {
+	width: 220px; height: 42px; margin-top: 14px; margin-left: 50px; float: left; display: inline;
+}
+#header h1 a {
+	background: url("common_icon.png") no-repeat -5px -133px; width: 220px; height: 42px; display: block;
+}
+#header ul {
+	width: 700px; height: 36px; margin-top: 14px; margin-left: 15px; float: left; display: inline;
+}
+#header ul li {
+	height: 36px; color: rgb(255, 255, 255); line-height: 36px; font-size: 16px; margin-right: 15px; float: left; display: inline;
+}
+#header ul li span {
+	width: 36px; height: 36px; margin-right: 8px; float: left; display: inline;
+}
+#header ul li span.span1 {
+	background: url("common_icon.png") no-repeat -227px -130px;
+}
+#header ul li span.span2 {
+	background: url("common_icon.png") no-repeat -14px -186px; width: 240px; margin-top: 4px;
+}
+#header ul li span.span3 {
+	margin-left: -42px;
+}
+#header .fhsy {
+	background: url("zixun_icon.png") no-repeat -179px -310px; width: 77px; height: 22px; margin-top: 22px; float: left; display: table;
+}
+#header .fhsy:hover {
+	background: url("zixun_icon.png") no-repeat -179px -339px;
+}
+#footer {
+	background: url("footer_bg.jpg") repeat-x; width: 100%; height: 170px;
+}
+.footer_wrap {
+	width: 1190px; height: 170px;
+}
+.footerlogo {
+	background: url("common_icon.png") no-repeat -2px -4px; width: 91px; height: 108px; margin-top: 18px; margin-left: 20px; float: left; display: inline;
+}
+.border {
+	height: 111px; margin-top: 11px; margin-left: 17px; border-left-color: rgb(56, 56, 56); border-left-width: 1px; border-left-style: dashed; float: left; display: inline;
+}
+.footer_secicon {
+	height: 100px; margin-top: 35px; float: left;
+}
+.footer_secicon li {
+	width: 85px; height: 100px; margin-right: 20px; margin-left: 25px; float: left; display: inline;
+}
+.footer_secicon li i {
+	width: 48px; height: 48px; margin-left: 18px; float: left; display: block; cursor: pointer;
+}
+.footer_secicon li i a {
+	width: 48px; height: 48px; display: block; cursor: pointer;
+}
+.footer_secicon li span {
+	width: 100%; height: 40px; text-align: center; color: rgb(167, 167, 167); line-height: 40px; font-size: 16px; float: left;
+}
+.footer_secicon1 {
+	background: url("common_icon.png") no-repeat -109px -11px;
+}
+.footer_secicon2 {
+	background: url("common_icon.png") no-repeat -173px -11px;
+}
+.footer_secicon3 {
+	background: url("common_icon.png") no-repeat -237px -11px;
+}
+.footer_secicon4 {
+	background: url("common_icon.png") no-repeat -301px -11px;
+}
+.footer_secicon5 {
+	background: url("common_icon.png") no-repeat -366px -11px;
+}
+.footer_secicon6 {
+	background: url("common_icon.png") no-repeat -430px -11px;
+}
+.footer_secicon7 {
+	background: url("common_icon.png") no-repeat -494px -11px;
+}
+.footer_secicon8 {
+	background: url("common_icon.png") no-repeat -558px -11px;
+}
+.footer_secicon li:hover .footer_secicon1 {
+	background: url("common_icon.png") no-repeat -109px -71px;
+}
+.footer_secicon li:hover .footer_secicon2 {
+	background: url("common_icon.png") no-repeat -173px -71px;
+}
+.footer_secicon li:hover .footer_secicon3 {
+	background: url("common_icon.png") no-repeat -237px -71px;
+}
+.footer_secicon li:hover .footer_secicon4 {
+	background: url("common_icon.png") no-repeat -301px -71px;
+}
+.footer_secicon li:hover .footer_secicon5 {
+	background: url("common_icon.png") no-repeat -366px -71px;
+}
+.footer_secicon li:hover .footer_secicon6 {
+	background: url("common_icon.png") no-repeat -430px -71px;
+}
+.footer_secicon li:hover .footer_secicon7 {
+	background: url("common_icon.png") no-repeat -494px -71px;
+}
+.footer_secicon li:hover .footer_secicon8 {
+	background: url("common_icon.png") no-repeat -558px -71px;
+}
+.footer_copyright {
+	width: 100%; height: 35px; text-align: center; color: rgb(167, 167, 167); line-height: 35px; font-size: 12px; float: left;
+}

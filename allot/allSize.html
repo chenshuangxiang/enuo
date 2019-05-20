@@ -1,0 +1,178 @@
+
+	<link rel="stylesheet" href="css/news.css" media="all" />
+	<link rel="stylesheet" href="css/admin.css" media="all" />
+	<style>
+		.layui-card-header{
+			padding: 0 5%;
+			width: 90%;
+		}
+	</style>
+<body class="childrenBody">
+<div class="big" style="background-color: #f2f2f2;">
+	<div class="layui-card-header" style="background-color: white;padding: 0;
+			width: 100%;">
+		<span class="layui-breadcrumb" style="visibility: visible;">
+			<span>您的位置：首页</span>
+		</span>
+	</div>
+	<blockquote class="layui-elem-quote news_search" style="    height: 48px;    margin-bottom: 2px;">
+		<span style="font-size: 20px;line-height: 48px;">e诺客服主管</span>
+	<div style="float: right;margin-right: 10px">
+
+		<div class="layui-inline" style="margin-right: 16px">
+			<a class="layui-btn layui-btn-normal search_btn" onclick="openTimeChoose()">修改日期</a>
+		</div>
+		<button class="layui-btn layui-btn-sm layui-btn-radius shuaxin">刷新</button>
+	</div>
+	</blockquote>
+
+	<div class="chooseTimeOpen" style="display: none;    margin-top: 20px;">
+		<form class="layui-form">
+			<div class="layui-inline" style="margin-bottom: 15px;">
+				<label class="layui-form-label">开始时间</label>
+				<div class="layui-input-inline">
+					<input type="text" class="layui-input newsTime" id="newsTime" placeholder="请选择开始时间">
+				</div>
+			</div>
+			<div class="layui-inline" style="margin-bottom: 15px;">
+				<label class="layui-form-label">结束时间</label>
+				<div class="layui-input-inline">
+					<input type="text" class="layui-input newsEndTime" id="newsEndTime" placeholder="请选择结束时间">
+				</div>
+			</div>
+			<div class="layui-btn-group" style="margin:10px 0 10px 43px;">
+				<button class="layui-btn layui-btn-primary layui-btn-xs tochoosedaybtn tonowDay" onclick="tonowDay(this)">今日</button>
+				<button class="layui-btn layui-btn-primary layui-btn-xs tochoosedaybtn tonowWeek" onclick="tonowWeek(this)">本周</button>
+				<button class="layui-btn layui-btn-primary layui-btn-xs tochoosedaybtn tonowMonth" onclick="tonowMonth(this)">本月</button>
+				<button class="layui-btn layui-btn-primary layui-btn-xs tochoosedaybtn tonowAll" onclick="tonowAll(this)">全部</button>
+			</div>
+		</form>
+		<input type="button" class="layui-btn layui-btn-lg" onclick="sureFen()" style="margin: 15px 0 0 120px;width: 107px" value="确 定"/>
+	</div>
+	<!--日：layui-bg-blue  周：layui-bg-cyan   月：layui-bg-green   全部：layui-bg-orange-->
+	<div class="layui-fluid" style="padding: 11px;padding-top: 2px">
+		<div class="layui-row layui-col-space15">
+			<div class="layui-col-sm4 layui-col-md20">
+				<div class="layui-card">
+					<div class="layui-card-header">
+						咨询量
+						<span class="layui-badge layui-bg-green layuiadmin-badge dateIcon">月</span>
+					</div>
+					<div class="layui-card-body layuiadmin-card-list">
+						<p class="layuiadmin-big-font adviosyCount"></p>
+						<p>
+							<span class="choosetime"></span>
+							<span class="layuiadmin-span-color"><i class="layui-icon"></i></span>
+						</p>
+					</div>
+				</div>
+			</div>
+			<div class="layui-col-sm4 layui-col-md20">
+				<div class="layui-card">
+					<div class="layui-card-header">
+						客服回访量
+						<span class="layui-badge layui-bg-green layuiadmin-badge dateIcon">月</span>
+					</div>
+					<div class="layui-card-body layuiadmin-card-list">
+						<p class="layuiadmin-big-font accessCount"></p>
+						<p>
+							<span class="choosetime"></span>
+							<span class="layuiadmin-span-color"><i class="layui-icon"></i></span>
+						</p>
+					</div>
+				</div>
+			</div>
+			<div class="layui-col-sm4 layui-col-md20">
+				<div class="layui-card">
+					<div class="layui-card-header">
+						分诊量
+						<span class="layui-badge layui-bg-green layuiadmin-badge dateIcon">月</span>
+					</div>
+					<div class="layui-card-body layuiadmin-card-list">
+						<p class="layuiadmin-big-font allotCount"></p>
+						<p>
+							<span class="choosetime"></span>
+							<span class="layuiadmin-span-color"><i class="layui-icon"></i></span>
+						</p>
+					</div>
+				</div>
+			</div>
+			<div class="layui-col-sm4 layui-col-md20">
+				<div class="layui-card">
+					<div class="layui-card-header">
+						体验券统计
+						<span class="layui-badge layui-bg-green layuiadmin-badge dateIcon">月</span>
+					</div>
+					<div class="layui-card-body layuiadmin-card-list">
+
+						<p class="layuiadmin-big-font couponCount"></p>
+						<p>
+							<span class="choosetime"></span>
+							<span class="layuiadmin-span-color"><i class="layui-icon"></i></span>
+						</p>
+					</div>
+				</div>
+			</div>
+			<div class="layui-col-sm4 layui-col-md20">
+				<div class="layui-card">
+					<div class="layui-card-header">
+						累计用户数
+						<span class="layui-badge layui-bg-green layuiadmin-badge dateIcon">月</span>
+					</div>
+					<div class="layui-card-body layuiadmin-card-list">
+
+						<p class="layuiadmin-big-font userCount"></p>
+						<p>
+							<span class="choosetime"></span>
+							<span class="layuiadmin-span-color"><i class="layui-icon"></i></span>
+						</p>
+					</div>
+				</div>
+			</div>
+			<div class="layui-col-sm12">
+				<div class="layui-card">
+					<div class="layui-card-body">
+						<div class="layui-row">
+							<div class="layui-col-sm12 layui-col-md6" style="padding: 3px;">
+								<!--<div class="layui-carousel layadmin-carousel layadmin-dataview" style="width: 100%; height: 280px;">
+									<div id="LAY-index-pagetwo">
+
+									</div>
+								</div>-->
+								<div class="layui-card">
+									<div class="layui-card-header">
+										<span class="dateAfterSevenAdvoisy"></span>
+										<span class="layui-badge layui-bg-cyan layuiadmin-badge">周</span>
+									</div>
+									<div class="layui-card-body layuiadmin-card-list" style="padding: 5px;">
+
+										<div id="adviosyEcharts" style="height: 300px;width: 100%">
+
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="layui-col-sm12 layui-col-md6" style="padding: 3px;">
+								<div class="layui-card">
+									<div class="layui-card-header">
+										<span class="dateAfterSevenAccess"></span>
+										<span class="layui-badge layui-bg-cyan layuiadmin-badge">周</span>
+									</div>
+									<div class="layui-card-body layuiadmin-card-list" style="padding: 5px;">
+
+										<div id="accessEcharts" style="height: 300px;width: 100%">
+
+										</div>
+									</div>
+								</div>
+							</div>
+
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<script type="text/javascript" src="js/echarts.common.min.js"></script>
+	<script type="text/javascript" src="js/allSize.js?v=222"></script>

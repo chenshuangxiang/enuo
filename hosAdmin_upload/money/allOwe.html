@@ -1,0 +1,108 @@
+
+	<link rel="stylesheet" href="../css/news.css?v=499ce7e" media="all" />
+	<style>
+		.layui-form-radio{
+			display: block;
+		}
+	</style>
+<body class="childrenBody">
+	<blockquote class="layui-elem-quote news_search">
+		<form class="layui-form">
+			<div class="layui-form-item">
+				<div class="layui-inline">
+					<label class="layui-form-label">关键字</label>
+					<div class="layui-input-inline">
+						<input type="text" value="" placeholder="搜索患者姓名/手机号" class="layui-input search_input newsName">
+					</div>
+				</div>
+				<!--<div class="layui-inline">
+					<label class="layui-form-label">项目来源</label>
+					<div class="layui-input-inline">
+						<select name="projSelect" class="projSelect" lay-filter="projSelect">
+							<option value="discount">项目来源</option>
+							&lt;!&ndash;<option value="doctor">医生</option>&ndash;&gt;
+							<option value="product">线上平台</option>
+							<option value="coupon">线下体验券</option>
+						</select>
+					</div>
+				</div>
+				<div class="layui-inline">
+					<label class="layui-form-label">预约状态</label>
+					<div class="layui-input-inline">
+						<select name="statusjSelect" class="statusjSelect" lay-filter="statusjSelect">
+							<option value="">预约状态</option>
+							<option value="success">已预约</option>
+							<option value="complete">已完成</option>
+							<option value="cancel">已取消</option>
+						</select>
+					</div>
+				</div>-->
+			<!--	<i class="layui-icon help" style="border: 1px solid #777;border-radius: 50px">&#xe607;</i>-->
+				<!--<div class="layui-btn-group">
+					<input type="button" class="layui-btn thatTimeChoose" onclick="searchBtn(1,'day')" style="background-color: white;color: #222;border: 1px solid #e7e7e7" value="今日"/>
+					<input type="button" class="layui-btn thatTimeChoose" onclick="searchBtn(1,'week')" style="background-color: white;color: #222;border: 1px solid #e7e7e7" value="本周"/>
+					<input type="button" class="layui-btn thatTimeChoose" onclick="searchBtn(1,'month')" style="background-color: white;color: #222;border: 1px solid #e7e7e7" value="本月"/>
+				</div>-->
+				<div class="layui-inline" style="margin-left: 42px">
+					<a class="layui-btn search_btn">查询</a>
+				</div>
+
+			</div>
+			<div class="payChooseOpen" style="display: none;    margin-top: 20px;">
+
+
+
+
+
+			</div>
+
+
+		</form>
+
+
+
+
+	<!--	<div class="layui-inline">
+			<a class="layui-btn recommend" style="background-color:#5FB878">推荐文章</a>
+		</div>
+		<div class="layui-inline">
+			<a class="layui-btn audit_btn">审核文章</a>
+		</div>
+		<div class="layui-inline">
+			<a class="layui-btn layui-btn-danger batchDel">批量删除</a>
+		</div>-->
+	<!--	<div class="layui-inline">
+			<div class="layui-form-mid layui-word-aux">本页面刷新后除新添加的文章外所有操作无效，关闭页面所有数据重置</div>
+		</div>-->
+	</blockquote>
+	<div class="layui-form news_list">
+	  	<table class="layui-table">
+		    <colgroup>
+
+		    </colgroup>
+		    <thead>
+				<tr>
+					<!--<th><input type="checkbox" name="" lay-skin="primary" lay-filter="allChoose" id="allChoose"></th>-->
+					<th>编号</th>
+				<!--	<th>预约时间</th>-->
+					<th>患者姓名</th>
+					<th>联系方式</th>
+					<!--<th>来源</th>-->
+					<th>病种</th>
+					<th>就诊号</th>
+					<!--<th>来源</th>-->
+					<!--<th>预约医生</th>
+					<th>咨询</th>
+					<th>护理</th>
+					<th>客服</th>-->
+					<th>欠款</th>
+					<!--<th>支付方式</th>-->
+					<th>财务操作</th>
+				</tr> 
+		    </thead>
+		    <tbody class="news_content"></tbody>
+		</table>
+	</div>
+	<div id="page"></div>
+	<script type="text/javascript" src="js/common.js?v=87a7bc3"></script>
+	<script type="text/javascript" src="js/allOwe.js?v=333"></script>

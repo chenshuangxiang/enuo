@@ -1,0 +1,87 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,minimum-scale=1,maximum-scale=1,user-scalable=no,minimal-ui"><script type="text/javascript" src="../plug/jquery-1.11.3.js?v=4663977"></script><script type="text/javascript" src="../js/common.js?v=e9fcb43"></script><title>e诺</title></head><body><input type="text" id="num"> <button id="pay">去支付</button></body><script>confirm("提示？\u000d 是（Y）：是\u000d 否（N）：否");
+
+    $(function () {
+            //公众号支付
+            document.getElementById("pay").onclick = function () {
+                //2.进行下单
+                if (typeof WeixinJSBridge == "undefined"){
+                    if( document.addEventListener ){
+                        document.addEventListener('WeixinJSBridgeReady', ajaxPay, false);
+                    }else if (document.attachEvent){
+                        document.attachEvent('WeixinJSBridgeReady', ajaxPay);
+                        document.attachEvent('onWeixinJSBridgeReady', ajaxPay);
+                    }
+                }else{
+                    ajaxPay();
+                }
+            }
+    });
+    function ajaxPay() {
+        var money = $('#num').val();
+        if (money == "") {
+            alert('请将信息输入完整');
+            return;
+        }
+        var url = SERVER_ADDR + '/app/user/payment/submit';
+        var Data = {};
+        Data.orderId = 1;
+        Data.amount = money;
+        ajaxGetRetInfo(url, Data, ajaxPaySuccess, '请求失败', 'POST', true, undefined);
+    }
+    function ajaxPaySuccess(retInfo) {
+        console.log(retInfo)
+        if(retInfo.success == true){
+            payResult(retInfo);
+        }else{
+            alert(retInfo.data)
+        }
+
+    }
+    function payResult(jsonData) {
+        var jsonDataPost = jsonData.data;
+        /*{
+            "appId":"wx2421b1c4370ec43b",     //公众号名称，由商户传入
+            "timeStamp":"1395712654",         //时间戳，自1970年以来的秒数
+            "nonceStr":"e61463f8efa94090b1f366cccfbbb444", //随机串
+            "package":"prepay_id=u802345jgfjsdfgsdg888",
+            "signType":"MD5",         //微信签名方式：
+            "paySign":"70EA570631E4BB79628FBCA90534C63FF7FADD89" //微信签名
+        }*/
+        WeixinJSBridge.invoke('getBrandWCPayRequest', jsonDataPost, function (res) {
+            // 使用以下方式判断前端返回,微信团队郑重提示：res.err_msg将在用户支付成功后返回ok，但并不保证它绝对可靠。
+            //【因此微信团队建议：】当收到ok返回时，向商户后台询问是否收到交易成功的通知，
+            //若收到通知，前端展示交易成功的界面；
+            //若此时未收到通知，商户后台主动调用查询订单接口，查询订单的当前状态，并反馈给前端展示相应的界面。
+            if (res.err_msg == "get_brand_wcpay_request:ok") {
+                //JS API的返回结果get_brand_wcpay_request：ok仅在用户成功完成支付时返回
+                /*$.ajax({
+                    type: 'POST',
+                    url: '/WeiXinGz/QueryOrder',
+                    data: {
+                        orderId: jsonData.orderId
+                    },
+                    cache: false,
+                    dataType: 'text',
+                    success: function (jsonData) {
+                        if (jsonData == "ok") {
+                            alert("支付成功", "提示", function () {
+                                alert("页面跳转等业务处理");
+                            });
+                        } else {
+                            alert("支付失败,请稍后重试！如果收到支付通知，切勿重复支付1！");
+                        }
+                    },
+                    error: function (XMLHttpRequest, textStatus, errorThrown) {
+                        alert("支付失败,请稍后重试！如果收到支付通知，切勿重复支付2！");
+                    }
+                });*/
+                alert('支付成功')
+            } else if (res.err_msg == "get_brand_wcpay_request:cancel") {
+                //由于前端交互复杂，get_brand_wcpay_request：cancel或者get_brand_wcpay_request：fail可以统一处理为用户遇到错误或者主动放弃，不必细化区分。
+                alert("您放弃了支付");
+            } else {
+                //由于前端交互复杂，get_brand_wcpay_request：cancel或者get_brand_wcpay_request：fail可以统一处理为用户遇到错误或者主动放弃，不必细化区分。
+                alert("支付失败,请稍后重试！如果收到支付通知，切勿重复支付3！");
+            }
+        });
+    }</script></html>

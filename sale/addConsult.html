@@ -1,0 +1,618 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1.0, maximum-scale=1.0">
+    <title>添加咨询</title>
+    <link rel="stylesheet" href="css/add.css?v=222">
+    <link rel="stylesheet" href="css/iosSelect.css">
+    <link rel="stylesheet" href="css/layer.css">
+    <script src="js/jquery-1.11.3.min.js"></script>
+    <script src="js/common.js?v=222"></script>
+    <script src="js/iosSelect.js"></script>
+</head>
+<style>
+    .params{
+        margin: 15px 9%;
+    }
+    .expiresTwo label{
+        display: inline-block;
+        border: solid 1px #707070;
+        border-radius: 10px;
+        padding: 0 10px;
+        width: 48%;
+        height: 2rem;
+        line-height: 2rem;
+    }
+    .expiresTwo select {
+        outline: none;
+        border: none;
+        border-radius: 10px;
+        width: 100%;
+        background-color: white;
+        /* height: 1.8rem; */
+    }
+    .layeropen p{
+        margin-top: 12px;
+    }
+    .ele_container p {
+        display: inline-block;
+        height: 1.7rem;
+        line-height: 1.7rem;
+        border: 1px solid #DCDCDC;
+        padding: 0 5px;
+        position: relative;
+        border-radius: 5px;
+        margin: 3px 5px 3px 5px;
+    }
+    .diseaseTagClose{
+        width: 1rem;
+        position: absolute;
+        top: -.5rem;
+        right: -.5rem;
+    }
+
+</style>
+<body>
+<div class="shadow" style="position: fixed"></div>
+<div class="layeropen" style="position: fixed;    margin-top: 13%;    height: 81%;
+    overflow-y: scroll;">
+    <img class="closeopen" src="img/close.png">
+    <p ><span class="right">患者手机号：</span><span class="left tel_num"></span></p>
+    <p><span class="right">患者姓名：</span><span class="left user_name"></span></p>
+    <p ><span class="right">患者性别：</span><span class="left sex_num"></span></p>
+    <p ><span class="right">患者年龄：</span><span class="left age_num"></span></p>
+    <p ><span class="right">患者职业：</span><span class="left job_num"></span></p>
+    <p ><span class="right">患者地址：</span><span class="left address_num"></span></p>
+    <p><span class="right">意向医院：</span><span class="left hospital_id"></span></p>
+    <p><span class="right">意向程度：</span><span class="left intentSpan"></span></p>
+    <p><span class="right">患者来源：</span><span class="left store_id"></span></p>
+    <p><span class="right">疾病标签：</span><span class="left disease_tag_id"></span></p>
+    <p><span class="right">患者疾病：</span><span class="left disease_id"></span></p>
+    <p><span class="right">下次回访：</span><span class="left nextrecord_id"></span></p>
+    <p><span class="right">患者诉求：</span><span class="left brief_id"></span></p>
+    <button class="accurate_btn" style="margin: 10% 0;" onclick="Get.add(this)">确定</button>
+</div>
+    <div class="top">
+        <img src="img/more.png" onclick="window.location.href = 'consultList.html'">
+        <label class="lableZi">添加咨询</label>
+        <!--<span class="edit">退出</span>-->
+    </div>
+    <div style="margin-bottom: 5rem;">
+        <div class="params">
+            <!--<p>
+                <img src="img/split.png" class="img_span">
+                <span class="img_span algin">患者手机号：</span>
+            </p>-->
+            <input placeholder="患者手机号" type="number" id="user_tel" onchange="Get.firstConcult()" style="width: 41%;">
+            <input placeholder="患者姓名" id="user_name" style="    width: 37%;">
+        </div>
+        <div class="params">
+            <!--<p>
+                <img src="img/split.png" class="img_span">
+                <span class="img_span algin">患者姓名：</span>
+            </p>-->
+           <!-- <input placeholder="请输入患者姓名" id="user_name">-->
+        </div>
+        <div class="params expiresTwo">
+           <!-- <p>
+                <img src="img/split.png" class="img_span">
+                <span class="img_span algin" >性别：</span>
+            </p>-->
+            <label style="padding: 0;">
+                <select id="sex">
+                    <option style="border: none"  value="unknown">请选择性别</option>
+                    <option value="man">男</option>
+                    <option value="woman">女</option>
+                </select>
+            </label>
+            <input placeholder="请输入年龄" type="number" id="age_num" style="width: 37%;">
+        </div>
+       <!-- <div class="params">
+            <p>
+                <img src="img/split.png" class="img_span">
+                <span class="img_span algin" >年龄：</span>
+            </p>
+            <input placeholder="请输入年龄" type="number" id="age_num">
+        </div>-->
+        <div class="params">
+            <!--<p>
+                <img src="img/split.png" class="img_span">
+                <span class="img_span algin" >职业：</span>
+            </p>-->
+            <input placeholder="请输入患者职业(选填)" type="text" id="job">
+        </div>
+        <div class="params">
+            <!--<p>
+                <img src="img/split.png" class="img_span">
+                <span class="img_span algin" >地址：</span>
+            </p>-->
+            <input placeholder="请输入患者地址(选填)" type="text" id="address">
+        </div>
+        <div class="expires">
+            <!--<p>
+                <img src="img/split.png" class="img_span">
+                <span class="img_span algin">意向医院：</span>
+            </p>-->
+            <label style="padding: 0;    width: 94%;">
+                <select id="hospital_id">
+                    <option >请选择意向医院</option>
+                </select>
+            </label>
+        </div>
+        <div class="expires">
+            <!--<p>
+                <img src="img/split.png" class="img_span">
+                <span class="img_span algin">意向医院：</span>
+            </p>-->
+            <label style="padding: 0;    width: 94%;">
+                <select id="intent">
+                    <option>请选择意向程度</option>
+                    <option value="STRONG_INTENEION">意向强烈</option>
+                    <option value="LITTLE_INTENEION">意向较强</option>
+                    <option value="GENERAL_INTENTION">意向一般，需要跟进</option>
+                    <option value="NO_INTENTION">暂时无意向</option>
+                </select>
+            </label>
+        </div>
+        <div class="expires">
+            <!--<p>
+                <img src="img/split.png" class="img_span">
+                <span class="img_span algin">来源：</span>
+            </p>-->
+            <label style="padding: 0;    width: 94%;">
+                <select id="store_id">
+                    <option >请选择来源</option>
+                </select>
+            </label>
+        </div>
+        <div class="expires">
+            <!--<p>
+                <img src="img/split.png" class="img_span">
+                <span class="img_span algin">来源：</span>
+            </p>-->
+            <label style="padding: 0;    width: 94%;">
+                <select id="disease_tag">
+                    <option >请选择病种标签</option>
+                    <option >洁牙</option>
+                    <option >补牙</option>
+                    <option >牙齿矫正</option>
+                    <option >种植牙</option>
+                    <option >镶牙</option>
+                    <option >蛀牙</option>
+                    <option >口腔咨询</option>
+                    <option >鼻综合</option>
+                    <option >身体检测</option>
+                    <option >内科</option>
+                    <option >妇科</option>
+                    <option >骨科</option>
+                    <option >减肥</option>
+                    <option >医美咨询</option>
+                    <option >护肤咨询</option>
+                    <option >健康咨询</option>
+                    <option >活动咨询</option>
+                    <option >义诊</option>
+                    <option >代金券</option>
+                    <option >其他</option>
+                </select>
+            </label>
+        </div>
+        <div class="expires ele_container" style="margin: -3px 9% -5px 9%">
+
+        </div>
+        <div class="params">
+            <!--<p>
+                <img src="img/split.png" class="img_span">
+                <span class="img_span algin" >疾病：</span>
+            </p>-->
+            <input placeholder="请输入咨询病种" type="text" id="disease">
+        </div>
+        <div class="params">
+            <!--<p>
+                <img src="img/split.png" class="img_span">
+                <span class="img_span algin" >其他诉求：</span>
+            </p>-->
+            <input placeholder="请输入患者其他诉求" type="text" id="brief">
+        </div>
+        <div class="expires">
+            <p>
+                <!--<img src="img/split.png" class="img_span">-->
+                <span class="img_span algin" style="margin-left: 0;vertical-align: top;
+    margin-top: 8px;
+    display: inline-block;">下次回访时间:</span>
+                <label  data-year="" data-month="" data-date="" class="selectDate" id="showDate" style="width: 46%">
+                    <!-- <span  id="expire_date"></span><img src="img/date.png" class="date">-->
+                    <!--2018年 3月 7日-->
+                </label>
+            </p>
+
+        </div>
+
+        <!--<div class="params">
+            <p>
+                <img src="img/split.png" class="img_span">
+                <span class="img_span algin" >体验券编号：</span>
+            </p>
+            <input placeholder="请输入体验券编号" id="ticker_num">
+        </div>-->
+        <!--<div class="expires">
+            <p>
+                <img src="img/split.png" class="img_span">
+                <span class="img_span algin" >产品名称：</span>
+            </p>
+            <label style="padding: 0;    width: 94%;">
+                <select id="goods_id">
+                    <option style="border: none">请选择</option>
+                </select>
+            </label>
+        </div>-->
+
+
+        <!--<div class="expires">
+            <p>
+                <img src="img/split.png" class="img_span">
+                <span class="img_span algin">产品失效时间：</span>
+            </p>
+            <label  data-year="" data-month="" data-date="" class="selectDate" id="showDate">
+               &lt;!&ndash; <span  id="expire_date"></span><img src="img/date.png" class="date">&ndash;&gt;
+                &lt;!&ndash;2018年 3月 7日&ndash;&gt;
+            </label>
+        </div>-->
+    </div>
+    <button class="add_tic_btn" onclick="Get.addconfirm()">添加</button>
+<!--<div class="shadow"></div>-->
+<!--<div class="layer_align">
+<div class="layer">
+    <p>体验券编号：<span>80017</span></p>
+    <p>产品名称：<span>80017</span></p>
+    <p>参加医院：<span>80017</span></p>
+    <p>体验券编号：<span>80017</span></p>
+    <p>体验券编号：<span>80017</span></p>
+    <p>体验券编号：<span>80017</span></p>
+</div>
+</div>-->
+
+</body>
+<script>
+    var diseaseTagArray = [];
+    $(function () {
+        if(getQueryString('id') != null){
+            $('title,.lableZi').text('修改咨询');
+            $('.add_tic_btn').text('修改');
+        }
+        $(".closeopen").click(function () {
+            $('.shadow,.layeropen').hide();
+            $('.accurate_btn').attr('disabled',false).css('background-color','#00afa1');
+        });
+        Get.oneselect();
+        Get.twoselect();
+        if(getQueryString('id') != null){
+            Get.consultInfo();
+        }
+        $("#disease_tag").change(function(){
+            var disease_tag = $("#disease_tag").val();
+            if(disease_tag != '请选择病种标签'){
+                diseaseTagArray.push(disease_tag);
+                Get.add_newelement(diseaseTagArray);
+            }
+        });
+    })
+    var Get = {
+        add_newelement:function (m) {
+            //去重
+            m = $.repetition(m);
+            console.log(m);
+            var html = "";
+            $(m).each(function(key,val){
+                html += "<p data_val='"+key+"'><span style='font-size: 12px;'>"+val+"</span><img src='img/close.png' class='diseaseTagClose' onclick='Get.del_newelement(this)'/></p>"
+            });
+            $(".ele_container").html(html);
+        },
+        del_newelement: function(m){
+            var i = $(m).parent().index();
+            diseaseTagArray.splice(i,1);
+            console.log(diseaseTagArray);
+            $(m).parent().remove();
+        },
+        firstConcult: function () {
+            if (check(/^[1][3,4,5,6,7,8,9][0-9]{9}$/.test($("#user_tel").val().trim()) === true, "请输入正确的手机号！")) {
+                var url = SERVER_ADDR + '/salesman/advisory/getPatientInfo.json';
+                var Data = {};
+                Data.mobile = $('#user_tel').val();
+                ajaxGetRetInfo(url, Data, this.firstConcultSuccess, '请求失败', 'GET', true, undefined);
+            }
+        },
+        firstConcultSuccess: function (retInfo) {
+            console.log(retInfo)
+            if (retInfo.success == true) {
+                if(retInfo.data != ''){
+//返回填充
+                    $("#user_name").val(retInfo.data.name);
+                    $("#sex").val(retInfo.data.sex);
+                    $("#age_num").val(retInfo.data.age);
+                    $("#address").val(retInfo.data.address);
+                    $("#job").val(retInfo.data.job);
+                }
+
+            } else {
+                alert(retInfo.data);
+            }
+        },
+        oneselect: function () {
+            var url = SERVER_ADDR + '/common/getHospitals.json';
+            var Data = '';
+            ajaxGetRetInfo(url, Data, this.oneselectSuccess, '请求失败', 'GET', true, undefined);
+        },
+        oneselectSuccess: function (retInfo) {
+            console.log(retInfo)
+            if (retInfo.success == true) {
+                $('#hospital_id').append('<option value="0">意向不明</option>');
+                retInfo.data.forEach(function (value) {
+                    $('#hospital_id').append('<option value="'+value.id+'">'+value.name+'</option>')
+                })
+            }else {
+                alert(retInfo.data);
+            }
+        },
+        consultInfo: function () {
+            var url = SERVER_ADDR + '/salesman/advisory/getDetail.json';
+            var Data = {};
+            Data.id = getQueryString('id');
+            ajaxGetRetInfo(url, Data, this.consultInfoSuccess, '请求失败', 'GET', true, undefined);
+        },
+        consultInfoSuccess: function (retInfo) {
+            console.log(retInfo)
+            if (retInfo.success == true) {
+                $("#user_name").val(retInfo.data.name);
+                $("#user_tel").val(retInfo.data.mobile);
+                $("#sex").val(retInfo.data.sex);
+                $("#age_num").val(retInfo.data.age);
+                $("#job").val(retInfo.data.job);
+                $("#address").val(retInfo.data.address);
+                $("#disease").val(retInfo.data.disease);
+                $("#hospital_id").val(retInfo.data.hospitalId);
+                $("#brief").val(retInfo.data.brief);
+                $("#store_id").val(retInfo.data.storeId);
+
+
+                console.log(retInfo.data.nextAccessDate)
+                if(retInfo.data.nextAccessDate){
+                    var nextAccessDate = new Date(retInfo.data.nextAccessDate).Format('yyyy-MM-dd');
+                    var nextAccessDateYear = nextAccessDate.split('-')[0];
+                    if(Number(nextAccessDate.split('-')[1]) < 10){
+                        var nextAccessDateMonth = nextAccessDate.split('-')[1].split('0')[1];
+                    }else{
+                        var nextAccessDateMonth = nextAccessDate.split('-')[1];
+                    }
+                    if(Number(nextAccessDate.split('-')[2]) < 10){
+                        var nextAccessDateDay = nextAccessDate.split('-')[2].split('0')[1];
+                    }else{
+                        var nextAccessDateDay = nextAccessDate.split('-')[2];
+                    }
+                    //var nextAccessDateDay = retInfo.data.nextAccessDate.split('-')[2];
+                    $('#showDate').text(nextAccessDateYear + '年 '+nextAccessDateMonth + '月 '+nextAccessDateDay + '日')
+                        .attr('data-year',nextAccessDateYear).attr('data-month',nextAccessDateMonth).attr('data-date',nextAccessDateDay);
+                }else{
+                    $('#showDate').text('')
+                        .attr('data-year','').attr('data-month','').attr('data-date','');
+
+                }
+            }else {
+                alert(retInfo.data);
+            }
+        },
+        twoselect: function () {
+            var url = SERVER_ADDR + '/common/getStores.json';
+            var Data = '';
+            ajaxGetRetInfo(url, Data, this.twoselectSuccess, '请求失败', 'GET', true, undefined);
+        },
+        twoselectSuccess: function (retInfo) {
+            console.log(retInfo)
+            if (retInfo.success == true) {
+                retInfo.data.forEach(function (value) {
+                    $('#store_id').append('<option value="'+value.id+'">'+value.name+'</option>');
+                })
+            }else {
+                alert(retInfo.data);
+            }
+        },
+        addconfirm:function () {
+            if(!$.verify($("#user_tel").val(),"手机号")){return false;}
+            if(!$.verify($("#user_name").val(),"患者姓名")){return false;}
+            //if($("#sex").val() == '请选择性别'){alert('请选择性别');return false;}
+            if(!$.verify($("#age_num").val(),"患者年龄")){return false;}
+            if($("#hospital_id").val() == '请选择意向医院'){alert('请选择意向医院');return false;}
+            if($("#intent").val() == '请选择意向程度'){alert('请选择意向程度');return false;}
+            if($("#store_id").val() == '请选择来源'){alert('请选择来源');return false;}
+            if(!$.verify($("#disease").val(),"咨询病种")){return false;}
+            //if(!$.verify($("#showDate").text(),"下次回访时间")){return false;}
+            if(!$.verify($("#brief").val(),"患者其他诉求")){return false;}
+            if(diseaseTagArray.length == 0){alert('请选择病种标签');return false}
+            Get.addconfirmCheck();
+        },
+        addconfirmCheck: function () {
+            var url = SERVER_ADDR + '/salesman/advisory/getAdvisorySalesman.json';
+            var Data = {};
+            Data.mobile = $("#user_tel").val();
+            ajaxGetRetInfo(url, Data, this.addconfirmCheckSuccess, '请求失败', 'GET', true, undefined);
+        },
+        addconfirmCheckSuccess: function (retInfo) {
+            console.log(retInfo)
+            if (retInfo.success == false) {
+                var confirm = window.confirm(retInfo.data + '，请核实！是否确认添加？');
+                if (confirm == true){
+                    Get.addconfirmtrue();
+                }
+            }else {
+               Get.addconfirmtrue();
+            }
+        },
+        addconfirmtrue:function () {
+            $('.shadow,.layeropen').show();
+            $(".tel_num").text($("#user_tel").val());
+            $(".user_name").text($("#user_name").val());
+            $(".sex_num").text($("#sex").find("option:selected").text());
+            $(".age_num").text($("#age_num").val());
+            $(".job_num").text($("#job").val());
+            $(".address_num").text($("#address").val());
+            $(".hospital_id").text($("#hospital_id").find("option:selected").text());
+            $(".intentSpan").text($("#intent").find("option:selected").text());
+            $(".store_id").text($("#store_id").find("option:selected").text());
+            $(".disease_id").text($("#disease").val());
+            $(".disease_tag_id").text(diseaseTagArray.join(','));
+            $(".brief_id").text($("#brief").val());
+            $(".nextrecord_id").text($('#showDate').text().replace('年 ','-').replace('月 ','-').replace('日',''));
+        },
+        add: function (obj) {
+            var Data = {};
+            if(getQueryString('id') != null){
+                var url = SERVER_ADDR + '/salesman/advisory/update';
+                Data.id = getQueryString('id');
+            }else{
+                var url = SERVER_ADDR + '/salesman/advisory/add';
+            }
+            Data.name = $("#user_name").val();
+            Data.mobile = $("#user_tel").val();
+
+            Data.sex = $("#sex").val();
+            Data.age = $("#age_num").val();
+            Data.job = $("#job").val();
+            Data.address = $("#address").val();
+            Data.disease = $("#disease").val();
+            Data.diseaseLabel = diseaseTagArray.join(',');
+            if($("#hospital_id").val() != '请选择意向医院'){
+                Data.hospitalId = $("#hospital_id").val();
+            }
+            Data.intention = $("#intent").val();
+            Data.brief = $("#brief").val();
+            if($("#store_id").val() != '请选择来源'){
+                Data.storeId = $("#store_id").val();
+            }
+            Data.nextAccessDate = $('#showDate').text().replace('年 ','-').replace('月 ','-').replace('日','');
+            $(obj).attr('disabled',true).css('background-color','#cccccc');
+            ajaxGetRetInfo(url, Data, this.addSuccess, '请求失败', 'POST', true, undefined);
+        },
+        addSuccess: function (retInfo) {
+            console.log(retInfo)
+            if (retInfo.success == true) {
+                alert(retInfo.data);
+                window.location.href = 'consultList.html';
+            }else{
+                alert(retInfo.data);
+            }
+        },
+    }
+</script>
+<script type="text/javascript">
+    var selectDateDom = $('.selectDate');
+    var showDateDom = $('#showDate');
+    // 初始化时间
+    var now = new Date();
+    var nowNextMonth = getNextMonth(now.Format('yyyy-MM-dd'));
+    var nowYear = nowNextMonth.split('-')[0];
+    var nowMonth = nowNextMonth.split('-')[1];
+    var nowDate = nowNextMonth.split('-')[2];
+    showDateDom.attr('data-year', nowYear);
+    showDateDom.attr('data-month', nowMonth);
+    showDateDom.attr('data-date', nowDate);
+    showDateDom.text(nowYear+'年 '+nowMonth+'月 '+nowDate+'日');
+    // 数据初始化
+    function formatYear (nowYear) {
+        var arr = [];
+        for (var i = nowYear - 5; i <= nowYear + 5; i++) {
+            arr.push({
+                id: i + '',
+                value: i + '年'
+            });
+        }
+        return arr;
+    }
+    function formatMonth () {
+        var arr = [];
+        for (var i = 1; i <= 12; i++) {
+            arr.push({
+                id: i + '',
+                value: i + '月'
+            });
+        }
+        return arr;
+    }
+    function formatDate (count) {
+        var arr = [];
+        for (var i = 1; i <= count; i++) {
+            arr.push({
+                id: i + '',
+                value: i + '日'
+            });
+        }
+        return arr;
+    }
+    var yearData = function(callback) {
+        // settimeout只是模拟异步请求，真实情况可以去掉
+        // setTimeout(function() {
+        callback(formatYear(nowYear))
+        // }, 2000)
+    }
+    var monthData = function (year, callback) {
+        // settimeout只是模拟异步请求，真实情况可以去掉
+        // setTimeout(function() {
+        callback(formatMonth());
+        // }, 2000);
+    };
+    var dateData = function (year, month, callback) {
+        // settimeout只是模拟异步请求，真实情况可以去掉
+        // setTimeout(function() {
+        if (/^(1|3|5|7|8|10|12)$/.test(month)) {
+            callback(formatDate(31));
+        }
+        else if (/^(4|6|9|11)$/.test(month)) {
+            callback(formatDate(30));
+        }
+        else if (/^2$/.test(month)) {
+            if (year % 4 === 0 && year % 100 !==0 || year % 400 === 0) {
+                callback(formatDate(29));
+            }
+            else {
+                callback(formatDate(28));
+            }
+        }
+        else {
+            throw new Error('month is illegal');
+        }
+        // }, 2000);
+        // ajax请求可以这样写
+        /*
+        $.ajax({
+            type: 'get',
+            url: '/example',
+            success: function(data) {
+                callback(data);
+            }
+        });
+        */
+    };
+    selectDateDom.bind('click', function () {
+        var oneLevelId = showDateDom.attr('data-year');
+        var twoLevelId = showDateDom.attr('data-month');
+        var threeLevelId = showDateDom.attr('data-date');
+        var iosSelect = new IosSelect(3,
+            [yearData, monthData, dateData],
+            {
+                title: '时间选择',
+                itemHeight: 35,
+                oneLevelId: oneLevelId,
+                twoLevelId: twoLevelId,
+                threeLevelId: threeLevelId,
+                showLoading: true,
+                callback: function (selectOneObj, selectTwoObj, selectThreeObj) {
+                    showDateDom.attr('data-year', selectOneObj.id);
+                    showDateDom.attr('data-month', selectTwoObj.id);
+                    showDateDom.attr('data-date', selectThreeObj.id);
+                    showDateDom.html(selectOneObj.value + ' ' + selectTwoObj.value + ' ' + selectThreeObj.value);
+                }
+            });
+    });
+</script>
+</html>
