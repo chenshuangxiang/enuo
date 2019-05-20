@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="css/base.css" />
+<link rel="stylesheet" href="css/util.css" />
+<link rel="stylesheet" href="css/collect.css" />
+<title>医院分诊列表</title>
+<style>
+.head_area .public_input span{
+	width: 100px;font-size: 18px;
+}
+.head_area .public_input input,
+.head_area .public_input select{
+	width: 180px;margin-left: 10px;margin-right: 10px;
+}
+.layui-laydate-content table td {
+	min-height: inherit;
+	line-height: inherit;
+	border: none;
+}
+</style>
+</head>
+<body>
+<div class="content hos_special_proj">
+	<div class="navigate_head clearfix">
+		<p class="navi_current" onclick="window.location.href='special_proj_list.html'">分诊列表</p>
+		<p onclick="window.location.href='todayRecord.html'">今日回访</p>
+		<!--<p class="navi_null"></p>-->
+	</div>
+	<!--头部功能-->
+	<div class="head_area flex_vertical" style="display: block;">
+		
+		
+		
+		<div class="public_input margindiv">
+			<!--<span >项目名称：</span>-->
+			<input type="text" class="proj_name" placeholder="关键字(姓名/手机号)"/>
+		</div>
+		<div class="public_input margindiv">
+			<!--<span>项目类型：</span>-->
+			<input type="text" id="timeInput" style="width: 145px" placeholder="选择时间"/>
+		</div>
+		<!--<div class="public_input margindiv">
+			<select class="pass">
+				<option value="">请选择</option>
+				<option value="unreservation">未预约</option>
+				<option value="reservation"> 已预约</option>
+				<option value="visit">已到诊</option>
+				<option value="success">已成交</option>
+				<option value="faild">到诊未成交</option>
+				&lt;!&ndash;<option value="repeat">重单</option>&ndash;&gt;
+			</select>
+		</div>-->
+		<!--<div class="public_input margindiv">
+			&lt;!&ndash;<span>平台发布：</span>&ndash;&gt;
+			<select class="isdrainage">
+				<option value="">请选择是否引流</option>
+				<option value="true">是</option>
+				<option value="false">否</option>
+			</select>
+		</div>-->
+		<button class="search" onclick="indexPage()">搜索</button>
+	</div>
+	<table>
+		<thead>
+			<tr>
+				<td>序号</td>
+				<td>姓名</td>
+				<td>手机号</td>
+
+				<!--<td>图片</td>-->
+				<td>疾病</td>
+				<td>分诊时间</td>
+				<!--<td>状态</td>-->
+				<td>操作</td>
+			</tr>
+		</thead>
+		<tbody class="tbody">
+			
+		</tbody>
+	</table>
+	<!--分页-->
+	<div class="page flex_vertical">
+		<button class="" onclick="indexPage()">首页</button>&nbsp;
+		<button class="" onclick="backPage()"><上一页</button>&nbsp;
+		<!--页码-->
+		<p class="page_num">
+			<!--<span>1</span><span>2</span><span>3</span><span>4</span><span>5</span>-->
+		</p>...
+		<button class="" onclick="nextPage()">下一页></button>&nbsp;
+		<button class="" onclick="endPage()">末页</button>&nbsp;
+		共<span class="all_recode">0 </span>记录&nbsp;|
+		共<span class="all_page">0 </span>页&nbsp;
+		到第<input class="select_page" />页&nbsp;
+		<button class="confirm_page" onclick="skipPage()">确定</button>
+	</div>
+</div>
+<!--遮罩层-->
+<div class="shade none"></div>
+<!--增加回访弹框-->
+<div class="popup_box add_access_box none">
+	<p class="img_close clearfix">
+		<img src="img/close.png" onclick="close_box()"/>
+	</p>
+	<div>
+		<div class="public_input">
+			<span style="width: 120px;">修改状态:</span>
+			<div class="public_input margindiv">
+				<select class="editpass">
+					<option value="">选择状态</option>
+					<option value="unreservation">未预约</option>
+					<option value="reservation"> 已预约</option>
+					<option value="visit">已到诊</option>
+					<option value="success">已成交</option>
+					<option value="faild">到诊未成交</option>
+					<option value="repeat">重单</option>
+				</select>
+			</div>
+		</div>
+	</div>
+	<p class="confirm add_access_confirm" style="margin-left: 175px;width: 100px;margin-top: 42px;" onclick="add_access(this)">确 定</p>
+</div>
+<script type="text/javascript" src="plug/jquery-1.11.3.js" ></script>
+<script type="text/javascript" src="plug/template-web.js"></script>
+<script src="plug/laydate/laydate.js"></script>
+<script type="text/javascript" src="js/toggle.js" ></script>
+<script type="text/javascript" src="js/util.js"></script>
+<script type="text/javascript" src="js/method.js"></script>
+<script type="text/javascript" src="js/page.js"></script>
+<!--<script id="test_special_list" type="text/html">
+	{{each data value}}
+		<tr>
+			<td>{{value.username}}</td>
+			<td>{{value.mobile}}</td>
+
+			&lt;!&ndash;<td width="150px" style="padding: 0;"><img src="{{value.headImgUrl}}" /></td>&ndash;&gt;
+			<td>{{value.disease}}</td>
+			<td>{{value.expertPrice}}</td>
+			<td>{{if value.marketable==true}}已上架{{else if value.marketable == false}}未上架{{/if}}</td>
+			<td>{{if value.isDrainage==true}}是{{else if value.isDrainage == false}}否{{/if}}</td>
+			&lt;!&ndash;<td>{{value.sellQuantity}}</td>
+			<td>{{value.score}}</td>&ndash;&gt;
+			<td>{{if value.status=="unchecked"}}未审核{{else if value.status == "pass"}}通过{{else if value.status == "notpass"}}不通过{{/if}}</td>
+			<td data_id="{{value.id}}">
+				<button class="font_green" onclick="edit_special_proj(this)">修改</button>
+				<button class="font_green" onclick="add_doc_case(this)">添加案例</button>
+			</td>
+		</tr>
+	{{/each}}
+</script>-->
+<!--项目类型列表-->
+<script type="text/html" id="test_proj_list">
+	{{each data value}}
+		<option value="{{value.id}}">{{value.name}}</option>
+	{{/each}}
+</script>
+<script>
+    laydate.render({
+        elem: '#timeInput' //指定元素
+    });
+//初始化项目类型列表
+//$.initSelect("/hospital/getBeautySubjectList.json","test_proj_list",".proj_type");
+
+//请求方法
+function reqPage(data){
+	console.log(data);
+	control_page.init_page(data,function(data){
+		//调用ajax
+		$.get_ajax("/hospital/allot/getList.json",data,function(data){
+			console.log(data);
+            $(".tbody").empty();
+			var html = '';//template('test_special_list',data);
+			data.data.forEach(function(data,index){
+                html += '<tr>' +
+                    '<td>'+Number(index + 1)+'</td>' +
+                    '<td>'+data.username+'</td>' +
+                    '<td>'+data.mobile+'</td>' +
+                    '<td>'+data.disease+'</td>' +
+                    '<td>'+new Date(data.createDate).Format('yyyy-MM-dd hh:mm:ss')+'</td>' ;
+              /*  if(data.status == 'unreservation'){
+                    html +=  '<td>未预约</td>' ;
+                }else if(data.status == 'reservation'){
+                    html +=  '<td>已预约</td>' ;
+                }else if(data.status == 'visit'){
+                    html +=  '<td>已到诊</td>' ;
+                }else if(data.status == 'success'){
+                    html +=  '<td>已成交</td>' ;
+                }else if(data.status == 'faild'){
+                    html +=  '<td>到诊未成交</td>' ;
+                }else if(data.status == 'repeat'){
+                    html +=  '<td>重单</td>' ;
+                }*/
+                if(data.status == 'repeat'){
+                    html +=   '<td data_id="'+data.id+'" value_id="'+data.advisoryId+'" value_mobile="'+data.mobile+'" patient_id="'+data.patientId+'">' +
+                        '<button class="font_green" onclick="accessBtn(this)">回访</button>' +
+                        '</td>' +
+                        '</tr>'
+				}else{
+                    html +=   '<td data_id="'+data.id+'" value_id="'+data.advisoryId+'" value_mobile="'+data.mobile+'" patient_id="'+data.patientId+'">' +
+                     /*   '<button style="margin-right: 10px" class="font_green" valuestatus="'+data.status+'" onclick="edit_status(this)">修改状态</button>' +*/
+                        '<button class="font_green" onclick="accessBtn(this)">回访</button>' +
+                        '</td>' +
+                        '</tr>'
+				}
+
+                $(".tbody").html(html);
+			})
+
+			//初始化分页
+			control_page.currentPage(control_page.page_num,data.totalCount);
+		});
+	});
+}
+
+//修改
+function edit_special_proj(m){
+	var special_proj_id =  $(m).parent().attr("data_id");
+	window.localStorage.setItem("special_proj_id",special_proj_id);
+	window.location.href = "edit_special_proj.html";
+}
+function edit_status(m) {
+    $('.add_access_box,.shade').show();
+    $('.editpass').val($(m).attr("valuestatus"));
+    $('.add_access_confirm').attr('valueid',$(m).parent().attr("data_id"));
+   /* var docId = $(m).parent().attr("data_id")
+    window.localStorage.setItem("docId",docId);
+    window.localStorage.setItem("case_type",'hosspecial');
+    window.location.href = "add_doc_case.html";*/
+}
+function add_access(obj) {
+    var data = {};
+    data.allotId = $(obj).attr('valueid');
+    data.status = $('.editpass').val();
+    $.post_ajax("/hospital/allot/updateStatus",data,function(data){
+		alert(data.data);
+		location.reload()
+    });
+}
+function accessBtn(obj) {
+    window.location.href = 'accessHis.html?id='+$(obj).parent().attr('value_id')+'&mobile='+$(obj).parent().attr('value_mobile')+'&dataid='+$(obj).parent().attr('data_id')+'&patientid='+$(obj).parent().attr('patient_id')+'&v=8888';
+}
+</script>
+<script>
+var proj_type_id="";
+var pass_val = "";
+
+//项目类型
+$(".proj_type").change(function(){
+	proj_type_id = $(".proj_type").val();
+	console.log(proj_type_id);
+});
+//是否上架
+$(".pass").change(function(){
+	pass_val = $(".pass").val();
+	console.log(pass_val);
+});
+//是否引流
+$(".isdrainage").change(function(){
+    isDrainage_val = $(".isdrainage").val();
+    console.log(isDrainage_val);
+});
+$(function(){
+	reqPage(control_page.getData());
+	//搜索
+});
+function search(obj) {
+    console.log(obj)
+    //基本条件
+    if(obj == undefined){
+        var data = control_page.getData();
+    }else{
+        var data = obj;
+    }
+    //项目名称
+    var proj_name = $(".proj_name").val();
+    if(proj_name != ""){
+        data.keyword = proj_name;
+        console.log(data);
+    }
+//时间
+    var proj_time = $("#timeInput").val();
+    if(proj_time != ""){
+        data.date = proj_time;
+        console.log(data);
+    }
+    //状态
+    /*var proj_status = $(".pass").val();
+    if(proj_status != ""){
+        data.status = proj_status;
+        console.log(data);
+    }*/
+    console.log(data);
+    reqPage(data);
+}
+</script>
+</body>
+</html>

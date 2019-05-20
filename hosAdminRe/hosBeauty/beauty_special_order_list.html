@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="../css/base.css" />
+<link rel="stylesheet" href="../css/util.css" />
+<link rel="stylesheet" href="../css/collect.css" />
+<title>医美特价订单列表</title>
+</head>
+<body>
+<div class="content order_list">
+	<div class="navigate_head clearfix">
+		<p style="color: #000000;" onclick="window.location.href='hos_group.html'">订单管理列表</p>
+		<p class="navi_null"></p>
+	</div>
+	<!--头部功能-->
+	<div class="head_area flex_vertical">
+		<span style="font-size: 16px;">开始时间:&nbsp;</span>
+		<input style="width: 185px;" type="text" class="Wdate min_time" onfocus="WdatePicker({lang:'zh-cn',dateFmt: 'yyyy-MM-dd'})"/>
+		<span style="font-size: 16px;">---&nbsp;&nbsp;接收时间:&nbsp;</span>
+		<input style="width: 185px;" type="text" class="Wdate max_time" onfocus="WdatePicker({lang:'zh-cn',dateFmt: 'yyyy-MM-dd'})"/>
+		<span style="font-size: 16px;">订单状态：</span>
+		<select class="order_status" style="width: 140px;">
+			<option value="0">订单状态</option>
+			<option value="waitPaid">待支付</option>
+			<option value="waitConfirm">待确认</option>
+			<option value="completed">完成</option>
+		</select>
+		<button class="search" style="width: 70px;">搜索</button>
+	</div>
+	<table>
+		<thead>
+			<tr>
+				<td>订单号</td>
+				<td>患者名</td>
+				<td>手机号</td>
+				<td>项目</td>
+				<td>数目</td>
+				<td>价格</td>
+				<td>主诊医师</td>
+				<td>下单时间</td>
+				<td>订单状态</td>
+				<!--<td>操作</td>-->
+			</tr>
+		</thead>
+		<tbody class="tbody">
+			<!--<tr>
+				<td>订单号</td>
+				<td>患者名</td>
+				<td>手机号</td>
+				<td>疾病</td>
+				<td>约定费用(数字)</td>
+				<td>约定周期(数字)</td>
+				<td>就诊时间</td>
+				<td>订单状态</td>
+				<td>
+					<button class="font_green">详情</button>&nbsp;<button class="font_green">删除</button>
+				</td>
+			</tr>-->
+		</tbody>
+	</table>
+	<!--分页-->
+	<div class="page flex_vertical">
+		<button class="" onclick="indexPage()">首页</button>&nbsp;
+		<button class="" onclick="backPage()"><上一页</button>&nbsp;
+		<!--页码-->
+		<p class="page_num">
+			<!--<span>1</span><span>2</span><span>3</span><span>4</span><span>5</span>-->
+		</p>....
+		<button class="" onclick="nextPage()">下一页></button>&nbsp;
+		<button class="" onclick="endPage()">末页</button>&nbsp;
+		共<span class="all_recode">0 </span>记录&nbsp;|
+		共<span class="all_page">0 </span>页&nbsp;
+		到第<input class="select_page" />页&nbsp;
+		<button class="confirm_page" onclick="skipPage()">确定</button>
+	</div>
+</div>
+<script type="text/javascript" src="../plug/jquery-1.11.3.js" ></script>
+<script type="text/javascript" src="../plug/template-web.js"></script>
+<script type="text/javascript" src="../js/toggle.js" ></script>
+<script type="text/javascript" src="../js/util.js"></script>
+<script type="text/javascript" src="../js/method.js"></script>
+<script type="text/javascript" src="../js/page.js"></script>
+<!--日期插件-->
+<link rel="stylesheet" href="../plug/My97DatePicker/skin/WdatePicker.css" />
+<script src="../plug/My97DatePicker/WdatePicker.js"></script>
+<script id="test_order_list" type="text/html">
+	{{each data value}}
+		<tr>
+			<td>
+				<div class="flex_all_center">
+					<!--<img src="../img/select.png"/>&nbsp;-->
+					<span>{{value.sn}}</span>
+				</div>
+			</td>
+			<td>{{value.fullname}}</td>
+			<td>{{value.mobile}}</td>
+			<td>{{value.projectName}}</td>
+			<td>{{value.quantity}}</td>
+			<td>{{value.amount}}</td>
+			<td>{{value.doctorType}}</td>
+			<td>{{value.createDate}}</td>
+			<td class="font_green">{{if value.orderStatus== "waitPaid"}}待支付{{else if value.orderStatus == "waitConfirm"}}待确认{{else if value.orderStatus == "completed"}}完成{{/if}}</td>
+			<td data_id = "{{value.id}}">
+				<button class="font_green" onclick="toOrderDatail(this)">详情</button>&nbsp;<button class="btn_red">删除</button>
+			</td>
+		</tr>
+	{{/each}}
+</script>
+<script>
+$(function(){
+	reqPage();
+	//搜索
+	$(".head_area .search").click(function(){
+		//项目名称
+		var min_time = $(".min_time").val();
+		var max_time = $(".max_time").val();
+		if(min_time != ""){
+			data.beginDate = min_time;
+			console.log(data);
+		}
+		if(max_time != ""){
+			data.endDate = max_time;
+			console.log(data);
+		}
+		//订单状态
+		if(order_status_val != ""){
+			data.status = order_status_val;
+			console.log(data);
+		}
+		reqPage();
+	});
+});
+
+
+
+</script>
+<script>
+var order_status_val = "";
+//是否上架
+$(".order_status").change(function(){
+	order_status_val = $(".order_status").val();
+	console.log(order_status_val);
+});
+
+//基本参数
+var data = {
+	"pageNumber":$.page_num,//当前页
+	"pageSize":$.pageSize//每页的长度
+}
+//请求方法
+function reqPage(){
+	console.log(data);
+	$.controlPage(data,function(data){
+		//调用ajax
+		$.get_ajax("/hospital/order/getSpecialList.json",data,function(data){
+			console.log(data);
+			var html = template('test_order_list',data);
+			$(".tbody").html(html);
+			//初始化分页
+			$.currentPage($.page_num,data.totalCount);
+		});
+	});
+}	
+</script>
+</body>
+</html>

@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="plug/webuploader/webuploader.css" />
+<link rel="stylesheet" href="css/base.css" />
+<link rel="stylesheet" href="css/util.css" />
+<link rel="stylesheet" href="css/collect.css" />
+<link rel="stylesheet" href="css/doc.css" />
+<!--截图插件-->
+<!--<link href="plug/screenShot/css/cropper.css" rel="stylesheet">
+<link href="plug/screenShot/css/main.css" rel="stylesheet">-->
+<title>修改医生</title>
+<style>
+/*图片上传*/
+#filePicker{
+	display: inline-block;
+	/*border: 1px solid red;*/
+	height: 40px;
+}
+#filePicker .webuploader-pick{
+	height: 40px;line-height: 40px;
+	width: 120px;
+	/*border: 1px solid black;*/
+	padding: 0;
+	letter-spacing: 1px;
+	font-size: 16px;
+	border-radius:5px ;
+}
+.preview>div{
+	display: inline-block;
+	margin-left: 3px;
+}
+
+/*动态增减元素*/
+.ele_container{
+	border: 1px solid #DCDCDC;
+	border-radius: 5px;
+	width: 400px;
+	min-height: 40px;
+	margin-left: 235px;
+}
+.ele_container p{
+	display: inline-block;
+	height: 40px;line-height: 40px;
+	border: 1px solid #DCDCDC;
+	padding: 0 10px;
+	position: relative;
+	border-radius: 5px;
+	margin: 5px 10px 5px 0;
+}
+.ele_container p:hover>img{
+	position: absolute;
+	top: -3px;right: -3px;
+	display: block !important;
+}
+</style>
+</head>
+<body>
+<div class="content edit_doc">
+	<div class="navigate_head clearfix">
+		<p class="" onclick="window.location.href='doc_list.html'">医生列表</p>
+		<p class="navi_current" onclick="window.location.href='edit_doc.html'">修改医生</p>
+		<p class="navi_null"></p>
+	</div>
+	<div>
+		<form class="add_role_form">
+			<div class="public_input">
+				<span><span>* </span>医生姓名:</span>
+				<input type="text" class="doc_name" placeholder="请输入医生姓名"/>
+			</div>
+			<div class="public_input">
+				<span><span>* </span>挂号费:</span>
+				<input type="text" class="registration_price" placeholder="请输入挂号费"/>
+			</div>
+			<div class="public_input">
+				<span><span>* </span>联系电话:</span>
+				<input type="text" class="contact" placeholder="请输入联系电话"/>
+			</div>
+			<div class="public_input">
+				<span style="display: inline-block;position: absolute;top: 0;"><span>* </span>医生简介:</span>
+				<textarea class="doc_msg"></textarea>
+			</div>
+			<div class="public_input">
+				<span><span>* </span>专业职称:</span>
+				<select class="job_title">
+					<option>请选择</option>
+				</select>
+			</div>
+			<div class="public_input">
+				<span style="display: inline-block;position: absolute;top: 0;"><span>* </span>擅长领域:</span>
+				<textarea class="speciality"></textarea>
+			</div>
+			<div class="public_input upload_img clearfix">
+				<span><span>* </span>医生照片(一张):</span>
+				<div class="right" id="uploader-demo">
+					<!--用来存放item-->
+				    <!--<div id="fileList" class="uploader-list"></div>-->
+				    <!--<div id="filePicker">上传图片</div>-->
+				    <!--<label for="file" class=""><span style="width: 120px;background-color: #00A2D4;">选择图片</span></button></label>
+					<input type="file" id="file" multiple="multiple" name="file" class="none ill_pic"  accept="image/*"/>-->
+				    <!--<input type="button" class="btn_remove_pic" value="选中删除" style="right: 140px;background-color: red;">-->
+					<span class="addPhontBtn">
+						<input type="file" class="hidden" id="file" multiple="multiple"/>
+							<span style="color: white">上传图片</span>
+					</span>
+					<!--预览图片-->
+					<p id="" class="preview preview2">
+						
+					</p>
+				</div>
+			</div>
+			<div class="public_input">
+				<span><span>* </span>科室:</span>
+				<select class="ks"style="width: 127px;">
+					<option>请选择</option>
+				</select>
+				<select class="child_ks"style="width: 127px;margin-left: 5px;">
+					<option>请选择</option>
+				</select>
+			</div>
+			<!--<div class="public_input clearfix" style="height: auto;width: 640px;">
+				<span style="display: inline-block;float: left;"><span>*</span>约定病种:</span>
+				<div class="appoint_ill_pt">
+					<div class="init_appint_ill">
+						
+					</div>
+					&lt;!&ndash;<select class="appoint_ill" style="">
+						<option>请选择</option>
+					</select>&ndash;&gt;
+				</div>
+			</div>-->
+			<!--<div class="ele_container">
+				&lt;!&ndash;<p data_val=""><span>皮肤科</span><img src="img/close2.png" class="none" onclick='del_appoint_ks(this)'/></p>&ndash;&gt;
+			</div>-->
+			<div class="job_tab">
+				<div class="tit">预约人数设置（请在下列表格中填写相应的最高预约量）</div>
+				<!--出诊时间-->
+				<div class="heal_time_container clearfix">
+					<!--<div class="">
+						<p class=""></p>
+						<p class=""><img src="img/left.png"/></p>
+						<p class=""></p>
+					</div>-->
+					<div class="">
+						<p class="">排班</p>
+						<p class="">上午</p>
+						<p class="">下午</p>
+					</div>
+					<div class="week">
+						<p class="day">
+							<span class="">星期天</span>
+						</p>
+						<input type="text" data_week="sunday" data_morning="true"/>
+						<input type="text" data_week="sunday" data_morning="false"/>
+						<!--<p class="am" data_val="休息"></p>
+						<p class="pm" data_val="休息"></p>-->
+					</div>
+					<div class="week">
+						<p class="day">
+							<span class="">星期一</span>
+						</p>
+						<input type="text" data_week="monday" data_morning="true"/>
+						<input type="text" data_week="monday" data_morning="false"/>
+					</div>
+					<div class="week">
+						<p class="day">
+							<span class="">星期二</span>
+						</p>
+						<input type="text" data_week="tuesday" data_morning="true"/>
+						<input type="text" data_week="tuesday" data_morning="false"/>
+					</div>
+					<div class="week">
+						<p class="day">
+							<span class="">星期三</span>
+						</p>
+						<input type="text" data_week="wednesday" data_morning="true"/>
+						<input type="text" data_week="wednesday" data_morning="false"/>
+					</div>
+					<div class="week">
+						<p class="day">
+							<span class="">星期四</span>
+						</p>
+						<input type="text" data_week="thursday" data_morning="true"/>
+						<input type="text" data_week="thursday" data_morning="false"/>
+					</div>
+					<div class="week">
+						<p class="day">
+							<span class="">星期五</span>
+						</p>
+						<input type="text" data_week="friday" data_morning="true"/>
+						<input type="text" data_week="friday" data_morning="false"/>
+					</div>
+					<div class="week">
+						<p class="day">
+							<span class="">星期六</span>
+						</p>
+						<input type="text" data_week="saturday" data_morning="true"/>
+						<input type="text" data_week="saturday" data_morning="false"/>
+					</div>
+					<!--<div class="">
+						<p class="flex_all_center"></p>
+						<p class=""><img src="img/right.png"/></p>
+						<p class=""></p>
+					</div>-->
+				</div>
+				<!--<div class="btn">
+					<button onclick="up_week()">上周</button><button onclick="next_week()">下周</button>
+				</div>-->
+			</div>
+			<div class="public_input confrim_btn">
+				<span>.</span>
+				<input type="button" class="confrim_add_doc" value="修改"/>
+			</div>
+		</form>
+	</div>
+</div>
+<!--遮罩层-->
+<div class="shade none"></div>
+<!--弹框-->
+<div class="popup_box none" style="min-height: 400px;top: 15px;">
+	<p class="img_close clearfix">
+		<img src="img/close.png" onclick="close_box()"/>
+	</p>
+	<div class="preview1">
+		<!--<div class="initImg img-container">
+			<img src="img/test.png" alt="Picture">
+		</div>-->
+	</div>
+	
+	<!--<p class="confirm">确 定</p>-->
+	<button onclick="csx()"></button>
+	<div class="modal fade docs-cropped none" id="getCroppedCanvasModal" aria-hidden="true" aria-labelledby="getCroppedCanvasTitle" role="dialog" tabindex="-1">
+        <div class="modal-body"></div>
+    </div>
+	<button class="confirm" style="margin-left: 215px;" data-method="getCroppedCanvas" data-option="{ &quot;width&quot;: 160, &quot;height&quot;: 90 }" type="button">
+        <span class="docs-tooltip"  title="$().cropper(&quot;getCroppedCanvas&quot;, { &quot;width&quot;: 160, &quot;height&quot;: 90 })">
+         	确定
+        </span>
+    </button>
+</div>		
+	
+<script type="text/javascript" src="plug/jquery-1.11.3.js" ></script>
+<script type="text/javascript" src="plug/template-web.js" ></script>
+<script type="text/javascript" src="plug/webuploader/webuploader.min.js"></script>
+<script type="text/javascript" src="js/toggle.js" ></script>
+<script type="text/javascript" src="js/util.js" ></script>
+<script type="text/javascript" src="js/method.js" ></script>
+<script type="text/javascript" src="js/control_element.js" ></script>
+<script type="text/javascript" src="js/detail/doc.js" ></script>
+<script type="text/javascript" src="js/detail/upload_img.js"></script>
+<!--<script type="text/javascript" src="js/detail/doc_upload_img.js"></script>
+<script type="text/javascript" src="js/detail/shot_img.js" ></script>-->
+<!--截图插件-->
+<!--<script src="plug/screenShot/dist/cropper.js"></script>
+<script src="plug/screenShot/dist/main.js"></script>-->
+<!--职称列表-->
+<script type="text/html" id="test_job_title">
+	{{each data value}}
+		<option value="{{value.id}}">{{value.name}}</option>
+	{{/each}}
+</script>
+<!--科室列表-->
+<script type="text/html" id="test_ks_list">
+	{{each data value}}
+		<option value="{{value.id}}">{{value.name}}</option>
+	{{/each}}
+</script>
+<!--子科室列表-->
+<script type="text/html" id="test_child_ks_list">
+	{{each item value}}
+		<option value="{{value.id}}">{{value.name}}</option>
+	{{/each}}
+</script>
+<!--约定病种列表-->
+<script type="text/html" id="test_appoint_ill">
+	{{each data value}}
+		<option value="{{value.id}}">{{value.name}}</option>
+	{{/each}}
+</script>
+<script>
+
+/**
+ * 初始化列表
+ */
+$(function(){
+	var job_title_id = "";//专业职称id
+	var ks_id = "";//科室id
+	var child_ks_id = "";//子科室id
+	
+	//初始化专业职称列表
+	$.get_ajax("/hospital/topthree/doctor/getDoctorTypeList.json","",function(res){
+		console.log(res);
+		if(res.success){
+			var html = template('test_job_title',res);
+			$(".job_title").append(html);
+		}
+	});
+	$(".job_title").change(function(){
+		job_title_id = $(".job_title").val();
+	});
+	
+	//初始化科室列表
+	$.get_ajax("/hospital/getSubjects.json","",function(res){
+		console.log(res);
+		if(res.success){
+			var html = template('test_ks_list',res);
+			$(".ks").append(html);
+		}
+	});
+	//初始化子科室
+	$(".ks").change(function(){
+		ks_id = $(".ks").val();
+		console.log(ks_id);
+		//子科室列表
+		init_subSubject(ks_id);
+        $(".appoint_ill").html("<option>请选择</option>");
+	});
+	$(".child_ks").change(function(){
+		child_ks_id = $(".child_ks").val();
+		//初始化约定病种列表
+		//init_ill_select(child_ks_id);
+	});
+	$(".appoint_ill").change(function(){
+		var appoint_ill_id = $(".appoint_ill").val();
+		var appoint_ill_name = $(".appoint_ill").find("option:selected").text().trim();//trim去前后所有空格
+//		add_appoint_ill(appoint_ill_id,appoint_ill_name);
+		controlEle.add_element(appoint_ill_id,appoint_ill_name);
+	});
+	
+	var data = {
+		"id":$.get_storage("docId")
+	}
+//	初始化医生
+	$.get_ajax("/hospital/topthree/doctor/getDetail.json",data,function(res){
+		console.log(res);
+		if(res.success){
+			//初始化输入框
+			$(".doc_name").attr("value",res.data.name);
+			$(".registration_price").attr("value",res.data.registerAmount);
+			$(".contact").attr("value",res.data.mobile);
+			$(".doc_msg").text(res.data.brief);
+			$(".speciality").text(res.data.specialty);
+			
+			//初始化图片
+			arr_pic[0] = res.data.headImgUrl;//医生头像
+			init_img(arr_pic);
+			
+			//初始化子科室列表
+			ks_id = res.data.subjectId;
+			init_subSubject(ks_id);
+			//初始化约定病种下拉选
+			child_ks_id = res.data.subSubjectId;
+			init_ill_select(child_ks_id);
+			//初始化预约的病种
+			//controlEle.hashToTwoArr(res.data.appointIll);
+			//初始化值班表
+			init_work_tb(res.data.schedules);
+			
+			//下拉选选中
+			var setTime = setTimeout(function(){
+				//专业职称
+				job_title_id = res.data.doctorTypeId;
+				$(".job_title>[value="+job_title_id+"]").attr("selected","selected");
+				//科室
+				$(".ks>[value="+ks_id+"]").attr("selected","selected");
+				//子科室
+				$(".child_ks>[value="+child_ks_id+"]").attr("selected","selected");
+			},1000);
+		}
+	});
+
+	$(".confrim_add_doc").click(function(){
+		var doc_name = $(".doc_name").val();
+		var registration_price = $(".registration_price").val();
+		var contact = $(".contact").val();
+		var doc_msg = $(".doc_msg").val();
+		var speciality = $(".speciality").val();//擅长领域
+		
+		var pic_url = arr_pic;//图片
+		var arr_job = get_work_tb();//获取坐诊表格
+		
+//		console.log(arr_ill_id);
+		var data = {
+			"id":$.get_storage("docId"),
+			"name":doc_name,
+			"mobile":contact,
+			"headImgUrl":arr_pic[0],
+			"subSubjectId":child_ks_id,
+			"doctorTypeId":job_title_id,
+			"specialty":speciality,
+			"schedules":JSON.stringify(arr_job),//值班时间
+			//"diseaseTemplateIds":String(controlEle.arr_element_id),//约定病种id
+			"registerAmount":registration_price,
+			"brief":doc_msg
+		}
+		console.log(data);
+		console.log(JSON.stringify(arr_job));
+		//验证
+		if(!$.verify(doc_name,"医生名")){return false;}
+		if(!$.verify(registration_price,"挂号费")){return false;}
+		if(!$.verifyPhone(contact,"联系电话")){return false;}
+		if(!$.verify(doc_msg,"医生简介")){return false;}
+		if(!$.verify(speciality,"擅长领域")){return false;}
+		
+		if(!$.verify(pic_url,"医生头像")){return false;}
+		if(!$.verify(arr_job,"值班时间")){return false;}
+		if(!$.verify(controlEle.arr_element_id[0],"约定病种")){return false;}
+		
+		if(!$.verifyNum(child_ks_id,"子科室")){return false;}
+		if(!$.verifyNum(job_title_id,"专业职称")){return false;}
+//		
+		$.post_ajax("/hospital/topthree/doctor/update",data,function(res){
+			console.log(res);
+			if(res.success){
+				alert(res.data);
+				window.location.href = "doc_list.html";
+			}else{
+				alert(res.data);
+			}
+		});
+	});
+});
+</script>
+</body>
+</html>

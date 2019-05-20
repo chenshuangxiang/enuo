@@ -1,0 +1,337 @@
+<!--
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>树形菜单</title>
+    <script type="text/javascript" src="plug/jquery.min.js"></script>
+
+    <script>
+        $(function(){
+            $(".treeMenu>li>a").click(function(){
+                // 方法一,需要给点击的a元素加id属性
+                // 获取当前点击的a元素的id值
+                // var idName = $(this).attr("id");
+                // 对象紧跟着当前点击的a元素的ul进行类样式反转
+                // $("#" + idName + " + ul").toggleClass("hidden");
+
+                // 方法二,需要给点击的a元素加id属性
+                // 对象紧跟着当前点击的a元素的元素进行类样式反转
+                // $(this).next().toggleClass("hidden");
+
+                // 方法三,不需要给点击的a元素加id属性
+                // 对象紧跟着当前点击的a元素的元素进行类样式反转
+                $(this).next().toggle(300,'linear');
+            });
+        });
+
+
+    </script>
+
+    <style type="text/css">
+        ul,li{
+            margin: 0px;
+            padding: 0px;
+        }
+
+        .treeMenu{
+
+        }
+
+        ul li a{
+            text-decoration: none;
+            color: black;
+        }
+
+        .hidden{
+            display: none;
+        }
+    </style>
+
+</head>
+<body>
+
+<h2><img src="../images/fold.gif"/>树形菜单</h2>
+<ul class="treeMenu">
+    <li>
+        <img src="../images/fclose.gif"/>
+        <a id="currId" href="javascript:void(0);">文学艺术</a>
+        <ul class="hidden">
+            <li><img src="../images/doc.gif"/><a href="javascript:void(0);">文学艺术</a></li>
+            <li><img src="../images/doc.gif"/><a href="javascript:void(0);">文学艺术</a></li>
+            <li><img src="../images/doc.gif"/><a href="javascript:void(0);">文学艺术</a></li>
+        </ul>
+    </li>
+    <li>
+        <img src="../images/fclose.gif"/>
+        <a id="currId1" href="javascript:void(0);">图片专区</a>
+        <ul class="hidden">
+            <li><img src="../images/doc.gif"/><a href="javascript:void(0);">文学艺术</a></li>
+            <li><img src="../images/doc.gif"/><a href="javascript:void(0);">文学艺术</a></li>
+            <li><img src="../images/doc.gif"/><a href="javascript:void(0);">文学艺术</a></li>
+        </ul>
+    </li>
+    <li>
+        <img src="../images/fclose.gif"/>
+        <a id="currId2" href="javascript:void(0);">最新影视</a>
+        <ul class="hidden">
+            <li><img src="../images/doc.gif"/><a href="javascript:void(0);">文学艺术</a></li>
+            <li><img src="../images/doc.gif"/><a href="javascript:void(0);">文学艺术</a></li>
+            <li><img src="../images/doc.gif"/><a href="javascript:void(0);">文学艺术</a></li>
+        </ul>
+    </li>
+</ul>
+
+</body>
+</html>-->
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <title>树状菜单 精简版 | 夕空</title>
+    <script src="http://apps.bdimg.com/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="https://aui.github.io/art-template/js/template-engines/template-web.js"></script>
+    <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style type="text/css">
+        html,body{margin: 0;padding: 0;height: 100%;}
+        /*---------------------*\
+         * 树形菜单（支持多级）
+        \*---------------------*/
+        .tree {
+            width: 90%;margin: 20px auto;
+            min-height:20px; padding:19px; margin-bottom:20px;border:1px solid #ccc;
+            -webkit-border-radius:4px;-moz-border-radius:4px; border-radius:4px;
+            -webkit-box-shadow:inset 0 1px 1px rgba(0, 0, 0, 0.05);
+            -moz-box-shadow:inset 0 1px 1px rgba(0, 0, 0, 0.05);
+            box-shadow:inset 0 1px 1px rgba(0, 0, 0, 0.05)
+        }
+        .tree ul{padding-left: 20px;font-size: 16px;}
+        .tree li {
+            list-style-type:none; margin:0; padding:0 0 0 5px; position:relative
+        }
+        .tree li::before, .tree li::after {
+            content:''; left:-10px; position:absolute;
+        }
+        .tree li::before {
+            border-left:1px dotted #999; height:100%; top: 0; width:1px
+        }
+        .tree li::after {
+            border-top:1px dotted #999; top:1em; width:17px;
+        }
+        .tree li>span {
+            border-bottom:1px solid #f0f0f0;line-height: 2em;
+            display:inline-block; padding:0 20px 0 8px; text-decoration:none
+        }
+        .tree li.parent_li>span {
+            cursor:pointer
+        }
+        .tree>ul>li::before, .tree>ul>li::after {
+            border:0
+        }
+        .tree li:last-child::before {
+            height:1em
+        }
+        .tree li.parent_li>span:hover, .tree li.parent_li>span:hover+ul li span {
+            background:#D3F0D2; border-bottom:1px solid #5FA196; color:#000
+        }
+        .tree li:hover>span{background: #D8EBF0;border-bottom:1px solid #2764C8;}
+        .tree form{display: inline;}
+        .tree input[type=text]{line-height: 22px; font-size: 14px; background-color: rgba(255,255,255,0.3);border: none;}
+        .tree input[type=text]:hover{background-color: #FFF;border: none;}
+
+    </style>
+
+
+</head>
+<body>
+<br>
+<div class="tree">
+    <ul>
+    </ul>
+</div>
+
+<br>
+<a href="http://www.flashme.cn">www.flashme.cn</a>
+
+<div id="newtree" style="display: none;">
+    <li>
+			<span>
+				<i></i>
+				<form class="add" action="这里是新增子项的处理地址 form:upid|title" method="post" >
+					<input type="hidden" name="upid" value="">
+					<input type="text" name="title" class="text" value="" placeholder="请填写名称">
+					<input type="button" class="treeset" value="确定" />
+				</form>
+			</span>
+        <ul></ul>
+    </li>
+</div>
+
+<script type="text/html" id="tree-art">
+    {{each infor as value i}}
+    <li {{if value.link}}class="parent_li"{{/if}}>
+    <span data-link="{{value.link}}">
+				<i class="fa {{if value.link}}fa-plus-square-o{{/if}}"></i>
+				<form class="list" action="这里是表单实时更新地址 form:id|title" method="post" >
+					<input type="hidden" name="id" value="{{value.id}}">
+					<input type="text" name="title" class="text" value="{{value.title}}">
+				</form>
+				<form class="del" action="删除目标的地址 form:id" method="post" >
+					<input type="hidden" name="id" value="{{value.id}}">
+					<input type="button" class="treedel" value="删除" />
+				</form>
+				<input type="button" class="treeadd" value="新增" />
+			</span>
+    <ul></ul>
+    </li>
+    {{/each}}
+</script>
+
+<script type="text/javascript">
+    //==========================================树形菜单
+    function tree(){
+        $('.tree').on('click','li.parent_li > span', function (e) {
+            var children = $(this).siblings('ul');
+            if(children.children('li').length==0){
+                return;
+            }
+            treesub(children,$(this),false);
+            e.stopPropagation();
+        });
+        $('.tree li:has(ul)').addClass('parent_li');
+    }
+    function treesub($target,ev,open){
+        if ($target.is(":visible") && open==false) {
+            $target.hide('fast');
+            ev.attr('title', '展开分支').find(' > i').addClass('fa-plus-square-o').removeClass('fa-minus-square-o');
+        } else {
+            $target.show('fast');
+            ev.attr('title', '收起分支').find(' > i').addClass('fa-minus-square-o').removeClass('fa-plus-square-o');
+        }
+    }
+
+    //初始树状菜单点击事件
+    tree();
+
+    function getLinkage(url,$target){
+        $.ajax({
+            url:url,
+            dataType:"json",
+            success:function(ev){
+
+                //----显示下级菜单
+                $target.children('ul').hide();//先隐藏
+                var treehtml = template('tree-art', ev);
+                $target.children('ul').append(treehtml);
+                treesub($target.children('ul'),$target.children('span'),true);//后显示
+                //----
+            },
+            error: function (XHR) {
+                console.log(XHR.status);
+            }
+        })
+    }
+    //--------------初始第一级列表：：
+    getLinkage("json/01danwei.js", $('.tree'));
+
+    //初始加载子集
+    $('.tree').on('click','li>span',function(){
+        var link=$(this).data('link');
+        if(link && $(this).siblings('ul').children('li').length==0){
+            getLinkage(link,$(this).parent());
+        }
+    })
+
+    /* 实时更新分类信息 */
+    $(".tree")
+        .on("submit", "form.list", function(){
+            var self = $(this);
+            $.post(
+                self.attr("action"),
+                self.serialize(),
+                function(data){
+                    /* 提示信息 */
+                    alert('返回提示...')
+                },
+                "json"
+            );
+            return false;
+        })
+        .on("focus","input[type=text]",function(){
+            $(this).data('param',$(this).closest("form").serialize());
+
+        })
+        .on("blur", "input[type=text]", function(){
+            if($(this).data('param')!=$(this).closest("form").serialize()){
+                $(this).closest("form").submit();//提交父级form
+            }
+        })
+        .on("click", "input[type=text]", function(e){e.stopPropagation();});
+
+    // ==========================================新增子项
+    $(".tree")
+        .on("submit", "form.add", function(){
+            var self = $(this);
+            $.post(
+                self.attr("action"),
+                self.serialize(),
+                function(data){
+                    //重载修改的部分
+                    var closeul=self.closest("ul");
+                    closeul.html("");
+                    closeul.siblings('span').trigger("click");
+                    closeul.parent("li").addClass('parent_li');
+
+                    /* 提示信息 */
+                    alert('返回提示...')
+                },
+                "json"
+            );
+            return false;
+        })
+    //新增按钮事件
+    $('.tree').on('click','.treeadd',function(e){
+        var parent=$(this).parent().parent();
+        if(parent.find('ul>li').length==0){
+            parent.children('span').trigger("click");
+        }
+        var newadd=$($('#newtree').html());
+        newadd.find('input[name=upid]').val($(this).parent().find('input[name=id]').val());
+        parent.children('ul').prepend(newadd);
+        treesub(parent.children('ul'),parent.children('span'),true);
+        e.stopPropagation();
+    })
+    //确认存储提交
+    $('.tree').on('click','.treeset',function(e){
+        $(this).closest("form").submit();
+    })
+
+    // ==========================================删除菜单项
+    $(".tree")
+        .on("submit", "form.del", function(){
+            var self = $(this);
+            $.post(
+                self.attr("action"),
+                self.serialize(),
+                function(data){
+                    //清除自身（子分类也会一起清除）
+                    self.closest("li").remove();
+
+                    /* 提示信息 */
+                    alert('返回提示...')
+                },
+                "json"
+            );
+            return false;
+        })
+    $('.tree').on('click','.treedel',function(e){
+        if(confirm('确实要删除该菜单吗?')){
+            $(this).closest("form").submit();
+        }
+        e.stopPropagation();
+    })
+
+</script>
+</body>
+</html>

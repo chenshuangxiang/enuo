@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="../css/base.css" />
+<link rel="stylesheet" href="../css/util.css" />
+<link rel="stylesheet" href="../css/collect.css" />
+<title>医美评价列表</title>
+<style>
+.head_area .public_input span{
+	width: 100px;font-size: 18px;
+}
+.head_area .public_input input,
+.head_area .public_input select{
+	width: 280px;margin-left: 10px;
+}
+</style>
+</head>
+<body>
+<div class="content evaluate_list">
+	<div class="navigate_head clearfix">
+		<p class="" onclick="window.location.href='beauty_evaluate_list.html'">项目评价</p>
+		<p class="navi_null"></p>
+	</div>
+	
+	<!--头部功能-->
+	<div class="head_area flex_vertical" style="display: block;">
+		<div class="public_input margindiv">
+			<span >关键词：</span>
+			<input type="text" class="keyword" placeholder="搜索患者姓名、手机号、订单号"/>
+		</div>
+		<!--&nbsp;<button class="" style="position: absolute;right: 0;top: 0;">导出表格</button>-->
+		<button class="search" style="margin-left: 10px;" onclick="indexPage()">搜索</button>
+	</div>
+	<table>
+		<thead>
+			<tr>
+				<td>订单号</td>
+				<td>患者名</td>
+				<td>手机号</td>
+				<td>项目</td>
+				<td>患者评价</td>
+				<td>评分</td>
+				<td>操作</td>
+			</tr>
+		</thead>
+		<tbody class="tbody">
+			
+		</tbody>
+	</table>
+	<!--分页-->
+	<div class="page flex_vertical">
+		<button class="" onclick="indexPage()">首页</button>&nbsp;
+		<button class="" onclick="backPage()"><上一页</button>&nbsp;
+		<!--页码-->
+		<p class="page_num">
+			<!--<span>1</span><span>2</span><span>3</span><span>4</span><span>5</span>-->
+		</p>....
+		<button class="" onclick="nextPage()">下一页></button>&nbsp;
+		<button class="" onclick="endPage()">末页</button>&nbsp;
+		共<span class="all_recode">0 </span>记录&nbsp;|
+		共<span class="all_page">0 </span>页&nbsp;
+		到第<input class="select_page" />页&nbsp;
+		<button class="confirm_page" onclick="skipPage()">确定</button>
+	</div>
+</div>
+<script type="text/javascript" src="../plug/jquery-1.11.3.js" ></script>
+<script type="text/javascript" src="../plug/template-web.js"></script>
+<script type="text/javascript" src="../js/toggle.js" ></script>
+<script type="text/javascript" src="../js/util.js"></script>
+<script type="text/javascript" src="../js/method.js"></script>
+<script type="text/javascript" src="../js/page.js"></script>
+<!--评价列表-->
+<script id="test_evaluate_list" type="text/html">
+	{{each data value}}
+		<tr>
+			<td><div class="flex_all_center"><img src="../img/select.png"/>&nbsp;<span>{{value.sn}}</span></div></td>
+			<td>{{value.fullname}}</td>
+			<td>{{value.mobile}}</td>
+			<td>{{value.projectName}}</td>
+			<td>{{value.content}}</td>
+			<td>{{value.score}}</td>
+			<td data_id ="{{value.id}}" class="font_green" onclick="evalute(this)">详情</td>
+		</tr>
+	{{/each}}
+</script>
+
+<script>
+//请求方法
+function reqPage(data){
+	console.log(data);
+	control_page.init_page(data,function(data){
+		//调用ajax
+		$.get_ajax("/hospital/evaluation/getList.json",data,function(data){
+			console.log(data);
+			var html = template('test_evaluate_list',data);
+			$(".tbody").html(html);
+			//初始化分页
+			control_page.currentPage(control_page.page_num,data.totalCount);
+		});
+	});
+}
+
+//评价详情
+function evalute(m){
+	var evalute_id = $(m).attr("data_id");
+	console.log(evalute_id);
+	window.localStorage.setItem("evalute_id",evalute_id);
+	window.location.href="beauty_evaluate_detail.html";
+}
+</script>
+<script>
+$(function(){
+	reqPage(control_page.getData());
+});
+function search(obj) {
+    console.log(obj)
+    //基本条件
+    if(obj == undefined){
+        var data = control_page.getData();
+    }else{
+        var data = obj;
+    }
+    //关键字
+    var keyword = $(".keyword").val();
+    if(keyword != ""){
+        data.keyword = keyword;
+        console.log(data);
+    }
+    reqPage(data);
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="plug/webuploader/webuploader.css" />
+<link rel="stylesheet" href="css/base.css" />
+<link rel="stylesheet" href="css/util.css" />
+<link rel="stylesheet" href="css/collect.css" />
+<link rel="stylesheet" href="css/doc.css" />
+<!--截图插件-->
+<!--<link href="plug/screenShot/css/cropper.css" rel="stylesheet">
+<link href="plug/screenShot/css/main.css" rel="stylesheet">-->
+<title>添加医生案例</title>
+<style>
+/*图片上传*/
+#filePicker{
+	display: inline-block;
+	/*border: 1px solid red;*/
+	height: 40px;
+}
+#filePicker .webuploader-pick{
+	height: 40px;line-height: 40px;
+	width: 120px;
+	/*border: 1px solid black;*/
+	padding: 0;
+	letter-spacing: 1px;
+	font-size: 16px;
+	border-radius:5px ;
+}
+.preview>div{
+	display: inline-block;
+	margin-left: 3px;
+}
+
+/*动态增减元素*/
+.ele_container{
+	border: 1px solid #DCDCDC;
+	border-radius: 5px;
+	width: 400px;
+	min-height: 40px;
+	margin-left: 235px;
+}
+.ele_container p{
+	display: inline-block;
+	height: 40px;line-height: 40px;
+	border: 1px solid #DCDCDC;
+	padding: 0 10px;
+	position: relative;
+	border-radius: 5px;
+	margin: 5px 10px 5px 0;
+}
+.ele_container p:hover>img{
+	position: absolute;
+	top: -3px;right: -3px;
+	display: block !important;
+}
+.upload_img .preview, .upload_img .preview2, .upload_img .preview3{
+	width: max-content;
+	border: none;
+	display: inline-block;
+}
+	.addPhontBtn{
+			background: url("img/addphoto.png") no-repeat;
+		background-size: 100% 100%;
+		background-position: 0% 0%;
+	}
+	.addPhontBtn{
+		width: 100px;
+		height: 100px;
+	}
+.addPhontBtn input[type="file"]{
+	height: 104px;
+}
+.upload_img .preview, .upload_img .preview2, .upload_img .preview3{
+	min-height: auto;
+}
+</style>
+</head>
+<body>
+<div class="content add_doc">
+	<div class="navigate_head clearfix">
+		<p class="leftHref" onclick="window.location.href='doc_list.html'">医生列表</p>
+		<p class="navi_current" onclick="window.location.href='add_doc_case.html'">添加案例</p>
+		<p class="navi_null"></p>
+	</div>
+	<div>
+		<form class="add_role_form">
+
+			<div class="public_input">
+			<span style="display: inline-block;position: absolute;top: 0;"><span>* </span>案例描述:</span>
+			<textarea class="speciality1" style="height: 139px" placeholder="案例描述"></textarea>
+		</div>
+			<div class="public_input upload_img clearfix">
+				<span><span class="font_green">* </span>案例图片:</span>
+				<div class="right" id="uploader-demo">
+					<!--用来存放item-->
+					<!-- <div id="fileList" class="uploader-list"></div>
+                     <div id="filePicker">上传图片</div>
+                     <input type="button" class="btn_remove_pic" value="选中删除" style="right: 310px;background-color: red;width: 120px;">-->
+
+					<!--<span style="color: red;vertical-align: top;font-size: 19px;">(一个案例图片最多四张)</span>-->
+					<!--预览图片-->
+					<p class="preview2">
+
+					</p>
+					<span class="addPhontBtn">
+						<input type="file" class="hidden" id="file2" multiple="multiple"/>
+						<!--<span style="color: white">上传图片</span>-->
+					</span>
+				</div>
+			</div>
+
+			<!--<div class="public_input">
+				<span style="display: inline-block;position: absolute;top: 0;"><span>* </span>案例二:</span>
+				<textarea class="speciality2"></textarea>
+			</div>
+			<div class="public_input upload_img clearfix">
+				<div class="right" id="uploader-demo2">
+					&lt;!&ndash;用来存放item&ndash;&gt;
+					&lt;!&ndash; <div id="fileList" class="uploader-list"></div>
+                     <div id="filePicker">上传图片</div>
+                     <input type="button" class="btn_remove_pic" value="选中删除" style="right: 310px;background-color: red;width: 120px;">&ndash;&gt;
+					&lt;!&ndash;<span style="color: red;vertical-align: top;font-size: 19px;">(一个案例图片最多四张)</span>&ndash;&gt;
+					&lt;!&ndash;预览图片&ndash;&gt;
+					<p class="preview2">
+
+					</p>
+					<span class="addPhontBtn">
+						<input type="file" class="hidden" id="file2" multiple="multiple"/>
+						&lt;!&ndash;<span style="color: white">上传图片</span>&ndash;&gt;
+					</span>
+				</div>
+			</div>
+
+			<div class="public_input">
+				<span style="display: inline-block;position: absolute;top: 0;"><span>* </span>案例三:</span>
+				<textarea class="speciality3"></textarea>
+			</div>
+			<div class="public_input upload_img clearfix">
+				<div class="right" id="uploader-demo3">
+					&lt;!&ndash;用来存放item&ndash;&gt;
+					&lt;!&ndash; <div id="fileList" class="uploader-list"></div>
+                     <div id="filePicker">上传图片</div>
+                     <input type="button" class="btn_remove_pic" value="选中删除" style="right: 310px;background-color: red;width: 120px;">&ndash;&gt;
+
+					&lt;!&ndash;<span style="color: red;vertical-align: top;font-size: 19px;">(一个案例图片最多四张)</span>&ndash;&gt;
+					&lt;!&ndash;预览图片&ndash;&gt;
+					<p class="preview3">
+
+					</p>
+					<span class="addPhontBtn">
+						<input type="file" class="hidden" id="file3" multiple="multiple"/>
+						&lt;!&ndash;<span style="color: white">上传图片</span>&ndash;&gt;
+					</span>
+				</div>
+			</div>-->
+
+
+
+			<div class="public_input confrim_btn">
+				<span>.</span>
+				<input type="button" class="confrim_add_doc" value="添加"/>
+			</div>
+		</form>
+	</div>
+</div>
+<!--遮罩层-->
+<div class="shade none"></div>
+<!--弹框-->
+<div class="popup_box none" style="min-height: 300px;top: 15px;width: 400px;">
+	<p class="img_close clearfix">
+		<img src="img/close.png" onclick="close_box()"/>
+	</p>
+	<div class="preview1">
+		<!--<div class="initImg img-container">
+			<img src="img/test.png" alt="Picture">
+		</div>-->
+	</div>
+	
+	<!--<p class="confirm">确 定</p>-->
+	<!--<button onclick="csx(19,28)"></button>-->
+	<div class="modal fade docs-cropped none" id="getCroppedCanvasModal" aria-hidden="true" aria-labelledby="getCroppedCanvasTitle" role="dialog" tabindex="-1">
+        <div class="modal-body"></div>
+    </div>
+	<button class="confirm" style="margin:0 0 10px 165px;" data-method="getCroppedCanvas" data-option="{ &quot;width&quot;: 160, &quot;height&quot;: 90 }" type="button">
+        <span class="docs-tooltip"  title="$().cropper(&quot;getCroppedCanvas&quot;, { &quot;width&quot;: 160, &quot;height&quot;: 90 })">
+         	确定
+        </span>
+    </button>
+</div>	
+	
+<script type="text/javascript" src="plug/jquery-1.11.3.js" ></script>
+<script type="text/javascript" src="plug/template-web.js" ></script>
+<script type="text/javascript" src="plug/webuploader/webuploader.min.js"></script>
+<script type="text/javascript" src="js/toggle.js" ></script>
+<script type="text/javascript" src="js/util.js" ></script>
+<script type="text/javascript" src="js/method.js" ></script>
+<script type="text/javascript" src="js/control_element.js" ></script>
+<script type="text/javascript" src="js/detail/doc.js" ></script>
+<!--<script type="text/javascript" src="js/detail/upload_img.js" ></script>-->
+<!--<script type="text/javascript" src="js/upload_img.js" ></script>-->
+<script type="text/javascript" src="js/upload_img2.js" ></script>
+<!--<script type="text/javascript" src="js/upload_img3.js" ></script>-->
+<!--<script type="text/javascript" src="js/detail/doc_upload_img.js" ></script>
+<script type="text/javascript" src="js/detail/shot_img.js" ></script>-->
+<!--截图插件-->
+<!--<script src="plug/screenShot/dist/cropper.js"></script>
+<script src="plug/screenShot/dist/main.js"></script>-->
+<script>
+
+/**
+ * 初始化列表
+ */
+//var
+function juge() {
+        if(parent.window.location.href.indexOf('hosBeauty') != -1){
+            return 'hosBeauty';
+        }else{
+            return 'hosAdmin';
+		}
+    }
+if(juge() == 'hosBeauty'){
+    if(localStorage.getItem('case_type') == 'appoint'){
+        $('.leftHref').attr('onclick','window.location.href="hosBeauty/appoint_proj_list.html"').text('项目列表');
+	}else if(localStorage.getItem('case_type') == 'hosbeautyspecial'){
+        $('.leftHref').attr('onclick','window.location.href="hosBeauty/special_proj_list.html"').text('特价项目列表');
+    }
+
+}else if(juge() == 'hosAdmin'){
+    if(localStorage.getItem('case_type') == 'doc'){
+        $('.leftHref').attr('onclick','window.location.href="doc_list.html"').text('医生列表');
+    }else if(localStorage.getItem('case_type') == 'hosspecial'){
+        $('.leftHref').attr('onclick','window.location.href="special_proj_list.html"').text('特价项目列表');
+    }
+
+}
+$(function(){
+	$(".confrim_add_doc").click(function(){
+
+		var data = {
+            "content":$('.speciality1').val(),
+			"images":toHash(arr_pic2)
+		}
+		if(juge() == 'hosBeauty'){
+            data.fkId = localStorage.getItem('appoint_proj_id');
+            data.type= 'project';
+		}else{
+            data.fkId = localStorage.getItem('docId');
+            data.type= 'doctor';
+		}
+		console.log(data);
+		$.post_ajax("/hospital/effectCase/add",data,function(res){
+			if(res.success){
+				alert(res.data);
+                parent.window.location.reload();
+			}else{
+				alert(res.data);
+			}
+		});
+	});
+});
+</script>
+</body>
+</html>

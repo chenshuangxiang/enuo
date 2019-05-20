@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="../css/base.css" />
+<link rel="stylesheet" href="../css/util.css" />
+<link rel="stylesheet" href="../css/collect.css" />
+<title>医美后台预约管理</title>
+<style>
+.head_area .public_input span{
+	width: 100px;font-size: 18px;
+}
+.head_area .public_input input,
+.head_area .public_input select{
+	width: 280px;margin-left: 10px;
+}
+</style>
+</head>
+<body>
+<div class="content appointment">
+	<div class="navigate_head clearfix">
+		<p class="" onclick="window.location.href='beauty_appoint_list.html'">就诊项目</p>
+		<p class="navi_null"></p>
+	</div>
+	<!--头部功能-->
+	<div class="head_area flex_vertical" style="display: block;">
+		<div class="public_input margindiv">
+			<!--<span >关键词：</span>-->
+			<input type="text" class="keyword" placeholder="搜索患者（姓名、手机号）" style="width: 280px;"/>
+		</div>
+		<div class="public_input margindiv">
+			<!--<span>预约状态：</span>-->
+			<select class="appoint_status" style="width: 280px;">
+				<option value="">预约状态</option>
+				<option value="success">已预约</option>
+				<option value="complete">已完成</option>
+				<option value="cancel">已取消</option>
+			</select>
+		</div>
+		<!--<div class="public_input">
+			<span>项目分类：</span>
+			<select class="proj_type" style="width: 280px;">
+				<option value="">请选择</option>
+				<option value="project">预约项目</option>
+				<option value="coupon">体验券</option>
+				<option value="product">特价商品</option>
+			</select>
+		</div>-->
+		<button class="search" style="margin-left: 10px;" onclick="indexPage()">搜索</button><br />
+
+	</div>
+	<table>
+		<thead>
+			<tr>
+				<td>预约编号</td>
+				<td>患者姓名</td>
+				<td>联系方式</td>
+				<td>项目分类</td>
+				<td>项目名称</td>
+				<td>预约时间</td>
+				<td>预约状态</td>
+				<td>操作</td>
+			</tr>
+		</thead>
+		<tbody class="tbody">
+			<!--<tr>
+				<td><div class="flex_all_center"><img src="img/activity_manage/select.png"/>&nbsp;<span>921614597713019</span></div></td>
+				<td>2017-08-12</td>
+				<td>2017-03-02</td>
+				<td>176 0652 0935</td>
+				<td>口腔科</td>
+				<td>蔡晓云(杭州梦桃口腔门诊部)</td>
+				<td>补牙</td>
+				<td>预约已取消</td>
+				<td>
+					<button class="btn_red">删除</button>
+				</td>
+			</tr>-->
+		</tbody>
+	</table>
+	<!--分页-->
+	<div class="page flex_vertical">
+		<button class="" onclick="indexPage()">首页</button>&nbsp;
+		<button class="" onclick="backPage()"><上一页</button>&nbsp;
+		<!--页码-->
+		<p class="page_num">
+			<!--<span>1</span><span>2</span><span>3</span><span>4</span><span>5</span>-->
+		</p>....
+		<button class="" onclick="nextPage()">下一页></button>&nbsp;
+		<button class="" onclick="endPage()">末页</button>&nbsp;
+		共<span class="all_recode">0 </span>记录&nbsp;|
+		共<span class="all_page">0 </span>页&nbsp;
+		到第<input class="select_page" />页&nbsp;
+		<button class="confirm_page" onclick="skipPage()">确定</button>
+	</div>
+</div>
+<!--遮罩层-->
+<div class="shade none"></div>
+<!--弹框-->
+<div class="popup_box none">
+	<p class="img_close clearfix">
+		<img src="../img/close.png" onclick="close_box()"/>
+	</p>
+	<div>
+		<div class="public_input">
+			<span style="width: 80px;">审核:</span>
+			<input type="button" class="bg_green enabled" value="通过" data_val="true"/><input type="button" class="disable" value="不通过" data_val="false"/>
+		</div>
+		<div class="public_input clearfix cause_parent" style="display: none;">
+			<span style="width: 80px;float: left;">原因:</span>
+			<textarea class="cause" style="margin-left: 30px;width: 320px;float: left;min-height: 80px;"></textarea>
+		</div>
+	</div>
+	<p class="confirm">确 定</p>
+</div>
+<script type="text/javascript" src="../plug/jquery-1.11.3.js" ></script>
+<script type="text/javascript" src="../plug/template-web.js"></script>
+<script type="text/javascript" src="../js/toggle.js" ></script>
+<script type="text/javascript" src="../js/util.js"></script>
+<script type="text/javascript" src="../js/method.js"></script>
+<script type="text/javascript" src="../js/page.js"></script>
+<script id="test_appointment_list" type="text/html">
+	{{each data value}}
+		<tr>
+			<td>
+				<div class="flex_all_center">
+					<!--<img src="../img/select.png"/>&nbsp;-->
+					<span>{{value.sn}}</span>
+				</div>
+			</td>
+			<td>{{value.fullname}}</td>
+			<td>{{value.mobile}}</td>
+			<td>
+				{{if value.type== "project"}}预约项目{{else if value.type == "coupon"}}体验券{{else if value.type == "product"}}特价{{/if}}
+			</td>
+			<td>{{value.projectName}}</td>
+			<td>{{value.reservationDate}}</td>
+			<td>{{if value.status== "success"}}已预约{{else if value.status == "complete"}}已完成{{else if value.status == "cancel"}}已取消{{/if}}</td>
+			<td data_id = "{{value.id}}">
+				{{if value.type== "project"}}
+					{{if value.status== "success"}}<button class="font_white btnorange" onclick="diagnose(this)">诊断</button>{{/if}}
+				{{else}}
+					{{if value.status== "success"}}<button class="font_white btnback" onclick="firm(this)">完成</button>{{/if}}
+				{{/if}}
+			</td>
+		</tr>
+	{{/each}}
+</script>
+<script>
+//点击完成
+function firm(m){
+	var appoint_id = $(m).parent().attr("data_id");
+	window.localStorage.setItem("appoint_id",appoint_id);
+	//利用对话框返回true或者false
+	if(confirm("确定完成？")){
+		//如果是true，发送请求，删除自己
+		var data = {
+			"id":appoint_id
+		}
+		$.post_ajax("/hospital/reservation/completed",data,function(res){
+			if(res.success==true){
+//				window.location.href = "beauty_appoint_list.html";
+				$(m).parent().prev().text("已完成");  
+				$(m).remove();
+			}else{
+				alert(res.data);
+			}
+		});
+	}/*else{
+		alert("取消");
+	}*/
+}
+//诊断
+function diagnose(m){
+	//存储预约id
+	var appoint_id = $(m).parent().attr("data_id");
+	window.localStorage.setItem("appoint_id",appoint_id);
+	//存储项目名称
+	var beauty_appoint_proj_name = $(m).parents("tr").find("td").eq(4).text();
+	window.localStorage.setItem("beauty_appoint_proj_name",beauty_appoint_proj_name);
+	window.location.href = "beauty_diagnose.html";
+}
+
+//去审核
+function checkAppoint(m){
+	$('.shade').css("display","block");
+	$('.popup_box').css("display","block");
+	var appoint_id = $(m).parent().attr("data_id");
+	window.localStorage.setItem("appoint_id",appoint_id);
+}
+
+//设置审核状态
+var flag=true;
+$(".enabled,.disable").click(function(){
+	flag = $(this).addClass("bg_green").attr("data_val");
+	$(this).siblings().removeClass("bg_green");
+	console.log(flag);
+	if(flag=="false"){
+//		显示原因
+		$(".cause_parent").show();	
+	}else{
+		$(".cause_parent").hide();
+	}
+});
+//审核确定
+$(".confirm").click(function(){
+	$(".shade,.popup_box").hide();
+	var data = {
+		"id":$.get_storage("appoint_id"),
+		"passed":flag,
+		"reason":$(".cause").val()
+	}
+	console.log(data);
+	
+	if(flag=="false"){
+		if(!$.verify($(".cause").val(),"未通过原因")){return false;}
+	}
+	$.post_ajax("/hospital/reservation/handle",data,function(data){
+		if(data.success==true){
+			alert("审核成功");
+			window.location.href = "beauty_appoint_list.html";
+		}else{
+			alert(data.data);
+		}
+	});
+});
+//请求方法
+function reqPage(data){
+	
+	console.log(data);
+	control_page.init_page(data,function(data){
+		//调用ajax
+        data.type = 'project';
+		$.get_ajax("/hospital/reservation/getList.json",data,function(data){
+			console.log(data);
+			var html = template('test_appointment_list',data);
+			$(".tbody").html(html);
+			//初始化分页
+			control_page.currentPage(control_page.page_num,data.totalCount);
+		});
+	});
+}
+</script>
+<script>
+var appoint_status="";
+var proj_type = "";
+//预约状态
+$(".appoint_status").change(function(){
+	appoint_status = $(".appoint_status").val();
+	console.log(appoint_status);
+});
+//项目类型
+$(".proj_type").change(function(){
+	proj_type = $(".proj_type").val();
+	console.log(proj_type);
+});
+$(function(){
+	reqPage(control_page.getData());
+	//搜索
+});
+function search(obj) {
+    console.log(obj)
+    //基本条件
+    if(obj == undefined){
+        var data = control_page.getData();
+    }else{
+        var data = obj;
+    }
+    //项目名称
+    var keyword = $(".keyword").val();
+    if(keyword != ""){
+        data.keyword = keyword;
+        console.log(data);
+    }
+//		console.log(pass_val);
+    //预约状态
+    if(appoint_status != ""){
+        data.status = appoint_status;
+        console.log(data);
+    }
+    //项目分类
+//		console.log($.regNum(proj_type_id));
+    if(proj_type != ""){
+        data.type = proj_type;
+        console.log(data);
+    }
+    console.log(data);
+    reqPage(data);
+}
+</script>
+</body>
+</html>

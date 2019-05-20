@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="css/base.css" />
+<link rel="stylesheet" href="css/util.css" />
+<link rel="stylesheet" href="css/collect.css" />
+<title>医生列表</title>
+<style>
+.head_area .public_input span{
+	width: 100px;font-size: 18px;
+}
+.head_area .public_input input,
+.head_area .public_input select{
+	width: 280px;margin-left: 10px;
+}
+</style>
+</head>
+<body>
+<div class="content doc_manage">
+	<div class="navigate_head clearfix">
+		<p class="navi_current" onclick="window.location.href='doc_list.html'">医生列表</p>
+		<p class="" onclick="window.location.href='add_doc.html'">添加医生</p>
+		<p class="navi_null"></p>
+	</div>
+	<!--头部功能-->
+	<div class="head_area flex_vertical">
+		<div class="public_input margindiv">
+			<span>医生姓名:</span>
+			<input type="text" class="doc_name" placeholder="请输入医生姓名"/>
+		</div>
+		<div class="public_input margindiv">
+			<span>专业职称:</span>
+			<select class="job_title">
+				<option value="">请选择</option>
+			</select>
+		</div>
+		<button class="search" onclick="indexPage()">搜索</button>
+	</div>
+	<table>
+		<thead>
+			<tr>
+				<td width="70px">姓名</td>
+				<td width="100px">联系电话</td>
+				<td width="90px">职称</td>
+				<td width="90px">科室</td>
+				<td>擅长病种</td>
+				<td width="70px">操作</td>
+			</tr>
+		</thead>
+		<tbody class="tbody">
+			<!--<tr>
+				<td>沈静</td>
+				<td>15011112222</td>
+				<td>主治医师</td>
+				<td>科室</td>
+				<td>补牙，</td>
+				<td>
+					<p>星期一 上午 下午</p>
+					<p>星期一 上午 下午</p>
+					<p>星期一 上午 下午</p>
+				</td>
+				<td class="font_green">
+					修改 余额明细 删除
+				</td>
+			</tr>-->
+		</tbody>
+	</table>
+	<!--分页-->
+	<div class="page flex_vertical">
+		<button class="" onclick="indexPage()">首页</button>&nbsp;
+		<button class="" onclick="backPage()"><上一页</button>&nbsp;
+		<!--页码-->
+		<p class="page_num">
+			<!--<span>1</span><span>2</span><span>3</span><span>4</span><span>5</span>-->
+		</p>....
+		<button class="" onclick="nextPage()">下一页></button>&nbsp;
+		<button class="" onclick="endPage()">末页</button>&nbsp;
+		共<span class="all_recode">0 </span>记录&nbsp;|
+		共<span class="all_page">0 </span>页&nbsp;
+		到第<input class="select_page" />页&nbsp;
+		<button class="confirm_page" onclick="skipPage()">确定</button>
+	</div>
+</div>
+<script type="text/javascript" src="plug/jquery-1.11.3.js" ></script>
+<script type="text/javascript" src="plug/template-web.js"></script>
+<script type="text/javascript" src="js/toggle.js" ></script>
+<script type="text/javascript" src="js/util.js"></script>
+<script type="text/javascript" src="js/method.js"></script>
+<script type="text/javascript" src="js/page.js"></script>
+<script type="text/javascript" src="js/detail/doc.js"></script>
+<!--医院列表-->
+<script id="test_doc_list" type="text/html">
+	{{each data value}}
+		<tr>
+			<td>{{value.name}}</td>
+			<td>{{value.mobile}}</td>
+			<td>{{value.doctorTypeName}}</td>
+			<td>{{value.subSubjectName}}</td>
+			<td style="line-height: 20px;">{{value.specialty}}</td>
+			<td class="font_green" data_id="{{value.id}}">
+				<button class="font_green" onclick="edit_doc(this)">修改</button>
+				<!--<button class="font_green" onclick="dle_doc(this)">删除</button>  -->
+				<button class="font_green" onclick="add_doc_case(this)">添加案例</button>
+			</td>
+		</tr>
+	{{/each}}
+</script>
+<!--职称列表-->
+<script type="text/html" id="test_job_title">
+	{{each data value}}
+		<option value="{{value.id}}">{{value.name}}</option>
+	{{/each}}
+</script>
+
+<script>
+$.initSelect("/hospital/topthree/doctor/getDoctorTypeList.json","test_job_title",".job_title")
+
+//请求方法
+function reqPage(data){
+	console.log(data);
+	control_page.init_page(data,function(data){
+		//调用ajax
+		$.get_ajax("/hospital/topthree/doctor/getList.json",data,function(data){
+			console.log(data);
+			var html = template('test_doc_list',data);
+			$(".tbody").html(html);
+			//初始化分页
+			control_page.currentPage(control_page.page_num,data.totalCount);
+		});
+	});
+}
+</script>
+<script>
+var job_title_id = "";//专业职称id
+$(".job_title").change(function(){
+	job_title_id = $(".job_title").val();
+});
+$(function(){
+	reqPage(control_page.getData());
+	//搜索
+});
+function search(obj) {
+    console.log(obj)
+    //基本条件
+    if(obj == undefined){
+        var data = control_page.getData();
+    }else{
+        var data = obj;
+    }
+    var doc_name = $(".doc_name").val();
+    if(doc_name != ""){
+        data.name = doc_name;
+        console.log(data);
+    }
+    //专业职称
+    if(job_title_id != ""){
+        data.doctorTypeId = job_title_id;
+        console.log(data);
+    }
+    reqPage(data);
+}
+</script>
+</body>
+</html>

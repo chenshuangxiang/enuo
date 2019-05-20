@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="../plug/webuploader/webuploader.css" />
+<link rel="stylesheet" href="../css/base.css" />
+<link rel="stylesheet" href="../css/util.css" />
+<link rel="stylesheet" href="../css/collect.css" />
+<title>添加疾病</title>
+<style>
+/*添加图片样式自定义*/
+	#filePicker{
+		display: inline-block;
+		/*border: 1px solid red;*/
+		height: 40px;
+	}
+	#filePicker .webuploader-pick{
+		height: 40px;line-height: 40px;
+		width: 120px;
+		/*border: 1px solid black;*/
+		padding: 0;
+		letter-spacing: 1px;
+		font-size: 16px;
+		border-radius:5px ;
+	}
+	.preview>div{
+		display: inline-block;
+		margin-left: 3px;
+	}
+</style>
+</head>
+<body>
+<div class="content add_ill">
+	<div class="navigate_head clearfix">
+		<p onclick="window.location.href='beauty_ill_list.html'">疾病列表</p>
+		<p class="navi_current" onclick="window.location.href='add_ill.html'">添加疾病</p>
+		<p class="navi_null"></p>
+	</div>
+	<div>
+		<form class="add_ill_form">
+			<div class="public_input">
+				<span>科室:</span>
+				<select class="ks">
+					<option>请选择</option>
+				</select>
+			</div>
+			<div class="public_input">
+				<span>子科室:</span>
+				<select class="child_ks">
+					<option>请选择</option>
+				</select>
+			</div>
+			<div class="public_input">
+				<span><span class="font_green">* </span>病种列表:</span>
+				<select class="ill_list" style="">
+					<option>请选择</option>
+				</select>
+			</div>
+			<div class="public_input">
+				<span>类别:</span>
+				<input type="text" class="ill_class" placeholder=""/>
+			</div>
+			<div class="public_input">
+				<span>治疗方式:</span>
+				<input type="text" class="cure_method" placeholder=""/>
+			</div>
+			
+			<div class="public_input">
+				<span><span class="font_green">* </span>约定周期(数字):</span>
+				<input type="text" class="appoint_min_time" placeholder="至少天数" style="width: 180px;"/>
+				<input type="text" class="appoint_max_time" placeholder="最多天数" style="width: 180px;"/>
+			</div>
+			<div class="public_input">
+				<span><span class="font_green">* </span>约定费用(数字):</span>
+				<input type="text" class="appoint_min_cost" placeholder="最低费用" style="width: 180px;"/>
+				<input type="text" class="appoint_max_cost" placeholder="最高费用" style="width: 180px;"/>
+			</div>
+			
+			<div class="public_input clearfix" style="height: auto;width: 837px;">
+				<span style="position: absolute;top: 0;"><span class="font_green">* </span>约定效果:</span>
+				<div class="appoint_result_list">
+					<p>
+						<span>1.</span><input type="text" class="appoint_result" placeholder="如" />
+						<span class="font_green" onclick="addTag.addResult(this)">[+]</span>
+					</p>
+				</div>
+			</div>
+			<div class="public_input clearfix" style="height: auto;width: 837px;">
+				<span style="position: absolute;top: 0;"><span class="font_green">* </span>谅解:</span>
+				<div class="forgive_list">
+					<p>
+						<span>1.</span><input type="text" class="forgive" placeholder="如" />
+						<span class="font_green" onclick="addForgive(this)">[+]</span>
+					</p>
+				</div>
+			</div>
+			<div class="public_input">
+				<span><span class="font_green">* </span>诊断:</span>
+				<input type="text" class="diagnose" placeholder=""/>
+			</div>
+			<p style="border-bottom: 1px dashed #DCDCDC;"></p>
+			<div class="public_input">
+				<span class="font_green">诊断依据:</span>
+				<input type="text" class="" placeholder="" style="visibility: hidden;"/>
+			</div>
+			<div class="public_input">
+				<span>主诉:</span>
+				<input type="text" class="main_tell" placeholder=""/>
+			</div>
+			<div class="public_input">
+				<span>现病史:</span>
+				<input type="text" class="current_ill" placeholder=""/>
+			</div>
+			<div class="public_input">
+				<span>体格检查:</span>
+				<input type="text" class="health_check" placeholder=""/>
+			</div>
+			<div class="public_input">
+				<span>实验室检查:</span>
+				<input type="text" class="lab_check" placeholder=""/>
+			</div>
+			<div class="public_input">
+				<span>辅助检查:</span>
+				<input type="text" class="tutorship_check" placeholder=""/>
+			</div>
+			<div class="public_input upload_img clearfix">
+				<span>案例效果图:</span>
+				<div class="right" id="uploader-demo">
+					<!--用来存放item-->
+				    <div id="fileList" class="uploader-list"></div>
+				    <div id="filePicker">上传图片</div>
+				    <input type="button" class="btn_remove_pic" value="选中删除" style="right: 140px;background-color: red;">
+					<!--预览图片-->
+					<p id="" class="preview">
+						
+					</p>
+				</div>
+			</div>
+			<div class="public_input confrim_btn">
+				<span>.</span>
+				<input type="button" class="confrim_add" value="添加"/>
+			</div>
+		</form>
+	</div>
+</div>
+	
+	
+<script type="text/javascript" src="../plug/jquery-1.11.3.js" ></script>
+<script type="text/javascript" src="../plug/template-web.js" ></script>
+<script type="text/javascript" src="../plug/webuploader/webuploader.min.js"></script>
+<script type="text/javascript" src="../js/toggle.js" ></script>
+<script type="text/javascript" src="../js/util.js" ></script>
+<script type="text/javascript" src="../js/method.js" ></script>
+<!--<script type="text/javascript" src="../js/detail/ill.js" ></script>-->
+<script type="text/javascript" src="../js/addTag.js" ></script>
+<script type="text/javascript" src="../js/detail/upload_img.js" ></script>
+<!--科室列表-->
+<script type="text/html" id="test_ks">
+	{{each data value}}
+		<option value="{{value.id}}">{{value.name}}</option>
+	{{/each}}
+</script>
+<!--子科室列表-->
+<script type="text/html" id="test_child_ks_list">
+	{{each item value}}
+		<option value="{{value.id}}">{{value.name}}</option>
+	{{/each}}
+</script>
+<!--约定病种列表-->
+<script type="text/html" id="test_appoint_ill">
+	{{each data value}}
+		<option value="{{value.id}}">{{value.name}}</option>
+	{{/each}}
+</script>
+<script>
+$(function(){
+	var ks_id="";
+	var child_ks_id="";
+	var ill_id="";//病种列表
+	//初始化科室列表
+	$.get_ajax("/hospital/getSubjects.json","",function(res){
+		console.log(res);
+		var html = template('test_ks',res);
+		$(".ks").append(html);
+	});
+	$(".ks").change(function(){
+		ks_id = $(".ks").val();
+		console.log(ks_id);
+		//子科室列表
+		init_subSubject(ks_id);
+	});
+	//病种列表
+	$(".child_ks").change(function(){
+		child_ks_id = $(".child_ks").val();
+		console.log(child_ks_id);
+		//初始化约定病种列表
+		init_ill_select(child_ks_id);
+	});
+	$(".ill_list").change(function(){
+		ill_id = $(".ill_list").val();
+		console.log(ill_id);
+	});
+	
+	$(".confrim_add").click(function(){
+		//必填
+		var appoint_min_time = $(".appoint_min_time").val();
+		var appoint_max_time = $(".appoint_max_time").val();
+		var appoint_min_cost = $(".appoint_min_cost").val();
+		var appoint_max_cost = $(".appoint_max_cost").val();
+		var appoint_result = getResult($(".appoint_result"));//约定效果
+		var forgive = getResult($(".forgive"));//谅解
+		var diagnose = $(".diagnose").val();//症断
+		
+		//非必填
+		var ill_class = $(".ill_class").val();
+		var cure_method = $(".cure_method").val();
+		//症断依据
+		var diagnose_according = $(".diagnose_according").val();
+		var main_tell = $(".main_tell").val();
+		var current_ill = $(".current_ill").val();
+		var health_check = $(".health_check").val();
+		var lab_check = $(".lab_check").val();
+		var tutorship_check = $(".tutorship_check").val();
+		var pic_url = arr_pic;
+		
+		var data = {
+			"diseaseTemplateId":ill_id,//疾病id
+			"minPrice":appoint_min_cost,
+			"maxPrice":appoint_max_cost,
+			"minDay":appoint_min_time,
+			"maxDay":appoint_max_time,
+			"diagnosis":diagnose,
+			"treatmentEffectAgreementResult":toHash(appoint_result),
+			"treatmentEffectUnderstanding":toHash(forgive),
+//			"subjectId":ks_id,
+//			"subSubjectId":child_ks_id,
+			"type":ill_class,
+			"treatmentMethod":cure_method,
+			//症断依据
+			"mainStatement":main_tell,
+			"currentDiseaseHistory":current_ill,
+			"physiqueCheck":health_check,
+			"laboratoryCheck":lab_check,
+			"auxiliaryCheck":tutorship_check,
+			"images":toHash(pic_url)
+			
+		}
+		console.log(data);
+		//验证
+		if(!$.verifyNum(ill_id,"疾病")){return false;}
+		if(!$.verifyNum(appoint_min_time,"约定周期")){return false;}
+		if(!$.verifyNum(appoint_max_time,"约定周期")){return false;}
+		if(!$.verifyNum(appoint_min_cost,"约定价格")){return false;}
+		if(!$.verifyNum(appoint_max_cost,"约定价格")){return false;}
+		if(!$.verify(appoint_result[0],"约定效果")){return false;}
+		if(!$.verify(forgive[0],"谅解")){return false;}
+		if(!$.verify(diagnose,"诊断")){return false;}
+		
+		$.post_ajax("/hospital/diseaseTemplate/add",data,function(res){
+			console.log(res);
+			if(res.success==true){
+				alert(res.data);
+				window.location.href="beauty_ill_list.html";
+			}else{
+				alert(res.data);
+			}
+		},"json");
+		
+	});
+
+
+
+});
+</script>
+<script>
+//根据科室获取病种列表
+function init_ill_select(m){
+	console.log(m);
+	var data = {
+		"subSubjectId":m
+	}
+	console.log(data);
+	$.get_ajax("/hospital/disease/getListBySubSubject.json",data,function(res){
+		console.log(res);
+		if(res.success){
+			var html = template('test_appoint_ill',res);
+			$(".ill_list").append(html);
+		}
+	});
+}
+</script>
+<script>
+
+</script>
+</body>
+</html>

@@ -1,0 +1,211 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Language" content="zh-cn">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>USB 录音盒Websocket二次开发demo</title>
+<link href="Style.css" rel="stylesheet" type="text/css" />
+</head>
+
+<script language="javascript" type="text/javascript" src="js/jquery.min.js"></script>
+<script language="javascript" type="text/javascript" src="js/uboxweb.js"></script>
+
+<script language=javascript>
+
+</script>
+
+
+<script>
+//getting the instance of the plugin so we can use it every time
+/*
+function init()
+{
+	Phonic_usb.OpenLogFile(0);
+	ubox_CloseDevice();
+	ubox_openDevice();
+	
+	//Phonic_usb.UboxDeleteFile("E:\\usb\\bin\\recorder-dir\\ubox-20141120-103420.log");
+
+}
+*/
+window.callback_hello = function(){
+	alert("abc");
+  
+}
+
+function CheckBrowser()
+{
+	var s = navigator.userAgent;//alert(s);
+	var a = s.indexOf("Apple");
+	var c = s.indexOf("Chrome");
+	var ie = s.indexOf("MSIE");
+	
+	if( c > 0 )//is there chrome
+	{
+		alert( "Chrome dont like functions with parameters.");
+		return true;
+	}	
+	
+	if( ie > 0 )//is there chrome
+	{
+		alert( "Internet Explorer dont like NPAPI at all.");
+		return true;
+	}
+	
+	if( a > 0 )//is there chrome
+	{
+		alert( "Apple Safari dont like NPAPI at all.");
+		return true;
+	}
+
+	return false;
+}
+
+
+</script>
+
+<body id="bodyId">
+<p>
+<textarea id="StatusArea" rows="13" name="S1" cols="86"></textarea>
+</p> 
+
+
+<p>
+<form  name="lineselect">
+<input type="radio" id=lineid1 checked="checked" name="linenum" value="1" disable="true" onclick="changelinenum(this)" />
+line 1
+
+<input type="radio" id=lineid2 name="linenum" value="2"  disable="true" onclick="changelinenum(this)" />
+line 2
+</form>
+</p>
+
+<!--
+<p><input  type="button" value="打开设备" name="B3" onClick="ubox_openDevice()">
+<input type="button" value="关闭设备" name="B6" onclick="ubox_CloseDevice()"></p>
+-->
+
+<p>
+<input type="file" value="浏览" name="C13" id="filename" size="20">
+<input type="button" value="播放文件" name="B13" onclick="ubox_playfile(filename.value)">
+<input type="button" value="停止播放" name="B14" onclick="ubox_stopplay()"></p>
+
+
+<form>
+	<p>
+		<input type="text" value="10000" name="T1" size="20" id="dialcode">
+		<input type="button" value="拨号" name="B10" onclick="ubox_dialnum(dialcode.value)"></p>
+</form>
+
+ 
+<p>
+	<input type="button" value="开始录音" name="B7" onclick="ubox_RecordFile()">
+	<input type="button" value="停止录音" name="B8" onclick="ubox_StopRecord()">
+</p>
+
+
+<p><input type="button" value="开始量线路电压" name="B7" onclick="ubox_Start_read_line_voltage()">
+<input type="button" value="停止量线路电压" name="B8" onclick="ubox_Stop_read_line_voltage()"></p>
+
+<p><input type="button" value="获取用户号" name="B7" onclick="ubox_Get_User()">
+<input type="button" value="获取硬件版本号" name="B8" onclick="ubox_Get_DeviceVersion()"></p>
+
+<p><input type="button" value="软摘机" name="B7" onclick="ubox_hook_off()">
+<input type="button" value="软挂机" name="B8" onclick="ubox_hook_on()">
+
+
+<input type="button" value="拒接" name="B8" onclick="ubox_reject_on()">
+
+<input type="button" value="振铃9999999" name="B8" onclick="ubox_makecallSlic()"></p>
+
+<!--
+<p><input type="button" value="读eeprom" name="B7" onclick="ubox_read_eeprom()">
+<input type="button" value="写eeprom" name="B8" onclick="ubox_write_eeprom()"></p>
+-->
+<p><input type="button" value="获取设备型号" name="B7" onclick="ubox_get_productid()"></p>
+
+<p>
+<input type="file"   value="md"          id="fileid" size="20">
+<input type="button" value="判断文件大小"  onclick="getfilesize(fileid.value)">
+</p>
+
+<p>
+<input type="file"   value="md"          id="fileid2" size="20">
+<input type="button" value="删除文件"  onclick="UBOXDeletefile(fileid2.value)">
+</p>
+
+
+<form>
+	<p>
+		<input  type="text"  name="urlֵ" id="url" value="127.0.0.1"  />
+	    <input type="text" name="ds"   size="40" id="paramname", value="a.wav">
+		<input type="file"   value="rec"    id="filename" size="20">
+		<input type="button" value="put上传"    name="B10" onclick="UploadfileToserver(url.value, paramname.value, filename.value)">
+	</p>
+</form>
+
+<form>
+	<p>
+		<input  type="text"  name="urlֵ" id="urlEx" value="127.0.0.1"  />
+	    <input type="text" name="ds"   size="40" id="paramnameEx", value="a.wav">
+		<input type="file"   value="rec"    id="filenameEx" size="20">
+		<input type="button" value="POST上传"    name="B10" onclick="UploadfileToserverEx(urlEx.value, paramnameEx.value, filenameEx.value)">
+	</p>
+</form>
+
+<p><input type="button" value="获取系统信息" name="B7" onclick="ubox_get_systeminfo()"></p>
+<div>
+<fieldset>
+<legend>无线设备功能配置</legend>
+<form>
+	<p>
+		<input type="text" value="" name="T1" size="20" id="cmd">
+		<input type="button" value="发送命令" name="B10" onclick="gsm_sendcmd(cmd.value)">
+	</p>
+	 
+</form>
+
+<div>
+<input  type="checkbox"  id="slicrecEnable"  value="1" /> <label>SLIC录音使能</label> 
+<input  type="checkbox"  id="gsmrecEnable"   />   <label>GSM录音使能</label> 
+<input  type="checkbox"  id="earphonerecEnable"   />   <label>EarPhone录音使能</label> 
+<input type="button" value="设定录音使能"  onclick="setrecordenable()">
+</div>
+<div>
+<input  type="checkbox"  id="sliToGsm"   /> <label>SLIC到Gsm通话使能</label> 
+<input  type="checkbox"  id="GsmToslic"   />   <label>GSM到slic通话使能</label> 
+<input  type="checkbox"  id="earphoneToGsm"   />   <label>EarPhone到Gsm通话使能</label> 
+<input  type="checkbox"  id="GsmToearphone"   />   <label>GSM到EarPhone通话使能</label> 
+
+<input  type="checkbox"  id="earphoneToslic"   />   <label>EarPhone到Slic通话使能</label> 
+<input  type="checkbox"  id="slicToearphone"   />   <label>Slic到EarPhone通话使能</label>
+
+<input  type="checkbox"  id="usbToearphone"   />   <label>USB到EarPhone通话使能</label> 
+<input  type="checkbox"  id="usbToGsm"   />   <label>USB到GSM通话使能</label> 
+<input  type="checkbox"  id="usbToslic"   />   <label>USB到Slic通话使能</label> 
+<input type="button" value="设定通话使能"  onclick="settalkEnable()">
+</div>
+
+<form>
+  <fieldset>
+    <legend>发短信</legend>
+    号码:<input type="text" value="15907558923" name="T1" size="20" id="phone">
+    内容:<input type="text" value="" name="T1" size="100" id="msg">
+	<input type="button" value="发短信" name="B10" onclick="gsm_sendmsg(phone.value, msg.value)">
+  </fieldset>
+</form>
+
+<form  name="simcardselect">
+<input type="radio" id=simcard1 checked="checked" name="linenum" value="1" disable="true" onclick="changesimcard(this)" />
+sim1
+
+<input type="radio" id=simcard2 name="linenum" value="2"  disable="true" onclick="changesimcard(this)" />
+sim2
+</form>
+
+</fieldset>
+</div>
+
+</body>
+
+</html>

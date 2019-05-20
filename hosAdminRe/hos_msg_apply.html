@@ -1,0 +1,1184 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="css/base.css" />
+<link rel="stylesheet" href="css/util.css" />
+<link rel="stylesheet" href="css/collect.css" />
+<link rel="stylesheet" href="css/hos_msg_complete.css" />
+<link rel="stylesheet" href="plug/webuploader/webuploader.css" />
+	<link rel="stylesheet" href="css/loginOpen.css" />
+<title>医院账号申请</title>
+<style>
+	img{
+		max-width: inherit;
+	}
+	.check_confirm{
+		width: 70px;
+		height: 30px;
+		line-height: 30px;
+		border-radius: 10px;
+		background-color: #00afa1;
+		color: #fff;
+		margin: 20px auto 0;
+		text-align: center;
+	}
+	/*添加图片样式自定义*/
+	#filePicker,#filePicker2{
+		display: inline-block;
+		/*border: 1px solid red;*/
+		height: 40px;
+	}
+	#filePicker .webuploader-pick,
+	#filePicker2 .webuploader-pick{
+		height: 40px;line-height: 40px;
+		width: 120px;
+		/*border: 1px solid black;*/
+		padding: 0;
+		letter-spacing: 1px;
+		font-size: 16px;
+		border-radius:5px ;
+	}
+	.preview>div{
+		display: inline-block;
+		margin-left: 3px;
+	}
+	/*密码强度*/
+	.public_input div{
+		/*border: 1px solid red;*/
+	}
+	.pwd_sty{
+		width: 146px;height: 10px;
+		border: 1px solid #DCDCDC;
+		border-radius: 6px;
+		margin-left: 287px;
+	}
+	.pwd_sty p{
+		float: left;
+		width: 40px;height:4px;
+		background-color: #DCDCDC;
+		margin: 2px 0 0 6px;
+		/*border: 1px solid red;*/
+	}
+	.pwd_txt{
+		width: 150px;
+		margin-left: 287px;
+	}
+	.pwd_txt p{
+		float: left;
+		width: 48px;height: 30px;
+		text-align: center;
+		line-height: 30px;
+		/*border: 1px solid red;*/
+	}
+	.pwd_sty .bg_greenyellow{
+		background-color: greenyellow;
+	}
+	.pwd_sty .bg_yellowgreen{
+		background-color: yellowgreen;
+	}
+	.pwd_sty .bg_green{
+		background-color: green;
+	}
+
+	/*动态增减元素*/
+	.ele_container{
+		border: 1px solid #DCDCDC;
+		border-radius: 5px;
+		width: 400px;
+		min-height: 40px;
+		margin-left: 287px;
+		margin-bottom: 20px;
+	}
+	.ele_container p{
+		display: inline-block;
+		height: 40px;line-height: 40px;
+		border: 1px solid #DCDCDC;
+		padding: 0 10px;
+		position: relative;
+		border-radius: 5px;
+		margin: 5px 10px 5px 8px;
+	}
+	.ele_container p:hover>img{
+		position: absolute;
+		top: -3px;right: -3px;
+		display: block !important;
+	}
+	.loginafter{display: none}
+	.ipDiv{
+		position: absolute;
+		left: 19%;
+		/* top: -61px; */
+		top: -7px;
+		width: 400px;
+		height: 46px;
+	}
+	.ip_descr{
+		position: absolute;
+		/*top: 61px;*/
+		/*border: 1px solid #d6d4d4;*/
+		background-color: white;
+		/*left: -61px;*/
+		width: 440px;
+		border-radius: 5px;
+	}
+	.ip_font{
+		/*padding: 11px 8px 1px 8px;*/
+		line-height: 19px;
+		color: #333;
+		font-size: 14px;
+	}
+	.ip_btn{
+		cursor: pointer;
+		width: 79px;
+		height: 28px;
+		margin-top: 8px;
+		font-size: 12px;
+		border-radius: 4px;
+		color: white;
+		border: none;
+		text-align: center;
+		background-color: #1bc9bd;
+		bottom: 0;
+		margin-left: 4px;
+		outline: none;
+		float: left;
+	}
+	.jian{
+		position: absolute;
+		top: 48px;
+		border: 1px solid #b1b1b1;
+		background-color: white;
+		left: 45px;
+		width: 20px;
+		height: 14px;
+		border-bottom: 9px solid #e2e2e2;
+		border-left: 10px solid transparent;
+		border-right: 10px solid transparent;
+		border-top: none;
+		z-index: 99;
+	}
+	.containerDiv{
+		width:632px;margin:15px 0 0 155px;border: 1px solid gray;padding-top:15px;margin-top:15px;display: none
+	}
+	#text_{
+		margin-right:30px;    height: 30px;
+		line-height: 30px;
+		width: 230px;
+		border-radius: 5px;
+		border: solid 1px #dcdcdc;
+		margin-left: 20px;
+		padding-left: 5px;
+	}
+	.containerSearchBtn{
+		width: 80px;text-indent: 0;height:30px;background-color: #00b7ee;color: white;border-radius: 5px;letter-spacing: 1px;font-size: 16px;
+	}
+	#container{
+		width: 630px;height: 390px;margin-top: 15px
+	}
+	.clickAddressBtn{
+		background-color: #00b7ee;
+		color: white;
+		height: 25px;
+		font-size: 13px;
+		width: 57px;
+		border-radius: 3px;
+		margin-left: 25px;
+		cursor: pointer;
+	}
+
+</style>
+</head>
+<body>
+<!--头部-->
+<div class="content_head">
+	<div class="content_head_middle clearfix">
+		<div class="left set_img_bg">
+			
+		</div>
+		<!--<p class="loginBegin" style="border-right: 1px solid black;">登录</p>-->
+		<!--<p onclick="edit_pwd()">修改密码</p>-->
+		<!--<p class="loginafter exitHos"><img src="img/index/exit.png"/>退出</p>
+		<p class="loginafter hosName" style="border-right: 1px solid black;">张婵</p>-->
+		<!--<p class="hos_Info" style="cursor: pointer" onclick=" window.location.href='hos_msg_complete.html'">医院信息</p>-->
+	</div>
+</div>
+<div class="content hos_msg_complete">
+	<div class="navigate_head clearfix" style="position: relative">
+		<p class="navi_current" onclick="window.location.href='hos_msg_apply.html'">医院注册申请</p>
+		<!--<p class="editHosInfo" style="" onclick="window.location.href='edit_hos_complete.html'">修改医院信息</p>-->
+
+		<div class="ipDiv" style="display: none">
+			<!--<div class="jian"></div>-->
+			<div class="ip_descr">
+				<p class="ip_font" style="    width: 345px;line-height: 21px;text-align: left;border: none;"></p>
+				<input class="ip_btn" type="button" onclick="toResetInfo()" value="点击修改"/>
+			</div>
+		</div>
+		<p class="navi_null" style="text-align: right" onclick="open_box_login()">登录</p>
+	</div>
+	<div>
+		<form class="add_role_form">
+		<!--	<div class="public_input">
+				<span><span class="font_green">* </span>开户行:</span>
+				<input type="text" class="open_back" placeholder="请输入开户行"/>
+			</div>
+			<div class="public_input">
+				<span><span class="font_green">* </span>开户名:</span>
+				<input type="text" class="open_name" placeholder="请输入开户名"/>
+			</div>
+			<div class="public_input">
+				<span><span class="font_green">* </span>账号:</span>
+				<input type="text" class="account" placeholder="请输入账号"/>
+			</div>
+			<div class="public_input">
+				<span><span class="font_green">* </span>财务联系人:</span>
+				<input type="text" class="financing_concat" placeholder="请输入联系人"/>
+			</div>
+			<div class="public_input">
+				<span><span class="font_green">* </span>财务联系人及电话:</span>
+				<input type="text" class="financing_concat_phone" placeholder="请输入财务联系电话"/>
+			</div>-->
+			<div class="public_input username">
+				<span><span>* </span>用户名:</span>
+				<input type="text" class="user_name" placeholder="请输入用户名(英文字母)"/>
+			</div>
+			<!--<div class="public_input">
+				<span><span>* </span>手机号:</span>
+				<input type="number" class="mobile" placeholder="请输入手机号"/>
+			</div>-->
+			<div class="public_input password">
+				<span><span>* </span>设置密码:</span>
+				<input type="password" class="set_pwd" placeholder="长度为6-16位字符"/>
+			</div>
+			<div class="public_input passwordStrong" style="width: 100%;margin: 0;">
+				<!--密码的强度-->
+				<div class="pwd_sty clearfix">
+					<p class="pwd_sty_bg1"></p>
+					<p class="pwd_sty_bg2"></p>
+					<p class="pwd_sty_bg3"></p>
+				</div>
+				<div class="pwd_txt clearfix">
+					<p>弱</p>
+					<p>中</p>
+					<p>强</p>
+				</div>
+			</div>
+			<div class="public_input">
+				<span><span>*</span>医院名称:</span>
+				<input type="text" class="hos_name" placeholder="请输入医院名称"/>
+			</div>
+			<div class="public_input">
+				<span><span>* </span>医院地址:</span>
+				<select class="hos_address_province"style="width: 127px;">
+					<option>省份</option>
+				</select>
+				<select class="hos__address_city"style="width: 127px;margin-left: 5px;">
+					<option>地级市</option>
+				</select>
+				<select class="hos__address_county"style="width: 127px;margin-left: 5px;">
+					<option>区、县级市</option>
+				</select>
+			</div>
+			<div class="public_input" style="margin:-10px 0 25px 0">
+				<span></span>
+				<div id="l-map" style="display: none"></div>
+				<input type="text" id="suggestId" class="hos_detail_address" placeholder="请输入医院的详细地址"/>
+				<div id="searchResultPanel" style="border:1px solid #C0C0C0;width:150px;height:auto; display:none;"></div>
+			</div>
+			<div class="public_input" style="margin: -8px 0 19px 0">
+				<span></span>
+				<input type="text" class="hos_address_longitude" placeholder="医院的地理经度" style="width: 170px;"/>
+				<input type="text" class="hos_address_latitude" placeholder="医院的地理纬度" style="width: 170px;"/>
+				<h5 style="color: #00AFA1;cursor: pointer;display: inline-block;margin-left: 21px;" onclick="getLatLong();$('.containerDiv').show()">拾取坐标</h5>
+			</div>
+			<div class="containerDiv">
+				<span style="margin-left: 40px">要查询的地址：</span><input id="text_" type="text" value=""/>
+				<!--查询结果(经纬度)：<input id="result_" type="text" />-->
+				<input type="button" class="containerSearchBtn"  value="查询" onclick="searchByStationName();"/>
+				<span onclick="$('.containerDiv').fadeOut()" style="float: right;margin: -18px 8px 0 0;font-size: 21px;font-family: sans-serif;cursor: pointer">x</span>
+				<div id="container"></div>
+			</div>
+
+			<div class="public_input">
+				<span><span>* </span>医院等级:</span>
+				<select class="hos_grade">
+					<option>请选择</option>
+				</select>
+			</div>
+			<div class="public_input">
+				<span><span>* </span>医院分类:</span>
+				<select class="hos_type">
+					<option>请选择</option>
+				</select>
+			</div>
+			<div class="public_input" style="margin-top: 0;">
+				<span><span class="font_green">* </span>医保属于:</span>
+				<select class="medical_insurance">
+					<option>请选择</option>
+				</select>
+			</div>
+			<div class="public_input">
+				<span><span>* </span>医院科室:</span>
+				<select class="hos_ks" style="width: 185px;">
+					<option>科室</option>
+				</select>
+				<select class="hos_child_ks" style="width: 185px;margin-left: 25px;">
+					<option>子科室</option>
+				</select>
+				<span style="color: red;width: inherit">(注:可选多个)</span>
+			</div>
+			<div class="ele_container">
+				<!--<p data_val=""><span>皮肤科</span><img src="img/close2.png" class="none" onclick='del_appoint_ks(this)'/></p>-->
+			</div>
+
+			<div class="public_input">
+				<span><span>* </span>医院的联系方式:</span>
+				<input type="number" class="hos_contact" placeholder="请输入医院的联系电话"/>
+			</div>
+			<div class="public_input">
+				<span><span>*</span>联系邮箱:</span>
+				<input type="text" class="hos_email" placeholder="请输入医院的联系邮箱"/>
+			</div>
+			<div class="public_input">
+				<span><span>* </span>商务联系人:</span>
+				<input type="text" class="urgency_contact" placeholder="商务联系人"/>
+			</div>
+			<div class="public_input">
+				<span><span>* </span>商务联系人电话:</span>
+				<input type="number" class="urgency_contact_phone" placeholder="商务联系人电话"/>
+			</div>
+			<div class="public_input upload_img clearfix">
+				<span><span class="font_green">* </span>医院图片:</span>
+				<div class="right" id="uploader-hoslogo">
+					<!--用来存放item-->
+					<!--<div id="fileList" class="uploader-list"></div>-->
+					<!--<div id="filePicker">上传图片</div>-->
+					<!--<label for="file" class=""><span style="width: 120px;background-color: #00A2D4;">选择图片</span></button></label>
+					<input type="file" style="left: 210px;opacity: 0" id="file" multiple="multiple" name="file" class="ill_pic hoslogoinput"  accept="image/*"/>-->
+					<!--<input type="button" class="btn_remove_pic" value="选中删除" style="right: 140px;background-color: red;">-->
+					<span class="addPhontBtn">
+						<input type="file" class="hidden" id="file3" multiple="multiple"/>
+							<span style="color: white">上传图片</span>
+					</span>
+					<span style="color: red;vertical-align: top;font-size: 19px;">(图片宽高比例3:2)</span>
+					<!--预览图片-->
+					<p class="preview3">
+
+					</p>
+					<p class="preview4" style="display: none">
+
+					</p>
+				</div>
+			</div>
+			<div class="public_input clearfix">
+				<span style="float: left;"><span class="font_green">* </span>医院介绍:</span>
+				<textarea class="hos_info" style="float: left;"></textarea>
+			</div>
+
+			<div class="public_input">
+				<span><span class="font_green">* </span>医疗机构执业许可证号:</span>
+				<input type="text" class="cureId" placeholder=""/>
+			</div>
+			<div class="public_input upload_img clearfix">
+				<span><span class="font_green">* </span>医疗机构执业许可证照片:</span>
+				<div class="right" id="uploader-demo">
+					<!--用来存放item-->
+				   <!-- <div id="fileList" class="uploader-list"></div>
+				    <div id="filePicker">上传图片</div>
+				    <input type="button" class="btn_remove_pic" value="选中删除" style="right: 310px;background-color: red;width: 120px;">-->
+					<span class="addPhontBtn">
+						<input type="file" class="hidden" id="file" multiple="multiple"/>
+							<span style="color: white">上传图片</span>
+					</span>
+					<!--预览图片-->
+					<p class="preview">
+						
+					</p>
+				</div>
+			</div>
+			<div class="public_input">
+				<span><span class="font_green">* </span>企业营业执照号:</span>
+				<input type="text" class="businessLicense" placeholder=""/>
+			</div>
+			<div class="public_input upload_img clearfix">
+				<span><span class="font_green">* </span>企业营业执照照片:</span>
+				<div class="right" id="uploader-demo2">
+					<!--用来存放item-->
+				    <!--<div id="fileList" class="uploader-list"></div>
+				    <div id="filePicker2">上传图片</div>
+				    <input type="button" class="btn_remove_pic2" value="选中删除" style="right: 310px;background-color: red;width: 120px;">-->
+					<span class="addPhontBtn">
+						<input type="file" class="hidden" id="file2" multiple="multiple"/>
+							<span style="color: white">上传图片</span>
+					</span>
+					<!--预览图片-->
+					<p id="" class="preview2">
+						
+					</p>
+				</div>
+			</div>
+			<div class="public_input">
+				<span>医院官网:</span>
+				<input type="text" class="hos_website" placeholder=""/>
+			</div>
+			<div class="public_input">
+				<span>公交信息:</span>
+				<input type="text" class="busInfo" placeholder=""/>
+			</div>
+			<div class="public_input confrim_btn">
+				<span>.</span>
+				<input type="button" class="confrim_add" value="提交"/>
+			</div>
+		</form>
+	</div>
+</div>
+<!--遮罩层-->
+<div class="shade none"></div>
+<!--审核弹框-->
+<div class="popup_box check_box none" style="    position: fixed;">
+	<p class="img_close clearfix">
+		<img src="img/close.png" onclick="close_box()"/>
+	</p>
+	<!--审核状态-->
+	<p class="status">
+		提交成功，正在审核
+	</p>
+	<p class="check_confirm none" style="cursor: pointer" onclick="window.location.href = 'http://www.enuo120.com'">确 定</p>
+</div>
+<!--修改密码弹框-->
+<div class="popup_box edit_pwd_box none">
+	<p class="img_close clearfix">
+		<img src="img/close.png" onclick="close_box()"/>
+	</p>
+	<div>
+		<div class="public_input">
+			<span style="width: 120px;">原密码:</span>
+			<input class="old_pwd" type="password" placeholder="原密码" style="width: 250px;"/>
+		</div>
+		<div class="public_input">
+			<span style="width: 120px;">新密码:</span>
+			<input class="new_pwd" type="password" placeholder="新密码" style="width: 250px;"/>
+		</div>
+		<div class="public_input">
+			<span style="width: 120px;">确认密码:</span>
+			<input class="confrim_pwd" type="password" placeholder="确认密码" style="width: 250px;"/>
+		</div>
+	</div>
+	<p class="confirm edit_pwd_confirm" style="margin-left: 155px;width: 100px;">修 改</p>
+</div>
+<!--弹出框登录-->
+<div class="popup" style="display: none;">
+	<div class="popup_head">
+		<span>医院审核登录</span><span onclick="close_box_login()" style="display: inline-block;position:absolute ;right: 20px;top: 0px;cursor: pointer">X</span>
+	</div>
+	<div class="popup_content">
+		<div class="login">
+
+			<form id="f_login">
+
+				<div class="input-section">
+
+					<img src="img/user_name.png" />
+
+					<input type="text" id="username" name="username" placeholder="用户名"/>
+
+				</div>
+
+				<div class="input-section">
+
+					<img src="img/pass_word.png" />
+
+					<input type="text" id="password" name="password" placeholder="密码"/>
+
+				</div>
+
+				<div class="input-section" style="border: none;margin-top: 10px;">
+
+					<input type="button" id="login" value="登录" style="width: 300px;letter-spacing: 5px;font-size: 16px;color: white;border-radius: 5px;background-color: #00AFA1;"/>
+					<p style="width: 100%;text-align: center;margin-top: 10px;color: #00AFA1">请输入您申请注册时的用户名和密码</p>
+				</div>
+
+			</form>
+
+		</div>
+	</div>
+</div>
+<script type="text/javascript" src="plug/jquery-1.11.3.js" ></script>
+<script type="text/javascript" src="plug/template-web.js" ></script>
+<script type="text/javascript" src="plug/webuploader/webuploader.min.js"></script>
+<script type="text/javascript" src="https://api.map.baidu.com/api?v=2.0&ak=bk2GxHHoQiqUKgwLj1wW1GQIbCpcnKri&s=1"></script>
+<script type="text/javascript" src="js/toggle.js" ></script>
+<script type="text/javascript" src="js/util.js" ></script>
+<script type="text/javascript" src="js/method.js" ></script>
+<script type="text/javascript" src="js/index.js" ></script>
+<script type="text/javascript" src="js/detail/hos.js" ></script>
+<script type="text/javascript" src="js/control_element.js" ></script>
+<script type="text/javascript" src="js/upload_img.js" ></script>
+<script type="text/javascript" src="js/upload_img2.js" ></script>
+<script type="text/javascript" src="js/upload_img3.js" ></script>
+<script type="text/javascript" src="js/detail/hos_msg_complete.js" ></script>
+<!--省份列表-->
+<script type="text/html" id="test_province">
+	{{each data value}}
+	<option value="{{value.id}}">{{value.name}}</option>
+	{{/each}}
+</script>
+<!--地级市列表-->
+<script type="text/html" id="test_city">
+	{{each data value}}
+	<option value="{{value.id}}">{{value.name}}</option>
+	{{/each}}
+</script>
+<!--县级市，区列表-->
+<script type="text/html" id="test_county">
+	{{each data value}}
+	<option value="{{value.id}}">{{value.name}}</option>
+	{{/each}}
+</script>
+<!--医院等级列表-->
+<script type="text/html" id="test_hos_grade">
+	{{each data value}}
+	<option value="{{value.id}}">{{value.name}}</option>
+	{{/each}}
+</script>
+<!--医院分类列表-->
+<script type="text/html" id="test_hos_type">
+	{{each data value}}
+	<option value="{{value.id}}">{{value.name}}</option>
+	{{/each}}
+</script>
+<!--科室列表-->
+<script type="text/html" id="test_ks_list">
+	{{each data value}}
+	<option value="{{value.id}}">{{value.name}}</option>
+	{{/each}}
+</script>
+<!--子科室列表-->
+<script type="text/html" id="test_child_ks_list">
+	{{each data value}}
+	<option value="{{value.id}}">{{value.name}}</option>
+	{{/each}}
+</script>
+<!--医保类型列表-->
+<script type="text/html" id="test_medical_insurance">
+	{{each data value}}
+		<option value="{{value.id}}">{{value.name}}</option>
+	{{/each}}
+</script>
+<script type="text/javascript">
+    // 百度地图API功能
+    function G(id) {
+        return document.getElementById(id);
+    }
+
+    var map = new BMap.Map("l-map");
+    map.centerAndZoom("浙江",12);                   // 初始化地图,设置城市和地图级别。
+
+    var ac = new BMap.Autocomplete(    //建立一个自动完成的对象
+        {"input" : "suggestId"
+            ,"location" : map
+        });
+
+    ac.addEventListener("onhighlight", function(e) {  //鼠标放在下拉列表上的事件
+        var str = "";
+        var _value = e.fromitem.value;
+        var value = "";
+        if (e.fromitem.index > -1) {
+            value = _value.province +  _value.city +  _value.district +  _value.street +  _value.business;
+        }
+        str = "FromItem<br />index = " + e.fromitem.index + "<br />value = " + value;
+
+        value = "";
+        if (e.toitem.index > -1) {
+            _value = e.toitem.value;
+            value = _value.province +  _value.city +  _value.district +  _value.street +  _value.business;
+        }
+        str += "<br />ToItem<br />index = " + e.toitem.index + "<br />value = " + value;
+        G("searchResultPanel").innerHTML = str;
+    });
+
+    var myValue;
+    ac.addEventListener("onconfirm", function(e) {    //鼠标点击下拉列表后的事件
+        var _value = e.item.value;
+        myValue = _value.province +  _value.city +  _value.district +  _value.street +  _value.business;
+        G("searchResultPanel").innerHTML ="onconfirm<br />index = " + e.item.index + "<br />myValue = " + myValue;
+        console.log(G("suggestId").value);
+        getPoint(G("suggestId").value);
+    });
+    function getPoint(adds){
+        // 创建地址解析器实例
+        var myGeo = new BMap.Geocoder();
+        // 将地址解析结果显示在地图上,并调整地图视野
+        myGeo.getPoint(adds, function(point){
+			$('.hos_address_longitude').val(point.lng);
+            $('.hos_address_latitude').val(point.lat);
+        }, "浙江省");
+    }
+</script>
+<script>
+	var hosId;
+	var type;
+    $(function(){
+        var hosName = $.get_storage("hos_name");
+        $(".hos_name").text(hosName);
+        //1，检验密码强度
+        $(".set_pwd").keyup(function(){
+            var $test1 = /^(?:\d+|[a-zA-Z]+|[!@#$%^&*]+){6,12}$/;   //  弱：纯数字，纯字母，纯特殊字符
+            var $test2 = /^(?![a-zA-z]+$)(?!\d+$)(?![!@#$%^&*]+$)[a-zA-Z\d!@#$%^&*]+$/;   //中：字母+数字，字母+特殊字符，数字+特殊字符
+            var $test3 = /^(?![a-zA-z]+$)(?!\d+$)(?![!@#$%^&*]+$)(?![a-zA-z\d]+$)(?![a-zA-z!@#$%^&*]+$)(?![\d!@#$%^&*]+$)[a-zA-Z\d!@#$%^&*]+$/;   //强：字母+数字+特殊字符
+            var set_pwd = $(".set_pwd").val();
+            console.log(set_pwd);
+            console.log($test1.test(set_pwd));
+            //满足弱
+            if($test1.test(set_pwd)){
+                $(".pwd_sty_bg1").addClass("bg_greenyellow");
+                //满足中
+                if($test2.test(set_pwd)){
+                    $(".pwd_sty_bg2").addClass("bg_yellowgreen");
+                    //满足强
+                    if($test3.test(set_pwd)){
+                        $(".pwd_sty_bg3").addClass("bg_green");
+                    }else{
+                        $(".pwd_sty_bg3").removeClass("bg_green");
+                    }
+                }else{
+                    $(".pwd_sty_bg2").removeClass("bg_yellowgreen");
+                }
+            }else{
+                $(".pwd_sty_bg1").removeClass("bg_greenyellow");
+            }
+        });
+      /*  $('.hos_detail_address').keyup(function(){
+			if($(this).val().trim() == ''){
+                $('.hos_address_longitude').val('');
+                $('.hos_address_latitude').val('');
+			}
+        });*/
+    });
+    function toResetInfo() {
+            $('.username,.password,.passwordStrong').hide();
+            var url = "/officialWebsite/registerHospital/detail";
+            $.get_ajax(url,'',function(data){
+                if(data.success== true){
+                    $('.hos_address_province').val(data.data.hospital.provinceId);
+                    $(".hos_address_province").change();
+                    setTimeout(function () {
+                        $('.hos__address_city').val(data.data.hospital.cityId);
+                        $(".hos__address_city").change();
+                        setTimeout(function () {
+                            $('.hos__address_county').val(data.data.hospital.areaId);
+                            $(".hos__address_county").change();
+                        },800);
+                    },800);
+                    $(".hos_name").val(data.data.hospital.name);
+                    $(".hos_detail_address").val(data.data.hospital.address);
+                    $(".hos_type").val(data.data.hospitalTypeId);
+                    hos_type_id = $(".hos_type").val();
+                    $(".hos_grade").val(data.data.hospitalLevelId);
+                    hos_grade_id = $(".hos_grade").val();
+                    $(".medical_insurance").val(data.data.medicareTypeId);
+                    $(".hos_contact").val(data.data.hospital.phone);
+                    $(".hos_email").val(data.data.hospital.email);
+                    $(".urgency_contact").val(data.data.hospital.businessContact);
+                    $(".urgency_contact_phone").val(data.data.hospital.businessMobile);
+                    $(".cureId").val(data.data.hospital.email);
+                    $(".businessLicense").val(data.data.hospital.businessLicenseNo);
+                    $(".hos_website").val(data.data.hospital.website);
+                    $(".busInfo").val(data.data.hospital.busInformation);
+                    $(".hos_info").val(data.data.hospital.brief);
+                    controlEle.init_newelement(data.data.hospital.subjects);
+                    arr_pic3 = data.data.hospital.images;
+                    init_img3(arr_pic3); //医院图片
+                    arr_pic4 = data.data.hospital.images;
+                    init_img4(arr_pic4); //医院图片
+                    arr_pic.push(data.data.hospital.medicalLicenseImage);
+                    init_img(arr_pic); //医疗机构执业许可证照片
+                    arr_pic2.push(data.data.hospital.businessLicenseImage);
+                    init_img2(arr_pic2);//企业营业执照照片
+                    hosId = data.data.hospital.id;
+                    type = 'reset';
+                }else{
+                    alert(data.data);
+                }
+            });
+    }
+    var hos_grade_id = "";//医院等级id
+    var hos_type_id = "";//医院分类id
+$(function(){
+    var address_province_id = "";//省id
+    var address_city_id = ""; //地级市id
+    var address_county_id = "";//县级市，区id
+
+    var medical_insurance="";//医保类型
+    var ks_id = "";//科室id
+    var hos_child_ks_id = "";//子科室id
+    //初始化省份select
+    $.initSelect("/common/getAreaList.json",'test_province',".hos_address_province");
+    //初始化地级市
+    $(".hos_address_province").change(function(){
+        address_province_id = $(".hos_address_province").val();
+        var data = {
+            "parentId":address_province_id
+        }
+        console.log(data);
+        //初始化地级市select
+        $.initChildSelect("/common/getAreaList.json",data,'test_city',".hos__address_city","地级市");
+    });
+    //初始化县级市
+    $(".hos__address_city").change(function(){
+        address_city_id = $(".hos__address_city").val();
+        var data = {
+            "parentId":address_city_id
+        }
+        console.log(data);
+        //初始化县级市select
+        $.initChildSelect("/common/getAreaList.json",data,'test_county',".hos__address_county","县市、区");
+    });
+    $(".hos__address_county").change(function(){
+        address_county_id = $(".hos__address_county").val();
+    });
+
+	$.get_ajax("/common/getMedicareTypes.json","",function(data){
+		console.log(data);
+		var html = template('test_medical_insurance',data);
+		$(".medical_insurance").append(html);
+	});
+    //初始化医院等级select
+    $.initSelect("/common/getHospitalLevels.json",'test_hos_grade',".hos_grade");
+    $(".hos_grade").change(function(){
+        hos_grade_id = $(".hos_grade").val();
+    });
+    //初始化医院分类列表
+    $.initSelect("/common/getHospitalTypes.json",'test_hos_type',".hos_type");
+    $(".hos_type").change(function(){
+        hos_type_id = $(".hos_type").val();
+        //如果是美容医院，科室默认选择，且不能点击
+        beautyOfHos(hos_type_id);
+    });
+    //初始化科室列表
+    $.initSelect("/common/getSubjects.json",'test_ks_list',".hos_ks");
+
+    //初始化子科室
+    $(".hos_ks").change(function(){
+        ks_id = $(".hos_ks").val();
+        console.log(ks_id);
+        //初始化子科室列表
+		if(ks_id != '科室'){
+            init_child_ks(ks_id);
+		}
+    });
+    $(".hos_child_ks").change(function(){
+        hos_child_ks_id = $(".hos_child_ks").val();
+        var hos_child_ks_id_name = $(".hos_child_ks").find("option:selected").text().trim();//trim去前后所有空格
+//		初始化已选择的科室
+		console.log(hos_child_ks_id,hos_child_ks_id_name)
+		if(hos_child_ks_id_name != '子科室'){
+            controlEle.add_newelement(hos_child_ks_id,hos_child_ks_id_name);
+		}
+    });
+	
+	//选择医保类型
+	$(".medical_insurance").click(function(){
+		medical_insurance = Number($(".medical_insurance").val());
+		console.log(medical_insurance);
+	});
+
+
+	
+	$(".confrim_add").click(function(){
+        medical_insurance=Number($(".medical_insurance").val())
+		//必填输入框
+		/*var open_back = $(".open_back").val();
+		var open_name = $(".open_name").val();
+		var account = $(".account").val();
+		var financing_concat = $(".financing_concat").val();
+		var financing_concat_phone = $(".financing_concat_phone").val();*/
+
+		var user_name = $(".user_name").val();
+		var set_pwd = $(".set_pwd").val();
+        var hos_name = $(".hos_name").val();
+        var hos_detail_address = $(".hos_detail_address").val();
+        var hos_address_longitude = $(".hos_address_longitude").val();
+        var hos_address_latitude = $(".hos_address_latitude").val();
+        var hos_contact = $(".hos_contact").val();//医院联系方式
+        var hos_email = $(".hos_email").val();
+        var urgency_contact = $(".urgency_contact").val();
+        var urgency_contact_phone = $(".urgency_contact_phone").val();
+
+		var hos_info = $(".hos_info").val();
+		var cureId = $(".cureId").val();//医疗许可证
+		var businessLicense = $(".businessLicense").val();//营业执照
+		var hos_website = $(".hos_website").val();
+		var busInfo = $(".busInfo").val();
+		
+		var pic_url = arr_pic;
+		var pic_url2 = arr_pic2;
+        var pic_url3 = arr_pic3;
+        var pic_url4 = arr_pic4;
+		if($(".hos__address_county").val() == '区、县级市'){
+            address_county_id = address_city_id;
+		}
+		var data = {
+			/*"bank":open_back,
+			"accountName":open_name,
+			"account":account,
+			"financialContact":financing_concat,
+			"financialMobile":financing_concat_phone,*/
+            	"name":hos_name,
+				"areaId":address_county_id,
+            	"address":hos_detail_address,
+            	"longitude":hos_address_longitude,
+            	"latitude":hos_address_latitude,
+            	"hospitalLevelId":hos_grade_id,//等级id
+            	"hospitalTypeId":hos_type_id,//类型id
+            	"subjectIds":String(controlEle.arr_element_id),//子科室id
+            	"medicareTypeId":medical_insurance,//医保类型
+
+            	"phone":hos_contact,//医院联系方式
+            	"email":hos_email,
+            	"businessContact":urgency_contact,//应急联系人
+            	"businessMobile":urgency_contact_phone,//应急联系人电话
+
+				//"couponsPrefix":'AB',
+				"brief":hos_info,
+				"medicalLicenseNo":cureId,
+				"businessLicenseNo":businessLicense,
+				"website":hos_website,
+				"busInformation":busInfo,
+			
+
+				"medicalLicenseImage":pic_url[0],
+				"businessLicenseImage":pic_url2[0],
+				"images":pic_url3[0],
+            	"headImgUrl":pic_url4[0]
+		}
+        if(type != 'reset'){
+			data.username = user_name;
+            data.password = set_pwd;
+            if($.regChinese(user_name,"用户名")){
+                alert("用户名不能有中文");
+                return false;
+            }
+            if(!$.verify(user_name,"用户名")){return false;}
+            //if(!$.verifyPhone(mobile,"手机号")){return false;}
+            if(!$.verify(set_pwd,"密码")){return false;}
+        }
+		console.log(data);
+		//验证
+		/*if(!$.verify(open_back,"开户行")){return false;}
+		if(!$.verify(open_name,"开户名")){return false;}
+		if(!$.verify(account,"账号")){return false;}
+		if(!$.verify(financing_concat,"财务联系人")){return false;}
+		if(!$.verify(financing_concat_phone,"财务联系人电话")){return false;}*/
+        //非中文验证
+        if(!$.verify(hos_name,"医院名称")){return false;}
+        if(!$.verifychooseNum(address_county_id,"医院地址")){return false;}
+        if(!$.verify(hos_address_longitude,"医院地理经度")){return false;}
+        if(!$.verify(hos_address_latitude,"医院地理纬度")){return false;}
+        if(!$.verify(hos_detail_address,"医院详细地址")){return false;}
+        if(!$.verifychooseNum(hos_grade_id,"医院等级")){return false;}
+        if(!$.verifychooseNum(hos_type_id,"医院类型")){return false;}
+        if(!$.verifychooseNum(controlEle.arr_element_id[0],"子科室")){return false;}
+
+        if(!$.verifychooseNum(medical_insurance,"医保类型")){return false;}
+        if(!$.verify(hos_contact,"医院联系方式")){return false;}
+        if(!$.verifyEmail(hos_email,"邮箱格式")){return false;}
+
+		if(!$.verify(hos_info,"医院信息")){return false;}
+		if(!$.verify(cureId,"医疗机构执业许可证号")){return false;}
+		if(!$.verify(businessLicense,"企业营业执照号")){return false;}
+		
+		if(!$.verify(arr_pic,"医疗机构执业许可证图片")){return false;}
+		if(!$.verify(arr_pic2,"企业营业执照图片")){return false;}
+        if(!$.verify(arr_pic3,"医院图片")){return false;}
+        var url;
+        if(type == 'reset'){
+            url = "/officialWebsite/modify/registerHospital";
+            data.id = hosId;
+        }else{
+            url = "/hospital/register";
+		}
+		$.post_ajax(url,data,function(data){
+			if(data.success== true){
+                $(".status").text("提交成功，请等待人工审核，审核结果以短信通知");
+                $(".shade,.check_box,.check_confirm").show();
+			    //alert(data.data);
+				//getStatus();
+			}else{
+				alert(data.data);
+			}
+		});
+		
+	});
+});
+</script>
+<script>
+var check_statu="";
+$(function(){
+    //getStatus();
+	//确定
+	$(".check_confirm").click(function(){
+		$(".shade,.popup_box").hide();
+		/*if(check_statu=="notpass"){
+			window.location.href='edit_hos_complete.html';
+		}*/
+//		if(check_statu=="pass"){
+//			
+//		}
+		
+	});
+});
+function getStatus(){
+	//医院审核状态
+	$.get_ajax("/hospital/hospitalInfo/getCertificate.json","",function(data){
+		console.log(data.data.name);
+		//缓存医院名字
+		window.localStorage.setItem("hos_name",data.data.name);
+		//把医院类型存入缓存中
+			window.localStorage.setItem("hos_type",data.data.type);
+			if(data.data.status=="unapplied"){
+				console.log("未申请认证");
+				//$(".status").text("未申请认证");
+				//$(".shade,.check_box,.check_confirm").show();
+			}
+		if(data.data.status=="unchecked"){
+			    getHosInfo();
+			console.log("待审核");
+	//			$(".status").text("data.data.reason");
+			$(".status").text("提交成功，请等待人工审核，审核结果以短信通知");
+			$(".shade,.check_box,.check_confirm").show();
+		}
+		if(data.data.status=="pass"){
+			console.log("审核已通过");
+			check_statu="pass";
+	//			$(".status").text("data.data.");
+	//			$(".status").text("审核已通过");
+	//			$(".shade,.check_box,.check_confirm").show();
+			if(data.data.type=="topThree"){
+				//三甲
+//				alert("转入三甲");
+				window.location.href='index.html';
+			}else{
+				//医美
+//				alert("转入医美");
+				window.location.href='hosBeauty/index.html';
+			}
+			
+		}
+		if(data.data.status=="notpass"){
+            getHosInfo();
+			check_statu="notpass";
+			console.log("审核不通过");
+			$(".status").text("审核不通过，"+data.data.reason);
+	//			$(".status").text("审核不通过");
+			$(".shade,.check_box,.check_confirm").show();
+		}
+	});
+}
+//初始化
+/*function init_img_hos(file){
+    console.log(file);
+    var html="";
+    for(var i=0;i<file.length;i++){
+        html = html+ '<div class="initImg" data_id="0"  data_val="'+i+'">' +
+            '<img src="'+file[i]+'">' +
+            '</div>'
+// 	 	$(".preview2").append(html);
+    }
+    $(".previewHos").html(html);
+}*/
+function getHosInfo(){
+    $.get_ajax("/hospital/hospitalInfo/getDetalOfUpdate.json","",function(res){
+        console.log(res);
+        if(res.success){
+            //初始化输入框
+            $(".hos_name").attr("value",res.data.name);
+            $(".mobile").attr("value",res.data.mobile);
+            $(".open_back").attr("value",res.data.bank);
+            $(".open_name").attr("value",res.data.accountName);
+            $(".account").attr("value",res.data.account);
+
+            $(".hos_info").val(res.data.brief);
+            $(".hos_website").val(res.data.website);
+            $(".hos_address_latitude").attr("value",res.data.latitude);
+            $(".hos_address_longitude").attr("value",res.data.longitude);
+            $(".hos_detail_address").attr("value",res.data.address);//地址
+            $(".busInfo").attr("value",res.data.busInformation);//公交信息
+
+            $(".hos_grade").val(res.data.hospitalLevel);//医院等级
+            $(".hos_type").val(res.data.hospitalType);//医院分类
+
+            $(".hos_contact").attr("value",res.data.phone);
+            $(".hos_email").attr("value",res.data.email);
+            $(".urgency_contact").attr("value",res.data.emergencyContact);
+            $(".urgency_contact_phone").attr("value",res.data.emergencyMobile);
+            $(".couponsPrefix").attr("value",res.data.couponsPrefix);
+
+            $(".cureId").attr("value",res.data.businessLicenseNo);//医疗执照
+            $(".businessLicense").attr("value",res.data.businessLicenseNo);//营业执照
+            $(".financing_concat").attr("value",res.data.financialContact);
+            $(".financing_concat_phone").attr("value",res.data.financialMobile);
+
+
+
+            //初始化图片
+            arr_pic[0] = res.data.medicalLicenseImage;//医疗执业证
+            arr_pic2[0] = res.data.businessLicenseImage;//营业执照
+            init_img(arr_pic);
+            init_img2(arr_pic2);
+            //init_img_hos(res.data.images);//医院图片
+
+            medical_insurance = res.data.medicareTypeId;//医保类型id
+
+            //初始化下拉选选中
+            //定时器会让这里最后执行，
+            var setTime = setTimeout(function(){
+                $(".medical_insurance>[value="+res.data.medicareTypeId+"]").attr("selected","selected");//医保类型
+            },1000);
+        }
+    });
+}
+var map2 = new BMap.Map("container");
+function getLatLong() {
+    map2.centerAndZoom("杭州", 11);
+    map2.enableScrollWheelZoom();    //启用滚轮放大缩小，默认禁用
+    map2.enableContinuousZoom();    //启用地图惯性拖拽，默认禁用
+    map2.addEventListener("click",function(e){
+        map2.clearOverlays();//清空原来的标注
+        var marker = new BMap.Marker(new BMap.Point(e.point.lng, e.point.lat));  // 创建标注，为要查询的地方对应的经纬度
+        map2.addOverlay(marker);
+        $('.hos_address_longitude').val(e.point.lng);
+        $('.hos_address_latitude').val(e.point.lat);
+        openInfo(e.point.lng,e.point.lat);
+    });
+    //map.addControl(new BMap.NavigationControl());  //添加默认缩放平移控件
+    //map.addControl(new BMap.OverviewMapControl()); //添加默认缩略地图控件
+    map2.addControl(new BMap.OverviewMapControl({ isOpen: true, anchor: BMAP_ANCHOR_BOTTOM_RIGHT }));   //右下角，打开
+}
+function searchByStationName() {
+    map2.clearOverlays();//清空原来的标注
+    var keyword = document.getElementById("text_").value;
+    var localSearch = new BMap.LocalSearch(map2);
+    localSearch.enableAutoViewport(); //允许自动调节窗体大小
+    localSearch.setSearchCompleteCallback(function (searchResult) {
+        var poi = searchResult.getPoi(0);
+        //document.getElementById("result_").value = poi.point.lng + "," + poi.point.lat;
+        map2.centerAndZoom(poi.point, 13);
+        var marker = new BMap.Marker(new BMap.Point(poi.point.lng, poi.point.lat));  // 创建标注，为要查询的地方对应的经纬度
+        map2.addOverlay(marker);
+        var content = document.getElementById("text_").value + "<br/><br/>经度：" + poi.point.lng + "<br/>纬度：" + poi.point.lat;
+        $('.hos_address_longitude').val(poi.point.lng);
+        $('.hos_address_latitude').val(poi.point.lat);
+        openInfo(poi.point.lng,poi.point.lat);
+       // var infoWindow = new BMap.InfoWindow("<p style='font-size:14px;'>" + content + "</p>");
+        //marker.addEventListener("click", function () { this.openInfoWindow(infoWindow); });
+        // marker.setAnimation(BMAP_ANIMATION_BOUNCE); //跳动的动画
+    });
+    localSearch.search(keyword);
+}
+function openInfo(lng,lat){
+    var point = new BMap.Point(lng,lat);
+    var marker = new BMap.Marker(point);
+    var opts = {
+        width : 120,     // 信息窗口宽度
+        height: 70,     // 信息窗口高度
+        title : "您选择的经纬度：" , // 信息窗口标题
+        enableMessage:true,//设置允许信息窗发送短息"
+    }
+    var absolut = '经度：' + lng + '<br>纬度：'+ lat + '<input type="button" class="clickAddressBtn" onclick="clickHideMap();" value="确定"/>'
+    var infoWindow = new BMap.InfoWindow(absolut, opts);  // 创建信息窗口对象
+    /* marker.addEventListener("click", function(){*/
+    map2.openInfoWindow(infoWindow,point); //开启信息窗口
+    /*    });*/
+}
+function clickHideMap() {
+    $('.containerDiv').fadeOut();
+}
+$("#login").click(function () {
+    var un = $("#username").val();
+    var pd = $("#password").val();
+
+    if (un == "" || un == null) {
+        alert("用户名不能为空");
+        return false;
+    }
+    if (pd == "" || pd == null) {
+        alert("密码不能为空");
+        return false;
+    }
+    var url = getUrl() + "/officialWebsite/manager/login";
+    var data = {"username": un, "password": pd}
+    $.post(url, data, function (data) {
+        //登录成功
+        data = JSON.parse(data);
+        if (data.success) {
+            alert("登录成功");
+            localStorage.setItem('owUsername',$('#username').val());
+            window.location.reload();
+        } else {
+            alert(data.data);
+        }
+    });
+});
+getNoReadMessage();
+function getNoReadMessage() {
+    var url = getUrl() + "/officialWebsite/noRead/messageInfo/size";
+    var data = {"type": "HOSPITAL_REGISTER"}
+    $.get(url, data, function (data) {
+        //登录成功
+        data = JSON.parse(data);
+        if (data.success) {
+            $('.navi_null').html('<a style="color: #666;margin-right: 14px;">' + localStorage.getItem('owUsername') + '</a>' + '<span style="    margin-left: -7px;cursor: pointer;color: #333" onclick="layoutow()">退出</span>');
+            $('.navi_null').attr('onclick','');
+            //$('.owlogin').html('<a>' + localStorage.getItem('owUsername') + '</a>' + '<span style="    margin-left: -7px;cursor: pointer" onclick="layoutow()">退出</span>');
+            if(data.data.noReadSize > 0){
+                getNoReadMessageInfo();
+                $('.ipDiv').show();
+            }
+        } else {
+            if(data.data != '请先登录!'){
+                alert(data.data);
+            }
+        }
+    });
+}
+function getNoReadMessageInfo() {
+    var url = getUrl() + "/officialWebsite/last/noRead/messageInfo";
+    var data = {"type": "HOSPITAL_REGISTER"}
+    $.get(url, data, function (data) {
+        //登录成功
+        data = JSON.parse(data);
+        if (data.success) {
+            $('.ip_font').text(data.data.lastNoReadMessageInfo.content);
+            hosId = data.data.lastNoReadMessageInfo.id;
+        } else {
+            alert(data.data);
+        }
+    });
+}
+function layoutow() {
+    var url = getUrl() + "/officialWebsite/manager/logout";
+    $.post(url, '', function (data) {
+        //登录成功
+        data = JSON.parse(data);
+        if (data.success) {
+            window.location.reload();
+        } else {
+            alert(data.data);
+        }
+    });
+}
+//关闭弹框
+function close_box_login(){
+    $('.shade').css("display","none");
+    $('.popup').css("display","none");
+}
+//打开弹框
+function open_box_login(){
+    $('.shade').css("display","block");
+    $('.popup').css("display","block");
+}
+</script>
+</body>
+</html>

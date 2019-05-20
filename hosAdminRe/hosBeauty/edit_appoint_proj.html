@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="../css/base.css" />
+<link rel="stylesheet" href="../css/util.css" />
+<link rel="stylesheet" href="../css/collect.css" />
+<link rel="stylesheet" href="../plug/webuploader/webuploader.css" />
+<!--截图插件-->
+<!--<link href="../plug/screenShot/css/cropper.css" rel="stylesheet">
+<link href="../plug/screenShot/css/main.css" rel="stylesheet">-->
+<title>修改预约项目</title>
+<style>
+	/*图片上传*/
+	#filePicker{
+		display: inline-block;
+		/*border: 1px solid red;*/
+		height: 40px;
+	}
+	#filePicker .webuploader-pick{
+		height: 40px;line-height: 40px;
+		width: 120px;
+		/*border: 1px solid black;*/
+		padding: 0;
+		letter-spacing: 1px;
+		font-size: 16px;
+		border-radius:5px ;
+	}
+	.preview>div{
+		display: inline-block;
+		margin-left: 3px;
+	}
+</style>
+</head>
+<body>
+<div class="content add_special_proj">
+	<div class="navigate_head clearfix">
+		<p onclick="window.location.href='appoint_proj_list.html'">项目列表</p>
+		<p  class="navi_current" onclick="window.location.href='edit_appoint_proj.html'">修改项目</p>
+		<p class="navi_null"></p>
+	</div>
+	<div>
+		<form class="add_role_form">
+			<div class="public_input">
+				<span><span class="font_green">* </span>项目类型:</span>
+				<select class="proj_type">
+					<option>请选择</option>
+				</select>
+			</div>
+			<div class="public_input">
+				<span><span class="font_green">* </span>项目名称:</span>
+				<input type="text" class="proj_name" placeholder="请输入项目名称"/>
+			</div>
+			<div class="public_input">
+				<span><span class="font_green">* </span>约定周期(数字):</span>
+				<input type="text" class="appoint_min_time" placeholder="至少天数" style="width: 180px;"/>
+				<input type="text" class="appoint_max_time" placeholder="最多天数" style="width: 180px;"/>
+			</div>
+			<div class="public_input">
+				<span><span class="font_green">* </span>约定费用(数字):</span>
+				<input type="text" class="appoint_min_cost" placeholder="最低费用" style="width: 180px;"/>
+				<input type="text" class="appoint_max_cost" placeholder="最高费用" style="width: 180px;"/>
+			</div>
+			<div class="public_input clearfix" style="height: auto;width: 837px;">
+				<span style="position: absolute;top: 0;"><span class="font_green">* </span>约定效果:</span>
+				<div class="appoint_result_list">
+					<p>
+						<span>1.</span><input type="text" class="appoint_result" placeholder="如" />
+						<span class="font_green" onclick="addTag.addResult(this)">[+]</span>
+					</p>
+				</div>
+			</div>
+			
+			<div class="public_input upload_img clearfix">
+				<span>图片:</span>
+				<div class="right" id="uploader-demo">
+					<!--用来存放item-->
+				    <!--<div id="fileList" class="uploader-list"></div>-->
+				   <!-- <div id="filePicker">上传图片</div>-->
+				    <!--<label for="file" class=""><span style="width: 120px;background-color: #00A2D4;">选择图片</span></button></label>
+					<input type="file" id="file" multiple="multiple" name="file" class="none ill_pic"  accept="image/*"/>-->
+				    <!--<input type="button" class="btn_remove_pic" value="选中删除" style="right: 140px;background-color: red;">-->
+					<span class="addPhontBtn">
+						<input type="file" class="hidden" id="file" multiple="multiple"/>
+							<span style="color: white">上传图片</span>
+					</span>
+					<!--预览图片-->
+					<p id="" class="preview preview2">
+						
+					</p>
+				</div>
+			</div>
+			<div class="public_input">
+				<span><span class="font_green">* </span>是否上架:</span>
+				<input type="button" class="enabled" value="上架" data_val="true"/><input type="button" class="disable" value="下架" data_val="false"/>
+			</div>
+			<div class="job_tab">
+				<div class="tit">预约人数设置（请在下列表格中填写相应的最高预约量）</div>
+				<!--出诊时间-->
+				<div class="heal_time_container clearfix">
+					<!--<div class="">
+						<p class=""></p>
+						<p class=""><img src="../img/left.png"/></p>
+						<p class=""></p>
+					</div>-->
+					<div class="">
+						<p class="">排班</p>
+						<p class="">上午</p>
+						<p class="">下午</p>
+					</div>
+					<div class="week">
+						<p class="day">
+							<span class="">星期天</span>
+						</p>
+						<input type="text" data_week="sunday" data_morning="true"/>
+						<input type="text" data_week="sunday" data_morning="false"/>
+						<!--<p class="am" data_val="休息"></p>
+						<p class="pm" data_val="休息"></p>-->
+					</div>
+					<div class="week">
+						<p class="day">
+							<span class="">星期一</span>
+						</p>
+						<input type="text" data_week="monday" data_morning="true"/>
+						<input type="text" data_week="monday" data_morning="false"/>
+					</div>
+					<div class="week">
+						<p class="day">
+							<span class="">星期二</span>
+						</p>
+						<input type="text" data_week="tuesday" data_morning="true"/>
+						<input type="text" data_week="tuesday" data_morning="false"/>
+					</div>
+					<div class="week">
+						<p class="day">
+							<span class="">星期三</span>
+						</p>
+						<input type="text" data_week="wednesday" data_morning="true"/>
+						<input type="text" data_week="wednesday" data_morning="false"/>
+					</div>
+					<div class="week">
+						<p class="day">
+							<span class="">星期四</span>
+						</p>
+						<input type="text" data_week="thursday" data_morning="true"/>
+						<input type="text" data_week="thursday" data_morning="false"/>
+					</div>
+					<div class="week">
+						<p class="day">
+							<span class="">星期五</span>
+						</p>
+						<input type="text" data_week="friday" data_morning="true"/>
+						<input type="text" data_week="friday" data_morning="false"/>
+					</div>
+					<div class="week">
+						<p class="day">
+							<span class="">星期六</span>
+						</p>
+						<input type="text" data_week="saturday" data_morning="true"/>
+						<input type="text" data_week="saturday" data_morning="false"/>
+					</div>
+					<!--<div class="">
+						<p class="flex_all_center"></p>
+						<p class=""><img src="../img/right.png"/></p>
+						<p class=""></p>
+					</div>-->
+				</div>
+				<!--<div class="btn">
+					<button onclick="up_week()">上周</button><button onclick="next_week()">下周</button>
+				</div>-->
+			</div>
+			<div class="public_input confrim_btn">
+				<span>.</span>
+				<input type="button" class="confrim_edit_special" value="修改"/>
+			</div>
+		</form>
+	</div>
+</div>
+<!--遮罩层-->
+<div class="shade none"></div>
+<!--弹框-->
+<div class="popup_box none" style="min-height: 400px;top: 15px;">
+	<p class="img_close clearfix">
+		<img src="../img/close.png" onclick="close_box()"/>
+	</p>
+	<div class="preview1">
+		<!--<div class="initImg img-container">
+			<img src="img/test.png" alt="Picture">
+		</div>-->
+	</div>
+	
+	<!--<p class="confirm">确 定</p>-->
+	<button onclick="csx()"></button>
+	<div class="modal fade docs-cropped none" id="getCroppedCanvasModal" aria-hidden="true" aria-labelledby="getCroppedCanvasTitle" role="dialog" tabindex="-1">
+        <div class="modal-body"></div>
+    </div>
+	<button class="confirm" style="margin-left: 215px;" data-method="getCroppedCanvas" data-option="{ &quot;width&quot;: 160, &quot;height&quot;: 90 }" type="button">
+        <span class="docs-tooltip"  title="$().cropper(&quot;getCroppedCanvas&quot;, { &quot;width&quot;: 160, &quot;height&quot;: 90 })">
+         	确定
+        </span>
+    </button>
+</div>
+<script type="text/javascript" src="../plug/jquery-1.11.3.js" ></script>
+<script type="text/javascript" src="../plug/template-web.js" ></script>
+<script type="text/javascript" src="../plug/webuploader/webuploader.min.js"></script>
+<script type="text/javascript" src="../js/toggle.js" ></script>
+<script type="text/javascript" src="../js/util.js" ></script>
+<script type="text/javascript" src="../js/method.js" ></script>
+<script type="text/javascript" src="../js/addTag.js" ></script>
+<script type="text/javascript" src="../js/detail/upload_img.js" ></script>
+<!--<script type="text/javascript" src="../js/detail/doc_upload_img2.js"></script>
+<script type="text/javascript" src="../js/detail/shot_img.js" ></script>-->
+<!--截图插件-->
+<!--<script src="../plug/screenShot/dist/cropper.js"></script>
+<script src="../plug/screenShot/dist/main.js"></script>-->
+<!--项目类型列表-->
+<script type="text/html" id="test_proj_list">
+	{{each item value}}
+		<option value="{{value.id}}">{{value.name}}</option>
+	{{/each}}
+</script>
+<!--项目名称列表-->
+<!--<script type="text/html" id="test_projName_list">
+	{{each data value}}
+		<option value="{{value.id}}">{{value.name}}</option>
+	{{/each}}
+</script>-->
+<script>
+$(function(){
+	var proj_type_id="";
+//	var proj_name_id = "";
+	//初始化项目类型列表
+	$.get_ajax("/hospital/getSubjects.json","",function(res){
+		console.log(res.data);
+		if(res.success){
+			var html = template("test_proj_list",res.data[0]);
+			$(".proj_type").append(html);
+		}
+	});
+	//初始化项目名称列表
+	$(".proj_type").change(function(){
+		proj_type_id = $(".proj_type").val();
+		console.log(proj_type_id);
+//		var data = {
+//			"subecjtId":proj_type_id
+//		}
+//		$.initChildSelect("/hospital/medical/beautyProject/getDiseaseBySubject.json",data,"test_projName_list",".proj_name","请选择");
+	});
+//	$(".proj_name").change(function(){
+//		proj_name_id = $(".proj_name").val();
+//		console.log(proj_name_id);
+//	});
+	var data = {
+		"id":$.get_storage("appoint_proj_id")
+	}
+//	初始化表单控件
+	$.get_ajax("/hospital/medical/beautyProject/getDetail.json",data,function(res){
+		console.log(res);
+		if(res.success){
+			//初始化必填输入框
+			$(".proj_name").attr("value",res.data.name);
+			$(".appoint_min_time").attr("value",res.data.minDay);
+			$(".appoint_max_time").attr("value",res.data.maxDay);
+			$(".appoint_min_cost").attr("value",res.data.minPrice);
+			$(".appoint_max_cost").attr("value",res.data.maxPrice);
+
+			//初始化图片
+			arr_pic = res.data.images;
+			init_img(arr_pic);
+			//初始化是否上架
+			flag = res.data.marketable;
+			if(flag){
+				$(".enabled").addClass("bg_green");
+			}else{
+				$(".disable").addClass("bg_green");
+			}
+			//约定效果
+			addTag.init_appoint_result(res.data.agreementResults,$(".appoint_result_list"));
+			
+			
+			//初始化值班表
+			init_work_tb(res.data.schedules);
+			//初始化下拉选的值
+			var setTime = setTimeout(function(){
+				proj_type_id = res.data.subjectId;
+				$(".proj_type>[value="+proj_type_id+"]").attr("selected","selected");
+			},500);
+		}
+	});
+	//添加
+	$(".confrim_edit_special").click(function(){
+		var proj_name = $(".proj_name").val()
+		var appoint_min_time = $(".appoint_min_time").val();
+		var appoint_max_time = $(".appoint_max_time").val();
+		var appoint_min_cost = $(".appoint_min_cost").val();
+		var appoint_max_cost = $(".appoint_max_cost").val();
+		var appoint_result = getResult($(".appoint_result"));//约定效果
+		
+		var pic_url = arr_pic;//图片
+		var arr_job = get_work_tb();//获取坐诊表格
+		
+		var data = {
+			"id":$.get_storage("appoint_proj_id"),
+			"name":proj_name,
+			"minPrice":appoint_min_cost,
+			"maxPrice":appoint_max_cost,
+			"minDay":appoint_min_time,
+			"maxDay":appoint_max_time,
+			"agreementResults":toHash(appoint_result),
+			
+			"images":toHash(pic_url),
+			"schedules":JSON.stringify(arr_job),//排期表
+			"marketable":flag,
+			"subjectId":proj_type_id
+		}
+		console.log(data);
+		//验证
+		if(!$.verifyNum(appoint_min_time,"约定周期")){return false;}
+		if(!$.verifyNum(appoint_max_time,"约定周期")){return false;}
+		if(!$.verifyNum(appoint_min_cost,"约定价格")){return false;}
+		if(!$.verifyNum(appoint_max_cost,"约定价格")){return false;}
+		if(!$.verify(appoint_result[0],"约定效果")){return false;}
+		
+		if(!$.verifyNum(proj_type_id,"项目类型")){return false;}
+		if(!$.verify(proj_name,"项目名称")){return false;}
+		if(!$.verify(pic_url[0],"项目图片")){return false;}
+		if(!$.verify(arr_job,"排期表")){return false;}
+		//调用ajax
+		$.post_ajax("/hospital/medical/beautyProject/update",data,function(data){
+			console.log(data);
+			if(data.success==true){
+				alert(data.data);
+				window.location.href = "appoint_proj_list.html";
+			}else{
+				alert(data.data);
+			}
+		});
+		
+	});
+
+});
+</script>
+</body>
+</html>

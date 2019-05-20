@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="css/base.css" />
+<link rel="stylesheet" href="css/util.css" />
+<link rel="stylesheet" href="css/collect.css" />
+<title>模板列表</title>
+<style>
+.head_area .public_input span{
+	width: 100px;font-size: 18px;
+}
+.head_area .public_input input,
+.head_area .public_input select{
+	width: 280px;margin-left: 10px;
+}
+</style>
+</head>
+<body>
+<div class="content hos_template_list">
+	<div class="navigate_head clearfix">
+		<p class="navi_current" onclick="window.location.href='template_list.html'">模板列表</p>
+		<p onclick="window.location.href='add_template.html'">添加模板</p>
+		<p class="navi_null" style="    width: 71%;"></p>
+	</div>
+	
+	<!--头部功能-->
+	<div class="head_area flex_vertical">
+		<div class="public_input ">
+			<span >关键词：</span>
+			<input type="text" class="keyword" placeholder="疾病名称" style="width: 280px;"/>
+		</div>
+		<button class="search" style="margin-left: 10px;" onclick="indexPage()">搜索</button>
+	</div>
+	<table>
+		<thead>
+			<tr>
+				<td>序号</td>
+				<td>疾病名称</td>
+				<td>科室</td>
+				<td>子科室</td>
+				<!--<td>症断</td>
+				<td>主诉</td>-->
+				<td>约定周期(天)</td>
+				<td>约定价格(元)</td>
+				<td>操作</td>
+			</tr>
+		</thead>
+		<tbody class="tbody">
+			
+		</tbody>
+	</table>
+	<!--分页-->
+	<div class="page flex_vertical">
+		<button class="" onclick="indexPage()">首页</button>&nbsp;
+		<button class="" onclick="backPage()"><上一页</button>&nbsp;
+		<!--页码-->
+		<p class="page_num">
+			<!--<span>1</span><span>2</span><span>3</span><span>4</span><span>5</span>-->
+		</p>....
+		<button class="" onclick="nextPage()">下一页></button>&nbsp;
+		<button class="" onclick="endPage()">末页</button>&nbsp;
+		共<span class="all_recode">0 </span>记录&nbsp;|
+		共<span class="all_page">0 </span>页&nbsp;
+		到第<input class="select_page" />页&nbsp;
+		<button class="confirm_page" onclick="skipPage()">确定</button>
+	</div>
+</div>
+<script type="text/javascript" src="plug/jquery-1.11.3.js" ></script>
+<script type="text/javascript" src="plug/template-web.js"></script>
+<script type="text/javascript" src="js/toggle.js" ></script>
+<script type="text/javascript" src="js/util.js"></script>
+<script type="text/javascript" src="js/method.js"></script>
+<script type="text/javascript" src="js/page.js"></script>
+<!--疾病列表-->
+<script id="test_ill_list" type="text/html">
+	{{each data as value i}}
+		<tr>
+			<td width="40px">{{i+1}}</td>
+			<td>{{value.name}}</td>
+			<td>{{value.subject}}</td>
+			<td>{{value.subSubject}}</td>
+			<!--<td>{{value.diagnosis}}</td>
+			<td>{{value.mainStatement}}</td>-->
+			<td width="120px">{{value.minDay}}-{{value.maxDay}}天</td>
+			<td width="150px">{{value.minPrice}}-{{value.maxPrice}}(不高于)</td>
+			<td width="100px" data_id="{{value.id}}">
+				<!--<p class="font_green">查看详情</p>-->
+				<p class="font_green" onclick="ill_edit(this)">编辑</p>
+				<!--<p class="font_green">删除</p>-->
+			</td>
+		</tr>
+	{{/each}}
+</script>
+
+<script>
+//请求方法
+function reqPage(data){
+	console.log(data);
+	control_page.init_page(data,function(data){
+		//调用ajax
+		$.get_ajax("/hospital/topthree/template/getList.json",data,function(data){
+			console.log(data);
+			var html = template('test_ill_list',data);
+			$(".tbody").html(html);
+			//初始化分页
+			control_page.currentPage(control_page.page_num,data.totalCount);
+		});
+	});
+}
+
+/**
+ *,2，编辑模板
+ */
+//编辑疾病
+function ill_edit(m){
+	var cure_id = $(m).parents().attr("data_id");
+	console.log(cure_id);
+	window.localStorage.setItem("cure_id",cure_id);
+	window.location.href="edit_template.html";
+}
+</script>
+<script>
+$(function(){
+	reqPage(control_page.getData());
+});
+function search(obj) {
+    console.log(obj)
+    //基本条件
+    if(obj == undefined){
+        var data = control_page.getData();
+    }else{
+        var data = obj;
+    }
+    //关键字
+    var keyword = $(".keyword").val();
+    if(keyword != ""){
+        data.keyword = keyword;
+        console.log(data);
+    }
+    reqPage(data);
+}
+</script>
+</body>
+</html>

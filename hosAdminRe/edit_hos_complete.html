@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="css/base.css" />
+<link rel="stylesheet" href="css/util.css" />
+<link rel="stylesheet" href="css/collect.css" />
+<link rel="stylesheet" href="css/hos_msg_complete.css" />
+<link rel="stylesheet" href="plug/webuploader/webuploader.css" />
+<title>医院信息完善</title>
+<style>
+	/*添加图片样式自定义*/
+	#filePicker,#filePicker2{
+		display: inline-block;
+		/*border: 1px solid red;*/
+		height: 40px;
+	}
+	#filePicker .webuploader-pick,
+	#filePicker2 .webuploader-pick{
+		height: 40px;line-height: 40px;
+		width: 120px;
+		/*border: 1px solid black;*/
+		padding: 0;
+		letter-spacing: 1px;
+		font-size: 16px;
+		border-radius:5px ;
+	}
+	.preview>div{
+		display: inline-block;
+		margin-left: 3px;
+	}
+	/*隐藏边框*/
+	.boder_none{
+		border: 1px solid transparent !important;
+	}
+</style>
+</head>
+<body>
+<!--头部-->
+<!--<div class="content_head">
+	
+	<div class="content_head_middle clearfix">
+		<div class="left set_img_bg">
+			
+		</div>
+		<p class="exit"><img src="img/index/exit.png"/>退出</p>
+		<p>修改密码</p>
+		<p style="border-right: 1px solid black;">张婵</p>
+	</div>
+</div>-->
+<!--<div class="content hos_msg_complete edit_hos_complete">
+	<div class="navigate_head clearfix">
+		<p onclick="window.location.href='hos_detail.html'">查看医院详情</p>
+		<p class="navi_current" onclick="window.location.href='edit_hos_complete.html'">修改信息</p>
+		<p class="navi_null"></p>
+	</div>
+	<div>
+		<form class="add_role_form">
+			<div class="public_input">
+				<span>手机号:</span>
+				<input type="text" class="mobile boder_none" placeholder="请输入英文字母、数字" disabled="disabled"/>
+			</div>
+			<div class="public_input upload_img clearfix">
+				<span>医院图片:</span>
+				<div class="right" id="uploader-demo">
+					&lt;!&ndash;预览图片&ndash;&gt;
+					<p class="previewHos">
+						
+					</p>
+				</div>
+			</div>
+			<div class="public_input">
+				<span>医院名称:</span>
+				<input type="text" class="hos_name boder_none" placeholder="请重新输入正确的医院名称" disabled="disabled"/>
+			</div>
+			<div class="public_input">
+				<span>医院地理经纬度:</span>
+				<input type="text" class="hos_address_longitude boder_none" placeholder="医院的地理经度" style="width: 170px;" disabled="disabled"/>
+				<input type="text" class="hos_address_latitude boder_none" placeholder="医院的地理纬度" style="width: 170px;" disabled="disabled"/>
+			</div>
+			<div class="public_input">
+				<span>医院详细位置:</span>
+				<input type="text" class="hos_detail_address boder_none" placeholder="请输入医院的详细地址" disabled="disabled"/>
+			</div>
+			<div class="public_input">
+				<span>公交信息:</span>
+				<input type="text" class="busInfo boder_none" placeholder="" disabled="disabled"/>
+			</div>
+			<div class="public_input">
+				<span>医院等级:</span>
+				<input type="text" class="hos_grade boder_none" placeholder="" disabled="disabled"/>
+			</div>
+			<div class="public_input">
+				<span>医院分类:</span>
+				<input type="text" class="hos_type boder_none" placeholder="" disabled="disabled"/>
+			</div>
+			<div class="public_input clearfix">
+				<span style="float: left;">医院信息:</span>
+				<textarea class="hos_info" style="float: left;"></textarea>
+			</div>
+			<div class="public_input">
+				<span>医院官网:</span>
+				<input type="text" class="hos_website" placeholder=""/>
+			</div>
+			<div class="public_input" style="margin-top: 0;">
+				<span><span class="font_green">* </span>医保类型:</span>
+				<select class="medical_insurance">
+					<option>请选择</option>
+				</select>
+			</div>
+			<div class="public_input">
+				<span>医院的联系方式:</span>
+				<input type="text" class="hos_contact boder_none" placeholder="请输入常用的联系号码" disabled="disabled"/>
+			</div>
+			<div class="public_input">
+				<span>联系邮箱:</span>
+				<input type="text" class="hos_email boder_none" placeholder="请重新输入正确的医院名称" disabled="disabled"/>
+			</div>
+			<div class="public_input">
+				<span>应急联系人:</span>
+				<input type="text" class="urgency_contact boder_none" placeholder="请重新输入正确的医院名称" disabled="disabled"/>
+			</div>
+			<div class="public_input">
+				<span>应急联系人电话:</span>
+				<input type="text" class="urgency_contact_phone boder_none" placeholder="请重新输入正确的医院名称" disabled="disabled"/>
+			</div>
+			<div class="public_input">
+				<span><span class="font_green">* </span>开户行:</span>
+				<input type="text" class="open_back" placeholder="请输入开户行"/>
+			</div>
+			<div class="public_input">
+				<span><span class="font_green">* </span>开户名:</span>
+				<input type="text" class="open_name" placeholder="请输入开户名"/>
+			</div>
+			<div class="public_input">
+				<span><span class="font_green">* </span>账号:</span>
+				<input type="text" class="account" placeholder="请输入账号"/>
+			</div>
+			<div class="public_input">
+				<span><span class="font_green">* </span>财务联系人:</span>
+				<input type="text" class="financing_concat" placeholder="请输入联系人"/>
+			</div>
+			<div class="public_input">
+				<span><span class="font_green">* </span>财务联系人及电话:</span>
+				<input type="text" class="financing_concat_phone" placeholder="请输入财务联系电话"/>
+			</div>
+			
+			<div class="public_input">
+				<span><span class="font_green">* </span>医疗机构执业许可证号:</span>
+				<input type="text" class="cureId" placeholder=""/>
+			</div>
+			<div class="public_input upload_img clearfix">
+				<span><span class="font_green">* </span>医疗机构执业许可证照片:</span>
+				<div class="right" id="uploader-demo2">
+					&lt;!&ndash;用来存放item&ndash;&gt;
+				   &lt;!&ndash; <div id="fileList" class="uploader-list"></div>
+				    <div id="filePicker">上传图片</div>
+				    <input type="button" class="btn_remove_pic" value="选中删除" style="right: 310px;background-color: red;width: 120px;">&ndash;&gt;
+					<span class="addPhontBtn">
+						<input type="file" class="hidden" id="file" multiple="multiple"/>
+							<span style="color: white">上传图片</span>
+					</span>
+					&lt;!&ndash;预览图片&ndash;&gt;
+					<p id="" class="preview">
+						
+					</p>
+				</div>
+			</div>
+			<div class="public_input">
+				<span><span class="font_green">* </span>企业营业执照号:</span>
+				<input type="text" class="businessLicense" placeholder=""/>
+			</div>
+			<div class="public_input upload_img clearfix">
+				<span><span class="font_green">* </span>企业营业执照照片:</span>
+				<div class="right" id="uploader-demo3">
+					&lt;!&ndash;用来存放item&ndash;&gt;
+				   &lt;!&ndash; <div id="fileList" class="uploader-list"></div>
+				    <div id="filePicker2">上传图片</div>
+				    <input type="button" class="btn_remove_pic2" value="选中删除" style="right: 310px;background-color: red;width: 120px;">&ndash;&gt;
+					<span class="addPhontBtn">
+						<input type="file" class="hidden" id="file2" multiple="multiple"/>
+							<span style="color: white">上传图片</span>
+					</span>
+					&lt;!&ndash;预览图片&ndash;&gt;
+					<p class="preview2">
+						
+					</p>
+				</div>
+			</div>
+			
+			
+			<div class="public_input">
+				<span>体验券首字母:</span>
+				<input type="text" class="couponsPrefix boder_none" placeholder="请输入体验券首字母" disabled="disabled"/>
+			</div>
+			<div class="public_input confrim_btn">
+				<span>.</span>
+				<input type="button" class="confrim_add" value="修改"/>
+			</div>
+		</form>
+	</div>
+</div>-->
+<div class="content hos_msg_complete">
+	<div class="navigate_head clearfix">
+		<p class="" onclick="window.location.href='hos_detail.html'">查看医院详情</p>
+		<p class="editHosInfo navi_current" onclick="window.location.href='edit_hos_complete.html'">修改信息</p>
+		<p class="navi_null"></p>
+	</div>
+	<div>
+		<form class="add_role_form">
+			<div class="public_input">
+				<span><span class="font_green">* </span>开户行:</span>
+				<input type="text" class="open_back" placeholder="请输入开户行"/>
+			</div>
+			<div class="public_input">
+				<span><span class="font_green">* </span>开户名:</span>
+				<input type="text" class="open_name" placeholder="请输入开户名"/>
+			</div>
+			<div class="public_input">
+				<span><span class="font_green">* </span>账号:</span>
+				<input type="text" class="account" placeholder="请输入账号"/>
+			</div>
+			<div class="public_input">
+				<span><span class="font_green">* </span>财务联系人:</span>
+				<input type="text" class="financing_concat" placeholder="请输入联系人"/>
+			</div>
+			<div class="public_input">
+				<span><span class="font_green">* </span>财务联系人及电话:</span>
+				<input type="text" class="financing_concat_phone" placeholder="请输入财务联系电话"/>
+			</div>
+
+			<div class="public_input clearfix">
+				<span style="float: left;"><span class="font_green">* </span>医院信息:</span>
+				<textarea class="hos_info" style="float: left;"></textarea>
+			</div>
+			<div class="public_input" style="margin-top: 0;">
+				<span><span class="font_green">* </span>医保属于:</span>
+				<select class="medical_insurance">
+					<option>请选择</option>
+				</select>
+			</div>
+			<div class="public_input">
+				<span><span class="font_green">* </span>医疗机构执业许可证号:</span>
+				<input type="text" class="cureId" placeholder=""/>
+			</div>
+			<div class="public_input upload_img clearfix">
+				<span><span class="font_green">* </span>医疗机构执业许可证照片:</span>
+				<div class="right" id="uploader-demo">
+					<!--用来存放item-->
+					<!-- <div id="fileList" class="uploader-list"></div>
+                     <div id="filePicker">上传图片</div>
+                     <input type="button" class="btn_remove_pic" value="选中删除" style="right: 310px;background-color: red;width: 120px;">-->
+					<span class="addPhontBtn">
+						<input type="file" class="hidden" id="file" multiple="multiple"/>
+							<span style="color: white">上传图片</span>
+					</span>
+					<!--预览图片-->
+					<p class="preview">
+
+					</p>
+				</div>
+			</div>
+			<div class="public_input">
+				<span><span class="font_green">* </span>企业营业执照号:</span>
+				<input type="text" class="businessLicense" placeholder=""/>
+			</div>
+			<div class="public_input upload_img clearfix">
+				<span><span class="font_green">* </span>企业营业执照照片:</span>
+				<div class="right" id="uploader-demo2">
+					<!--用来存放item-->
+					<!--<div id="fileList" class="uploader-list"></div>
+                    <div id="filePicker2">上传图片</div>
+                    <input type="button" class="btn_remove_pic2" value="选中删除" style="right: 310px;background-color: red;width: 120px;">-->
+					<span class="addPhontBtn">
+						<input type="file" class="hidden" id="file2" multiple="multiple"/>
+							<span style="color: white">上传图片</span>
+					</span>
+					<!--预览图片-->
+					<p id="" class="preview2">
+
+					</p>
+				</div>
+			</div>
+			<div class="public_input">
+				<span>医院官网:</span>
+				<input type="text" class="hos_website" placeholder=""/>
+			</div>
+			<div class="public_input">
+				<span>公交信息:</span>
+				<input type="text" class="busInfo" placeholder=""/>
+			</div>
+			<div class="public_input confrim_btn">
+				<span>.</span>
+				<input type="button" class="confrim_add" value="提交"/>
+			</div>
+		</form>
+	</div>
+</div>
+<!--遮罩层-->
+<div class="shade none"></div>
+<!--弹框-->
+<div class="popup_box none">
+	<p class="img_close clearfix">
+		<img src="img/close.png" onclick="close_box()"/>
+	</p>
+	<!--审核状态-->
+	<p class="status">
+		提交成功，正在审核
+	</p>
+	<p class="confirm none">确 定</p>
+</div>
+<div>
+	
+</div>
+	
+<script type="text/javascript" src="plug/jquery-1.11.3.js" ></script>
+<script type="text/javascript" src="plug/template-web.js" ></script>
+<script type="text/javascript" src="plug/webuploader/webuploader.min.js"></script>
+<script type="text/javascript" src="js/toggle.js" ></script>
+<script type="text/javascript" src="js/util.js" ></script>
+<script type="text/javascript" src="js/method.js" ></script>
+<script type="text/javascript" src="js/upload_img.js" ></script>
+<script type="text/javascript" src="js/upload_img2.js" ></script>
+<script type="text/javascript" src="js/detail/hos_msg_complete.js" ></script>
+<!--医保类型列表-->
+<script type="text/html" id="test_medical_insurance">
+	{{each data value}}
+		<option value="{{value.id}}">{{value.name}}</option>
+	{{/each}}
+</script>
+<script>
+$(function(){
+	var medical_insurance="";//医保类型
+	//初始化医保类型列表
+	$.get_ajax("/hospital/getMedicareTypeList.json","",function(data){
+		console.log(data);
+		var html = template('test_medical_insurance',data);
+		$(".medical_insurance").append(html);
+	});
+	$(".medical_insurance").change(function(){
+		medical_insurance = $(".medical_insurance").val();
+		console.log(medical_insurance);
+	});
+	
+//	初始化医院
+	$.get_ajax("/hospital/hospitalInfo/getDetail.json","",function(res){
+		console.log(res);
+		if(res.success){
+			//初始化输入框
+			$(".hos_name").attr("value",res.data.name);
+			$(".mobile").attr("value",res.data.mobile);
+			$(".open_back").attr("value",res.data.bank);
+			$(".open_name").attr("value",res.data.accountName);
+			$(".account").attr("value",res.data.account);
+			
+			$(".hos_info").val(res.data.brief);
+			$(".hos_website").val(res.data.website);
+			$(".hos_address_latitude").attr("value",res.data.latitude);
+			$(".hos_address_longitude").attr("value",res.data.longitude);
+			$(".hos_detail_address").attr("value",res.data.address);//地址
+			$(".busInfo").attr("value",res.data.busInformation);//公交信息
+
+			$(".hos_grade").val(res.data.hospitalLevel);//医院等级
+			$(".hos_type").val(res.data.hospitalType);//医院分类
+			
+			$(".hos_contact").attr("value",res.data.phone);
+			$(".hos_email").attr("value",res.data.email);
+			$(".urgency_contact").attr("value",res.data.emergencyContact);
+			$(".urgency_contact_phone").attr("value",res.data.emergencyMobile);
+			$(".couponsPrefix").attr("value",res.data.couponsPrefix);
+			
+			$(".cureId").attr("value",res.data.medicalLicenseNo);//医疗执照
+			$(".businessLicense").attr("value",res.data.businessLicenseNo);//营业执照
+			$(".financing_concat").attr("value",res.data.financialContact);
+			$(".financing_concat_phone").attr("value",res.data.financialMobile);
+			
+			
+			//初始化图片
+			arr_pic[0] = res.data.medicalLicenseImage;//医疗执业证
+			arr_pic2[0] = res.data.businessLicenseImage;//营业执照
+			init_img(arr_pic);
+			init_img2(arr_pic2);
+			init_img_hos(res.data.images);//医院图片
+
+			medical_insurance = res.data.medicareTypeId;//医保类型id
+			
+			//初始化下拉选选中
+			//定时器会让这里最后执行，
+			var setTime = setTimeout(function(){
+				$(".medical_insurance>[value="+res.data.medicareTypeId+"]").attr("selected","selected");//医保类型
+			},1000);
+		}
+	});
+	
+	
+	$(".confrim_add").click(function(){
+		//必填输入框
+		var open_back = $(".open_back").val();
+		var open_name = $(".open_name").val();
+		var account = $(".account").val();
+		var financing_concat = $(".financing_concat").val();
+		var financing_concat_phone = $(".financing_concat_phone").val();
+		
+		var hos_info = $(".hos_info").val();
+		var cureId = $(".cureId").val();//医疗许可证
+		var businessLicense = $(".businessLicense").val();//营业执照
+		var hos_website = $(".hos_website").val();
+		var busInfo = $(".busInfo").val();
+		
+		//图片
+		var pic_url = arr_pic;
+		var pic_url2 = arr_pic2;
+		
+		var data = {
+			"bank":open_back,//
+			"accountName":open_name,//
+			"account":account,//
+			"financialContact":financing_concat,//
+			"financialMobile":financing_concat_phone,//
+			
+			"brief":hos_info,//
+			"medicalLicenseNo":cureId,//
+			"businessLicenseNo":businessLicense,//
+			"website":hos_website,///
+			"busInformation":busInfo,///
+			
+			"medicareTypeId":medical_insurance,//医保类型//
+			"medicalLicenseImage":pic_url[0],//
+			"businessLicenseImage":pic_url2[0]//
+		}
+		console.log(data);
+		
+		//验证
+		if(!$.verify(open_back,"开户行")){return false;}
+		if(!$.verify(open_name,"开户名")){return false;}
+		if(!$.verify(account,"账号")){return false;}
+		if(!$.verify(financing_concat,"财务联系人")){return false;}
+		if(!$.verify(financing_concat_phone,"财务联系人电话")){return false;}
+		
+		if(!$.verify(hos_info,"医院信息")){return false;}
+		if(!$.verifyNum(medical_insurance,"医保类型")){return false;}
+		if(!$.verify(cureId,"医疗机构执业许可证号")){return false;}
+		if(!$.verify(businessLicense,"企业营业执照号")){return false;}
+		
+		if(!$.verify(arr_pic,"医疗机构执业许可证图片")){return false;}
+		if(!$.verify(arr_pic2,"企业营业执照图片")){return false;}
+		
+		$.post_ajax("/hospital/hospitalInfo/add",data,function(data){
+			if(data.success== true){
+				//alert('修改成功');
+				window.location.reload();
+			}else{
+				alert(data.data);
+			}
+		});
+		
+	});
+});
+//初始化
+function init_img_hos(file){
+    console.log(file);
+    var html="";
+    for(var i=0;i<file.length;i++){
+        html = html+ '<div class="initImg" data_id="0"  data_val="'+i+'">' +
+            '<img src="'+file[i]+'">' +
+            '</div>'
+// 	 	$(".preview2").append(html);
+    }
+    $(".previewHos").html(html);
+}
+</script>
+</body>
+</html>

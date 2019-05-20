@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="../plug/webuploader/webuploader.css" />
+<link rel="stylesheet" href="../css/base.css" />
+<link rel="stylesheet" href="../css/util.css" />
+<link rel="stylesheet" href="../css/collect.css" />
+<title>医美评价详情</title>
+<style>
+/*添加图片样式自定义*/
+	#filePicker{
+		display: inline-block;
+		/*border: 1px solid red;*/
+		height: 40px;
+	}
+	#filePicker .webuploader-pick{
+		height: 40px;line-height: 40px;
+		width: 120px;
+		/*border: 1px solid black;*/
+		padding: 0;
+		letter-spacing: 1px;
+		font-size: 16px;
+		border-radius:5px ;
+	}
+	.preview>div{
+		display: inline-block;
+		margin-left: 3px;
+	}
+	.evaluate_detail .public_input{
+		margin: 10px 0;
+	}
+	.public_input input{
+		border: 0;
+	}
+</style>
+</head>
+<body>
+<div class="content evaluate_detail">
+	<div class="navigate_head clearfix">
+		<p onclick="window.location.href='beauty_evaluate_list.html'">评价列表</p>
+		<p class="navi_null"></p>
+	</div>
+	<div>
+		<form class="add_ill_form">
+			<div class="public_input">
+				<span>订单号:</span>
+				<input type="text" class="order_num" placeholder=""/>
+			</div>
+			<div class="public_input">
+				<span>患者名:</span>
+				<input type="text" class="patient_name" placeholder=""/>
+			</div>
+			<div class="public_input">
+				<span>手机号:</span>
+				<input type="text" class="mobile" placeholder=""/>
+			</div>
+			<div class="public_input">
+				<span>项目:</span>
+				<input type="text" class="ill_name" placeholder=""/>
+			</div>
+			<div class="public_input">
+				<span>患者评价:</span>
+				<input type="text" class="patient_evaluate" placeholder=""/>
+			</div>
+			<div class="public_input upload_img clearfix">
+				<span>疾病照片:</span>
+				<div class="right" id="uploader-demo">
+					<!--用来存放item-->
+				    <div id="fileList" class="uploader-list none"></div>
+				    <div id="filePicker" class="none">上传图片</div>
+				    <input type="button" class="btn_remove_pic none" value="选中删除" style="right: 140px;background-color: red;">
+					<!--预览图片-->
+					<p id="" class="preview">
+						
+					</p>
+				</div>
+			</div>
+			<div class="public_input">
+				<span>等待就诊时间:</span>
+				<input type="text" class="await_cure_time" placeholder=""/>
+			</div>
+			<div class="public_input" style="width: 640px;">
+				<span>术后效果:</span>
+				<p class="score flex_vertical recovey_result">
+					<img src="../img/star.png"/>
+				</p>
+			</div>
+			<div class="public_input" style="width: 640px;">
+				<span>就医环境:</span>
+				<p class="score flex_vertical cure_environment">
+					<img src="../img/star.png"/>
+				</p>
+			</div>
+			<div class="public_input" style="width: 640px;">
+				<span>服务态度:</span>
+				<p class="score flex_vertical service_attitude">
+					<img src="../img/star.png"/>
+				</p>
+			</div>
+			<div class="public_input">
+				<span>综合评分:</span>
+				<input type="text" class="synthesize" placeholder=""/>
+			</div>
+		</form>
+	</div>
+</div>
+	
+	
+<script type="text/javascript" src="../plug/jquery-1.11.3.js" ></script>
+<script type="text/javascript" src="../plug/template-web.js" ></script>
+<script type="text/javascript" src="../plug/webuploader/webuploader.min.js"></script>
+<script type="text/javascript" src="../js/toggle.js" ></script>
+<script type="text/javascript" src="../js/util.js" ></script>
+<script type="text/javascript" src="../js/method.js" ></script>
+<script type="text/javascript" src="../js/addTag.js" ></script>
+<script type="text/javascript" src="../js/detail/upload_img.js" ></script>
+<script>
+$(function(){
+	$(".public_input input").attr("disabled","disabled");
+	var setTime = setTimeout(function(){
+		console.log($(".appoint_result_list>p .font_green,.forgive_list>p .font_green"));
+		$(".appoint_result_list>p .font_green,.forgive_list>p .font_green").hide();
+		$(".webuploader-pick,.webuploader-pick lable,uploader-demo").hide();
+		$(".preview").css({"position":"absolute","top":"0"})
+	},200);
+	//初始化表单控件
+	var data = {
+		id:$.get_storage("evalute_id")
+	}
+	$.get_ajax("/hospital/evaluation/getDetail.json",data,function(res){
+		console.log(res);
+		if(res.success){
+			console.log(res.data.name);
+			$(".order_num").attr("value",res.data.sn);
+			$(".patient_name").attr("value",res.data.fullname);
+			$(".mobile").attr("value",res.data.mobile);
+			$(".ill_name").attr("value",res.data.projectName);
+			$(".patient_evaluate").attr("value",res.data.content);
+			$(".await_cure_time").attr("value",res.data.waitingTime);
+			$(".synthesize").attr("value",res.data.score);
+			//初始化图片
+			arr_pic = res.data.images;
+			console.log(arr_pic);
+			init_img(arr_pic);
+			
+			//初始化评价星星
+			//术后效果
+			initStar($(".recovey_result"),res.data.effectScore);
+			//就医环境
+			initStar($(".cure_environment"),res.data.environmentScore);
+			//服务态度
+			initStar($(".service_attitude"),res.data.serviceScore);
+			
+		}
+	});
+});
+</script>
+<script>
+function initStar(tag,score){
+	var html = "";
+	for(var i=0;i<score;i++){
+		html = html+"<img src='../img/star.png'/>"
+	}
+	$(tag).html(html);
+}
+</script>
+</body>
+</html>

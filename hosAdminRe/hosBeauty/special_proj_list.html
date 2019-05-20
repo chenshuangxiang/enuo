@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="../css/base.css" />
+<link rel="stylesheet" href="../css/util.css" />
+<link rel="stylesheet" href="../css/collect.css" />
+<title>医美特价项目列表</title>
+<style>
+.head_area .public_input span{
+	width: 100px;font-size: 18px;
+}
+.head_area .public_input input,
+.head_area .public_input select{
+	width: 180px;margin-left: 10px;margin-right: 0;
+}
+</style>
+</head>
+<body>
+<div class="content .special_proj">
+	<div class="navigate_head clearfix">
+		<p onclick="window.location.href='special_proj_list.html'" class="navi_current">特价项目列表</p>
+		<p onclick="window.location.href='add_special_proj.html'">申请特价项目</p>
+		<p class="navi_null"></p>
+	</div>
+	<!--头部功能-->
+	<div class="head_area flex_vertical" style="display: block;">
+		<div class="public_input margindiv">
+			<!--<span >项目名称：</span>-->
+			<input type="text" class="proj_name" placeholder="项目名称"/>
+		</div>
+		<div class="public_input margindiv">
+			<!--<span>是否上架：</span>-->
+			<select class="pass">
+				<option value="">请选择是否上架</option>
+				<option value="true">已上架</option>
+				<option value="false">已下架</option>
+			</select>
+		</div>
+
+		<div class="public_input margindiv">
+			<!--<span>项目类型：</span>-->
+			<select class="proj_type">
+				<option>请选择项目类型</option>
+			</select>
+		</div>
+		<button class="search" onclick="indexPage()">搜索</button>
+	</div>
+	<table>
+		<thead>
+			<tr>
+				<td>项目类型</td>
+				<td>项目名称</td>
+				<!--<td>图片</td>-->
+				<td>原价</td>
+				<!--<td>院长费</td>-->
+				<td>特价</td>
+				<td>是否上架</td>
+				<td>是否引流</td>
+				<!--<td>预约人数</td>
+				<td>用户评分</td>-->
+				<td>状态</td>
+				<td>操作</td>
+			</tr>
+		</thead>
+		<tbody class="tbody">
+			
+		</tbody>
+	</table>
+	<!--分页-->
+	<div class="page flex_vertical">
+		<button class="" onclick="indexPage()">首页</button>&nbsp;
+		<button class="" onclick="backPage()"><上一页</button>&nbsp;
+		<!--页码-->
+		<p class="page_num">
+			<!--<span>1</span><span>2</span><span>3</span><span>4</span><span>5</span>-->
+		</p>...
+		<button class="" onclick="nextPage()">下一页></button>&nbsp;
+		<button class="" onclick="endPage()">末页</button>&nbsp;
+		共<span class="all_recode">0 </span>记录&nbsp;|
+		共<span class="all_page">0 </span>页&nbsp;
+		到第<input class="select_page" />页&nbsp;
+		<button class="confirm_page" onclick="skipPage()">确定</button>
+	</div>
+</div>
+<script type="text/javascript" src="../plug/jquery-1.11.3.js" ></script>
+<script type="text/javascript" src="../plug/template-web.js"></script>
+<script type="text/javascript" src="../js/toggle.js" ></script>
+<script type="text/javascript" src="../js/util.js"></script>
+<script type="text/javascript" src="../js/method.js"></script>
+<script type="text/javascript" src="../js/page.js"></script>
+<script id="test_special_list" type="text/html">
+	{{each data value}}
+		<tr>
+			<td>{{value.beautySubjectName}}</td>
+			<td>{{value.name}}</td>
+			<!--<td width="150px" style="padding: 0;"><img src="{{value.headImgUrl}}" /></td>-->
+			<td>{{value.originalPrice}}</td>
+			<!--<td>{{value.deanPrice}}</td>-->
+			<td>{{value.expertPrice}}</td>
+			<td>{{if value.marketable==true}}已上架{{else if value.marketable == false}}未上架{{/if}}</td>
+			<td>{{if value.isDrainage==true}}是{{else if value.isDrainage == false}}否{{/if}}</td>
+			<!--<td>{{value.sellQuantity}}</td>
+			<td>{{value.score}}</td>-->
+			<td>{{if value.status=="unchecked"}}未审核{{else if value.status == "pass"}}通过{{else if value.status == "notpass"}}不通过{{/if}}</td>
+			<td data_id = "{{value.id}}">
+				<button class="font_green" onclick="edit_special_proj(this)">修改</button>
+				<!--&nbsp;<button class="font_green">删除</button>-->
+				<button class="font_green" onclick="add_proj_case(this)">添加案例</button>
+			</td>
+		</tr>
+	{{/each}}
+</script>
+<!--项目类型列表-->
+<script type="text/html" id="test_proj_list">
+	{{each data value}}
+		<option value="{{value.id}}">{{value.name}}</option>
+	{{/each}}
+</script>
+<script>
+//初始化项目类型列表
+$.initSelect("/hospital/getBeautySubjectList.json","test_proj_list",".proj_type");
+
+
+//请求方法
+function reqPage(data){
+	console.log(data);
+	control_page.init_page(data,function(data){
+		//调用ajax
+		$.get_ajax("/hospital/specialProduct/getList.json",data,function(data){
+			console.log(data);
+			var html = template('test_special_list',data);
+			$(".tbody").html(html);
+			//初始化分页
+			control_page.currentPage(control_page.page_num,data.totalCount);
+		});
+	});
+}
+
+//编辑
+function edit_special_proj(m){
+	var special_proj_id =  $(m).parent().attr("data_id");
+	window.localStorage.setItem("special_proj_id",special_proj_id);
+	window.location.href = "edit_special_proj.html";
+}
+function add_proj_case(m) {
+    var appoint_proj_id =  $(m).parent().attr("data_id");
+    window.localStorage.setItem("appoint_proj_id",appoint_proj_id);
+    window.localStorage.setItem("case_type",'hosbeautyspecial');
+    window.location.href = "/hosAdminRe/add_doc_case.html";
+}
+</script>
+<script>
+var proj_type_id="";
+var pass_val = "";
+//项目类型
+$(".proj_type").change(function(){
+	proj_type_id = $(".proj_type").val();
+	console.log(proj_type_id);
+});
+//是否上架
+$(".pass").change(function(){
+	pass_val = $(".pass").val();
+	console.log(pass_val);
+});
+$(function(){
+//	console.log(control_page.getData());
+	reqPage(control_page.getData());
+	//搜索
+});
+function search(obj) {
+    console.log(obj)
+    //基本条件
+    if(obj == undefined){
+        var data = control_page.getData();
+    }else{
+        var data = obj;
+    }
+    //项目名称
+    var proj_name = $(".proj_name").val();
+    if(proj_name != ""){
+        data.name = proj_name;
+        console.log(data);
+    }
+//		console.log(pass_val);
+    //是否上架
+    if(pass_val != ""){
+        data.marketable = pass_val;
+        console.log(data);
+    }
+    //项目类型id
+    console.log($.regNum(proj_type_id));
+    if($.regNum(proj_type_id)){
+        data.beautySubjectId = proj_type_id;
+        console.log(data);
+    }
+    console.log(data);
+    reqPage(data);
+}
+</script>
+</body>
+</html>

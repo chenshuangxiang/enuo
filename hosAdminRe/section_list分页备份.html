@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="css/base.css" />
+<link rel="stylesheet" href="css/util.css" />
+<link rel="stylesheet" href="css/collect.css" />
+	<link rel="stylesheet" href="plug/css/paging.css" />
+<title>模板列表</title>
+<style>
+.head_area .public_input span{
+	width: 100px;font-size: 18px;
+}
+.head_area .public_input input,
+.head_area .public_input select{
+	width: 280px;margin-left: 10px;
+}
+.renwu_mainmenu {
+	position: relative;
+	width: 897px;
+	margin-left: 12px;
+}
+.renwu_mainmenu > li {
+	background-position: 51% 0%;
+	background-size: 88% 100%;
+	height: 30px;
+	clear: both;
+	margin-bottom: 5px;
+	line-height: 30px;
+	text-align: left;
+	padding-left: 20px;
+	background-color: #fafafa;
+	box-sizing: border-box;
+	position: relative;
+	border-top: 0;
+	border-top: 1px solid white;
+	font-size: 12px;
+	color: #ff9900;
+}
+.zhankai {
+	float: right;
+	/* margin-right: 49px; */
+	cursor: pointer;
+	margin-right: 3px;
+	color: #939393
+}
+.submenu2 {
+	margin-bottom: 10px;
+	display: none;
+}
+.submenu2 li {
+	width: 800px;
+	margin-left: 32px;
+	color: #3e3e3e;
+	line-height: 40px;
+	height: 40px;
+	position: relative;
+}
+	.staffname{
+		margin-left: 8px;margin-right: 20px;color:#6f6f6f;font-size: 13.5px
+	}
+.people_open_section span,.people_open_staff span{
+	/*width: 112px;*/
+	height: 21px;
+	font-family: MicrosoftYaHei;
+	font-size: 20px;
+	font-weight: normal;
+	font-style: normal;
+	font-stretch: normal;
+	line-height: normal;
+	letter-spacing: normal;
+	text-align: left;
+	color: #000000;
+	margin-left: 71px;
+}
+.people_open_section input,.people_open_staff input{
+	width: 337px;
+	height: 50px;
+	padding-left: 5px;
+	border: solid 1px #dcdcdc;
+	margin-left: 5px;
+}
+.sectionList{
+	width: 237px;
+	margin-left: 3px;
+	margin-right: 10px;
+	height: 33px;
+	border: solid 1px #dcdcdc;
+	font-size: 14px;
+	letter-spacing: 0.6px;
+	color: #333333;
+	text-indent: 20px;
+	line-height: 33px;
+	border-radius: 5px;
+}
+.people_open_staff input{
+	width: 237px;height: 30px;margin-top: 17px;
+}
+.people_open_staff span{
+	width: 112px;
+	display: inline-block;
+	text-align: right;
+	font-size: 18px;
+}
+	.addstaff{
+		color: #00AFA1;
+	}
+</style>
+</head>
+<body>
+<div class="content hos_template_list">
+	<div class="navigate_head clearfix">
+		<p class="navi_current" onclick="window.location.href='section_list.html'">部门列表</p>
+		<p onclick="open_box_section();">添加部门</p>
+		<p onclick="open_box_staff();">添加员工</p>
+		<p class="navi_null" style="width: 56%;"></p>
+	</div>
+	
+	<!--头部功能-->
+	<div class="head_area flex_vertical">
+		<div class="public_input margindiv">
+			<span >关键词：</span>
+			<input type="text" class="keyword" placeholder="部门名称" style="width: 280px;"/>
+		</div>
+		<button class="search" style="margin-left: 10px;" onclick="indexPage()">搜索</button>
+	</div>
+	<div class="tbody"></div>
+	<!--分页-->
+	<div class="page flex_vertical">
+		<button class="" onclick="indexPage()">首页</button>&nbsp;
+		<button class="" onclick="backPage()"><上一页</button>&nbsp;
+		<!--页码-->
+		<p class="page_num">
+			<!--<span>1</span><span>2</span><span>3</span><span>4</span><span>5</span>-->
+		</p>....
+		<button class="" onclick="nextPage()">下一页></button>&nbsp;
+		<button class="" onclick="endPage()">末页</button>&nbsp;
+		共<span class="all_recode">0 </span>记录&nbsp;|
+		共<span class="all_page">0 </span>页&nbsp;
+		到第<input class="select_page" />页&nbsp;
+		<button class="confirm_page" onclick="skipPage()">确定</button>
+	</div>
+</div>
+<!--遮罩层-->
+<div class="shade none"></div>
+<!--添加部门弹窗-->
+<div class="popup_box people_open_section none" style="width: 620px">
+	<p class="img_close clearfix">
+		<img src="img/close.png" onclick="close_box()">
+	</p>
+	<div class="people_boxDiv">
+		<span>部门名称：</span><input class="sectionname" type="text" placeholder="请输入新增部门名称"/>
+	</div>
+	<p class="confirm surepeople" style="margin-left:250px;width: 100px;margin-top: 37px" onclick="addSection()">确认</p>
+</div>
+<!--添加员工弹窗-->
+<div class="popup_box people_open_staff none" style="width: 620px">
+	<p class="img_close clearfix">
+		<img src="img/close.png" onclick="close_box()">
+	</p>
+	<div class="people_boxDiv">
+		<span style="margin-left: 94px;">所属部门：</span><select class="sectionList"></select><br>
+		<span style="margin-left: 94px;">员工姓名：</span><input class="staffselectname" type="text" placeholder="请输入员工姓名"/><br>
+		<span style="margin-left: 94px;">员工手机号：</span><input class="staffselectmobile" type="number" placeholder="请输入员工手机号"/><br>
+	</div>
+	<p class="confirm surepeople" style="margin-left:250px;width: 100px;margin-top: 37px" onclick="addStaff()">确认</p>
+</div>
+<script type="text/javascript" src="plug/jquery-1.11.3.js" ></script>
+<script type="text/javascript" src="plug/template-web.js"></script>
+<script type="text/javascript" src="js/toggle.js" ></script>
+<script type="text/javascript" src="js/util.js"></script>
+<script type="text/javascript" src="js/method.js"></script>
+<script type="text/javascript" src="js/page.js"></script>
+<script type="text/javascript" src="plug/query.js"></script>
+<script type="text/javascript" src="plug/paging.js"></script>
+<!--疾病列表-->
+<!--<script id="test_ill_list" type="text/html">
+	{{each data as value i}}
+
+	{{/each}}
+</script>-->
+
+<script>
+    $(function(){
+        reqPage(control_page.getData());
+    });
+//请求方法
+function reqPage(data){
+	console.log(data);
+	control_page.init_page(data,function(data){
+		//调用ajax
+		$.get_ajax("/hospital/department/getList.json",'',function(data){
+			console.log(data);
+            data.data.forEach(function (value) {
+                var htmlsection = '<div class="csx" style="clear: both; display: block;">' +
+                    '<ul class="renwu_mainmenu" sectionid="'+value.id+'">' +
+                    '<li onclick="togetstaff(this)" valueId="'+value.id+'"><span class="zhankai">▼</span>' +
+					'<span class="zhankai zhankaizi">展开</span>'+ value.name + '</li>' +
+                    '<ul class="submenu2">' +
+
+                    '</ul>' +
+                    '</ul>' +
+                    '</div>';
+                $(".tbody").append(htmlsection);
+			})
+			//var html = template('test_ill_list',data);
+            /*$('.renwu_mainmenu li').click(function () {
+            });*/
+			//初始化分页
+			control_page.currentPage(control_page.page_num,data.totalCount);
+		});
+	});
+    /*$('.renwu_mainmenu li').die().live('click', function () {
+       $(this).next('.submenu2').slideToggle()/!*.siblings('.submenu2').slideUp()*!/;
+       $(this).parent().parent().siblings('.csx').children().children('.submenu2').slideUp();
+   });*/
+}
+//获取单个部门员工
+function togetstaff(obj) {
+    $(obj).next('.submenu2').slideToggle()/*.siblings('.submenu2').slideUp()*/;
+    $(obj).parent().parent().siblings('.csx').children().children('.submenu2').slideUp();
+    //$('.zhankaizi').text('展开');
+    if($(obj).children('.zhankaizi').text() == '收起'){
+        $('.zhankaizi').text('展开');
+        $(obj).children('.zhankaizi').text('展开');
+    }else{
+        $('.zhankaizi').text('展开');
+        $(obj).children('.zhankaizi').text('收起');
+    }
+    $(obj).next('.submenu2').empty();
+    var htmlTable = [];
+    htmlTable += '<table>' +
+        '<thead>' +
+        '<tr>' +
+        '<td>姓名</td>' +
+        '<td>手机号</td>' +
+        '</tr>' +
+        '</thead>' +
+        '<tbody class="tbodytable">' +
+
+        '</tbody>' +
+        '</table>';
+    togetstaffAjax(obj,htmlTable);
+
+}
+function togetstaffAjax(obj,htmlTable) {
+    var elThis = obj;
+    var data = {"pageNumber":1,"pageSize":10};
+        $.get_ajax("/hospital/employee/getList.json",data,function(data){
+            console.log(data);
+            $(elThis).next('.submenu2').append(htmlTable);
+            isList(data.data,elThis);
+   })
+}
+function isList(data, obj) {
+    var elThis = obj;
+    var pageId = $(elThis).attr('valueId')
+    $(elThis).parent().parent().append('<div class="tableBottom"> ' +
+        '<div style="display: inline-block;margin: 10px 0 0 422px" id="pageToolDetail'+pageId+'"></div></div>');
+    var datajson = data;
+
+        $('#pageToolDetail'+pageId).empty();
+        var dataList = datajson.retData.dataList;
+        if (dataList.length == 0) {
+            $('#pageToolDetail'+pageId).empty();
+        } else {
+            //返回操作
+            isFreeforList(dataList,elThis,pageId);
+
+            $('#pageToolDetail'+pageId).Paging({
+                pagesize: datajson.retData.pageSize,
+                count: datajson.retData.total,
+                callback: function (page, size, count) {
+                    /*data2 = new Object();                                            //大json
+                    data2.pageSize = 10;
+                    data2.pageNum = page;
+                    data2.userId = globalData.userId;
+                    data2.itemId = $(elThis).attr('valueId');
+                    var str = JSON.stringify(data2);
+                    var loadIndex = layer.load();
+                    $.ajax({
+                        url: SERVER_ADDR + "/cpm/getKWList",  //http://192.168.3.102:8080/shopassistant/cpmtask/saveTask
+                        type: "POST",
+                        data: "param=" + str,
+                        xhrFields: {
+                            withCredentials: true
+                        },
+                        success: function (data) {
+                            layer.close(loadIndex);
+                            $(elThis).parent().parent().children('table ').children('tbody').empty();
+                            var datajson = JSON.parse(data);
+                            if(!datajson.retData.dataList || datajson.retData.dataList.length == 0){
+                                $('#pageToolDetail'+pageId).empty();
+                            }else{
+                                var dataList = datajson.retData.dataList;
+                                if (datajson.retCode == 1) {
+                                    isFreeforList(dataList,elThis,pageId);
+                                } else if (datajson.retCode == 0) {
+                                    cpmAlertError(datajson.retMsg);
+                                } else if (datajson.retCode == -11) {
+                                    mLogin();
+                                }
+                            }
+                        }
+                    });*/
+                    var data = {"pageNumber":page,"pageSize":10};
+                    $.get_ajax("/hospital/employee/getList.json",data,function(data){
+                        console.log(data);
+                        isFreeforList(data.data,elThis,pageId);
+                    })
+                }
+            });
+            // setIframeHeight(myParent,1);
+        }
+    }
+
+    function isFreeforList(data,elThis,pageId){
+        data.forEach(function (value) {
+            var htmlstaff = '<li>' +
+                '<span class="spiralTask" spiralid="1696"><span class="staffname">value</span>' +
+                '<span class="renwu_mainmenu_keyword">32423</span>' +
+                '<span class="renwu_mainmenu_paiming"></span>' +
+                '<span class="fileReason" ></span>' +
+                '</span>' +
+                '</li>' +
+                '<li>' +
+                '<span class="spiralTask" spiralid="1696"><span class="staffname">value</span>' +
+                '<span class="renwu_mainmenu_keyword">32423</span>' +
+                '<span class="renwu_mainmenu_paiming"></span>' +
+                '<span class="fileReason" ></span>' +
+                '</span>' +
+                '</li>';
+            $(elThis).next('.submenu2').append(htmlstaff);
+        })
+	}
+//添加部门
+function open_box_section() {
+    $('.shade').css("display","block");
+    $('.people_open_section').css("display","block");
+}
+function addSection() {
+    var data = {'name': $('.sectionname').val()};
+    $.post_ajax("/hospital/department/add", data, function (data) {
+        alert('添加成功');
+        close_box();
+    });
+}
+//添加员工
+function open_box_staff() {
+    $.get_ajax("/hospital/department/getListBySelect.json",'',function(data){
+        console.log(data)
+        data.data.forEach(function (value) {
+            $('.sectionList').append('<option sectionid="'+value.id+'">'+value.name+'</option>')
+        })
+    });
+    $('.shade').css("display","block");
+    $('.people_open_staff').css("display","block");
+}
+function addStaff() {
+    var data = {'fullname': $('.staffselectname').val(),'hospitalDepartmentId': $('.sectionList').val(),'mobile': $('.staffselectmobile').val()};
+    $.get_ajax("/hospital/employee/add",'',function(data){
+        alert('添加成功');
+    });
+    $('.shade').css("display","block");
+    $('.people_open_staff').css("display","block");
+}
+
+
+/**
+ *,2，编辑模板
+ */
+//编辑疾病
+function ill_edit(m){
+	var cure_id = $(m).parents().attr("data_id");
+	console.log(cure_id);
+	window.localStorage.setItem("cure_id",cure_id);
+	window.location.href="edit_template.html";
+}
+</script>
+<script>
+function search(obj) {
+    console.log(obj)
+    //基本条件
+    if(obj == undefined){
+        var data = control_page.getData();
+    }else{
+        var data = obj;
+    }
+    //关键字
+    var keyword = $(".keyword").val();
+    if(keyword != ""){
+        data.keyword = keyword;
+        console.log(data);
+    }
+    reqPage(data);
+}
+</script>
+</body>
+</html>

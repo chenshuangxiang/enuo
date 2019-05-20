@@ -1,0 +1,117 @@
+
+.hos_msg_complete .public_input>span,
+.edit_hos_complete .public_input>span{
+	width: 250px;
+}
+.hos_msg_complete .public_input input,
+.edit_hos_complete .public_input input{
+	width: 500px;
+}
+.hos_msg_complete .public_input select,
+.edit_hos_complete .public_input select{
+	width: 500px;
+}
+.hos_msg_complete .public_input textarea,
+.edit_hos_complete .public_input textarea{
+	width: 500px;min-height: 100px;
+	margin-left: 35px;
+}
+
+
+/*弹框*/
+/*.popup_box{
+	width: 500px;
+	height: 300px;
+	position: absolute;
+	top: 170px;left: 50%;
+	margin-left: -250px;
+	z-index: 1000;
+	border-radius: 5px;
+	background: url(../img/index/poup_bg.jpg) no-repeat center;
+}*/
+.check_box{
+	width: 500px;
+	height: 300px;
+	position: absolute;
+	top: 170px;left: 50%;
+	margin-left: -250px;
+	z-index: 1000;
+	border-radius: 5px;
+	background: url(../img/index/poup_bg.jpg) no-repeat center;
+}
+.check_box .img_close{
+	/*border: 1px solid red;*/
+	margin-top: 10px;
+}
+.check_box .img_close img{
+	float: right;margin-right: 10px;
+}
+/*审核状态*/
+.check_box .status{
+	width: 350px;
+	/*border: 1px solid red;*/
+	text-align: center;
+	margin: 0 auto;
+	margin-top: 160px;
+	min-height: 20px;line-height: 20px;
+}
+.check_box .confirm{
+	width: 70px;
+    height: 30px;line-height: 30px;
+    border-radius: 10px;
+    background-color: #00afa1;
+    color: white;
+    margin: 0 auto;
+    margin-top: 20px;
+    text-align: center;
+    
+}
+
+
+/*上传图片*/
+.hos_msg_complete .upload_img{
+	width: 885px;height: auto;
+	/*border: 1px solid red;*/
+} 
+.hos_msg_complete .upload_img .right{
+	width: 500px;min-height: 200px;
+	/*border: 1px solid black;*/
+	float: right;
+	margin-right: 100px;
+}
+.hos_msg_complete .hos_msg_complete .upload_img label span{
+	display: inline-block;
+	width: 180px;height: 40px;
+	background-color: #FEAA2C;
+	color: white;
+	border-radius:5px ;
+	letter-spacing: 1px;
+	font-size: 16px;
+	text-align: center;
+}
+.hos_msg_complete .upload_img input{
+	width: 120px;
+	text-indent: 0;
+	background-color: #FEAA2C;
+	color: white;
+	border-radius:5px ;
+	letter-spacing: 1px;
+	font-size: 16px;
+	position: absolute;
+	top: 0;right: 0;
+}
+.hos_msg_complete .upload_img .preview,
+.hos_msg_complete .upload_img .preview2,
+.hos_msg_complete .upload_img .preview3,
+.hos_msg_complete .upload_img .previewHos{
+	width: 500px;
+	min-height: 160px;
+	border: 1px dashed #DCDCDC;
+	padding: 2px;
+}
+.hos_msg_complete .upload_img .preview img,
+.hos_msg_complete .upload_img .preview2 img,
+.hos_msg_complete .upload_img .preview3 img,
+.hos_msg_complete .upload_img .previewHos img{
+	height: 150px;
+}

@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="css/base.css" />
+<link rel="stylesheet" href="css/util.css" />
+<link rel="stylesheet" href="css/collect.css" />
+<link rel="stylesheet" href="plug/webuploader/webuploader.css" />
+<title>限定名额</title>
+<style>
+	/*图片上传*/
+	#filePicker{
+		display: inline-block;
+		/*border: 1px solid red;*/
+		height: 40px;
+	}
+	#filePicker .webuploader-pick{
+		height: 40px;line-height: 40px;
+		width: 120px;
+		/*border: 1px solid black;*/
+		padding: 0;
+		letter-spacing: 1px;
+		font-size: 16px;
+		border-radius:5px ;
+	}
+	.preview>div{
+		display: inline-block;
+		margin-left: 3px;
+	}
+</style>
+</head>
+<body>
+<div class="content tyq_limiting">
+	<div class="navigate_head clearfix">
+<!--		<p class="" onclick="window.location.href='tyq_list.html'">体验券列表</p>-->
+		<p class="navi_current" onclick="window.location.href='tyq_limiting.html'">限定名额</p>
+		<p class="navi_null"></p>
+	</div>
+	<div>
+		<form class="add_role_form">
+			<div class="public_input">
+				<span><span class="font_green">* </span>体验劵名称:</span>
+				<select class="tyq_name">
+					<option>请选择</option>
+				</select>
+			</div>
+			<div class="job_tab">
+				<div class="tit">预约人数设置（请在下列表格中填写相应的最高预约量）</div>
+				<!--出诊时间-->
+				<div class="heal_time_container clearfix">
+					<!--<div class="">
+						<p class=""></p>
+						<p class=""><img src="img/left.png"/></p>
+						<p class=""></p>
+					</div>-->
+					<div class="">
+						<p class="">排班</p>
+						<p class="">上午</p>
+						<p class="">下午</p>
+					</div>
+					<div class="week">
+						<p class="day">
+							<span class="">星期天</span>
+						</p>
+						<input type="text" data_week="sunday" data_morning="true"/>
+						<input type="text" data_week="sunday" data_morning="false"/>
+						<!--<p class="am" data_val="休息"></p>
+						<p class="pm" data_val="休息"></p>-->
+					</div>
+					<div class="week">
+						<p class="day">
+							<span class="">星期一</span>
+						</p>
+						<input type="text" data_week="monday" data_morning="true"/>
+						<input type="text" data_week="monday" data_morning="false"/>
+					</div>
+					<div class="week">
+						<p class="day">
+							<span class="">星期二</span>
+						</p>
+						<input type="text" data_week="tuesday" data_morning="true"/>
+						<input type="text" data_week="tuesday" data_morning="false"/>
+					</div>
+					<div class="week">
+						<p class="day">
+							<span class="">星期三</span>
+						</p>
+						<input type="text" data_week="wednesday" data_morning="true"/>
+						<input type="text" data_week="wednesday" data_morning="false"/>
+					</div>
+					<div class="week">
+						<p class="day">
+							<span class="">星期四</span>
+						</p>
+						<input type="text" data_week="thursday" data_morning="true"/>
+						<input type="text" data_week="thursday" data_morning="false"/>
+					</div>
+					<div class="week">
+						<p class="day">
+							<span class="">星期五</span>
+						</p>
+						<input type="text" data_week="friday" data_morning="true"/>
+						<input type="text" data_week="friday" data_morning="false"/>
+					</div>
+					<div class="week">
+						<p class="day">
+							<span class="">星期六</span>
+						</p>
+						<input type="text" data_week="saturday" data_morning="true"/>
+						<input type="text" data_week="saturday" data_morning="false"/>
+					</div>
+					<!--<div class="">
+						<p class="flex_all_center"></p>
+						<p class=""><img src="img/right.png"/></p>
+						<p class=""></p>
+					</div>-->
+				</div>
+				<!--<div class="btn">
+					<button onclick="up_week()">上周</button><button onclick="next_week()">下周</button>
+				</div>-->
+			</div>
+			<div class="public_input confrim_btn">
+				<span>.</span>
+				<input type="button" class="confrim_add_limiting" value="修 改"/>
+			</div>
+		</form>
+	</div>
+</div>
+<script type="text/javascript" src="plug/jquery-1.11.3.js" ></script>
+<script type="text/javascript" src="plug/template-web.js" ></script>
+<script type="text/javascript" src="plug/webuploader/webuploader.min.js"></script>
+<script type="text/javascript" src="js/toggle.js" ></script>
+<script type="text/javascript" src="js/util.js" ></script>
+<script type="text/javascript" src="js/method.js" ></script>
+<script type="text/javascript" src="js/detail/upload_img.js" ></script>
+<!--项目类型列表-->
+<script type="text/html" id="test_tyq_list">
+	{{each data value}}
+		<option value="{{value.id}}">{{value.experienceCouponName}}</option>
+	{{/each}}
+</script>
+<script>
+$(function(){
+	var tyq_name_id="";
+	//初始化体验券列表
+	$.initSelect("/hospital/experienceCoupon/getTypeList.json","test_tyq_list",".tyq_name");
+	$(".tyq_name").change(function(){
+
+		tyq_name_id = $(".tyq_name").val();
+        if(tyq_name_id == '请选择'){
+            $(".week input").val('')
+            return;
+		}
+		console.log(tyq_name_id);
+		var data = {
+			"id":tyq_name_id
+		}
+		//初始化排班表
+		$.get_ajax("/hospital/experienceCoupon/geSchedules.json",data,function(res){
+			console.log(res);
+			if(res.success==true){
+				//初始化值班表
+				console.log(res.data);
+				if(res.data[0]){
+                    $(".week input").val('')
+					init_work_tb(res.data);
+				}
+//				else{
+//					var arr=get_work_tb();
+//					for(var i=0;i<14;i++){
+//						arr[i].reservationQuantity=0;
+//					}
+//					init_work_tb(arr);
+//				}
+			}else{
+				alert(data.data);
+			}
+		});
+	});
+	
+	//添加
+	$(".confrim_add_limiting").click(function(){
+		var arr_job = get_work_tb();//获取排期表格
+		//输入框信息
+		var data = {
+			"id":tyq_name_id,
+			"schedules":JSON.stringify(arr_job)//排期表
+		}
+		console.log(data);
+		//验证
+		if(!$.verify(arr_job,"排期表")){return false;}
+		//调用ajax
+		$.post_ajax("/hospital/experienceCoupon/instal",data,function(data){
+			console.log(data);
+			if(data.success==true){
+				alert("修改成功");
+				window.location.href = "tyq_list.html";
+			}else{
+				alert(data.data);
+			}
+		});
+		
+	});
+
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="css/base.css" />
+<link rel="stylesheet" href="css/util.css" />
+<link rel="stylesheet" href="css/collect.css" />
+	<link href="css/chat.css" rel="stylesheet" />
+<title>会话列表</title>
+<style>
+.head_area .public_input span{
+	width: 100px;font-size: 18px;
+}
+.head_area .public_input input,
+.head_area .public_input select{
+	width: 280px;margin-left: 10px;
+}
+	.huifuname{
+		float: left;
+		font-size: 18px;
+		font-family: 微软雅黑;
+		margin: -5px 0 6px 20px;
+	}
+</style>
+</head>
+<body>
+<div class="content evaluate_list">
+	<div class="navigate_head clearfix">
+		<p class="" onclick="window.location.href='chat_list.html'">会话列表</p>
+		<p class="navi_null"></p>
+	</div>
+	
+	<!--头部功能-->
+	<!--<div class="head_area flex_vertical">
+		<div class="public_input margindiv">
+			<span >关键词：</span>
+			<input type="text" class="keyword" placeholder="搜索姓名"/>
+		</div>
+		&lt;!&ndash;&nbsp;<button class="" style="position: absolute;right: 0;top: 0;">导出表格</button>&ndash;&gt;
+		<button class="search" style="margin-left: 10px;" onclick="indexPage()">搜索</button>
+	</div>-->
+	<table>
+		<thead>
+			<tr>
+				<td>姓名</td>
+				<td  width="50%">消息</td>
+                <td>最后消息时间</td>
+				<td>操作</td>
+			</tr>
+		</thead>
+		<tbody class="tbody">
+			
+		</tbody>
+	</table>
+	<!--分页-->
+	<div class="page flex_vertical">
+		<button class="" onclick="indexPage()">首页</button>&nbsp;
+		<button class="" onclick="backPage()"><上一页</button>&nbsp;
+		<!--页码-->
+		<p class="page_num">
+			<!--<span>1</span><span>2</span><span>3</span><span>4</span><span>5</span>-->
+		</p>....
+		<button class="" onclick="nextPage()">下一页></button>&nbsp;
+		<button class="" onclick="endPage()">末页</button>&nbsp;
+		共<span class="all_recode">0 </span>记录&nbsp;|
+		共<span class="all_page">0 </span>页&nbsp;
+		到第<input class="select_page" />页&nbsp;
+		<button class="confirm_page" onclick="skipPage()">确定</button>
+	</div>
+</div>
+<div class="shade none"></div>
+<!--弹框-->
+<div class="popup_box none" style="min-height: 400px;top: 15px;width: 600px;left: 44%;">
+	<p class="img_close clearfix">
+		<span class="huifuname"></span>
+		<img src="img/close.png" onclick="close_box_open()"/>
+	</p>
+	<div class="main">
+		<div class="main_inner clearfix">
+			<div class="panel"></div>
+			<div id="chatArea" class="box chat">
+				<div class="box_hd"></div>
+				<div class="box_bd" id="messageList" style="margin-bottom: 85px;overflow-y: auto;">
+					 <!--<div class="message me">
+                         <img class="avatar" src="img/hosLogo.png" />
+                         <div class="content">
+                             <div class="nickname"><span class="time">10:10:08</span></div>
+                             <div class="bubble bubble_primary right">
+                                 <div class="bubble_cont">
+                                     <div class="plain">
+                                         <pre>你欠我一顿大餐你欠我一顿大餐你欠我一顿大餐你欠我一顿大餐你欠我一顿大餐你欠我一顿大餐你欠我一顿大餐你欠我一顿大餐你欠我一顿大餐你欠我一顿大餐你欠我一顿大餐</pre>
+                                     </div>
+                                 </div>
+                             </div>
+                         </div>
+                     </div>
+                     <div class="message">
+                         <img class="avatar" src="img/myLogo.png" />
+                         <div class="content">
+                             <div class="nickname">医院<span class="time">10:12:20</span></div>
+                             <div class="bubble bubble_default left">
+                                 <div class="bubble_cont">
+                                     <div class="plain">
+                                         <pre>(⊙o⊙)…好吧</pre>
+                                     </div>
+                                 </div>
+                             </div>
+                         </div>
+                     </div>
+                     <div class="message me">
+                         <img class="avatar" src="img/hosLogo.png" />
+                         <div class="content">
+                             <div class="nickname"><span class="time">10:10:08</span></div>
+                             <div class="bubble bubble_primary right">
+                                 <div class="bubble_cont">
+                                     <div  class="plain">
+                                         <pre>(⊙o⊙)…好吧佛挡杀佛地方个梵蒂冈电饭锅电饭锅电饭锅</pre>
+                                     </div>
+                                 </div>
+                             </div>
+                         </div>
+                     </div>
+                     <div class="message">
+                         <img class="avatar" src="img/myLogo.png" />
+                         <div class="content">
+                             <div class="nickname">医院<span class="time">10:12:20</span></div>
+                             <div class="bubble bubble_default left">
+                                 <div class="bubble_cont">
+                                     <div class="plain">
+                                         <pre>请你吃一个月大餐！</pre>
+                                     </div>
+                                 </div>
+                             </div>
+                         </div>
+                     </div>
+                     <div class="message me">
+                         <img class="avatar" src="img/hosLogo.png" />
+                         <div class="content">
+                             <div class="nickname"><span class="time">10:10:08</span></div>
+                             <div class="bubble bubble_primary right">
+                                 <div class="bubble_cont">
+                                     <div class="plain">
+                                         <pre>你欠我一顿大餐你欠我一顿大餐你欠我一顿大餐你欠我一顿大餐你欠我一顿大餐你欠我一顿大餐你欠我一顿大餐你欠我一顿大餐你欠我一顿大餐你欠我一顿大餐你欠我一顿大餐</pre>
+                                     </div>
+                                 </div>
+                             </div>
+                         </div>
+                     </div>
+                     <div class="message me">
+                         <img class="avatar" src="img/hosLogo.png" />
+                         <div class="content">
+                             <div class="nickname"><span class="time">10:10:08</span></div>
+                             <div class="bubble bubble_primary right">
+                                 <div class="bubble_cont">
+                                     <div class="plain">
+                                         <pre>你欠我一顿大餐你欠我一顿大餐你欠我一顿大餐你欠我一顿大餐你欠我一顿大餐你欠我一顿大餐你欠我一顿大餐你欠我一顿大餐你欠我一顿大餐你欠我一顿大餐你欠我一顿大餐</pre>
+                                     </div>
+                                 </div>
+                             </div>
+                         </div>
+                     </div>
+                     <div class="message">
+                         <img class="avatar" src="img/myLogo.png" />
+                         <div class="content">
+                             <div class="nickname">医院<span class="time">10:12:20</span></div>
+                             <div class="bubble bubble_default left">
+                                 <div class="bubble_cont">
+                                     <div class="plain">
+                                         <pre>请你吃一个月大餐！</pre>
+                                     </div>
+                                 </div>
+                             </div>
+                         </div>
+                     </div>
+                     <div class="message">
+                         <img class="avatar" src="img/myLogo.png" />
+                         <div class="content">
+                             <div class="nickname">医院<span class="time">10:12:20</span></div>
+                             <div class="bubble bubble_default left">
+                                 <div class="bubble_cont">
+                                     <div class="plain">
+                                         <pre>请你吃一个月大餐！</pre>
+                                     </div>
+                                 </div>
+                             </div>
+                         </div>
+                     </div>
+                     <div class="message">
+                     <img class="avatar" src="img/myLogo.png" />
+                     <div class="content">
+                         <div class="nickname">医院<span class="time">10:12:20</span></div>
+                         <div class="bubble bubble_default left">
+                             <div class="bubble_cont">
+                                 <div class="plain">
+                                     <pre>请你吃一个月大餐！</pre>
+                                 </div>
+                             </div>
+                         </div>
+                     </div>
+                 </div>-->
+				</div>
+			</div>
+		</div>
+		<div class="box_ft" style="position: absolute">
+			<div class="box_ft_hd">
+				<div class="eaitWrap">
+					<!--<pre id="editArea" class="editArea" contenteditable="true"></pre>-->
+					<!--<input type="text" />-->
+					<textarea id="editArea" class="editArea"></textarea>
+
+				</div>
+				<a href="javascript:;" style="display: inline-block" class="btn btn_send" id="btn_send" onclick="To.send()">发送</a>
+			</div>
+			<div class="box_ft_bd hide">
+				<div class="emoji_panel">
+				</div>
+			</div>
+
+		</div>
+	</div>
+</div>
+
+<script type="text/javascript" src="plug/jquery-1.11.3.js" ></script>
+<script type="text/javascript" src="plug/template-web.js"></script>
+<script type="text/javascript" src="js/toggle.js" ></script>
+<script type="text/javascript" src="js/util.js"></script>
+<script type="text/javascript" src="js/method.js"></script>
+<script type="text/javascript" src="js/page.js"></script>
+<script type="text/javascript" src="js/detail/chat.js"></script>
+<!--<script type="text/javascript" src="js/detail/ill.js"></script>-->
+<!--评价列表-->
+<!--<script id="test_evaluate_list" type="text/html">
+	{{each data value}}
+		<tr>
+			<td>{{value.nickname}}</td>
+			<td>{{value.lastMessage}}</td>
+			<td data_id ="{{value.userId}}" class="font_green" onclick="huifu(this)">回复</td>
+		</tr>
+	{{/each}}
+</script>-->
+
+<script>
+    $('#messageList').height($('.shade').height() - 190)
+	function huifu(obj) {
+        $('.main').attr('employeeId',$(obj).attr('data_id'));
+        $('.huifuname').text($(obj).attr('data_nickname'));
+        Get.sublaterNews();
+        $(".shade,.popup_box").show();
+    }
+    function close_box_open() {
+        $('.shade').css("display","none");
+        $('.popup_box,.people_box').css("display","none");
+        index = 0;
+    }
+//请求方法
+function reqPage(data){
+	console.log(data);
+	control_page.init_page(data,function(data){
+		//调用ajax
+		$.get_ajax("/hospital/message/getList.json",data,function(data){
+			console.log(data);
+			var html = '';
+			data.data.forEach(function (value) {
+                html+='<tr>' +
+                    '<td style="position: relative">' ;
+                if(value.hasNewMsg == true){
+                    html += '<span class="new"></span>';
+                }
+                html += ''+value.nickname+'</td>' +
+                    '<td>'+value.lastMessage+'</td>' +
+                    '<td>'+value.sendDate+'</td>' +
+                    '<td style="cursor: pointer" data_id ="'+value.userId+'" data_nickname ="'+value.nickname+'" class="font_green" onclick="huifu(this)">回复</td>' +
+                    '</tr>';
+                $(".tbody").html(html);
+            });
+			//初始化分页
+			control_page.currentPage(control_page.page_num,data.totalCount);
+		});
+	});
+}
+
+//评价详情
+function evalute(m){
+	var evalute_id = $(m).attr("data_id");
+	console.log(evalute_id);
+	window.localStorage.setItem("evalute_id",evalute_id);
+	window.location.href="evaluate_detail.html";
+}
+</script>
+<script>
+$(function(){
+    reqPage(control_page.getData());
+    setInterval(function () {
+        reqPage(control_page.getData());
+    },5000)
+});
+function search(obj) {
+    console.log(obj)
+    //基本条件
+    if(obj == undefined){
+        var data = control_page.getData();
+    }else{
+        var data = obj;
+    }
+    //关键字
+    var keyword = $(".keyword").val();
+    if(keyword != ""){
+        data.keyword = keyword;
+        console.log(data);
+    }
+    reqPage(data);
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,68 @@
+.login{
+	background-color: #EEEEEE;
+	width: 100vw;height: 100vh;
+	/*max-width: 1920px;
+	max-height: 1080px;*/
+	border: 1px solid transparent;
+}
+.login_top{
+	/*border: 1px solid red;*/
+	margin: 0 auto;
+	width: 300px;
+	margin-top: 50px;
+}
+.login_top img{
+	display: inline-block;
+	width: 70%;
+	margin-left: 10%;
+}
+.login_top p{
+	text-align: center;
+	height: 70px;line-height: 70px;
+	font-size: 22px;
+	letter-spacing: 1px;
+	font-weight: bold;
+}
+
+.login .login_form{
+	width: 400px;
+	height: 275px;
+	background-color: white;
+	margin: 0 auto;
+	border: 1px solid transparent;
+	padding-top: 10px;
+	margin: 0 auto;
+	margin-top: 20px;
+}
+.login_form div{
+	/*border: 1px solid red;*/
+	width: 82%;
+	height: 40px;
+	margin: 0 auto;
+	margin-top: 25px;
+}
+.login_form div label{
+	width: 17%;height: 40px;line-height: 40px;
+	display: inline-block;
+	text-align: right;
+	margin-right: 5px;
+}
+.login_form div input{
+	width: 80%;height: 40px;line-height: 40px;
+	border-radius: 5px;
+  	border: solid 1px #dcdcdc;
+  	float: right;
+  	text-indent: 10px;
+}
+.login_form .remember_pwd>p{
+	position: relative;
+	width: 39%;height: 30px;line-height: 30px;
+	display: inline-block;
+	/*border: 1px solid black;*/
+	float: right;
+	font-size: 12px;
+	color: #00AFA1;
+}
+
+
+  

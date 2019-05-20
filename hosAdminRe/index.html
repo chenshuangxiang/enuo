@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<link rel="stylesheet" href="css/base.css" />
+<link rel="stylesheet" href="css/collect.css" />
+<link rel="stylesheet" href="css/util.css" />
+<link rel="stylesheet" href="css/index.css" />
+<title>医院首页</title>
+</head>
+<style>
+	.user{
+		cursor: pointer;
+	}
+	.userSpan{
+		position: absolute;
+		top: 40px;
+		right: 30px;
+		width: 83px;
+		background-color: white;
+		display: none;
+		border: 1px solid #e0e0e0;
+		border-top: 0;
+	}
+	.userSpan span{
+		text-align: right;
+		padding-right: 13px;
+	}
+	.userSpan span:hover{
+		background-color: #f3f3f3;
+		cursor: pointer;
+	}
+</style>
+<body>
+<!--头部-->
+<div class="content_head">
+	
+	<div class="content_head_middle clearfix">
+		<div class="left set_img_bg">
+			
+		</div>
+		<!--<p class="exit"><img src="img/index/exit.png"/>退出</p>
+		<p onclick="edit_pwd()">修改密码</p>
+		<p class="hos_name" style="border-right: 1px solid black;">张婵</p>
+		<p  onclick="duijie()" style="padding-right: 0"><img style="margin: 3px 0px 0 0;" src="img/index/person.png"></p>-->
+
+		<p class="user" style="height: 42px">
+			<span style="display: block;padding: 0 20px;" class="user_name">用户名</span>
+			<span class="userSpan">
+
+				<span onclick="edit_pwd()" style="display: block;"><!--<img style="vertical-align: top;margin: 7.5px 5px 0 5px;height: 15px" src="img/index/write.png">-->修改密码</span>
+				<span class="exit" style="display: block;"><!--<img src="img/index/exit.png"/>-->退出</span>
+			</span>
+		</p>
+
+		<p onclick="duijie()" style="border-right: 1px solid black;"><img style="vertical-align: top;margin: 5.5px 5px 0 0;height: 25px;" src="img/index/person.png">商务对接人</p>
+		<p class="hos_Info" style="border-right: 1px solid black;" onclick="hosInfo()"><img style="vertical-align: top;margin: 5.5px 5px 0 0;height: 18px;" src="img/index/hosInfo.png">医院信息</p>
+		<p class="hos_name" style="border-right: 1px solid black;">张婵</p>
+	</div>
+</div>
+<div class="parent clearfix">
+	<!--左边导航栏：医院-->
+	<div class="content_left">
+		<dl class="permis_mng dl_close" data_flag="close">
+			<dt class=" flex_vertical"><img src="img/index/appoint.png"  style="position: relative;top: 0px;"/>预约管理</dt>
+			<dd onclick="toAppointment(this)">体验项目</dd>
+			<dd onclick="toAppointmentjiuzhen(this)">就诊项目</dd>
+		</dl>
+		<dl class="permis_mng dl_close" data_flag="close">
+			<dt class=" flex_vertical"><img src="img/index/dial.png"  style="position: relative;top: 3px;"/>订单管理</dt>
+			<dd onclick="toOrder(this)">订单列表</dd>
+			<dd onclick="toTyq(this)">体验券列表</dd>
+		</dl>
+		<dl class="permis_mng dl_close" data_flag="close">
+			<dt class=" flex_vertical" onclick="toAllot(this)" style="border-radius: 10px !important;"><img src="img/index/drafts.png"  style="position: relative;top: 0px;"/>分诊列表</dt>
+		</dl>
+		<dl class="hos_mng dl_close" data_flag="close">
+			<dt class=" flex_vertical"><img src="img/index/grade.png" />活动管理</dt>
+			<dd onclick="toHosSpecialProj(this)">特价项目</dd>
+			<dd onclick="toTyqLimit(this)">体验券</dd>
+			<!--<dd onclick="toAppointment(this)">预约项目</dd>-->
+		</dl>
+		<dl class="hos_mng dl_close" data_flag="close">
+			<dt class=" flex_vertical"><img src="img/index/template.png" />信息管理</dt>
+			<dd onclick="toDoc(this)">医生管理</dd>
+			<dd onclick="toHosTem(this)">模板管理</dd>
+			<dd onclick="toEvaluate(this)">评价管理</dd>
+			<dd onclick="toSection(this)">部门管理</dd>
+		</dl>
+		<!--<dl class="permis_mng dl_open" data_flag="open">
+			<dt class=" flex_vertical" onclick="toDoc(this)" style="border-radius: 10px !important;"><img src="img/index/role.png" style="height: 27px;position: relative;top: 3px;margin: 0 18px;"/>医生管理</dt>
+		</dl>-->
+		<dl class="permis_mng dl_close" data_flag="close">
+			<dt class=" flex_vertical" onclick="toSpeedAppoint(this)" style="border-radius: 10px !important;"><img src="img/index/drafts.png"  style="position: relative;top: 0px;"/>便捷约定</dt>
+		</dl>
+		<dl class="permis_mng dl_close" data_flag="close">
+			<dt class=" flex_vertical" onclick="toChatList(this)" style="border-radius: 10px !important;"><img src="img/index/drafts.png"  style="position: relative;top: 0px;"/>会话列表</dt>
+		</dl>
+		
+		<!--<dl class="permis_mng dl_close" data_flag="close">
+			<dt class=" flex_vertical" onclick="toEvaluate(this)" style="border-radius: 10px !important;"><img src="img/index/friends.png"  style="position: relative;top: 3px;"/>评价管理</dt>
+		</dl>-->
+		<!--<dl class="permis_mng dl_close" data_flag="close">
+			<dt class=" flex_vertical" onclick="toTyq(this)" style="border-radius: 10px !important;"><img src="img/index/quan.png"  style="position: relative;top: 0px;"/>体验券</dt>
+		</dl>-->
+		<!--<dl class="permis_mng dl_close" data_flag="close">
+			<dt class=" flex_vertical" onclick="toHosTem(this)" style="border-radius: 10px !important;"><img src="img/index/template.png"  style="position: relative;top: 3px;"/>模板管理</dt>
+		</dl>-->
+	</div>
+	<!--右边子页面-->
+	<div class="content_right">
+		<iframe id="child_content" name="iframe" scrolling="yes" src="appointment_list.html" style="width:985px;height: 100%;" charset="utf-8"></iframe>
+	</div>
+</div>
+<!--遮罩层-->
+<div class="shade none"></div>
+<!--修改密码弹框-->
+<div class="popup_box edit_pwd_box none">
+	<p class="img_close clearfix">
+		<img src="img/close.png" onclick="close_box()"/>
+	</p>
+	<div>
+		<div class="public_input">
+			<span style="width: 120px;">原密码:</span>
+			<input class="old_pwd" type="password" placeholder="原密码" style="width: 250px;"/>
+		</div>
+		<div class="public_input">
+			<span style="width: 120px;">新密码:</span>
+			<input class="new_pwd" type="password" placeholder="新密码" style="width: 250px;"/>
+		</div>
+		<div class="public_input">
+			<span style="width: 120px;">确认密码:</span>
+			<input class="confrim_pwd" type="password" placeholder="确认密码" style="width: 250px;"/>
+		</div>
+	</div>
+	<p class="confirm edit_pwd_confirm" style="margin-left: 155px;width: 100px;">修 改</p>
+</div>
+<!--商务对接人弹窗-->
+<div class="popup_box people_box none" style="width: 620px">
+	<p class="img_close clearfix">
+		<img src="img/close.png" onclick="close_box()">
+	</p>
+	<div class="people_boxDiv">
+		<span>商务对接人：</span><input class="peopelname" type="text" placeholder="请输入商务对接人姓名"/>
+	</div>
+	<div class="people_boxDiv" style="margin-top: 30px;">
+	<span style="display: inline-block;margin-left: 40px">手机号：</span><input class="peopelmobile" type="text" placeholder="请输入商务对接人手机号"/>
+	</div>
+	<p class="zhu">注：商务对接人指接收平台预约短信的联系人</p>
+	<p class="confirm surepeople" style="margin-left:250px;width: 100px;" onclick="surePeople()">确认</p>
+</div>
+<script type="text/javascript" src="plug/jquery-1.11.3.js" ></script>
+<script type="text/javascript" src="js/util.js"></script>
+<script type="text/javascript" src="js/index.js" ></script>
+<script type="text/javascript" src="js/toggle.js" ></script>
+<script>
+    var check_statu="";
+//适应网页高度
+$(function(){
+	//适应网页高度
+	console.log($(window).height());
+	$(".content_left").height($(window).height()-130);
+	$(".content_right").height($(window).height()-100);
+	$('.user,.userSpan').mouseenter(function () {
+		$('.userSpan').show()
+    }).mouseleave(function () {
+       $('.userSpan').hide()
+    })
+    getStatus();
+});
+$(".content_left dt,.content_left dd,.hos_Info,.navi_current").click(function(){
+	//存储当前页面
+	localPage();
+});
+//刷新定位到当前页面,没有完善信息则去完善
+    if($.get_storage("isPerfect") == 'false'){
+        $("#child_content").attr("src","/hosAdmin/edit_fina_complete.html");
+        window.localStorage.setItem("isPerfect",'true');
+        localPage();
+    }else{
+        if($.get_storage("hosCurrUrl")){
+            $("#child_content").attr("src",$.get_storage("hosCurrUrl"));
+        }
+	}
+//存储当前页面
+function localPage(){
+	var hosCurrUrl = $("#child_content").attr("src");
+//	console.log(hosCurrUrl);
+	window.localStorage.setItem("hosCurrUrl",hosCurrUrl);
+}
+    function getStatus(){
+        $.get_ajax("/hospital/getCertificate.json","",function(data){
+            //医院审核状态
+            //缓存医院名字
+            window.localStorage.setItem("hos_name",data.data.hospitalName);
+            //缓存用户名字
+            window.localStorage.setItem("username",data.data.username);
+            //把医院类型存入缓存中
+            window.localStorage.setItem("hos_type",data.data.type);
+            /*if(data.data.type=="topThree"){
+                //				alert("转入三甲");
+				if(window.location.href.indexOf('hosBeauty') != -1){
+                    window.location.href='index.html';
+				}
+            }else{
+                //				alert("转入医美");
+                if(window.location.href.indexOf('hosBeauty') == -1){
+                    window.location.href='hosBeauty/index.html';
+                }
+            }*/
+            //window.location.href='index.html';
+          /*  if(data.data.isPerfect == false){
+                //把是否完善信息存入缓存中  ，去完善开户行
+                window.localStorage.setItem("isPerfect",data.data.isPerfect);
+            }*/
+            //跳转
+           /* check_statu="pass";
+            if(data.data.type=="topThree"){
+                //				alert("转入三甲");
+                window.location.href='index.html';
+            }else{
+                //				alert("转入医美");
+                window.location.href='hosBeauty/index.html';
+            }*/
+        })
+    }
+/*function getStatus(){
+    $.get_ajax("/hospital/hospitalInfo/getCertificate.json","",function(data){
+        console.log(data.data.name);
+        //缓存医院名字
+        window.localStorage.setItem("hos_name",data.data.name);
+        //把医院类型存入缓存中
+        window.localStorage.setItem("hos_type",data.data.type);
+        if(data.data.status=="unapplied"){
+            console.log("未申请认证");
+            //$(".status").text("未申请认证");
+            //$(".shade,.check_box,.check_confirm").show();
+            window.location.href='hos_msg_complete.html';
+        }
+        if(data.data.status=="unchecked"){
+            console.log("待审核");
+            //			$(".status").text("data.data.reason");
+            //$(".status").text("提交成功，正在审核中...");
+            //$(".shade,.check_box,.check_confirm").show();
+            window.location.href='hos_msg_complete.html';
+        }
+        if(data.data.status=="pass"){
+            console.log("审核已通过");
+            check_statu="pass";
+            //			$(".status").text("data.data.");
+            //			$(".status").text("审核已通过");
+            //			$(".shade,.check_box,.check_confirm").show();
+            if(data.data.type=="medicalBeauty"){
+                window.location.href='hosBeauty/index.html';
+                //三甲
+//				alert("转入三甲");
+                //window.location.href='index.html';
+            }/!*else{
+                //医美
+//				alert("转入医美");
+                //window.location.href='hosBeauty/index.html';
+            }*!/
+
+        }
+        if(data.data.status=="notpass"){
+            check_statu="notpass";
+            console.log("审核不通过");
+            //$(".status").text("审核不通过，"+data.data.reason);
+            //			$(".status").text("审核不通过");
+            //$(".shade,.check_box,.check_confirm").show();
+            window.location.href='hos_msg_complete.html';
+        }
+    });
+    //医院审核状态
+   /!* $.get_ajax("/hospital/hospitalInfo/getCertificate.json","",function(data){
+        console.log(data.data.name);
+        //缓存医院名字
+        window.localStorage.setItem("hos_name",data.data.name);
+        //把医院类型存入缓存中
+        		window.localStorage.setItem("hos_type",data.data.type);
+        		if(data.data.status=="unapplied"){
+        			console.log("未申请认证");
+        			//$(".status").text("未申请认证");
+        			//$(".shade,.check_box,.check_confirm").show();
+                    window.location.href='hos_msg_complete.html';
+        		}
+        if(data.data.status=="unchecked"){
+            console.log("待审核");
+            //			$(".status").text("data.data.reason");
+            //$(".status").text("提交成功，正在审核中...");
+            //$(".shade,.check_box,.check_confirm").show();
+            window.location.href='hos_msg_complete.html';
+        }
+        if(data.data.status=="pass"){
+            console.log("审核已通过");
+            check_statu="pass";
+            //			$(".status").text("data.data.");
+            //			$(".status").text("审核已通过");
+            //			$(".shade,.check_box,.check_confirm").show();
+            if(data.data.type=="medicalBeauty"){
+                window.location.href='hosBeauty/index.html';
+                //三甲
+//				alert("转入三甲");
+                //window.location.href='index.html';
+            }/!*else{
+                //医美
+//				alert("转入医美");
+                //window.location.href='hosBeauty/index.html';
+            }*!/
+
+        }
+        if(data.data.status=="notpass"){
+            check_statu="notpass";
+            console.log("审核不通过");
+            //$(".status").text("审核不通过，"+data.data.reason);
+            //			$(".status").text("审核不通过");
+            //$(".shade,.check_box,.check_confirm").show();
+            window.location.href='hos_msg_complete.html';
+        }
+    });*!/
+}*/
+    function getPeople() {
+        $.get_ajax("/hospital/getBusinessInfo.json",'',function(data){
+            $('.peopelname').val(data.data.name);
+            $('.peopelmobile').val(data.data.mobile);
+        });
+    }
+function surePeople() {
+    var data = {
+        "name":$('.peopelname').val(),
+    	"mobile":$('.peopelmobile').val()
+    }
+    $.post_ajax("/hospital/updateBusinessInfo",data,function(data){
+		alert(data.data);
+        $(".shade,.people_box").hide();
+    });
+}
+</script>
+</body>
+</html>
