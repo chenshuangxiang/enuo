@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<link rel="stylesheet" href="css/base.css" />
+<link rel="stylesheet" href="css/util.css" />
+<link rel="stylesheet" href="css/index.css" />
+<title>e诺首页</title>
+</head>
+<style>
+	.uncheckCountWarn{
+		height: 17px;
+		line-height: 17px;
+		text-align: center;
+		background-color: #fb952c;
+		color: #fff;
+		min-width: 17px;
+		border-radius: 30px;
+		position: absolute;
+		top: 7px;
+		right: 22px;
+		display: none;
+	}
+</style>
+<body>
+<!--头部-->
+<div class="content_head">
+	<div class="content_head_middle clearfix">
+		<div class="left set_img_bg">
+			
+		</div>
+		<p class="exit"><img src="img/index/exit.png"/>退出</p>
+		<!--<p>修改密码</p>-->
+		<p class="hos_name" style="border-right: 1px solid black;">张婵</p>
+	</div>
+</div>
+<div class="parent clearfix">
+	<!--左边导航栏-->
+	<div class="content_left">
+		<!--<div class="pic">
+			<img src="img/index/enuo.png" />
+			<p class="login_role">超级管理员</p>
+		</div>-->
+		<!--<dl class="permis_mng dl_open" data_flag="close">
+			<dt class=" flex_vertical" style=""><img src="img/index/permission.png" />权限管理</dt>
+			<dd onclick="toLimit(this)">权限配置</dd>
+			<dd onclick="toRole(this)">角色列表</dd>
+		</dl>-->
+		<!--<dl class="permis_mng dl_close" data_flag="close">
+			<dt class=" flex_vertical" onclick="toAccount(this)" style="border-radius: 10px !important;"><img src="img/index/role.png" style="height: 27px;position: relative;top: 3px;margin: 0 18px;"/>账号管理</dt>
+		</dl>-->
+		<!--<dl class="permis_mng dl_close" data_flag="close">
+			<dt class=" flex_vertical" onclick="toUser(this)" style="border-radius: 10px !important;"><img src="img/index/friends.png"  style="position: relative;top: 3px;"/>用户管理</dt>
+		</dl>-->
+		<dl class="permis_mng dl_close" data_flag="close" style="border-radius: 10px;">
+			<dt class=" flex_vertical"><img src="img/index/grade.png" />活动管理</dt>
+			<!--<dd onclick="toVipCard(this)">VIP充值卡</dd>-->
+			<dd onclick="toTyq(this)">体验劵</dd>
+			<dd onclick="toSpecialProj(this)">项目</dd>
+			<dd onclick="toMouseGift(this)">口腔护理礼包</dd>
+			<dd onclick="toXiumeiLift(this)">绣眉艺术节</dd>
+			<dd onclick="toFamilyBeauty(this)">美丽全家活动</dd>
+			<!--<dd onclick="tovoteDocList(this)">医德之星活动</dd>-->
+			<!--<dd onclick="toSingList(this)">演唱会门票</dd>-->
+		</dl>
+		<dl class="hos_mng dl_close" data_flag="close">
+			<dt class=" flex_vertical"><img src="img/index/dial.png" />订单管理</dt>
+			<!--<dd onclick="toExamine(this)">检查管理</dd>-->
+			<dd onclick="toAppointment(this)">预约管理</dd>
+			<dd onclick="toCureOrder(this)">订单管理</dd>
+			<dd onclick="toExamine(this)">检查管理</dd>
+			<dd onclick="tobackAdvisoryList(this)">咨询管理</dd>
+			<dd onclick="totixianCheck(this)">提现审核</dd>
+		</dl>
+		
+		<dl class="hos_mng dl_close" data_flag="close">
+			<dt class=" flex_vertical"><img src="img/index/comments.png" />医院管理</dt>
+			<!--<dd onclick="toHosGroup(this)">医院分类管理</dd>-->
+			<dd style="position: relative" onclick="toHos(this)">医院列表<span class="uncheckCountWarn">0</span></dd>
+			<!--<dd onclick="toDoc(this)">医生管理</dd>-->
+			<dd onclick="toTemplate(this)">模板管理</dd>
+			<dd onclick="toChatList(this)">聊天管理</dd>
+			<!--<dd onclick="toBodyManage(this)">身体部位管理</dd>
+			<dd onclick="toJudgeIll(this)">自测疾病管理</dd>-->
+		</dl>
+		<!--<dl class="permis_mng dl_close" data_flag="close">
+			<dt class=" flex_vertical" onclick="toAppointment(this)" style="border-radius: 10px !important;"><img src="img/index/appoint.png"  style="position: relative;top: 0px;"/>预约管理</dt>
+		</dl>
+		<dl class="permis_mng dl_close" data_flag="close">
+			<dt class=" flex_vertical" onclick="toExamine(this)" style="border-radius: 10px !important;"><img src="img/index/search.png" style="height: 19px;position: relative;top: 0px;margin: 0 16px;"/>检查管理</dt>
+		</dl>-->
+		<!--<dl class="hos_mng dl_close" data_flag="close">
+			<dt class=" flex_vertical"><img src="img/index/dial.png" />项目管理</dt>
+			<dd onclick="toSpecialProj(this)">特价项目</dd>
+		</dl>-->
+		<dl class="hos_mng  dl_close" data_flag="close">
+			<dt class=" flex_vertical"><img src="img/index/drafts.png" />公司管理</dt>
+			<dd onclick="toAccount(this)">账号管理</dd>
+			<dd onclick="toKefu(this)">客服管理</dd>
+			<dd onclick="toFinance(this)">财务管理</dd>
+			<dd onclick="toSalesman(this)">业务员管理</dd>
+			<dd onclick="toHealth(this)">健康约定人员管理</dd>
+			<!--<dd onclick="toSalesmanChild(this)">分销商管理</dd>-->
+		</dl>
+		<dl class="hos_mng dl_close" data_flag="close">
+			<dt class=" flex_vertical"><img src="img/index/friends.png" style="position: relative;top: 3px;"/>用户管理</dt>
+			<dd onclick="toUser(this)">用户管理</dd>
+			<dd onclick="toDeviceToken(this)">消息推送管理</dd>
+		</dl>
+		<dl class="hos_mng dl_close" data_flag="close">
+			<dt class=" flex_vertical" onclick="toEnuoSay(this)" style="border-radius: 10px;"><img src="img/index/mode.png" style="position: relative;"/>文章管理</dt>
+			<!--<dd onclick="toEnuoSay(this)">e诺说</dd>-->
+		</dl>
+		<dl class="hos_mng dl_close" data_flag="close">
+			<dt class=" flex_vertical"><img src="img/index/wecat.png" style="position: relative;"/>微信管理</dt>
+			<dd onclick="toWecatMenu(this)">自定义菜单</dd>
+			<dd onclick="toWecatKeyword(this)">关键词回复</dd>
+		</dl>
+		<!--<dl class="hos_mng dl_close" data_flag="close">
+			<dt class=" flex_vertical"><img src="img/index/delete.png" />回收站</dt>
+			<dd onclick="toOrderRecycle(this)">订单回收站管理</dd>
+		</dl>-->
+		<!--<dl class="hos_mng  dl_close" data_flag="close">
+			<dt class=" flex_vertical"><img src="img/index/drafts.png" />咨询管理</dt>
+			<dd onclick="toConsult(this)">咨询列表</dd>
+			<dd onclick="">分诊管理</dd>
+		</dl>-->
+		<!--<dl class="hos_mng  dl_close" data_flag="close">
+			<dt class=" flex_vertical"><img src="img/index/home.png" />首页管理</dt>
+			<dd onclick="">aaaaaaa</dd>
+			<dd onclick="">bbbbbbb</dd>
+		</dl>-->
+		<!--<dl class="permis_mng dl_close" data_flag="open" style="border-radius: 10px;">
+			<dt class=" flex_vertical" onclick="toUser(this)"><img src="img/index/msg.png" />消息管理</dt>
+		</dl>-->
+		<!--
+		<dl class="hos_mng  dl_close" data_flag="close">
+			<dt class=" flex_vertical"><img src="img/index/other.png" />其他</dt>
+			<dd onclick="toEditPwd(this)">修改密码</dd>
+			<dd onclick="">退出登录</dd>
+		</dl>-->
+		
+		<!--
+		<dl class="permis_mng dl_open" data_flag="open">
+			<dt class=" flex_vertical"><img src="img/index/permission.png" />权限管理</dt>
+			<dd onclick="toBusiness(this)" class="business">商户联系人管理</dd>
+		</dl>	
+		<dl class="hos_mng dl_close" data_flag="close">
+			<dt class=" flex_vertical"><img src="img/index/hos.png" />医院管理</dt>
+			<dd onclick="toHosGroup(this)">医院分类管理</dd>
+			<dd onclick="toDoc(this)">医生管理</dd>
+			<dd onclick="toHos(this)">医院管理</dd>
+		</dl>
+		<dl class="hos_mng  dl_close" data_flag="close">
+			<dt class=" flex_vertical"><img src="img/index/grade.png" />活动管理</dt>
+			<dd onclick="toExamineReport(this)">检查报告录入</dd>
+			<dd onclick="toMass(this)">群发功能</dd>
+			<dd onclick="toTyq(this)">体验劵</dd>
+		</dl>
+		
+		<dl class="hos_mng dl_close" data_flag="close">
+			<dt class=" flex_vertical"><img src="img/index/setting.png" />安全处理</dt>
+			<dd onclick="toEditPwd(this)">修改密码</dd>
+			<dd onclick="">安全退出</dd>
+		</dl>-->
+	</div>
+	<!--右边子页面-->
+	<div class="content_right">
+		<iframe id="child_content" name="iframe" scrolling="yes" src="tyq_list.html" style="width:985px;height: 100%;" charset="utf-8"></iframe>
+	</div>
+	
+</div>
+<script type="text/javascript" src="plug/jquery-1.11.3.min.js" ></script>
+<script type="text/javascript" src="js/util.js"></script>
+<script type="text/javascript" src="js/index.js?v=222" ></script>
+<script type="text/javascript" src="js/toggle.js?v=222" ></script>
+<script>
+    getUncheckHosCount(); //获取未审核医院个数
+//适应网页高度
+$(function(){
+	console.log($(window).height());
+	$(".content_left").height($(window).height()-130);
+	$(".content_right").height($(window).height()-97);
+});
+
+$(".content_left dt,.content_left dd").click(function(){
+	//存储当前页面
+	localPage();
+});
+//刷新定位到当前页面
+if($.get_storage("enuoCurrUrl")){
+	$("#child_content").attr("src",$.get_storage("enuoCurrUrl"));
+}
+//存储当前页面
+function localPage(){
+	var enuoCurrUrl = $("#child_content").attr("src");
+//	console.log(enuoCurrUrl);
+	window.localStorage.setItem("enuoCurrUrl",enuoCurrUrl);
+}
+
+
+</script>
+</body>
+</html>

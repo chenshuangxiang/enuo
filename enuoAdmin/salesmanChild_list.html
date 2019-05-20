@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="css/base.css" />
+<link rel="stylesheet" href="css/util.css" />
+<link rel="stylesheet" href="css/collect.css" />
+<title>分销商列表</title>
+</head>
+<body>
+<div class="content employee">
+	<div class="navigate_head clearfix">
+		<p onclick="window.location.href='salesmanChild_list.html?v=88888'" class="navi_current">分销商列表</p>
+		<p onclick="window.location.href='add_salesmanChild.html?v=88888'">添加分销商</p>
+		<p class="navi_null"></p>
+	</div>
+	<div class="head_area flex_vertical">
+		<input type="text" class="search" placeholder="搜索姓名或手机号" style="width: 280px;">
+		<!--&nbsp;<button class="" style="position: absolute;right: 0;top: 0;">导出表格</button>-->
+		<select style="width: 140px" class="salesman_name salesman_name_one">
+			<option>全部业务员</option>
+			<option value="0">无</option>
+		</select>
+		<button class="searchBtn" onclick="indexPage()">搜索</button>
+	</div>
+
+	<table>
+		<thead>
+			<tr>
+				<td>编号</td>
+				<td>姓名</td>
+				<td>手机号</td>
+				<td>店铺地址</td>
+				<td>店铺名</td>
+				<td>状态</td>
+				<td>所属业务员</td>
+				<td>操作</td>
+			</tr>
+		</thead>
+		<tbody class="tbody">
+			<!--<tr>
+				<td>1</td>
+				<td>张三</td>
+				<td>165 1238 6549</td>
+				<td>状态</td>
+				<td><button class="font_green">修改</button>&nbsp;&nbsp;<button class="font_green">删除</button></td>
+			</tr>-->
+		</tbody>
+	</table>
+	<!--分页-->
+	<div class="page flex_vertical">
+		<button class="" onclick="indexPage()">首页</button>&nbsp;
+		<button class="" onclick="backPage()"><上一页</button>&nbsp;
+		<!--页码-->
+		<p class="page_num">
+			<!--<span>1</span><span>2</span><span>3</span><span>4</span><span>5</span>-->
+		</p>....
+		<button class="" onclick="nextPage()">下一页></button>&nbsp;
+		<button class="" onclick="endPage()">末页</button>&nbsp;
+		共<span class="all_recode">0 </span>记录&nbsp;|
+		共<span class="all_page">0 </span>页&nbsp;
+		到第<input class="select_page" />页&nbsp;
+		<button class="confirm_page" onclick="skipPage()">确定</button>
+	</div>
+</div>
+<script type="text/javascript" src="plug/jquery-1.11.3.min.js" ></script>
+<script type="text/javascript" src="plug/template-web.js"></script>
+<script type="text/javascript" src="js/toggle.js" ></script>
+<script type="text/javascript" src="js/util.js"></script>
+<script type="text/javascript" src="js/method.js"></script>
+<script type="text/javascript" src="js/page.js"></script>
+<!--业务员列表-->
+<script id="test_salesmanChild_list" type="text/html">
+{{each data as value i}}
+	<tr>
+		<td>{{value.code}}</td>
+		<td>{{value.name}}</td>
+		<td>{{value.mobile}}</td>
+		<td>{{value.address}}</td>
+		<td>{{value.storeName}}</td>
+		<td>
+			{{if value.enabled==true}}启用{{else if value.enabled==false}}关闭{{/if}}
+		</td>
+		<td>{{value.salesmanName}}</td>
+		<td data_id="{{value.id}}">
+			<button class="font_green" onclick="edit_salesman(this)">修改</button>
+			<!--&nbsp;<button class="font_green" onclick="del_tyq(this)">删除</button>-->  
+		</td>
+	</tr>
+{{/each}}
+</script>
+<!--业务员列表-->
+<script type="text/html" id="test_salesman_list">
+	{{each data value}}
+	<option value="{{value.id}}">{{value.name}}</option>
+	{{/each}}
+</script>
+<script>
+    //所属业务员列表
+    $.initSelect("/admin/salesman/getEnabledList.json",'test_salesman_list',".salesman_name_one");
+//请求方法
+function reqPage(data){
+	console.log(data);
+	control_page.init_page(data,function(data){
+		//调用ajax
+		$.get_ajax("/admin/business/getList.json",data,function(data){
+			console.log(data);
+			var html = template('test_salesmanChild_list',data);
+			$(".tbody").html(html);
+			//初始化分页
+			control_page.currentPage(control_page.page_num,data.totalCount);
+		});
+	});
+}
+
+//修改业务员
+function edit_salesman(m){
+	var salesman_id = $(m).parent().attr("data_id");
+	window.location.href = "add_salesmanChild.html?log=reset&valueid=" + salesman_id + '&v=88888';
+}
+</script>
+<script>
+$(function(){
+	reqPage(control_page.getData());
+});
+function search(obj) {
+    //基本条件
+//		var data = control_page.getData();
+    if(obj == undefined){
+        var data = control_page.getData();
+    }else{
+        var data = obj;
+    }
+    //业务员
+    var salesmanname = $(".salesman_name_one").val();
+    if(salesmanname != "全部业务员"){
+        data.salesmanId = salesmanname;
+    }
+    //项目名称
+    var keyword = $(".search").val();
+    if(keyword != ""){
+        data.keyword = keyword;
+    }
+    reqPage(data);
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>选择素材</title>
+	<meta name="renderer" content="webkit">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="format-detection" content="telephone=no">
+	<link rel="stylesheet" href="js/layui/css/layui.css" media="all" />
+	<!--<link rel="stylesheet" href="../css/font_eolqem241z66flxr.css" media="all" />
+	<link rel="stylesheet" href="../css/photoTable.css" media="all" />
+	<link rel="stylesheet" href="../css/news.css" media="all" />-->
+</head>
+<style>
+	.layui-table td, .layui-table th{
+		text-align: center;
+	}
+	.weui-desktop-dialog__ft {
+		padding:5px 32px 24px 32px;
+		text-align: center;
+	}
+
+	.weui-desktop-btn_primary {
+		background-color: #009688;
+		border-color: #009688;
+		color: #FFFFFF;
+	}
+	.weui-desktop-btn_default {
+		background-color: #FBFBFB;
+		border-color: #E4E8EB;
+		color: #353535;
+	}
+	.weui-desktop-btn {
+		display: inline-block;
+		padding: 0 22px;
+		min-width: 54px;
+		line-height: 2.42857143;
+		vertical-align: middle;
+		text-align: center;
+		text-decoration: none;
+		border-radius: 3px;
+		font-size: 14px;
+		cursor: pointer;
+		border-width: 1px;
+		border-style: solid;
+		-webkit-box-sizing: content-box;
+		box-sizing: content-box;
+		margin: 0 10px;
+	}
+	.weui-desktop-img-picker__list {
+		overflow: auto;
+		padding: 20px 20px 0;
+	}
+	.weui-desktop-img-picker__item {
+		cursor: pointer;
+		position: relative;
+		float: left;
+		width: 285px;
+		border: 1px solid #E4E8EB;
+		overflow: hidden;
+		margin: 0 22px 15px 0;
+		padding: 13px;
+		min-height: 212px;
+	}
+	.weui-desktop-img-picker__item:hover{
+		background: rgba(233, 233, 233, 0.5);
+	}
+	.weui-desktop-img-picker__img-thumb {
+		display: block;
+		width: 100%;
+		height: auto;
+		/*background-size: contain;
+		background-position: 50% 50%;
+		background-repeat: no-repeat;
+		padding-bottom: 100%;*/
+	}
+	.weui-desktop-img-picker__img-title {
+		display: block;
+		width: auto;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		white-space: nowrap;
+		word-wrap: normal;
+		font-weight: 400;
+		padding: 0 10px;
+		line-height: 30px;
+		margin-bottom: 15px;
+		border-top: 1px solid #E4E8EB;
+	}
+	.weui-desktop-img-picker__item .card_mask_global {
+		/* display: none;*/
+	}
+	.card_mask_global {
+		position: absolute;
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		background: rgba(0,0,0,0.7)!important;
+		filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr='#b3000000',endcolorstr = '#b3000000');
+		cursor: pointer;
+		color: #fff;
+	}
+	.icon_card_selected_global {
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		margin-top: -23px;
+		margin-left: -23px;
+		width: 46px;
+		height: 46px;
+		vertical-align: middle;
+		display: inline-block;
+	}
+	.weui-desktop-appmsg__cover__title {
+		font-size: 16px;
+		font-weight: 400;
+		display: block;
+		line-height: 1.2;
+		color: #353535;
+	}
+	.weui-desktop-appmsg__cover__desc {
+		padding-top: 12px;
+		color: #9A9A9A;
+	}
+</style>
+<body class="childrenBody">
+	<div class="layui-form news_list" style="margin-bottom: 130px;">
+		<ul class="weui-desktop-img-picker__list"></ul>
+	</div>
+	<div style="position: fixed;bottom: 0;background-color: white; width: 100%;">
+	<div id="page" style="text-align: center;"></div>
+	<div class="weui-desktop-dialog__ft">
+		<button class="weui-desktop-btn weui-desktop-btn_primary" onclick="sureLayer()">确定</button>
+		<button class="weui-desktop-btn weui-desktop-btn_default" onclick="closeLayer()">取消</button>
+	</div>
+	</div>
+	<script type="text/javascript" src="plug/jquery-1.11.3.min.js"></script>
+	<script type="text/javascript" src="js/util.js"></script>
+	<script src="js/layui/layui.js" charset="utf-8"></script>
+	<script type="text/javascript" src="js/wecatIngTextMaterial.js"></script>
+</body>
+</html>

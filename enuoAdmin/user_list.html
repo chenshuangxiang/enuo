@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="css/base.css" />
+<link rel="stylesheet" href="css/util.css" />
+<link rel="stylesheet" href="css/collect.css" />
+<title>用户列表</title>
+</head>
+<style>
+	.layui-laydate-content table td{
+		min-height: inherit;
+		 line-height: inherit;
+		border: none;
+	}
+	.readCaozuolOpen {
+		width: 740px;
+		height: 410px;
+		padding-top: 9px;
+	}
+	.popup_box{
+		width: 740px;
+		top: 40px;
+		left: 37.5%;
+	}
+	.prevMonth{
+		float: left;
+		cursor: pointer;
+		color: #333;
+		margin-left: 170px;
+		margin-top: 5px;
+	}
+	.nextMonth{
+		float: right;
+		cursor: pointer;
+		color: #333;
+		margin-right: 144px;
+		margin-top: 5px;
+	}
+	.salesman_name,#timeInputOpen {
+		width: 100px;
+		height: 22px;
+		border: solid 1px #dcdcdc;
+		font-size: 13px;
+		letter-spacing: 0.6px;
+		color: #333333;
+		text-indent: 20px;
+		margin-left: 56px;
+	}
+	#timeInputOpen{
+		margin-left: 184px;
+		position: absolute;
+		top: 39px;
+		z-index: 99;
+	}
+</style>
+<body>
+<div class="content user_list">
+	<div class="navigate_head clearfix">
+		<p onclick="window.location.href='user_list.html'" class="">用户列表</p>
+		<!--<p onclick="window.location.href='add_user.html'">添加用户</p>-->
+		<p class="navi_null"></p>
+	</div>
+	<!--头部功能-->
+	<div class="head_area flex_vertical">
+		<input type="text" style="width: 248px" class="keyword" placeholder="搜索患者（姓名、账号、手机号）"/>
+		<input type="text" id="timeInput" style="width: 145px" placeholder="选择时间"/>
+		<select style="width: 140px;margin-left: 0;" class="salesman_name salesman_name_one" onchange="$('.salesman_name_two').val($('.salesman_name_one').val())">
+			<option>全部业务员</option>
+		</select>
+		<button class="search" onclick="indexPage()">搜索</button>
+		<button class="searchMonth" style="
+		background-color: white;
+		border: 1px solid #cccccc;
+		color: #444;
+		height: 30px;
+    	line-height: 29px;
+    	border-radius: 5px;font-size: 14px;cursor: pointer;margin-left: 17px;" onclick='readCaozuo()'>月度统计</button>
+	</div>
+	<table>
+		<thead>
+			<tr>
+				<td>序号</td>
+				<td>姓名</td>
+				<td>手机号</td>
+				<td>来源</td>
+				<td>注册时间</td>
+				<td>余额</td>
+				<!--<td>上次登录时间</td>-->
+				<td>业务员</td>
+			</tr>
+		</thead>
+		<tbody class="tbody">
+			
+		</tbody>
+	</table>
+	<!--分页-->
+	<div class="page flex_vertical">
+		<button class="" onclick="indexPage()">首页</button>&nbsp;
+		<button class="" onclick="backPage()"><上一页</button>&nbsp;
+		<!--页码-->
+		<p class="page_num">
+			<!--<span>1</span><span>2</span><span>3</span><span>4</span><span>5</span>-->
+		</p>....
+		<button class="" onclick="nextPage()">下一页></button>&nbsp;
+		<button class="" onclick="endPage()">末页</button>&nbsp;
+		共<span class="all_recode">0 </span>记录&nbsp;|
+		共<span class="all_page">0 </span>页&nbsp;
+		到第<input class="select_page" />页&nbsp;
+		<button class="confirm_page" onclick="skipPage()">确定</button>
+	</div>
+</div>
+<!--遮罩层-->
+<div class="shade none"></div>
+<!--弹框-->
+<div class="popup_box none">
+	<img style="position: absolute;
+    right: 10px;
+    top: 10px;z-index: 99;
+" src="img/close.png" onclick="close_box()"/>
+	<!--<p class="img_close clearfix">
+		&lt;!&ndash;<img src="img/close.png" onclick="close_box()"/>&ndash;&gt;
+		&lt;!&ndash;span class="prevMonth" onclick='readCaozuo()'><上一月</span>&ndash;&gt;
+
+	&lt;!&ndash;	<span class="nextMonth" onclick='readCaozuo(this)'>下一月></span>&ndash;&gt;
+	</p>-->
+	<input type="text" id="timeInputOpen" style="width: 170px" placeholder="选择时间"/>
+	<select style="width: 150px;position: absolute;
+		top: 39px;
+		z-index: 99;left: 333px;" onchange="readCaozuo()" class="salesman_name salesman_name_two">
+		<option>全部业务员</option>
+	</select>
+		<div class="readCaozuolOpen" id="readCaozuolOpen">
+
+		</div>
+</div>
+<script type="text/javascript" src="plug/jquery-1.11.3.min.js" ></script>
+<script type="text/javascript" src="plug/template-web.js"></script>
+<script type="text/javascript" src="plug/echarts.common.min.js"></script>
+<script src="plug/laydate/laydate.js"></script>
+<script type="text/javascript" src="js/toggle.js" ></script>
+<script type="text/javascript" src="js/util.js"></script>
+<script type="text/javascript" src="js/method.js"></script>
+<script type="text/javascript" src="js/page.js"></script>
+<script type="text/javascript" src="js/layui/layui.js"></script>
+<script id="test_user_list" type="text/html">
+	{{each data as value i}}
+		<tr>
+			<td width="40px">{{i+1}}</td>
+			<td style="color: #00AFA1;cursor: pointer" onclick="userOpen(this)" valueusername="{{value.fullname}}" valuemobile="{{value.mobile}}">{{value.fullname}}</td>
+			<td>{{value.mobile}}</td>
+			<td>{{if value.source == "wx"}}微信{{else if value.source == "ADVISORY"}}业务员{{else if value.source == "experienceCoupon"}}体验券{{else if value.source == "hospital"}}医院{{else if value.source == "HEALTH_SUPERVISOR"}}健管师{{else if value.source == "other"}}其他{{/if}}</td>
+			<td>{{value.createDate}}</td>
+			<td  style="color: #00AFA1;cursor: pointer" onclick="rechargeAmountOpen(this)" data_id="{{value.id}}" data_username="{{value.fullname}}">{{value.rechargeAmount}}</td>
+			<!--<td>{{value.lastLoginDate}}</td>-->
+			<td>{{if value.salesmanName}}{{value.salesmanName}}{{else}}无{{/if}}</td>
+		</tr>
+	{{/each}}
+</script>
+<!--业务员列表-->
+<script type="text/html" id="test_salesman_list">
+	{{each data value}}
+	<option value="{{value.id}}">{{value.name}}</option>
+	{{/each}}
+</script>
+<script>
+$('.img_close img').click(function () {
+    $("#timeInputOpen").val('');
+});
+//请求方法
+function reqPage(data){
+	console.log(data);
+	control_page.init_page(data,function(data){
+		//调用ajax
+		$.get_ajax("/admin/user/getList.json",data,function(data){
+			console.log(data);
+			var html = template('test_user_list',data);
+			$(".tbody").html(html);
+			//初始化分页
+			control_page.currentPage(control_page.page_num,data.totalCount);
+		});
+	});
+}
+function readCaozuo(value) {
+    var dataGet = {};
+    if($(".salesman_name_two").val() != '全部业务员'){
+        dataGet.salesmanId = $(".salesman_name_two").val()
+    }
+    if(value != undefined){
+        dataGet.date = value
+    }else{
+        if($("#timeInputOpen").val() != ''){
+            dataGet.date = $("#timeInputOpen").val()
+        }else if($("#timeInput").val() != ''){
+            dataGet.date = $("#timeInput").val()
+        }
+	}
+    /*请求折线数组*/
+    $.get_ajax("/admin/user/statistics",dataGet,function(data){
+        console.log(data);
+        $(".shade,.popup_box").show();
+        var dataList = data.data.statistics;
+        console.log(dataList.length)
+        if(dataList.length === 0){
+            alert('暂无数据');
+            $(".shade,.popup_box").hide();
+            return;
+        }
+        var myChart = echarts.init(document.getElementById('readCaozuolOpen'));
+        var dataAxis = [];
+        var datayAxis = [];
+        for(var i = dataList.length - 1; i >= 0; i--){
+            console.log(dataList[i]);
+            dataAxis.unshift(dataList[i].day);
+            datayAxis.unshift(dataList[i].quantity);
+        }
+        var monthZi = data.data.title;
+        option = {
+			tooltip: {
+                trigger: 'axis',
+                formatter: function (params) {
+                    console.log(params)
+                    return data.data.title.split('注册')[0] + params[0].name +'日'+ '<br>注册人数: ' + params[0].value;
+                }
+            },
+            title: {
+                left: 'center',
+                text: monthZi,
+            },
+            /*legend: {
+                selectedMode:false,
+                data:[{name: monthZi,textStyle: {fontSize: 18}}]
+            },*/
+            grid: {
+                left: '3%',
+                right: '4%',
+                bottom: '5%',
+                containLabel: true
+            },
+            xAxis: {
+                type: 'category',
+                boundaryGap: false,
+                data: dataAxis,
+                /*axisLabel: {
+                    formatter: function(value)
+                    {
+                        return value.split(' ')[0] + '\n\r' +value.split(' ')[1]
+                    }
+                }*/
+
+            },
+            yAxis: {
+                type: 'value',
+                /* minInterval : 1,
+               boundaryGap : [ 0, 0.1 ],
+                min: 0,*/
+               /* max: 10000*/
+            },
+            series: [
+                {
+                    name:'注册人数',
+                    type:'line',
+                    stack: '总量',
+                    data:datayAxis,
+                    /* lineStyle:{
+                         normal:{
+                             color: "#00afa1"  //连线颜色
+                         }
+                     }*/
+                }
+            ]
+        };
+        myChart.setOption(option);
+    });
+
+}
+//约定医疗订单详情
+function orderOpen(m){
+    var id = $(m).attr('data_id');
+    var username = $(m).attr('data_username');
+    layui.use(['form','layer','jquery','layedit','table'],function() {
+        var form = layui.form,
+            table = layui.table,
+            layer = parent.layer === undefined ? layui.layer : parent.layer,
+            laypage = layui.laypage,
+            layedit = layui.layedit,
+            $ = layui.jquery;
+        var index = layer.open({
+            title : "用户项目清单 - " + username + id,
+            type : 2,
+            area: ['95%','95%'],
+            content : 'userOrder.html?id=' + id + '&v=777',
+            success : function(layero, index){
+
+            },
+            cancel: function(index, layero){
+                layer.close(index)
+                return false;
+            }
+        })
+    })
+    /*$(".shade,.orderOpen").show();
+    var dataid = $(m).attr("data_id");*/
+
+}
+function rechargeAmountOpen(m){
+    var id = $(m).attr('data_id');
+    var username = $(m).attr('data_username');
+    layui.use(['form','layer','jquery','layedit','table'],function() {
+        var form = layui.form,
+            table = layui.table,
+            layer = parent.layer === undefined ? layui.layer : parent.layer,
+            laypage = layui.laypage,
+            layedit = layui.layedit,
+            $ = layui.jquery;
+        var index = layer.open({
+            title : "用户余额变动明细 - " + username,
+            type : 2,
+            area: ['95%','95%'],
+            content : 'rechargeAmountChange.html?id=' + id + '&v=777',
+            success : function(layero, index){
+
+            },
+            cancel: function(index, layero){
+                layer.close(index)
+                return false;
+            }
+        })
+    })
+    /*$(".shade,.orderOpen").show();
+    var dataid = $(m).attr("data_id");*/
+
+}
+</script>
+<script>
+$(function(){
+    laydate.render({
+        elem: '#timeInput' //指定元素
+    });
+    laydate.render({
+        elem: '#timeInputOpen', //指定元素
+		type:'month',
+        done: function(value, date, endDate){
+        console.log(value); //得到日期生成的值，如：2017-08-18
+        console.log(date); //得到日期时间对象：{year: 2017, month: 8, date: 18, hours: 0, minutes: 0, seconds: 0}
+        console.log(endDate); //得结束的日期时间对象，开启范围选择（range: true）才会返回。对象成员同上。
+            readCaozuo(value);
+    }
+    });
+    $.initSelect("/admin/salesman/getEnabledList.json",'test_salesman_list',".salesman_name");
+	reqPage(control_page.getData());
+    //搜索
+});
+function search(obj) {
+    //基本条件
+//		var data = control_page.getData();
+    if(obj == undefined){
+        var data = control_page.getData();
+    }else{
+        var data = obj;
+    }
+    //项目名称
+    var keyword = $(".keyword").val();
+    if(keyword != ""){
+        data.keyword = keyword;
+        console.log(data);
+    }
+    //时间
+    var timeinput = $("#timeInput").val();
+    if(timeinput != ""){
+        data.date = timeinput;
+    }
+    //业务员
+    var salesmanname = $(".salesman_name_one").val();
+    if(salesmanname != "全部业务员"){
+        data.salesmanId = salesmanname;
+        $('.searchMonth').show()
+    }
+    reqPage(data);
+}
+</script>
+</body>
+</html>

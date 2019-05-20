@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="css/base.css" />
+<link rel="stylesheet" href="css/util.css" />
+<link rel="stylesheet" href="css/collect.css" />
+<title>疾病管理</title>
+</head>
+<body>
+<div class="content ill_manage">
+	<div class="navigate_head clearfix">
+		<p class="navi_current" onclick="window.location.href='ill_manage.html'">疾病列表</p>
+		<p onclick="window.location.href='add_ill.html'">添加疾病</p>
+		<p class="navi_null"></p>
+	</div>
+	
+	<!--头部功能-->
+	<div class="head_area flex_vertical">
+		<input type="text" class="search" placeholder="搜索医院" style="width: 280px;"/><button>搜索</button>&nbsp;<button class="" style="position: absolute;right: 0;top: 0;">导出表格</button>
+	</div>
+	<table>
+		<thead>
+			<tr>
+				<td>ID</td>
+				<td>疾病名称</td>
+				<td>所属科室</td>
+				<td>治疗方式</td>
+				<td>关键词</td>
+				<td>图片</td>
+				<td>约定管理</td>
+				<td>操作</td>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td>1</td>
+				<td>沈静</td>
+				<td>杭州复旦医院</td>
+				<td>牙齿矫正</td>
+				<td>关键词</td>
+				<td width="158px">图片</td>
+				<td width="260px">约定效果：1、颜色美观：无白垩色、无发
+					灰、发黑，自然仿真。2、形态自然：不呆
+					板，不能千篇一律，更可以做到个性化。
+					3、边缘精密：用探针难以探出，光滑通过
+					无缝隙、不能宽、不能窄。 
+				</td>
+				<td>操作</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+<script type="text/javascript" src="plug/jquery-1.11.3.min.js" ></script>
+<script type="text/javascript" src="plug/template-web.js"></script>
+<script type="text/javascript" src="js/toggle.js" ></script>
+<script type="text/javascript" src="js/util.js"></script>
+<script type="text/javascript" src="js/method.js"></script>
+<script id="test_consult" type="text/html">
+	<!--咨询表格-->
+	{{each data value}}
+		<tr>
+			<td>1</td>
+			<td>沈静</td>
+			<td>杭州复旦医院</td>
+			<td>牙齿矫正</td>
+			<td>关键词</td>
+			<td width="158px">图片</td>
+			<td width="260px">约定效果：1、颜色美观：无白垩色、无发
+				灰、发黑，自然仿真。2、形态自然：不呆
+				板，不能千篇一律，更可以做到个性化。
+				3、边缘精密：用探针难以探出，光滑通过
+				无缝隙、不能宽、不能窄。 
+			</td>
+			<td>操作</td>
+		</tr>
+	{{/each}}
+</script>
+<script>
+$(function(){
+	$.get(url+"/admin/diseaseTemplate/getList.json",function(res){
+		console.log(res);
+		var html = template('test_consult',res.data);
+		$(".").append(html);
+	});
+});
+</script>
+</body>
+</html>

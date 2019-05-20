@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="css/base.css" />
+<link rel="stylesheet" href="css/util.css" />
+<link rel="stylesheet" href="css/collect.css" />
+<title>添加账号</title>
+</head>
+<body>
+<div class="content add_role">
+	<div class="navigate_head clearfix">
+		<p onclick="window.location.href='account_list.html'">账号列表</p>
+		<p  class="navi_current" onclick="window.location.href='add_account.html'">添加账号</p>
+		<p class="navi_null"></p>
+	</div>
+	<div>
+		<form class="add_role_form">
+			
+			<div class="public_input">
+				<span>姓名:</span>
+				<input type="text" class="name" placeholder="请输入姓名"/>
+			</div>
+			<div class="public_input">
+				<span>登录名:</span>
+				<input type="text" class="user_name" placeholder="请输入登录名"/>
+			</div>
+			<div class="public_input">
+				<span>原始密码:</span>
+				<input type="password" class="former_pwd" placeholder="请输入原始密码"/>
+			</div>
+			<div class="public_input">
+				<span>状态:</span>
+				<input type="button" class="enabled" value="启用" data_val="true"/><input type="button" class="disable" value="禁用" data_val="false"/>
+			</div>
+			<div class="public_input confrim_btn">
+				<span>.</span>
+				<input type="button" class="confrim_add_account" value="添加"/>
+			</div>
+		</form>
+	</div>
+</div>
+<script type="text/javascript" src="plug/jquery-1.11.3.min.js" ></script>
+<script type="text/javascript" src="plug/template-web.js"></script>
+<script type="text/javascript" src="js/toggle.js" ></script>
+<script type="text/javascript" src="js/util.js"></script>
+<script type="text/javascript" src="js/method.js"></script>
+<script>
+$(function(){
+
+var flag=true;
+$(".enabled,.disable").click(function(){
+	flag = $(this).addClass("bg_green").attr("data_val");
+	$(this).siblings().removeClass("bg_green");
+	console.log(flag);
+});
+$(".confrim_add_account").click(function(){
+	//输入框信息
+	var name = $(".name").val();
+	var user_name = $(".user_name").val();
+	var former_pwd = $(".former_pwd").val();
+	if(name=="" || user_name==""|| former_pwd==""){
+		alert("输入框不能为空");
+	}
+	var data = {
+		"name":name,
+		"username":user_name,
+		"password":former_pwd,
+		"enabled":flag
+	}
+	console.log(data);
+	//调用ajax
+	$.post_ajax("/admin/admin/add",data,function(data){
+		console.log(data);
+		if(data.success==true){
+			alert(data.data);
+			window.location.href="account_list.html";
+		}else{
+			alert(data.data);
+		}
+	});
+	
+});
+
+});
+</script>
+</body>
+</html>

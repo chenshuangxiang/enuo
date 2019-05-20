@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="css/base.css" />
+<link rel="stylesheet" href="css/util.css" />
+<link rel="stylesheet" href="css/collect.css" />
+<title>修改账号</title>
+</head>
+<body>
+<div class="content add_role">
+	<div class="navigate_head clearfix">
+		<p onclick="window.location.href='account_list.html'">账号列表</p>
+		<p  class="navi_current" onclick="window.location.href='edit_account.html'">修改账号</p>
+		<p class="navi_null"></p>
+	</div>
+	<div>
+		<form class="add_role_form">
+			<div class="public_input">
+				<span>姓名:</span>
+				<input type="text" class="name" placeholder="请输入姓名"/>
+			</div>
+			<div class="public_input">
+				<span>用户名:</span>
+				<input type="text" class="user_name" placeholder="请输入登录名"/>
+			</div>
+			<div class="public_input">
+				<span>状态:</span>
+				<input type="button" class="enabled" value="启用" data_val="true"/><input type="button" class="disable" value="禁用" data_val="false"/>
+			</div>
+			<div class="public_input confrim_btn">
+				<span>.</span>
+				<input type="button" class="confrim_edit_account" value="修改"/>
+			</div>
+		</form>
+	</div>
+</div>
+<script type="text/javascript" src="plug/jquery-1.11.3.min.js" ></script>
+<script type="text/javascript" src="plug/template-web.js"></script>
+<script type="text/javascript" src="js/toggle.js" ></script>
+<script type="text/javascript" src="js/util.js"></script>
+<script type="text/javascript" src="js/method.js"></script>
+<script type="text/javascript" src="js/detail/account.js"></script>
+<script>
+$(function(){
+	//初始化
+	var data = {
+		"id":$.get_storage("account_id")
+	}
+	var flag;//是否启用
+	$.get_ajax("/admin/admin/getDetail.json",data,function(data){
+		$(".name").attr("value",data.data.name);
+		$(".user_name").attr("value",data.data.username);
+		flag=data.data.enabled;
+		if(flag){
+			$(".enabled").addClass("bg_green");
+		}else{
+			$(".disable").addClass("bg_green");
+		}
+	});
+	
+	//修改
+	$(".enabled,.disable").click(function(){
+		flag = $(this).addClass("bg_green").attr("data_val");
+		$(this).siblings().removeClass("bg_green");
+		console.log(flag);
+	});
+	$(".confrim_edit_account").click(function(){
+		//输入框信息
+		var user_name = $(".user_name").val();
+		var name = $(".name").val();
+		if(name=="" || user_name==""){
+			alert("输入框不能为空");
+		}
+		var data = {
+			"id":$.get_storage("account_id"),
+			"name":name,
+			"username":user_name,
+			"enabled":flag
+		}
+		//调用ajax
+		$.post_ajax("/admin/admin/update",data,function(data){
+			console.log(data);
+			if(data.success==true){
+				alert(data.data);
+				window.location.href="account_list.html";
+			}else{
+				alert(data.data);
+			}
+		});
+		
+	});
+
+});
+</script>
+</body>
+</html>

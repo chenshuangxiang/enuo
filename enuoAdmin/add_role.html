@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="css/base.css" />
+<link rel="stylesheet" href="css/util.css" />
+<link rel="stylesheet" href="css/collect.css" />
+<title>添加角色</title>
+</head>
+<body>
+<div class="content add_role">
+	<div class="navigate_head clearfix">
+		<p onclick="window.location.href='role_list.html'">角色列表</p>
+		<p class="navi_current" onclick="window.location.href='add_role.html'">添加角色</p>
+		<p class="navi_null"></p>
+	</div>
+	<div>
+		<form class="add_role_form">
+			<div class="public_input">
+				<span>角色名称:</span>
+				<input type="text" class="role_name" placeholder="角色名称"/>
+			</div>
+			<div class="public_input">
+				<span>角色描述:</span>
+				<input type="text" class="role_describe" placeholder="角色描述"/>
+			</div>
+			<div class="public_input">
+				<span>数据库表名:</span>
+				<input type="text" class="data_base_name" placeholder="数据库表名"/>
+			</div>
+			<div class="public_input">
+				<span>是否启用:</span>
+				<input type="button" class="enabled" value="启用"/><input type="button" class="disable" value="禁用"/>
+			</div>
+			<div class="public_input confrim_btn">
+				<span>.</span>
+				<input type="button" class="confrim_add" value="添加"/>
+			</div>
+		</form>
+	</div>
+</div>
+	
+	
+<script type="text/javascript" src="plug/jquery-1.11.3.min.js" ></script>
+<script type="text/javascript" src="js/toggle.js" ></script>
+<script>
+
+</script>
+</body>
+</html>

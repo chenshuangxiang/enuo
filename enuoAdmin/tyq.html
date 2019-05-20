@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="css/base.css" />
+<link rel="stylesheet" href="css/util.css" />
+<link rel="stylesheet" href="css/collect.css" />
+<title>体验券列表</title>
+</head>
+<body>
+<div class="content tyq">
+	<div class="navigate_head clearfix">
+		<p onclick="window.location.href='tyq.html'" class="navi_current">体验劵列表</p>
+		<p onclick="window.location.href='add_tyq.html'">添加体验劵</p>
+		<p onclick="window.location.href='tyq_appointment.html'">体验劵预约</p>
+		<p class="navi_null"></p>
+	</div>
+	<!--头部功能-->
+	<div class="head_area flex_vertical">
+		<input type="text" class="search" placeholder="搜索患者（姓名、账号、手机号）"/><button>搜索</button>
+	</div>
+	<table>
+		<thead>
+			<tr>
+				<td>体验劵编号</td>
+				<td>产品名称</td>
+				<td>活动医院</td>
+				<td>咨询员</td>
+				<td>用户手机号</td>
+				<td>活动开始时间</td>
+				<td>活动截止时间</td>
+				<td>操作</td>
+			</tr>
+		</thead>
+		<tbody class="tbody">
+			<tr>
+				<td class="check" data_flag="1"><div class="flex_all_center"><img src="img/activity_manage/select.png"/>&nbsp;<span>700000</span></div></td>
+				<td>腋下激光脱毛（包干）</td>
+				<td>杭州甄美医疗美容医院</td>
+				<td>张腾</td>
+				<td>184 3512 1569</td>
+				<td>2017-08-04</td>
+				<td>2017-08-04</td>
+				<td><button><img src="img/activity_manage/write.png" style="vertical-align: middle;"/></button> <button><img src="img/activity_manage/close.png" style="vertical-align: middle;"/></button></td>
+			</tr>
+			<tr>
+				<td class="check" data_flag="0"><div class="flex_all_center"><img src="img/activity_manage/no_select.png"/>&nbsp;<span>700000</span></div></td>
+				<td>腋下激光脱毛（包干）</td>
+				<td>杭州甄美医疗美容医院</td>
+				<td>张腾</td>
+				<td>184 3512 1569</td>
+				<td>2017-08-04</td>
+				<td>2017-08-04</td>
+				<td><button><img src="img/activity_manage/write.png" style="vertical-align: middle;"/></button> <button><img src="img/activity_manage/close.png" style="vertical-align: middle;"/></button></td>
+			</tr>
+			<tr>
+				<td class="check" data_flag="0"><div class="flex_all_center"><img src="img/activity_manage/no_select.png"/>&nbsp;<span>700000</span></div></td>
+				<td>腋下激光脱毛（包干）</td>
+				<td>杭州甄美医疗美容医院</td>
+				<td>张腾</td>
+				<td>184 3512 1569</td>
+				<td>2017-08-04</td>
+				<td>2017-08-04</td>
+				<td><button><img src="img/activity_manage/write.png" style="vertical-align: middle;"/></button> <button><img src="img/activity_manage/close.png" style="vertical-align: middle;"/></button></td>
+			</tr>
+		</tbody>
+	</table>
+	<div class="">
+		<button class="all_check btn_white" data_flag="0">全选</button><button class="btn_white">批量删除</button>
+	</div>
+</div>
+<script type="text/javascript" src="plug/jquery-1.11.3.min.js" ></script>
+<script type="text/javascript" src="js/toggle.js" ></script>
+<script type="text/javascript" src="js/util.js" ></script>
+<script>
+
+</script>
+</body>
+</html>

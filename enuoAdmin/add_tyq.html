@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="css/base.css" />
+<link rel="stylesheet" href="css/util.css" />
+<link rel="stylesheet" href="css/collect.css" />
+<title>添加体验券</title>
+</head>
+<body>
+<div class="content add_tyq">
+	<div class="navigate_head clearfix">
+		<p onclick="window.location.href='tyq_list.html'">体验劵列表</p>
+		<p onclick="window.location.href='add_tyq.html'" class="navi_current">添加体验劵</p>
+		<!--<p onclick="window.location.href='tyq_appointment.html'">体验劵预约</p>-->
+		<p onclick="window.location.href='tyq_type_list.html'">体验劵分类</p>
+		<p onclick="window.location.href='add_tyq_type.html'">添加分类</p>
+		<p class="navi_null"></p>
+	</div>
+	<div>
+		<form class="add_role_form">
+			<div class="public_input">
+				<span>体验劵编号:</span>
+				<input type="text" class="tyq_num" placeholder="体验劵编号"/>
+			</div>
+			<div class="public_input">
+				<span>产品名称:</span>
+				<select class="produce_name">
+					<option class="0">请选择</option>
+				</select>
+			</div>
+			<div class="public_input">
+				<span>参与医院:</span>
+				<select class="hos_name">
+					<option class="0">请选择</option>
+				</select>
+			</div>
+			<div class="public_input">
+				<span>业务员名字:</span>
+				<select class="salesman_name">
+					<option class="0">请选择</option>
+				</select>
+			</div>
+			<div class="public_input">
+				<span>患者姓名:</span>
+				<input type="text" class="patient_name" placeholder="患者姓名"/>
+			</div>
+			<div class="public_input">
+				<span>患者手机号:</span>
+				<input type="text" class="mobile" placeholder="手机号"/>
+			</div>
+			<div class="public_input">
+				<span>产品失效时间:</span>
+				<input type="text" class="Wdate end_time" onfocus="WdatePicker({lang:'zh-cn',dateFmt: 'yyyy-MM-dd'})"/>
+			</div>
+			<div class="public_input confrim_btn">
+				<span>.</span>
+				<input type="button" class="confrim_add_tyq" value="添加"/>
+			</div>
+		</form>
+	</div>
+</div>
+	
+	
+<script type="text/javascript" src="plug/jquery-1.11.3.min.js" ></script>
+<script type="text/javascript" src="plug/template-web.js"></script>
+<script type="text/javascript" src="js/toggle.js" ></script>
+<script type="text/javascript" src="js/util.js"></script>
+<script type="text/javascript" src="js/method.js"></script>
+<!--日期插件-->
+<link rel="stylesheet" href="plug/My97DatePicker/skin/WdatePicker.css" />
+<script src="plug/My97DatePicker/WdatePicker.js"></script>
+<!--医院列表-->
+<script type="text/html" id="test_hos_list">
+	{{each data value}}
+		<option value="{{value.id}}">{{value.name}}</option>
+	{{/each}}
+</script>
+<!--产品列表-->
+<script type="text/html" id="test_produce_list">
+	{{each data value}}
+		<option value="{{value.id}}">{{value.name}}</option>
+	{{/each}}
+</script>
+<!--业务员列表-->
+<script type="text/html" id="test_salesman_list">
+	{{each data value}}
+		<option value="{{value.id}}">{{value.name}}</option>
+	{{/each}}
+</script>
+<script>
+$(function(){
+	var hos_id ="";//医院id
+	var produce_id ="";//产品id
+	var salesman_id ="";//业务员id
+	
+	//初始化产品列表
+	$.initSelect("/admin/experienceCoupon/getListBySelect.json",'test_produce_list',".produce_name");
+	$(".produce_name").change(function(){
+		produce_id = $(".produce_name").val();
+		var data = {
+			"experienceCouponId":produce_id
+		}
+		//初始化医院列表
+		$.initSelect("/admin/experienceCoupon/getExperienceCouponHospital.json",'test_hos_list',".hos_name",data);
+		
+	});
+	$(".hos_name").change(function(){
+		hos_id = $(".hos_name").val();
+	});
+	
+	//初始化业务员列表
+	$.initSelect("/admin/salesman/getEnabledList.json",'test_salesman_list',".salesman_name");
+	$(".salesman_name").change(function(){
+		salesman_id = $(".salesman_name").val();
+	});
+	
+	$(".confrim_add_tyq").click(function(){
+		var tyq_num = $(".tyq_num").val();
+		var patient_name = $(".patient_name").val();
+		var mobile = $(".mobile").val();
+		var end_time = $(".end_time").val();
+		
+		var data = {
+			"sn":tyq_num,
+			"hospitalId":hos_id,
+			"experienceCouponId":produce_id,
+			"salesmanId":salesman_id,
+			"username":patient_name,
+			"mobile":mobile,
+			"invalidDate":end_time
+		}
+		//验证
+//		if(!$.verify(tyq_num,"体验券编号")){return false;}
+//		if(!$.verify(patient_name,"患者姓名")){return false;}
+		
+		if(!$.verify(end_time,"产品失效时间")){return false;}
+		if(!$.verifyPhone(mobile,"手机号")){return false;}
+		if(!$.verifyNum(hos_id,"参与医院")){return false;}
+		if(!$.verifyNum(produce_id,"产品名称")){return false;}
+		if(!$.verifyNum(salesman_id,"业务员名字")){return false;}
+		$.post_ajax("/admin/experienceReservation/add",data,function(data){
+			if(data.success==true){
+//				alert(data.data); 
+				window.location.href = "tyq_list.html";
+			}else{
+				alert(data.data);
+			}
+		});
+	});
+});
+</script>
+</body>
+</html>

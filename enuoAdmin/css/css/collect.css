@@ -1,0 +1,466 @@
+/*页面*/
+.content{
+	width: 985px;
+	height: 650px;
+	margin-top: 10px;
+	padding: 0 15px;
+	/*border: 1px solid red;*/
+	overflow-y: auto;
+}
+/*公共头部导航栏*/
+.content .navigate_head{
+	width: 100%;
+	font-size: 16px;
+    letter-spacing: 0.7px;
+    margin-bottom: 20px;
+    color: #00AFA1;
+    border: 1px solid transparent;
+}
+.navigate_head p{
+	float: left;
+	height: 40px;line-height: 40px;
+	width: 12%;
+	text-align: center;
+	border-bottom:1px solid #DCDCDC;
+}
+/*当前选中*/
+.navigate_head .navi_current{
+	color: #333333;
+	border-top:1px solid #DCDCDC ;
+	border-left:1px solid #DCDCDC ;
+	border-right:1px solid #DCDCDC ;
+	border-bottom:0 ;
+}
+.navigate_head .navi_null{
+	width: 76%;
+}
+
+/*头部功能*/
+.content .head_area{
+	margin-bottom: 20px;
+	/*border: 1px solid red;*/
+	position: relative;
+}
+.content .head_area input{
+	width: 400px;height: 40px;
+	border: solid 1px #dcdcdc;
+	font-size: 14px;
+    letter-spacing: 0.6px;
+    color: #333333;
+    text-indent: 20px;
+    margin-right: 20px;
+}
+.content .head_area select{
+	width: 400px;height: 40px;
+	border: solid 1px #dcdcdc;
+	font-size: 14px;
+    letter-spacing: 0.6px;
+    color: #333333;
+    text-indent: 20px;
+    margin-right: 20px;
+}
+.content .head_area button{
+	height: 40px;line-height: 40px;
+	padding: 0 10px;
+    background-color: #00afa1;
+    font-size: 16px;
+    letter-spacing: 0.7px;
+    color: #ffffff;
+    margin-right: 10px;
+}
+
+/*弹框*/
+.popup_box{
+	width: 500px;
+	min-height: 200px;
+	position: absolute;
+	top: 170px;left: 50%;
+	margin-left: -250px;
+	z-index: 1000;
+	border-radius: 5px;
+	background-color: white;
+}
+.popup_box .img_close{
+	/*border: 1px solid red;*/
+	margin-top: 10px;
+}
+.popup_box .img_close img{
+	float: right;margin-right: 10px;
+}
+
+.popup_box .confirm{
+	width: 70px;
+    height: 40px;line-height: 40px;
+    border-radius: 5px;
+    background-color: #00afa1;
+    color: white;
+    margin:10px 0 30px 115px;
+    text-align: center;
+}
+
+/*上传图片*/
+.upload_img{
+	width: 640px;height: auto;
+	/*border: 1px solid red;*/
+} 
+.upload_img .right{
+	width: 400px;min-height: 200px;
+	/*border: 1px solid black;*/
+	float: right;
+}
+.upload_img label span{
+	display: inline-block;
+	width: 180px;height: 40px;
+	background-color: #FEAA2C;
+	color: white;
+	border-radius:5px ;
+	letter-spacing: 1px;
+	font-size: 16px;
+	text-align: center;
+}
+.upload_img input{
+	width: 120px;
+	text-indent: 0;
+	background-color: #FEAA2C;
+	color: white;
+	border-radius:5px ;
+	letter-spacing: 1px;
+	font-size: 16px;
+	position: absolute;
+	top: 0;right: 0;
+}
+.upload_img .preview{
+	width: 400px;
+	min-height: 160px;
+	border: 1px dashed #DCDCDC;
+	padding: 2px;
+}
+.upload_img .preview img{
+	height: 150px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+/*------------------------------------------------------------------------------------------------------------------------------*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*权限管理*/
+.limit_manage>div{
+	width: 280px;
+  	height: 380px;
+  	border-radius: 10px;
+  	background-color: #ffffff;
+  	border: solid 1px #dcdcdc;
+  	float: left;
+  	margin-right: 20px;
+  	padding: 0 20px;
+}
+.limit_manage .title{
+	height: 40px;
+	border-bottom:1px solid #DCDCDC;
+	font-size: 18px;
+	letter-spacing: 0.7px;
+	margin-top: 15px;
+}
+.limit_manage .title p{
+	width: 70px;
+}
+.limit_manage .list{
+	height: 40px;
+}
+
+/*角色列表*/
+.role_list .start_status img{
+	/*padding-top: 8px;*/
+	vertical-align: middle;
+}
+
+/*用户管理*/
+.user_list .navigate_head p{
+	width: 10%;
+}
+.user_list .navigate_head .navi_null{
+	width: 90%;
+}
+
+
+/*商户联系人管理*/
+.business_contact .navigate_head p,
+.add_bc .navigate_head p{
+	width: 17%;
+}
+.business_contact .navigate_head .navi_null,
+.add_bc .navigate_head .navi_null{
+	width: 66%;
+}
+
+
+/*体验券*/
+.tyq .navigate_head p,
+.add_tyq .navigate_head p,
+.tyq_type_list .navigate_head p,
+.add_tyq_type .navigate_head p{
+	width: 13%;
+}
+.tyq .navigate_head .navi_null,
+.add_tyq .navigate_head .navi_null,
+.tyq_type_list .navigate_head .navi_null,
+.add_tyq_type .navigate_head .navi_null{
+	width: 48%;
+}
+.tyq .public_input span{
+	width: 100px;
+}
+.tyq .public_input input,
+.tyq .public_input select{
+	width: 300px;
+	margin-left: 10px;margin-right: 10px;
+} 
+/*体验券*/
+.mass .navigate_head p{
+	width: 10%;
+}
+.mass .navigate_head .navi_null{
+	width: 90%;
+}
+
+
+/*医院分类管理*/
+.hos_group .navigate_head p,
+.add_hosGroup .navigate_head p{
+	width: 16%;
+}
+.hos_group .navigate_head .navi_null,
+.add_hosGroup .navigate_head .navi_null{
+	width: 68%;
+}
+
+/*医生管理*/
+.doc_manage .navi_null{
+	width: 88%;
+}
+/*医院列表*/
+.hos_list .navi_null{
+	width: 76%;
+}
+.hos_list .hint{
+	margin-bottom: 20px;
+	height: 40px;line-height: 40px;
+	border: solid 1px #dcdcdc;
+	font-size: 14px;
+}
+.add_hos .public_input span span{
+	color: #00AFA1;
+}
+
+
+
+
+/*医院详情*/
+.hos_detail_form .public_input{
+	/*border: 1px solid red;*/
+	height: auto;
+	margin: 10px 0;
+}
+.hos_detail_form .public_input>span{
+	float: left;
+}
+.hos_detail_form .public_input>div{
+	float: left;
+	line-height: 40px;
+	width: 600px;
+	border-radius: 5px;
+    /*border: solid 1px #dcdcdc;*/
+    margin-left: 30px;
+}
+.hos_detail_form .public_input .pass{
+	width: 150px;
+	border-top-right-radius:0 ;
+	border-bottom-right-radius: 0;
+	text-indent: 0;
+}
+.hos_detail_form .public_input .shut{
+	border-top-left-radius:0 ;
+	border-bottom-left-radius: 0;
+	width: 150px;
+	text-indent: 0;
+	margin-left: 0;
+	text-align: center;
+}
+
+
+/*预约列表*/
+.appointment .navi_null{
+	width: 86%;
+}
+
+/*治疗订单管理*/
+.cure_order .navigate_head p{
+	width: 16%;
+}
+.cure_order .navigate_head .navi_null{
+	width: 84%;
+}
+
+
+
+/*订单回收站管理*/
+.examine .navigate_head p{
+	width: 13%;
+}
+.examine .navigate_head .navi_null{
+	width: 87%;
+}
+
+/*公司员工管理*/
+.employee .navigate_head p{
+	width: 16%;
+}
+.employee .navigate_head .navi_null{
+	width: 68%;
+}
+
+/*修改密码*/
+.edit_pwd .navigate_head p{
+	width: 16%;
+}
+.edit_pwd .navigate_head .navi_null{
+	width: 84%;
+}
+
+/*检查报告展示*/
+.examine_report .navigate_head p,
+.examine_insert .navigate_head p{
+	width: 16%;
+}
+.examine_report .navigate_head .navi_null,
+.examine_insert .navigate_head .navi_null{
+	width: 68%;
+}
+/*检查报告录入*/
+.examine_insert .public_input{
+	/*border: 1px solid red;*/
+}
+.examine_insert .public_input span{
+	width: 150px;
+}
+.examine_insert .public_input input,
+.examine_insert .public_input select{
+	width: 250px;
+}
+.prj_report p{
+	height: 40px;line-height: 40px;
+    background-color: #00afa1;
+    font-size: 18px;
+    letter-spacing: 0.7px;
+    color: #fefefe;
+    text-indent: 10px;
+}
+.prj_report>div{
+	border: solid 1px #dcdcdc;
+	height: 80px;
+}
+
+/*添加约定效果*/
+.appoint_result_list,
+.forgive_list{
+	width: 600px;height: auto;
+	float: right;
+	/*border: 1px solid black;*/
+	
+}
+.appoint_result_list p,
+.forgive_list p{
+	width: auto;
+	/*border: 1px solid green;*/
+}
+.appoint_result_list p input,
+.forgive_list p input{
+	width: 540px;
+	/*margin-left: 0;*/
+	margin: 5px 0 5px 0;
+	text-indent: 5px;
+}
+
+
+
+/*身体部位管理*/
+.body_manage .navigate_head p,
+.my_body_insert .navigate_head p{
+	width: 17%;
+}
+.body_manage .navigate_head .navi_null,
+.my_body_insert .navigate_head .navi_null{
+	width: 66%;
+}
+
+
+/*自测疾病管理*/
+.judge_ill .navigate_head p,
+.add_jude .navigate_head p,
+.cure_ill .navigate_head p{
+	width: 15%;
+}
+.judge_ill .navigate_head .navi_null,
+.add_jude .navigate_head .navi_null,
+.cure_ill .navigate_head .navi_null{
+	width: 55%;
+}
+.add_jude .new_add{
+	font-size: 18px;
+	height: 40px;
+	width: 70px;
+	border: 0;
+	text-indent: 0;
+}
+
+
+/*VIP充值卡*/
+.vipCard .navigate_head p,
+.add_vipCard .navigate_head p{
+	width: 14%;
+}
+.vipCard .navigate_head .navi_null,
+.add_vipCard .navigate_head .navi_null{
+	width: 72%;
+}
+
+/*陪诊卡*/
+.peizhenCard .navigate_head p,
+.add_peizhengCard .navigate_head p{
+	width: 14%;
+}
+.peizhenCard .navigate_head .navi_null,
+.add_peizhengCard .navigate_head .navi_null{
+	width: 72%;
+}
+
+/*咨询列表*/
+.toDayConsult .navigate_head p,
+.allConsult .navigate_head p{
+	width: 14%;
+}
+.toDayConsult .navigate_head .navi_null,
+.allConsult .navigate_head .navi_null{
+	width: 72%;
+}

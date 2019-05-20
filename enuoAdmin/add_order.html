@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="css/base.css" />
+<link rel="stylesheet" href="css/util.css" />
+<link rel="stylesheet" href="css/collect.css" />
+<title>添加体验券</title>
+</head>
+<body>
+<div class="content add_tyq">
+	<div class="navigate_head clearfix">
+		<p onclick="window.location.href='order_list.html'">订单管理</p>
+		<p onclick="window.location.href='add_order.html'" class="navi_current">添加订单</p>
+		<p class="navi_null" style="width: 72%"></p>
+	</div>
+	<div>
+		<form class="add_role_form">
+			<div class="public_input">
+				<span>患者姓名:</span>
+				<input type="text" class="patient_name" placeholder="患者姓名"/>
+			</div>
+			<div class="public_input">
+				<span>患者手机号:</span>
+				<input type="text" class="mobile" placeholder="手机号"/>
+			</div>
+			<div class="public_input">
+				<span>产品名称:</span>
+				<select class="produce_name">
+					<option class="0">请选择</option>
+				</select>
+			</div>
+			<div class="public_input">
+				<span>参与医院:</span>
+				<select class="hos_name">
+					<option class="0">请选择</option>
+				</select>
+			</div>
+			<div class="public_input">
+				<span>订单来源:</span>
+				<select class="order_source">
+					<option value="">请选择</option>
+					<option value="hqbs">环球捕手</option>
+					<option value="zx">中信</option>
+				</select>
+			</div>
+			<div class="public_input">
+				<span>第三方订单号:</span>
+				<input type="text" class="thirdOrderNo" placeholder="第三方订单号"/>
+			</div>
+			<div class="public_input confrim_btn">
+				<span>.</span>
+				<input type="button" class="confrim_add_tyq" value="添加"/>
+			</div>
+		</form>
+	</div>
+</div>
+	
+	
+<script type="text/javascript" src="plug/jquery-1.11.3.min.js" ></script>
+<script type="text/javascript" src="plug/template-web.js"></script>
+<script type="text/javascript" src="js/toggle.js" ></script>
+<script type="text/javascript" src="js/util.js"></script>
+<script type="text/javascript" src="js/method.js"></script>
+<!--日期插件-->
+<link rel="stylesheet" href="plug/My97DatePicker/skin/WdatePicker.css" />
+<script src="plug/My97DatePicker/WdatePicker.js"></script>
+<!--医院列表-->
+<script type="text/html" id="test_hos_list">
+	{{each data value}}
+		<option value="{{value.id}}">{{value.name}}</option>
+	{{/each}}
+</script>
+<!--产品列表-->
+<script type="text/html" id="test_produce_list">
+	{{each data value}}
+		<option value="{{value.id}}">{{value.name}} {{value.price}}元</option>
+	{{/each}}
+</script>
+<!--业务员列表-->
+<script type="text/html" id="test_salesman_list">
+	{{each data value}}
+		<option value="{{value.id}}">{{value.name}}</option>
+	{{/each}}
+</script>
+<script>
+$(function(){
+	var hos_id ="";//医院id
+	var produce_id ="";//产品id
+	var salesman_id ="";//业务员id
+	
+	//初始化产品列表
+	$.initSelect("/admin/specialProduct/getListNotPage.json",'test_produce_list',".produce_name");
+	$(".produce_name").change(function(){
+		produce_id = $(".produce_name").val();
+		var data = {
+			"specialProductId":produce_id
+		}
+		//初始化医院列表
+		$.initSelect("/admin/hospital/findHospitalBySpecialProductId.json",'test_hos_list',".hos_name",data,'obj');
+		
+	});
+	$(".hos_name").change(function(){
+		hos_id = $(".hos_name").val();
+	});
+	
+	//初始化业务员列表
+	$.initSelect("/admin/salesman/getEnabledList.json",'test_salesman_list',".salesman_name");
+	$(".salesman_name").change(function(){
+		salesman_id = $(".salesman_name").val();
+	});
+	
+	$(".confrim_add_tyq").click(function(){
+		var tyq_num = $(".tyq_num").val();
+		var patient_name = $(".patient_name").val();
+		var mobile = $(".mobile").val();
+		var end_time = $(".end_time").val();
+		
+		var data = {
+            "userName":patient_name,
+            "mobile":mobile,
+			"hospitalId":hos_id,
+			"fkId":produce_id,
+            "source":$('.order_source').val(),
+            "thirdOrderNo":$('.thirdOrderNo').val()
+		}
+		//验证
+//		if(!$.verify(tyq_num,"体验券编号")){return false;}
+		if(!$.verify(patient_name,"患者姓名")){return false;}
+		if(!$.verifyPhone(mobile,"手机号")){return false;}
+		if(!$.verifyNum(hos_id,"参与医院")){return false;}
+		if(!$.verifyNum(produce_id,"产品名称")){return false;}
+		$.post_ajax("/admin/order/addOrder",data,function(data){
+			if(data.success==true){
+				alert(data.data);
+				window.location.href = "order_list.html";
+			}else{
+				alert(data.data);
+			}
+		});
+	});
+});
+</script>
+</body>
+</html>

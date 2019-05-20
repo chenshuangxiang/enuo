@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="css/base.css" />
+<link rel="stylesheet" href="css/util.css" />
+<link rel="stylesheet" href="css/collect.css" />
+	<link href="css/combo.select.css" rel="stylesheet" />
+<title>财务管理</title>
+</head>
+<style>
+	.layui-laydate-content table td{
+		min-height: inherit;
+		 line-height: inherit;
+		border: none;
+	}
+	.readCaozuolOpen {
+		width: 740px;
+		height: 410px;
+		padding-top: 9px;
+	}
+	.popup_box{
+		width: 740px;
+		top: 40px;
+		left: 37.5%;
+	}
+	.prevMonth{
+		float: left;
+		cursor: pointer;
+		color: #333;
+		margin-left: 170px;
+		margin-top: 5px;
+	}
+	.nextMonth{
+		float: right;
+		cursor: pointer;
+		color: #333;
+		margin-right: 144px;
+		margin-top: 5px;
+	}
+	.salesman_name,#timeInputOpen {
+		width: 100px;
+		height: 22px;
+		border: solid 1px #dcdcdc;
+		font-size: 13px;
+		letter-spacing: 0.6px;
+		color: #333333;
+		text-indent: 20px;
+		margin-left: 56px;
+	}
+	#timeInputOpen{
+		margin-left: 184px;
+		position: absolute;
+		top: 39px;
+		z-index: 99;
+	}
+	.content .head_area .combo-select input{
+		width: inherit;
+		border: none;
+		outline: none;
+	}
+	.monthprice{
+
+	}
+</style>
+<body>
+<div class="content user_list">
+	<div class="navigate_head clearfix">
+		<p onclick="window.location.href='finance_list.html'" class="">财务管理</p>
+		<!--<p onclick="window.location.href='add_user.html'">添加用户</p>-->
+		<p class="navi_null"></p>
+	</div>
+	<!--头部功能-->
+	<div class="head_area flex_vertical">
+		<!--<input type="text" style="width: 248px" class="keyword" placeholder="搜索患者（姓名、账号、手机号）"/>-->
+		<input type="text" id="timeInput" style="width: 145px" placeholder="开始时间"/>
+		<input type="text" id="timeInputEnd" style="width: 145px" placeholder="结束时间"/>
+
+			<select style="width: 180px;margin-left: 0;" class="job_title hosSelect">
+				<option>全部医院</option>
+			</select>
+		<select style="width: 140px;margin-left: 20px;" class="salesman_name salesman_name_one" onchange="$('.salesman_name_two').val($('.salesman_name_one').val())">
+			<option>全部业务员</option>
+            <option value="0">无</option>
+		</select>
+		<button class="search" onclick="indexPage()">搜索</button>
+		<span class="monthprice">订单总金额￥<span>0.00</span></span>
+		<!--<button class="searchMonth" style="
+		background-color: white;
+		border: 1px solid #cccccc;
+		color: #444;
+		height: 30px;
+    	line-height: 29px;
+    	border-radius: 5px;font-size: 14px;cursor: pointer;margin-left: 17px;" onclick='readCaozuo()'>月度统计</button>-->
+	</div>
+	<table>
+		<thead>
+			<tr>
+				<td>序号</td>
+				<td>医院</td>
+				<td>产品名称</td>
+				<td>金额</td>
+				<td>支付方式</td>
+				<td>姓名</td>
+				<td>手机号</td>
+				<td>付款时间</td>
+			<!--	<td>余额</td>-->
+				<!--<td>上次登录时间</td>-->
+				<td>业务员</td>
+			</tr>
+		</thead>
+		<tbody class="tbody">
+			
+		</tbody>
+	</table>
+	<!--分页-->
+	<div class="page flex_vertical">
+		<button class="" onclick="indexPage()">首页</button>&nbsp;
+		<button class="" onclick="backPage()"><上一页</button>&nbsp;
+		<!--页码-->
+		<p class="page_num">
+			<!--<span>1</span><span>2</span><span>3</span><span>4</span><span>5</span>-->
+		</p>....
+		<button class="" onclick="nextPage()">下一页></button>&nbsp;
+		<button class="" onclick="endPage()">末页</button>&nbsp;
+		共<span class="all_recode">0 </span>记录&nbsp;|
+		共<span class="all_page">0 </span>页&nbsp;
+		到第<input class="select_page" />页&nbsp;
+		<button class="confirm_page" onclick="skipPage()">确定</button>
+	</div>
+</div>
+<!--遮罩层-->
+<div class="shade none"></div>
+<!--弹框-->
+<div class="popup_box none">
+	<img style="position: absolute;
+    right: 10px;
+    top: 10px;z-index: 99;
+" src="img/close.png" onclick="close_box()"/>
+	<!--<p class="img_close clearfix">
+		&lt;!&ndash;<img src="img/close.png" onclick="close_box()"/>&ndash;&gt;
+		&lt;!&ndash;span class="prevMonth" onclick='readCaozuo()'><上一月</span>&ndash;&gt;
+
+	&lt;!&ndash;	<span class="nextMonth" onclick='readCaozuo(this)'>下一月></span>&ndash;&gt;
+	</p>-->
+	<input type="text" id="timeInputOpen" style="width: 170px" placeholder="选择时间"/>
+	<select style="width: 150px;position: absolute;
+		top: 39px;
+		z-index: 99;left: 333px;" onchange="readCaozuo()" class="salesman_name salesman_name_two">
+		<option>全部业务员</option>
+	</select>
+		<div class="readCaozuolOpen" id="readCaozuolOpen">
+
+		</div>
+</div>
+<script type="text/javascript" src="plug/jquery-1.11.3.min.js" ></script>
+<script type="text/javascript" src="plug/template-web.js"></script>
+<script type="text/javascript" src="plug/echarts.common.min.js"></script>
+<script src="plug/laydate/laydate.js"></script>
+<script type="text/javascript" src="js/toggle.js" ></script>
+<script type="text/javascript" src="js/util.js"></script>
+<script type="text/javascript" src="js/method.js"></script>
+<script type="text/javascript" src="js/page.js"></script>
+<script type="text/javascript" src="js/jquery.combo.select.js"></script>
+<script id="test_user_list" type="text/html">
+	{{each list as value i}}
+		<tr>
+			<td width="40px">{{i+1}}</td>
+			<td>{{value.hospitalName}}</td>
+			<td>{{value.projectName}}</td>
+			<td>{{value.amount}}</td>
+			<td>{{if value.method == "wxpay"}}微信{{else if value.method == "alipay"}}支付宝{{else if value.method == "lianpay"}}连连{{else if value.method == "offline_card_sale"}}线下售卖{{else if value.method == "platform"}}余额{{else if value.method == "hqbs"}}环球捕手{{/if}}</td>
+			<td>{{value.fullname}}</td>
+			<td>{{value.mobile}}</td>
+			<td>{{value.paymentDate}}</td>
+			<!--<td>{{value.rechargeAmount}}</td>-->
+			<!--<td>{{value.lastLoginDate}}</td>-->
+			<td>{{if value.salesmanName}}{{value.salesmanName}}{{else}}无{{/if}}</td>
+		</tr>
+	{{/each}}
+</script>
+<!--业务员列表-->
+<script type="text/html" id="test_salesman_list">
+	{{each data value}}
+	<option value="{{value.id}}">{{value.name}}</option>
+	{{/each}}
+</script>
+<!--医院列表-->
+<script type="text/html" id="test_hos_list">
+	{{each data value}}
+	<option value="{{value.id}}">{{value.name}}</option>
+	{{/each}}
+</script>
+<script>
+    //初始化医院列表
+    $.initHosSelect("/admin/hospital/getCertList.json",'test_hos_list',".hosSelect");
+$('.img_close img').click(function () {
+    $("#timeInputOpen").val('');
+});
+//请求方法
+function reqPage(data){
+	console.log(data);
+	control_page.init_page(data,function(data){
+		//调用ajax
+		$.get_ajax("/admin/payment/getList.json",data,function(data){
+			console.log(data);
+			var html = template('test_user_list',data.data);
+			$(".tbody").html(html);
+			$('.monthprice span').text(data.data.totalAmount);
+			if(!data.data.totalAmount){
+                $('.monthprice').hide();
+			}else{
+                $('.monthprice').show();
+			}
+			//初始化分页
+			control_page.currentPage(control_page.page_num,data.totalCount);
+		});
+	});
+}
+function readCaozuo(value) {
+    var dataGet = {};
+    if($(".salesman_name_two").val() != '全部业务员'){
+        dataGet.salesmanId = $(".salesman_name_two").val()
+    }
+    if(value != undefined){
+        dataGet.date = value
+    }else{
+        if($("#timeInputOpen").val() != ''){
+            dataGet.date = $("#timeInputOpen").val()
+        }else if($("#timeInput").val() != ''){
+            dataGet.date = $("#timeInput").val()
+        }
+	}
+    /*请求折线数组*/
+    $.get_ajax("/admin/user/statistics",dataGet,function(data){
+        console.log(data);
+        $(".shade,.popup_box").show();
+        var dataList = data.data.statistics;
+        console.log(dataList.length)
+        if(dataList.length === 0){
+            alert('暂无数据');
+            $(".shade,.popup_box").hide();
+            return;
+        }
+        var myChart = echarts.init(document.getElementById('readCaozuolOpen'));
+        var dataAxis = [];
+        var datayAxis = [];
+        for(var i = dataList.length - 1; i >= 0; i--){
+            console.log(dataList[i]);
+            dataAxis.unshift(dataList[i].day);
+            datayAxis.unshift(dataList[i].quantity);
+        }
+        var monthZi = data.data.title;
+        option = {
+			tooltip: {
+                trigger: 'axis',
+                formatter: function (params) {
+                    console.log(params)
+                    return data.data.title.split('注册')[0] + params[0].name +'日'+ '<br>注册人数: ' + params[0].value;
+                }
+            },
+            title: {
+                left: 'center',
+                text: monthZi,
+            },
+            /*legend: {
+                selectedMode:false,
+                data:[{name: monthZi,textStyle: {fontSize: 18}}]
+            },*/
+            grid: {
+                left: '3%',
+                right: '4%',
+                bottom: '5%',
+                containLabel: true
+            },
+            xAxis: {
+                type: 'category',
+                boundaryGap: false,
+                data: dataAxis,
+                /*axisLabel: {
+                    formatter: function(value)
+                    {
+                        return value.split(' ')[0] + '\n\r' +value.split(' ')[1]
+                    }
+                }*/
+
+            },
+            yAxis: {
+                type: 'value',
+                /* minInterval : 1,
+               boundaryGap : [ 0, 0.1 ],
+                min: 0,*/
+               /* max: 10000*/
+            },
+            series: [
+                {
+                    name:'注册人数',
+                    type:'line',
+                    stack: '总量',
+                    data:datayAxis,
+                    /* lineStyle:{
+                         normal:{
+                             color: "#00afa1"  //连线颜色
+                         }
+                     }*/
+                }
+            ]
+        };
+        myChart.setOption(option);
+    });
+
+}
+</script>
+<script>
+$(function(){
+    //var firstDate = new Date().Format('yyyy-MM-dd');
+    var date = new Date();
+    var firstDay = new Date(date.getFullYear(), date.getMonth(), 1);
+    laydate.render({
+        elem: '#timeInput', //指定元素
+        value: firstDay
+    });
+    laydate.render({
+        elem: '#timeInputOpen', //指定元素
+		type:'month',
+        done: function(value, date, endDate){
+        console.log(value); //得到日期生成的值，如：2017-08-18
+        console.log(date); //得到日期时间对象：{year: 2017, month: 8, date: 18, hours: 0, minutes: 0, seconds: 0}
+        console.log(endDate); //得结束的日期时间对象，开启范围选择（range: true）才会返回。对象成员同上。
+            readCaozuo(value);
+    }
+    });
+    laydate.render({
+        elem: '#timeInputEnd' //指定元素
+    });
+    $.initSelect("/admin/salesman/getEnabledList.json",'test_salesman_list',".salesman_name");
+    //搜索
+
+	var data = control_page.getData();
+	data.beginDate = firstDay.Format("yyyy-MM-dd");
+	reqPage(data);
+});
+function search(obj) {
+    //基本条件
+//		var data = control_page.getData();
+    if(obj == undefined){
+        var data = control_page.getData();
+    }else{
+        var data = obj;
+    }
+    //开始时间
+    var timeinput = $("#timeInput").val();
+    if(timeinput != ""){
+        data.beginDate = timeinput;
+    }
+    //结束时间
+    var timeinputend = $("#timeInputEnd").val();
+    if(timeinputend != ""){
+        data.endDate = timeinputend;
+    }
+    //业务员
+    var salesmanname = $(".salesman_name_one").val();
+    if(salesmanname != "全部业务员"){
+        data.salesmanId = salesmanname;
+        //$('.searchMonth').show()
+    }
+    //医院
+    if($(".hosSelect").val() != '全部医院'){
+        data.hospitalId = $(".hosSelect").val();
+    }
+    reqPage(data);
+}
+</script>
+</body>
+</html>

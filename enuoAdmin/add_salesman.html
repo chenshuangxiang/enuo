@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="css/base.css" />
+<link rel="stylesheet" href="css/util.css" />
+<link rel="stylesheet" href="css/collect.css" />
+<title>添加业务员</title>
+</head>
+<style>
+	.public_input .enabled2{
+		width: 60px;
+		border-top-right-radius:0 ;
+		border-bottom-right-radius: 0;
+		text-align: center;
+		text-indent: 0px;
+	}
+	.public_input .disable2{
+		border-top-left-radius:0 ;
+		border-bottom-left-radius: 0;
+		width: 60px;
+		text-align: center;
+		text-indent: 0px;
+		margin-left: 0;
+	}
+
+</style>
+<body>
+<div class="content add_salesman">
+	<div class="navigate_head clearfix">
+		<p onclick="window.location.href='salesman_list.html'">业务员信息</p>
+		<p onclick="window.location.href='add_salesman.html'" class="navi_current">添加业务员</p>
+		<p class="navi_null"></p>
+	</div>
+	<div>
+		<form class="add_role_form">
+			<div class="public_input">
+				<span>姓名:</span>
+				<input type="text" class="salesman_name" placeholder="姓名"/>
+			</div>
+			<div class="public_input">
+				<span>手机号:</span>
+				<input type="text" class="mobile" placeholder="手机号"/>
+			</div>
+			<div class="public_input">
+				<span>密码:</span>
+				<input type="password" class="pwd" placeholder="密码"/>
+			</div>
+			<div class="public_input">
+				<span>角色:</span>
+				<input type="button" class="enabled2" value="主管" data_val="captain"/><input type="button" class="disable2 bg_green" value="业务员" data_val="member"/>
+			</div>
+			<br>
+			<div class="public_input chargeDiv">
+				<span>所属主管:</span>
+				<select class="captain" style="">
+					<!--<option>所属主管</option>-->
+				</select>
+			</div>
+			<br>
+			<div class="public_input">
+				<span>是否启用:</span>
+				<input type="button" class="enabled" value="启用" data_val="true"/><input type="button" class="disable" value="禁用" data_val="false"/>
+			</div>
+			<div class="public_input confrim_btn">
+				<span>.</span>
+				<input type="button" class="confrim_add_salesman" value="添加"/>
+			</div>
+		</form>
+	</div>
+</div>
+	
+	
+<script type="text/javascript" src="plug/jquery-1.11.3.min.js" ></script>
+<script type="text/javascript" src="plug/template-web.js"></script>
+<script type="text/javascript" src="js/toggle.js" ></script>
+<script type="text/javascript" src="js/util.js"></script>
+<script type="text/javascript" src="js/method.js"></script>
+<script type="text/html" id="charge_list">
+	{{each data value}}
+	<option value="{{value.id}}">{{value.name}}</option>
+	{{/each}}
+</script>
+<script>
+$(function(){
+    $.initSelect("/admin/salesman/getSalesmans.json",'charge_list',".captain",{type:'captain'});
+	var flag=true;//默认启用
+	$(".enabled,.disable").click(function(){
+		flag = $(this).addClass("bg_green").attr("data_val");
+		$(this).siblings().removeClass("bg_green");
+		console.log(flag);
+	});
+    var flagJuese= 'member';//默认启用
+    $(".enabled2,.disable2").click(function(){
+        flagJuese = $(this).addClass("bg_green").attr("data_val");
+        $(this).siblings().removeClass("bg_green");
+        console.log(flagJuese);
+        if(flagJuese == 'captain'){
+			$('.chargeDiv').hide();
+		}else if(flagJuese == 'member'){
+            $('.chargeDiv').show();
+        }
+    });
+	
+	$(".confrim_add_salesman").click(function(){
+		var salesman_name = $(".salesman_name").val();
+		var mobile = $(".mobile").val();
+		var pwd = $(".pwd").val();
+		var data = {
+			"name":salesman_name,
+			"mobile":mobile,
+			"password":pwd,
+			"enabled":flag
+		}
+        if(flagJuese == 'member'){ //员工的话要加入所属队长ID
+            data.type = 'member';
+            data.captainId = $('.captain').val();
+        }else if(flagJuese == 'captain'){
+            data.type = 'captain';
+		}
+		//验证
+		if(!$.verify(salesman_name,"业务员名称")){return false;}
+		if(!$.verifyPhone(mobile,"手机号")){return false;}
+		if(!$.verify(pwd,"密码")){return false;}
+		$.post_ajax("/admin/salesman/add",data,function(data){
+			if(data.success==true){
+				alert(data.data);
+				window.location.href = "salesman_list.html";
+			}else{
+				alert(data.data);
+			}
+		});
+	});
+});
+</script>
+</body>
+</html>

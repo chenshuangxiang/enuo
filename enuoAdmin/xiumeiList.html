@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<link rel="stylesheet" href="css/base.css" />
+	<link rel="stylesheet" href="css/util.css" />
+	<link rel="stylesheet" href="css/collect.css" />
+	<title>绣眉拉大旗</title>
+</head>
+<style>
+	.head_area .public_input input,
+	.head_area .public_input select{
+		width: 185px;margin-left: 10px;margin-right: 10px;
+	}
+	.allCountDiv{
+		float: right;
+		margin-right: -7px;
+		margin-top: 14px;
+	}
+	.allPrice,.allTeam{
+		color: #333;
+		margin-right: 8px;
+	}
+</style>
+<body>
+<div class="content tyq">
+	<div class="navigate_head clearfix">
+		<p onclick="window.location.href='xiumeiList.html'" class="navi_current">绣眉拉大旗</p>
+		<p onclick="window.location.href='xiumeiOrderList.html'">绣眉订单</p>
+		<!--<p onclick="window.location.href='tyq_appointment.html'">体验劵预约</p>-->
+		<p onclick="window.location.href='xiumeiJiang.html'">已获得奖品</p>
+		<div class="allCountDiv">
+		<span class="allPrice">总金额：<span></span>元</span>
+		<span class="allTeam">总团队数量：<span></span>个</span>
+		</div>
+	</div>
+	<!--头部功能-->
+	<div class="head_area ">
+		<!--<div class="public_input margindiv">
+			&lt;!&ndash;<span>产品名称:</span>&ndash;&gt;
+			&lt;!&ndash;<input type="text" class="role_name" placeholder="产品名称"/>&ndash;&gt;
+			<select class="produce_name">
+				<option>全部产品名称</option>
+			</select>
+		</div>
+		<div class="public_input margindiv">
+			&lt;!&ndash;<span>关键字:</span>&ndash;&gt;
+			<input type="text" class="role_name" placeholder="姓名、手机号、券号"/>
+		</div>
+
+
+		<div class="public_input margindiv">
+			&lt;!&ndash;<span>业务员:</span>&ndash;&gt;
+			&lt;!&ndash;<input type="text" class="role_name" placeholder="业务员"/>&ndash;&gt;
+			<select class="salesman_name">
+				<option>全部业务员</option>
+			</select>
+		</div>
+		<div class="public_input margindiv">
+			&lt;!&ndash;<span>状态:</span>&ndash;&gt;
+			<select class="statusSelect">
+				<option>全部状态</option>
+				<option value="wait">未预约</option>
+				<option value="success">已预约</option>
+				<option value="completed">已完成</option>
+				<option value="invalid">失效</option>
+			</select>
+		</div>
+		<button class="search" onclick="indexPage()">搜索</button>-->
+	</div>
+	<table>
+		<thead>
+		<tr>
+			<td>拉大旗队伍ID</td>
+			<td>拼团状态</td>
+			<td>当前队伍状态</td>
+			<td>可进入状态</td>
+			<td>团队解散时间</td>
+			<td>建立团队时间</td>
+			<td>总计价格</td>
+		</tr>
+		</thead>
+		<tbody class="tbody">
+
+		</tbody>
+	</table>
+	<!--<div class="">
+		<button class="all_check btn_white" data_flag="0">全选</button><button class="btn_white">批量删除</button>
+	</div>-->
+	<!--分页-->
+	<div class="page flex_vertical">
+		<button class="" onclick="indexPage()">首页</button>&nbsp;
+		<button class="" onclick="backPage()"><上一页</button>&nbsp;
+		<!--页码-->
+		<p class="page_num">
+			<!--<span>1</span><span>2</span><span>3</span><span>4</span><span>5</span>-->
+		</p>....
+		<button class="" onclick="nextPage()">下一页></button>&nbsp;
+		<button class="" onclick="endPage()">末页</button>&nbsp;
+		共<span class="all_recode">0 </span>记录&nbsp;|
+		共<span class="all_page">0 </span>页&nbsp;
+		到第<input class="select_page" />页&nbsp;
+		<button class="confirm_page" onclick="skipPage()">确定</button>
+	</div>
+</div>
+<script type="text/javascript" src="plug/jquery-1.11.3.min.js" ></script>
+<script type="text/javascript" src="plug/template-web.js"></script>
+<script type="text/javascript" src="js/layui/layui.js"></script>
+<script type="text/javascript" src="js/toggle.js" ></script>
+<script type="text/javascript" src="js/util.js"></script>
+<script type="text/javascript" src="js/method.js"></script>
+<script type="text/javascript" src="js/page.js"></script>
+<script>
+    //请求方法
+    function reqPage(data){
+        console.log(data);
+        control_page.init_page(data,function(data){
+            //调用ajax
+            $.get_ajax("/groupShopping/getFlagRaisingActivities.json",data,function(data){
+                console.log(data.data);
+                $('.allTeam span').text(data.data.groupShoppingTeamCount);
+                $('.allPrice span').text(data.data.totalAmount);
+                $(".tbody").empty();
+                var html = '';
+                data.data.groupShoppingTeamList.forEach(function (value,index) {
+                    html += '<tr>' +
+                        '<td class="check" data_flag="1">' +
+                        '<div class="flex_all_center">' +
+                        '<!--<img src="img/activity_manage/select.png"/>&nbsp;-->' +
+                        '<span onclick="teamOpen(this)" valueid="'+value.id+'" valueIsRobot="'+value.captainIsRobot+'" style="color: #00afa1;cursor: pointer">拉大旗队伍'+ value.id +'号</span>' +
+                        '</div>' +
+                        '</td>' ;
+                    if(value.state == 'wait'){
+                        html += '<td style="color: #feaa2c">拼团中</td>' ;
+                    }else if(value.state == 'full'){
+                        html += '<td>已满员</td>' ;
+                    }else if(value.state == 'cancel'){
+                        html += '<td style="color: red">已作废</td>' ;
+                    }else if(value.overdueState == '已过期'){
+                        html += '<td style="color: red">已过期</td>' ;
+                    }
+
+                    if(value.captainIsRobot == true){
+                        html += '<td>'+ Number(value.numberOfTeams + 1) +'/5</td>' ;
+                    }else{
+                        html += '<td>'+ value.numberOfTeams  +'/5</td>' ;
+					}
+                    if(value.state == 'wait'){
+                        html += '<td style="color: #feaa2c">可进入</td>' ;
+                    }else if(value.state == 'full'){
+                        html += '<td>已满员</td>' ;
+                    }else if(value.state == 'cancel'){
+                        html += '<td style="color: red">已过期</td>' ;
+                    }else if(value.overdueState == '已过期'){
+                        html += '<td style="color: red">不可进入</td>' ;
+                    }
+                    html += '<td>'+new Date(value.teamEndDatetime).Format('yyyy-MM-dd hh:mm:ss')+'</td>' +
+                        '<td>'+new Date(value.createDate).Format('yyyy-MM-dd hh:mm:ss')+'</td>' +
+                        '<td>' + value.groupAmount +'</td>' +
+                        '</tr>'
+                })
+                $(".tbody").html(html);
+                //初始化分页
+                control_page.currentPage(control_page.page_num,data.totalCount);
+            });
+        });
+    }
+    //约定医疗订单详情
+    function teamOpen(m){
+        var id = $(m).attr('valueid');
+        var isRobot = $(m).attr('valueIsRobot');
+        console.log(isRobot);
+        layui.use(['form','layer','jquery','layedit','table'],function() {
+            var form = layui.form,
+                table = layui.table,
+                layer = parent.layer === undefined ? layui.layer : parent.layer,
+                laypage = layui.laypage,
+                layedit = layui.layedit,
+                $ = layui.jquery;
+            var index = layer.open({
+                title : "团队用户详情",
+                type : 2,
+                area: ['770px','60%'],
+                content : 'teamOneList.html?id=' + id  +'&isRobot='+ isRobot +'&v=777',
+                success : function(layero, index){
+
+                },
+                cancel: function(index, layero){
+                    layer.close(index)
+                    return false;
+                }
+            })
+        })
+        /*$(".shade,.orderOpen").show();
+        var dataid = $(m).attr("data_id");*/
+
+    }
+
+</script>
+<script>
+    $(function(){
+        reqPage(control_page.getData());
+        //搜索
+    });
+    function search(obj) {
+        console.log(obj)
+        //基本条件
+        if(obj == undefined){
+            var data = control_page.getData();
+        }else{
+            var data = obj;
+        }
+        console.log(data);
+        reqPage(data);
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="css/base.css" />
+<link rel="stylesheet" href="css/util.css" />
+<link rel="stylesheet" href="css/collect.css" />
+<title>医院列表</title>
+</head>
+<style>
+	.popup_box .confirmSureStatus {
+		width: 70px;
+		height: 40px;
+		line-height: 40px;
+		border-radius: 5px;
+		background-color: #00afa1;
+		color: white;
+		margin: 10px 0 30px 115px;
+		text-align: center;
+	}
+</style>
+<body>
+<div class="content hos_list">
+	<div class="navigate_head clearfix">
+		<p class="navi_current" onclick="window.location.href='hos_list.html'">医院列表</p>
+	<!--	<p class="" onclick="window.location.href='add_hos.html'">添加医院</p>-->
+		<p style="width: 88%;text-align: left;" class="navi_null"><span class="uncheckHosCountP" onclick="endPage()" style="font-size: 10px;margin-left: 25px;cursor: pointer;display: none">您有 <span class="uncheckHosCount">2家</span> 医院尚未审核</span></p>
+	</div>
+	<!--<div class="hint">
+		注：添加经纬度请至 http：//www.gpsspg.com/maps.htm 页面搜索该医院名称，并将结果提交
+	</div>-->
+	<!--头部功能-->
+	<div class="head_area flex_vertical">
+		<input type="text" class="search" placeholder="搜索医院" style="width: 280px;"/><button class="searchBtn" onclick="indexPage()">搜索</button>
+		<!--&nbsp;<button class="" style="position: absolute;right: 0;top: 0;">导出表格</button>-->
+	</div>
+	<table>
+		<thead>
+			<tr>
+				<td>序号</td>
+				<!--<td>用户名</td>-->
+				<td>医院名称</td>
+				<td>医院等级</td>
+				<td>医院类型</td>
+				<td>审核状态</td>
+				<td>运营状态</td>
+				<td>操作</td>
+			</tr>
+		</thead>
+		<tbody class="tbody">
+			<!--<tr>
+				<td>1</td>
+				<td>珍爱医疗门诊部(口腔科)</td>
+				<td>专科</td>
+				<td>省、市级</td>
+				<td>待审核</td>
+				<td>
+					<button class="font_green">查看</button>&nbsp;&nbsp;<button class="font_green">删除</button>&nbsp;&nbsp;<button class="font_green">删除</button>
+				</td>
+			</tr>-->
+		</tbody>
+	</table>
+	<!--分页-->
+	<div class="page flex_vertical">
+		<button class="" onclick="indexPage()">首页</button>&nbsp;
+		<button class="" onclick="backPage()"><上一页</button>&nbsp;
+		<!--页码-->
+		<p class="page_num">
+			<!--<span>1</span><span>2</span><span>3</span><span>4</span><span>5</span>-->
+		</p>....
+		<button class="" onclick="nextPage()">下一页></button>&nbsp;
+		<button class="" onclick="endPage()">末页</button>&nbsp;
+		共<span class="all_recode">0 </span>记录&nbsp;|
+		共<span class="all_page">0 </span>页&nbsp;
+		到第<input class="select_page" />页&nbsp;
+		<button class="confirm_page" onclick="skipPage()">确定</button>
+	</div>
+</div>
+<!--遮罩层-->
+<div class="shade none"></div>
+<!--弹框-->
+<div class="popup_box popup_box_shenhe none">
+	<p class="img_close clearfix">
+		<img src="img/close.png" onclick="close_box()"/>
+	</p>
+	<div>
+		<div class="public_input">
+			<span style="width: 80px;">审核:</span>
+			<input type="button" class="bg_green enabled" value="通过" data_val="true"/><input type="button" class="disable" value="不通过" data_val="false"/>
+		</div>
+		<div class="public_input clearfix cause_parent" style="display: none;">
+			<span style="width: 80px;float: left;">原因:</span>
+			<textarea class="cause" style="margin-left: 30px;width: 320px;float: left;min-height: 80px;"></textarea>
+		</div>
+	</div>
+	<p class="confirm">确 定</p>
+</div>
+<div class="popup_box popup_box_status none">
+	<p class="img_close clearfix">
+		<img src="img/close.png" onclick="close_box()"/>
+	</p>
+	<div>
+		<div class="public_input">
+			<span style="width: 80px;">状态:</span>
+			<!--<input type="button" class="bg_green enabled" value="通过" data_val="true"/>
+			<input type="button" class="disable" value="不通过" data_val="false"/>
+			<input type="button" class="disable" value="不通过" data_val="false"/>-->
+			<div class="public_input margindiv">
+				<!--<span>产品名称:</span>-->
+				<!--<input type="text" class="role_name" placeholder="产品名称"/>-->
+				<select class="hosStatus" style="width: 150px">
+					<option>请选择状态</option>
+					<option value="normal">正常</option>
+					<option value="violate">违规</option>
+					<option value="closed"> 暂未开放</option>
+				</select>
+			</div>
+		</div>
+		<!--<div class="public_input clearfix cause_parent" style="display: none;">
+			<span style="width: 80px;float: left;">原因:</span>
+			<textarea class="cause" style="margin-left: 30px;width: 320px;float: left;min-height: 80px;"></textarea>
+		</div>-->
+	</div>
+	<p class="confirmSureStatus">确 定</p>
+</div>
+<script type="text/javascript" src="plug/jquery-1.11.3.min.js" ></script>
+<script type="text/javascript" src="plug/template-web.js"></script>
+<script type="text/javascript" src="js/toggle.js" ></script>
+<script type="text/javascript" src="js/util.js"></script>
+<script type="text/javascript" src="js/method.js"></script>
+<script type="text/javascript" src="js/page.js"></script>
+<script type="text/javascript" src="js/detail/hos.js"></script>
+<!--医院列表-->
+<script id="test_hos_list" type="text/html">
+	{{each data as value i}}
+		<tr>
+			<td width="40px">{{i+1}}</td>
+			<!--<td>{{value.username}}</td>-->
+			<td>{{value.name}}</td>
+			<td>{{value.hospitalLevel}}</td>
+			<td>{{value.hospitalType}}</td>
+			<td>{{if value.status=='unapplied'}}未申请认证{{else if value.status=='unchecked'}}未审核{{else if value.status=='pass'}}已审核通过{{else if value.status=='notpass'}}审核不通过{{/if}}</td>
+			<td>{{if value.businesStatus=='normal'}}正常{{else if value.businesStatus=='violate'}}违规{{else if value.businesStatus=='closed'}}暂未开放{{/if}}</td>
+			<td data_id="{{value.id}}">
+				<button class="font_green" onclick="lookHos(this)">查看</button>
+				<!--<button class="font_green" onclick="editHos(this)">编辑</button>-->
+				{{if value.status=='unapplied'}}未申请认证{{else if value.status=='unchecked'}}<button class="font_green" onclick="checkHos(this)">审核</button>{{else if value.status=='pass'}}<button class="font_green" onclick="resetHosStatus(this)">修改状态</button>{{else if value.status=='notpass'}}<!--<button class="font_green" onclick="checkHos(this)">审核</button>-->{{/if}}
+			</td>
+		</tr>
+	{{/each}}
+</script>
+<script>
+    getUncheckHosCount(); //获取未审核医院个数
+//请求方法
+function reqPage(data){
+	console.log(data);
+	control_page.init_page(data,function(data){
+		//调用ajax
+		$.get_ajax("/admin/hospital/getList.json",data,function(data){
+			console.log(data);
+			var html = template('test_hos_list',data);
+			$(".tbody").html(html);
+			//初始化分页
+			control_page.currentPage(control_page.page_num,data.totalCount);
+		});
+	});
+}
+</script>
+<script>
+$(function(){
+	reqPage(control_page.getData());
+});
+function search(obj) {
+    console.log(obj)
+    //基本条件
+    if(obj == undefined){
+        var data = control_page.getData();
+    }else{
+        var data = obj;
+	}
+    //医院名称
+    var proj_name = $(".search").val();
+    if(proj_name != ''){
+        data.name = proj_name;
+    }
+    reqPage(data);
+}
+</script>
+</body>
+</html>

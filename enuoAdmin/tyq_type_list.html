@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="css/base.css" />
+<link rel="stylesheet" href="css/util.css" />
+<link rel="stylesheet" href="css/collect.css" />
+<title>体验券分类列表</title>
+</head>
+<body>
+<div class="content tyq_type_list">
+	<div class="navigate_head clearfix">
+		<p onclick="window.location.href='tyq_list.html'">体验劵列表</p>
+		<p onclick="window.location.href='add_tyq.html'">添加体验劵</p>
+		<!--<p onclick="window.location.href='tyq_appointment.html'">体验劵预约</p>-->
+		<p onclick="window.location.href='tyq_type_list.html'" class="navi_current">体验劵分类</p>
+		<p onclick="window.location.href='add_tyq_type.html'">添加分类</p>
+		<p class="navi_null"></p>
+	</div>
+	
+	<table>
+		<thead>
+			<tr>
+				<td>产品名称</td>
+				<td>参与医院</td>
+				<td>截止时间</td>
+				<td>状态</td>
+				<td>操作</td>
+			</tr>
+		</thead>
+		<tbody class="tbody">
+			<!--<tr>
+				<td>腋下激光脱毛（包干）</td>
+				<td>杭州甄美医疗美容医院</td>
+				<td>截止时间</td>
+				<td><button><img src="img/activity_manage/write.png" style="vertical-align: middle;"/></button> <button><img src="img/activity_manage/close.png" style="vertical-align: middle;"/></button></td>
+			</tr>-->
+		</tbody>
+	</table>
+	<!--<div class="">
+		<button class="all_check btn_white" data_flag="0">全选</button><button class="btn_white">批量删除</button>
+	</div>-->
+	<!--分页-->
+	<div class="page flex_vertical">
+		<button class="" onclick="indexPage()">首页</button>&nbsp;
+		<button class="" onclick="backPage()"><上一页</button>&nbsp;
+		<!--页码-->
+		<p class="page_num">
+			<!--<span>1</span><span>2</span><span>3</span><span>4</span><span>5</span>-->
+		</p>....
+		<button class="" onclick="nextPage()">下一页></button>&nbsp;
+		<button class="" onclick="endPage()">末页</button>&nbsp;
+		共<span class="all_recode">0 </span>记录&nbsp;|
+		共<span class="all_page">0 </span>页&nbsp;
+		到第<input class="select_page" />页&nbsp;
+		<button class="confirm_page" onclick="skipPage()">确定</button>
+	</div>
+</div>
+<script type="text/javascript" src="plug/jquery-1.11.3.min.js" ></script>
+<script type="text/javascript" src="plug/template-web.js"></script>
+<script type="text/javascript" src="js/toggle.js" ></script>
+<script type="text/javascript" src="js/util.js"></script>
+<script type="text/javascript" src="js/method.js"></script>
+<script type="text/javascript" src="js/page.js"></script>
+<!--账号列表-->
+<script id="test_tyq_type_list" type="text/html">
+{{each data value}}
+	<tr>
+		<td>{{value.name}}</td>
+		<td>
+			{{if value.hospitals}}
+				{{each value.hospitals tag}}
+					<p>{{tag.hospitalName}}</p>
+				{{/each}}
+			{{/if}}
+		</td>
+		<td>{{value.endDate}}</td>
+		<td>
+			{{if value.enabled==true}}启用{{else if value.enabled==false}}关闭{{/if}}
+		</td>
+		<td data_id="{{value.id}}">
+			<button class="font_green" onclick="edit_tyq_type(this)">修改</button>
+			<!--&nbsp;&nbsp;<button class="font_green">删除</button>-->
+		</td>
+	</tr>
+{{/each}}
+</script>
+
+<script>
+	//请求方法
+function reqPage(data){
+	console.log(data);
+	control_page.init_page(data,function(data){
+		//调用ajax
+		$.get_ajax("/admin/experienceCoupon/getList.json",data,function(data){
+			console.log(data);
+			var html = template('test_tyq_type_list',data);
+			$(".tbody").html(html);
+			//初始化分页
+			control_page.currentPage(control_page.page_num,data.totalCount);
+		});
+	});
+}
+
+//修改体验券分类
+function edit_tyq_type(m){
+	var tyq_type_id = $(m).parent().attr("data_id");
+	window.localStorage.setItem("tyq_type_id",tyq_type_id);
+	window.location.href = "edit_tyq_type.html"
+}
+</script>
+<script>
+$(function(){
+	reqPage(control_page.getData());
+});
+function search() {
+    reqPage(control_page.getData());
+}
+</script>
+</body>
+</html>

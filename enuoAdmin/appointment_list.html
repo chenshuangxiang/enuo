@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="css/base.css" />
+<link rel="stylesheet" href="css/util.css" />
+<link rel="stylesheet" href="css/collect.css" />
+	<link href="css/combo.select.css" rel="stylesheet" />
+<title>预约列表</title>
+<style>
+.order_list .public_input{
+	margin: 10px 0;
+}
+.head_area .public_input span{
+	width: 100px;font-size: 18px;
+}
+.head_area .public_input input,
+.head_area .public_input select{
+	width: 180px;margin-left: 10px;margin-right: 10px;
+}
+.content .head_area .combo-select input{
+	width: inherit;
+	border: none;
+	outline: none;
+}
+	.dian{
+		display: inline-block;width: 6px;height: 6px;border-radius: 50%;    margin: 0 6px 0 0;
+	}
+</style>
+</head>
+<body>
+<div class="content appointment">
+	<div class="navigate_head clearfix">
+		<p class="" onclick="window.location.href='appointment_list.html'">预约管理列表</p>
+		<p class="navi_null"></p>
+	</div>
+	<!--头部功能-->
+	<div class="head_area flex_vertical" style="display: block;">
+		<div class="public_input margindiv">
+			<!--<span>关键词：</span>-->
+			<input type="text" class="keyWord" placeholder="患者姓名、手机号"/>
+		</div>
+		<div class="public_input margindiv">
+			<!--<span>预约状态：</span>-->
+			<select class="yuyueStatus" style="">
+				<option>全部预约状态</option>
+				<option value="success">已预约</option>
+				<option value="complete">已完成</option>
+				<option value="cancel">已取消</option>
+			</select>
+		</div>
+		<div class="public_input margindiv">
+			<!--<span>医院：</span>-->
+			<select class="hosSelect">
+				<option>全部医院</option>
+			</select>
+		</div>
+		<div class="public_input margindiv">
+			<!--<span>项目分类：</span>-->
+			<select class="projectClass">
+				<option>全部项目分类</option>
+				<option value="doctor">医生</option>
+				<option value="product">项目</option>
+				<option value="coupon">体验券</option>
+				<!--<option value="project">医美项目</option>-->
+
+			</select>
+		</div>
+		<button class="search" onclick="indexPage()">搜索</button>
+	</div>
+	<table>
+		<thead>
+			<tr>
+			<!--	<td>预约编号</td>-->
+				<td>患者姓名</td>
+				<td>联系方式</td>
+				<td>项目分类</td>
+				<td width="23%">项目名称</td>
+				<td>预约医院</td>
+				<td>预约时间</td>
+				<td>预约状态</td>
+			</tr>
+		</thead>
+		<tbody class="tbody">
+			<!--<tr>
+				<td><div class="flex_all_center"><img src="img/activity_manage/select.png"/>&nbsp;<span>921614597713019</span></div></td>
+				<td>2017-08-12</td>
+				<td>2017-03-02</td>
+				<td>176 0652 0935</td>
+				<td>口腔科</td>
+				<td>蔡晓云(杭州梦桃口腔门诊部)</td>
+				<td>补牙</td>
+				<td>预约已取消</td>
+				<td>
+					<button class="btn_red">删除</button>
+				</td>
+			</tr>-->
+		</tbody>
+	</table>
+	<!--分页-->
+	<div class="page flex_vertical">
+		<button class="" onclick="indexPage()">首页</button>&nbsp;
+		<button class="" onclick="backPage()"><上一页</button>&nbsp;
+		<!--页码-->
+		<p class="page_num">
+			<!--<span>1</span><span>2</span><span>3</span><span>4</span><span>5</span>-->
+		</p>....
+		<button class="" onclick="nextPage()">下一页></button>&nbsp;
+		<button class="" onclick="endPage()">末页</button>&nbsp;
+		共<span class="all_recode">0 </span>记录&nbsp;|
+		共<span class="all_page">0 </span>页&nbsp;
+		到第<input class="select_page" />页&nbsp;
+		<button class="confirm_page" onclick="skipPage()">确定</button>
+	</div>
+</div>
+<script type="text/javascript" src="plug/jquery-1.11.3.min.js" ></script>
+<script type="text/javascript" src="plug/template-web.js"></script>
+<script type="text/javascript" src="js/layui/layui.js"></script>
+<script type="text/javascript" src="js/toggle.js" ></script>
+<script type="text/javascript" src="js/util.js"></script>
+<script type="text/javascript" src="js/method.js"></script>
+<script type="text/javascript" src="js/page.js"></script>
+<script type="text/javascript" src="js/jquery.combo.select.js"></script>
+<script id="test_appointment_list" type="text/html">
+	{{each data value}}
+		<tr>
+			<!--<td>
+				<div class="flex_all_center">
+					&lt;!&ndash;<img src="img/activity_manage/select.png"/>&nbsp;&ndash;&gt;
+					<span>{{value.sn}}</span>
+				</div>
+			</td>-->
+			<td style="color: #00AFA1;cursor: pointer" onclick="userOpen(this)" valueusername="{{value.fullname}}" valuemobile="{{value.mobile}}">{{value.fullname}}</td>
+			<td>{{value.mobile}}</td>
+			<td>
+				{{if value.type== "doctor"}}医生{{else if value.type == "coupon"}}体验券{{else if value.type == "product"}}项目{{else if value.type == "project"}}医美项目{{/if}}
+			</td>
+			<td>{{value.name}}</td>
+			<td>{{value.hospitalName}}</td>
+			<td>{{value.reservationDate}}</td>
+			<td>{{if value.status== "complete"}}<span class="dian" style="background-color: #0aba07;"></span><span>已完成</span>{{else if value.status == "success"}}<span class="dian" style="background-color: #666"></span><span>已预约</span>{{else if value.status == "cancel"}}<span class="dian" style="background-color: #ff2f1b"></span><span>已取消</span>{{/if}}</td>
+		</tr>
+	{{/each}}
+</script>
+<!--医院列表-->
+<script type="text/html" id="test_hos_list">
+	{{each data value}}
+	<option value="{{value.id}}">{{value.name}}</option>
+	{{/each}}
+</script>
+<script>
+    //初始化医院列表
+    $.initHosSelect("/admin/hospital/getCertList.json",'test_hos_list',".hosSelect");
+//请求方法
+function reqPage(data){
+	console.log(data);
+	control_page.init_page(data,function(data){
+		//调用ajax
+		$.get_ajax("/admin/reservation/getList.json",data,function(data){
+			console.log(data);
+			var html = template('test_appointment_list',data);
+			$(".tbody").html(html);
+			//初始化分页
+			control_page.currentPage(control_page.page_num,data.totalCount);
+		});
+	});
+}
+</script>
+<script>
+$(function(){
+	reqPage(control_page.getData());
+});
+function search(obj) {
+    console.log(obj)
+    //基本条件
+    if(obj == undefined){
+        var data = control_page.getData();
+    }else{
+        var data = obj;
+    }
+    //预约状态
+    var proj_name = $(".yuyueStatus").val();
+    if(proj_name != '全部预约状态'){
+        data.status = proj_name;
+    }
+    //关键词
+    if($('.keyWord').val() != ""){
+        data.keyword = $('.keyWord').val();
+    }
+    //医院
+    if($(".hosSelect").val() != '全部医院'){
+        data.hospitalId = $(".hosSelect").val();
+    }
+    //项目分类
+    if($(".projectClass").val() != '全部项目分类'){
+        data.type = $(".projectClass").val();
+    }
+    reqPage(data);
+}
+</script>
+</body>
+</html>

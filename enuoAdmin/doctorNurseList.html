@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="css/base.css" />
+<link rel="stylesheet" href="css/util.css" />
+<link rel="stylesheet" href="css/collect.css" />
+	<link href="css/combo.select.css" rel="stylesheet" />
+	<link rel="stylesheet" href="plug/css/fsgallery.css" />
+
+<!--	<link rel="stylesheet" href="js/layui/css/layui.css" media="all" />-->
+<title>医护管理</title>
+<style>
+.head_area .public_input span{
+	width: 100px;font-size: 18px;
+}
+.head_area .public_input input,
+.head_area .public_input select{
+	width: 180px;margin-left: 10px;margin-right: 10px;
+}
+.content .head_area .combo-select input{
+	width: inherit;
+	border: none;
+	outline: none;
+}
+	.noClick{
+		height: 24px;
+		line-height: 23px;
+		padding: 0 5px;
+		background-color: #cccccc;
+		color: white;
+		border: 1px solid #cccccc;
+		border-radius: 4px;
+		font-size: 12px;
+		margin-right: 8px;
+	}
+	.notpassClick{
+		height: 24px;
+		line-height: 23px;
+		padding: 0 5px;
+		background-color: white;
+		color: black;
+		border: 1px solid #cccccc;
+		border-radius: 4px;
+		font-size: 12px;
+		margin-right: 8px;
+		cursor: pointer;
+	}
+	.Click{
+		height: 24px;
+		line-height: 23px;
+		padding: 0 5px;
+		background-color: #00afa1;
+		color: white;
+		border: 1px solid #cccccc;
+		border-radius: 4px;
+		font-size: 12px;
+	}
+	.doctorNurseImg img{
+		max-height: 100px;
+	}
+</style>
+</head>
+<body>
+<div class="content cure_order">
+	<div class="tabHref">
+		<p onclick="window.location.href='community_list.html'">社区管理</p>
+		<p onclick="window.location.href='doctorNurseList.html'" class="navi_current">医护管理</p>
+		<p onclick="window.location.href='healthman_list.html'">健管师管理</p>
+		<p onclick="window.location.href='healthPitent_list.html'">患者管理</p>
+		<p onclick="window.location.href='bodyInfo_list.html'">体征模板管理</p>
+	</div>
+	<!--<div class="navigate_head clearfix">
+		<p class="" onclick="window.location.href='tixianCheck.html'">医护管理</p>
+		<p class="navi_null"></p>
+	</div>-->
+	<!--头部功能-->
+	<div class="head_area flex_vertical" style="display: block;">
+		<!--<div class="public_input margindiv">
+			&lt;!&ndash;<span>搜索医院:</span>&ndash;&gt;
+			<select class="job_title hosSelect">
+				<option>全部医院</option>
+			</select>
+		</div>-->
+		<!--<div class="public_input margindiv">
+			&lt;!&ndash;<span>搜索状态:</span>&ndash;&gt;
+			<select class="job_title searchStatus">
+				<option>全部状态</option>
+				<option value="waitPaid">待支付</option>
+				<option value="waitConfirm">待确认</option>
+				<option value="completed">去结算</option>
+				<option value="cancelled">已取消</option>
+				<option value="handle">已完成</option>
+			</select>
+		</div>-->
+
+		<div class="public_input margindiv">
+			<!--<span >搜索患者：</span>-->
+			<input type="text" class="proj_name" placeholder="姓名、手机号"/>
+		</div>
+		<button class="search" style="width: 70px;" onclick="indexPage()">搜索</button>
+		
+	</div>
+	<table>
+		<thead>
+			<tr>
+				<td>序号</td>
+				<td>姓名</td>
+				<td>性别</td>
+				<td>身份证号</td>
+				<td>手机号</td>
+				<td>所属社区</td>
+				<td>角色</td>
+				<td width="20%">自我简介</td>
+				<td>管理病人</td>
+				<td>实名认证</td>
+				<td>医/护认证</td>
+				<td>操作</td>
+			</tr>
+		</thead>
+		<tbody class="tbody">
+			<!--<tr>
+				<td><div class="flex_all_center"><img src="img/activity_manage/select.png"/>&nbsp;<span>921614597713019</span></div></td>
+				<td>蔡晓云</td>
+				<td>176 0652 0935</td>
+				<td>2017-08-12</td>
+				<td>杭州梦桃口腔门诊部</td>
+				<td>双眼皮<p>结算金额：0元</p></td>
+				<td>
+					<div class="flex_all_center">
+						<button class="btn_green">去结算</button>&nbsp;<button class="btn_red"><img src="img/close-2.png"/></button>
+					</div>
+					<p>放款时间：1970-01-16</p>
+				</td>
+			</tr>-->
+		</tbody>
+	</table>
+	<!--分页-->
+	<div class="page flex_vertical">
+		<button class="" onclick="indexPage()">首页</button>&nbsp;
+		<button class="" onclick="backPage()"><上一页</button>&nbsp;
+		<!--页码-->
+		<p class="page_num">
+			<!--<span>1</span><span>2</span><span>3</span><span>4</span><span>5</span>-->
+		</p>....
+		<button class="" onclick="nextPage()">下一页></button>&nbsp;
+		<button class="" onclick="endPage()">末页</button>&nbsp;
+		共<span class="all_recode">0 </span>记录&nbsp;|
+		共<span class="all_page">0 </span>页&nbsp;
+		到第<input class="select_page" />页&nbsp;
+		<button class="confirm_page" onclick="skipPage()">确定</button>
+	</div>
+</div>
+<!--遮罩层-->
+<div class="shade none" style="z-index: 9"></div>
+<!--弹框-->
+<div class="popup_box popup_box_shenhe none" style="width: 600px;top: 70px;min-height: 230px;z-index: 10">
+	<p class="img_close clearfix">
+		<img src="img/close.png" onclick="close_box()"/>
+	</p>
+	<div>
+		<div class="public_input" style="height: auto">
+			<div class="doctorNurseImg" style="width: 600px;">
+				<div style="width: 175px;display: inline-block;text-align: center">
+					<p class="practisingCertificateImgP">执业证</p>
+					<img class="practisingCertificateImg" src="">
+				</div>
+				<div style="width: 175px;display: inline-block;text-align: center">
+					<p class="qualificationCertificateP">资格证</p>
+					<img class="qualificationCertificate" src="">
+				</div>
+				<div style="width: 175px;display: inline-block;text-align: center">
+					<p>其他图片</p>
+					<img class="otherPic" src="">
+				</div>
+			</div>
+			<span style="width: 80px;">审核:</span>
+			<input type="button" class="bg_green enabled" value="通过" data_val="true"/><input type="button" class="disable" value="不通过" data_val="false"/>
+		</div>
+		<div class="public_input clearfix cause_parent" style="display: none;">
+			<span style="width: 80px;float: left;">原因:</span>
+			<textarea class="cause" style="margin-left: 30px;width: 320px;float: left;min-height: 80px;"></textarea>
+		</div>
+	</div>
+	<p class="confirm">确 定</p>
+</div>
+<script type="text/javascript" src="plug/jquery-1.11.3.min.js" ></script>
+<script type="text/javascript" src="plug/template-web.js"></script>
+<script type="text/javascript" src="js/layui/layui.js"></script>
+<script type="text/javascript" src="js/toggle.js" ></script>
+<script type="text/javascript" src="js/util.js"></script>
+<script type="text/javascript" src="js/method.js"></script>
+<script type="text/javascript" src="js/page.js"></script>
+<script type="text/javascript" src="js/layui/layui.js"></script>
+<script type="text/javascript" src="js/jquery.combo.select.js"></script>
+<script type="text/javascript" src="plug/fs_forse.js" ></script>
+<!--医院列表-->
+<script type="text/html" id="test_hos_list">
+	{{each data value}}
+	<option value="{{value.id}}">{{value.name}}</option>
+	{{/each}}
+</script>
+
+<script>
+    thisPageLoad();
+    function thisPageLoad() {
+        var enuoCurrUrl = window.location.pathname.split('/enuoAdmin/')[1]
+        window.localStorage.setItem("enuoCurrUrl",enuoCurrUrl);
+    }
+    //初始化医院列表
+    $.initHosSelect("/admin/hospital/getCertList.json",'test_hos_list',".hosSelect");
+//请求方法
+function reqPage(data){
+	console.log(data);
+    data.all = true;
+	control_page.init_page(data,function(data){
+		//调用ajax
+		$.get_ajax("/admin/community_user_role/doctorOrNurse",data,function(data){
+			console.log(data);
+			if(data.success == true){
+                $(".tbody").html('');
+                var html = '';
+                data.data.forEach(function (value,index) {
+                    html += '<tr valueid="'+value.id+'">' +
+                        '<td>'+ Number(index + 1)+'</td>' +
+                        '<td onclick="userOpen(this)" style="color: #00AFA1;cursor: pointer" valueusername="'+value.fullname+'" valuemobile="'+value.mobile+'">'+value.fullname+'</td>' +
+                        '<td>'+returnSex(value.sex)+'</td>'+
+                   		 '<td>'+noData(value.idCard)+'</td>'+
+                    	 '<td>'+value.mobile+'</td>'+
+                        '<td>'+value.communityName+'</td>'+
+                        '<td>'+value.roleName+'</td>'+
+                  /*  if(value.type=="CANNAL" || value.type=="HAS_CASH"){
+                        html +='<td style="color: #00AFA1;cursor: pointer" onclick="rechargeAmountOpen(this)" data_id="'+value.id+'" data_username="'+value.fullname+'">'+Number(Number(value.rechargeAmount)).toFixed(2)+'</td>'
+					}else{
+                        html +='<td style="color: #00AFA1;cursor: pointer" onclick="rechargeAmountOpen(this)" data_id="'+value.id+'" data_username="'+value.fullname+'">'+Number(Number(value.rechargeAmount) + Number(value.cashWithdrawalAmount)).toFixed(2)+'</td>'
+					}*/
+						'<td title="'+value.selfDescription+'">'+returnSubstring(value.selfDescription,20)+'</td>' ;
+
+                    if(value.managerPatientSize > 0){
+                        html += '<td onclick="openPerson(this)" valueid="'+value.id+'" style="color: #00AFA1;cursor: pointer">'+value.managerPatientSize+'</td>'
+                    }else{
+                        html += '<td>'+value.managerPatientSize+'</td>'
+                    }
+                    if(value.actualNameCertification == true){
+                        html += '<td>已实名</td>'
+                    }else{
+                        html += '<td>未实名</td>'
+                    }
+                    if(value.state=="approval"){
+                        html += '<td>审核中</td>'
+						if(value.roleName == '医生'){
+                            html +='<td><input type="button" class="Click" style="border: none;cursor: pointer" role="'+value.roleName+'" practisingCertificateImg="'+value.practisingCertificate+'" qualificationCertificateImg="'+value.qualificationCertificate+'" otherPicImg="'+value.otherPic+'" doctorid="'+value.doctorId+'" onclick="openShenhe(this)"  value="去审核"/></td>'
+						}else if(value.roleName == '护士'){
+                            html +='<td><input type="button" class="Click" style="border: none;cursor: pointer" role="'+value.roleName+'" practisingCertificateImg="'+value.practisingCertificate+'" qualificationCertificateImg="'+value.qualificationCertificate+'" otherPicImg="'+value.otherPic+'" doctorid="'+value.nurseId+'" onclick="openShenhe(this)"  value="去审核"/></td>'
+						}
+
+                        //html +='<td><input type="button" onclick="notpassAccount(this)" class="notpassClick" value="驳回"/><input type="button" onclick="passAccount(this)" style="cursor: pointer;border: none" class="Click" value="通过"/></td>'
+                    }else if(value.state=="adopt"){
+                        html += '<td>已通过</td>'
+                        html +='<td><input type="button" class="Click" style="background-color: white;color: #00afa1;border: 1px solid #00afa1;" value="已通过"/></td>'
+                    }else if(value.state=="reject"){
+                        html += '<td>已驳回</td>'
+                        html +='<td><input type="button" class="noClick" value="已驳回"/></td>'
+                    }else{
+                        html += '<td></td>'
+                    }
+                    html +='</tr>';
+                    $(".tbody").html(html);
+                })
+			}else{
+			    if(data.data == '尚未登录'){
+                    parent.location.href = "login.html";
+				}else{
+                    alert(data.data);
+				}
+			}
+			//初始化分页
+			control_page.currentPage(control_page.page_num,data.totalCount);
+		});
+	});
+}
+	var role = '';
+	var doctor_id = "";
+    var practisingCertificate = ""; //执业证
+    var qualificationCertificate = "";//资格证
+    var otherPic = "";//其他证
+function openShenhe(m) {
+    $(".shade,.popup_box_shenhe").show();
+    if(role == '医生'){
+       $('.practisingCertificateImgP').text('医师执业证');
+        $('.qualificationCertificateP').text('医师资格证');
+    }else if(role == '护士'){
+        $('.practisingCertificateImgP').text('护士执业证');
+        $('.qualificationCertificateP').text('护士资格证');
+    }
+    role = $(m).attr("role");
+    doctor_id = $(m).attr("doctorid");
+    practisingCertificate =  $(m).attr("practisingCertificateImg");
+    qualificationCertificate = $(m).attr("qualificationCertificateImg");
+    otherPic =  $(m).attr("otherPicImg");
+    $('.practisingCertificateImg').attr('src',practisingCertificate);
+    $('.qualificationCertificate').attr('src',qualificationCertificate);
+    $('.otherPic').attr('src',otherPic);
+    $('.doctorNurseImg img').fsgallery();
+}
+    //设置审核状态
+    var flag = 'true';
+    $(".enabled,.disable").click(function(){
+        flag = $(this).addClass("bg_green").attr("data_val");
+        $(this).siblings().removeClass("bg_green");
+        console.log(flag);
+        if(flag == "false"){
+            console.log("未通过");
+            $(".cause_parent").show();
+        }else{
+            $(".cause_parent").hide();
+        }
+    });
+    //审核确定
+    $(".confirm").click(function(){
+        var url;
+        $(".shade,.popup_box").hide();
+        if(role == '医生'){
+            url = '/admin/community_doctor/approval';
+		}else if(role == '护士'){
+            url = '/admin/community_nurse/approval';
+        }
+        var data = {"id": doctor_id}
+        console.log(data);
+
+        if (flag == "false") {
+            if (!$.verify($(".cause").val(), "未通过原因")) {
+                return false;
+            }
+            data.state = 'reject';
+            data.stateRemark = $(".cause").val();
+        }else if(flag == "true"){
+            data.state = 'adopt';
+		}
+        $.post_ajax(url,data,function(data){
+            if(data.success==true){
+                alert("审核完成");
+                //window.location.href = "hos_list.html";
+                parent.window.location.reload();
+            }else{
+                alert(data.data);
+            }
+        });
+    });
+
+</script>
+<script>
+console.log($.page_num);//当前页
+$(function(){
+	reqPage(control_page.getData());
+});
+function search(obj) {
+    console.log(obj)
+    //基本条件
+    if(obj == undefined){
+        var data = control_page.getData();
+    }else{
+        var data = obj;
+    }
+    //关键词
+    if($('.proj_name').val() != ""){
+        data.keyword = $('.proj_name').val();
+    }
+
+    reqPage(data);
+}
+</script>
+</body>
+</html>

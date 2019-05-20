@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="css/base.css" />
+<link rel="stylesheet" href="css/util.css" />
+<link rel="stylesheet" href="css/collect.css" />
+<title>添加分销商</title>
+</head>
+<body>
+<div class="content add_salesman">
+	<div class="navigate_head clearfix">
+		<p onclick="window.location.href='salesmanChild_list.html?v=88888'">分销商信息</p>
+		<p onclick="window.location.reload()" class="navi_current">添加分销商</p>
+		<p class="navi_null"></p>
+	</div>
+	<div>
+		<form class="add_role_form">
+			<div class="public_input codeInput">
+				<span>编号:</span>
+				<input type="text" class="code" placeholder="分销商编号"/>
+			</div>
+			<div class="public_input">
+				<span>姓名:</span>
+				<input type="text" class="name" placeholder="姓名"/>
+			</div>
+			<div class="public_input">
+				<span>手机号:</span>
+				<input type="text" class="mobile" placeholder="手机号(选填)"/>
+			</div>
+			<div class="public_input psdInput">
+				<span>密码:</span>
+				<input type="password" class="pwd" placeholder="密码"/>
+			</div>
+			<div class="public_input">
+				<span>店铺名:</span>
+				<input type="text" class="storeName" placeholder="店铺名"/>
+			</div>
+			<div class="public_input psdInput">
+				<span>地址:</span>
+				<input type="text" class="address" placeholder="店铺地址"/>
+			</div>
+			<div class="public_input">
+				<span>所属业务员:</span>
+				<select class="salesman_name salesman_name_one">
+					<option>全部业务员</option>
+					<option value="0">无</option>
+				</select>
+			</div>
+			<div class="public_input">
+				<span>是否启用:</span>
+				<input type="button" class="enabled" value="启用" data_val="true"/><input type="button" class="disable" value="禁用" data_val="false"/>
+			</div>
+			<div class="public_input confrim_btn">
+				<span>.</span>
+				<input type="button" class="confrim_add_salesman" value="添加"/>
+			</div>
+		</form>
+	</div>
+</div>
+	
+	
+<script type="text/javascript" src="plug/jquery-1.11.3.min.js" ></script>
+<script type="text/javascript" src="plug/template-web.js"></script>
+<script type="text/javascript" src="js/toggle.js" ></script>
+<script type="text/javascript" src="js/util.js"></script>
+<script type="text/javascript" src="js/method.js"></script>
+<!--业务员列表-->
+<script type="text/html" id="test_salesman_list">
+	{{each data value}}
+	<option value="{{value.id}}">{{value.name}}</option>
+	{{/each}}
+</script>
+<script>
+    //所属业务员列表
+	$.initSelect("/admin/salesman/getEnabledList.json",'test_salesman_list',".salesman_name_one");
+    if(getQueryString('log') == 'reset'){
+        $('.navi_current').text('修改分销商');
+        $('.confrim_add_salesman').val('修改');
+        $('.codeInput,.psdInput').hide();
+        $.get_ajax("/admin/business/getDetail.json",{id:getQueryString('valueid')},function(data){
+            if(data.success==true){
+               $(".code").val(data.data.code);
+               $(".name").val(data.data.name);
+                $(".mobile").val(data.data.mobile);
+                $(".pwd").val(data.data.password);
+                $(".storeName").val(data.data.storeName);
+                $(".address").val(data.data.address);
+                $(".salesman_name_one").val(data.data.salesmanId);
+                if(data.data.enabled == true){
+					$('.enabled').click();
+				}else if(data.data.enabled == false){
+                    $('.disable').click();
+				}
+            }else{
+                alert(data.data);
+            }
+        });
+    }
+$(function(){
+	var flag=true;//默认启用
+	$(".enabled,.disable").click(function(){
+		flag = $(this).addClass("bg_green").attr("data_val");
+		$(this).siblings().removeClass("bg_green");
+		console.log(flag);
+	});
+	
+	$(".confrim_add_salesman").click(function(){
+        var code = $(".code").val();
+		var name = $(".name").val();
+		var mobile = $(".mobile").val();
+		var pwd = $(".pwd").val();
+        var storeName = $(".storeName").val();
+        var address = $(".address").val();
+		
+		var data = {
+            "code":code,
+			"name":name,
+			"mobile":mobile,
+			"password":pwd,
+			"enabled":flag,
+            "storeName":storeName,
+            "address":address
+		}
+        var dataReset = {
+		    "id":getQueryString('valueid'),
+            "name":name,
+            "mobile":mobile,
+            "enabled":flag,
+            "storeName":storeName,
+            "address":address
+        }
+        //业务员
+        var salesmanname = $(".salesman_name_one").val();
+        if(salesmanname != "全部业务员"){
+            data.salesmanId = salesmanname;
+            dataReset.salesmanId = salesmanname;
+        }
+		//验证
+		if(!$.verify(name,"姓名")){return false;}
+		//if(!$.verifyPhoneNull(mobile,"手机号")){return false;}
+        if(getQueryString('log') == 'reset'){
+            var url = '/admin/business/update';
+            var Data = dataReset;
+        }else{
+            if(!$.verify(pwd,"密码")){return false;}
+            var url = '/admin/business/add';
+            var Data = data;
+		}
+		$.post_ajax(url,Data,function(data){
+			if(data.success==true){
+				alert(data.data);
+				window.location.href = "salesmanChild_list.html";
+			}else{
+				alert(data.data);
+			}
+		});
+	});
+});
+</script>
+</body>
+</html>

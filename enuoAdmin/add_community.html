@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="css/base.css" />
+<link rel="stylesheet" href="css/util.css" />
+<link rel="stylesheet" href="css/collect.css" />
+<link rel="stylesheet" href="plug/webuploader/webuploader.css" />
+<title>添加社区</title>
+<style>
+	/*图片上传*/
+#filePicker{
+	display: inline-block;
+	/*border: 1px solid red;*/
+	height: 40px;
+}
+#filePicker .webuploader-pick{
+	height: 40px;line-height: 40px;
+	width: 120px;
+	/*border: 1px solid black;*/
+	padding: 0;
+	letter-spacing: 1px;
+	font-size: 16px;
+	border-radius:5px ;
+}
+.preview>div{
+	display: inline-block;
+	margin-left: 3px;
+}
+
+/*动态增减元素*/
+.ele_container{
+	border: 1px solid #DCDCDC;
+	border-radius: 5px;
+	width: 400px;
+	min-height: 40px;
+	margin-left: 235px;
+}
+.ele_container p{
+	display: inline-block;
+	height: 40px;line-height: 40px;
+	border: 1px solid #DCDCDC;
+	padding: 0 10px;
+	position: relative;
+	border-radius: 5px;
+	margin: 5px 10px 5px 0;
+}
+.ele_container p:hover>img{
+	position: absolute;
+	top: -3px;right: -3px;
+	display: block !important;
+}
+	.ele_container input{
+		height: 40px;
+		line-height: 40px;
+		width: 400px;
+		border-radius: 5px;
+		text-indent: 20px;
+	}
+</style>
+</head>
+<body>
+<div class="content add_tyq_type">
+	<div class="tabHref">
+		<p onclick="window.location.href='community_list.html'" class="navi_current">社区管理</p>
+		<p onclick="window.location.href='doctorNurseList.html'">医护管理</p>
+		<p onclick="window.location.href='add_healthman.html'">健管师管理</p>
+		<p onclick="window.location.href='healthPitent_list.html'">患者管理</p>
+	</div>
+	<div class="navigate_head clearfix">
+		<p onclick="window.location.href='community_list.html'">社区列表</p>
+		<p onclick="window.location.href='add_community.html'" class="navi_current">添加社区</p>
+		<p class="navi_null"></p>
+	</div>
+	<div>
+		<form class="add_role_form">
+			<div class="public_input">
+				<span>社区名称:</span>
+				<input type="text" class="community_name" placeholder="请输入社区名称"/>
+			</div>
+			<div class="public_input">
+				<span>参与医院:</span>
+				<select class="hos_address_province"style="width: 125px;">
+					<option>省份</option>
+				</select>
+				<select class="hos__address_city"style="width: 125px;margin-left: 5px;">
+					<option>地级市</option>
+				</select>
+				<select class="hos__address_county"style="width: 125px;margin-left: 5px;">
+					<option>区、县级市</option>
+				</select>
+				<select class="hos__address_county_tree"style="width: 125px;margin-left: 5px;">
+					<option>街道、乡镇</option>
+				</select>
+			</div>
+			<div class="ele_container">
+				<input type="text" class="community_address" placeholder="请输入社区详细地址"/>
+				<!--<p data_val=""><span>医院名称</span><img src="img/close2.png" class="none" onclick='del_element(this)'/></p>-->
+			</div>
+			<div class="public_input">
+				<span>是否启用:</span>
+				<input type="button" class="enabled bg_green" value="启用" data_val="true"/><input type="button" class="disable" value="禁用" data_val="false"/>
+			</div>
+			<div class="public_input confrim_btn" style="    margin-top: 20px;">
+				<span>.</span>
+				<input type="button" class="confrim_add_tyq_type" value="添加"/>
+			</div>
+		</form>
+	</div>
+</div>
+	
+	
+<script type="text/javascript" src="plug/jquery-1.11.3.min.js" ></script>
+<script type="text/javascript" src="plug/template-web.js" ></script>
+<script type="text/javascript" src="js/toggle.js" ></script>
+<script type="text/javascript" src="js/util.js" ></script>
+<script type="text/javascript" src="js/method.js" ></script>
+<script type="text/javascript" src="js/control_element.js" ></script>
+<script type="text/javascript" src="plug/area.js" ></script>
+<!--省份列表-->
+<script type="text/html" id="test_province">
+	{{each data value}}
+	<option value="{{value.id}}">{{value.name}}</option>
+	{{/each}}
+</script>
+<!--地级市列表-->
+<script type="text/html" id="test_city">
+	{{each data value}}
+	<option value="{{value.id}}">{{value.name}}</option>
+	{{/each}}
+</script>
+<!--县级市，区列表-->
+<script type="text/html" id="test_county">
+	{{each data value}}
+	<option value="{{value.id}}">{{value.name}}</option>
+	{{/each}}
+</script>
+<script>
+	var province;
+	var city;
+	var county;
+	var tree;
+    $.get("plug/area.js","",function(data){
+		//var data = JSON.parse(data);
+        $('.hos_address_province').empty().append('<option>省份</option>');
+        province = JSON.parse(data);
+        province.forEach(function (value) {
+            $('.hos_address_province').append('<option value="'+value.code+'">'+value.name+'</option>');
+        })
+    });
+$(function(){
+    var flag=true;//默认启用
+    $(".enabled,.disable").click(function(){
+        flag = $(this).addClass("bg_green").attr("data_val");
+        $(this).siblings().removeClass("bg_green");
+        console.log(flag);
+    });
+    var address_province_id = "";//省id
+    var address_city_id = ""; //地级市id
+    var address_county_id = "";//县级市，区id
+    //初始化省份select
+    //$.initSelect("/common/getAreaList.json",'test_province',".hos_address_province");
+    //初始化地级市
+    $(".hos_address_province").change(function(){
+        address_province_id = $(".hos_address_province").val();
+        $('.hos__address_city').empty().append('<option>地级市</option>');
+        $('.hos__address_county').empty().append('<option>区、县级市</option>');
+        $('.hos__address_county_tree').empty().append('<option>街道、乡镇</option>');
+        var data = {
+            "parentId":address_province_id
+        }
+        province.forEach(function (value) {
+            if(value.code == address_province_id){
+                city = value.childs;
+                city.forEach(function (value) {
+                    console.log(value)
+                    $('.hos__address_city').append('<option value="'+value.code+'">'+value.name+'</option>');
+                })
+			}
+           // $('.hos_address_province').append('<option value="'+value.code+'">'+value.name+'</option>');
+        })
+        console.log(data);
+
+        //初始化地级市select
+        //$.initChildSelect("/common/getAreaList.json",data,'test_city',".hos__address_city","地级市");
+    });
+    //初始化县级市
+    $(".hos__address_city").change(function(){
+        address_city_id = $(".hos__address_city").val();
+        $('.hos__address_county').empty().append('<option>区、县级市</option>');
+        $('.hos__address_county_tree').empty().append('<option>街道、乡镇</option>');
+        var data = {
+            "parentId":address_city_id
+        }
+        city.forEach(function (value) {
+            if(value.code == address_city_id){
+                county = value.childs;
+                county.forEach(function (value) {
+                    console.log(value)
+                    $('.hos__address_county').append('<option value="'+value.code+'">'+value.name+'</option>');
+                })
+            }
+            // $('.hos_address_province').append('<option value="'+value.code+'">'+value.name+'</option>');
+        })
+        console.log(data);
+        //初始化县级市select
+        //$.initChildSelect("/common/getAreaList.json",data,'test_county',".hos__address_county","县市、区");
+    });
+    $(".hos__address_county").change(function(){
+        address_county_id = $(".hos__address_county").val();
+        $('.hos__address_county_tree').empty().append('<option>街道、乡镇</option>');
+        county.forEach(function (value) {
+            if(value.code == address_county_id){
+                tree = value.childs;
+                tree.forEach(function (value) {
+                    console.log(value)
+                    $('.hos__address_county_tree').append('<option value="'+value.code+'">'+value.name+'</option>');
+                })
+            }
+            // $('.hos_address_province').append('<option value="'+value.code+'">'+value.name+'</option>');
+        })
+    });
+
+	
+	$(".confrim_add_tyq_type").click(function(){
+		var name = $(".community_name").val();
+		var data = {
+			"name":name,
+            "provinceCode":address_province_id,
+            "provinceName":$('.hos_address_province option:selected').text(),
+            "cityCode":address_city_id,
+            "cityName":$('.hos__address_city option:selected').text(),
+			"areaCode":address_county_id,
+			"areaName":$('.hos__address_county option:selected').text(),
+            "rowCode":$('.hos__address_county_tree').val(),
+            "rowName":$('.hos__address_county_tree option:selected').text(),
+            "address":$('.community_address').val(),
+			"bOpen":flag
+		}
+		//验证
+		if(!$.verify(name,"社区名称")){return false;}
+        if(!$.verify($('.community_address').val(),"社区详细地址")){return false;}
+		$.post_ajax("/admin/community/edit",data,function(data){
+			if(data.success==true){
+				alert("添加成功");
+				window.location.href = "community_list.html";
+			}else{
+				alert(data.data);
+			}
+		});
+	});
+});
+</script>
+</body>
+</html>

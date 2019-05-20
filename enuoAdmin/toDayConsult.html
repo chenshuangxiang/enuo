@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="css/base.css" />
+<link rel="stylesheet" href="css/util.css" />
+<link rel="stylesheet" href="css/collect.css" />
+<title>今日咨询</title>
+</head>
+<body>
+<div class="content toDayConsult">
+	<div class="navigate_head clearfix">
+		<p class="navi_current" onclick="window.location.href='toDayConsult.html'">今日咨询</p>
+		<p class="" onclick="window.location.href='allConsult.html'">全部咨询</p>
+		<p class="navi_null"></p>
+	</div>
+	<!--头部功能-->
+	<div class="head_area flex_vertical">
+		<span style="font-size: 18px;">搜索医院：</span><select class="" style="width: 180px;"><option>全部</option></select>
+		<span style="font-size: 18px;">搜索状态：</span><select class="" style="width: 120px;"><option>全部</option></select>
+		<span style="font-size: 18px;">搜索患者：</span><input type="text" class="search" placeholder="姓名、账号、手机号）" style="width: 200px;"/><button>搜索</button>
+	</div>
+	<table>
+		<thead>
+			<tr>
+				<td>咨询时间</td>
+				<td>姓名</td>
+				<td>手机</td>
+				<td>咨询项目</td>
+				<td>客服</td>
+				<td>状态</td>
+				<td>回访记录</td>
+				<td>备注</td>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td><div class="flex_all_center"><img src="img/activity_manage/select.png"/>&nbsp;<span>2017-11-05</span></div></td>
+				<td>曹先生</td>
+				<td>176 0652 0935</td>
+				<td>...</td>
+				<td>丹丹</td>
+				<td>蔡晓云</td>
+				<td>骨与关节损伤</td>
+				<td>
+					补牙
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+<script type="text/javascript" src="plug/jquery-1.11.3.min.js" ></script>
+<script type="text/javascript" src="js/toggle.js" ></script>
+<script>
+
+</script>
+</body>
+</html>

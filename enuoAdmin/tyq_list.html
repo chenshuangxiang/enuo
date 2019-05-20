@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="css/base.css" />
+<link rel="stylesheet" href="css/util.css" />
+<link rel="stylesheet" href="css/collect.css" />
+<title>体验券列表</title>
+</head>
+<style>
+	.head_area .public_input input,
+	.head_area .public_input select{
+		width: 185px;margin-left: 10px;margin-right: 10px;
+	}
+</style>
+<body>
+<div class="content tyq">
+	<div class="navigate_head clearfix">
+		<p onclick="window.location.href='tyq_list.html'" class="navi_current">体验劵列表</p>
+		<p onclick="window.location.href='add_tyq.html'">添加体验劵</p>
+		<!--<p onclick="window.location.href='tyq_appointment.html'">体验劵预约</p>-->
+		<p onclick="window.location.href='tyq_type_list.html'">体验劵分类</p>
+		<p onclick="window.location.href='add_tyq_type.html'">添加分类</p>
+		<p class="navi_null"></p>
+	</div>
+	<!--头部功能-->
+	<div class="head_area ">
+		<div class="public_input margindiv">
+			<!--<span>产品名称:</span>-->
+			<!--<input type="text" class="role_name" placeholder="产品名称"/>-->
+			<select class="produce_name">
+				<option>全部产品名称</option>
+			</select>
+		</div>
+		<div class="public_input margindiv">
+			<!--<span>关键字:</span>-->
+			<input type="text" class="role_name" placeholder="姓名、手机号、券号"/>
+		</div>
+
+		
+		<div class="public_input margindiv">
+			<!--<span>业务员:</span>-->
+			<!--<input type="text" class="role_name" placeholder="业务员"/>-->
+			<select class="salesman_name">
+				<option>全部业务员</option>
+			</select>
+		</div>
+		<div class="public_input margindiv">
+			<!--<span>状态:</span>-->
+			<select class="statusSelect">
+				<option>全部状态</option>
+				<option value="wait">未预约</option>
+				<option value="success">已预约</option>
+				<option value="completed">已完成</option>
+				<option value="invalid">失效</option>
+			</select>
+		</div>
+		<button class="search" onclick="indexPage()">搜索</button>
+	</div>
+	<table>
+		<thead>
+			<tr>
+				<td>体验劵编号</td>
+				<td>产品名称</td>
+				<td>活动医院</td>
+				<td>业务员</td>
+				<td>用户手机号</td>
+				<td>患者姓名</td>
+				<td>产品失效时间</td>
+				<td>状态</td>
+				<td>操作</td>
+			</tr>
+		</thead>
+		<tbody class="tbody">
+			
+		</tbody>
+	</table>
+	<!--<div class="">
+		<button class="all_check btn_white" data_flag="0">全选</button><button class="btn_white">批量删除</button>
+	</div>-->
+	<!--分页-->
+	<div class="page flex_vertical">
+		<button class="" onclick="indexPage()">首页</button>&nbsp;
+		<button class="" onclick="backPage()"><上一页</button>&nbsp;
+		<!--页码-->
+		<p class="page_num">
+			<!--<span>1</span><span>2</span><span>3</span><span>4</span><span>5</span>-->
+		</p>....
+		<button class="" onclick="nextPage()">下一页></button>&nbsp;
+		<button class="" onclick="endPage()">末页</button>&nbsp;
+		共<span class="all_recode">0 </span>记录&nbsp;|
+		共<span class="all_page">0 </span>页&nbsp;
+		到第<input class="select_page" />页&nbsp;
+		<button class="confirm_page" onclick="skipPage()">确定</button>
+	</div>
+</div>
+<script type="text/javascript" src="plug/jquery-1.11.3.min.js" ></script>
+<script type="text/javascript" src="plug/template-web.js"></script>
+<script type="text/javascript" src="js/toggle.js" ></script>
+<script type="text/javascript" src="js/util.js"></script>
+<script type="text/javascript" src="js/method.js"></script>
+<script type="text/javascript" src="js/page.js"></script>
+<!--体验券列表-->
+<script id="test_tyq_list" type="text/html">
+{{each data value}}
+	<!--{{if value.orderStatus=="waitPaid"}}<button class="btn_white">待支付</button>{{else if value.orderStatus=="completed"}}<button class="btn_green" onclick="popup_box(this)">去结算</button>{{else if value.orderStatus=="waitConfirm"}}<button class="btn_white">待确认</button>{{else if value.orderStatus=="cancelled"}}<button class="btn_white">已取消</button>{{else if value.orderStatus=="handle"}}<button class="btn_white">完成</button>{{/if}}<!--&nbsp;<button class="btn_red"><img src="img/close-2.png"/></button>-->
+	<tr>
+		<td class="check" data_flag="1">
+			<div class="flex_all_center">
+				<!--<img src="img/activity_manage/select.png"/>&nbsp;-->
+				<span>{{value.sn}}</span>
+			</div>
+		</td>
+		<td>{{value.experienceCouponName}}</td>
+		<td>{{value.hospitalName}}</td>
+		<td>{{value.salesmanName}}</td>
+		<td>{{value.mobile}}</td>
+		<td>{{value.username}}</td>
+		<td>{{value.invalidDate}}</td>
+		<td>
+			{{if value.status=="wait"}}<span style="color: red">未预约</span>{{else if value.status=="success"}}已预约{{else if value.status=="completed"}}已完成{{else if value.status=="invalid"}}失效{{/if}}
+		</td>
+		<td data_id="{{value.id}}">
+			<button class="font_green" onclick="edit_tyq(this)">修改</button>
+			<!--&nbsp;<button class="font_green" onclick="del_tyq(this)">删除</button>-->  
+		</td>
+	</tr>
+{{/each}}
+</script>
+<!--产品列表-->
+<script type="text/html" id="test_produce_list">
+	{{each data value}}
+	<option value="{{value.id}}">{{value.name}}</option>
+	{{/each}}
+</script>
+<!--业务员列表-->
+<script type="text/html" id="test_salesman_list">
+	{{each data value}}
+	<option value="{{value.id}}">{{value.name}}</option>
+	{{/each}}
+</script>
+
+<script>
+	//请求方法
+function reqPage(data){
+	console.log(data);
+	control_page.init_page(data,function(data){
+		//调用ajax
+		$.get_ajax("/admin/experienceReservation/getList.json",data,function(data){
+			console.log(data);
+			var html = template('test_tyq_list',data);
+			$(".tbody").html(html);
+			//初始化分页
+			control_page.currentPage(control_page.page_num,data.totalCount);
+		});
+	});
+}
+
+//修改体验券
+function edit_tyq(m){
+	var tyq_id = $(m).parent().attr("data_id");
+	window.localStorage.setItem("tyq_id",tyq_id);
+	window.location.href = "edit_tyq.html"
+}
+//删除体验券
+function del_tyq(m){
+	var tyq_id = $(m).parent().attr("data_id");
+	var data = {
+		"id":tyq_id
+	}
+	$.post_ajax("/admin/experienceReservation/delete",data,function(data){
+		if(data.success==true){
+			alert("删除成功");
+			window.location.href = "tyq_list.html"
+		}else{
+			alert(data.data);
+		}
+	});
+}
+    //初始化产品列表
+    $.initSelect("/admin/experienceCoupon/getListBySelect.json",'test_produce_list',".produce_name");
+    //初始化业务员列表
+    $.initSelect("/admin/salesman/getEnabledList.json",'test_salesman_list',".salesman_name");
+</script>
+<script>
+$(function(){
+	reqPage(control_page.getData());
+    //搜索
+});
+function search(obj) {
+    console.log(obj)
+    //基本条件
+    if(obj == undefined){
+        var data = control_page.getData();
+    }else{
+        var data = obj;
+    }
+    //产品名称
+    var proj_name = $(".produce_name").val();
+    if(proj_name != '全部产品名称'){
+        data.experienceCouponId = proj_name;
+    }
+    //关键字
+    if($('.role_name').val() != ""){
+        data.keyword = $('.role_name').val();
+        console.log(data);
+    }
+    //业务员
+    if($(".salesman_name").val() != '全部业务员'){
+        data.salesmanId = $(".salesman_name").val();
+    }
+    //状态
+    if($(".statusSelect").val() != '全部状态'){
+        data.status = $(".statusSelect").val();
+    }
+    console.log(data);
+    reqPage(data);
+}
+</script>
+</body>
+</html>

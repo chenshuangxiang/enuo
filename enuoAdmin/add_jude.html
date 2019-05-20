@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="css/base.css" />
+<link rel="stylesheet" href="css/util.css" />
+<link rel="stylesheet" href="css/collect.css" />
+<title>添加诊断发布</title>
+</head>
+<body>
+<div class="content add_jude">
+	<div class="navigate_head clearfix">
+		<p onclick="window.location.href='judge_ill.html'">诊断发布</p>
+		<p onclick="window.location.href='add_jude.html'" class="navi_current">添加诊断发布</p>
+		<p onclick="window.location.href='cure_ill.html'">治疗发布</p>
+		<p class="navi_null"></p>
+	</div>
+	<div>
+		<form class="add_role_form">
+			<div class="public_input">
+				<span>症状:</span>
+				<input type="text" class="contact_username" placeholder="症状"/>
+			</div>
+			<p style="border-bottom: 1px solid #fb952c;"></p>
+			<div class="public_input">
+				<span><img />可能症状:</span>
+				<input type="text" class="contact_name" placeholder="可能症状"/><input class="new_add btn_orange" type="button" value="新增" />
+			</div>
+			<div class="public_input">
+				<span>鉴别诊断:</span>
+				<input type="password" class="contact_pwd" placeholder="鉴别诊断"/>
+			</div>
+			<p style="border-bottom: 1px dashed #DCDCDC;"></p>
+			<div class="public_input">
+				<span>建议检查项目:</span>
+				<input type="text" class="contact_phone" placeholder="建议检查项目"/>
+			</div>
+			<div class="public_input">
+				<span>可疑检查项目:</span>
+				<input type="text" class="contact_email" placeholder="可疑检查项目"/>
+			</div>
+			<div class="public_input confrim_btn">
+				<span>.</span>
+				<input type="button" class="confrim_add" value="添加"/>
+			</div>
+		</form>
+	</div>
+</div>
+	
+	
+<script type="text/javascript" src="plug/jquery-1.11.3.min.js" ></script>
+<script type="text/javascript" src="js/toggle.js" ></script>
+<script>
+
+</script>
+</body>
+</html>

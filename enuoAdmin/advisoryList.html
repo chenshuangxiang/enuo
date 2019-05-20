@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="css/base.css" />
+<link rel="stylesheet" href="css/util.css" />
+<link rel="stylesheet" href="css/collect.css" />
+<title>体验券列表</title>
+</head>
+<style>
+	.head_area .public_input input,
+	.head_area .public_input select{
+		width: 185px;margin-left: 10px;margin-right: 10px;
+	}
+</style>
+<body>
+<div class="content tyq">
+	<div class="navigate_head clearfix">
+		<p onclick="window.location.href='advisoryList.html'" class="navi_current">咨询列表</p>
+		<p onclick="window.location.href='backAdvisoryList.html'">打回咨询列表</p>
+		<!--
+		&lt;!&ndash;<p onclick="window.location.href='tyq_appointment.html'">体验劵预约</p>&ndash;&gt;
+		<p onclick="window.location.href='tyq_type_list.html'">体验劵分类</p>
+		<p onclick="window.location.href='add_tyq_type.html'">添加分类</p>-->
+		<p class="navi_null"></p>
+	</div>
+	<!--头部功能-->
+	<div class="head_area ">
+		<!--<div class="public_input margindiv">
+			&lt;!&ndash;<span>产品名称:</span>&ndash;&gt;
+			&lt;!&ndash;<input type="text" class="role_name" placeholder="产品名称"/>&ndash;&gt;
+			<select class="produce_name">
+				<option>全部产品名称</option>
+			</select>
+		</div>-->
+		<div class="public_input margindiv">
+			<!--<span>关键字:</span>-->
+			<input type="text" class="role_name" placeholder="姓名/手机号"/>
+		</div>
+
+		
+		<div class="public_input margindiv">
+			<!--<span>业务员:</span>-->
+			<!--<input type="text" class="role_name" placeholder="业务员"/>-->
+			<select class="salesman_name">
+				<option>全部咨询员</option>
+			</select>
+		</div>
+		<div class="public_input margindiv">
+			<!--<span>状态:</span>-->
+			<select name="status" class="status">
+				<option value="">根据分诊状态筛选</option>
+				<option value="unallot">未分诊</option>
+				<option value="allot">已分诊</option>
+			</select>
+		</div>
+
+		<div class="public_input margindiv">
+			<!--<span>状态:</span>-->
+			<select name="from" class="from">
+
+			</select>
+		</div>
+		<button class="search" onclick="indexPage()">搜索</button>
+	</div>
+	<table>
+		<thead>
+			<tr>
+				<!--<td>姓名</td>
+				&lt;!&ndash;<td>咨询时间</td>
+				<td>咨询医院</td>
+				<td>咨询病种</td>&ndash;&gt;
+				<td>来源</td>
+				<td>咨询员</td>
+				<td style="width: 30%">诉求</td>
+				<td>打回渠道</td>
+				<td>打回客服</td>
+				<td>打回时间</td>
+				<td>打回原因</td>-->
+				<td style="width: 87px;">咨询时间</td>
+				<td>姓名</td>
+				<td>联系方式</td>
+				<td>来源</td>
+				<td>咨询员</td>
+				<td>客服</td>
+				<td style="    max-width: 200px;">咨询病种</td>
+				<td>咨询医院</td>
+				<td>意向程度</td>
+				<td>状态</td>
+				<td>回访状态</td>
+			</tr>
+		</thead>
+		<tbody class="tbody">
+			
+		</tbody>
+	</table>
+	<!--<div class="">
+		<button class="all_check btn_white" data_flag="0">全选</button><button class="btn_white">批量删除</button>
+	</div>-->
+	<!--分页-->
+	<div class="page flex_vertical">
+		<button class="" onclick="indexPage()">首页</button>&nbsp;
+		<button class="" onclick="backPage()"><上一页</button>&nbsp;
+		<!--页码-->
+		<p class="page_num">
+			<!--<span>1</span><span>2</span><span>3</span><span>4</span><span>5</span>-->
+		</p>....
+		<button class="" onclick="nextPage()">下一页></button>&nbsp;
+		<button class="" onclick="endPage()">末页</button>&nbsp;
+		共<span class="all_recode">0 </span>记录&nbsp;|
+		共<span class="all_page">0 </span>页&nbsp;
+		到第<input class="select_page" />页&nbsp;
+		<button class="confirm_page" onclick="skipPage()">确定</button>
+	</div>
+</div>
+<!--遮罩层-->
+<div class="shade none"></div>
+<!--弹框-->
+<div class="popup_box popup_box_info none" style="width: 600px;margin-left: -295px;">
+	<p class="img_close clearfix">
+		<img src="img/close.png" onclick="close_box()"/>
+	</p>
+	<div>
+		<div class="public_input infoDiv" style="line-height: 30px;padding: 0 20px;">
+
+		</div>
+	</div>
+</div>
+<script type="text/javascript" src="plug/jquery-1.11.3.min.js" ></script>
+<script type="text/javascript" src="plug/template-web.js"></script>
+
+<script type="text/javascript" src="js/toggle.js" ></script>
+<script type="text/javascript" src="js/util.js"></script>
+<script type="text/javascript" src="js/method.js"></script>
+<script type="text/javascript" src="js/page.js"></script>
+<script type="text/javascript" src="js/layui/layui.js"></script>
+<!--产品列表-->
+<script type="text/html" id="test_produce_list">
+	{{each data value}}
+	<option value="{{value.id}}">{{value.name}}</option>
+	{{/each}}
+</script>
+<!--业务员列表-->
+<script type="text/html" id="test_salesman_list">
+	{{each data value}}
+	<option value="{{value.id}}">{{value.name}}</option>
+	{{/each}}
+</script>
+
+<script>
+    getFrom();
+	//请求方法
+function reqPage(data){
+	console.log(data);
+	control_page.init_page(data,function(data){
+		//调用ajax
+		$.get_ajax("/admin/customerService/getAdvisoryList.json",data,function(data){
+			console.log(data);
+            $(".tbody").html('');
+			var dataHtml = '';
+			data.data.forEach(function (value) {
+                dataHtml += '<tr>'
+                /* +'<td><input type="checkbox" name="checked" lay-skin="primary" lay-filter="choose"></td>'*/
+                /*if(value.customerServiceName == '' || value.customerServiceName == undefined || value.customerServiceName == null){*/
+             /*   dataHtml +='<td><input type="checkbox" name="allot" data_id="'+value.id+'" lay-skin="primary" lay-filter="choose"></td>'*/
+                /*}else{
+                    dataHtml +='<td></td>'
+                }*/
+                dataHtml +='<td>'+new Date(value.createDate).Format("yyyy-MM-dd hh:mm:ss")+'</td>'
+
+                dataHtml +='<td style="color: #1E9FFF;cursor: pointer"  onclick="userOpen(this)" valueid="'+value.id+'" patientid="'+value.patientId+'" valuemobile="'+value.mobile+'" valueusername="'+value.name+'">'+value.name+'</td>'
+                dataHtml +='<td>'+value.mobile+'</td>'
+                    +'<td>'+value.storeName+'</td>'
+                    +'<td>'+value.salesmanName+'</td>'
+                    +'<td>'+noData(value.customerServiceName)+'</td>'
+                    +'<td title="'+value.disease+'">'+returnSubstring(value.disease)+'</td>'
+                    +'<td>'+value.hospital+'</td>'
+                //if(value.intention == 'STRONG_INTENEION'){
+                    //dataHtml += '<td title="'+returnIntentStatus(value.intention)+'"><img style="width: 22px;" src="./img/intentGood.png">'+returnSubstringSize(returnIntentStatus(value.intention),5)+'</td>';
+                //}else{
+                    dataHtml += '<td title="'+returnIntentStatus(value.intention)+'">'+returnSubstringSize(returnIntentStatus(value.intention),5)+'</td>';
+                //}
+                if(value.status == "unallot"){
+                    dataHtml += '<td style="color:#f00">未分诊</td>';
+
+                }else if(value.status == "allot"){
+                    var allotHosList = '';
+                    if(value.allotJsons && value.allotJsons.length > 0){
+                        value.allotJsons.forEach(function (value) {
+                            allotHosList += value.hospital + '&#13;&#10;'
+                        })
+					}else{
+                        allotHosList = '未分诊';
+					}
+
+                    dataHtml += "<td style='color: #1E9FFF;cursor: pointer;' title='"+allotHosList+"' onclick='consultAlreadyFen(this)' valuelist='"+JSON.stringify(allotHosList)+"'>已分诊</td>";
+                }else{
+                    dataHtml += '<td>体验券</td>';
+                }
+                if(value.visitCount > 0){
+                    dataHtml += '<td style="color: #00a2d4;cursor: pointer;" valueid="'+value.id+'" onclick="news_reset_recordhis(this)">已回访/'+value.visitCount+'次</td>';
+                }else{
+                    dataHtml += '<td style="color: red">未回访</td>';
+                }
+                dataHtml += '<td><a class="layui-btn layui-btn-normal layui-btn-mini news_reset_dohis" style="padding: 0" onclick="news_reset_dohis(this)" valueid="'+value.id+'"  valuemobile="'+value.mobile+'" valueusername="'+value.name+'"></a>'
+                if(value.status != "notPass"){
+                    //dataHtml += '<a class="layui-btn layui-btn-normal layui-btn-mini news_reset_recordhis" style="padding: 0 9px;" onclick="news_reset_recordhis(this)" valueid="'+value.id+'" patientid="'+value.patientId+'" valuemobile="'+value.mobile+'" valueusername="'+value.name+'">回访</a></td>'
+                }else{
+                    //dataHtml += '<a class="layui-btn layui-btn-normal layui-btn-disabled layui-btn-mini news_reset_recordhis" disabled="disabled" style="padding: 0 9px;" onclick="news_reset_recordhis(this)" valueid="'+value.id+'" patientid="'+value.patientId+'" valuemobile="'+value.mobile+'" valueusername="'+value.name+'">回访</a></td>'
+                }
+                dataHtml += '</tr>';
+
+            })
+            $(".tbody").html(dataHtml);
+			//var html = template('test_tyq_list',data);
+			
+			//初始化分页
+			control_page.currentPage(control_page.page_num,data.totalCount);
+		});
+	});
+}
+    function news_reset_recordhis(obj) {
+        var id = $(obj).attr('valueid');
+        layui.use(['form','layer','jquery','layedit','table'],function() {
+            var form = layui.form,
+                table = layui.table,
+                layer = parent.layer === undefined ? layui.layer : parent.layer,
+                laypage = layui.laypage,
+                layedit = layui.layedit,
+                $ = layui.jquery;
+        var index = layui.layer.open({
+            title : "回访信息",
+            type : 2,
+            area:['90%','80%'],
+            content : "historyRecordAccess.html?id=" + id + '&v=222',
+            success : function(layero, index){
+
+            }
+        })
+        })
+    }
+    function getFrom() {
+        var url = getUrl() + "/common/getStores.json";
+        var Data = '';
+        ajaxGetRetInfo(url,Data,function (retInfo) {
+            if(retInfo.success){
+                $('.from').append('<option value="">根据来源筛选</option>');
+                retInfo.data.forEach(function (value) {
+                    $('.from').append('<option value="'+value.id+'">'+value.name+'</option>');
+                });
+            }
+        },'请求失败', 'GET', undefined, undefined);
+    }
+
+    //初始化产品列表
+    $.initSelect("/admin/experienceCoupon/getListBySelect.json",'test_produce_list',".produce_name");
+    //初始化业务员列表
+    $.initSelect("/admin/salesman/getEnabledList.json",'test_salesman_list',".salesman_name");
+</script>
+<script>
+$(function(){
+	reqPage(control_page.getData());
+    //搜索
+});
+function search(obj) {
+    console.log(obj)
+    //基本条件
+    if(obj == undefined){
+        var data = control_page.getData();
+    }else{
+        var data = obj;
+    }
+    //关键字
+    if($('.role_name').val() != ""){
+        data.keyword = $('.role_name').val();
+        console.log(data);
+    }
+    //业务员
+    if($(".salesman_name").val() != '全部咨询员'){
+        data.salesmanId = $(".salesman_name").val();
+    }
+    //状态
+    if($(".status").val() != ''){
+        data.status = $(".status").val();
+    }
+    //来源
+    if($(".from").val() != ''){
+        data.storeId = $(".from").val();
+    }
+    console.log(data);
+    reqPage(data);
+}
+</script>
+</body>
+</html>

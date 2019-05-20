@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="css/base.css" />
+<link rel="stylesheet" href="css/util.css" />
+<link rel="stylesheet" href="css/collect.css" />
+<title>业务员列表</title>
+</head>
+<style>
+	.saleCheckbox{
+		margin-right: 19px;
+		margin-bottom: 12px;
+		display: inline-block;
+		cursor: pointer;
+	}
+</style>
+<body>
+<div class="content employee">
+	<div class="tabHref">
+		<p onclick="window.location.href='community_list.html'">社区管理</p>
+		<p onclick="window.location.href='doctorNurseList.html'">医护管理</p>
+		<p onclick="window.location.href='healthman_list.html'">健管师管理</p>
+		<p onclick="window.location.href='healthPitent_list.html'"  class="navi_current">患者管理</p>
+		<p onclick="window.location.href='bodyInfo_list.html'">体征模板管理</p>
+	</div>
+	<!--<div class="navigate_head clearfix">
+		<p onclick="window.location.href='healthman_list.html'" class="navi_current">健管师列表</p>
+		<p onclick="window.location.href='add_healthman.html'">添加健管师</p>
+		<p class="navi_null"></p>
+	</div>-->
+	<div class="head_area flex_vertical">
+		<input type="text" class="search" placeholder="搜索姓名或手机号" style="width: 280px;"><button class="searchBtn" onclick="indexPage()">搜索</button>
+		<!--&nbsp;<button class="" style="position: absolute;right: 0;top: 0;">导出表格</button>-->
+	</div>
+	<table>
+		<thead>
+			<tr>
+				<td>序号</td>
+				<td>姓名</td>
+				<td>性别</td>
+				<td>联系方式</td>
+				<td>地区</td>
+				<td>实名认证</td>
+				<td>医生</td>
+				<td>护士</td>
+				<td>签约社区</td>
+				<td>健康助理</td>
+				<!--<td>健康档案</td>-->
+			</tr>
+		</thead>
+		<tbody class="tbody">
+			<!--<tr>
+				<td>1</td>
+				<td>张三</td>
+				<td>165 1238 6549</td>
+				<td>状态</td>
+				<td><button class="font_green">修改</button>&nbsp;&nbsp;<button class="font_green">删除</button></td>
+			</tr>-->
+		</tbody>
+	</table>
+	<!--分页-->
+	<div class="page flex_vertical">
+		<button class="" onclick="indexPage()">首页</button>&nbsp;
+		<button class="" onclick="backPage()"><上一页</button>&nbsp;
+		<!--页码-->
+		<p class="page_num">
+			<!--<span>1</span><span>2</span><span>3</span><span>4</span><span>5</span>-->
+		</p>....
+		<button class="" onclick="nextPage()">下一页></button>&nbsp;
+		<button class="" onclick="endPage()">末页</button>&nbsp;
+		共<span class="all_recode">0 </span>记录&nbsp;|
+		共<span class="all_page">0 </span>页&nbsp;
+		到第<input class="select_page" />页&nbsp;
+		<button class="confirm_page" onclick="skipPage()">确定</button>
+	</div>
+</div>
+<!--遮罩层-->
+<div class="shade none"></div>
+<!--弹框-->
+<div class="popup_box popup_box_sure none">
+	<p class="img_close clearfix">
+		<img src="img/close.png" onclick="close_box()"/>
+	</p>
+	<div>
+		<div class="public_input">
+			<span style="width: 500px;text-align: center;">确定设为主管？</span>
+		</div>
+	</div>
+	<p class="confirm" onclick="set_captain()" style="margin-left: 208px;">确 定</p>
+</div>
+<div class="popup_box popup_box_checkbox none">
+	<p class="img_close clearfix">
+		<img src="img/close.png" onclick="close_box()"/>
+	</p>
+	<div>
+		<div class="public_input" style="height: 0">
+			<span style="width: 281px;   margin-top: -30px; margin-left: 10px;    vertical-align: top;">您可以选择分配给此主管的业务员:</span>
+			<!--<input type="button" class="bg_green enabled" value="通过" data_val="true"/>
+			<input type="button" class="disable" value="不通过" data_val="false"/>
+			<input type="button" class="disable" value="不通过" data_val="false"/>-->
+			<br>
+
+		</div>
+		<div class="margindiv menberDiv" style="vertical-align: top;margin: -10px 20px 17px 20px;">
+			<!--<span>产品名称:</span>-->
+			<!--<input type="text" class="role_name" placeholder="产品名称"/>-->
+
+			<span valueid="5" class="saleCheckbox"><input class="menberCheckbox" type="checkbox"/><span onclick="checkedSpan(this)">陈乐芳</span></span>
+			<span valueid="6" class="saleCheckbox"><input class="menberCheckbox" type="checkbox"/><span onclick="checkedSpan(this)">陈乐芳</span></span>
+			<span valueid="7" class="saleCheckbox"><input class="menberCheckbox" type="checkbox"/><span onclick="checkedSpan(this)">陈乐芳</span></span>
+			<span valueid="8" class="saleCheckbox"><input class="menberCheckbox" type="checkbox"/><span onclick="checkedSpan(this)">陈乐芳</span></span>
+			<span valueid="9" class="saleCheckbox"><input class="menberCheckbox" type="checkbox"/><span onclick="checkedSpan(this)">陈乐芳</span></span>
+			<span valueid="0" class="saleCheckbox"><input class="menberCheckbox" type="checkbox"/><span onclick="checkedSpan(this)">陈乐芳</span></span>
+			<span valueid="10" class="saleCheckbox"><input class="menberCheckbox" type="checkbox"/><span onclick="checkedSpan(this)">陈乐芳</span></span>
+		</div>
+		<!--<div class="public_input clearfix cause_parent" style="display: none;">
+			<span style="width: 80px;float: left;">原因:</span>
+			<textarea class="cause" style="margin-left: 30px;width: 320px;float: left;min-height: 80px;"></textarea>
+		</div>-->
+	</div>
+	<p class="confirmSureStatus" onclick="allotMenbers()" style="margin-left: 208px;">确 定</p>
+</div>
+<script type="text/javascript" src="plug/jquery-1.11.3.min.js" ></script>
+<script type="text/javascript" src="plug/template-web.js"></script>
+<script type="text/javascript" src="js/toggle.js" ></script>
+<script type="text/javascript" src="js/util.js"></script>
+<script type="text/javascript" src="js/method.js"></script>
+<script type="text/javascript" src="js/page.js"></script>
+<script type="text/javascript" src="js/layui/layui.js"></script>
+<!--业务员列表-->
+<script id="test_salesman_list" type="text/html">
+{{each data as value i}}
+	<tr>
+		<td>{{i+1}}</td>
+		<td onclick="userOpen(this)" style="color: #00AFA1;cursor: pointer" valueusername="{{value.fullname}}" valuemobile="{{value.mobile}}">{{value.fullname}}</td>
+		<td>
+			{{if value.type=="man"}}男{{else if value.type=="woman"}}女{{else}}不详{{/if}}
+		</td>
+		<td>{{value.mobile}}</td>
+		<td>
+			{{value.provinceName}}{{value.cityName}}{{value.areaName}}
+		</td>
+		<td>
+			{{if value.actualNameCertification==true}} 已实名 {{else}}未实名{{/if}}
+		</td>
+		<td>
+			{{value.doctors[0].name}}
+		</td>
+		<td>
+			{{value.nurses[0].name}}
+		</td>
+		<td>
+			{{value.communityName}}
+		</td>
+		<td>
+			{{value.healthSupervisors[0].name}}
+		</td>
+	<!--	<td width="15%" data_id="{{value.id}}">
+		&lt;!&ndash;	<button class="font_green" onclick="edit_salesman(this)">修改</button>&ndash;&gt;
+			&lt;!&ndash;{{if value.type=="member"}}<button class="font_green" onclick="set_captain_open(this)">设为主管</button> {{else}}{{/if}}&ndash;&gt;
+			&lt;!&ndash;<button class="font_green" onclick="set_captain_open(this)">设为主管</button>&ndash;&gt;
+			&lt;!&ndash;&nbsp;<button class="font_green" onclick="del_tyq(this)">删除</button>&ndash;&gt;
+		</td>-->
+	</tr>
+{{/each}}
+</script>
+
+<script>
+    thisPageLoad();
+    function thisPageLoad() {
+        var enuoCurrUrl = window.location.pathname.split('/enuoAdmin/')[1]
+        window.localStorage.setItem("enuoCurrUrl",enuoCurrUrl);
+    }
+//请求方法
+function reqPage(data){
+	console.log(data);
+	control_page.init_page(data,function(data){
+		//调用ajax
+		$.get_ajax("/admin/community_user_role/patient",data,function(data){
+			console.log(data);
+			var html = template('test_salesman_list',data);
+			$(".tbody").html(html);
+			//初始化分页
+			control_page.currentPage(control_page.page_num,data.totalCount);
+		});
+	});
+}
+</script>
+<script>
+$(function(){
+	reqPage(control_page.getData());
+});
+function search(obj) {
+    //基本条件
+//		var data = control_page.getData();
+    if(obj == undefined){
+        var data = control_page.getData();
+    }else{
+        var data = obj;
+    }
+    //项目名称
+    var keyword = $(".search").val();
+    if(keyword != ""){
+        data.keyword = keyword;
+    }
+    reqPage(data);
+}
+</script>
+</body>
+</html>

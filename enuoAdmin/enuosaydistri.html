@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="css/base.css" />
+<link rel="stylesheet" href="css/util.css" />
+<link rel="stylesheet" href="css/collect.css" />
+	<link rel="stylesheet" href="css/summernote2.css" />
+	<link rel="stylesheet" href="css/summernote-bs3.css" />
+	<link rel="stylesheet" href="css/font-awesome.min.css" />
+	<title>添加账号</title>
+</head>
+<style>
+	.note-editor {
+		margin-right: 69px;
+		height: auto!important;
+		border: 1px solid #cccccc;
+		/*float: right;*/
+		display: inline-block;
+		margin-left: 30px;
+		width: 600px;
+	}
+	.publish{
+		width: 170px;
+		height: 46px;
+		line-height: 31px;
+		font-size: 14px;
+		margin-left: 330px;
+		border: none;
+		border-radius: 5px;
+		margin-top: 50px;
+		margin-bottom: 35px;
+		color: white;
+		background-color: #00afa1;
+		letter-spacing: 2px;
+	}
+	.public_inputsay {
+		line-height: 40px;
+		height: 40px;
+		margin: 20px 0;
+		display: inline-block;
+		position: relative;
+	}
+	.public_inputsay>span {
+		width: 200px;
+		height: 40px;
+		line-height: 40px;
+		display: inline-block;
+		font-size: 17px;
+		letter-spacing: 0.7px;
+		text-align: right;
+	}
+	.public_inputsay input[type='checkbox']{
+		margin-top: 14px
+	}
+</style>
+<body>
+<div class="content add_role">
+	<div class="navigate_head clearfix">
+		<p onclick="window.location.href='enuosay_list.html'">e诺说</p>
+		<p  class="navi_current" onclick="window.location.href='enuosaydistri.html'">添加文章</p>
+		<p class="navi_null"></p>
+	</div>
+	<div>
+		<form class="add_role_form">
+			<div class="public_input">
+				<span>* 文章分类:</span>
+				<select style="width: 600px" class="salesman_name">
+
+				</select>
+			</div>
+			<div class="public_input">
+				<span>* 文章标题:</span>
+				<input style="width: 600px" type="text" class="title" placeholder="请输入标题">
+			</div>
+			<div class="public_input upload_img clearfix">
+				<span><span class="font_green">* </span>文章图:</span>
+				<div class="right" id="uploader-articlelogo">
+					<span class="addPhontBtn">
+						<input type="file" class="" id="file3" multiple="multiple"/>
+							<span style="color: white">上传图片</span>
+					</span>
+					<span style="vertical-align: top;">注：图片比例(2:1)</span>
+					<!--预览图片-->
+					<p class="preview preview2">
+
+					</p>
+				</div>
+			</div>
+			<div class="content_size public_inputsay">
+				<span style="vertical-align: top">* 正文:</span>
+				<div id="summernote" class="summernote"></div>
+			</div>
+			<div class="public_input confrim_btn">
+				<span>.</span>
+				<input style="margin-top: 30px;margin-bottom: 30px" type="button" class="confrim_add_tyq publish" value="添加">
+			</div>
+
+		</form>
+	</div>
+</div>
+<script type="text/javascript" src="plug/jquery-1.11.3.min.js" ></script>
+<script type="text/javascript" src="plug/template-web.js"></script>
+<script type="text/javascript" src="js/toggle.js" ></script>
+<script type="text/javascript" src="js/util.js"></script>
+<script type="text/javascript" src="js/method.js"></script>
+<script type="text/javascript" src="js/detail/upload_img2.js" ></script>
+<script type="text/javascript" src="js/summernote.js"></script>
+<script type="text/javascript" src="js/summernote-zh-CN.js"></script>
+<script type="text/javascript" src="js/bootstrap.min.js"></script>
+<script>
+/*$(function(){
+
+var flag=true;
+$(".enabled,.disable").click(function(){
+	flag = $(this).addClass("bg_green").attr("data_val");
+	$(this).siblings().removeClass("bg_green");
+	console.log(flag);
+});
+$(".confrim_add_account").click(function(){
+	//输入框信息
+	var name = $(".name").val();
+	var user_name = $(".user_name").val();
+	var former_pwd = $(".former_pwd").val();
+	if(name=="" || user_name==""|| former_pwd==""){
+		alert("输入框不能为空");
+	}
+	var data = {
+		"name":name,
+		"username":user_name,
+		"password":former_pwd,
+		"enabled":flag
+	}
+	console.log(data);
+	//调用ajax
+	$.post_ajax("/admin/admin/add",data,function(data){
+		console.log(data);
+		if(data.success==true){
+			alert(data.data);
+			window.location.href="account_list.html";
+		}else{
+			alert(data.data);
+		}
+	});
+	
+});
+
+});*/
+$(document).ready(function() {
+    //调用ajax,文章类型
+    $.get_ajax("/admin/article/getArticleTypeList.json","",function(data){
+        console.log(data);
+        if(data.success==true){
+            data.data.forEach(function (value) {
+              $('.salesman_name').append('<option value="'+value.id+'">'+value.name+'</option>')
+			})
+        }else{
+            alert(data.data);
+        }
+    });
+    /**
+     *  加载编辑框
+     */
+    $('#summernote').summernote({
+        height: 250,
+        width: 600,
+        lang: 'zh-CN',
+        maxHeight: null,
+        minHeight: null,
+        focus: true,
+      /*  toolbar: [
+            ['style', ['bold', 'italic', 'underline', 'clear']],
+            ['fontsize', ['fontsize']],
+            ['color', ['color']],
+            ['para', ['ul', 'ol', 'paragraph']],
+            ['height', ['height']],
+            ['insert', [ 'link','picture']]
+        ],*/
+        toolbar: [
+            ['style', ['style']],
+            ['font', ['bold', 'underline', 'clear']],
+            ['fontsize', ['fontsize']],
+            ['height', ['height']],
+            ['fontname', ['fontname']],
+            ['color', ['color']],
+            ['para', ['ul', 'ol', 'paragraph']],
+            ['table', ['table']],
+            ['insert', ['link', 'picture', 'video']],
+            ['view', ['fullscreen', 'codeview', 'help']]
+        ],
+
+
+        callbacks: {
+            onImageUpload: function (files, editor, $editable) {
+                console.log('onImageUpload:' + files[0].name);
+                if (!files[0].name) {
+                    files[0].name = 'qqscreenshot.png';
+                }
+                console.log(files[0]);
+                sendFile(files[0], editor, $editable);
+            },
+        },
+
+    });
+
+    //调用ajax,文章详情
+	if(getQueryString('id') != null){
+        $.get_ajax("/admin/article/getDetail.json?id="+getQueryString('id'),"",function(data){
+            console.log(data);
+            if(data.success==true){
+                $('.salesman_name').val(data.data.articleTypeId);
+                $('.title').val(data.data.title);
+                //$('.salesman_name').val(data.data.content);
+                $(".preview2").html('<div class="initImg" style="border: 1px solid #dddddd" data_id="0"  data_val="0">' +
+                    '<img style="height: inherit" onclick="delphoto(this)" class="closePhoto" src="img/closePhoto.png"><img src="'+data.data.largeImage+'">' +
+                    '</div>');
+                arr_pic2[0] = data.data.largeImage;
+                $('#summernote').summernote('code', data.data.content);
+                /*data.data.forEach(function (value) {
+                    $('.salesman_name').append('<option value="'+value.id+'">'+value.name+'</option>')
+                })*/
+            }else{
+                alert(data.data);
+            }
+        });
+	}
+
+	/*$('.checkbox').hide();
+	$('.note-link-text').prop('disabled',false);*/
+    function sendFile(file, editor, $editable) {
+        var formData = new FormData();
+        formData.append("file", file);
+        console.log(file)
+        if(file == undefined){
+            return
+        }
+
+        $.ajax({
+            type: 'POST',
+            data: formData,
+            url: url + '/common/file/upload', //图片上传出来的url，返回的是图片上传后的路径，http格式
+            cache: false,
+            contentType: false,
+            processData: false,
+            dataType: "json",
+            success: function (res) {//data是返回的hash,key之类的值，key是定义的文件名
+                if (res.success == true) {
+                    //editor.insertImage($editable, res.data);
+                    $('#summernote').summernote('insertImage', res.data);
+                } else {
+                    alert(res.data);
+                }
+            },
+            error: function () {
+                alert("上传失败");
+            }
+        });
+    }
+
+    $('.publish').click(function () {
+        Feed.publish();
+    });
+    /**
+     *  点击发表
+     */
+    var Feed = {
+        publish: function () {   //发表文章
+            var url;
+            var data = {
+                "title":$('.title').val(),
+                "htmlContent":$('.summernote').summernote('code').replace('&nbsp;', ''),
+                "articleTypeId":$('.salesman_name').val(),
+            	"largeImage":arr_pic2[0]//医院logo图片
+            }
+            if(getQueryString('id') != null){
+				data.id = getQueryString('id');
+                url = "/admin/article/update";
+			}else{
+                url = "/admin/article/add";
+			}
+            //调用ajax
+
+
+            $.post_ajax(url,data,function(data){
+                console.log(data);
+                if(data.success==true){
+                    alert(data.data);
+                    location.href='enuosay_list.html'
+                }else{
+                    alert(data.data);
+                }
+            });
+        }
+    }
+
+
+
+});
+
+</script>
+</body>
+</html>

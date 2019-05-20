@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="css/base.css" />
+<link rel="stylesheet" href="css/util.css" />
+<link rel="stylesheet" href="css/collect.css" />
+<title>用户列表</title>
+</head>
+<body>
+<div class="content user_list">
+	<div class="navigate_head clearfix">
+		<p onclick="window.location.href='user_list.html'" class="">用户列表</p>
+		<!--<p onclick="window.location.href='add_user.html'">添加用户</p>-->
+		<p class="navi_null"></p>
+	</div>
+	<!--头部功能-->
+	<div class="head_area flex_vertical">
+		<input type="text" class="keyword" placeholder="搜索患者（姓名、账号、手机号）"/><button class="search" onclick="indexPage()">搜索</button>
+	</div>
+	<table>
+		<thead>
+			<tr>
+				<td>序号</td>
+				<td>姓名</td>
+				<td>手机号</td>
+				<td>来源</td>
+				<!--<td>注册时间</td>-->
+				<td>余额</td>
+				<!--<td>上次登录时间</td>-->
+				<td>业务员</td>
+			</tr>
+		</thead>
+		<tbody class="tbody">
+			
+		</tbody>
+	</table>
+	<!--分页-->
+	<div class="page flex_vertical">
+		<button class="" onclick="indexPage()">首页</button>&nbsp;
+		<button class="" onclick="backPage()"><上一页</button>&nbsp;
+		<!--页码-->
+		<p class="page_num">
+			<!--<span>1</span><span>2</span><span>3</span><span>4</span><span>5</span>-->
+		</p>....
+		<button class="" onclick="nextPage()">下一页></button>&nbsp;
+		<button class="" onclick="endPage()">末页</button>&nbsp;
+		共<span class="all_recode">0 </span>记录&nbsp;|
+		共<span class="all_page">0 </span>页&nbsp;
+		到第<input class="select_page" />页&nbsp;
+		<button class="confirm_page" onclick="skipPage()">确定</button>
+	</div>
+</div>
+<script type="text/javascript" src="plug/jquery-1.11.3.min.js" ></script>
+<script type="text/javascript" src="plug/template-web.js"></script>
+<script type="text/javascript" src="js/toggle.js" ></script>
+<script type="text/javascript" src="js/util.js"></script>
+<script type="text/javascript" src="js/method.js"></script>
+<script type="text/javascript" src="js/page.js"></script>
+<script id="test_user_list" type="text/html">
+	{{each data value}}
+		<tr>
+			<td width="40px">{{value.id}}</td>
+			<td>{{value.fullname}}</td>
+			<td>{{value.mobile}}</td>
+			<td>{{if value.source == "wx"}}微信{{else if value.source == "experienceCoupon"}}体验券{{else if value.source == "other"}}其他{{/if}}</td>
+			<!--<td>{{value.createDate}}</td>-->
+			<td>{{value.rechargeAmount}}</td>
+			<!--<td>{{value.lastLoginDate}}</td>-->
+			<td>{{value.lastLoginDate}}</td>
+		</tr>
+	{{/each}}
+</script>
+<script>
+
+//请求方法
+function reqPage(data){
+	console.log(data);
+	control_page.init_page(data,function(data){
+		//调用ajax
+		$.get_ajax("/admin/user/getList.json",data,function(data){
+			console.log(data);
+			var html = template('test_user_list',data);
+			$(".tbody").html(html);
+			//初始化分页
+			control_page.currentPage(control_page.page_num,data.totalCount);
+		});
+	});
+}
+</script>
+<script>
+$(function(){
+	reqPage(control_page.getData());
+    //搜索
+});
+function search(obj) {
+    //基本条件
+//		var data = control_page.getData();
+    if(obj == undefined){
+        var data = control_page.getData();
+    }else{
+        var data = obj;
+    }
+    //项目名称
+    var keyword = $(".keyword").val();
+    if(keyword != ""){
+        data.keyword = keyword;
+        console.log(data);
+    }
+    reqPage(data);
+}
+</script>
+</body>
+</html>

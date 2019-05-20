@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="css/base.css" />
+<link rel="stylesheet" href="css/util.css" />
+<link rel="stylesheet" href="css/collect.css" />
+<title>检查管理</title>
+</head>
+<body>
+<div class="content examine">
+	<div class="navigate_head clearfix">
+		<p class="" onclick="window.location.href='examine_list.html'">检查管理列表</p>
+		<p class="navi_null"></p>
+	</div>
+	<!--头部功能-->
+	<div class="head_area flex_vertical">
+		<span style="font-size: 18px;">患者姓名：</span><input type="text" class="search userName" placeholder="搜索患者" style="width: 280px;"/>
+		<span style="font-size: 18px;">手机号：</span><input type="text" class="search tel" placeholder="手机号" style="width: 280px;"/>
+		<button class="searchBtn" onclick="indexPage()">搜索</button>
+	</div>
+	<table>
+		<thead>
+			<tr>
+				<td>患者姓名</td>
+				<td>手机号</td>
+				<td>约定医院</td>
+				<td>约定医生</td>
+				<td>检查项目</td>
+				<td>检查费用</td>
+			</tr>
+		</thead>
+		<tbody class="tbody">
+			<!--<tr>
+				<td>曹鑫波</td>
+				<td>176 0652 0935</td>
+				<td>牙齿矫正</td>
+				<td>5000</td>
+			</tr>-->
+		</tbody>
+	</table>
+	<!--分页-->
+	<div class="page flex_vertical">
+		<button class="" onclick="indexPage()">首页</button>&nbsp;
+		<button class="" onclick="backPage()"><上一页</button>&nbsp;
+		<!--页码-->
+		<p class="page_num">
+			<!--<span>1</span><span>2</span><span>3</span><span>4</span><span>5</span>-->
+		</p>....
+		<button class="" onclick="nextPage()">下一页></button>&nbsp;
+		<button class="" onclick="endPage()">末页</button>&nbsp;
+		共<span class="all_recode">0 </span>记录&nbsp;|
+		共<span class="all_page">0 </span>页&nbsp;
+		到第<input class="select_page" />页&nbsp;
+		<button class="confirm_page" onclick="skipPage()">确定</button>
+	</div>
+</div>
+<script type="text/javascript" src="plug/jquery-1.11.3.min.js" ></script>
+<script type="text/javascript" src="plug/template-web.js"></script>
+<script type="text/javascript" src="js/toggle.js" ></script>
+<script type="text/javascript" src="js/util.js"></script>
+<script type="text/javascript" src="js/method.js"></script>
+<script type="text/javascript" src="js/page.js"></script>
+<!--检查列表-->
+<script id="test_examine_list" type="text/html">
+	{{each data value}}
+		<tr>
+			<td>{{value.name}}</td>
+			<td>{{value.mobile}}</td>
+			<td>{{value.hospitalName}}</td>
+			<td>{{value.doctorName}}</td>
+			<td>{{value.censorProject}}</td>
+			<td>{{value.amount}}</td>
+		</tr>
+	{{/each}}
+</script>
+
+<script>
+//请求方法
+function reqPage(data){
+	console.log(data);
+	control_page.init_page(data,function(data){
+		//调用ajax
+		$.get_ajax("/admin/censor/getList.json",data,function(data){
+			console.log(data);
+			var html = template('test_examine_list',data);
+			$(".tbody").html(html);
+			//初始化分页
+			control_page.currentPage(control_page.page_num,data.totalCount);
+		});
+	});
+}
+
+</script>
+<script>
+$(function(){
+	reqPage(control_page.getData());
+});
+function search(obj) {
+    console.log(obj)
+    //基本条件
+    if(obj == undefined){
+        var data = control_page.getData();
+    }else{
+        var data = obj;
+    }
+    //关键词
+    if($('.userName').val() != ""){
+        data.username = $('.userName').val();
+    }
+    //关键词
+    if($('.tel').val() != ""){
+        data.mobile = $('.tel').val();
+    }
+    reqPage(data);
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="plug/webuploader/webuploader.css" />
+<link rel="stylesheet" href="css/base.css" />
+<link rel="stylesheet" href="css/util.css" />
+<link rel="stylesheet" href="css/collect.css" />
+	<!--截图插件-->
+<!--	<link href="plug/screenShot/css/cropper.css" rel="stylesheet">
+	<link href="plug/screenShot/css/main.css" rel="stylesheet">-->
+<title>修改医院</title>
+<style>
+/*图片上传*/
+#filePicker,#filePicker2{
+	display: inline-block;
+	/*border: 1px solid red;*/
+	height: 40px;
+}
+#filePicker .webuploader-pick,#filePicker2 .webuploader-pick{
+	height: 40px;line-height: 40px;
+	width: 120px;
+	/*border: 1px solid black;*/
+	padding: 0;
+	letter-spacing: 1px;
+	font-size: 16px;
+	border-radius:5px ;
+}
+.preview>div{
+	display: inline-block;
+	margin-left: 3px;
+}
+
+/*密码强度*/
+.public_input div{
+	/*border: 1px solid red;*/
+}
+.pwd_sty{
+	width: 146px;height: 10px;
+	border: 1px solid #DCDCDC;
+	border-radius: 6px;
+	margin-left: 250px;
+}
+.pwd_sty p{
+	float: left;
+	width: 40px;height:4px;
+	background-color: #DCDCDC;
+	margin: 2px 0 0 6px;
+	/*border: 1px solid red;*/
+}
+.pwd_txt{
+	width: 150px;
+	margin-left: 250px;
+}
+.pwd_txt p{
+	float: left;
+	width: 48px;height: 30px;
+	text-align: center;
+	line-height: 30px;
+	/*border: 1px solid red;*/
+}
+.pwd_sty .bg_greenyellow{
+	background-color: greenyellow;
+}
+.pwd_sty .bg_yellowgreen{
+	background-color: yellowgreen;
+}
+.pwd_sty .bg_green{
+	background-color: green;
+}
+
+/*动态增减元素*/
+.ele_container{
+	border: 1px solid #DCDCDC;
+	border-radius: 5px;
+	width: 400px;
+	min-height: 40px;
+	margin-left: 235px;
+}
+.ele_container p{
+	display: inline-block;
+	height: 40px;line-height: 40px;
+	border: 1px solid #DCDCDC;
+	padding: 0 10px;
+	position: relative;
+	border-radius: 5px;
+	margin: 5px 10px 5px 0;
+}
+.ele_container p:hover>img{
+	position: absolute;
+	top: -3px;right: -3px;
+	display: block !important;
+}
+.preview2,.preview3{
+	width: 400px;
+	min-height: 160px;
+	border: 1px dashed #DCDCDC;
+	padding: 2px;
+}
+.preview2>div,.preview3>div {
+	display: inline-block;
+	margin-left: 3px;
+}
+</style>
+</head>
+<body>
+<div class="content add_hos">
+	<div class="navigate_head clearfix">
+		<p onclick="window.location.href='hos_list.html'">医院列表</p>
+		<p class="navi_current" onclick="window.location.href='edit_hos.html'">修改医院</p>
+		<p class="navi_null"></p>
+	</div>
+	<div>
+		<form class="add_role_form">
+			<div class="public_input">
+				<span><span>* </span>用户名:</span>
+				<input type="text" class="user_name" placeholder="请输入英文字母、数字"/>
+			</div>
+			<div class="public_input">
+				<span><span>* </span>手机号:</span>
+				<input type="text" class="mobile" placeholder="请输入英文字母、数字"/>
+			</div>
+			<div class="public_input">
+				<span><span>*</span>医院名称:</span>
+				<input type="text" class="hos_name" placeholder="请重新输入正确的医院名称"/>
+			</div>
+			<div class="public_input">
+				<span><span>* </span>医院地址:</span>
+				<select class="hos_address_province"style="width: 127px;">
+					<option>省份</option>
+				</select>
+				<select class="hos__address_city"style="width: 127px;margin-left: 5px;">
+					<option>地级市</option>
+				</select>
+				<select class="hos__address_county"style="width: 127px;margin-left: 5px;">
+					<option>区、县级市</option>
+				</select>
+			</div>
+			<div class="public_input">
+				<span></span>
+				<input type="text" class="hos_address_longitude" placeholder="医院的地理经度" style="width: 170px;"/>
+				<input type="text" class="hos_address_latitude" placeholder="医院的地理纬度" style="width: 170px;"/>
+			</div>
+			<div class="public_input">
+				<span></span>
+				<input type="text" class="hos_detail_address" placeholder="请输入医院的详细地址"/>
+			</div>
+			<div class="public_input">
+				<span><span>* </span>医院等级:</span>
+				<select class="hos_grade">
+					<option>请选择</option>
+				</select>
+			</div>
+			<div class="public_input">
+				<span>医院分类:</span>
+				<select class="hos_type">
+					<option>请选择</option>
+				</select>
+			</div>
+			<div class="public_input">
+				<span><span>* </span>医院科室:</span>
+				<select class="hos_ks" style="width: 185px;">
+					<option>科室</option>
+				</select>
+				<select class="hos_child_ks" style="width: 185px;margin-left: 25px;">
+					<option>子科室</option>
+				</select>
+			</div>
+			<div class="ele_container">
+				<!--<p data_val=""><span>皮肤科</span><img src="img/close2.png" class="none" onclick='del_appoint_ks(this)'/></p>-->
+			</div>
+			<div class="public_input">
+				<span><span>* </span>医院的联系方式:</span>
+				<input type="text" class="hos_contact" placeholder="请输入常用的联系号码"/>
+			</div>
+			<div class="public_input">
+				<span><span>*</span>联系邮箱:</span>
+				<input type="text" class="hos_email" placeholder="请重新输入正确的医院名称"/>
+			</div>
+			<div class="public_input">
+				<span><span>* </span>应急联系人:</span>
+				<input type="text" class="urgency_contact" placeholder="请重新输入正确的医院名称"/>
+			</div>
+			<div class="public_input">
+				<span><span>* </span>应急联系人电话:</span>
+				<input type="text" class="urgency_contact_phone" placeholder="请重新输入正确的医院名称"/>
+			</div>
+			<div class="public_input">
+				<span><span>* </span>体验券首字母:</span>
+				<input type="text" class="couponsPrefix" placeholder="请输入体验券首字母"/>
+			</div>
+			<div class="public_input upload_img clearfix">
+				<span><span class="font_green">* </span>医院LOGO图(一张):</span>
+				<div class="right" id="uploader-hoslogo">
+					<!--用来存放item-->
+					<!--<div id="fileList" class="uploader-list"></div>-->
+					<!--<div id="filePicker">上传图片</div>-->
+					<!--<label for="file" class=""><span style="width: 120px;background-color: #00A2D4;">选择图片</span></button></label>
+					<input type="file" style="left: 210px;opacity: 0" id="file" multiple="multiple" name="file" class="ill_pic hoslogoinput"  accept="image/*"/>-->
+					<!--<input type="button" class="btn_remove_pic" value="选中删除" style="right: 140px;background-color: red;">-->
+					<span class="addPhontBtn">
+						<input type="file" class="hidden" id="file" multiple="multiple"/>
+							<span style="color: white">上传图片</span>
+					</span>
+					<!--预览图片-->
+					<p class="preview">
+
+					</p>
+				</div>
+			</div>
+			<div class="public_input upload_img clearfix">
+				<span><span class="font_green">* </span>医院环境:</span>
+				<div class="right" id="uploader-demo">
+					<!--用来存放item-->
+					<!--<div id="fileList" class="uploader-list"></div>-->
+					<!--<div id="filePicker2">上传图片</div>-->
+				<!--	<label for="file" class=""><span style="width: 120px;background-color: #00A2D4;">选择图片</span></button></label>
+					<input type="file" style="left: 210px;opacity: 0" id="file2" multiple="multiple" name="file" class="ill_pic hoshuanjinginput"  accept="image/*"/>-->
+					<!--<input type="button" class="btn_remove_pic2" value="选中删除" style="right: 140px;background-color: red;">-->
+					<span class="addPhontBtn">
+						<input type="file" class="hidden" id="file2" multiple="multiple"/>
+							<span style="color: white">上传图片</span>
+					</span>
+					<!--预览图片-->
+					<p class="preview2">
+
+					</p>
+				</div>
+			</div>
+			<!--<div class="public_input upload_img clearfix">
+				<span><span>* </span>医院环境:</span>
+				<div class="right" id="uploader-demo">
+					&lt;!&ndash;用来存放item&ndash;&gt;
+				    <div id="fileList" class="uploader-list"></div>
+				    <div id="filePicker">上传图片</div>
+				    <input type="button" class="btn_remove_pic" value="选中删除" style="right: 140px;background-color: red;">
+					&lt;!&ndash;预览图片&ndash;&gt;
+					<p id="" class="preview">
+						
+					</p>
+				</div>
+			</div>-->
+			<div class="public_input">
+				<span><span>* </span>请点击阅读以下条款:</span>
+				<input type="button" class="data_base_name font_green" onclick="" value="《e诺网服务条款》" style="border: 0;width: 130px;text-indent: 0;"/>
+			</div>
+			<div class="public_input confrim_btn">
+				<span>.</span>
+				<input type="button" class="confrim_add_hos" value="修改"/>
+			</div>
+		</form>
+	</div>
+</div>
+<!--遮罩层-->
+<div class="shade none"></div>
+<!--弹框-->
+<div class="popup_box none" style="min-height: 300px;top: 15px;width: 400px;">
+	<p class="img_close clearfix">
+		<img src="img/close.png" onclick="close_box()"/>
+	</p>
+	<div class="preview1">
+		<!--<div class="initImg img-container">
+			<img src="img/test.png" alt="Picture">
+		</div>-->
+	</div>
+
+	<!--<p class="confirm">确 定</p>-->
+	<!--<button onclick="csx(19,28)"></button>-->
+	<div class="modal fade docs-cropped none" id="getCroppedCanvasModal" aria-hidden="true" aria-labelledby="getCroppedCanvasTitle" role="dialog" tabindex="-1">
+		<div class="modal-body"></div>
+	</div>
+	<button class="confirmSurePic" style="margin:0 0 10px 165px;" data-method="getCroppedCanvas" data-option="{ &quot;width&quot;: 160, &quot;height&quot;: 90 }" type="button">
+        <span class="docs-tooltip"  title="$().cropper(&quot;getCroppedCanvas&quot;, { &quot;width&quot;: 160, &quot;height&quot;: 90 })">
+         	确定
+        </span>
+	</button>
+</div>
+	
+<script type="text/javascript" src="plug/jquery-1.11.3.min.js" ></script>
+<script type="text/javascript" src="plug/template-web.js" ></script>
+<script type="text/javascript" src="plug/webuploader/webuploader.min.js"></script>
+<script type="text/javascript" src="js/toggle.js" ></script>
+<script type="text/javascript" src="js/util.js" ></script>
+<script type="text/javascript" src="js/method.js" ></script>
+<script type="text/javascript" src="js/control_element.js" ></script>
+<script type="text/javascript" src="js/detail/upload_img.js" ></script>
+<script type="text/javascript" src="js/detail/upload_img2.js" ></script>
+<!--<script type="text/javascript" src="js/detail/doc_upload_img.js" ></script>
+<script type="text/javascript" src="js/detail/shot_img.js" ></script>-->
+<script type="text/javascript" src="js/detail/hos.js" ></script>
+<!--截图插件-->
+<!--<script src="plug/screenShot/dist/cropper.js"></script>
+<script src="plug/screenShot/dist/main.js"></script>-->
+<!--省份列表-->
+<script type="text/html" id="test_province">
+	{{each data value}}
+		<option value="{{value.id}}">{{value.name}}</option>
+	{{/each}}
+</script>
+<!--地级市列表-->
+<script type="text/html" id="test_city">
+	{{each data value}}
+		<option value="{{value.id}}">{{value.name}}</option>
+	{{/each}}
+</script>
+<!--县级市，区列表-->
+<script type="text/html" id="test_county">
+	{{each data value}}
+		<option value="{{value.id}}">{{value.name}}</option>
+	{{/each}}
+</script>
+<!--医院等级列表-->
+<script type="text/html" id="test_hos_grade">
+	{{each data value}}
+		<option value="{{value.id}}">{{value.name}}</option>
+	{{/each}}
+</script>
+<!--医院分类列表-->
+<script type="text/html" id="test_hos_type">
+	{{each data value}}
+		<option value="{{value.id}}">{{value.name}}</option>
+	{{/each}}
+</script>
+<!--科室列表-->
+<script type="text/html" id="test_ks_list">
+	{{each data value}}
+		<option value="{{value.id}}">{{value.name}}</option>
+	{{/each}}
+</script>
+<!--子科室列表-->
+<script type="text/html" id="test_child_ks_list">
+	{{each data value}}
+		<option value="{{value.id}}">{{value.name}}</option>
+	{{/each}}
+</script>
+
+<script>
+$(function(){
+	var address_province_id ="";//省id
+	var address_city_id =""; //地级市id
+	var address_county_id ="";//县级市，区id
+	var hos_grade_id ="";//医院等级id
+	var hos_type_id ="";//医院分类id
+	var ks_id = "";//科室id
+	var hos_child_ks_id = "";//子科室id
+	
+	//初始化省份列表
+	$.initSelect("/common/getAreaList.json",'test_province',".hos_address_province");
+	//初始化地级市
+	$(".hos_address_province").change(function(){
+		address_province_id = $(".hos_address_province").val();
+		initCity(address_province_id);
+	});
+	//初始化县级市
+	$(".hos__address_city").change(function(){
+		address_city_id = $(".hos__address_city").val();
+		initCounty(address_city_id);
+	});
+	$(".hos__address_county").change(function(){
+		address_county_id = $(".hos__address_county").val();
+	});
+	
+	//初始化医院等级列表
+	$.initSelect("/admin/hospitalLevel/getList.json",'test_hos_grade',".hos_grade");
+	$(".hos_grade").change(function(){
+		hos_grade_id = $(".hos_grade").val();
+	});
+	//初始化医院分类列表
+	$.initSelect("/admin/hospitalType/getList.json",'test_hos_type',".hos_type");
+	$(".hos_type").change(function(){
+		hos_type_id = $(".hos_type").val();
+		//如果是美容医院，科室默认选择，且不能点击
+		beautyOfHos(hos_type_id);
+	});
+	
+	//初始化科室列表
+	$.initSelect("/admin/subject/getList.json",'test_ks_list',".hos_ks");
+	
+	//初始化子科室
+	$(".hos_ks").change(function(){
+		ks_id = $(".hos_ks").val();
+		console.log(ks_id);
+		//初始化子科室列表
+		init_child_ks(ks_id);
+	});
+	$(".hos_child_ks").change(function(){
+		hos_child_ks_id = $(".hos_child_ks").val();
+		var hos_child_ks_id_name = $(".hos_child_ks").find("option:selected").text().trim();//trim去前后所有空格
+		//初始化已选择的科室
+		controlEle.add_element(hos_child_ks_id,hos_child_ks_id_name);
+	});
+	
+	
+	/**
+	 * 初始化表单控件
+	 */
+	var data = {
+		id:$.get_storage("hos_id")
+	}
+	$.get_ajax("/admin/hospital/getDetail.json",data,function(res){
+		console.log(res);
+		if(res.success){
+			//初始化输入框
+			$(".user_name").attr("value",res.data.username);
+			$(".mobile").attr("value",res.data.mobile);//手机号
+			$(".hos_name").attr("value",res.data.name);
+			$(".hos_detail_address").attr("value",res.data.address);
+			$(".hos_address_longitude").attr("value",res.data.longitude);
+			
+			$(".hos_address_latitude").attr("value",res.data.latitude);
+			$(".hos_contact").attr("value",res.data.phone);
+			$(".hos_email").attr("value",res.data.email);
+			$(".urgency_contact").attr("value",res.data.emergencyContact);
+			$(".urgency_contact_phone").attr("value",res.data.emergencyMobile);
+			$(".couponsPrefix").attr("value",res.data.couponsPrefix);//体验券首字母
+			
+			//初始化图片
+            arr_pic[0] = res.data.headImgUrl;
+			console.log(arr_pic);
+            init_img(arr_pic);
+            //初始化图片
+            arr_pic2 = res.data.images;
+            console.log(arr_pic2);
+            init_img2(arr_pic2);
+			
+			address_province_id = res.data.provinceId;//省id
+			address_city_id = res.data.cityId; //地级市id
+			address_county_id = res.data.areaId;//县级市，区id
+			hos_grade_id = res.data.hospitalLevelId;//医院等级id
+			hos_type_id = res.data.hospitalTypeId;//医院分类id
+			
+			//初始化地级市列表
+			initCity(res.data.provinceId);
+			//初始化地级市的县级市，区列表
+			initCounty(res.data.cityId);
+			
+			//初始化预约的病种
+			console.log(res.data.subjects);
+			controlEle.hashToTwoArr(res.data.subjects);
+//			hashToTwoArr(res.data.subjects);
+			
+			//初始化下拉选选中
+			//定时器会让这里最后执行，延迟目的：先初始化科室列表，然后再初始化选中
+			var setTime = setTimeout(function(){
+				$(".hos_address_province>[value="+res.data.provinceId+"]").attr("selected","selected");
+				$(".hos__address_city>[value="+res.data.cityId+"]").attr("selected","selected");//选中
+				if(res.data.areaId){
+					$(".hos__address_county>[value="+res.data.areaId+"]").attr("selected","selected");//选中
+				}
+				$(".hos_grade>[value="+res.data.hospitalLevelId+"]").attr("selected","selected");
+				//医院分类不能修改
+				$(".hos_type>[value="+hos_type_id+"]").attr("selected","selected").parent().attr("disabled","disabled");
+				//如果是美容医院，科室默认选择，且不能点击
+				beautyOfHos(hos_type_id);
+			},1000);
+		}
+	});
+	
+
+	//修改
+	$(".confrim_add_hos").click(function(){
+		var user_name = $(".user_name").val();
+		var mobile = $(".mobile").val();//手机号
+//		var set_pwd = $(".set_pwd").val();
+		var hos_name = $(".hos_name").val();
+		var hos_detail_address = $(".hos_detail_address").val();
+		var hos_address_longitude = $(".hos_address_longitude").val();
+		var hos_address_latitude = $(".hos_address_latitude").val();
+		
+		
+		var hos_contact = $(".hos_contact").val();//医院联系方式
+		var hos_email = $(".hos_email").val();
+		var urgency_contact = $(".urgency_contact").val();
+		var urgency_contact_phone = $(".urgency_contact_phone").val();
+		var couponsPrefix = $(".couponsPrefix").val();//体验券首字母
+        var pic_url = arr_pic;//图片
+        var pic_url_back = arr_pic2;//图片
+		
+		//对医院地址是直辖市的处理
+		if(!address_county_id){
+			address_county_id = address_city_id;
+		}
+		
+		var data = {
+			"id":$.get_storage("hos_id"),
+			"username":user_name,
+			"mobile":mobile,//手机号
+//			"password":set_pwd,
+			"name":hos_name,
+			"phone":hos_contact,//医院联系方式
+			"email":hos_email,
+			"emergencyContact":urgency_contact,//应急联系人
+			"emergencyMobile":urgency_contact_phone,//应急联系人电话
+			
+			"address":hos_detail_address,
+			"longitude":hos_address_longitude,
+			"latitude":hos_address_latitude,
+			
+			"couponsPrefix":couponsPrefix,
+			"areaId":address_county_id,//地址id
+			"hospitalLevelId":hos_grade_id,//等级id
+			"hospitalTypeId":hos_type_id,//类型id
+			"subSubjectIds":String(controlEle.arr_element_id),//子科室id
+			"images":toHash(pic_url_back),//医院背景图片
+            "headImgUrl":pic_url[0]//医院logo图片
+		}
+		console.log(data);
+		//验证
+		if(!$.verify(user_name,"用户名")){return false;}
+		if(!$.verify(hos_name,"医院名字")){return false;}
+		if(!$.verify(hos_address_longitude,"医院地理经度")){return false;}
+		if(!$.verify(hos_address_latitude,"医院地理纬度")){return false;}
+		
+		if(!$.verify(hos_detail_address,"医院详细地址")){return false;}
+		if(!$.verify(hos_contact,"医院联系方式")){return false;}
+		if(!$.verifyEmail(hos_email,"邮箱格式")){return false;}
+		
+		if(!$.verify(urgency_contact,"应急联系人")){return false;}
+		if(!$.verify(urgency_contact_phone,"应急联系人电话")){return false;}
+		if(!$.verify(couponsPrefix,"体验券首字母")){return false;}
+		
+		if(!$.verifyPhone(mobile,"手机号")){return false;}
+		if(!$.verifyNum(address_county_id,"医院地址")){return false;}
+		if(!$.verifyNum(hos_grade_id,"医院等级")){return false;}
+		if(!$.verifyNum(hos_type_id,"医院类型")){return false;}
+		if(!$.verifyNum(controlEle.arr_element_id[0],"添加科室")){return false;}
+		if(!arr_pic){
+			alert("医院图片不能为空");
+			return false;
+		}
+		console.log("验证通过");
+		$.post_ajax("/admin/hospital/update",data,function(res){
+			if(res.success==true){
+				alert("修改成功");
+				window.location.href = "hos_list.html";
+			}else{
+				alert(res.data);
+			}
+		});
+	});
+});
+</script>
+</body>
+</html>

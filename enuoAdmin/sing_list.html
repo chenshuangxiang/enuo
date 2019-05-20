@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="css/base.css" />
+<link rel="stylesheet" href="css/util.css" />
+<link rel="stylesheet" href="css/collect.css" />
+<title>业务员列表</title>
+</head>
+<body>
+<div class="content employee">
+	<div class="navigate_head clearfix">
+		<p class="navi_current">演唱会门票</p>
+		<!--<p onclick="window.location.href='add_salesman.html'">添加业务员</p>-->
+		<p class="navi_null"></p>
+	</div>
+	<div class="head_area flex_vertical">
+		<input type="text" class="search" placeholder="搜索券号" style="width: 280px;">
+		<div class="public_input margindiv">
+			<!--<span>预约状态：</span>-->
+			<select class="useStatus" style="width: 180px">
+				<option>使用状态</option>
+				<option value="false">已使用</option>
+				<option value="true">未使用</option>
+			</select>
+		</div>
+		<button class="searchBtn" onclick="indexPage()">搜索</button>
+		<!--&nbsp;<button class="" style="position: absolute;right: 0;top: 0;">导出表格</button>-->
+	</div>
+	<table>
+		<thead>
+			<tr>
+				<td>券号</td>
+				<td>金额</td>
+				<td>状态</td>
+				<td>业务员</td>
+				<td>姓名</td>
+				<td>手机号</td>
+				<!--<td>出售时间</td>-->
+				<td>使用时间</td>
+			</tr>
+		</thead>
+		<tbody class="tbody">
+			<!--<tr>
+				<td>1</td>
+				<td>张三</td>
+				<td>165 1238 6549</td>
+				<td>状态</td>
+				<td><button class="font_green">修改</button>&nbsp;&nbsp;<button class="font_green">删除</button></td>
+			</tr>-->
+		</tbody>
+	</table>
+	<!--分页-->
+	<div class="page flex_vertical">
+		<button class="" onclick="indexPage()">首页</button>&nbsp;
+		<button class="" onclick="backPage()"><上一页</button>&nbsp;
+		<!--页码-->
+		<p class="page_num">
+			<!--<span>1</span><span>2</span><span>3</span><span>4</span><span>5</span>-->
+		</p>....
+		<button class="" onclick="nextPage()">下一页></button>&nbsp;
+		<button class="" onclick="endPage()">末页</button>&nbsp;
+		共<span class="all_recode">0 </span>记录&nbsp;|
+		共<span class="all_page">0 </span>页&nbsp;
+		到第<input class="select_page" />页&nbsp;
+		<button class="confirm_page" onclick="skipPage()">确定</button>
+	</div>
+</div>
+<script type="text/javascript" src="plug/jquery-1.11.3.min.js" ></script>
+<script type="text/javascript" src="plug/template-web.js"></script>
+<script type="text/javascript" src="js/toggle.js" ></script>
+<script type="text/javascript" src="js/util.js"></script>
+<script type="text/javascript" src="js/method.js"></script>
+<script type="text/javascript" src="js/page.js"></script>
+<!--业务员列表-->
+<!--<script id="test_salesman_list" type="text/html">
+{{each data as value i}}
+	<tr>
+		<td>{{value.cardNo}}</td>
+		<td>{{value.amount}}</td>
+		<td>{{if value.valid==true}}已使用{{else if value.valid==false}}未使用{{/if}}</td>
+		<td>{{value.mobile}}</td>
+		<td data_id="{{value.id}}">
+			<button class="font_green" onclick="edit_salesman(this)">修改</button>
+			&lt;!&ndash;&nbsp;<button class="font_green" onclick="del_tyq(this)">删除</button>&ndash;&gt;
+		</td>
+	</tr>
+{{/each}}
+</script>-->
+
+<script>
+//请求方法
+function reqPage(data){
+	console.log(data);
+	control_page.init_page(data,function(data){
+		//调用ajax
+		$.get_ajax("/admin/user/getConcertTickets.json",data,function(data){
+			console.log(data);
+            newsList(data);
+			//var html = template('test_salesman_list',data);
+			//$(".tbody").html(html);
+			//初始化分页
+			control_page.currentPage(control_page.page_num,data.totalCount);
+		});
+	});
+}
+function newsList(data){
+    console.log(data);
+    $(".tbody").empty();
+    data.data.forEach(function (value) {
+        var htmlsection = '';
+        htmlsection += '<tr> ' +
+			'<td>'+value.cardNo+'</td> ' +
+			'<td>'+value.amount+'</td> ' ;
+			if(value.valid == true){
+                htmlsection +='<td>未使用</td>'
+			}else if(value.valid == false){
+                htmlsection +='<td>已使用</td>'
+            }
+            htmlsection +='<td>'+noData(value.salesmanName)+'</td>' +
+				'<td>'+noData(value.userName)+'</td>' +
+				'<td>'+noData(value.mobile)+'</td> ' ;
+        if(value.createDate){
+            htmlsection +='<td>'+noData(new Date(value.createDate).Format('yyyy-MM-dd hh:mm:ss'))+'</td>'
+        }else{
+            htmlsection +='<td>无</td>'
+        }
+                htmlsection +='</tr>';
+        $(".tbody").append(htmlsection);
+    })
+}
+
+function noData(name) { //undefind数据 返回name
+    if(!name){
+        name = '无';
+    }
+    return name
+}
+//修改业务员
+function edit_salesman(m){
+	var salesman_id = $(m).parent().attr("data_id");
+	window.localStorage.setItem("salesman_id",salesman_id);
+	window.location.href = "edit_salesman.html";
+}
+//删除体验券
+function del_tyq(m){
+	var tyq_id = $(m).parent().attr("data_id");
+	var data = {
+		"id":tyq_id
+	}
+	$.post_ajax("/admin/experienceReservation/delete",data,function(data){
+		if(data.success==true){
+			alert(data.data);
+			window.location.href = "tyq_list.html"
+		}else{
+			alert(data.data);
+		}
+	});
+}
+
+</script>
+<script>
+$(function(){
+	reqPage(control_page.getData());
+});
+function search(obj) {
+    //基本条件
+//		var data = control_page.getData();
+    if(obj == undefined){
+        var data = control_page.getData();
+    }else{
+        var data = obj;
+    }
+    //项目名称
+    var keyword = $(".search").val();
+    if(keyword != ""){
+        data.cardNo = keyword;
+    }
+    //使用状态
+    if($(".useStatus").val() != '使用状态') {
+        data.isValid = $(".useStatus").val();
+    }
+    reqPage(data);
+}
+</script>
+</body>
+</html>

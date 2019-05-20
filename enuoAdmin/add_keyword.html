@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="css/base.css" />
+<link rel="stylesheet" href="css/util.css" />
+<link rel="stylesheet" href="css/collect.css" />
+<title>添加回复</title>
+</head>
+<style>
+	.msg_sender_wrp{
+		background: #FFFFFF;
+		box-shadow: 0 1px 20px 0 #E4E8EB;
+		margin-left: 30px;
+		vertical-align: top;
+	}
+	.weui-desktop-msg-sender__tab{
+		float: left;
+		padding: 0 15px;
+		line-height: 38px;
+		cursor: pointer;
+	}
+	.weui-desktop-msg-sender__tab_active{
+		color: #00AFA1;
+		/*background-color: #00AFA1;*/
+	}
+	.textarea{
+		height: 150px;
+	}
+	.imgPostP,.imgTextPostP{
+		margin-left: 30px;
+		padding: 5px;
+		color: black;
+		width: 400px;
+		line-height: 20px;
+		border-radius: 5px;
+		border: 1px solid #DCDCDC;
+		min-height: 150px;
+		text-indent: 15px;
+		display: none;
+	}
+	.imgPostP img,.imgTextPostP img{
+		max-height: 140px;
+	}
+	.weui-desktop-msg-sender__tab img{margin: 0 3px -4px 0;}
+	/*选中图文*/
+	.weui-desktop-img-picker__item {
+		cursor: pointer;
+		position: relative;
+		float: left;
+		width: 285px;
+		border: 1px solid #E4E8EB;
+		overflow: hidden;
+		margin: 0 22px 15px 0;
+		padding: 13px;
+	}
+	.weui-desktop-img-picker__img-thumb {
+		/*display: block*/;
+		/*width: 100%;
+	*/	/*height: auto;
+*/		/*background-size: contain;
+		background-position: 50% 50%;
+		background-repeat: no-repeat;
+		padding-bottom: 100%;*/
+	}
+	.weui-desktop-img-picker__img-title {
+		display: block;
+		width: auto;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		white-space: nowrap;
+		word-wrap: normal;
+		font-weight: 400;
+		padding: 0 10px;
+		line-height: 30px;
+		margin-bottom: 15px;
+		border-top: 1px solid #E4E8EB;
+	}
+	.weui-desktop-img-picker__item .card_mask_global {
+		/* display: none;*/
+	}
+	.card_mask_global {
+		position: absolute;
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		background: rgba(0,0,0,0.7)!important;
+		filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr='#b3000000',endcolorstr = '#b3000000');
+		cursor: pointer;
+		color: #fff;
+	}
+	.icon_card_selected_global {
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		margin-top: -23px;
+		margin-left: -23px;
+		width: 46px;
+		height: 46px;
+		vertical-align: middle;
+		display: inline-block;
+	}
+	.weui-desktop-appmsg__cover__title {
+		font-size: 16px;
+		font-weight: 400;
+		display: block;
+		line-height: 1.2;
+		color: #353535;
+	}
+	.weui-desktop-appmsg__cover__desc {
+		padding-top: 12px;
+		color: #9A9A9A;
+	}
+	li{
+		list-style: none;
+	}
+	a {
+		color: #333;
+		text-decoration: none;
+	}
+</style>
+<body>
+<div class="content add_role">
+	<div class="navigate_head clearfix">
+		<p onclick="window.location.href='keyword_list.html'">自动回复列表</p>
+		<p  class="navi_current" onclick="window.location.href='add_keyword.html'">添加回复</p>
+		<p class="navi_null"></p>
+	</div>
+	<div>
+		<form class="add_role_form">
+			
+			<div class="public_input">
+				<span>关键词:</span>
+				<input type="text" class="name" placeholder="请输入关键词"/>
+			</div>
+			<div class="public_input">
+				<span>回复类型:</span>
+				<div class="msg_sender_wrp" style="width: 400px;display: inline-block;">
+					<ul class="weui-desktop-msg-sender__tabs" style="line-height: 38px;background-color: #FFFFFF;">
+						<li valuetype="text" class="weui-desktop-msg-sender__tab weui-desktop-msg-sender__tab_text weui-desktop-msg-sender__tab_active"><img src="https://res.wx.qq.com/mpres/en_US/htmledition/pages/modules/msg_sender/svg/default/sender_text43114d.svg">文字</li>
+						<li valuetype="image" class="weui-desktop-msg-sender__tab weui-desktop-msg-sender__tab_img"><img src="https://res.wx.qq.com/mpres/en_US/htmledition/pages/modules/msg_sender/svg/default/sender_img43114d.svg">图片</li>
+						<li valuetype="news" class="weui-desktop-msg-sender__tab weui-desktop-msg-sender__tab_appmsg"><img src="https://res.wx.qq.com/mpres/en_US/htmledition/pages/modules/msg_sender/svg/default/sender_appmsg43114d.svg">图文消息</li>
+					</ul>
+				</div>
+			</div>
+			<div class="public_input">
+				<span style=" vertical-align: top;">回复:</span>
+				<textarea class="textarea" style="margin-left: 30px;	padding: 5px;color: black;" placeholder="请输入回复的文字，限300字以内"></textarea>
+				<p class="imgPostP"></p>
+				<p class="imgTextPostP"></p>
+			</div>
+
+			<div class="public_input confrim_btn">
+				<span>.</span>
+				<input type="button" class="confrim_add_account" value="添加"/>
+			</div>
+		</form>
+	</div>
+</div>
+<script type="text/javascript" src="plug/jquery-1.11.3.min.js" ></script>
+<script type="text/javascript" src="plug/template-web.js"></script>
+<script type="text/javascript" src="js/toggle.js" ></script>
+<script type="text/javascript" src="js/util.js"></script>
+<script type="text/javascript" src="js/method.js"></script>
+<script type="text/javascript" src="js/layui/layui.js"></script>
+<script>
+$(function(){
+    if(getQueryString('id') != null){
+        getKeywordDetail();
+	}
+$('.weui-desktop-msg-sender__tab').click(function () {
+    $('.weui-desktop-msg-sender__tab').removeClass('weui-desktop-msg-sender__tab_active');
+    $(this).addClass('weui-desktop-msg-sender__tab_active');
+    if($(this).attr('valuetype') == 'text'){
+        $('.textarea').css('display','inline-block');
+        $('.imgPostP,.imgTextPostP').hide();
+	}else if($(this).attr('valuetype') == 'image'){
+        $('.textarea,.imgTextPostP').hide();
+        $('.imgPostP').css('display','inline-block');
+        imgOpen('image');
+	}else if($(this).attr('valuetype') == 'news'){
+        $('.textarea,.imgPostP').hide();
+        $('.imgTextPostP').css('display','inline-block');
+        imgOpen('news');
+    }
+});
+var flag=true;
+$(".enabled,.disable").click(function(){
+	flag = $(this).addClass("bg_green").attr("data_val");
+	$(this).siblings().removeClass("bg_green");
+	console.log(flag);
+});
+$(".confrim_add_account").click(function(){
+	//输入框信息
+	var name = $(".name").val();
+	var textarea = $(".textarea").val();
+	var type = $('.weui-desktop-msg-sender__tab_active').attr('valuetype');
+	var data = {
+		"keyword":name,
+		"responseMsgType":type
+	}
+	if(getQueryString('id') != null){
+        data.id = getQueryString('id')
+	}
+	if(type == 'text'){
+	    data.textContent = textarea;
+	}else if(type == 'image'){
+        data.mediaId = $('.weui-desktop-img-picker__img-thumb').attr('valueid');
+        data.picUrl = $('.imgPostP').find('.weui-desktop-img-picker__img-thumb').attr('src');
+    }else if(type == 'news'){
+        data.mediaId = $('.weui-desktop-img-picker__item').attr('valueid');
+        data['newsList[' + 0 + '].url'] = $('.weui-desktop-img-picker__item').attr('valueurl');
+        data['newsList[' + 0 + '].picUrl'] = $('.weui-desktop-img-picker__item').attr('valuePicurl');
+        data['newsList[' + 0 + '].title'] = $('.weui-desktop-img-picker__item').attr('valueTitle');
+        data['newsList[' + 0 + '].description'] = $('.weui-desktop-img-picker__item').attr('valueDesc');
+    }
+	console.log(data);
+	//调用ajax
+	$.post_ajax("/admin/manage/wxmpKeywordResponse/edit",data,function(data){
+		console.log(data);
+		if(data.success==true){
+			alert('添加成功');
+			window.location.href="keyword_list.html";
+		}else{
+			alert(data.data);
+		}
+	});
+	
+});
+});
+function imgOpen(type){
+    var content;
+    if(type == 'image'){
+        content = 'wecatMaterial.html';
+	}else if(type == 'news'){
+        content = 'wecatImgTextMaterial.html';
+    }
+    layui.use(['form','layer','jquery','layedit','table'],function() {
+        var form = layui.form,
+            table = layui.table,
+            layer = parent.layer === undefined ? layui.layer : parent.layer,
+            laypage = layui.laypage,
+            layedit = layui.layedit,
+            $ = layui.jquery;
+        var index = layer.open({
+            title : "选择素材",
+            type : 2,
+            area: ['730px','95%'],
+            content : content,
+            success : function(layero, index){
+
+            },
+            cancel: function(index, layero){
+                layer.close(index)
+                return false;
+            }
+        })
+    })
+    /*$(".shade,.orderOpen").show();
+    var dataid = $(m).attr("data_id");*/
+}
+function getKeywordDetail() {
+    var data = {"id":getQueryString('id')};
+    console.log(data);
+    //调用ajax
+    $.get_ajax("/admin/manage/wxmpKeywordResponse/one",data,function(data){
+        console.log(data);
+        if(data.success==true){
+            $(".name").val(data.data.keyword);
+            $('.weui-desktop-msg-sender__tab').removeClass('weui-desktop-msg-sender__tab_active');
+            $('.weui-desktop-msg-sender__tab[valuetype = "'+data.data.responseMsgType+'"]').addClass('weui-desktop-msg-sender__tab_active');
+            if(data.data.responseMsgType == 'text'){
+                $('.textarea').val(data.data.textContent);
+            }else if(data.data.responseMsgType == 'image'){
+                $('.textarea,.imgTextPostP').hide();
+                $('.imgPostP').css('display','inline-block');
+                $('.imgPostP').empty().append('<img class="weui-desktop-img-picker__img-thumb" valueid="'+data.data.mediaId+'" src="'+data.data.picUrl+'">')
+            }else if(data.data.responseMsgType == 'news'){
+
+            }
+
+
+        }else{
+            alert(data.data);
+        }
+    });
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="css/base.css" />
+<link rel="stylesheet" href="css/util.css" />
+<link rel="stylesheet" href="css/collect.css" />
+	<link href="css/combo.select.css" rel="stylesheet" />
+<title>体征模板</title>
+<style>
+.content .head_area input,.content .head_area select{
+	width: 130px;
+}
+.special_proj .activty{
+	width: 180px;height: 70px;
+	position: absolute;
+	z-index: 999;
+	top: 100px;left: 55%;
+	border: 1px solid #00AFA1;
+	background-color: black;
+	filter:alpha(opacity:30); opacity:0.3;  -moz-opacity:0.3;-khtml-opacity: 0.3;
+	color: white;
+	border-radius: 10px;
+}
+.special_proj .activty p{
+	height: 30px;line-height: 30px;
+	text-indent: 10px;
+}
+.content .head_area .combo-select input{
+	width: inherit;
+	border: none;
+	outline: none;
+}
+	.enabled,.disable{
+		border: 1px solid #dddddd;
+		height:25px;
+		border-radius: 4px;
+		line-height: 25px;width: 35px;
+		font-size: 12px;
+	}
+	.enabled{
+		border-top-right-radius: 0;
+		border-bottom-right-radius: 0;
+	}
+	.disable{
+		border-top-left-radius: 0;
+		border-bottom-left-radius: 0;
+	}
+	.remark{
+		display: inline-block;
+		height: 30px;
+		line-height: 30px;
+		border: 1px solid #DCDCDC;
+		padding: 0 10px;
+		position: relative;
+		border-radius: 5px;
+		margin: 5px 4px 5px 4px;
+	}
+	.remarkImg{
+		position: absolute;
+		top: -8px;
+		right: -7px;
+	}
+	.ticket{
+		width: 100%;
+		/*height: 34px;*/
+		line-height: 34px;
+		border-top: 1px solid #dcdcdc;
+	}
+	.title {
+		width: 100%;
+		padding-left: 2%;
+		padding-right: 2%;
+		border-bottom: 1px dashed #dcdcdc;
+		background-color: #f3f3f3;
+	}
+	.ticket_content{
+		width: 87.4%;
+		margin-left: 5%;
+	}
+	.num{
+		font-size: 18px;
+		font-family: 微软雅黑;
+	}
+	.parentstatus{
+		float: right;
+		font-size: 18px;
+		font-family: 微软雅黑;
+	}
+	.Childstatus{
+		float: right;
+	}
+.enabled,.disable{
+	border: 1px solid #dddddd;
+	height:25px;
+	border-radius: 4px;
+	line-height: 25px;width: 35px;
+	font-size: 12px;
+}
+.enabled{
+	border-top-right-radius: 0;
+	border-bottom-right-radius: 0;
+}
+.disable{
+	border-top-left-radius: 0;
+	border-bottom-left-radius: 0;
+}
+</style>
+</head>
+<body>
+<div class="content special_proj">
+	<div class="tabHref">
+		<p onclick="window.location.href='community_list.html'">社区管理</p>
+		<p onclick="window.location.href='doctorNurseList.html'">医护管理</p>
+		<p onclick="window.location.href='healthman_list.html'">健管师管理</p>
+		<p onclick="window.location.href='healthPitent_list.html'">患者管理</p>
+		<p onclick="window.location.href='bodyInfo_list.html'" class="navi_current">体征模板管理</p>
+	</div>
+	<div class="navigate_head clearfix">
+		<p onclick="window.location.href='bodyInfo_list.html'" class="navi_current">体征列表</p>
+		<p onclick="window.location.href='add_bodyInfo.html'">添加父级类目</p>
+		<p class="navi_null"></p>
+	</div>
+	<!--头部功能-->
+	<!--<div class="head_area flex_vertical">
+		&lt;!&ndash;<select class="hosSelect" style="width: 190px">
+			<option value="">全部社区</option>
+		</select>&ndash;&gt;
+		<input type="text" style="width: 205px" class="search" placeholder="搜索社区"/>
+		<button class="search" onclick="indexPage()" style="margin-left: 20px;">搜索</button>
+	</div>-->
+	<div class="tbody" style="border: 1px solid #dcdcdc;border-top: none;"></div>
+	<!--<table>
+		<thead>
+			<tr>
+				<td>父类名称</td>
+				<td>子类</td>
+				<td>操作</td>
+			</tr>
+		</thead>
+		<tbody class="tbody">
+			
+		</tbody>
+	</table>-->
+	<!--分页-->
+	<!--<div class="page flex_vertical">
+		<button class="" onclick="indexPage()">首页</button>&nbsp;
+		<button class="" onclick="backPage()"><上一页</button>&nbsp;
+		&lt;!&ndash;页码&ndash;&gt;
+		<p class="page_num">
+			&lt;!&ndash;<span>1</span><span>2</span><span>3</span><span>4</span><span>5</span>&ndash;&gt;
+		</p>...
+		<button class="" onclick="nextPage()">下一页></button>&nbsp;
+		<button class="" onclick="endPage()">末页</button>&nbsp;
+		共<span class="all_recode">0 </span>记录&nbsp;|
+		共<span class="all_page">0 </span>页&nbsp;
+		到第<input class="select_page" />页&nbsp;
+		<button class="confirm_page" onclick="skipPage()">确定</button>
+	</div>-->
+</div>
+<!--遮罩层-->
+<div class="shade none"></div>
+<!--审核弹框-->
+<div class="popup_box audit_box none">
+	<p class="img_close clearfix">
+		<img src="img/close.png" onclick="close_box()"/>
+	</p>
+	<div>
+		<div class="public_input">
+			<span style="width: 80px;    margin-left: 40px;">父类名称:</span>
+			<input class="parentName" style="width: 250px;margin-left: 10px " type="text"/>
+		</div>
+	</div>
+	<p class="confirm confirm_audit" style="width: 70px;    margin: 10px 0 30px 210px;">确 定</p>
+</div>
+<!--子类弹框-->
+<div class="popup_box audit_Childbox none">
+	<p class="img_close clearfix">
+		<img src="img/close.png" onclick="close_box()"/>
+	</p>
+	<div>
+		<div class="public_input">
+			<span style="width: 80px;    margin-left: 40px;">子类名称:</span>
+			<input class="childName" style="width: 250px;margin-left: 10px " type="text"/>
+		</div>
+	</div>
+	<p class="confirm confirm_Childaudit" style="width: 70px;    margin: 10px 0 30px 210px;">确 定</p>
+</div>
+<!--添加弹框-->
+<div class="popup_box add_box none">
+	<p class="img_close clearfix">
+		<img src="img/close.png" onclick="close_box()"/>
+	</p>
+	<div>
+		<div class="public_input">
+			<span style="width: 80px;    margin-left: 40px;">子类名称:</span>
+			<input class="addchildName" style="width: 250px;margin-left: 10px " type="text"/>
+		</div>
+	</div>
+	<p class="confirm confirm_add" style="width: 70px;    margin: 10px 0 30px 210px;">确 定</p>
+</div>
+<script type="text/javascript" src="plug/jquery-1.11.3.min.js" ></script>
+<script type="text/javascript" src="plug/template-web.js"></script>
+<script type="text/javascript" src="js/toggle.js" ></script>
+<script type="text/javascript" src="js/util.js"></script>
+<script type="text/javascript" src="js/method.js"></script>
+<script type="text/javascript" src="js/page.js"></script>
+<script type="text/javascript" src="js/jquery.combo.select.js"></script>
+<script id="test_special_list" type="text/html">
+	{{each data value}}
+		<tr>
+			<td width="25%">{{value.remark}}</td>
+			<td>{{value.cityName}}{{value.areaName}}{{value.rowName}}{{value.address}}</td>
+			<td data_id = "{{value.id}}">
+				<button class="font_green" onclick="edit_special_proj(this)">修改</button>
+			</td>
+		</tr>
+	{{/each}}
+</script>
+<!--项目类型列表-->
+<script type="text/html" id="test_proj_list">
+	{{each data value}}
+		<option value="{{value.id}}">{{value.name}}</option>
+	{{/each}}
+</script>
+<!--医院列表-->
+<script type="text/html" id="test_hos_list">
+	{{each data value}}
+	<option value="{{value.id}}">{{value.name}}</option>
+	{{/each}}
+</script>
+<script>
+    thisPageLoad();
+    function thisPageLoad() {
+        var enuoCurrUrl = window.location.pathname.split('/enuoAdmin/')[1]
+        window.localStorage.setItem("enuoCurrUrl",enuoCurrUrl);
+    }
+var proj_type_id="";
+var pass_val = "";
+var parent_id;
+    var child_id;
+//初始化项目类型列表
+//$.initSelect("/admin/specialProduct/getBeautySubjectList.json","test_proj_list",".proj_type");
+//初始化医院列表
+$.initHosSelect("/admin/hospital/getCertList.json",'test_hos_list',".hosSelect");
+$(".proj_type").change(function(){
+	proj_type_id = $(".proj_type").val();
+	console.log(proj_type_id);
+});
+//是否上架
+$(".pass").change(function(){
+	pass_val = $(".pass").val();
+	console.log(pass_val);
+});
+$(".pass,.status,.proj_type,.hosSelect").change(function(){
+	indexPage();
+});
+function reqPage(data){
+/*	console.log(data);
+	control_page.init_page(data,function(data){
+		//调用ajax
+		$.get_ajax("/admin/healthSupervisor/findBodyInfoTypeTree",data,function(data){
+			console.log(data);
+			var html = template('test_special_list',data);
+			$(".tbody").html(html);
+			//初始化分页
+			control_page.currentPage(control_page.page_num,data.totalCount);
+		});
+	});*/
+//调用ajax
+    $.get_ajax("/admin/healthSupervisor/findBodyInfoTypeTree",data,function(data){
+        if(data.success){
+            var html = '';
+            if(data.data.length > 0){
+                data.data.forEach(function (value) {
+					console.log(value)
+                    html += '<div class="ticket mainmenu"> ' +
+                        '<div class="title" onclick="slideToggle(this)"> ' +
+                        '<label class="ticket_num"><span class="num">'+value.remark+'</span></label>' +
+                        '<label class="ticket_status">' ;
+                    html += '<span class="parentstatus"> '
+                    html += '<span style="margin-right: 8px;">'
+					if(value.status == 'close'){
+                        html +='<input type="button" class="enabled" value="启用" status="open" onclick="shangxia(this);stopEvt(event)" valueid="'+value.id+'">'
+                        html +='<input type="button" class="disable bg_green" value="停用" status="close" onclick="shangxia(this);stopEvt(event)" valueid="'+value.id+'">'
+					}else if(value.status == 'open'){
+                        html +='<input type="button" class="enabled bg_green" value="启用" status="open" onclick="shangxia(this);stopEvt(event)" valueid="'+value.id+'">'
+                        html +='<input type="button" class="disable" value="停用" status="close" onclick="shangxia(this);stopEvt(event)" valueid="'+value.id+'">'
+                    }
+                    html +='</span>'
+                    html += '<button data_id="'+value.id+'" onclick="add_childname(this);stopEvt(event)"  style="color: #00AFA1;margin-right: 8px;font-size: 18px;font-family: 微软雅黑">添加</button>'
+                    html += '<button data_id="'+value.id+'"  data_value="'+value.remark+'" onclick="edit_parentname(this);stopEvt(event)"  style="color: #00AFA1;font-size: 18px;font-family: 微软雅黑">修改</button>'
+                    html += '</span> ';
+                    html += '</div> ';
+                    html += '<div class="ticket_content submenu">'
+					if(value.children.length > 0){
+                        value.children.forEach(function (valueChild) {
+                            html += '<p><span>'+valueChild.remark+'</span>' +
+								'<span class="Childstatus"><span style="margin-right: 8px;">'
+                            if(valueChild.status == 'close'){
+                                html +='<input type="button" class="enabled" value="启用" status="open" onclick="shangxia(this);stopEvt(event)" valueid="'+valueChild.id+'">'
+                                html +='<input type="button" class="disable bg_green" value="停用" status="close" onclick="shangxia(this);stopEvt(event)" valueid="'+valueChild.id+'">'
+                            }else if(valueChild.status == 'open'){
+                                html +='<input type="button" class="enabled bg_green" value="启用" status="open" onclick="shangxia(this);stopEvt(event)" valueid="'+valueChild.id+'">'
+                                html +='<input type="button" class="disable" value="停用" status="close" onclick="shangxia(this);stopEvt(event)" valueid="'+valueChild.id+'">'
+                            }
+                            html +='</span>' +
+								'<span class="Childstatus"  data_id="'+value.id+'" data_Childid="'+valueChild.id+'" data_Childvalue="'+valueChild.remark+'" onclick="edit_Childname(this);stopEvt(event)"  style="color: #00AFA1">修改</span></span>' +
+								'</p>'
+                        })
+					}
+                    html += '</div>';
+                    html += '</div>';
+                })
+			}
+            $(".tbody").html(html);
+        }else{
+            alert(data.data);
+        }
+        //初始化分页
+       // control_page.currentPage(control_page.page_num,data.totalCount);
+    });
+}
+    function slideToggle(obj) {
+        $(obj).next('.submenu').slideToggle().siblings('.submenu').slideUp();
+    }
+    function stopEvt(e) {
+        e.stopPropagation();//阻止点击事件向上冒泡
+    }
+//添加
+function add_childname(m){
+    $('.addchildName').val('');
+	parent_id =  $(m).attr("data_id");
+    $('.shade,.add_box').show();
+}
+function delParent(m) {
+    var id = $(m).attr("data_id");
+    var r=confirm("确定删除父级类目吗？");
+    if (r == true) {
+        var data = {"id": id};
+        $.get_ajax("/admin/healthSupervisor/deleteBodyInfoType", data, function (res) {
+            if (res.success == true) {
+                alert(res.data);
+                window.location.reload();
+            } else {
+                alert(res.data);
+            }
+        });
+    }
+}
+    //请求方法
+    function shangxia(obj) {
+        var data = {};
+        data.id = $(obj).attr('valueid');
+        data.status = $(obj).attr('status');
+        $.post_ajax("/admin/healthSupervisor/closeAndOpenBodyInfoType",data,function(res){
+            if(res.success==true){
+                if($(obj).attr('value') == '停用'){
+                    $(obj).prev().removeClass('bg_green');
+                    $(obj).addClass('bg_green');
+                }else if($(obj).attr('value') == '启用'){
+                    $(obj).next().removeClass('bg_green');
+                    $(obj).addClass('bg_green');
+                }
+            }else{
+                alert(res.data);
+            }
+        });
+    }
+/**
+ * 修改父级
+ */
+function edit_parentname(m){
+	$('.shade,.audit_box').show();
+	$('.parentName').val($(m).attr('data_value'));
+    parent_id = $(m).attr("data_id");
+}
+    /**
+     * 修改子级
+     */
+    function edit_Childname(m){
+        $('.shade,.audit_Childbox').show();
+        $('.childName').val($(m).attr('data_Childvalue'));
+        parent_id = $(m).attr("data_id");
+        child_id = $(m).attr("data_Childid");
+    }
+var flag=true;
+$(".enabled,.disable").click(function(){
+	flag = $(this).addClass("bg_green").attr("data_val");
+	$(this).siblings().removeClass("bg_green");
+	console.log(flag);
+});
+    $(".confirm_add").click(function(){
+        var data = {
+            "parentId":parent_id,
+            "remark":$('.addchildName').val()
+        }
+        $.get_ajax("/admin/healthSupervisor/addBodyInfoType",data,function(res){
+            if(res.success==true){
+                alert(res.data);
+                window.location.reload();
+            }else{
+                alert(res.data);
+            }
+        });
+    });
+$(".confirm_audit").click(function(){
+	var data = {
+		"id":parent_id,
+		"remark":$('.parentName').val()
+	}
+	$.post_ajax("/admin/healthSupervisor/updateBodyInfoType",data,function(res){
+		if(res.success==true){
+		   alert(res.data);
+		   window.location.reload();
+		}else{
+			alert(res.data);
+		}
+	});
+});
+    $(".confirm_Childaudit").click(function(){
+        var data = {
+            "parentId":parent_id,
+            "id":child_id,
+            "remark":$('.childName').val()
+        }
+        $.post_ajax("/admin/healthSupervisor/updateBodyInfoType",data,function(res){
+            if(res.success==true){
+                alert(res.data);
+                window.location.reload();
+            }else{
+                alert(res.data);
+            }
+        });
+    });
+
+</script>
+<script>
+/**
+ * hover显示价格详情
+ */
+//function addHtml(m){
+////	alert("沃日");
+//	var deanPrice =	$(m).attr("data_deanPrice");//院长
+//	var expertPrice = $(m).attr("data_expertPrice");//专家
+//	var type = $(m).attr("data_type");
+//	if(type == "cure"){
+//		console.log("医美");
+//		var html = "<div class='activty'>";
+//		if($.regNum(deanPrice)){
+//			html=html+"<p><span>院长费用：</span><span>"+deanPrice+"元</span></p>"
+//		}
+//		html=html+"<p><span>专家费用：</span><span>"+expertPrice+"元</span></p></div>";
+//		console.log(html);
+//	}
+//	if(type == "check"){
+//		console.log("医院");
+//		var html = "<div class='activty'><p><span>特价：</span><span>"+expertPrice+"元</span></p></div>";
+//		console.log(html);
+//	}
+//	$(".special_proj").append(html);
+//	var i = $(m).parent().offset().top;//距离网页顶部的距离
+//	console.log(i);
+//	$(".activty").css({"top":i-20});
+//}
+//function delHtml(m){
+////	alert("woq");
+//	$(".special_proj .activty").remove();
+//}
+</script>
+<script>
+$(function(){
+	reqPage(control_page.getData());
+	//搜索
+});
+function search(obj) {
+    console.log(obj)
+    //基本条件
+    if(obj == undefined){
+        var data = control_page.getData();
+    }else{
+        var data = obj;
+    }
+    //关键词
+    if($('.search').val() != ""){
+        data.keyword = $('.search').val();
+    }
+
+    reqPage(data);
+}
+</script>
+</body>
+</html>

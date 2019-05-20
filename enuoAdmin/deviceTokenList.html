@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="css/base.css" />
+<link rel="stylesheet" href="css/util.css" />
+<link rel="stylesheet" href="css/collect.css" />
+<title>消息推送管理</title>
+</head>
+<style>
+	.saleCheckbox{
+		margin-right: 19px;
+		margin-bottom: 12px;
+		display: inline-block;
+		cursor: pointer;
+	}
+	.allTui{
+		background-color: #1E9FFF;
+		font-size: 10px;
+		margin-left: 25px;
+		cursor: pointer;
+		display: inline-block;
+		color: white;
+		padding: 0 14px;
+		height: 33px;
+		line-height: 33px;
+		vertical-align: top;
+	}
+	.option-input:checked {
+		background: url("img/goublue.png");
+		background-size: 100% 100%;
+		background-color: #fff;
+		color: white;
+	}
+	.option-input {
+		-webkit-appearance: none;
+		-moz-appearance: none;
+		-ms-appearance: none;
+		-o-appearance: none;
+		appearance: none;
+		background: #fff;
+		border: 1px solid #c0c0c0;
+		color: #fff;
+		width: 15px;
+		height: 15px;
+		margin: 0 5px 0 0;
+		cursor: pointer;
+	}
+</style>
+<body>
+<div class="content employee">
+	<div class="navigate_head clearfix">
+		<p onclick="window.location.href='healthman_list.html'" class="navi_current">消息推送管理</p>
+		<p class="navi_null" style="width: 84%;text-align: left"><span class="allTui" onclick="addTui()">推送</span></p>
+	</div>
+	<table>
+		<thead>
+			<tr>
+				<td width="10%"><input class="option-input" type="checkbox" name="allotCheck" lay-skin="primary" lay-filter="allChoose" id="allChoose"></td>
+				<td width="30%">获取时间</td>
+				<td width="60%">设备号</td>
+			</tr>
+		</thead>
+		<tbody class="tbody">
+			<!--<tr>
+				<td>1</td>
+				<td>张三</td>
+				<td>165 1238 6549</td>
+				<td>状态</td>
+				<td><button class="font_green">修改</button>&nbsp;&nbsp;<button class="font_green">删除</button></td>
+			</tr>-->
+		</tbody>
+	</table>
+	<!--分页-->
+	<div class="page flex_vertical">
+		<button class="" onclick="indexPage()">首页</button>&nbsp;
+		<button class="" onclick="backPage()"><上一页</button>&nbsp;
+		<!--页码-->
+		<p class="page_num">
+			<!--<span>1</span><span>2</span><span>3</span><span>4</span><span>5</span>-->
+		</p>....
+		<button class="" onclick="nextPage()">下一页></button>&nbsp;
+		<button class="" onclick="endPage()">末页</button>&nbsp;
+		共<span class="all_recode">0 </span>记录&nbsp;|
+		共<span class="all_page">0 </span>页&nbsp;
+		到第<input class="select_page" />页&nbsp;
+		<button class="confirm_page" onclick="skipPage()">确定</button>
+	</div>
+</div>
+<!--遮罩层-->
+<div class="shade none"></div>
+<!--弹框-->
+<div class="popup_box popup_box_sure none">
+	<p class="img_close clearfix">
+		<img src="img/close.png" onclick="close_box()"/>
+	</p>
+	<div>
+		<div class="public_input">
+			<textarea style="margin-left: 56px;height: 137px;" placeholder="请输入要推送的消息"></textarea>
+		</div>
+	</div>
+	<p class="confirm" onclick="set_TuiNews()" style="margin-left: 208px;">确 定</p>
+</div>
+<script type="text/javascript" src="plug/jquery-1.11.3.min.js" ></script>
+<script type="text/javascript" src="plug/template-web.js"></script>
+<script type="text/javascript" src="js/toggle.js" ></script>
+<script type="text/javascript" src="js/util.js"></script>
+<script type="text/javascript" src="js/method.js"></script>
+<script type="text/javascript" src="js/page.js"></script>
+<!--业务员列表-->
+<script id="test_salesman_list" type="text/html">
+{{each data as value i}}
+	<tr>
+		<td>{{i+1}}</td>
+		<td>{{value.name}}</td>
+		<td>{{value.mobile}}</td>
+		<td>
+			{{if value.power==true}}主管{{else if value.power==false}}健管师{{else}}{{/if}}
+		</td>
+		<td>
+			{{if value.power==false}} {{value.belongSupervisorNames}} {{else}}{{/if}}
+		</td>
+		<td>
+			{{if value.openState==true}}启用{{else if value.openState==false}}关闭{{/if}}
+		</td>
+		<td width="15%" data_id="{{value.id}}">
+			<button class="font_green" onclick="edit_healthman(this)">修改</button>
+			<button class="font_green" onclick="resetPsd(this)">重置密码</button>
+			<!--{{if value.type=="member"}}<button class="font_green" onclick="set_captain_open(this)">设为主管</button> {{else}}{{/if}}-->
+			<!--<button class="font_green" onclick="set_captain_open(this)">设为主管</button>-->
+			<!--&nbsp;<button class="font_green" onclick="del_tyq(this)">删除</button>-->  
+		</td>
+	</tr>
+{{/each}}
+</script>
+
+<script>
+    thisPageLoad();
+	function thisPageLoad() {
+        var enuoCurrUrl = window.location.pathname.split('/enuoAdmin/')[1]
+        window.localStorage.setItem("enuoCurrUrl",enuoCurrUrl);
+    }
+    var td = $('table').find('td');
+    td.find('.option-input').on('change', function () {
+        console.log(this.checked)
+        $('.option-inputChild').prop('checked', this.checked);
+    });
+//请求方法
+function reqPage(data){
+	console.log(data);
+	control_page.init_page(data,function(data){
+		//调用ajax
+		$.get_ajax("/ios/device_token/page",data,function(data){
+			console.log(data);
+			var html = '';
+
+                data.data.forEach(function (value) {
+                    html += '<tr>' +
+                        '<td><input class="option-input option-inputChild" valueid="'+value.deviceToken+'" type="checkbox" name="allotCheck" lay-skin="primary" lay-filter="allChoose" id="allChoose"></td>' +
+                        '<td>'+new Date(value.createDate).Format('yyyy-MM-dd hh:mm:ss')+'</td>' +
+                        '<td>'+value.deviceToken+'</td>' +
+                        '</tr>'
+                })
+
+
+			//var html = template('test_salesman_list',data);
+			$(".tbody").html(html);
+			//初始化分页
+			control_page.currentPage(control_page.page_num,data.totalCount);
+		});
+	});
+}
+
+//修改健管师
+function edit_healthman(m){
+	var healthman_id = $(m).parent().attr("data_id");
+	window.localStorage.setItem("healthman_id",healthman_id);
+	window.location.href = "edit_healthman.html";
+}
+//推送
+function addTui(m) {
+    $(".shade,.popup_box_sure").show();
+    $('.confirm').attr('data_id',$(m).parent().attr('data_id'));
+}
+
+function set_TuiNews() {
+    var data = {};
+    var List = [];
+	$('.option-inputChild').each(function () {
+	    if($(this).prop('checked') == true){
+            List.push(Number($(this).attr('valueid')))
+		}
+    })
+	List.forEach(function (value,index) {
+        data['tokens[' + index + ']'] = value;
+    })
+	data.text = $('textarea').val();
+    $.post_ajax("/ios/device_token/send",data,function(data){
+        if(data.success==true){
+            alert(data.data);
+        }else{
+            alert(data.data);
+        }
+    });
+}
+function resetPsd(obj) {
+    var elThis = $(obj);
+    var r=confirm("重置后密码为：123456，确定要重置密码吗？")
+    if (r==true){
+        $.post_ajax("/admin/healthSupervisor/reset/password",{id:elThis.parent().attr('data_id')},function(data){
+            if(data.success==true){
+                alert('重置成功');
+            }else{
+                alert(data.data);
+            }
+        });
+    }
+}
+//获取业务员
+function getMenbers() {
+    $.get_ajax("/admin/salesman/getSalesmans.json",{type:'member'},function(res){
+        console.log(res);
+        if(res.success){
+            res.data.forEach(function (value) {
+                $('.menberDiv').append('<span class="saleCheckbox" valueid="'+value.id+'"><input class="menberCheckbox" type="checkbox"/><span onclick="checkedSpan(this)">'+value.name+'</span></span>');
+            })
+        }else{
+            alert(res.data);
+        }
+    });
+}
+//分配组员到组长
+/*var arrResult = [];
+$(m).each(function(){
+//		console.log($(this).val());
+    arrResult.push($(this).val()+"");
+});
+arrResult = arrResult.join('|');*/
+function allotMenbers() {
+    var ids = [];
+    $('.menberCheckbox').each(function () {
+		if($(this).prop('checked') == true){
+		    ids.push($(this).parent().attr('valueid'));
+		}
+    })
+    ids = ids.join(',');
+    var data = {};
+    data.ids = ids;
+    data.captainId = $('.confirmSureStatus').attr('data_id');
+    $.post_ajax("/admin/salesman/allot",data,function(data){
+        if(data.success==true){
+            alert(data.data);
+            window.location.reload();
+        }else{
+            alert(data.data);
+        }
+    });
+}
+//删除体验券
+function del_tyq(m){
+	var tyq_id = $(m).parent().attr("data_id");
+	var data = {
+		"id":tyq_id
+	}
+	$.post_ajax("/admin/experienceReservation/delete",data,function(data){
+		if(data.success==true){
+			alert(data.data);
+			window.location.href = "tyq_list.html"
+		}else{
+			alert(data.data);
+		}
+	});
+}
+function checkedSpan(m) {
+    if($(m).prev('input[type="checkbox"]').prop('checked') == true){
+        $(m).prev('input[type="checkbox"]').prop('checked',false);
+	}else{
+        $(m).prev('input[type="checkbox"]').prop('checked',true);
+	}
+}
+
+</script>
+<script>
+$(function(){
+	reqPage(control_page.getData());
+});
+function search(obj) {
+    //基本条件
+//		var data = control_page.getData();
+    if(obj == undefined){
+        var data = control_page.getData();
+    }else{
+        var data = obj;
+    }
+    //项目名称
+    var keyword = $(".search").val();
+    if(keyword != ""){
+        data.keyword = keyword;
+    }
+    reqPage(data);
+}
+</script>
+</body>
+</html>

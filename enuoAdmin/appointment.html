@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="css/base.css" />
+<link rel="stylesheet" href="css/util.css" />
+<link rel="stylesheet" href="css/collect.css" />
+<title>预约列表</title>
+</head>
+<body>
+<div class="content appointment">
+	<div class="navigate_head clearfix">
+		<p class="" onclick="window.location.href='hos_group.html'">预约信息</p>
+		<p class="navi_null"></p>
+	</div>
+	<!--头部功能-->
+	<div class="head_area flex_vertical">
+		<span style="font-size: 18px;">预约状态：</span><select class="" style="width: 280px;"><option>全部</option></select>
+		<input type="text" class="search" placeholder="搜索患者（姓名、账号、手机号）" style="width: 280px;"/><button>搜索</button>
+	</div>
+	<table>
+		<thead>
+			<tr>
+				<td>订单号</td>
+				<td>下单时间</td>
+				<td>预诊时间</td>
+				<td>患者名</td>
+				<td>约定科室</td>
+				<td>约定医生</td>
+				<td>约定疾病</td>
+				<td>预约状态</td>
+				<td>操作</td>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td><div class="flex_all_center"><img src="img/activity_manage/select.png"/>&nbsp;<span>921614597713019</span></div></td>
+				<td>2017-08-12</td>
+				<td>2017-03-02</td>
+				<td>176 0652 0935</td>
+				<td>口腔科</td>
+				<td>蔡晓云(杭州梦桃口腔门诊部)</td>
+				<td>补牙</td>
+				<td>预约已取消</td>
+				<td>
+					<button class="btn_red">删除</button>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+<script type="text/javascript" src="plug/jquery-1.11.3.min.js" ></script>
+<script type="text/javascript" src="js/toggle.js" ></script>
+<script>
+
+</script>
+</body>
+</html>

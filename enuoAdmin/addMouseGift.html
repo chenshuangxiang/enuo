@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="css/base.css" />
+<link rel="stylesheet" href="css/util.css" />
+<link rel="stylesheet" href="css/collect.css" />
+<title>添加口腔护理礼包</title>
+</head>
+<body>
+<div class="content add_tyq">
+	<div class="navigate_head clearfix">
+		<p style="width: 18%;" onclick="window.location.href='mouseGift.html'">口腔护理礼包列表</p>
+		<p style="width: 18%;" onclick="window.location.href='addMouseGift.html'" class="navi_current">添加口腔护理礼包</p>
+		<p class="navi_null"></p>
+	</div>
+	<div>
+		<form class="add_role_form">
+			<div class="public_input">
+				<span>添加礼包数量:</span>
+				<input type="number" class="tyq_num" placeholder="请输入添加礼包数量(个)"/>
+			</div>
+			<div class="public_input">
+				<span>分配给业务员:</span>
+				<select class="salesman_name">
+					<option class="0">请选择</option>
+				</select>
+			</div>
+			<div class="public_input">
+				<span>礼包生效时间:</span>
+				<input type="text" class="Wdate begin_time" onfocus="WdatePicker({lang:'zh-cn',dateFmt: 'yyyy-MM-dd'})"/>
+			</div>
+			<div class="public_input">
+				<span>礼包失效时间:</span>
+				<input type="text" class="Wdate end_time" onfocus="WdatePicker({lang:'zh-cn',dateFmt: 'yyyy-MM-dd'})"/>
+			</div>
+			<div class="public_input confrim_btn">
+				<span>.</span>
+				<input type="button" class="confrim_add_tyq" value="添加"/>
+			</div>
+		</form>
+	</div>
+</div>
+	
+	
+<script type="text/javascript" src="plug/jquery-1.11.3.min.js" ></script>
+<script type="text/javascript" src="plug/template-web.js"></script>
+<script type="text/javascript" src="js/toggle.js" ></script>
+<script type="text/javascript" src="js/util.js"></script>
+<script type="text/javascript" src="js/method.js"></script>
+<!--日期插件-->
+<link rel="stylesheet" href="plug/My97DatePicker/skin/WdatePicker.css" />
+<script src="plug/My97DatePicker/WdatePicker.js"></script>
+<!--业务员列表-->
+<script type="text/html" id="test_salesman_list">
+	{{each data value}}
+		<option value="{{value.id}}">{{value.name}}</option>
+	{{/each}}
+</script>
+<script>
+$(function(){
+
+	var salesman_id ="";//业务员id
+	//初始化业务员列表
+	$.initSelect("/admin/salesman/getEnabledList.json",'test_salesman_list',".salesman_name");
+	$(".salesman_name").change(function(){
+		salesman_id = $(".salesman_name").val();
+	});
+	
+	$(".confrim_add_tyq").click(function(){
+		var tyq_num = $(".tyq_num").val();
+        var begin_time = $(".begin_time").val();
+		var end_time = $(".end_time").val();
+		
+		var data = {
+			"amount":tyq_num,
+			"salesmanId":salesman_id,
+            "effectiveStartDate":begin_time,
+			"effectiveEndDate":end_time
+		}
+		//验证
+		if(!$.verify(tyq_num,"发布数量")){return false;}
+        if(!$.verifyNum(salesman_id,"业务员名字")){return false;}
+        if(!$.verify(begin_time,"礼包开始时间")){return false;}
+		if(!$.verify(end_time,"礼包失效时间")){return false;}
+		$.post_ajax("/shareCoupon/admin/generShareCoupon.json",data,function(data){
+			if(data.success==true){
+				alert(data.data);
+				window.location.href = "mouseGift.html";
+			}else{
+				alert(data.data);
+			}
+		});
+	});
+});
+</script>
+</body>
+</html>

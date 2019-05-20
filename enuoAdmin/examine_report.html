@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="css/base.css" />
+<link rel="stylesheet" href="css/util.css" />
+<link rel="stylesheet" href="css/collect.css" />
+<title>检查报告展示</title>
+</head>
+<body>
+<div class="content examine_report">
+	<div class="navigate_head clearfix">
+		<p class="navi_current" onclick="window.location.href='examine_report.html'">检查报告展示</p>
+		<p class="" onclick="window.location.href='examine_insert.html'">检查报告录入</p>
+		<p class="navi_null"></p>
+	</div>
+	<!--头部功能-->
+	<div class="head_area flex_vertical clearfix">
+		<button>选择文件</button><span class="text">未选择任何文件</span><button style="margin-left: 10px;">导入表格</button>
+	</div>
+	<table>
+		<thead>
+			<tr>
+				<td>序号</td>
+				<td>手机号</td>
+				<td>姓名</td>
+				<td>预览</td>
+				<td>操作</td>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td>1</td>
+				<td>183 5702 5416</td>
+				<td>孟榴爽</td>
+				<td>预览</td>
+				<td>
+					<button class="btn_green">修改</button>
+					<button class="btn_red">删除</button>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+<script type="text/javascript" src="plug/jquery-1.11.3.min.js" ></script>
+<script type="text/javascript" src="js/toggle.js" ></script>
+<script>
+
+</script>
+</body>
+</html>

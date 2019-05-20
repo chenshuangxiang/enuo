@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="css/base.css" />
+<link rel="stylesheet" href="css/util.css" />
+<link rel="stylesheet" href="css/collect.css" />
+<title>医院详情</title>
+</head>
+<style>
+	.hos_detail_form .public_input{
+		margin: 5px 0;
+	}
+	.openimg{
+		max-width: 120px;
+	}
+</style>
+<body>
+<div class="content hos_detail">
+	<div class="navigate_head clearfix">
+		<p class="" onclick="window.location.href='hos_list.html'">医院列表</p>
+		<p class="navi_current" onclick="window.location.href='hos_detail.html'">医院详情</p>
+		<p class="navi_null"></p>
+	</div>
+	<div>
+		<form class="hos_detail_form">
+			
+		</form>
+	</div>
+</div>
+<!--遮罩层-->
+<div class="shade none"></div>
+<!--审核弹框-->
+<div class="popup_box none" style="text-align: center;
+    padding-bottom: 30px;top: 13%;    width: 700px;
+    left: 40%;">
+	<p class="img_close clearfix">
+		<img src="img/close.png?v=c844053" onclick="close_box()"/>
+	</p>
+	<img class="imgwidthbig" style="max-height: 420px;" src="">
+</div>
+	
+<script type="text/javascript" src="plug/jquery-1.11.3.min.js" ></script>
+<script type="text/javascript" src="plug/template-web.js" ></script>
+<script type="text/javascript" src="plug/webuploader/webuploader.min.js"></script>
+<script type="text/javascript" src="js/toggle.js" ></script>
+<script type="text/javascript" src="js/util.js" ></script>
+<script type="text/javascript" src="js/method.js" ></script>
+<script type="text/javascript" src="js/detail/hos.js" ></script>
+<!--医院详情-->
+<script type="text/html" id="test_hos_detail">
+	{{each arr_data value}}
+		<div class="public_input clearfix" style="margin-bottom: 0;">
+			<span>医院Logo:</span>
+			<!--遍历图片-->
+			<div style="">
+				{{if value.headImgUrl}}
+				<img class="openimg" onclick="readImgbig(this)" src="{{value.headImgUrl}}" />
+				{{/if}}
+			</div>
+		</div>
+		<div class="public_input" style="margin-top: 0;">
+			<span>医院图片:</span>
+			<!--遍历图片-->
+			<div style="">
+				{{if value.images}}
+					{{each value.images tag}}
+						<img class="openimg" onclick="readImgbig(this)" src="{{tag}}" />
+					{{/each}}
+				{{/if}}
+			</div>
+		</div>
+		<div class="public_input" style="margin-top: 0;">
+			<span>医院名称:</span>
+			<div class="hos_name">{{value.name}}</div>
+		</div>
+		<!--<div class="public_input" style="margin-top: 0;">
+			<span>手机号:</span>
+			<div class="mobile">{{value.mobile}}</div>
+		</div>-->
+		<div class="public_input">
+			<span>医院等级:</span>
+			<div class="hos_grade">{{value.hospitalLevel}}</div>
+		</div>
+		<div class="public_input">
+			<span>医院类型:</span>
+			<div class="hos_type">{{value.hospitalType}}</div>
+		</div>
+		<!--<div class="public_input">
+			<span>经度:</span>
+			<div class="hos_jin">{{value.longitude}}</div>
+		</div>
+		<div class="public_input">
+			<span>纬度:</span>
+			<div class="hos_wei">{{value.latitude}}</div>
+		</div>-->
+		<div class="public_input">
+			<span>医院介绍:</span>
+			<div class="hos_msg" style="line-height: 30px;padding-top: 5px;">
+				{{value.brief}}
+			</div>
+		</div>
+		<!--<div class="public_input">
+			<span>医保号:</span>
+			<div class="medical_insurance">
+				<p>{{value.medicareTypeName}}</p>
+			</div>
+		</div>-->
+		<div class="public_input">
+			<span>商务联系人:</span>
+			<div>{{value.businessContact}}</div>
+		</div>
+		<div class="public_input">
+			<span>商务联系人电话:</span>
+			<div>{{value.businessMobile}}</div>
+		</div>
+		<!--<div class="public_input">
+			<span>开户行:</span>
+			<div>{{value.bank}}</div>
+		</div>
+		<div class="public_input">
+			<span>开户名:</span>
+			<div>{{value.accountName}}</div>
+		</div>
+		<div class="public_input">
+			<span>银行账号:</span>
+			<div>{{value.account}}</div>
+		</div>-->
+		<div class="public_input">
+			<span>医院电话:</span>
+			<div>{{value.phone}}</div>
+		</div>
+		<div class="public_input">
+			<span>邮箱:</span>
+			<div>{{value.email}}</div>
+		</div>
+		<div class="public_input">
+			<span>详细地址:</span>
+			<div>{{value.address}}</div>
+		</div>
+		<!--<div class="public_input">
+			<span>财务联系人及电话:</span>
+			<div>{{value.financialMobile}}</div>
+		</div>-->
+		<div class="public_input">
+			<span>公交信息:</span>
+			<div>{{value.busInformation}}</div>
+		</div>
+		<div class="public_input">
+			<span>官网:</span>
+			<div>{{value.website}}</div>
+		</div>
+		<div class="public_input">
+			<span>医疗机构执业许可证号:</span>
+			<div>{{value.medicalLicenseNo}}</div>
+		</div>
+		<div class="public_input">
+			<span>医疗机构执业许可证号图片:</span>
+			<div><img class="openimg" onclick="readImgbig(this)" src="{{value.medicalLicenseImage}}"/></div>
+		</div>
+		<div class="public_input">
+			<span>企业营业执照号:</span>
+			<div>{{value.businessLicenseNo}}</div>
+		</div>
+		<div class="public_input">
+			<span>企业营业执证号图片:</span>
+			<div><img class="openimg" onclick="readImgbig(this)" src="{{value.businessLicenseImage}}"/></div>
+		</div>
+	{{/each}}
+</script>
+<script>
+$(function(){
+	var data = {
+		"id":$.get_storage("hos_id")
+	}
+	$.get_ajax("/admin/hospital/getDetail.json",data,function(res){
+		console.log(res);
+		if(res.success){
+			console.log(res);
+			//把res.data数据结构转成数组
+			var data ={
+				arr_data:[]
+			}
+			data.arr_data.push(res.data);
+			console.log(data);
+			var html = template('test_hos_detail',data);
+			$(".hos_detail_form").html(html);
+		}
+	});
+});
+//看大图
+function readImgbig(obj) {
+    open_box();
+    $('.imgwidthbig').attr('src',$(obj).attr('src'))
+}
+</script>
+</body>
+</html>

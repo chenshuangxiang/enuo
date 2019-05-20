@@ -1,0 +1,474 @@
+
+
+.btn {
+    display: inline-block;
+    border-radius: 4px;
+    -moz-border-radius: 4px;
+    -webkit-border-radius: 4px;
+    margin-right: 4px;
+    margin-top: 5px;
+    cursor: pointer;
+    text-decoration: none;
+    padding: 5px 19px;
+    font-size: 17px;
+    height: 62px;
+    line-height: 52px;
+}
+
+.btn_send {
+    background-color: #5CB700;
+    color: white;
+    display: none;
+}
+.new{
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background-color: #ff9900;
+    position: absolute;
+    top: 10px;
+    left: 6px;
+}
+
+.clearfix:after {
+    content: ' ';
+    visibility: hidden;
+    display: block;
+    height: 0;
+    clear: both;
+}
+
+.main {
+    /*   height: 100%;*/
+}
+
+.main_inner {
+    /* height: 100%;*/
+    /*   overflow: hidden;*/
+    /*margin-bottom: 7rem;*/
+}
+
+.panel {
+    position: relative;
+    width: 0px;
+    height: 100%;
+    float: left;
+    background: #2e3238;
+}
+
+/*信息*/
+.box {
+    position: relative;
+    background-color: #eee;
+    /* height: 100%;*/
+    /* overflow: hidden;*/
+    display: flex;
+    flex-flow: column;
+}
+
+.box_hd {
+    height: 0px;
+}
+
+.box_bd {
+    padding: 10px 10px 0;
+    /*    overflow-y: auto;
+        overflow-x: hidden;*/
+    flex: 1;
+}
+
+
+.message {
+    margin-bottom: 16px;
+    float: left;
+    width: 100%;
+}
+
+.message.me {
+    float: right;
+    text-align: right;
+    clear: right;
+}
+
+.message .avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 2px;
+    -moz-border-radius: 2px;
+    -webkit-border-radius: 2px;
+    float: left;
+    cursor: pointer;
+    margin-top: 21px;
+}
+
+.message.me .avatar {
+    float: right;
+}
+
+.message .nickname {
+    font-weight: 400;
+    padding-left: 10px;
+    font-size: 12px;
+    height: 22px;
+    line-height: 24px;
+    color: #4f4f4f;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    word-wrap: normal;
+}
+.getTime{
+    margin: 0 0 6px 51px;
+    color: #666;
+}
+.sendTime{
+    margin: 0 57px 6px 0;
+    color: #666;
+}
+.message .nickname .time {
+    margin-left: 10px;
+}
+
+.message.me .nickname {
+    padding-right: 10px;
+}
+
+.message.me .nickname .time {
+    margin-right: 10px;
+}
+
+.message .content {
+    overflow: hidden;
+    width:533px;
+    padding: 0;
+    margin: 0;
+    font-family: 微软雅黑;
+}
+pre {
+    margin: 0;
+    font-size: 15px;
+    white-space: pre-wrap;
+    word-break: initial;
+    color: black;
+    font-family: 微软雅黑;
+}
+
+.hide {
+    display: none;
+}
+.bubble {
+    max-width: 70%;
+    min-height: 1em;
+    display: inline-block;
+    vertical-align: top;
+    position: relative;
+    text-align: left;
+    font-size: 15px;
+    border-radius: 3px;
+    -moz-border-radius: 3px;
+    -webkit-border-radius: 3px;
+    margin: 0 10px;
+}
+.bubble2 {
+    /* max-width: 70%; */
+    /* min-height: 1em; */
+    /* display: inline-block; */
+    /* vertical-align: top; */
+    position: relative;
+    text-align: left;
+    font-size: 15px;
+    border-radius: 3px;
+    -moz-border-radius: 3px;
+    -webkit-border-radius: 3px;
+    margin: 0 10px;
+}
+.bubble2.right2:before, .bubble2.right2:after {
+    left: 99.75%;
+}
+.bubble2:before, .bubble2:after {
+    position: absolute;
+    top: 14px;
+    border: 6px solid transparent;
+    content: " ";
+}
+.bubble2.bubble_primary2.right2:after {
+    border-left-color: white;
+    border-left-width: 8px;
+}
+.bubble.bubble_default {
+    background-color: #fff;
+}
+
+.bubble:before, .bubble:after {
+    position: absolute;
+    top: 14px;
+    border: 6px solid transparent;
+    content: " ";
+}
+
+.bubble.left:before, .bubble.left:after {
+    right: 100%;
+}
+
+.bubble2.left2:before, .bubble2.left2:after {
+    right: 100%;
+}
+
+.bubble.left:after {
+    border-right-color: #FFF;
+    border-right-width: 8px;
+}
+.bubble2.left2:after {
+    border-right-color: #FFF;
+    border-right-width: 8px;
+}
+
+.bubble.right:before, .bubble.right:after {
+    left: 99.75%;
+}
+
+.bubble.right:after {
+    border-left-color: #FFF;
+}
+
+.bubble.bubble_primary {
+    background-color: #b0e46e;
+}
+
+.bubble.bubble_primary.left:after {
+    border-right-color: #b0e46e;
+    border-right-width: 4px;
+}
+.bubble.bubble_primary.left2:after {
+    border-right-color: #b0e46e;
+    border-right-width: 4px;
+}
+.bubble.bubble_primary.right:after {
+    border-left-color: #b0e46e;
+    border-left-width: 8px;
+}
+
+.bubble.bubble_primary.right.arrow_primary:before {
+    border-left-color: #b0e46e;
+    border-left-width: 4px;
+}
+
+.bubble.bubble_primary.right.arrow_primary:after {
+    border-left-color: #fff;
+    border-left-width: 4px;
+    margin-left: -2px;
+}
+
+.bubble.no_arrow {
+    background-color: transparent;
+}
+
+.bubble.no_arrow:before, .bubble.no_arrow:after {
+    display: none;
+}
+
+.bubble_cont {
+    word-wrap: break-word;
+    word-break: break-all;
+    min-height: 25px;
+}
+
+
+
+.bubble_cont img {
+    vertical-align: middle;
+}
+
+.bubble_cont .plain {
+    padding: 9px 13px;
+}
+
+.bubble_cont .picture {
+    border-radius: 4px;
+    -moz-border-radius: 4px;
+    -webkit-border-radius: 4px;
+    overflow: hidden;
+    position: relative;
+}
+
+.bubble_cont .picture img {
+    display: block;
+    cursor: pointer;
+    max-width: 100%;
+}
+
+
+.box_ft {
+    background-color: #f5f5f5;
+    /* padding: 0 6px;*/
+    width: 100%;
+    border-top: 1px solid #dfdfdf;
+    position: fixed;
+    bottom: 0;
+}
+
+.box_ft_hd {
+    display: flex;
+}
+
+.box_ft_hd .eaitWrap {
+    flex: 1;
+    padding-bottom: 5px;
+}
+
+.box_ft_hd .editArea {
+    overflow-y: auto;
+    overflow-x: hidden;
+    outline: 0;
+    border-radius: 2px;
+    border: 1px solid #dfdfdf;
+    font-size: 16px;
+    /* padding: 0 5px;*/
+    width: 96%;
+    margin-left: 2%;
+    background-color: white;
+    min-height: 1.35em;
+    padding-top: .55rem;
+    padding-bottom: .55rem;
+    line-height: 1.4;
+    margin-top: 5px;
+    padding-left: 8px;
+    padding-right: 8px;
+}
+
+
+
+.exp_hd {
+    overflow: hidden;
+    background-color: #F2F2F2;
+}
+
+.exp_hd_item {
+    float: left;
+}
+
+.exp_hd_item.active {
+    background-color: #fff;
+    border-top-left-radius: 4px;
+    -moz-border-radius-topleft: 4px;
+    -webkit-border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
+    -moz-border-radius-topright: 4px;
+    -webkit-border-top-right-radius: 4px;
+}
+
+.exp_hd_item a {
+    display: block;
+    text-decoration: none;
+    color: #333;
+    padding: 5px 10px;
+    font-size: 14px;
+}
+
+.exp_bd {
+    overflow: auto;
+    background-color: #fff;
+}
+
+.exp_cont {
+    display: none;
+    height:200px;
+    padding: 10px 0;
+    min-height: 50px;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+.exp_cont.active {
+    display: block;
+}
+
+.eaitWrap .qqface{
+    border:0;
+}
+
+/*信息end*/
+::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+}
+
+::-webkit-scrollbar-thumb {
+    border-radius: 3px;
+    -moz-border-radius: 3px;
+    -webkit-border-radius: 3px;
+    background-color: #c3c3c3;
+}
+
+::-webkit-scrollbar-track {
+    background-color: transparent;
+}
+/*发送宝贝*/
+.sendBody{
+    width: 98%;
+    margin-left: 1%;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    background-color: white;
+    display: none;
+    clear: both;
+    /* height: 7rem;*/
+}
+.sendAlreadyBody{
+    width: 260px;
+    /*float: right;*/
+    background-color: white;
+    clear: both;
+    /* height: 7rem;*/
+}
+.sendBtnDiv{
+    width: 100%;
+    text-align: center;
+    height: 2.6rem;
+}
+.hos_doc_child {
+    padding: .2rem 2% .3rem 4%;
+    margin-left: -0.5%;
+    width: 100%;
+    display: flex;
+    margin-top: .7rem;
+}
+.hos_doc_child div {
+    margin: 2px 10px 2px -5px;
+}
+.doc_child_left {
+    width: 19%;
+}
+.doc_child_right {
+    width: 79%;
+}
+.price {
+    color: #f81f7b;
+    border-radius: 5px;
+    display: inline-block;
+    margin-right: .3rem;
+    font-size: 1.1rem;
+}
+.subject{
+    color: #333;
+    display: inline-block;
+    font-size: .78rem;
+}
+.level{
+    color: #777;
+    display: inline-block;
+    font-size: .78rem;
+}
+.sendBtn{
+    width: 35%;
+    font-size: .9rem;
+    height: 1.9rem;
+    /* margin-right: 4px; */
+    line-height: 1.9rem;
+    /* margin-top: 5px; */
+    background-color: white;
+    border: 1px solid #8ae6d4;
+    color: #01c59d;
+    border-radius: 50px;
+}

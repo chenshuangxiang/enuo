@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>文章列表--e诺分诊后台管理</title>
+	<meta name="renderer" content="webkit">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="format-detection" content="telephone=no">
+	<link rel="stylesheet" href="js/layui/css/layui.css" media="all" />
+	<!--<link rel="stylesheet" href="css/font_eolqem241z66flxr.css" media="all" />-->
+	<link rel="stylesheet" href="css/news.css" media="all" />
+</head>
+<style>
+	@media screen and (max-width: 900px){
+		.sysNoticeOne {
+			width: 100%;
+		}
+		.sysNoticeTwo {
+			width: 100%;
+		}
+	}
+	@media screen and (min-width: 900px){
+		.sysNoticeOne {
+			width: 49%;
+			float: left;
+		}
+		.sysNoticeTwo {
+			width: 49%;
+			float: left;
+		}
+	}
+
+	.col {
+		padding: 0 1% 7px 1.5%;
+		width: 94%;
+		margin-left: 1.5%;
+		border: 1px solid #cccccc;
+		margin-bottom: 16px;
+		/*overflow-y: auto;*/
+	}
+	.changeConsult,.resetInfo,.resetRecord{
+		margin-left: 10px;
+		color: #00a2d4;
+		cursor: pointer;
+	}
+	.layui-card-body{
+		display: inline-block;
+	}
+</style>
+<body class="childrenBody">
+	<div class="row" style="clear: both;">
+		<div class="col accessCol">
+		<blockquote class="layui-elem-quote title" style="padding: 16px 15px;margin-bottom: 0;    background: none;    border: none;">历史回访<i class="iconfont icon-new1"></i>
+		</blockquote>
+			<div class="layui-tab layui-tab-card" style="margin-top: 0">
+				<ul class="layui-tab-title" style="width: 300px;margin: -47px 0 0 110px;">
+					<li class="layui-this">全部</li>
+					<li class="platformAccess" onclick="searchTab('platform')">平台</li>
+					<li class="hospitalAccess" onclick="searchTab('hospital')">医院</li>
+				</ul>
+				<div class="layui-tab-content" style="padding: 5px 0 0 0;">
+					<div class="layui-tab-item layui-show">
+						<table class="layui-table"  style="margin-top: 0">
+							<thead>
+							<tr>
+								<th>回访时间</th>
+								<th>回访客服</th>
+								<th>医院状态</th>
+								<th>客服状态</th>
+								<th width="40%">回访内容</th>
+							</tr>
+							</thead>
+							<tbody class="news_content"></tbody>
+						</table>
+					</div>
+					<div class="layui-tab-item"><table class="layui-table"  style="margin-top: 0">
+
+						<thead>
+						<tr>
+							<th>回访时间</th>
+							<th>平台回访客服</th>
+							<th>平台客服回访状态</th>
+							<th width="40%">平台回访内容</th>
+						</tr>
+						</thead>
+						<tbody class="news_content_platfrom"></tbody>
+					</table></div>
+					<div class="layui-tab-item"><table class="layui-table"  style="margin-top: 0">
+						<thead>
+						<tr>
+							<th>回访时间</th>
+							<th>医院回访客服</th>
+							<th>医院客服回访状态</th>
+							<th width="40%">医院回访内容</th>
+						</tr>
+						</thead>
+						<tbody class="news_content_hospital"></tbody>
+					</table></div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script type="text/javascript" src="plug/jquery-1.11.3.min.js"></script>
+	<script type="text/javascript" src="js/util.js"></script>
+	<script type="text/javascript" src="js/layui/layui.js"></script>
+	<script type="text/javascript" src="js/histotyRecordAccess.js?v=222"></script>
+</body>
+</html>

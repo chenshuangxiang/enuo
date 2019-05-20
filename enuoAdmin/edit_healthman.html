@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="css/base.css" />
+<link rel="stylesheet" href="css/util.css" />
+<link rel="stylesheet" href="css/collect.css" />
+<title>添加健管师</title>
+</head>
+<style>
+	.public_input .enabled2{
+		width: 60px;
+		border-top-right-radius:0 ;
+		border-bottom-right-radius: 0;
+		text-align: center;
+		text-indent: 0px;
+	}
+	.public_input .disable2{
+		border-top-left-radius:0 ;
+		border-bottom-left-radius: 0;
+		width: 60px;
+		text-align: center;
+		text-indent: 0px;
+		margin-left: 0;
+	}
+	.ele_container {
+		border: 1px solid #DCDCDC;
+		border-radius: 5px;
+		width: 403px;
+		min-height: 40px;
+		margin-left: 238px;
+		margin-bottom: 20px;
+	}
+	.ele_container p {
+		display: inline-block;
+		height: 40px;
+		line-height: 40px;
+		border: 1px solid #DCDCDC;
+		padding: 0 10px;
+		position: relative;
+		border-radius: 5px;
+		margin: 5px 10px 5px 8px;
+	}
+	.ele_container p:hover>img{
+		position: absolute;
+		top: -3px;right: -3px;
+		display: block !important;
+	}
+</style>
+<body>
+<div class="content add_salesman">
+	<div class="tabHref">
+		<p onclick="window.location.href='special_proj_list.html'">社区管理</p>
+		<p onclick="window.location.href='doctorNurseList.html'">医护管理</p>
+		<p onclick="window.location.href='healthman_list.html'" class="navi_current">健管师管理</p>
+		<p onclick="window.location.href='healthPitent_list.html'">患者管理</p>
+	</div>
+	<div class="navigate_head clearfix">
+		<p onclick="window.location.href='healthman_list.html'">健管师列表</p>
+		<p onclick="window.location.href='edit_healthman.html'" class="navi_current">修改健管师</p>
+		<p class="navi_null"></p>
+	</div>
+	<div>
+		<form class="add_role_form">
+			<div class="public_input">
+				<span>姓名:</span>
+				<input type="text" class="salesman_name" placeholder="姓名"/>
+			</div>
+			<div class="public_input">
+				<span>手机号:</span>
+				<input type="text" class="mobile" placeholder="手机号"/>
+			</div>
+			<div class="public_input">
+				<span>角色:</span>
+				<input type="button" class="enabled2" value="主管" data_val="true"/><input type="button" class="disable2" value="健管师" data_val="false"/>
+			</div>
+			<br>
+			<div class="public_input chargeDiv">
+				<span>所属主管:</span>
+				<select class="captain" style="">
+					<option>请选择</option>
+				</select>
+			</div>
+			<br>
+			<div class="public_input">
+				<span><span>* </span>医院地址:</span>
+				<select class="hos_address_province"style="width: 127px;">
+					<option>省份</option>
+				</select>
+				<select class="hos__address_city"style="width: 127px;margin-left: 5px;">
+					<option>地级市</option>
+				</select>
+				<select class="hos__address_county"style="width: 127px;margin-left: 5px;">
+					<option>区、县级市</option>
+				</select>
+			</div>
+			<div class="ele_container">
+				<!--<p data_val=""><span>皮肤科</span><img src="img/close2.png" class="none" onclick='del_appoint_ks(this)'/></p>-->
+			</div>
+			<div class="job_tab">
+				<div class="tit">预约人数设置（请在下列表格中填写相应的最高预约量）</div>
+				<!--出诊时间-->
+				<div class="heal_time_container clearfix">
+					<!--<div class="">
+						<p class=""></p>
+						<p class=""><img src="img/left.png"/></p>
+						<p class=""></p>
+					</div>-->
+					<div class="">
+						<p class="">排班</p>
+						<p class="">上午</p>
+						<p class="">下午</p>
+					</div>
+					<div class="week">
+						<p class="day">
+							<span class="">星期天</span>
+						</p>
+						<input type="text" data_week="sunday" data_morning="true"/>
+						<input type="text" data_week="sunday" data_morning="false"/>
+						<!--<p class="am" data_val="休息"></p>
+						<p class="pm" data_val="休息"></p>-->
+					</div>
+					<div class="week">
+						<p class="day">
+							<span class="">星期一</span>
+						</p>
+						<input type="text" data_week="monday" data_morning="true"/>
+						<input type="text" data_week="monday" data_morning="false"/>
+					</div>
+					<div class="week">
+						<p class="day">
+							<span class="">星期二</span>
+						</p>
+						<input type="text" data_week="tuesday" data_morning="true"/>
+						<input type="text" data_week="tuesday" data_morning="false"/>
+					</div>
+					<div class="week">
+						<p class="day">
+							<span class="">星期三</span>
+						</p>
+						<input type="text" data_week="wednesday" data_morning="true"/>
+						<input type="text" data_week="wednesday" data_morning="false"/>
+					</div>
+					<div class="week">
+						<p class="day">
+							<span class="">星期四</span>
+						</p>
+						<input type="text" data_week="thursday" data_morning="true"/>
+						<input type="text" data_week="thursday" data_morning="false"/>
+					</div>
+					<div class="week">
+						<p class="day">
+							<span class="">星期五</span>
+						</p>
+						<input type="text" data_week="friday" data_morning="true"/>
+						<input type="text" data_week="friday" data_morning="false"/>
+					</div>
+					<div class="week">
+						<p class="day">
+							<span class="">星期六</span>
+						</p>
+						<input type="text" data_week="saturday" data_morning="true"/>
+						<input type="text" data_week="saturday" data_morning="false"/>
+					</div>
+					<!--<div class="">
+						<p class="flex_all_center"></p>
+						<p class=""><img src="img/right.png"/></p>
+						<p class=""></p>
+					</div>-->
+				</div>
+				<!--<div class="btn">
+					<button onclick="up_week()">上周</button><button onclick="next_week()">下周</button>
+				</div>-->
+			</div>
+			<div class="public_input">
+				<span>是否启用:</span>
+				<input type="button" class="enabled" value="启用" data_val="true"/><input type="button" class="disable" value="禁用" data_val="false"/>
+			</div>
+			<div class="public_input confrim_btn">
+				<span>.</span>
+				<input type="button" class="confrim_add_salesman" value="添加"/>
+			</div>
+		</form>
+	</div>
+</div>
+	
+	
+<script type="text/javascript" src="plug/jquery-1.11.3.min.js" ></script>
+<script type="text/javascript" src="plug/template-web.js"></script>
+<script type="text/javascript" src="js/toggle.js" ></script>
+<script type="text/javascript" src="js/util.js"></script>
+<script type="text/javascript" src="js/method.js"></script>
+<script type="text/javascript" src="js/detail/hos.js" ></script>
+<script type="text/javascript" src="js/control_element.js" ></script>
+<!--省份列表-->
+<script type="text/html" id="test_province">
+	{{each data value}}
+	<option value="{{value.id}}">{{value.name}}</option>
+	{{/each}}
+</script>
+<!--地级市列表-->
+<script type="text/html" id="test_city">
+	{{each data value}}
+	<option value="{{value.id}}">{{value.name}}</option>
+	{{/each}}
+</script>
+<!--县级市，区列表-->
+<script type="text/html" id="test_county">
+	{{each data value}}
+	<option value="{{value.id}}">{{value.name}}</option>
+	{{/each}}
+</script>
+<script type="text/html" id="charge_list">
+	{{each data value}}
+	<option value="{{value.id}}">{{value.name}}</option>
+	{{/each}}
+</script>
+<script>
+$(function(){
+    var address_province_id = "";//省id
+    var address_city_id = ""; //地级市id
+    var address_county_id = "";//县级市，区id
+    var version = "";
+    //初始化省份select
+    $.initSelect("/common/getAreaList.json",'test_province',".hos_address_province");
+    //初始化地级市
+    $(".hos_address_province").change(function(){
+        address_province_id = $(".hos_address_province").val();
+        var data = {
+            "parentId":address_province_id
+        }
+        console.log(data);
+        //初始化地级市select
+        $.initChildSelect("/common/getAreaList.json",data,'test_city',".hos__address_city","地级市");
+    });
+    //初始化县级市
+    $(".hos__address_city").change(function(){
+        address_city_id = $(".hos__address_city").val();
+        var data = {
+            "parentId":address_city_id
+        }
+        console.log(data);
+        //初始化县级市select
+        $.initChildSelect("/common/getAreaList.json",data,'test_county',".hos__address_county","县市、区");
+        var address_city_id_name = $(".hos__address_city").find("option:selected").text().trim();//trim去前后所有空格
+        if(address_province_id == '820000' || address_province_id == '110000' || address_province_id == '310000' || address_province_id == '120000' || address_province_id == '710000' || address_province_id == '810000' || address_province_id == '500000'){
+            if(address_city_id_name != '地级市'){
+                controlEle.add_element(address_city_id,address_city_id_name);
+            }
+        }
+    });
+    $(".hos__address_county").change(function(){
+        address_county_id = $(".hos__address_county").val();
+        var address_county_id_name = $(".hos__address_county").find("option:selected").text().trim();//trim去前后所有空格
+//		初始化已选择的科室
+        console.log(address_county_id,address_county_id_name)
+        if(address_county_id_name != '县市、区'){
+            controlEle.add_element(address_county_id,address_county_id_name);
+        }
+    });
+    //对医院地址是直辖市的处理
+    if(!address_county_id){
+        address_county_id = address_city_id;
+    }
+    $.initSelect("/admin/healthSupervisor/all/power/notIn",'charge_list',".captain");
+	var flag=true;//默认启用
+	$(".enabled,.disable").click(function(){
+		flag = $(this).addClass("bg_green").attr("data_val");
+		$(this).siblings().removeClass("bg_green");
+		console.log(flag);
+	});
+    var flagJuese= false;//默认健管师
+    $(".enabled2,.disable2").click(function(){
+        flagJuese = $(this).addClass("bg_green").attr("data_val");
+        $(this).siblings().removeClass("bg_green");
+        console.log(flagJuese);
+        if(flagJuese == 'true'){ //主管
+			$('.chargeDiv').hide();
+		}else if(flagJuese == 'false'){ //健管师
+            $('.chargeDiv').show();
+        }
+    });
+    //初始化表单控件
+    /*var data = {
+        id:$.get_storage("healthman_id")
+    }*/
+    $.get_ajax("/admin/healthSupervisor/one/" + $.get_storage("healthman_id"),'',function(res){
+        console.log(res);
+        if(res.success){
+            //初始化输入框
+            $(".salesman_name").attr("value",res.data.name);
+            $(".mobile").attr("value",res.data.mobile);//手机号
+            version = res.data.version;
+            address_province_id = res.data.areaList[0].provinceId;//省id
+            address_city_id = res.data.areaList[0].cityId; //地级市id
+            address_county_id = res.data.areaList[0].id;//县级市，区id
+            //初始化地级市列表
+            initCity(res.data.areaList[0].provinceId);
+            //初始化地级市的县级市，区列表
+            initCounty(res.data.areaList[0].cityId);
+            //初始化下拉选选中
+            //定时器会让这里最后执行，延迟目的：先初始化科室列表，然后再初始化选中
+            var setTime = setTimeout(function(){
+                $(".hos_address_province>[value="+res.data.areaList[0].provinceId+"]").attr("selected","selected");
+                $(".hos__address_city>[value="+res.data.areaList[0].cityId+"]").attr("selected","selected");//选中
+                if(res.data.areaList[0].id){
+                    $(".hos__address_county>[value="+res.data.areaList[0].id+"]").attr("selected","selected");//选中
+                }
+            },800);
+            res.data.areaList.forEach(function (value) {
+                var arr_child = [];//一维
+                arr_child.push(value.id);
+                arr_child.push(value.areaName);
+                console.log(arr_child);
+                controlEle.arr_element.push(arr_child);//二维
+                controlEle.init_element(controlEle.arr_element);
+            });
+//			$(".pwd").attr("value",res.data.invalidDate);
+			//初始化值班表
+            init_work_tb(res.data.scheduleJa);
+            flag = res.data.bOpen;
+            if(flag){
+                $(".enabled").addClass("bg_green");
+            }else{
+                $(".disable").addClass("bg_green");
+            }
+            flagJuese = res.data.power;
+            if(flagJuese == true){ //主管
+                $(".enabled2").addClass("bg_green");
+                $('.chargeDiv').hide();
+            }else{
+                setTimeout(function () {
+                    $(".disable2").addClass("bg_green");
+                    $('.chargeDiv').show();
+                    $(".captain").val(res.data.healthSupervisorBelongSet[0].belongSupervisorId);
+                },100);
+
+            }
+        }
+    });
+	
+	$(".confrim_add_salesman").click(function(){
+		var salesman_name = $(".salesman_name").val();
+		var mobile = $(".mobile").val();
+        var arr_job = get_work_tb();//获取排期表格
+		var data = {
+		    "id":$.get_storage("healthman_id"),
+			"name":salesman_name,
+			"mobile":mobile,
+			"power":flagJuese,
+          /*  "areaId":address_county_id,*/
+            "schedules":JSON.stringify(arr_job),//值班时间
+			"bOpen":flag,
+			"version":version
+		}
+        controlEle.arr_element_id.forEach(function (value,index) {
+            data['areaIdList['+index+']'] = value;
+        })
+        if(flagJuese == false){ //员工的话要加入所属队长ID
+			if($('.captain').val() == '请选择'){
+			    alert('请选择健管师主管');
+                return false;
+			}
+            data['healthSupervisorBelongSet[' + 0 + '].belongSupervisorId'] = $('.captain').val();
+            data['healthSupervisorBelongSet[' + 0 + '].leading'] = true;
+        }/*else if(flagJuese == false){
+            data.type = 'captain';
+		}*/
+		if(address_county_id == '区、县级市'){
+		    alert('请选择省市区');
+            return false;
+		}
+		//验证
+		if(!$.verify(salesman_name,"姓名")){return false;}
+		if(!$.verifyPhone(mobile,"手机号")){return false;}
+		$.post_ajax("/admin/healthSupervisor/edit",data,function(data){
+			if(data.success==true){
+				alert('添加成功');
+				window.location.href = "healthman_list.html";
+			}else{
+				alert(data.data);
+			}
+		});
+	});
+});
+</script>
+</body>
+</html>

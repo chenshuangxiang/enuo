@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="css/base.css" />
+<link rel="stylesheet" href="css/util.css" />
+<link rel="stylesheet" href="css/collect.css" />
+<title>客服列表</title>
+</head>
+<style>
+	.saleCheckbox{
+		margin-right: 19px;
+		margin-bottom: 12px;
+		display: inline-block;
+		cursor: pointer;
+	}
+</style>
+<body>
+<div class="content employee">
+	<div class="navigate_head clearfix">
+		<p onclick="window.location.href='kefu_list.html'" class="navi_current">客服信息</p>
+		<p onclick="window.location.href='add_kefu.html'">添加客服</p>
+		<p class="navi_null"></p>
+	</div>
+	<div class="head_area flex_vertical">
+		<input type="text" class="search" placeholder="搜索姓名或手机号" style="width: 280px;"><button class="searchBtn" onclick="indexPage()">搜索</button>
+		<!--&nbsp;<button class="" style="position: absolute;right: 0;top: 0;">导出表格</button>-->
+	</div>
+	<table>
+		<thead>
+			<tr>
+				<td>序号</td>
+				<td>姓名</td>
+				<td>用户名</td>
+				<td>角色</td>
+				<td>所属主管</td>
+				<td>状态</td>
+				<td>操作</td>
+			</tr>
+		</thead>
+		<tbody class="tbody">
+			<!--<tr>
+				<td>1</td>
+				<td>张三</td>
+				<td>165 1238 6549</td>
+				<td>状态</td>
+				<td><button class="font_green">修改</button>&nbsp;&nbsp;<button class="font_green">删除</button></td>
+			</tr>-->
+		</tbody>
+	</table>
+	<!--分页-->
+	<div class="page flex_vertical">
+		<button class="" onclick="indexPage()">首页</button>&nbsp;
+		<button class="" onclick="backPage()"><上一页</button>&nbsp;
+		<!--页码-->
+		<p class="page_num">
+			<!--<span>1</span><span>2</span><span>3</span><span>4</span><span>5</span>-->
+		</p>....
+		<button class="" onclick="nextPage()">下一页></button>&nbsp;
+		<button class="" onclick="endPage()">末页</button>&nbsp;
+		共<span class="all_recode">0 </span>记录&nbsp;|
+		共<span class="all_page">0 </span>页&nbsp;
+		到第<input class="select_page" />页&nbsp;
+		<button class="confirm_page" onclick="skipPage()">确定</button>
+	</div>
+</div>
+<!--遮罩层-->
+<div class="shade none"></div>
+<!--弹框-->
+<div class="popup_box popup_box_sure none">
+	<p class="img_close clearfix">
+		<img src="img/close.png" onclick="close_box()"/>
+	</p>
+	<div>
+		<div class="public_input">
+			<span style="width: 500px;text-align: center;">确定设为主管？</span>
+		</div>
+	</div>
+	<p class="confirm" onclick="set_captain()" style="margin-left: 208px;">确 定</p>
+</div>
+<div class="popup_box popup_box_checkbox none">
+	<p class="img_close clearfix">
+		<img src="img/close.png" onclick="close_box()"/>
+	</p>
+	<div>
+		<div class="public_input" style="height: 0">
+			<span style="width: 281px;   margin-top: -30px; margin-left: 10px;    vertical-align: top;">您可以选择分配给此主管的客服:</span>
+			<!--<input type="button" class="bg_green enabled" value="通过" data_val="true"/>
+			<input type="button" class="disable" value="不通过" data_val="false"/>
+			<input type="button" class="disable" value="不通过" data_val="false"/>-->
+			<br>
+
+		</div>
+		<div class="margindiv menberDiv" style="vertical-align: top;margin: -10px 20px 17px 20px;">
+			<!--<span>产品名称:</span>-->
+			<!--<input type="text" class="role_name" placeholder="产品名称"/>-->
+
+			<span valueid="5" class="saleCheckbox"><input class="menberCheckbox" type="checkbox"/><span onclick="checkedSpan(this)">陈乐芳</span></span>
+			<span valueid="6" class="saleCheckbox"><input class="menberCheckbox" type="checkbox"/><span onclick="checkedSpan(this)">陈乐芳</span></span>
+			<span valueid="7" class="saleCheckbox"><input class="menberCheckbox" type="checkbox"/><span onclick="checkedSpan(this)">陈乐芳</span></span>
+			<span valueid="8" class="saleCheckbox"><input class="menberCheckbox" type="checkbox"/><span onclick="checkedSpan(this)">陈乐芳</span></span>
+			<span valueid="9" class="saleCheckbox"><input class="menberCheckbox" type="checkbox"/><span onclick="checkedSpan(this)">陈乐芳</span></span>
+			<span valueid="0" class="saleCheckbox"><input class="menberCheckbox" type="checkbox"/><span onclick="checkedSpan(this)">陈乐芳</span></span>
+			<span valueid="10" class="saleCheckbox"><input class="menberCheckbox" type="checkbox"/><span onclick="checkedSpan(this)">陈乐芳</span></span>
+		</div>
+		<!--<div class="public_input clearfix cause_parent" style="display: none;">
+			<span style="width: 80px;float: left;">原因:</span>
+			<textarea class="cause" style="margin-left: 30px;width: 320px;float: left;min-height: 80px;"></textarea>
+		</div>-->
+	</div>
+	<p class="confirmSureStatus" onclick="allotMenbers()" style="margin-left: 208px;">确 定</p>
+</div>
+<script type="text/javascript" src="plug/jquery-1.11.3.min.js" ></script>
+<script type="text/javascript" src="plug/template-web.js"></script>
+<script type="text/javascript" src="js/toggle.js" ></script>
+<script type="text/javascript" src="js/util.js"></script>
+<script type="text/javascript" src="js/method.js"></script>
+<script type="text/javascript" src="js/page.js"></script>
+<!--客服列表-->
+<script id="test_salesman_list" type="text/html">
+{{each data as value i}}
+	<tr>
+		<td>{{i+1}}</td>
+		<td>{{value.name}}</td>
+		<td>{{value.username}}</td>
+		<td>
+			{{if value.type=="captain"}}主管{{else if value.type=="member"}}客服{{else}}{{/if}}
+		</td>
+		<td>
+			{{if value.type=="member"}} {{value.captainName}} {{else}}{{/if}}
+		</td>
+		<td>
+			{{if value.enabled==true}}启用{{else if value.enabled==false}}关闭{{/if}}
+		</td>
+		<td width="15%" data_id="{{value.id}}">
+			<button class="font_green" onclick="edit_salesman(this)">修改</button>
+			<!--{{if value.type=="member"}}<button class="font_green" onclick="set_captain_open(this)">设为主管</button> {{else}}{{/if}}-->
+			<!--<button class="font_green" onclick="set_captain_open(this)">设为主管</button>-->
+			<!--&nbsp;<button class="font_green" onclick="del_tyq(this)">删除</button>-->  
+		</td>
+	</tr>
+{{/each}}
+</script>
+
+<script>
+//请求方法
+function reqPage(data){
+	console.log(data);
+	control_page.init_page(data,function(data){
+		//调用ajax
+		$.get_ajax("/admin/customerService/getList.json",data,function(data){
+			console.log(data);
+			var html = template('test_salesman_list',data);
+			$(".tbody").html(html);
+			//初始化分页
+			control_page.currentPage(control_page.page_num,data.totalCount);
+		});
+	});
+}
+
+//修改客服
+function edit_salesman(m){
+	var salesman_id = $(m).parent().attr("data_id");
+	window.localStorage.setItem("salesman_id",salesman_id);
+	window.location.href = "edit_kefu.html";
+}
+//设为主管
+function set_captain_open(m) {
+    $(".shade,.popup_box_sure").show();
+    $('.confirm').attr('data_id',$(m).parent().attr('data_id'));
+}
+function set_captain() {
+    $.post_ajax("/admin/experienceReservation/delete",{id:$('.confirm').attr('data_id')},function(data){
+        if(data.success==true){ //设为主管成功，弹出分配员工
+            alert(data.data);
+            $(".popup_box_sure").hide();
+            $(".shade,.popup_box_checkbox").show();
+            getMenbers();
+            $('.confirmSureStatus').attr('data_id',$('.confirm').attr('data_id'));
+        }else{
+            alert(data.data);
+        }
+    });
+}
+//获取客服
+function getMenbers() {
+    $.get_ajax("/admin/salesman/getSalesmans.json",{type:'member'},function(res){
+        console.log(res);
+        if(res.success){
+            res.data.forEach(function (value) {
+                $('.menberDiv').append('<span class="saleCheckbox" valueid="'+value.id+'"><input class="menberCheckbox" type="checkbox"/><span onclick="checkedSpan(this)">'+value.name+'</span></span>');
+            })
+        }else{
+            alert(res.data);
+        }
+    });
+}
+//分配组员到组长
+/*var arrResult = [];
+$(m).each(function(){
+//		console.log($(this).val());
+    arrResult.push($(this).val()+"");
+});
+arrResult = arrResult.join('|');*/
+function allotMenbers() {
+    var ids = [];
+    $('.menberCheckbox').each(function () {
+		if($(this).prop('checked') == true){
+		    ids.push($(this).parent().attr('valueid'));
+		}
+    })
+    ids = ids.join(',');
+    var data = {};
+    data.ids = ids;
+    data.captainId = $('.confirmSureStatus').attr('data_id');
+    $.post_ajax("/admin/salesman/allot",data,function(data){
+        if(data.success==true){
+            alert(data.data);
+            window.location.reload();
+        }else{
+            alert(data.data);
+        }
+    });
+}
+//删除体验券
+function del_tyq(m){
+	var tyq_id = $(m).parent().attr("data_id");
+	var data = {
+		"id":tyq_id
+	}
+	$.post_ajax("/admin/experienceReservation/delete",data,function(data){
+		if(data.success==true){
+			alert(data.data);
+			window.location.href = "tyq_list.html"
+		}else{
+			alert(data.data);
+		}
+	});
+}
+function checkedSpan(m) {
+    if($(m).prev('input[type="checkbox"]').prop('checked') == true){
+        $(m).prev('input[type="checkbox"]').prop('checked',false);
+	}else{
+        $(m).prev('input[type="checkbox"]').prop('checked',true);
+	}
+}
+
+</script>
+<script>
+$(function(){
+	reqPage(control_page.getData());
+});
+function search(obj) {
+    //基本条件
+//		var data = control_page.getData();
+    if(obj == undefined){
+        var data = control_page.getData();
+    }else{
+        var data = obj;
+    }
+    //项目名称
+    var keyword = $(".search").val();
+    if(keyword != ""){
+        data.keyword = keyword;
+    }
+    reqPage(data);
+}
+</script>
+</body>
+</html>

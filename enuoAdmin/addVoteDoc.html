@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="css/base.css" />
+<link rel="stylesheet" href="css/util.css" />
+<link rel="stylesheet" href="css/collect.css" />
+<link rel="stylesheet" href="plug/webuploader/webuploader.css" />
+<!--截图插件-->
+<!--<link href="plug/screenShot/css/cropper.css" rel="stylesheet">
+<link href="plug/screenShot/css/main.css" rel="stylesheet">-->
+<title>添加特价项目</title>
+<style>
+	/*图片上传*/
+	#filePicker{
+		display: inline-block;
+		/*border: 1px solid red;*/
+		height: 40px;
+	}
+	#filePicker .webuploader-pick{
+		height: 40px;line-height: 40px;
+		width: 120px;
+		/*border: 1px solid black;*/
+		padding: 0;
+		letter-spacing: 1px;
+		font-size: 16px;
+		border-radius:5px ;
+	}
+	.add_role_form .public_input .enabledyinliu,.add_role_form .public_input .enabledyouhui{
+		width: 60px;
+		border-top-right-radius: 0;
+		border-bottom-right-radius: 0;
+		text-align: center;
+		text-indent: 0px;
+	}
+	.add_role_form .public_input .disableyinliu,.add_role_form .public_input .disableyouhui{
+		border-top-left-radius: 0;
+		border-bottom-left-radius: 0;
+		width: 60px;
+		text-align: center;
+		text-indent: 0px;
+		margin-left: 0;
+	}
+</style>
+</head>
+<body>
+<div class="content add_special_proj">
+	<div class="navigate_head clearfix">
+		<p onclick="window.location.href='voteDocList.html'">医生列表</p>
+		<p  class="navi_current" onclick="window.location.href='addVoteDoc.html'">添加医生</p>
+		<p class="navi_null"></p>
+	</div>
+	<div>
+		<form class="add_role_form">
+			<div class="public_input">
+				<span><span class="font_green">* </span>姓名:</span>
+				<input type="text" class="proj_name" placeholder="请输入医生姓名"/>
+			</div>
+			<div class="public_input">
+				<span><span class="font_green">* </span>职称:</span>
+				<select class="proj_class">
+					<option value=''>请选择</option>
+					<option value="medicalOfficer">医士</option>
+					<option value="physician">医师</option>
+					<option value="attendingDoctor">主治</option>
+					<option value="deputyDirector">副主任</option>
+					<option value="director">主任</option>
+				</select>
+			</div>
+			<div class="public_input">
+				<span><span class="font_green">* </span>所属医院:</span>
+				<select class="proj_hos">
+					<option value='0'>请选择</option>
+				</select>
+			</div>
+			<div class="public_input upload_img clearfix">
+				<span><span class="font_green">* </span>项目图片:</span>
+				<div class="right" id="uploader-demo">
+					<!--用来存放item-->
+				    <!--<div id="fileList" class="uploader-list"></div>-->
+				    <!--<div id="filePicker">上传图片</div>-->
+					<span class="addPhontBtn">
+						<input type="file" class="hidden" id="file" multiple="multiple"/>
+							<span>上传图片</span>
+					</span>
+				   <!-- <label for="file" class=""><span style="width: 120px;background-color: #00A2D4;">选择图片</span></button></label>
+					<input type="file" id="file" multiple="multiple" name="file" class="none ill_pic"  accept="image/*"/>-->
+				    <!--<input type="button" class="btn_remove_pic" value="选中删除" style="right: 140px;background-color: red;">-->
+					<!--预览图片-->
+					<p id="" class="preview preview2">
+						
+					</p>
+				</div>
+			</div>
+			<div class="public_input special_price_parent" style="height: inherit;">
+				<span style="vertical-align: top;"><span class="font_green">* </span>推荐理由:</span>
+				<textarea class="reason" placeholder="推荐理由" style="    text-indent: 20px;
+    margin-left: 30px;
+    height: 106px;
+    padding: 10px 5px;
+    color: black;"></textarea>
+			</div>
+			<div class="public_input confrim_btn">
+				<span>.</span>
+				<input type="button" class="confrim_add_special" value="添加"/>
+			</div>
+		</form>
+	</div>
+</div>
+<!--遮罩层-->
+<div class="shade none"></div>
+<!--弹框-->
+<div class="popup_box none" style="min-height: 300px;top: 15px;width: 400px;">
+	<p class="img_close clearfix">
+		<img src="img/close.png" onclick="close_box()"/>
+	</p>
+	<div class="preview1">
+		<!--<div class="initImg img-container">
+			<img src="img/test.png" alt="Picture">
+		</div>-->
+	</div>
+	
+	<!--<p class="confirm">确 定</p>-->
+	<!--<button onclick="csx(19,28)"></button>-->
+	<div class="modal fade docs-cropped none" id="getCroppedCanvasModal" aria-hidden="true" aria-labelledby="getCroppedCanvasTitle" role="dialog" tabindex="-1">
+        <div class="modal-body"></div>
+    </div>
+	<button class="confirmSurePic" style="margin:0 0 10px 165px;" data-method="getCroppedCanvas" data-option="{ &quot;width&quot;: 160, &quot;height&quot;: 90 }" type="button">
+        <span class="docs-tooltip"  title="$().cropper(&quot;getCroppedCanvas&quot;, { &quot;width&quot;: 160, &quot;height&quot;: 90 })">
+         	确定
+        </span>
+    </button>
+</div>	
+<script type="text/javascript" src="plug/jquery-1.11.3.min.js" ></script>
+<script type="text/javascript" src="plug/template-web.js" ></script>
+<script type="text/javascript" src="plug/webuploader/webuploader.min.js"></script>
+<script type="text/javascript" src="js/toggle.js" ></script>
+<script type="text/javascript" src="js/util.js" ></script>
+<script type="text/javascript" src="js/method.js" ></script>
+<script type="text/javascript" src="js/addTag.js" ></script>
+<script type="text/javascript" src="js/detail/upload_img.js" ></script>
+<!--<script type="text/javascript" src="js/detail/doc_upload_img.js" ></script>
+<script type="text/javascript" src="js/detail/shot_img.js" ></script>-->
+<!--截图插件-->
+<!--<script src="plug/screenShot/dist/cropper.js"></script>
+<script src="plug/screenShot/dist/main.js"></script>-->
+<!--项目类型列表-->
+<script type="text/html" id="test_proj_list">
+	{{each data value}}
+		<option value="{{value.id}}">{{value.name}}</option>
+	{{/each}}
+</script>
+<!--项目医院列表-->
+<script type="text/html" id="test_hos_list">
+	{{each data value}}
+		<option value="{{value.id}}">{{value.name}}</option>
+	{{/each}}
+</script>
+<script>
+$(function(){
+//$(".hos_price_parent,.expert_price_parent,.special_price_parent").hide();
+
+
+var proj_class_val="";
+//初始化项目类型列表
+$(".proj_class").change(function(){
+	proj_class_val = $(".proj_class").val();
+	console.log(proj_class_val);
+	var data = {
+		"type":proj_class_val
+	}
+	$.initSelect("/common/getProductCategorys.json","test_proj_list",".proj_type",data);
+//	//检查类医院
+//	if(proj_class_val=="check"){
+//		$(".hos_price_parent,.expert_price_parent").hide();
+//		$(".special_price_parent").show();
+//	}
+//	//治疗类医美
+//	if(proj_class_val=="cure"){
+//		$(".hos_price_parent,.expert_price_parent").show();
+//		$(".special_price_parent").hide();
+//	}
+});
+var proj_type_id="";
+$(".proj_type").change(function(){
+	proj_type_id = $(".proj_type").val();
+	console.log(proj_type_id);
+});
+
+//初始化项目医院
+$.initSelect("/admin/hospital/getCertList.json","test_hos_list",".proj_hos");
+var proj_hos_id="";
+$(".proj_hos").change(function(){
+	proj_hos_id = $(".proj_hos").val();
+	console.log(proj_hos_id);
+});
+		//修改初始化
+	if(getQueryString('action') == 'reset'){
+	    $('.confrim_add_special').val('确认修改');
+        $('.navi_current').text('修改医生');
+        var data = {
+            "voteInfoId":getQueryString('id')
+        }
+//	初始化表单控件
+        $.get_ajax("/app/vote/selectVoteInfoById",data,function(res){
+            console.log(res);
+            if(res.success){
+                res.data = res.data[0];
+                //初始化必填输入框
+                $(".proj_name").attr("value",res.data.name);
+                //初始化图片
+                arr_pic[0] = res.data.imgUrl;
+                console.log(arr_pic);
+                init_img(arr_pic);
+				$('.reason').text(res.data.doctorEthics);
+                //项目类型id
+                proj_type_id = res.data.productCategoryId;
+                //初始化下拉选
+                var setTime = setTimeout(function(){
+                    //初始化项目分类列表
+                    proj_class_val = res.data.title;
+                    $(".proj_class>[value="+proj_class_val+"]").attr("selected","selected");
+                    console.log(proj_class_val);
+                    //初始化医院类型
+                    proj_hos_id = res.data.hospital;
+                    $(".proj_hos").val(proj_hos_id);
+                    //$(".proj_hos>[value="+proj_hos_id+"]").attr("selected","selected").parent().attr("disabled","disabled");
+                },100);
+            }
+        });
+
+    }
+//添加
+$(".confrim_add_special").click(function(){
+	//输入框信息
+	var url;
+	var proj_name = $(".proj_name").val();
+    var title = $('.proj_class').val();
+	var pic_url = arr_pic[0];//图片
+	var proj_hos_id = $('.proj_hos').val();
+	var reason = $('.reason').val();
+	var data = {
+		 "name":proj_name,
+         "imgUrl":pic_url,
+		 "title":title,
+		 "hospital":proj_hos_id,
+         "doctorEthics":reason
+	}
+    if(getQueryString('action') == 'reset'){
+        url = "/app/vote/updateVoteInfo";
+        data.voteInfoId = getQueryString('id');
+    }else{
+        url = "/app/vote/addVoteInfo";
+    }
+	console.log(data);
+	//验证
+	if(!$.verify(proj_name,"项目名称")){return false;}
+	if(!$.verify(title,"职称")){return false;}
+	if(!$.verifyNum(proj_hos_id,"所属医院")){return false;}
+	if(!$.verify(pic_url[0],"项目图片")){return false;}
+    if(!$.verify(reason,"推荐理由")){return false;}
+	//调用ajax
+	$.post_ajax(url,data,function(data){
+		console.log(data);
+		if(data.success==true){
+			alert(data.data);
+			window.location.href = "voteDocList.html";
+		}else{
+			alert(data.data);
+		}
+	});
+	
+});
+
+});
+</script>
+</body>
+</html>

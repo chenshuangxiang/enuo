@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="css/base.css" />
+<link rel="stylesheet" href="css/util.css" />
+<link rel="stylesheet" href="css/collect.css" />
+<link rel="stylesheet" href="plug/webuploader/webuploader.css" />
+<!--截图插件-->
+<!--<link href="plug/screenShot/css/cropper.css" rel="stylesheet">
+<link href="plug/screenShot/css/main.css" rel="stylesheet">-->
+<title>医院修改特价项目</title>
+<style>
+	/*图片上传*/
+	#filePicker{
+		display: inline-block;
+		/*border: 1px solid red;*/
+		height: 40px;
+	}
+	#filePicker .webuploader-pick{
+		height: 40px;line-height: 40px;
+		width: 120px;
+		/*border: 1px solid black;*/
+		padding: 0;
+		letter-spacing: 1px;
+		font-size: 16px;
+		border-radius:5px ;
+	}
+	.add_role_form .public_input .enabledyinliu,.add_role_form .public_input .enabledyouhui,.add_role_form .public_input .enabledShow{
+		width: 60px;
+		border-top-right-radius: 0;
+		border-bottom-right-radius: 0;
+		text-align: center;
+		text-indent: 0px;
+	}
+	.add_role_form .public_input .disableyinliu,.add_role_form .public_input .disableyouhui,.add_role_form .public_input .disableShow{
+		border-top-left-radius: 0;
+		border-bottom-left-radius: 0;
+		width: 60px;
+		text-align: center;
+		text-indent: 0px;
+		margin-left: 0;
+	}
+</style>
+</head>
+<body>
+<div class="content add_special_proj">
+	<div class="navigate_head clearfix">
+		<p onclick="window.location.href='special_proj_list.html'">项目列表</p>
+		<p  class="navi_current" onclick="window.location.href='edit_special_proj.html'">修改项目</p>
+		<p class="navi_null"></p>
+	</div>
+	<div>
+		<form class="add_role_form">
+			<div class="public_input">
+				<span><span class="font_green">* </span>项目分类:</span>
+				<select class="proj_class">
+					<option value='0'>请选择</option>
+					<option value="cure">医疗类</option>
+					<option value="beauty">美容类</option>
+					<option value="check">检查类</option>
+				</select>
+			</div>
+			<div class="public_input">
+				<span><span class="font_green">* </span>项目类型:</span>
+				<select class="proj_type">
+					<option value='0'>请选择</option>
+				</select>
+			</div>
+			<div class="public_input">
+				<span><span class="font_green">* </span>项目名称:</span>
+				<input type="text" class="proj_name" placeholder="请输入项目名称"/>
+			</div>
+			<div class="public_input">
+				<span><span class="font_green">* </span>项目医院:</span>
+				<select class="proj_hos">
+					<option value='0'>请选择</option>
+				</select>
+			</div>
+			<div class="public_input upload_img clearfix">
+				<span><span class="font_green">* </span>项目图片:</span>
+				<div class="right" id="uploader-demo">
+					<!--用来存放item-->
+				    <!--<div id="fileList" class="uploader-list"></div>-->
+				    <!--<div id="filePicker">上传图片</div>-->
+					<span class="addPhontBtn">
+						<input type="file" class="hidden" id="file" multiple="multiple"/>
+							<span>上传图片</span>
+					</span>
+				   <!-- <label for="file" class=""><span style="width: 120px;background-color: #00A2D4;">选择图片</span></button></label>
+					<input type="file" id="file" multiple="multiple" name="file" class="none ill_pic"  accept="image/*"/>-->
+				    <!--<input type="button" class="btn_remove_pic" value="选中删除" style="right: 140px;background-color: red;">-->
+					<!--预览图片-->
+					<p id="" class="preview preview2">
+						
+					</p>
+				</div>
+			</div>
+			<div class="public_input">
+				<span><span class="font_green">* </span>原价:</span>
+				<input type="text" class="original_price" placeholder="请输入原价" style="width: 220px;"/>元
+			</div>
+			<!--<div class="public_input hos_price_parent">
+				<span>院长费用:</span>
+				<input type="text" class="hos_price" placeholder="请输入院长费用" style="width: 220px;"/>元
+			</div>
+			<div class="public_input expert_price_parent">
+				<span><span class="font_green">* </span>专家费用:</span>
+				<input type="text" class="expert_price" placeholder="请输入专家费用" style="width: 220px;"/>元
+			</div>-->
+			<div class="public_input special_price_parent">
+				<span><span class="font_green">* </span>特价:</span>
+				<input type="text" class="special_price" placeholder="请输入特价" style="width: 220px;"/>元
+			</div>
+			<div class="public_input">
+				<span><span class="font_green">* </span>约定周期(数字):</span>
+				<input type="text" class="appoint_day" placeholder="约定周期(数字)" style=""/>
+			</div>
+			<div class="public_input clearfix" style="height: auto;width: 837px;">
+				<span style="position: absolute;top: 0;"><span>* </span>约定效果:</span>
+				<div class="appoint_result_list">
+					<p>
+						<span>1.</span><input type="text" class="appoint_result" placeholder="如" />
+						<span class="font_green" onclick="addResult(this)">[+]</span>
+					</p>
+				</div>
+			</div>
+			<div class="public_input">
+				<span><span class="font_green">* </span>是否优惠:</span>
+				<input type="button" class="enabledyouhui" value="是" data_val="true"/><input type="button" class="disableyouhui" value="否" data_val="false"/>
+			</div>
+			<div class="public_input">
+				<span><span class="font_green">* </span>是否上架:</span>
+				<input type="button" class="enabled" value="上架" data_val="true"/><input type="button" class="disable" value="下架" data_val="false"/>
+			</div>
+			<div class="public_input">
+				<span><span class="font_green">* </span>是否引流:</span>
+				<input type="button" class="enabledyinliu" value="是" data_val="true"/><input type="button" class="disableyinliu" value="否" data_val="false"/>
+				<span style="color: red;width: 273px;">(注:引流项目平台不予结算费用)</span>
+			</div>
+			<div class="public_input">
+				<span><span class="font_green">* </span>是否展示:</span>
+				<input type="button" class="enabledShow" value="是" data_val="true"/><input type="button" class="disableShow" value="否" data_val="false"/>
+			</div>
+			<div class="job_tab">
+				<div class="tit">预约人数设置（请在下列表格中填写相应的最高预约量）</div>
+				<!--出诊时间-->
+				<div class="heal_time_container clearfix">
+					<!--<div class="">
+						<p class=""></p>
+						<p class=""><img src="img/left.png"/></p>
+						<p class=""></p>
+					</div>-->
+					<div class="">
+						<p class="">排班</p>
+						<p class="">上午</p>
+						<p class="">下午</p>
+					</div>
+					<div class="week">
+						<p class="day">
+							<span class="">星期天</span>
+						</p>
+						<input type="text" data_week="sunday" data_morning="true"/>
+						<input type="text" data_week="sunday" data_morning="false"/>
+						<!--<p class="am" data_val="休息"></p>
+						<p class="pm" data_val="休息"></p>-->
+					</div>
+					<div class="week">
+						<p class="day">
+							<span class="">星期一</span>
+						</p>
+						<input type="text" data_week="monday" data_morning="true"/>
+						<input type="text" data_week="monday" data_morning="false"/>
+					</div>
+					<div class="week">
+						<p class="day">
+							<span class="">星期二</span>
+						</p>
+						<input type="text" data_week="tuesday" data_morning="true"/>
+						<input type="text" data_week="tuesday" data_morning="false"/>
+					</div>
+					<div class="week">
+						<p class="day">
+							<span class="">星期三</span>
+						</p>
+						<input type="text" data_week="wednesday" data_morning="true"/>
+						<input type="text" data_week="wednesday" data_morning="false"/>
+					</div>
+					<div class="week">
+						<p class="day">
+							<span class="">星期四</span>
+						</p>
+						<input type="text" data_week="thursday" data_morning="true"/>
+						<input type="text" data_week="thursday" data_morning="false"/>
+					</div>
+					<div class="week">
+						<p class="day">
+							<span class="">星期五</span>
+						</p>
+						<input type="text" data_week="friday" data_morning="true"/>
+						<input type="text" data_week="friday" data_morning="false"/>
+					</div>
+					<div class="week">
+						<p class="day">
+							<span class="">星期六</span>
+						</p>
+						<input type="text" data_week="saturday" data_morning="true"/>
+						<input type="text" data_week="saturday" data_morning="false"/>
+					</div>
+					<!--<div class="">
+						<p class="flex_all_center"></p>
+						<p class=""><img src="img/right.png"/></p>
+						<p class=""></p>
+					</div>-->
+				</div>
+				<!--<div class="btn">
+					<button onclick="up_week()">上周</button><button onclick="next_week()">下周</button>
+				</div>-->
+			</div>
+			<div class="public_input confrim_btn">
+				<span>.</span>
+				<input type="button" class="confrim_edit_special" value="修改"/>
+			</div>
+		</form>
+	</div>
+</div>
+<!--遮罩层-->
+<div class="shade none"></div>
+<!--弹框-->
+<div class="popup_box none" style="min-height: 400px;top: 15px;">
+	<p class="img_close clearfix">
+		<img src="img/close.png" onclick="close_box()"/>
+	</p>
+	<div class="preview1">
+		<!--<div class="initImg img-container">
+			<img src="img/test.png" alt="Picture">
+		</div>-->
+	</div>
+	
+	<!--<p class="confirm">确 定</p>-->
+	<button onclick="csx()"></button>
+	<div class="modal fade docs-cropped none" id="getCroppedCanvasModal" aria-hidden="true" aria-labelledby="getCroppedCanvasTitle" role="dialog" tabindex="-1">
+        <div class="modal-body"></div>
+    </div>
+	<button class="confirm" style="margin-left: 215px;" data-method="getCroppedCanvas" data-option="{ &quot;width&quot;: 160, &quot;height&quot;: 90 }" type="button">
+        <span class="docs-tooltip"  title="$().cropper(&quot;getCroppedCanvas&quot;, { &quot;width&quot;: 160, &quot;height&quot;: 90 })">
+         	确定
+        </span>
+    </button>
+</div>
+<script type="text/javascript" src="plug/jquery-1.11.3.min.js" ></script>
+<script type="text/javascript" src="plug/template-web.js" ></script>
+<script type="text/javascript" src="plug/webuploader/webuploader.min.js"></script>
+<script type="text/javascript" src="js/toggle.js" ></script>
+<script type="text/javascript" src="js/util.js" ></script>
+<script type="text/javascript" src="js/method.js" ></script>
+<script type="text/javascript" src="js/addTag.js" ></script>
+<script type="text/javascript" src="js/detail/upload_img.js" ></script>
+<!--<script type="text/javascript" src="js/detail/doc_upload_img.js" ></script>
+<script type="text/javascript" src="js/detail/shot_img.js" ></script>-->
+<!--截图插件-->
+<!--<script src="plug/screenShot/dist/cropper.js"></script>
+<script src="plug/screenShot/dist/main.js"></script>-->
+<!--项目类型列表-->
+<script type="text/html" id="test_proj_list">
+	{{each data value}}
+		<option value="{{value.id}}">{{value.name}}</option>
+	{{/each}}
+</script>
+<!--项目医院列表-->
+<script type="text/html" id="test_hos_list">
+	{{each data value}}
+		<option value="{{value.id}}">{{value.name}}</option>
+	{{/each}}
+</script>
+<script>
+$(function(){
+//$(".hos_price_parent,.expert_price_parent,.special_price_parent").hide();
+var flag=true;
+$(".enabled,.disable").click(function(){
+	flag = $(this).addClass("bg_green").attr("data_val");
+	$(this).siblings().removeClass("bg_green");
+	console.log(flag);
+});
+//是否优惠
+    var flagyouhui=true;
+    $(".enabledyouhui,.disableyouhui").click(function(){
+        flagyouhui = $(this).addClass("bg_green").attr("data_val");
+        $(this).siblings().removeClass("bg_green");
+        console.log(flagyouhui);
+    });
+//是否引流
+    var flagyinliu=true;
+    $(".enabledyinliu,.disableyinliu").click(function(){
+        flagyinliu = $(this).addClass("bg_green").attr("data_val");
+        $(this).siblings().removeClass("bg_green");
+        console.log(flagyinliu);
+    });
+    //是否展示
+    var flagShow=true;
+    $(".enabledShow,.disableShow").click(function(){
+        flagShow = $(this).addClass("bg_green").attr("data_val");
+        $(this).siblings().removeClass("bg_green");
+        console.log(flagShow);
+    });
+var proj_class_val="";
+//初始化项目类型列表
+$(".proj_class").change(function(){
+	proj_class_val = $(".proj_class").val();
+	console.log(proj_class_val);
+	var data = {
+		"type":proj_class_val
+	}
+	$.initSelect("/common/getProductCategorys.json","test_proj_list",".proj_type",data);
+//	//检查类医院
+//	if(proj_class_val=="check"){
+//		$(".hos_price_parent,.expert_price_parent").hide();
+//		$(".special_price_parent").show();
+//	}
+//	//治疗类医美
+//	if(proj_class_val=="cure"){
+//		$(".hos_price_parent,.expert_price_parent").show();
+//		$(".special_price_parent").hide();
+//	}
+});
+var proj_type_id="";
+$(".proj_type").change(function(){
+	proj_type_id = $(".proj_type").val();
+	console.log(proj_type_id);
+});
+
+//初始化项目医院
+//$.initSelect("/admin/hospital/getCertList.json","test_hos_list",".proj_hos");
+var proj_hos_id="";
+$(".proj_hos").change(function(){
+	proj_hos_id = $(".proj_hos").val();
+	console.log(proj_hos_id);
+});
+
+var data = {
+	"id":$.get_storage("special_proj_id")
+}
+//	初始化表单控件
+$.get_ajax("/admin/specialProduct/getDetail.json",data,function(res){
+	console.log(res);
+	if(res.success){
+		//初始化必填输入框
+		$(".proj_name").attr("value",res.data.name);
+		$(".original_price").attr("value",res.data.originalPrice);
+//		$(".hos_price").attr("value",res.data.deanPrice);
+		$(".special_price").attr("value",res.data.price);
+		
+		//初始化图片
+		arr_pic = res.data.images;
+		console.log(arr_pic);
+        init_img(arr_pic);
+		
+		//初始化周期
+		$(".appoint_day").attr("value",res.data.day);
+		//约定效果
+		init_appoint_result(res.data.agreementResults,$(".appoint_result_list"));
+        //初始化是否优惠
+        flagyouhui = res.data.isPreferential;
+        if(flagyouhui){
+            $(".enabledyouhui").addClass("bg_green");
+        }else{
+            $(".disableyouhui").addClass("bg_green");
+        }
+		//初始化是否上架
+		flag = res.data.marketable;
+		if(flag){
+			$(".enabled").addClass("bg_green");
+		}else{
+			$(".disable").addClass("bg_green");
+		}
+        //初始化是否引流
+        flagyinliu = res.data.isDrainage;
+        if(flagyinliu){
+            $(".enabledyinliu").addClass("bg_green");
+        }else{
+            $(".disableyinliu").addClass("bg_green");
+        }
+        //初始化是否展示
+        flagShow = res.data.bShowInApp;
+        if(flagShow){
+            $(".enabledShow").addClass("bg_green");
+        }else{
+            $(".disableShow").addClass("bg_green");
+        }
+		//初始化值班表
+		init_work_tb(res.data.schedules);
+		//项目类型id
+		proj_type_id = res.data.productCategoryId;
+		//初始化下拉选
+		var setTime = setTimeout(function(){
+			//初始化项目分类列表
+			proj_class_val = res.data.type;
+			$(".proj_class>[value="+proj_class_val+"]").attr("selected","selected").parent().attr("disabled","disabled");
+			console.log(proj_class_val);
+//			//检查类医院
+//			if(proj_class_val=="check"){
+//				$(".hos_price_parent,.expert_price_parent").hide();
+//				$(".special_price_parent").show();
+//			}
+//			//治疗类医美
+//			if(proj_class_val=="cure"){
+//				$(".hos_price_parent,.expert_price_parent").show();
+//				$(".special_price_parent").hide();
+//			}
+			//初始化项目类型列表
+			var data = {
+				"type":proj_class_val
+			}
+			$.get_ajax("/common/getProductCategorys.json",data,function(res){
+				console.log(res);
+				if(res.success){
+					var html = template("test_proj_list",res);
+					$(".proj_type").append(html);
+					console.log("1");
+				}
+				//初始化选中的项目类型
+				console.log("2");
+				console.log(proj_type_id);
+				$(".proj_type>[value="+proj_type_id+"]").attr("selected","selected");
+			});
+			
+			//初始化医院类型
+			proj_hos_id = res.data.hospitalName;
+            $(".proj_hos").empty().append('<option>'+proj_hos_id+'</option>').attr("disabled","disabled");
+			//$(".proj_hos>[value="+proj_hos_id+"]").attr("selected","selected").parent().attr("disabled","disabled");
+
+		},100);
+	}
+});
+
+//修改
+$(".confrim_edit_special").click(function(){
+	//输入框信息
+	var proj_name = $(".proj_name").val();
+	var original_price = $(".original_price").val();//原价
+	var special_price = $(".special_price").val();//特价
+	
+	var pic_url = arr_pic;//图片
+	var arr_job = get_work_tb();//获取坐诊表格
+	
+	var appoint_day = $(".appoint_day").val();
+	var appoint_result = getResult($(".appoint_result"));//约定效果
+	
+	var data = {
+		"id":$.get_storage("special_proj_id"),
+		"name":proj_name,
+		"productCategoryId":proj_type_id,
+		//"hospitalId":proj_hos_id,
+		"originalPrice":original_price,
+		"price":special_price,//特价
+		"marketable":flag,
+        "isDrainage":flagyinliu,
+        "isPreferential":flagyouhui,
+		"images":toHash(pic_url),
+		"schedules":JSON.stringify(arr_job),//值班时间
+		"day":appoint_day,
+		"agreementResults":toHash(appoint_result),
+        "bShowInApp":flagShow
+		//非必填
+//		"deanPrice":hos_price//院长价
+	}
+	//院长费用
+//	var hos_price = $(".hos_price").val();
+//	if(hos_price){
+//		console.log("a");
+//		data.deanPrice = hos_price;
+//	}
+//	//专家费用
+//	var expert_price = $(".expert_price").val();
+//	if(expert_price){
+//		console.log("b");
+//		data.expertPrice = expert_price;
+//	}
+	//特价
+//	var special_price = $(".special_price").val();
+//	if(special_price){
+//		console.log("c");
+//		data.expertPrice = special_price;
+//	}
+//	console.log(data);
+	//验证
+	if(!$.verify(proj_name,"项目名称")){return false;}
+	if(!$.verifyNum(proj_type_id,"项目类型")){return false;}
+	//if(!$.verifyNum(proj_hos_id,"医院")){return false;}
+//	console.log(arr_pic[0]);
+	if(!$.verify(pic_url[0],"项目图片")){return false;}
+	if(!$.verify(original_price,"原价")){return false;}
+	if(!$.verify(special_price,"特价")){return false;}
+	if(!$.verify(arr_job,"值班时间")){return false;}
+	
+	if(!$.verify(appoint_result[0],"约定效果")){return false;}
+	if(!$.verifyNum(appoint_day,"约定周期")){return false;}
+	//调用ajax
+	$.post_ajax("/admin/specialProduct/update",data,function(data){
+		console.log(data);
+		if(data.success==true){
+			alert(data.data);
+			window.location.href = "special_proj_list.html";
+		}else{
+			alert(data.data);
+		}
+	});
+	
+});
+
+});
+</script>
+</body>
+</html>

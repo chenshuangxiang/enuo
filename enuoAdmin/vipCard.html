@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="css/base.css" />
+<link rel="stylesheet" href="css/util.css" />
+<link rel="stylesheet" href="css/collect.css" />
+<title>VIP充值卡</title>
+</head>
+<body>
+<div class="content vipCard">
+	<div class="navigate_head clearfix">
+		<p onclick="window.location.href='vipCard.html'" class="navi_current">VIP卡列表</p>
+		<p onclick="window.location.href='add_vipCard.html'">添加VIP卡</p>
+		<p class="navi_null"></p>
+	</div>
+	<!--头部功能-->
+	<div class="head_area ">
+		<div class="flex_vertical">
+			<button>选择文件</button>&nbsp;<input type="file" class="search" placeholder="未选择任何文件" style="width: 180px;"/>
+			<button class="" style="position: absolute;right: 0;top: 0;">导入表格</button>
+		</div>
+		<div class="flex_vertical"style="margin-top: 20px;">
+			<span>充值卡状态</span>&nbsp;
+			<select style="width: 180px;">
+				<option>全部</option>	
+			</select>
+			<span>充值卡金额</span>&nbsp;
+			<select style="width: 180px;">
+				<option>全部</option>	
+			</select>
+			<button class="" style="">搜索</button>
+		</div>
+	</div>
+	<table>
+		<thead>
+			<tr>
+				<td>序号</td>
+				<td>vip充值卡</td>
+				<td>vip充值卡金额（元）</td>
+				<td>vip充值卡开始时间</td>
+				<td>vip充值卡结束时间</td>
+				<td>是否激活</td>
+				<td>备注</td>
+				<td>操作</td>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td>1</td>
+				<td>58802001</td>
+				<td>200.00</td>
+				<td>2016-07-01</td>
+				<td>2019-12-31</td>
+				<td>未激活</td>
+				<td width="220px">用户：130 8398 7999，姓名祁本洲在2017-08-17使用了vip充值卡。</td>
+				<td><button class="btn_green">修改</button> <button class="btn_orange">删除</button></td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+<script type="text/javascript" src="plug/jquery-1.11.3.min.js" ></script>
+<script type="text/javascript" src="js/toggle.js" ></script>
+<script>
+
+</script>
+</body>
+</html>

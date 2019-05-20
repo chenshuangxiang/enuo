@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="css/base.css" />
+<link rel="stylesheet" href="css/util.css" />
+<link rel="stylesheet" href="css/collect.css" />
+	<link href="css/combo.select.css" rel="stylesheet" />
+<!--	<link rel="stylesheet" href="js/layui/css/layui.css" media="all" />-->
+<title>订单管理</title>
+<style>
+.head_area .public_input span{
+	width: 100px;font-size: 18px;
+}
+.head_area .public_input input,
+.head_area .public_input select{
+	width: 180px;margin-left: 10px;margin-right: 10px;
+}
+.content .head_area .combo-select input{
+	width: inherit;
+	border: none;
+	outline: none;
+}
+.option-input {
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	-ms-appearance: none;
+	-o-appearance: none;
+	appearance: none;
+	background: #fff;
+	outline: none;
+	border: 1px solid #00afa1;
+	color: #fff;
+	width: 15px;
+	height: 15px;
+	border-radius: 2px;
+	margin: 1px 4px 0px 2px;
+	cursor: pointer;
+	vertical-align: top;
+}
+.option-input:checked {
+	background: url(img/voteGou.png);
+	background-size: 100% 100%;
+	background-color: #fff;
+	color: white;
+}
+</style>
+</head>
+<body>
+<div class="content cure_order">
+	<div class="navigate_head clearfix">
+		<p onclick="window.location.href='order_list.html'" class="navi_current">订单管理</p>
+		<p onclick="window.location.href='add_order.html'">添加订单</p>
+		<p class="navi_null" style="width: 72%"></p>
+	</div>
+	<!--头部功能-->
+	<div class="head_area flex_vertical" style="display: block;">
+		<div class="public_input margindiv">
+			<!--<span>搜索医院:</span>-->
+			<select class="job_title hosSelect">
+				<option>全部医院</option>
+			</select>
+		</div>
+		<div class="public_input margindiv">
+			<!--<span>搜索状态:</span>-->
+			<select class="job_title searchStatus">
+				<option>全部状态</option>
+				<option value="waitPaid">待支付</option>
+				<option value="waitConfirm">待确认</option>
+				<option value="completed">去结算</option>
+				<option value="cancelled">已取消</option>
+				<option value="handle">已完成</option>
+			</select>
+		</div>
+
+		<div class="public_input margindiv">
+			<!--<span >搜索患者：</span>-->
+			<input type="text" class="proj_name" placeholder="姓名、手机号、订单号"/>
+		</div>
+		<button class="search" style="width: 70px;" onclick="indexPage()">搜索</button>
+		<button class="search" style="width: 100px;background-color: #1E9FFF;cursor: pointer" onclick="sureAllAccount()">批量结算</button>
+		
+	</div>
+	<table>
+		<thead>
+			<tr>
+				<td><input type="checkbox" class="option-input" name="allOrderCheck"/></td>
+				<td>订单号</td>
+				<td>患者名</td>
+				<td>手机号</td>
+				<td>项目分类</td>
+				<td>约定医院</td>
+				<td>约定疾病</td>
+				<td>项目金额</td>
+				<td>已付金额</td>
+				<td>下单时间</td>
+				<td>订单状态</td>
+			</tr>
+		</thead>
+		<tbody class="tbody">
+			<!--<tr>
+				<td><div class="flex_all_center"><img src="img/activity_manage/select.png"/>&nbsp;<span>921614597713019</span></div></td>
+				<td>蔡晓云</td>
+				<td>176 0652 0935</td>
+				<td>2017-08-12</td>
+				<td>杭州梦桃口腔门诊部</td>
+				<td>双眼皮<p>结算金额：0元</p></td>
+				<td>
+					<div class="flex_all_center">
+						<button class="btn_green">去结算</button>&nbsp;<button class="btn_red"><img src="img/close-2.png"/></button>
+					</div>
+					<p>放款时间：1970-01-16</p>
+				</td>
+			</tr>-->
+		</tbody>
+	</table>
+	<!--分页-->
+	<div class="page flex_vertical">
+		<button class="" onclick="indexPage()">首页</button>&nbsp;
+		<button class="" onclick="backPage()"><上一页</button>&nbsp;
+		<!--页码-->
+		<p class="page_num">
+			<!--<span>1</span><span>2</span><span>3</span><span>4</span><span>5</span>-->
+		</p>....
+		<button class="" onclick="nextPage()">下一页></button>&nbsp;
+		<button class="" onclick="endPage()">末页</button>&nbsp;
+		共<span class="all_recode">0 </span>记录&nbsp;|
+		共<span class="all_page">0 </span>页&nbsp;
+		到第<input class="select_page" />页&nbsp;
+		<button class="confirm_page" onclick="skipPage()">确定</button>
+	</div>
+</div>
+<!--遮罩层-->
+<div class="shade none"></div>
+<!--弹框-->
+<div class="popup_box jiesuanOpen none" style="width: 540px;top: 130px;">
+	<p class="img_close clearfix">
+		<img src="img/close.png" onclick="close_box()"/>
+	</p>
+	<div>
+		<!--<div class="public_input">
+			<span style="width: 80px;">状态:</span>
+			&lt;!&ndash;<input type="button" class="bg_green enabled" value="通过" data_val="true"/>
+			<input type="button" class="disable" value="不通过" data_val="false"/>
+			<input type="button" class="disable" value="不通过" data_val="false"/>&ndash;&gt;
+			<div class="public_input margindiv">
+				<span>产品名称:</span>
+				<input type="text" class="role_name" placeholder="产品名称"/>
+			</div>
+		</div>-->
+		<div style="display: block" class="public_input clearfix cause_parent">
+			<span style="width: 135px;float: left;">开户行:</span>
+			<input style="width: 300px;margin-left: 20px" type="text" class="bankName" placeholder="请输入开户行，如中国工商银行"/>
+		</div>
+		<div style="display: block" class="public_input clearfix cause_parent">
+			<span style="width: 135px;float: left;">银行卡号:</span>
+			<input style="width: 300px;margin-left: 20px" type="text" class="bankCardNumber" placeholder="请输入银行卡号"/>
+		</div>
+		<div style="display: block" class="public_input clearfix cause_parent">
+			<span style="width: 135px;float: left;">开户名:</span>
+			<input style="width: 300px;margin-left: 20px" type="text" class="accountName" placeholder="请输入开户名"/>
+		</div>
+		<div style="display: block" class="public_input clearfix cause_parent">
+			<span style="width: 135px;float: left;">结算百分比:</span>
+			<input style="width: 300px;margin-left: 20px" type="text" class="settlementToHospital" placeholder="请输入结算百分比"/><strong style="    font-size: 20px;margin-left: 10px;color: #222;">%</strong>
+		</div>
+	</div>
+	<p class="jiesuanZi" style="text-align: center;margin: 20px auto;">确定结算这笔订单吗?</p>
+	<p class="confirm btn_green"  onclick="closeAccount()" style="    height: 40px;
+    width: 70px;
+    display: inline-block;
+    margin-left:185px;
+    line-height: 40px;
+    text-align: center;">确 定</p>
+	<p class="cancel btn_white" onclick="cancelAccount()" style="height: 40px;width: 70px;display: inline-block;margin-left: 20px;line-height: 40px;text-align: center;">取消</p>
+</div>
+<div class="popup_box orderOpen none" style="min-height: 400px;top: 15px;width: 600px;left: 44%;">
+	<p class="img_close clearfix">
+		<span class="huifuname"></span>
+		<img src="img/close.png" onclick='$(".shade").css("display","none");$(".popup_box,.orderOpen").css("display","none");'/>
+	</p>
+	<div class="main">
+		<div class="main_inner clearfix">
+			<div class="panel"></div>
+			<div id="chatArea" class="box chat">
+				<div class="box_hd"></div>
+				<div class="box_bd" id="messageList" style="margin-bottom: 15px;overflow-y: auto;">
+
+				</div>
+			</div>
+		</div>
+
+	</div>
+</div>
+<script type="text/javascript" src="plug/jquery-1.11.3.min.js" ></script>
+<script type="text/javascript" src="plug/template-web.js"></script>
+<script type="text/javascript" src="js/layui/layui.js"></script>
+<script type="text/javascript" src="js/toggle.js" ></script>
+<script type="text/javascript" src="js/util.js"></script>
+<script type="text/javascript" src="js/method.js"></script>
+<script type="text/javascript" src="js/page.js"></script>
+<script type="text/javascript" src="js/jquery.combo.select.js"></script>
+<!--账号列表-->
+<script id="test_cure_order_list" type="text/html">
+{{each data as value i}}
+	<tr>
+		<td width="40px"><input class="option-input" type="checkbox" name="orderCheck" data_id = "{{value.id}}"/>{{i+1}}</td>
+		<td>
+			<div class="flex_all_center">
+				<!--<img src="img/activity_manage/select.png"/>&nbsp;-->
+				<span>{{value.sn}}</span>
+			</div>
+		</td>
+		<td style="color: #00AFA1;cursor: pointer" onclick="userOpen(this)" valueusername="{{value.fullname}}" valuemobile="{{value.mobile}}">{{value.fullname}}</td>
+		<td>{{value.mobile}}</td>
+		<td>
+			{{if value.type== "doctor"}}医生
+			{{else if value.type == "censor"}}检查项目
+			{{else if value.type == "product"}}{{if value.orderStatus== "waitConfirm" && value.paidAmount == 0}}医院添加/线上兑换{{else}}平台项目{{/if}}
+			{{else if value.type == "PRIZE"}}平台中奖
+			{{else if value.type == "offline"}}现场项目{{/if}}
+		</td>
+		<td>{{value.hospitalName}}</td>
+		{{if value.type== "offline"}}<td style="color: #00afa1;cursor: pointer" width="16%" data_id = "{{value.visitRecord}}" onclick="orderOpen(this)">{{value.name}}</td>{{else}}<td width="16%">{{value.name}}</td>{{/if}}
+
+        <td>{{if value.type== "PRIZE"}}0.00{{else}}{{value.amount}}{{/if}}</td>
+		<td>{{value.paidAmount}}</td>
+		<td>{{value.createDate}}</td>
+		<td>
+			<div class="order_status flex_all_center" data_id = "{{value.id}}">
+				{{if value.orderStatus=="waitPaid"}}
+				   {{if value.type== "PRIZE"}}<button class="btn_white" style="color: red">未预约</button>{{else}}<button class="btn_white">待支付</button>{{/if}}
+				{{else if value.orderStatus=="completed"}}
+					<button class="btn_green" onclick="popup_box(this)">去结算</button>
+				{{else if value.orderStatus=="waitConfirm"}}
+                    {{if value.name == "美丽回家大礼包"}}
+                         <button class="btn_white" style="color: #fb952c">已支付</button>
+					{{else if value.groupShoppingTeamState=="none"}}
+					<button class="btn_white" style="color: red">待入团</button>
+					{{else if value.groupShoppingTeamState=="wait"}}
+					<button class="btn_white" style="color: red">待拼成</button>
+					{{else if value.groupShoppingTeamState=="full"}}
+					<button class="btn_white">已拼成</button>
+					{{else if value.groupShoppingTeamState=="cancel"}}
+					<button class="btn_white">已作废</button>
+                    {{else}}
+                        {{if value.isReservation== true}}<button class="btn_white" style="color: #fb952c">已预约</button>
+                            {{else if value.isReservation == false}}
+								{{if value.prizeInvalid == true}}<span style="color: #666;">已失效</span>
+								{{else}}<button class="btn_white" style="color: red">未预约</button>
+								{{/if}}
+                            {{else}}<button class="btn_white">待确认</button>
+                        {{/if}}
+                    {{/if}}
+				{{else if value.orderStatus=="cancelled"}}
+					<button class="btn_white">取消购买</button>
+				{{else if value.orderStatus=="handle"}}
+					<button class="btn_white">已完成</button>
+				{{/if}}
+				<!--&nbsp;<button class="btn_red"><img src="img/close-2.png"/></button>-->
+			</div>
+		</td>
+	</tr>
+{{/each}}
+</script>
+<!--医院列表-->
+<script type="text/html" id="test_hos_list">
+	{{each data value}}
+	<option value="{{value.id}}">{{value.name}}</option>
+	{{/each}}
+</script>
+
+<script>
+    //初始化医院列表
+    $.initHosSelect("/admin/hospital/getCertList.json",'test_hos_list',".hosSelect");
+//请求方法
+function reqPage(data){
+	console.log(data);
+	control_page.init_page(data,function(data){
+		//调用ajax
+		$.get_ajax("/admin/order/getList.json",data,function(data){
+			console.log(data);
+			var html = template('test_cure_order_list',data);
+			$(".tbody").html(html);
+			//初始化分页
+			control_page.currentPage(control_page.page_num,data.totalCount);
+		});
+	});
+}
+    var allCheck = $("input:checkbox[name='allOrderCheck']");
+    allCheck.on('change', function () {
+        $('table').find('tbody :checkbox').prop('checked', this.checked);
+    });
+var cure_order_id = "";
+var order_status_tag ="";
+//去结算
+function popup_box(m){
+    $('.jiesuanZi').text('确定结算这笔订单吗?');
+    $('.confirm').attr('onclick','closeAccount()');
+	$(".shade,.jiesuanOpen").show();
+	cure_order_id = $(m).parent().attr("data_id");
+	order_status_tag = $(m).parent();
+}
+    //约定医疗订单详情
+    function orderOpen(m){
+    	var id = $(m).attr('data_id');
+        layui.use(['form','layer','jquery','layedit','table'],function() {
+            	var form = layui.form,
+                table = layui.table,
+                layer = parent.layer === undefined ? layui.layer : parent.layer,
+                laypage = layui.laypage,
+                layedit = layui.layedit,
+                $ = layui.jquery;
+            var index = layer.open({
+                title : "约定医疗项目清单",
+                type : 2,
+                area: ['770px','80%'],
+                content : 'sureOrderPrint.html?id=' + id + '&v=777',
+                success : function(layero, index){
+
+                },
+                cancel: function(index, layero){
+                    layer.close(index)
+                    return false;
+                }
+            })
+        })
+        /*$(".shade,.orderOpen").show();
+        var dataid = $(m).attr("data_id");*/
+
+    }
+
+//确定结算
+function closeAccount(){
+	$(".shade,.jiesuanOpen").hide();
+	var data = {
+		"ids":cure_order_id,
+		"bankName":$('.bankName').val(),
+        "bankCardNumber":$('.bankCardNumber').val(),
+        "accountName":$('.accountName').val(),
+        "settlementToHospital":$('.settlementToHospital').val() / 100
+	}
+	console.log(data);
+	$.post_ajax("/admin/order/handle",data,function(data){
+		if(data.success==true){
+			$(order_status_tag).html("<button class='btn_white'>已完成</button>");
+		}else{
+			alert(data.data);
+		}
+	});
+}
+//取消结算
+function cancelAccount(){
+	$(".shade,.jiesuanOpen").hide();
+}
+function sureAllAccount() {
+    var allotList = [];
+    var checkdAllot = $("input:checkbox[name='orderCheck']:checked");
+    if(checkdAllot.length == 0){
+        alert('请选择需要结算的数据');
+        return;
+    }
+    checkdAllot.each(function() { // 遍历name=test的多选框
+        // 每一个被选中项的值
+        allotList.push($(this).attr('data_id'))
+    });
+    allotList = allotList.join(',');
+    console.log(allotList)
+    cure_order_id = allotList;
+    $('.jiesuanZi').text('确定结算这批订单吗?');
+    $('.confirm').attr('onclick','closeAllAccount()');
+    $(".shade,.jiesuanOpen").show();
+    //closeAllAccount(allotList);
+}
+    //确定批量结算
+    function closeAllAccount(){
+        $(".shade,.jiesuanOpen").hide();
+        var data = {
+            "ids":cure_order_id,
+            "bankName":$('.bankName').val(),
+            "bankCardNumber":$('.bankCardNumber').val(),
+            "accountName":$('.accountName').val(),
+            "settlementToHospital":$('.settlementToHospital').val() / 100
+        }
+        console.log(data);
+        $.post_ajax("/admin/order/handle",data,function(data){
+            console.log(data);
+            if(data.success==true){
+                alert('批量结算成功');
+                $("input:checkbox[name='orderCheck']:checked").each(function () {
+					console.log()
+                    $(this).prop('checked',false);
+                    $(this).parent().parent().find('.order_status').html("<button class='btn_white'>已完成</button>");
+                })
+                //window.location.reload();
+            }else{
+                alert(data.data);
+            }
+        });
+    }
+</script>
+<script>
+console.log($.page_num);//当前页
+$(function(){
+	reqPage(control_page.getData());
+});
+function search(obj) {
+    console.log(obj)
+    //基本条件
+    if(obj == undefined){
+        var data = control_page.getData();
+    }else{
+        var data = obj;
+    }
+    //搜索状态
+    var proj_name = $(".searchStatus").val();
+    if(proj_name != '全部状态'){
+        data.status = proj_name;
+    }
+    //关键词
+    if($('.proj_name').val() != ""){
+        data.keyword = $('.proj_name').val();
+    }
+    //医院
+    if($(".hosSelect").val() != '全部医院'){
+        data.hospitalId = $(".hosSelect").val();
+    }
+    reqPage(data);
+}
+</script>
+</body>
+</html>

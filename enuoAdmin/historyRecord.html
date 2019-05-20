@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>文章列表--e诺分诊后台管理</title>
+	<meta name="renderer" content="webkit">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="format-detection" content="telephone=no">
+	<link rel="stylesheet" href="js/layui/css/layui.css" media="all" />
+	<!--<link rel="stylesheet" href="css/font_eolqem241z66flxr.css" media="all" />-->
+	<link rel="stylesheet" href="css/news.css" media="all" />
+</head>
+<style>
+	@media screen and (max-width: 900px){
+		.sysNoticeOne {
+			width: 100%;
+		}
+		.sysNoticeTwo {
+			width: 100%;
+		}
+	}
+	@media screen and (min-width: 900px){
+		.sysNoticeOne {
+			width: 49%;
+			float: left;
+		}
+		.sysNoticeTwo {
+			width: 49%;
+			float: left;
+		}
+	}
+
+	.col {
+		padding: 0 1% 7px 1.5%;
+		width: 94%;
+		margin-left: 1.5%;
+		border: 1px solid #cccccc;
+		margin-bottom: 16px;
+		/*overflow-y: auto;*/
+	}
+	.changeConsult,.resetInfo,.resetRecord{
+		margin-left: 10px;
+		color: #00a2d4;
+		cursor: pointer;
+	}
+	.layui-card-body{
+		display: inline-block;
+	}
+</style>
+<body class="childrenBody">
+	<!--<blockquote class="layui-elem-quote news_search">
+		&lt;!&ndash;陈双祥 - 15058370623&ndash;&gt;
+		&lt;!&ndash;<form class="layui-form">
+			<div class="layui-form-item">
+				<div class="layui-inline">
+					<label class="layui-form-label">姓名</label>
+					<div class="layui-input-inline">
+						<input type="text" value="" placeholder="请输入姓名" class="layui-input search_input newsName">
+					</div>
+				</div>
+				<div class="layui-inline">
+					<label class="layui-form-label">联系方式</label>
+					<div class="layui-input-inline">
+						<input type="number" name="phone" lay-verify="required|phone" autocomplete="off" class="layui-input mobile" placeholder="根据联系方式筛选">
+					</div>
+				</div>
+				<div class="layui-inline">
+					<label class="layui-form-label">咨询员</label>
+					<div class="layui-input-inline">
+						<select name="kefuSelect" class="kefuSelect" lay-filter="kefuSelect" lay-search="">
+							<option value="">根据客服筛选</option>
+						</select>
+					</div>
+				</div>
+				<div class="layui-inline">
+					<label class="layui-form-label">咨询时间</label>
+					<div class="layui-input-inline">
+						<input type="text" class="layui-input newsTime" onclick="layui.laydate({elem:this})" placeholder="根据咨询时间筛选">
+					</div>
+				</div>
+
+				<div class="layui-inline" style="margin-left: 42px">
+					<a class="layui-btn search_btn">查询</a>
+				</div>
+				<div class="layui-inline" style="margin-left: 20px">
+					<a class="layui-btn layui-btn-normal consultAdd">添加回访</a>
+				</div>
+				<div class="layui-inline" style="margin-left: 20px">
+					<a class="layui-btn layui-btn-danger batchDel">批量删除</a>
+				</div>
+				<div class="layui-inline" style="margin-left: 20px">
+					<a class="layui-btn layui-btn-warm getexcel">导出</a>
+				</div>
+			</div>
+		&lt;!&ndash;	<div class="fenOpen" style="display: none;    margin-top: 20px;">
+			<div class="layui-form-item">
+				<div class="layui-inline">
+					<label class="layui-form-label">分诊医院</label>
+					<div class="layui-input-inline">
+						<select name="newsHos" class="newsHos newsHosFen" lay-filter="newsHos" lay-search="">
+							<option value="">请选择分诊医院</option>
+						</select>
+					</div>
+				</div>
+			</div>
+			<div class="layui-form-item">
+				<div class="layui-inline">
+					<label class="layui-form-label">分诊时间</label>
+					<div class="layui-input-inline">
+						<input type="text" class="layui-input newsTimeFen"
+							   onclick="layui.laydate({elem:this})"
+							   placeholder="请选择分诊时间">
+					</div>
+				</div>
+			</div>
+				<button class="layui-btn layui-btn-lg sureFen" style="margin: 15px 0 0 120px;width: 107px">确 定</button>
+
+			</div>&ndash;&gt;
+
+		</form>&ndash;&gt;
+
+
+
+
+	&lt;!&ndash;	<div class="layui-inline">
+			<a class="layui-btn recommend" style="background-color:#5FB878">推荐文章</a>
+		</div>
+		<div class="layui-inline">
+			<a class="layui-btn audit_btn">审核文章</a>
+		</div>
+		<div class="layui-inline">
+			<a class="layui-btn layui-btn-danger batchDel">批量删除</a>
+		</div>&ndash;&gt;
+	&lt;!&ndash;	<div class="layui-inline">
+			<div class="layui-form-mid layui-word-aux">本页面刷新后除新添加的文章外所有操作无效，关闭页面所有数据重置</div>
+		</div>&ndash;&gt;
+	</blockquote>-->
+	<div lay-filter="fadeIn" style="margin:10px 0 10px 7px">
+<!--
+	<div class="layui-colla-item">
+		<h2 class="layui-colla-title"><span class="span"></span>
+			<label style="float: right"><span>首诊咨询：<span class="firstAdvisory"></span></span><span class="changeConsult">咨询变更信息</span></label></h2>
+		<div class="layui-colla-content layui-show">
+
+		</div>
+
+	</div>-->
+		<div style="margin-bottom: -5px;text-align: center">
+			<!--<div class="layui-card-body layui-text" style="width: 20%;text-align: center;vertical-align: top;    border: 1px solid #e2e2e2;margin-right: -4px;padding-bottom: 3px;max-width: 118px">
+				<img src="img/userImg.png" style="width: 48px;height: 48px;margin-top: 7px;margin-right: -7px;" class="layui-nav-img">
+				&lt;!&ndash;<p>标签标签标签标签</p>&ndash;&gt;
+				<p class="resetInfo">修改</p>
+			</div>-->
+			<div class="layui-card-body layui-text" style="width: 70%">
+				<table class="layui-table">
+					<colgroup>
+						<col width="16.6%"><col>
+						<col width="16.6%"><col>
+						<col width="16.6%"><col>
+						<col width="16.6%"><col>
+						<col width="16.6%"><col>
+						<col width="16.6%"><col>
+					</colgroup>
+					<tbody>
+					<tr>
+						<td style="background-color: #f5f5f5">患者姓名</td>
+						<td class="name"></td>
+						<td style="background-color: #f5f5f5">联系方式</td>
+						<td  class="mobile"></td>
+						<td style="background-color: #f5f5f5">年龄</td>
+						<td class="age"></td>
+					</tr>
+					<tr>
+						<td style="background-color: #f5f5f5">性别</td>
+						<td  class="sex"></td>
+						<td style="background-color: #f5f5f5">地址</td>
+						<td class="address"></td>
+						<td style="background-color: #f5f5f5">职业</td>
+						<td class="job"></td>
+					</tr>
+					</tbody>
+				</table>
+				<!--<span class="resetInfo" style="float: right;margin: -23px -38px 0 0;">修改</span>-->
+			</div>
+		</div>
+
+	</div>
+	<div style="clear: both"></div>
+	<div class="row">
+
+		<div class="col adviosyCol">
+			<blockquote class="layui-elem-quote title" style="padding: 6px 15px;margin-bottom: 0;    background: none;    border: none;">咨询信息 <label style="float: right"><span>首诊咨询：<span class="firstAdvisory"></span></span><span class="changeConsult">咨询变更信息</span></label></blockquote>
+			<table class="layui-table" style="margin-top: 0">
+
+				<thead>
+				<tr>
+					<!--	<th></th>-->
+					<th>咨询时间</th>
+					<th>咨询医院</th>
+					<!--<th>疾病</th>-->
+					<!--<th>来源</th>-->
+					<!--<th>客服</th>
+					<th>病种</th>
+					<th>分诊医院</th>-->
+					<th>咨询病种</th>
+					<th>来源</th>
+					<th>诉求</th>
+					<th>咨询员</th>
+					<th>分诊状态</th>
+					<th>回访状态</th>
+					<th>下次回访时间</th>
+				<!--	<th>操作</th>-->
+				</tr>
+				</thead>
+				<tbody class="news_contentAdvisory"></tbody>
+			</table>
+		</div>
+		<div class="col jiuzhenCol">
+			<blockquote class="layui-elem-quote title" style="padding: 6px 15px;margin-bottom: 0;    background: none;    border: none;">就诊信息</blockquote>
+			<table class="layui-table"  style="margin-top: 0">
+
+				<thead>
+				<tr>
+					<!--	<th></th>-->
+					<th>就诊时间</th>
+					<th width="10%">就诊医院</th>
+					<th>项目分类</th>
+					<th width="14%">就诊项目</th>
+					<th>就诊费用</th>
+					<th>就诊号</th>
+					<th>就诊状态</th>
+					<th>渠道来源</th>
+					<th>医生</th>
+					<th>现场咨询</th>
+					<th>护理</th>
+					<th>客服</th>
+					<th>录诊</th>
+					<th>初复诊</th>
+					<th>备注</th>
+					<!--<th>操作</th>-->
+				</tr>
+				</thead>
+				<tbody class="news_contentDiagnosis"></tbody>
+			</table>
+		</div>
+	</div>
+	<div class="row" style="clear: both;">
+		<div class="col accessCol">
+		<blockquote class="layui-elem-quote title" style="padding: 16px 15px;margin-bottom: 0;    background: none;    border: none;">历史回访<i class="iconfont icon-new1"></i>
+			<!--<input type="button" class="layui-btn layui-btn-normal news_record_add" style="float: right;width: 107px;    margin-top: -8px;" value="添加回访"/>--><!--<input type="button" class="layui-btn layui-btn-normal news_record_add" style="float: right;width: 107px;    margin-top: -8px;" value="添加回访"/>-->
+		</blockquote>
+			<div class="layui-tab layui-tab-card" style="margin-top: 0">
+				<ul class="layui-tab-title" style="width: 300px;margin: -47px 0 0 110px;">
+					<li class="layui-this">全部</li>
+					<li class="platformAccess" onclick="searchTab('platform')">平台</li>
+					<li class="hospitalAccess" onclick="searchTab('hospital')">医院</li>
+				</ul>
+				<div class="layui-tab-content" style="padding: 5px 0 0 0;">
+					<div class="layui-tab-item layui-show">
+						<table class="layui-table"  style="margin-top: 0">
+							<colgroup>
+								<!--<col width="50"><col>-->
+								<!--<col width="19%"><col>
+                                <col width="9%"><col>
+                                <col width="9%"><col>
+                                &lt;!&ndash;<col width="9%">&ndash;&gt;
+                                &lt;!&ndash;<col width="9%">
+                                <col width="9%">&ndash;&gt;
+                                <col width="9%"><col>-->
+							</colgroup>
+							<thead>
+							<tr>
+								<!--<th></th>-->
+								<th>回访时间</th>
+								<th>回访客服</th>
+								<th>医院状态</th>
+								<th>客服状态</th>
+								<!--<th>疾病</th>-->
+								<!--<th>来源</th>-->
+								<!--<th>客服</th>
+                                <th>病种</th>
+                                <th>分诊医院</th>-->
+								<th width="40%">回访内容</th>
+								<!--<th>操作</th>-->
+							</tr>
+							</thead>
+							<tbody class="news_content"></tbody>
+						</table>
+					</div>
+					<div class="layui-tab-item"><table class="layui-table"  style="margin-top: 0">
+
+						<thead>
+						<tr>
+							<!--<th></th>-->
+							<th>回访时间</th>
+							<th>平台回访客服</th>
+							<th>平台客服回访状态</th>
+							<!--<th>疾病</th>-->
+							<!--<th>来源</th>-->
+							<!--<th>客服</th>
+                            <th>病种</th>
+                            <th>分诊医院</th>-->
+							<th width="40%">平台回访内容</th>
+							<!--<th>操作</th>-->
+						</tr>
+						</thead>
+						<tbody class="news_content_platfrom"></tbody>
+					</table></div>
+					<div class="layui-tab-item"><table class="layui-table"  style="margin-top: 0">
+						<thead>
+						<tr>
+							<!--<th></th>-->
+							<th>回访时间</th>
+							<th>医院回访客服</th>
+							<th>医院客服回访状态</th>
+							<!--<th>疾病</th>-->
+							<!--<th>来源</th>-->
+							<!--<th>客服</th>
+                            <th>病种</th>
+                            <th>分诊医院</th>-->
+							<th width="40%">医院回访内容</th>
+							<!--<th>操作</th>-->
+						</tr>
+						</thead>
+						<tbody class="news_content_hospital"></tbody>
+					</table></div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="changeOpen" style="display: none;">
+				<table class="layui-table" style="margin-top: 0;">
+					<colgroup>
+						<!--<col width="50"><col>-->
+						<!--<col width="19%"><col>
+                        <col width="9%"><col>
+                        <col width="9%"><col>
+                        &lt;!&ndash;<col width="9%">&ndash;&gt;
+                        &lt;!&ndash;<col width="9%">
+                        <col width="9%">&ndash;&gt;
+                        <col width="9%"><col>-->
+					</colgroup>
+					<thead>
+					<tr>
+						<!--<th></th>-->
+						<th>咨询时间</th>
+						<th>咨询员</th>
+						<!--<th>疾病</th>-->
+						<!--<th>来源</th>-->
+						<!--<th>客服</th>
+                        <th>病种</th>
+                        <th>分诊医院</th>-->
+						<!--<th>回访内容</th>-->
+						<!--<th>操作</th>-->
+					</tr>
+					</thead>
+					<tbody class="news_contentAdvisoryChange"></tbody>
+				</table>
+	</div>
+	<div class="resetInfoOpen" style="display: none;    margin-top: 14px;">
+		<form class="layui-form">
+			<!--<div class="layui-form-item">
+                <label class="layui-form-label">文章标题</label>
+                <div class="layui-input-block">
+                    <input type="text" class="layui-input newsName" lay-verify="required" placeholder="请输入文章标题">
+                </div>
+            </div>-->
+			<div class="layui-form-item">
+				<div class="layui-inline">
+					<label class="layui-form-label">姓名</label>
+					<div class="layui-input-inline">
+						<input type="text" class="layui-input newsName" lay-verify="required" placeholder="请输入姓名">
+					</div>
+				</div>
+
+				<div class="layui-inline">
+					<label class="layui-form-label">性别</label>
+					<div class="layui-input-inline">
+						<select name="sex" class="sex" lay-verify="required"  lay-filter="sex" lay-search="">
+							<option value="">请选择性别</option>
+							<option value="man">男</option>
+							<option value="woman">女</option>
+						</select>
+					</div>
+				</div>
+				<div class="layui-inline">
+					<label class="layui-form-label">患者年龄</label>
+					<div class="layui-input-inline">
+						<input type="number" name="phone" lay-verify="required"  class="layui-input age" placeholder="请输入患者年龄（数字）">
+					</div>
+				</div>
+				<div class="layui-inline">
+					<label class="layui-form-label">职业</label>
+					<div class="layui-input-inline">
+						<input type="text" class="layui-input newsJob" placeholder="请填写职业（选填）">
+					</div>
+				</div>
+				<div class="layui-inline">
+					<label class="layui-form-label">地址</label>
+					<div class="layui-input-inline">
+						<input type="text" class="layui-input newsAddress" placeholder="请填写地址（选填）">
+					</div>
+				</div>
+			<div class="layui-form-item" style="    margin-top: 10px;">
+				<div class="layui-input-block">
+					<button class="layui-btn resetInfoBtn" lay-submit="" lay-filter="resetInfoBtn">立即提交</button>
+					<!--<button type="reset" class="layui-btn layui-btn-primary">重置</button>-->
+				</div>
+			</div>
+			</div>
+		</form>
+	</div>
+	<div id="page"></div>
+	<script type="text/javascript" src="plug/jquery-1.11.3.min.js"></script>
+	<script type="text/javascript" src="js/util.js"></script>
+	<script type="text/javascript" src="js/layui/layui.js"></script>
+	<script type="text/javascript" src="js/histotyRecord.js?v=222"></script>
+</body>
+</html>

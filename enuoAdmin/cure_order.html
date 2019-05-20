@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="css/base.css" />
+<link rel="stylesheet" href="css/util.css" />
+<link rel="stylesheet" href="css/collect.css" />
+<title>治疗订单管理</title>
+</head>
+<body>
+<div class="content cure_order">
+	<div class="navigate_head clearfix">
+		<p class="" onclick="window.location.href='cure_order.html'">治疗订单管理</p>
+		<p class="navi_null"></p>
+	</div>
+	<!--头部功能-->
+	<div class="head_area flex_vertical">
+		<span style="font-size: 16px;">搜索医院：</span><select class="" style="width: 200px;"><option>全部</option></select>
+		<span style="font-size: 16px;">搜索状态：</span><select class="" style="width: 150px;"><option>全部</option></select>
+		<span style="font-size: 16px;">搜索患者：</span><input type="text" class="search" placeholder="姓名、手机号、订单号）" style="width: 200px;"/>
+		<button style="width: 70px;">搜索</button>
+	</div>
+	<table>
+		<thead>
+			<tr>
+				<td>订单号</td>
+				<td>患者名</td>
+				<td>手机号</td>
+				<td>下单时间</td>
+				<td>约定医院</td>
+				<td>约定疾病</td>
+				<td>订单提示</td>
+			</tr>
+		</thead>
+		<tbody class="tbody">
+			<!--<tr>
+				<td><div class="flex_all_center"><img src="img/activity_manage/select.png"/>&nbsp;<span>921614597713019</span></div></td>
+				<td>蔡晓云</td>
+				<td>176 0652 0935</td>
+				<td>2017-08-12</td>
+				<td>杭州梦桃口腔门诊部</td>
+				<td>双眼皮<p>结算金额：0元</p></td>
+				<td>
+					<div class="flex_all_center">
+						<button class="btn_green">去结算</button>&nbsp;<button class="btn_red"><img src="img/close-2.png"/></button>
+					</div>
+					<p>放款时间：1970-01-16</p>
+				</td>
+			</tr>-->
+		</tbody>
+	</table>
+	<!--分页-->
+	<div class="page flex_vertical">
+		<button class="" onclick="indexPage()">首页</button>&nbsp;
+		<button class="" onclick="backPage()"><上一页</button>&nbsp;
+		<!--页码-->
+		<p class="page_num">
+			<!--<span>1</span><span>2</span><span>3</span><span>4</span><span>5</span>-->
+		</p>....
+		<button class="" onclick="nextPage()">下一页></button>&nbsp;
+		<button class="" onclick="endPage()">末页</button>&nbsp;
+		共<span class="all_recode">0 </span>记录&nbsp;|
+		共<span class="all_page">0 </span>页&nbsp;
+		到第<input class="select_page" />页&nbsp;
+		<button class="confirm_page" onclick="skipPage()">确定</button>
+	</div>
+</div>
+<!--遮罩层-->
+<div class="shade none"></div>
+<!--弹框-->
+<div class="popup_box none" style="width: 250px;margin-left: -100px;">
+	<p class="img_close clearfix">
+		<img src="img/close.png" onclick="close_box()"/>
+	</p>
+	<p style="text-align: center;margin: 20px auto;">确定结算这笔订单吗?</p>
+	<p class="confirm"  onclick="closeAccount()" style="margin-left: 50px;display: inline-block;">确 定</p>
+	<p class="cancel btn_white" onclick="cancelAccount()" style="height: 40px;width: 70px;display: inline-block;margin-left: 20px;line-height: 40px;text-align: center;">取消</p>
+</div>
+<script type="text/javascript" src="plug/jquery-1.11.3.min.js" ></script>
+<script type="text/javascript" src="plug/template-web.js"></script>
+<script type="text/javascript" src="js/toggle.js" ></script>
+<script type="text/javascript" src="js/util.js"></script>
+<script type="text/javascript" src="js/method.js"></script>
+<script type="text/javascript" src="js/page.js"></script>
+<!--账号列表-->
+<script id="test_cure_order_list" type="text/html">
+{{each data value}}
+	<tr>
+		<td>
+			<div class="flex_all_center">
+				<!--<img src="img/activity_manage/select.png"/>&nbsp;-->
+				<span>{{value.sn}}</span>
+			</div>
+		</td>
+		<td>{{value.fullname}}</td>
+		<td>{{value.mobile}}</td>
+		<td>{{value.createDate}}</td>
+		<td>{{value.hospitalName}}</td>
+		<td>{{value.name}}<p>结算金额：{{value.amount}}元</p></td>
+		<td>
+			<div class="flex_all_center" data_id = "{{value.id}}">
+				{{if value.orderStatus=="waitPaid"}}<button class="btn_white">待支付</button>{{else if value.orderStatus=="completed"}}<button class="btn_green" onclick="popup_box(this)">去结算</button>{{else if value.orderStatus=="waitConfirm"}}<button class="btn_white">待确认</button>{{else if value.orderStatus=="cancelled"}}<button class="btn_white">已取消</button>{{else if value.orderStatus=="handle"}}<button class="btn_white">完成</button>{{/if}}<!--&nbsp;<button class="btn_red"><img src="img/close-2.png"/></button>-->
+			</div>
+			<p>放款时间：1970-01-16</p>
+		</td>
+	</tr>
+{{/each}}
+</script>
+<script>
+console.log($.page_num);//当前页
+$(function(){
+	reqPage();
+});
+</script>
+<script>
+//请求方法
+function reqPage(){
+	var data = {
+		"pageNumber":$.page_num,//当前页
+		"pageSize":$.pageSize//每页的长度
+	}
+	console.log(data);
+	$.controlPage(data,function(data){
+		//调用ajax
+		$.get_ajax("/admin/order/getList.json",data,function(data){
+			console.log(data);
+			var html = template('test_cure_order_list',data);
+			$(".tbody").html(html);
+			//初始化分页
+			$.currentPage($.page_num,data.totalCount);
+		});
+	});
+}
+var cure_order_id = "";
+//去结算
+function popup_box(m){
+	$(".shade,.popup_box").show();
+	cure_order_id = $(m).parent().attr("data_id");
+}
+//确定结算
+function closeAccount(m){
+	$(".shade,.popup_box").hide();
+	var data = {
+		"id":cure_order_id
+	}
+	console.log(data);
+	$.post_ajax("/admin/order/handle",data,function(data){
+		if(data.success==true){
+			window.location.href = "cure_order.html";
+		}
+	});
+}
+//取消结算
+function cancelAccount(){
+	$(".shade,.popup_box").hide();
+}
+</script>
+</body>
+</html>

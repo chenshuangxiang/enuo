@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="css/base.css" />
+<link rel="stylesheet" href="css/util.css" />
+<link rel="stylesheet" href="css/collect.css" />
+<link rel="stylesheet" href="plug/webuploader/webuploader.css" />
+<title>添加父体征</title>
+<style>
+	/*图片上传*/
+#filePicker{
+	display: inline-block;
+	/*border: 1px solid red;*/
+	height: 40px;
+}
+#filePicker .webuploader-pick{
+	height: 40px;line-height: 40px;
+	width: 120px;
+	/*border: 1px solid black;*/
+	padding: 0;
+	letter-spacing: 1px;
+	font-size: 16px;
+	border-radius:5px ;
+}
+.preview>div{
+	display: inline-block;
+	margin-left: 3px;
+}
+
+/*动态增减元素*/
+.ele_container{
+	border: 1px solid #DCDCDC;
+	border-radius: 5px;
+	width: 400px;
+	min-height: 40px;
+	margin-left: 235px;
+}
+.ele_container p{
+	display: inline-block;
+	height: 40px;line-height: 40px;
+	border: 1px solid #DCDCDC;
+	padding: 0 10px;
+	position: relative;
+	border-radius: 5px;
+	margin: 5px 10px 5px 0;
+}
+.ele_container p:hover>img{
+	position: absolute;
+	top: -3px;right: -3px;
+	display: block !important;
+}
+</style>
+</head>
+<body>
+<div class="content add_tyq_type">
+	<div class="tabHref">
+		<p onclick="window.location.href='community_list.html'">社区管理</p>
+		<p onclick="window.location.href='doctorNurseList.html'">医护管理</p>
+		<p onclick="window.location.href='healthman_list.html'">健管师管理</p>
+		<p onclick="window.location.href='healthPitent_list.html'">患者管理</p>
+		<p onclick="window.location.href='bodyInfo_list.html'" class="navi_current">体征模板管理</p>
+	</div>
+	<div class="navigate_head clearfix">
+		<p onclick="window.location.href='bodyInfo_list.html'">体征列表</p>
+		<p onclick="window.location.href='add_bodyInfo.html'" class="navi_current">添加父级类目</p>
+		<p class="navi_null"></p>
+	</div>
+	<div>
+		<form class="add_role_form">
+			<div class="public_input">
+				<span>父级类目:</span>
+				<input type="text" class="tyq_name" placeholder="类目名称，如：眼睛，鼻子，牙齿..."/>
+			</div>
+			<div class="public_input confrim_btn">
+				<span>.</span>
+				<input type="button" class="confrim_add_tyq_type" value="添加"/>
+			</div>
+		</form>
+	</div>
+</div>
+	
+	
+<script type="text/javascript" src="plug/jquery-1.11.3.min.js" ></script>
+<script type="text/javascript" src="plug/template-web.js" ></script>
+<script type="text/javascript" src="js/toggle.js" ></script>
+<script type="text/javascript" src="js/util.js" ></script>
+<script type="text/javascript" src="js/method.js" ></script>
+<script type="text/javascript" src="js/control_element.js" ></script>
+<!--日期插件-->
+<link rel="stylesheet" href="plug/My97DatePicker/skin/WdatePicker.css" />
+<script src="plug/My97DatePicker/WdatePicker.js"></script>
+<!--医院列表-->
+<script type="text/html" id="test_hos_list">
+	{{each data value}}
+		<option value="{{value.id}}">{{value.name}}</option>
+	{{/each}}
+</script>
+<script>
+$(function(){
+/*	var flag=true;//默认启用
+	$(".enabled,.disable").click(function(){
+//		alert("");
+		flag = $(this).addClass("bg_green").attr("data_val");
+		$(this).siblings().removeClass("bg_green");
+		console.log(flag);
+	});*/
+	
+	/*var hos_id ="";//医院id
+	var hos_name ="";//医院id
+	//初始化医院列表
+	$.initSelect("/admin/hospital/getCertList.json",'test_hos_list',".hos_name");
+	$(".hos_name").change(function(){
+		hos_id = $(".hos_name").val();
+		var hos_name = $(".hos_name").find("option:selected").text().trim();//trim去前后所有空格
+		//初始化已选择的医院
+		controlEle.add_element(hos_id,hos_name);
+	});*/
+	
+	$(".confrim_add_tyq_type").click(function(){
+		var tyq_name = $(".tyq_name").val();
+		
+		var data = {
+			"remark":tyq_name
+		}
+		//验证
+		if(!$.verify(tyq_name,"父级类目名称")){return false;}
+		$.get_ajax("/admin/healthSupervisor/addBodyInfoType",data,function(data){
+			if(data.success==true){
+				alert("添加成功");
+				window.location.href = "bodyInfo_list.html";
+			}else{
+				alert(data.data);
+			}
+		});
+	});
+});
+</script>
+</body>
+</html>

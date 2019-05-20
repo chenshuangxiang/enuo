@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="css/base.css" />
+<link rel="stylesheet" href="css/util.css" />
+<link rel="stylesheet" href="css/collect.css" />
+	<link href="css/combo.select.css" rel="stylesheet" />
+<!--	<link rel="stylesheet" href="js/layui/css/layui.css" media="all" />-->
+<title>美丽全家活动</title>
+<style>
+.head_area .public_input span{
+	width: 100px;font-size: 18px;
+}
+.head_area .public_input input,
+.head_area .public_input select{
+	width: 180px;margin-left: 10px;margin-right: 10px;
+}
+.content .head_area .combo-select input{
+	width: inherit;
+	border: none;
+	outline: none;
+}
+	.noClick{
+		height: 24px;
+		line-height: 23px;
+		padding: 0 5px;
+		background-color: #cccccc;
+		color: white;
+		border: 1px solid #cccccc;
+		border-radius: 4px;
+		font-size: 12px;
+		margin-right: 8px;
+	}
+	.notpassClick{
+		height: 24px;
+		line-height: 23px;
+		padding: 0 5px;
+		background-color: white;
+		color: black;
+		border: 1px solid #cccccc;
+		border-radius: 4px;
+		font-size: 12px;
+		margin-right: 8px;
+		cursor: pointer;
+	}
+	.Click{
+		height: 24px;
+		line-height: 23px;
+		padding: 0 5px;
+		background-color: #00afa1;
+		color: white;
+		border: 1px solid #cccccc;
+		border-radius: 4px;
+		font-size: 12px;
+	}
+	.imgGet{
+		/*transform:rotate(90deg);
+		-ms-transform:rotate(90deg); 	!* IE 9 *!
+		-moz-transform:rotate(90deg); 	!* Firefox *!
+		-webkit-transform:rotate(90deg); !* Safari 和 Chrome *!
+		-o-transform:rotate(90deg);*/
+	}
+</style>
+</head>
+<body>
+<div class="content cure_order">
+	<div class="navigate_head clearfix">
+		<p class="" onclick="window.location.href='familyBeauty.html'">美丽全家活动</p>
+		<p class="navi_null"></p>
+	</div>
+	<!--头部功能-->
+	<div class="head_area flex_vertical" style="display: block;">
+		<!--<div class="public_input margindiv">
+			&lt;!&ndash;<span>搜索医院:</span>&ndash;&gt;
+			<select class="job_title hosSelect">
+				<option>全部医院</option>
+			</select>
+		</div>-->
+		<!--<div class="public_input margindiv">
+			&lt;!&ndash;<span>搜索状态:</span>&ndash;&gt;
+			<select class="job_title searchStatus">
+				<option>全部状态</option>
+				<option value="waitPaid">待支付</option>
+				<option value="waitConfirm">待确认</option>
+				<option value="completed">去结算</option>
+				<option value="cancelled">已取消</option>
+				<option value="handle">已完成</option>
+			</select>
+		</div>-->
+
+		<div class="public_input margindiv">
+			<!--<span >搜索患者：</span>-->
+			<input type="text" class="proj_name" placeholder="用户名或手机号"/>
+		</div>
+		<button class="search" style="width: 70px;" onclick="indexPage()">搜索</button>
+		
+	</div>
+	<table>
+		<thead>
+			<tr>
+				<td>序号</td>
+				<td>用户名</td>
+				<td>手机号</td>
+				<td>提交照片</td>
+				<td>提交时间</td>
+				<td>状态</td>
+				<td>操作</td>
+			</tr>
+		</thead>
+		<tbody class="tbody">
+			<!--<tr>
+				<td><div class="flex_all_center"><img src="img/activity_manage/select.png"/>&nbsp;<span>921614597713019</span></div></td>
+				<td>蔡晓云</td>
+				<td>176 0652 0935</td>
+				<td>2017-08-12</td>
+				<td>杭州梦桃口腔门诊部</td>
+				<td>双眼皮<p>结算金额：0元</p></td>
+				<td>
+					<div class="flex_all_center">
+						<button class="btn_green">去结算</button>&nbsp;<button class="btn_red"><img src="img/close-2.png"/></button>
+					</div>
+					<p>放款时间：1970-01-16</p>
+				</td>
+			</tr>-->
+		</tbody>
+	</table>
+	<!--分页-->
+	<div class="page flex_vertical">
+		<button class="" onclick="indexPage()">首页</button>&nbsp;
+		<button class="" onclick="backPage()"><上一页</button>&nbsp;
+		<!--页码-->
+		<p class="page_num">
+			<!--<span>1</span><span>2</span><span>3</span><span>4</span><span>5</span>-->
+		</p>....
+		<button class="" onclick="nextPage()">下一页></button>&nbsp;
+		<button class="" onclick="endPage()">末页</button>&nbsp;
+		共<span class="all_recode">0 </span>记录&nbsp;|
+		共<span class="all_page">0 </span>页&nbsp;
+		到第<input class="select_page" />页&nbsp;
+		<button class="confirm_page" onclick="skipPage()">确定</button>
+	</div>
+</div>
+<!--遮罩层-->
+<div class="shade none"></div>
+<!--弹框-->
+<div class="popup_box jiesuanOpen none" style="width: 250px;margin-left: -100px;">
+	<p class="img_close clearfix">
+		<img src="img/close.png" onclick="close_box()"/>
+	</p>
+	<p style="text-align: center;margin: 20px auto;">确定结算这笔订单吗?</p>
+	<p class="confirm btn_green"  onclick="closeAccount()" style="    height: 40px;
+    width: 70px;
+    display: inline-block;
+    margin-left:43px;
+    line-height: 40px;
+    text-align: center;">确 定</p>
+	<p class="cancel btn_white" onclick="cancelAccount()" style="height: 40px;width: 70px;display: inline-block;margin-left: 20px;line-height: 40px;text-align: center;">取消</p>
+</div>
+<div class="popup_box orderOpen none" style="min-height: 400px;top: 15px;width: 600px;left: 44%;">
+	<p class="img_close clearfix">
+		<span class="huifuname"></span>
+		<img src="img/close.png" onclick='$(".shade").css("display","none");$(".popup_box,.orderOpen").css("display","none");'/>
+	</p>
+	<div class="main" style="    text-align: center;">
+		<img style="max-height: 400px;" class="mainOpenImg imgGet" src=""/>
+	</div>
+</div>
+<script type="text/javascript" src="plug/jquery-1.11.3.min.js" ></script>
+<script type="text/javascript" src="plug/template-web.js"></script>
+<script type="text/javascript" src="js/layui/layui.js"></script>
+<script type="text/javascript" src="js/toggle.js" ></script>
+<script type="text/javascript" src="js/util.js"></script>
+<script type="text/javascript" src="js/method.js"></script>
+<script type="text/javascript" src="js/page.js"></script>
+<script type="text/javascript" src="js/layui/layui.js"></script>
+<script type="text/javascript" src="js/jquery.combo.select.js"></script>
+<!--医院列表-->
+<script type="text/html" id="test_hos_list">
+	{{each data value}}
+	<option value="{{value.id}}">{{value.name}}</option>
+	{{/each}}
+</script>
+
+<script>
+    //初始化医院列表
+   // $.initHosSelect("/familyBeautyCouponRequest/list",'test_hos_list',".hosSelect");
+//请求方法
+function reqPage(data){
+	console.log(data);
+    data.all = true;
+	control_page.init_page(data,function(data){
+		//调用ajax
+		$.get_ajax("/familyBeautyCouponRequest/list",data,function(data){
+			console.log(data);
+			if(data.success == true){
+                $(".tbody").html('');
+                var html = '';
+                data.data.forEach(function (value,index) {
+                    html += '<tr valueid="'+value.id+'">' +
+                        '<td>'+ Number(index + 1)+'</td>' +
+                        '<td onclick="userOpen(this)" style="color: #00AFA1;cursor: pointer" valueusername="'+value.userName+'" valuemobile="'+value.userTel+'">'+value.userName+'</td>' +
+                        '<td>'+value.userTel+'</td>' +
+                        '<td><img class="imgGet" onclick="imgOpen(this)" style="max-height: 70px;" src="'+value.familyImgUrl+'"/></td>' +
+                        '<td>'+value.modifyDate+'</td>'
+                    if(value.state=="wait"){
+                        html += '<td>审核中</td>'
+                        html +='<td><input type="button" onclick="notpassAccount(this)" class="notpassClick" value="驳回"/><input type="button" onclick="passAccount(this)" style="cursor: pointer;border: none" class="Click" value="通过"/></td>'
+                    }else if(value.state=="agree"){
+                        html += '<td>已通过</td>'
+                        html +='<td><input type="button" class="Click" style="border: none;" value="已通过"/></td>'
+                    }else if(value.state=="reject"){
+                        html += '<td>已驳回</td>'
+                        html +='<td><input type="button" class="noClick" value="已驳回"/></td>'
+                    }else{
+                        html += '<td></td>'
+                    }
+                    html +='</tr>';
+                    $(".tbody").html(html);
+                })
+			}else{
+			    if(data.data == '请先登录'){
+                    parent.location.href = "login.html";
+				}else{
+                    alert(data.data);
+				}
+			}
+			//初始化分页
+			control_page.currentPage(control_page.page_num,data.totalCount);
+		});
+	});
+}
+
+var cure_order_id = "";
+var order_status_tag ="";
+//去结算
+function popup_box(m){
+	$(".shade,.jiesuanOpen").show();
+	cure_order_id = $(m).parent().attr("data_id");
+	order_status_tag = $(m).parent();
+}
+    function imgOpen(m){
+        $(".shade,.orderOpen").show();
+        $('.mainOpenImg').attr('src',$(m).attr('src'));
+    }
+
+    //约定医疗订单详情
+    function orderOpen(m){
+    	var id = $(m).attr('data_id');
+        layui.use(['form','layer','jquery','layedit','table'],function() {
+            	var form = layui.form,
+                table = layui.table,
+                layer = parent.layer === undefined ? layui.layer : parent.layer,
+                laypage = layui.laypage,
+                layedit = layui.layedit,
+                $ = layui.jquery;
+            var index = layer.open({
+                title : "约定医疗项目清单",
+                type : 2,
+                area: ['770px','80%'],
+                content : 'sureOrderPrint.html?id=' + id + '&v=777',
+                success : function(layero, index){
+
+                },
+                cancel: function(index, layero){
+                    layer.close(index)
+                    return false;
+                }
+            })
+        })
+        /*$(".shade,.orderOpen").show();
+        var dataid = $(m).attr("data_id");*/
+
+    }
+
+//确定结算
+function passAccount(obj){
+	var data = {
+		"id":$(obj).parent().parent().attr('valueid'),
+        "state":'agree'
+	}
+	console.log(data);
+	$.post_ajax("/familyBeautyCouponRequest/changeState",data,function(data){
+		if(data.success==true){
+			alert(data.data);
+            window.location.reload();
+		}else{
+			alert(data.data);
+		}
+	});
+}
+function notpassAccount(obj) {
+    console.log($(obj).parent().attr('valueid'))
+    var data = {
+        "id":$(obj).parent().parent().attr('valueid'),
+        "state":'reject'
+    }
+    console.log(data);
+    $.post_ajax("/familyBeautyCouponRequest/changeState",data,function(data){
+        if(data.success==true){
+            alert(data.data);
+            window.location.reload();
+        }else{
+            alert(data.data);
+        }
+    });
+}
+//取消结算
+function cancelAccount(){
+	$(".shade,.jiesuanOpen").hide();
+}
+</script>
+<script>
+console.log($.page_num);//当前页
+$(function(){
+	reqPage(control_page.getData());
+});
+function search(obj) {
+    console.log(obj)
+    //基本条件
+    if(obj == undefined){
+        var data = control_page.getData();
+    }else{
+        var data = obj;
+    }
+    //关键词
+    if($('.proj_name').val() != ""){
+        data.keyword = $('.proj_name').val();
+    }
+
+    reqPage(data);
+}
+</script>
+</body>
+</html>

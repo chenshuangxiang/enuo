@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="css/base.css" />
+<link rel="stylesheet" href="css/util.css" />
+<link rel="stylesheet" href="css/collect.css" />
+	<link href="css/combo.select.css" rel="stylesheet" />
+<title>医生列表</title>
+<style>
+.content .head_area input,.content .head_area select{
+	width: 130px;
+}
+.special_proj .activty{
+	width: 180px;height: 70px;
+	position: absolute;
+	z-index: 999;
+	top: 100px;left: 55%;
+	border: 1px solid #00AFA1;
+	background-color: black;
+	filter:alpha(opacity:30); opacity:0.3;  -moz-opacity:0.3;-khtml-opacity: 0.3;
+	color: white;
+	border-radius: 10px;
+}
+.special_proj .activty p{
+	height: 30px;line-height: 30px;
+	text-indent: 10px;
+}
+.content .head_area .combo-select input{
+	width: inherit;
+	border: none;
+	outline: none;
+}
+	.enabled,.disable{
+		border: 1px solid #dddddd;
+		height:25px;
+		border-radius: 4px;
+		line-height: 25px;width: 35px;
+		font-size: 12px;
+	}
+	.enabled{
+		border-top-right-radius: 0;
+		border-bottom-right-radius: 0;
+	}
+	.disable{
+		border-top-left-radius: 0;
+		border-bottom-left-radius: 0;
+	}
+</style>
+</head>
+<body>
+<div class="content special_proj">
+	<div class="navigate_head clearfix">
+		<p onclick="window.location.href='voteDocList.html'" class="navi_current">医生列表</p>
+		<p onclick="window.location.href='addVoteDoc.html'">添加医生</p>
+		<p class="navi_null"></p>
+	</div>
+	<!--头部功能-->
+	<div class="head_area flex_vertical">
+		<input type="text" class="proj_name" placeholder="医生姓名"/>
+		<select class="hosSelect" style="width: 190px">
+			<option value="">全部医院</option>
+		</select>
+		<button class="search" onclick="indexPage()" style="margin-left: 20px;">搜索</button>
+	</div>
+	<table>
+		<thead>
+			<tr>
+				<td>姓名</td>
+				<td>职称</td>
+				<td>所属医院</td>
+				<td>推荐理由</td>
+				<td>票数</td>
+				<td>操作</td>
+			</tr>
+		</thead>
+		<tbody class="tbody">
+			
+		</tbody>
+	</table>
+	<!--分页-->
+	<div class="page flex_vertical">
+		<button class="" onclick="indexPage()">首页</button>&nbsp;
+		<button class="" onclick="backPage()"><上一页</button>&nbsp;
+		<!--页码-->
+		<p class="page_num">
+			<!--<span>1</span><span>2</span><span>3</span><span>4</span><span>5</span>-->
+		</p>...
+		<button class="" onclick="nextPage()">下一页></button>&nbsp;
+		<button class="" onclick="endPage()">末页</button>&nbsp;
+		共<span class="all_recode">0 </span>记录&nbsp;|
+		共<span class="all_page">0 </span>页&nbsp;
+		到第<input class="select_page" />页&nbsp;
+		<button class="confirm_page" onclick="skipPage()">确定</button>
+	</div>
+</div>
+<!--遮罩层-->
+<div class="shade none"></div>
+<!--审核弹框-->
+<div class="popup_box audit_box none">
+	<p class="img_close clearfix">
+		<img src="img/close.png" onclick="close_box()"/>
+	</p>
+	<div>
+		<div class="public_input">
+			<span style="width: 80px;">审核:</span>
+			<input type="button" class="bg_green enabled" value="通过" data_val="true"/><input type="button" class="disable" value="不通过" data_val="false"/>
+		</div>
+	</div>
+	<p class="confirm confirm_audit" style="width: 70px;">确 定</p>
+</div>
+<script type="text/javascript" src="plug/jquery-1.11.3.min.js" ></script>
+<script type="text/javascript" src="plug/template-web.js"></script>
+<script type="text/javascript" src="js/toggle.js" ></script>
+<script type="text/javascript" src="js/util.js"></script>
+<script type="text/javascript" src="js/method.js"></script>
+<script type="text/javascript" src="js/page.js"></script>
+<script type="text/javascript" src="js/jquery.combo.select.js"></script>
+<script id="test_special_list" type="text/html">
+	{{each data value}}
+		<tr>
+			<td>{{value.name}}</td>
+			<td>{{if value.title=='medicalOfficer'}} 医士 {{else if value.title == 'physician'}} 医师 {{else if value.title == 'attendingDoctor'}} 主治 {{else if value.title == 'deputyDirector'}} 副主任 {{else if value.title == 'director'}} 主任 {{/if}}</td>
+			<!--<td width="150px" style="padding: 0;"><img src="{{value.headImgUrl}}" /></td>-->
+			<td>{{value.hospitalName}}</td>
+			<td width="50%" style="line-height: 20px;">{{value.doctorEthics}}</td>
+			<td>{{value.voteCounts}}</td>
+			<td data_id = "{{value.id}}">
+				<button class="font_green" onclick="edit_special_proj(this)">修改</button>
+				<button class="font_orange" onclick="del_special_proj(this)">删除</button>
+			</td>
+		</tr>
+	{{/each}}
+</script>
+<!--项目类型列表-->
+<script type="text/html" id="test_proj_list">
+	{{each data value}}
+		<option value="{{value.id}}">{{value.name}}</option>
+	{{/each}}
+</script>
+<!--医院列表-->
+<script type="text/html" id="test_hos_list">
+	{{each data value}}
+	<option value="{{value.id}}">{{value.name}}</option>
+	{{/each}}
+</script>
+<script>
+var proj_type_id="";
+var pass_val = "";
+//初始化项目类型列表
+//$.initSelect("/admin/specialProduct/getBeautySubjectList.json","test_proj_list",".proj_type");
+//初始化医院列表
+$.initHosSelect("/admin/hospital/getCertList.json",'test_hos_list',".hosSelect");
+$(".proj_type").change(function(){
+	proj_type_id = $(".proj_type").val();
+	console.log(proj_type_id);
+});
+//是否上架
+$(".pass").change(function(){
+	pass_val = $(".pass").val();
+	console.log(pass_val);
+});
+$(".pass,.status,.proj_type,.hosSelect").change(function(){
+	indexPage();
+});
+//请求方法
+function shangxia(obj) {
+	var data = {};
+	data.id = $(obj).attr('valueid');
+	data.marketable = $(obj).attr('status');
+    $.post_ajax("/admin/specialProduct/toggle",data,function(res){
+        if(res.success==true){
+            if($(obj).attr('value') == '下架'){
+                $(obj).prev().removeClass('bg_green');
+                $(obj).addClass('bg_green');
+			}else if($(obj).attr('value') == '上架'){
+                $(obj).next().removeClass('bg_green');
+                $(obj).addClass('bg_green');
+			}
+        }else{
+            alert(res.data);
+        }
+    });
+}
+function reqPage(data){
+	console.log(data);
+	control_page.init_page(data,function(data){
+		//调用ajax
+		$.get_ajax("/app/vote/listVoteInfo.json",data,function(data){
+			console.log(data);
+			var html = template('test_special_list',data);
+			$(".tbody").html(html);
+			//初始化分页
+			control_page.currentPage(control_page.page_num,data.totalCount);
+		});
+	});
+}
+
+//修改
+function edit_special_proj(m){
+	var special_proj_id =  $(m).parent().attr("data_id");
+	//window.localStorage.setItem("special_proj_id",special_proj_id);
+	window.location.href = "addVoteDoc.html?id="+special_proj_id+"&action=reset";
+}
+//删除
+function del_special_proj(m){
+    var r = confirm("确认删除？")
+    if (r == true) {
+        var special_proj_id =  $(m).parent().attr("data_id");
+        var data = {
+            "voteInfoId":special_proj_id
+        }
+        $.get_ajax("/app/vote/deleteVoteInfo",data,function(res){
+            console.log(res);
+            if(res.success){
+                window.location.reload();
+            }
+        });
+    }
+}
+/**
+ * 审核
+ */
+function audit_special_proj(m){
+	$('.shade,.audit_box').show();
+	var special_proj_id =  $(m).parent().attr("data_id");
+	window.localStorage.setItem("special_proj_id",special_proj_id);
+}
+var flag=true;
+$(".enabled,.disable").click(function(){
+	flag = $(this).addClass("bg_green").attr("data_val");
+	$(this).siblings().removeClass("bg_green");
+	console.log(flag);
+});
+$(".confirm_audit").click(function(){
+	var data = {
+		"id":$.get_storage("special_proj_id"),
+		"passed":flag
+	}
+	$.post_ajax("/admin/specialProduct/check",data,function(res){
+		if(res.success==true){
+		    //静态不刷新掷状态
+            close_box();
+		    if(flag == true){
+                $('.value'+ $.get_storage("special_proj_id")).parent().parent().children('.passstatus').text('已通过');
+			}else{
+                $('.value'+ $.get_storage("special_proj_id")).parent().parent().children('.passstatus').text('未通过');
+			}
+            $('.value'+ $.get_storage("special_proj_id")).remove();
+			//window.location.href = "special_proj_list.html";
+		}else{
+			alert(res.data);
+		}
+	});
+});
+
+</script>
+<script>
+/**
+ * hover显示价格详情
+ */
+//function addHtml(m){
+////	alert("沃日");
+//	var deanPrice =	$(m).attr("data_deanPrice");//院长
+//	var expertPrice = $(m).attr("data_expertPrice");//专家
+//	var type = $(m).attr("data_type");
+//	if(type == "cure"){
+//		console.log("医美");
+//		var html = "<div class='activty'>";
+//		if($.regNum(deanPrice)){
+//			html=html+"<p><span>院长费用：</span><span>"+deanPrice+"元</span></p>"
+//		}
+//		html=html+"<p><span>专家费用：</span><span>"+expertPrice+"元</span></p></div>";
+//		console.log(html);
+//	}
+//	if(type == "check"){
+//		console.log("医院");
+//		var html = "<div class='activty'><p><span>特价：</span><span>"+expertPrice+"元</span></p></div>";
+//		console.log(html);
+//	}
+//	$(".special_proj").append(html);
+//	var i = $(m).parent().offset().top;//距离网页顶部的距离
+//	console.log(i);
+//	$(".activty").css({"top":i-20});
+//}
+//function delHtml(m){
+////	alert("woq");
+//	$(".special_proj .activty").remove();
+//}
+</script>
+<script>
+$(function(){
+	reqPage(control_page.getData());
+	//搜索
+});
+function search(obj) {
+    console.log(obj)
+    //基本条件
+    if(obj == undefined){
+        var data = control_page.getData();
+    }else{
+        var data = obj;
+    }
+    //项目类型
+    var proj_name = $(".proj_name").val();
+    if(proj_name != ''){
+        data.name = proj_name;
+    }
+    //医院
+    if($(".hosSelect").val() != ''){
+        data.hospital = $(".hosSelect").val();
+    }
+
+    reqPage(data);
+}
+</script>
+</body>
+</html>

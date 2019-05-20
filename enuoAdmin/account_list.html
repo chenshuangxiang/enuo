@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="css/base.css" />
+<link rel="stylesheet" href="css/util.css" />
+<link rel="stylesheet" href="css/collect.css" />
+<title>账号列表</title>
+</head>
+<body>
+<div class="content role_list">
+	<div class="navigate_head clearfix">
+		<p onclick="window.location.href='account_list.html'" class="navi_current">账号列表</p>
+		<p onclick="window.location.href='add_account.html'">添加账号</p>
+		<p class="navi_null"></p>
+	</div>
+	
+	<table>
+		<thead>
+			<tr>
+				<td>id</td>
+				<!--<td>角色名称</td>-->
+				<td>用户名</td>
+				<td>账号</td>
+				<td>状态</td>
+				<td>操作</td>
+			</tr>
+		</thead>
+		<tbody class="tbody">
+			<!--<tr>
+				<td>1</td>
+				<td>超级管理员</td>
+				<td>members</td>
+				<td>18435121587</td>
+				<td>enuo123456</td>
+				<td><button class="font_green">角色设置</button>&nbsp;&nbsp;<button class="font_green">成员管理</button></td>
+			</tr>-->
+		</tbody>
+	</table>
+	<!--分页-->
+	<div class="page flex_vertical">
+		<button class="" onclick="indexPage()">首页</button>&nbsp;
+		<button class="" onclick="backPage()"><上一页</button>&nbsp;
+		<!--页码-->
+		<p class="page_num">
+			<!--<span>1</span><span>2</span><span>3</span><span>4</span><span>5</span>-->
+		</p>....
+		<button class="" onclick="nextPage()">下一页></button>&nbsp;
+		<button class="" onclick="endPage()">末页</button>&nbsp;
+		共<span class="all_recode">0 </span>记录&nbsp;|
+		共<span class="all_page">0 </span>页&nbsp;
+		到第<input class="select_page" />页&nbsp;
+		<button class="confirm_page" onclick="skipPage()">确定</button>
+	</div>
+</div>
+<script type="text/javascript" src="plug/jquery-1.11.3.min.js" ></script>
+<script type="text/javascript" src="plug/template-web.js"></script>
+<script type="text/javascript" src="js/toggle.js" ></script>
+<script type="text/javascript" src="js/util.js"></script>
+<script type="text/javascript" src="js/method.js"></script>
+<script type="text/javascript" src="js/page.js"></script>
+<script type="text/javascript" src="js/detail/account.js"></script>
+<!--账号列表-->
+<script id="test_account_list" type="text/html">
+	{{each data as value i}}
+		<tr>
+			<td>{{i+1}}</td>
+			<!--<td>角色名称</td>-->
+			<td>{{value.name}}</td>
+			<td>{{value.username}}</td>
+			<td class="{{if value.enabled==true}}font_orange{{/if}}">{{if value.enabled==true}}启用{{else if value.enabled==false}}停用{{/if}}</td>
+			<td data_id="{{value.id}}"><button class="font_green" onclick="account_edit(this)">编辑</button><!--&nbsp;&nbsp;<button class="font_green" onclick="account_delete(this)">删除</button>--></td>
+		</tr>
+	{{/each}}
+</script>
+
+<script>
+//请求方法
+function reqPage(data){
+	console.log(data);
+	control_page.init_page(data,function(data){
+		//调用ajax
+		$.get_ajax("/admin/admin/getList.json",data,function(data){
+			console.log(data);
+			var html = template('test_account_list',data);
+			$(".tbody").html(html);
+			//初始化分页
+			control_page.currentPage(control_page.page_num,data.totalCount);
+		});
+	});
+}
+
+</script>
+<script>
+console.log(control_page.page_num);//当前页
+$(function(){
+	reqPage(control_page.getData());
+});
+function search() {
+    reqPage(control_page.getData());
+}
+</script>
+</body>
+</html>
